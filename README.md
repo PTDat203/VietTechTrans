@@ -101,3 +101,7 @@ data/raw/<source>/
 ## License và dữ liệu
 
 Mã nguồn dự án sử dụng license được lựa chọn riêng. License của từng dataset/model phải được xác minh theo nguồn gốc trước khi dùng cho artifact cuối hoặc phát hành lại.
+
+
+English-Vietnamese Machine Translation for IT Domain
+

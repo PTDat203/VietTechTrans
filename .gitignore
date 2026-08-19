@@ -1,0 +1,16 @@
+.ipynb_checkpoints/
+__pycache__/
+.venv/
+.env
+.cache/
+
+data/raw/
+data/interim/
+data/processed/
+data/it_corpus/
+data/splits/
+
+models/
+checkpoints/
+wandb/
+mlruns/

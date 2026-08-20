@@ -1,0 +1,151 @@
+{
+  "audit_schema_version": "1.0",
+  "audit_timestamp_utc": "2026-08-20T07:23:46.201537+00:00",
+  "source_short_name": "envitech_reasoning",
+  "raw_file_integrity": {
+    "path": "data\\raw\\envitech_reasoning\\envitech_reasoning_raw.parquet",
+    "bytes": 978770,
+    "sha256": "ba354d36e9eeb2b1afcefda9ea98f63f7bf5e315e80743fea78444238ce17e1e"
+  },
+  "schema": {
+    "row_count": 15115,
+    "column_count": 3,
+    "columns": [
+      "en",
+      "vi",
+      "category"
+    ],
+    "dtypes": {
+      "en": "str",
+      "vi": "str",
+      "category": "str"
+    },
+    "required_columns_present": true
+  },
+  "missing_values": {
+    "en_null": 0,
+    "vi_null": 0,
+    "en_blank_or_null": 0,
+    "vi_blank_or_null": 0,
+    "pair_with_blank_or_null_side": 0
+  },
+  "encoding": {
+    "en_replacement_or_control_char": 0,
+    "vi_replacement_or_control_char": 0,
+    "pair_with_encoding_issue": 0
+  },
+  "language_heuristics": {
+    "en_contains_vietnamese_diacritic": 73,
+    "vi_without_diacritic_but_has_english_function_word": 4,
+    "pair_language_suspect": 73
+  },
+  "duplicates": {
+    "rows_in_exact_duplicate_groups": 2120,
+    "extra_exact_duplicate_rows": 1425,
+    "rows_in_duplicate_en_groups": 3543,
+    "rows_in_duplicate_vi_groups": 2399,
+    "identical_nonempty_en_vi_pairs": 0
+  },
+  "length_statistics": {
+    "en_char_count": {
+      "count": 15115.0,
+      "mean": 58.67019517036057,
+      "std": 19.946147762612377,
+      "min": 4.0,
+      "1%": 14.0,
+      "5%": 24.0,
+      "25%": 46.5,
+      "50%": 59.0,
+      "75%": 71.0,
+      "95%": 89.0,
+      "99%": 105.0,
+      "max": 245.0
+    },
+    "vi_char_count": {
+      "count": 15115.0,
+      "mean": 63.536089976844195,
+      "std": 23.08434669899414,
+      "min": 7.0,
+      "1%": 16.0,
+      "5%": 27.0,
+      "25%": 48.0,
+      "50%": 63.0,
+      "75%": 78.0,
+      "95%": 100.0,
+      "99%": 123.0,
+      "max": 277.0
+    },
+    "length_ratio_vi_en": {
+      "count": 15115.0,
+      "mean": 1.100762953869771,
+      "std": 0.24506094339070272,
+      "min": 0.42105263157894735,
+      "1%": 0.6613250620347394,
+      "5%": 0.7966101694915254,
+      "25%": 0.95,
+      "50%": 1.0689655172413792,
+      "75%": 1.2075471698113207,
+      "95%": 1.493636363636357,
+      "99%": 1.9403795066413696,
+      "max": 4.888888888888889
+    }
+  },
+  "alignment_indicators": {
+    "identical_nonempty_pair": 0,
+    "extreme_length_ratio_lt_0_20_or_gt_5_00": 0,
+    "very_long_pair_over_1000_chars_on_either_side": 0,
+    "language_suspect_pair": 73
+  },
+  "noise": {
+    "url": {
+      "en_count": 0,
+      "vi_count": 0,
+      "pair_count": 0
+    },
+    "markup_or_html_entity": {
+      "en_count": 1,
+      "vi_count": 1,
+      "pair_count": 1
+    },
+    "windows_or_unix_file_path": {
+      "en_count": 5,
+      "vi_count": 5,
+      "pair_count": 5
+    },
+    "placeholder": {
+      "en_count": 1,
+      "vi_count": 1,
+      "pair_count": 1
+    },
+    "ui_fragment": {
+      "en_count": 311,
+      "vi_count": 4,
+      "pair_count": 311
+    }
+  },
+  "manual_review": {
+    "flagged_candidate_count": 2465,
+    "random_sample_size": 30,
+    "random_sample_seed": 42
+  },
+  "provenance": {
+    "source": "EnVi-Tech-Reasoning-SFT",
+    "source_url": "https://huggingface.co/datasets/kotorii1/EnVi-Tech-Reasoning-SFT",
+    "download_url": null,
+    "license": null,
+    "version_revision": "main",
+    "collection_date": "2026-08-19",
+    "download_method": "Hugging Face datasets.load_dataset",
+    "language_pair": "en-vi",
+    "domain": "IT",
+    "subcategory": null,
+    "license_needs_verification": true
+  },
+  "decision": {
+    "decision": "needs_review",
+    "blocking_issues": [
+      "License cần xác minh trước khi phát hành/huấn luyện artifact cuối."
+    ],
+    "note": "Các cờ duplicate, noise và alignment là input cho manual review/Phase 03; không được tự động coi là dữ liệu cần xóa."
+  }
+}

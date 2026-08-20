@@ -1,0 +1,18 @@
+﻿raw_row_index,en,vi,audit_flags,en_char_count,vi_char_count,length_ratio_vi_en
+33,Description,Mô tả,exact_duplicate,11,5,0.45454545454545453
+41,ID,ID,identical_pair,2,2,1.0
+46,"0, 0","0, 0",identical_pair,4,4,1.0
+61,Description,Mô tả,exact_duplicate,11,5,0.45454545454545453
+98,URI,URI,identical_pair,3,3,1.0
+108,Dogtail,Dogtail,identical_pair,7,7,1.0
+109,LDTP,LDTP,identical_pair,4,4,1.0
+132,actionable %s is not focusable or selectable,%s có thể hoạt động mà không thể nhận tiêu điểm hay được lựa chọn,noise_placeholder,44,65,1.4772727272727273
+133,interactive %s is not actionable,%s tương tác không thể hoạt động,noise_placeholder,32,32,1.0
+135,%s has no text interface,%s không có giao diện văn bản,noise_placeholder,24,29,1.2083333333333333
+136,%s index in parent does not match child index,chỉ mục %s trong đồ cha không tương ứng với chỉ mục con,noise_placeholder,45,55,1.2222222222222223
+137,Missing reciprocal for %s relation,Thiếu đảo nghịch cho quan hệ %s,noise_placeholder,34,31,0.9117647058823529
+138,%s missing name or label,%s thiếu tên hay nhãn,noise_placeholder,24,21,0.875
+139,"focusable %s has table interface, no selection interface","%s có thể nhận tiêu điểm và có giao diện bảng, không phải giao diện lựa chọnbutton has focused state without focusable state",noise_placeholder,56,124,2.2142857142857144
+140,%s has %s state without %s state,%s có tình trạng %s mà không có tình trạng %s,noise_placeholder,32,45,1.40625
+141,%s does not belong to a set,%s không thuộc về một tập hợp,noise_placeholder,27,29,1.0740740740740742
+144,%s has no name or description,%s không có tên hay mô tả,noise_placeholder,29,25,0.8620689655172413

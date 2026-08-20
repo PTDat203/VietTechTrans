@@ -1,0 +1,155 @@
+{
+  "audit_schema_version": "1.0",
+  "audit_timestamp_utc": "2026-08-20T07:55:15.581267+00:00",
+  "source_short_name": "tech_viet_translation",
+  "raw_file_integrity": {
+    "path": "data\\raw\\tech_viet_translation\\tech_viet_translation_raw.parquet",
+    "bytes": 11196371,
+    "sha256": "9be76ed6ba1643629211e3c8b60f5ef957a0c5b8ebd84e0bffdfcf90dc25bd53"
+  },
+  "schema": {
+    "row_count": 100767,
+    "column_count": 3,
+    "raw_columns": [
+      "instruction",
+      "output",
+      "input"
+    ],
+    "raw_dtypes": {
+      "instruction": "str",
+      "output": "str",
+      "input": "str"
+    },
+    "text_column_mapping_for_audit_only": {
+      "en": "instruction",
+      "vi": "output"
+    },
+    "required_text_columns_present": true
+  },
+  "missing_values": {
+    "en_null": 0,
+    "vi_null": 0,
+    "en_blank_or_null": 0,
+    "vi_blank_or_null": 0,
+    "pair_with_blank_or_null_side": 0
+  },
+  "encoding": {
+    "en_replacement_or_control_char": 0,
+    "vi_replacement_or_control_char": 0,
+    "pair_with_encoding_issue": 0
+  },
+  "language_heuristics": {
+    "en_contains_vietnamese_diacritic": 16,
+    "vi_without_diacritic_but_has_english_function_word": 40,
+    "pair_language_suspect": 56
+  },
+  "duplicates": {
+    "rows_in_exact_duplicate_groups": 580,
+    "extra_exact_duplicate_rows": 306,
+    "rows_in_duplicate_en_groups": 799,
+    "rows_in_duplicate_vi_groups": 772,
+    "identical_nonempty_en_vi_pairs": 1
+  },
+  "length_statistics": {
+    "en_char_count": {
+      "count": 100767.0,
+      "mean": 70.59824148778866,
+      "std": 18.551748435915428,
+      "min": 5.0,
+      "1%": 30.0,
+      "5%": 42.0,
+      "25%": 59.0,
+      "50%": 70.0,
+      "75%": 80.0,
+      "95%": 101.0,
+      "99%": 126.0,
+      "max": 251.0
+    },
+    "vi_char_count": {
+      "count": 100767.0,
+      "mean": 80.47866861174789,
+      "std": 26.36735407275626,
+      "min": 2.0,
+      "1%": 31.0,
+      "5%": 44.0,
+      "25%": 64.0,
+      "50%": 78.0,
+      "75%": 94.0,
+      "95%": 122.0,
+      "99%": 155.0,
+      "max": 865.0
+    },
+    "length_ratio_vi_en": {
+      "count": 100767.0,
+      "mean": 1.1423597582183174,
+      "std": 0.2764176894783864,
+      "min": 0.04597701149425287,
+      "1%": 0.7439024390243902,
+      "5%": 0.868421052631579,
+      "25%": 1.0163934426229508,
+      "50%": 1.1232876712328768,
+      "75%": 1.2444444444444445,
+      "95%": 1.463768115942029,
+      "99%": 1.679245283018868,
+      "max": 36.46153846153846
+    }
+  },
+  "alignment_indicators": {
+    "identical_nonempty_pair": 1,
+    "extreme_length_ratio_lt_0_20_or_gt_5_00": 130,
+    "very_long_pair_over_1000_chars_on_either_side": 0,
+    "language_suspect_pair": 56
+  },
+  "noise": {
+    "url": {
+      "en_count": 0,
+      "vi_count": 1,
+      "pair_count": 1
+    },
+    "markup_or_html_entity": {
+      "en_count": 2,
+      "vi_count": 1510,
+      "pair_count": 1511
+    },
+    "windows_or_unix_file_path": {
+      "en_count": 61,
+      "vi_count": 99,
+      "pair_count": 101
+    },
+    "placeholder": {
+      "en_count": 1,
+      "vi_count": 1,
+      "pair_count": 1
+    },
+    "ui_fragment": {
+      "en_count": 4048,
+      "vi_count": 120,
+      "pair_count": 4049
+    }
+  },
+  "manual_review": {
+    "flagged_candidate_count": 6341,
+    "random_sample_size": 30,
+    "random_sample_seed": 42
+  },
+  "provenance": {
+    "source": "tech-viet-translation",
+    "source_url": "https://huggingface.co/datasets/lightontech/tech-viet-translation",
+    "download_url": null,
+    "license": null,
+    "version_revision": "main",
+    "collection_date": "2026-08-18",
+    "download_method": "Hugging Face datasets.load_dataset",
+    "language_pair": "en-vi",
+    "domain": "IT",
+    "subcategory": null,
+    "license_needs_verification": true
+  },
+  "decision": {
+    "decision": "needs_review",
+    "blocking_issues": [
+      "License cần xác minh trước khi phát hành/huấn luyện artifact cuối."
+    ],
+    "note": "Các cờ duplicate, noise và alignment là input cho manual review/Phase 03; không được tự động coi là dữ liệu cần xóa."
+  }
+}

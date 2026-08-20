@@ -1,0 +1,31 @@
+﻿raw_row_index,en,vi
+73,Rows,Hàng
+18,Interactive console for manipulating currently selected accessible,Bàn giao tiếp tương tác để thao tác điều truy cập được chọn hiện thời
+117,Idle,Nghỉ
+78,Row,Hàng
+76,Header:,Đầu trang:
+31,Child count,Số đếm con
+64,Lo_gin Helper,Bổ trợ đăn_g xuất
+140,%s has %s state without %s state,%s có tình trạng %s mà không có tình trạng %s
+68,Caption:,Phụ đề
+82,Text,Văn bản
+109,LDTP,LDTP
+12,Browse the various methods of the current accessible,Duyệt qua các phương pháp khác nhau của điều truy cập hiện thời
+36,Relations,Quan hệ
+9,Highlight fill color,Màu điền vùng tô sáng
+19,Event monitor,Bộ theo dõi sự kiện
+56,Locale:,Miền địa phương:
+136,%s index in parent does not match child index,chỉ mục %s trong đồ cha không tương ứng với chỉ mục con
+69,Summary:,Tóm tắt:
+55,Des_ktop,_Màn hình nền
+131,Tests fundamental GUI application accessibility,Thử ra khả năng truy cập cơ bản của ứng dụng GUI
+29,Start/stop event recording,Bắt đầu/dừng thu sự kiện
+123,Saving,Đang lưu
+26,Event Monitor,Bộ theo dõi sự kiện
+127,WARN,BÁO
+128,INFO,TIN
+144,%s has no name or description,%s không có tên hay mô tả
+110,Script Type,Kiểu văn lệnh
+101,Too many selectable children,Quá nhiều con chọn được
+45,Col_lection,Tậ_p hợp
+30,Clear event log,Dọn sổ theo dõi sự kiện

@@ -1,0 +1,1671 @@
+﻿raw_row_index,en,vi,audit_flags,en_char_count,vi_char_count,length_ratio_vi_en
+12,\t%s acl pathname...,\t%s acl đường_dẫn...,noise_placeholder,20,21,1.05
+13,\t%s -b acl dacl pathname...,\t%s -b acl dacl đường_dẫn...,noise_placeholder,28,29,1.0357142857142858
+14,\t%s -d dacl pathname...,\t%s -d dacl đường_dẫn...,noise_placeholder,24,25,1.0416666666666667
+15,\t%s -R pathname...,\t%s -R đường_dẫn...,noise_placeholder,19,20,1.0526315789473684
+16,\t%s -D pathname...,\t%s -D đường_dẫn...,noise_placeholder,19,20,1.0526315789473684
+17,\t%s -B pathname...,\t%s -B đường_dẫn...,noise_placeholder,19,20,1.0526315789473684
+18,\t%s -l pathname...\t[not IRIX compatible],\t%s -l đường_dẫn...\t[không tương thích với IRIX],noise_placeholder,42,50,1.1904761904761905
+20,Configure what gets logged in your Zeitgeist activity log,Thiết lập những thứ được ghi chép trong nhật ký Zeitgeist,exact_duplicate,57,57,1.0
+25,Name,Tên,exact_duplicate,4,3,0.75
+32,"%e %B %Y, %H:%M","%e %B %Y, %H:%M",identical_pair,15,15,1.0
+37,%d %B %Y,%d %B %Y,identical_pair; noise_placeholder,8,8,1.0
+38,"This operation cannot be undone, are you sure you want to delete this activity?","Thao tác này không thể quay lại, bạn có thực sự muốn xóa hoạt động này không?",noise_ui_fragment,79,77,0.9746835443037974
+43,Error reports include information about what a program was doing when it failed. You always have the choice to send or cancel an error report.,Thông báo lỗi ghi chép thông tin về việc mà phần mềm đang làm khi nó bị lỗi. Bạn luôn có thể lựa chọn có gửi thông báo lỗi hay không.,noise_ui_fragment,142,133,0.9366197183098591
+46,"--help"" and ""--version","adduser [--home THƯ_MỤC] [--shell VỎ] [--no-create-home] [--uid ID] [--firstuid ID] [--lastuid ID] [--gecos GECOS] [--ingroup NHÓM _BAR_ --gid ID] [--disabled-password] [--disabled-login] [--encrypt-home] NGƯỜI_DÙNG Thêm một người dùng bình thường adduser --system [--home THƯ_MỤC] [--shell VỎ] [--no-create-home] [--uid ID] [--gecos GECOS] [--group _BAR_ --ingroup NHÓM _BAR_ --gid ID] [--disabled-password] [--disabled-login] NGƯỜI_DÙNG Thêm một người dùng hệ thống adduser --group [--gid ID] NHÓM addgroup [--gid ID] NHÓM Thêm một nhóm người dùng addgroup --system [--gid ID] NHÓM Thêm một nhóm hệ thống adduser NGƯỜI_DÙNG NHÓM Thêm một người dùng sẵn có vào một nhóm đang tồn tại tùy chọn chung: --quiet _BAR_ -q đừng xuất thông tin quá trình cho stdout --force-badname cho phép tên người dùng không khớp với biến cấu hình NAME_REGEX[_SYSTEM] --help _BAR_ -h hướng dẫn sử dụng --version _BAR_ -v số phiên bản và bản quyền --conf _BAR_ -c TẬP_TIN sử dụng TẬP_TIN làm tập tin cấu hình --help"" and ""--version",extreme_length_ratio; very_long_pair,22,1009,45.86363636363637
+47,AisleRiot Solitaire,AisleRiot Solitaire,identical_pair,19,19,1.0
+48,Play many different solitaire games,Chơi nhiều trò chơi solitaire khác nhau,exact_duplicate,35,39,1.1142857142857143
+67,Help,Trợ giúp,exact_duplicate,4,8,2.0
+74,_Hint,"_Gợi ý_New"" is for the menu item 'Game->New', implies ""New Game",extreme_length_ratio,5,63,12.6
+78,_Reset,"_Lập lại_Restart"" is the menu item 'Game->Restart', implies ""Restart Game",extreme_length_ratio,6,73,12.166666666666666
+84,"%s is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version %d of the License, or (at your option) any later version.","%s là phần mềm tự do; bạn có quyền phát hành lại nó và/hoặc sửa đổi nó với điều kiện của Giấy Phép Công Cộng GNU như được xuất bản bởi Tổ Chức Phần Mềm Tự Do; hoặc phiên bản %d của Giấy Phép này, hoặc (tùy chọn) bất kỳ phiên bản sau nào.",noise_placeholder,230,237,1.0304347826086957
+85,"%s is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.","%s được phát hành vì mong muốn nó có ích, nhưng KHÔNG CÓ BẢO HÀNH GÌ CẢ, THẬM CHÍ KHÔNG CÓ BẢO ĐẢM ĐƯỢC NGỤ Ý KHẢ NĂNG BÁN HAY KHẢ NĂNG LÀM ĐƯỢC VIỆC DỨT KHOÁT. Xem Giấy Phép Công Cộng GNU để biết thêm chi tiết.",noise_placeholder,222,211,0.9504504504504504
+86,"You should have received a copy of the GNU General Public License along with this program. If not, see .",slot type,extreme_length_ratio,104,9,0.08653846153846154
+92,%s on foundation,%s trên nền tảngreserveslot hint,noise_placeholder,16,32,2.0
+93,%s on reserve,%s dành riêngstockslot hint,noise_placeholder,13,27,2.076923076923077
+94,%s on stock,%s trong khotableauslot hint,noise_placeholder,11,28,2.5454545454545454
+95,%s on tableau,wasteslot hint,noise_placeholder,13,14,1.0769230769230769
+97,Move %s onto %s.,Chuyển %s trên %s.,noise_placeholder,16,18,1.125
+100,Agnes,Agnes,identical_pair,5,5,1.0
+101,Athena,Athena,identical_pair; exact_duplicate,6,6,1.0
+109,Bristol,Bristol,identical_pair,7,7,1.0
+110,Camelot,Camelot,identical_pair,7,7,1.0
+111,Canfield,Canfield,identical_pair,8,8,1.0
+120,Easthaven,Easthaven,identical_pair,9,9,1.0
+129,Freecell,Freecell,identical_pair,8,8,1.0
+131,Gay Gordons,Gay Gordons,identical_pair,11,11,1.0
+132,Glenwood,Glenwood,identical_pair,8,8,1.0
+135,Gypsy,Gypsy,identical_pair,5,5,1.0
+136,Helsinki,Helsinki,identical_pair,8,8,1.0
+138,Isabel,Isabel,identical_pair,6,6,1.0
+139,Jamestown,Jamestown,identical_pair,9,9,1.0
+140,Jumbo,Jumbo,identical_pair,5,5,1.0
+141,Kansas,Kansas,identical_pair,6,6,1.0
+144,Klondike,Klondike,identical_pair,8,8,1.0
+149,Monte Carlo,Monte Carlo,identical_pair,11,11,1.0
+152,Odessa,Odessa,identical_pair,6,6,1.0
+155,Pileon,Pileon,identical_pair,6,6,1.0
+160,Saratoga,Saratoga,identical_pair,8,8,1.0
+184,Yukon,Yukon,identical_pair,5,5,1.0
+187,A,Acard symbol,extreme_length_ratio,1,12,12.0
+188,2,2card symbol,extreme_length_ratio,1,12,12.0
+189,3,3card symbol,extreme_length_ratio,1,12,12.0
+190,4,4card symbol,extreme_length_ratio,1,12,12.0
+191,5,5card symbol,extreme_length_ratio,1,12,12.0
+192,6,6card symbol,extreme_length_ratio,1,12,12.0
+193,7,7card symbol,extreme_length_ratio,1,12,12.0
+194,8,8card symbol,extreme_length_ratio,1,12,12.0
+195,9,9card symbol,extreme_length_ratio,1,12,12.0
+196,J,Jcard symbol,extreme_length_ratio,1,12,12.0
+197,Q,Qcard symbol,extreme_length_ratio,1,12,12.0
+198,K,Kcard symbol,extreme_length_ratio,1,12,12.0
+199,1,1,identical_pair,1,1,1.0
+254,Help file “%s.%s” not found,Không tìm thấy tập tin trợ giúp “%s.%s”,noise_placeholder,27,39,1.4444444444444444
+255,Could not show help for “%s”,Không thể hiển thị trợ giúp về “%s”,noise_placeholder,28,35,1.25
+256,Solitaire,Solitaire,identical_pair,9,9,1.0
+257,GNOME Solitaire,GNOME Solitaire,identical_pair,15,15,1.0
+262,AisleRiot,AisleRiot,identical_pair,9,9,1.0
+269,Time,Thời gian%Id%d,noise_placeholder,4,14,3.5
+270,%d,"%d%d"" in this string this to ""%Id%d%d%%%%%"" (U+0025 PERCENT SIGN) you do NOT need to escape it with another ""%",language_suspect; extreme_length_ratio; noise_placeholder,2,110,55.0
+271,%d%%,%d%%Not Applicable,noise_placeholder,4,18,4.5
+273,%d:%02d,%d:%02d,identical_pair; noise_placeholder,7,7,1.0
+281,translator-credits,Nhóm Việt hóa GNOME (http://live.gnome.org/GnomeVi) Launchpad Contributions: Clytie Siddall https://launchpad.net/~clytie Nguyễn Thái Ngọc Duy https://launchpad.net/~pclouds,extreme_length_ratio; noise_url; noise_windows_or_unix_file_path,18,173,9.61111111111111
+283,Play “%s”,Chơi « %s »,noise_placeholder,9,11,1.2222222222222223
+284,Display cards with “%s” card theme,Hiển thị quân bài theo sắc thái quân bài « %s »,noise_placeholder,34,47,1.3823529411764706
+290,_View,_Xem,exact_duplicate,5,4,0.8
+292,_Help,Trợ _giúp,exact_duplicate,5,9,1.8
+300,Close this window,Đóng cửa sổ này,noise_ui_fragment,17,15,0.8823529411764706
+303,Deal next card or cards,Nhận thêm bài,noise_ui_fragment,23,13,0.5652173913043478
+304,Get a hint for your next move,Nhận gợi ý cho bước đi tiếp theo,noise_ui_fragment,29,32,1.103448275862069
+323,Cannot start the game “%s”,Không thể khởi chạy lượt chơi « %s »,noise_placeholder,26,36,1.3846153846153846
+400,Base Card:,Bài cơ bản:,exact_duplicate,10,11,1.1
+402,Move waste back to stock,Chuyển cái bỏ đi vào kho,noise_ui_fragment,24,24,1.0
+419,You are searching for an ace.,Bạn đang tìm %s.,noise_placeholder,29,16,0.5517241379310345
+477,Base Card:,Bài cơ bản:,exact_duplicate,10,11,1.1
+497,Signora,Signora,identical_pair,7,7,1.0
+512,"Useful options: -h, --help this help -c, --card=NUMBER sound card number or id -D, --device=NAME mixer device name -V, --view=MODE starting view mode: playback/capture/all","Tùy chọn hữu ích: -h, --help trợ giúp này -c, --card=SỐ số hay id card âm thanh -D, --device=TÊN tên thiết bị trộn -V, --view=CHẾ_ĐỘ khởi động chế độ xem: playback/capture/all",noise_windows_or_unix_file_path,171,175,1.023391812865497
+514,invalid card index: %s,chỉ mục card không hợp lệ: %s,noise_placeholder,22,29,1.3181818181818181
+515,unknown abstraction level: %s,lớp ảo hóa không rõ: %s,noise_placeholder,29,23,0.7931034482758621
+519,%s: %s,%s: %s,identical_pair; exact_duplicate; noise_placeholder,6,6,1.0
+520,Card:,Card:,identical_pair,5,5,1.0
+521,Chip:,Chip:,identical_pair,5,5,1.0
+534,"[%s %s, %s]","[%s %s, %s]",identical_pair; noise_placeholder,11,11,1.0
+542,O,O,identical_pair,1,1,1.0
+544,L,Lright,extreme_length_ratio,1,6,6.0
+545,R,R,identical_pair,1,1,1.0
+554,Cannot open mixer device '%s'.,Không thể mở thiết bị trộn '%s'.,noise_placeholder,30,32,1.0666666666666667
+561,Tab Toggle view mode (F3/F4/F5),Tab Chuyển chế độ xem (F3/F4/F5),noise_windows_or_unix_file_path,31,32,1.032258064516129
+565,Right Move to the next control,Phải Chuyển sang điều khiển tiếp,noise_ui_fragment,30,32,1.0666666666666667
+571,Q W E Increase left/both/right volumes,Q W E Tăng âm lượng kênh trái/cả hai/phải,noise_windows_or_unix_file_path,38,41,1.0789473684210527
+572,Z X C Decrease left/both/right volumes,Z X C Giảm âm lượng trái/cả hai/phải,noise_windows_or_unix_file_path,38,36,0.9473684210526315
+579,Tim Janik,Tim Janik,identical_pair,9,9,1.0
+580,Jaroslav Kysela <perex\@perex\.cz>,Jaroslav Kysela <perex\@perex\.cz>,identical_pair; noise_markup_or_html_entity,34,34,1.0
+581,Clemens Ladisch <clemens\@ladisch\.de>,Clemens Ladisch <clemens\@ladisch\.de>,identical_pair; noise_markup_or_html_entity,38,38,1.0
+582,Help,Trợ giúp,exact_duplicate,4,8,2.0
+584,Error,Lỗi,exact_duplicate,5,3,0.6
+585,"Cannot open file ""%s"".","Không thể mở tập tin ""%s"".",noise_placeholder,22,26,1.1818181818181819
+587,VOC,VOC,identical_pair,3,3,1.0
+588,WAVE,WAVE,identical_pair,4,4,1.0
+592,"-f cd (16 bit little endian, 44100, stereo)","-f cd (16 bit little endian, 44100, stereo)",identical_pair,43,43,1.0
+593,"-f cdr (16 bit big endian, 44100, stereo)","-f cdr (16 bit big endian, 44100, stereo)",identical_pair,41,41,1.0
+594,"-f dat (16 bit little endian, 48000, stereo)","-f dat (16 bit little endian, 48000, stereo)",identical_pair,44,44,1.0
+596,**** List of %s Hardware Devices ****,*** Danh sách %s thiết bị phần cứng ***,noise_placeholder,37,39,1.054054054054054
+597,"card %i: %s [%s], device %i: %s [%s]","card %i: %s [%s], thiết bị %i: %s [%s]",noise_placeholder,36,38,1.0555555555555556
+599,Subdevice #%i: %s,Thiết bị con #%i: %s,noise_placeholder,17,20,1.1764705882352942
+600,Aborted by signal %s...,Đã thoát bởi tín hiệu %s...,noise_placeholder,23,27,1.173913043478261
+602,unrecognized file format %s,không nhận ra định dạng tập tin %s,noise_placeholder,27,34,1.2592592592592593
+604,wrong extended format '%s',sai định dạng mở rộng '%s',noise_placeholder,26,26,1.0
+606,Try `%s --help' for more information.,Thử `%s --help' để biết thêm thông tin.,noise_placeholder,37,39,1.054054054054054
+607,audio open error: %s,lỗi mở âm thanh: %s,noise_placeholder,20,19,0.95
+608,info error: %s,lỗi thông tin: %s,noise_placeholder,14,17,1.2142857142857142
+609,nonblock setting error: %s,lỗi thiết lập không chặn: %s,noise_placeholder,26,28,1.0769230769230769
+611,Cannot create process ID file %s: %s,Không thể tạo tập tin ID tiến trình %s: %s,noise_placeholder,36,42,1.1666666666666667
+617,can't play WAVE-files with %d tracks,không thể phát các tập tin WAVE với %d rãnh,noise_placeholder,36,43,1.1944444444444444
+619,can't play WAVE-files with sample %d bits in %d bytes wide (%d channels),không thể phát các tập tin WAVE với mẫu %d bit trong %d byte rộng (%d kênh),noise_placeholder,72,75,1.0416666666666667
+620,can't play WAVE-files with sample %d bits wide,không thể phát các tập tin WAVE với mẫu %d bit rộng,noise_placeholder,46,51,1.108695652173913
+629,"please, try the plug plugin %s",hãy thử sử dụng trình bổ sung %s,noise_placeholder,30,32,1.0666666666666667
+633,snd_pcm_mmap_begin problem: %s,vấn đề snd_pcm_mmap_begin: %s,noise_placeholder,30,29,0.9666666666666667
+635,pause push error: %s,lỗi dừng đẩy: %s,noise_placeholder,20,16,0.8
+636,pause release error: %s,lỗi dừng thả: %s,noise_placeholder,23,16,0.6956521739130435
+638,status error: %s,lỗi trạng thái: %s,noise_placeholder,16,18,1.125
+639,%s!!! (at least %.3f ms long),%s!!! (dài ít nhất %.3f),noise_placeholder,29,24,0.8275862068965517
+641,xrun: prepare error: %s,xrun: lỗi chuẩn bị: %s,noise_placeholder,23,22,0.9565217391304348
+644,"read/write error, state = %s","lỗi đọc/ghi, trạng thái = %s",noise_placeholder,28,28,1.0
+647,suspend: prepare error: %s,ngưng: lỗi chuẩn bị: %s,noise_placeholder,26,23,0.8846153846153846
+649,!clip,!clip,identical_pair,5,5,1.0
+650,Unsupported bit size %d.,Không hỗ trợ kích thước bit %d.,noise_placeholder,24,31,1.2916666666666667
+652,write error: %s,lỗi ghi: %s,noise_placeholder,15,11,0.7333333333333333
+653,writev error: %s,lỗi writev: %s,noise_placeholder,16,14,0.875
+654,read error: %s,lỗi đọc: %s,noise_placeholder,14,11,0.7857142857142857
+655,readv error: %s,lỗi readv: %s,noise_placeholder,15,13,0.8666666666666667
+661,Playing Creative Labs Channel file '%s'...,Đang phát tập tin Kênh Thử Nghiệm Creative '%s'...,noise_placeholder,42,50,1.1904761904761905
+663,can't play loops; %s isn't seekable,không thể phát lặp; không tua được %s,noise_placeholder,35,37,1.0571428571428572
+664,unknown blocktype %d. terminate.,kiểu chặn không rõ %d. chấm dứt.,noise_placeholder,32,32,1.0
+665,Wave doesn't support %s format...,Wave không hỗ trợ định dạng %s...,noise_placeholder,33,33,1.0
+666,Sparc Audio doesn't support %s format...,Âm thanh Sparc không hỗ trợ định dạng %s...,noise_placeholder,40,43,1.075
+669,"Rate %d Hz,","Tốc độ %d Hz,",noise_placeholder,11,13,1.1818181818181819
+673,You need to specify %d files,Bạn cần chỉ định %d tập tin,noise_placeholder,28,27,0.9642857142857143
+690,"-x, --removeall","-x, --removeall",identical_pair,15,15,1.0
+693,client %d: '%s' [type=%s],trạm khách %d: '%s' [kiểu=%s],noise_placeholder,25,29,1.16
+699,invalid sender address %s,địa chỉ bộ gửi %s không hợp lệ,noise_placeholder,25,30,1.2
+700,invalid destination address %s,địa chỉ đích %s không hợp lệ,noise_placeholder,30,28,0.9333333333333333
+702,Disconnection failed (%s),Ngắt kết nối thất bại (%s),noise_placeholder,25,26,1.04
+704,Connection failed (%s),Kết nối thất bại (%s),noise_placeholder,22,21,0.9545454545454546
+717,sequencer opened: %d:%d,bộ xếp dãy đã mở: %d:%d,noise_placeholder,23,23,1.0
+718,invalid source address %s,địa chỉ nguồn %s không hợp lệ,noise_placeholder,25,29,1.16
+719,service '%s' is not found in /etc/services,dịch vụ '%s' không tìm thấy trong /etc/services,noise_windows_or_unix_file_path; noise_placeholder,42,47,1.119047619047619
+721,accepted[%d],đã chấp nhận[%d],noise_placeholder,12,16,1.3333333333333333
+722,can't get address %s,không thể lấy địa chỉ %s,noise_placeholder,20,24,1.2
+723,ok.. connected,ok.. đã kết nối,noise_ui_fragment,14,15,1.0714285714285714
+739,Broken configuration for playback: no configurations available: %s,Cấu hình phát lại hỏng: không có cấu hình sẵn sàng: %s,noise_placeholder,66,54,0.8181818181818182
+740,Access type not available for playback: %s,Kiểu truy cập không sẵn sàng cho phát lại: %s,noise_placeholder,42,45,1.0714285714285714
+741,Sample format not available for playback: %s,Định dạng mẫu không sẵn sàng cho phát lại: %s,noise_placeholder,44,45,1.0227272727272727
+742,Channels count (%i) not available for playbacks: %s,Đếm kênh (%i) không sẵn sàng cho phát lại: %s,noise_placeholder,51,45,0.8823529411764706
+743,Rate %iHz not available for playback: %s,Tốc độ %iHz không sẵn sàng cho phát lại: %s,noise_placeholder,40,43,1.075
+744,"Rate doesn't match (requested %iHz, get %iHz, err %d)","Tốc độ không khớp (đã yêu cầu %iHz, nhận %iHz, lỗi %d)",noise_placeholder,53,54,1.0188679245283019
+749,Unable to set period time %u us for playback: %s,Không thể đặt thời gian chu kỳ %u µs cho phát lại: %s,noise_placeholder,48,53,1.1041666666666667
+751,Unable to set buffer time %u us for playback: %s,Không thể đặt thời gian đệm %u µs cho phát lại: %s,noise_placeholder,48,50,1.0416666666666667
+753,Unable to set buffer size %lu for playback: %s,Không thể đặt kích thước bộ đệm %lu cho phát lại: %s,noise_placeholder,46,52,1.1304347826086956
+754,Unable to set hw params for playback: %s,Không thể đặt các tham số phần cứng cho phát lại: %s,noise_placeholder,40,52,1.3
+756,Unable to determine current swparams for playback: %s,Không thể quyết định tham số phần mềm hiện tại cho phát lại: %s,noise_placeholder,53,63,1.1886792452830188
+757,Unable to set start threshold mode for playback: %s,Không thể đặt bắt đầu chế độ ngưỡng cho phát lại: %s,noise_placeholder,51,52,1.0196078431372548
+758,Unable to set sw params for playback: %s,Không thể đặt tham số phần mềm cho phát lại: %s,noise_placeholder,40,47,1.175
+759,"Can't recovery from underrun, prepare failed: %s","Không thể phục hồi từ chạy nền, chuẩn bị thất bại: %s",noise_placeholder,48,53,1.1041666666666667
+760,"Can't recovery from suspend, prepare failed: %s","Không thể phục hồi từ ngưng, chuẩn bị thất bại: %s",noise_placeholder,47,50,1.0638297872340425
+762,Cannot open WAV file %s,Không thể mở tập tin WAV %s,noise_placeholder,23,27,1.173913043478261
+763,Invalid WAV file %s,Tập tin WAV %s không hợp lệ,noise_placeholder,19,27,1.4210526315789473
+764,Not a WAV file: %s,Không phải tập tin WAV: %s,noise_placeholder,18,26,1.4444444444444444
+765,Unsupported WAV format %d for %s,Không hỗ trợ định dạng WAV %d cho %s,noise_placeholder,32,36,1.125
+766,%s is not a mono stream (%d channels),%s không phải một luồng đơn kênh (%d kênh),noise_placeholder,37,42,1.135135135135135
+767,Sample rate doesn't match (%d) for %s,Tốc độ mẫu không khớp (%d) cho %s,noise_placeholder,37,33,0.8918918918918919
+768,Unsupported sample format bits %d for %s,Không hỗ trợ bit định dạng mẫu %d cho %s,noise_placeholder,40,40,1.0
+769,Undefined channel %d,Chưa định nghĩa kênh %d,noise_placeholder,20,23,1.15
+770,"Write error: %d,%s","Lỗi ghi: %d, %s",noise_placeholder,18,15,0.8333333333333334
+771,"xrun_recovery failed: %d,%s","xrun_recovery thất bại: %d,%s",noise_placeholder,27,29,1.0740740740740742
+772,Invalid test type %s,Kiểu kiểm tra %s không hợp lệ,noise_placeholder,20,29,1.45
+775,Playback device is %s,Thiết bị phát lại là %s,noise_placeholder,21,23,1.0952380952380953
+776,"Stream parameters are %iHz, %s, %i channels","Tham số luồng là %iHz, %s, %i kênh",noise_placeholder,43,34,0.7906976744186046
+780,"Playback open error: %d,%s","Lỗi mở phát lại: %d, %s",noise_placeholder,26,23,0.8846153846153846
+781,Setting of hwparams failed: %s,Thiết lập tham số phần cứng thất bại: %s,noise_placeholder,30,40,1.3333333333333333
+782,Setting of swparams failed: %s,Thiết lập tham số phần mềm thất bại: %s,noise_placeholder,30,39,1.3
+783,Transfer failed: %s,Truyền thất bại: %s,noise_placeholder,19,19,1.0
+784,7zip,7zip,identical_pair,4,4,1.0
+786,ACE,ACE,identical_pair,3,3,1.0
+798,Kernel Panic,Kernel Panic,identical_pair,12,12,1.0
+817,RAR,RAR,identical_pair,3,3,1.0
+819,Spamassassin,Spamassassin,identical_pair,12,12,1.0
+825,Unity 2D,Unity 2D,identical_pair,8,8,1.0
+855,3depict,3depict,identical_pair,7,7,1.0
+858,A7Xpg,A7Xpg,identical_pair,5,5,1.0
+862,AbiWord,AbiWord,identical_pair,7,7,1.0
+866,Abuse,Abuse,identical_pair,5,5,1.0
+870,Penguin Freecell,Penguin Freecell,identical_pair,16,16,1.0
+879,AcetoneISO,AcetoneISO,identical_pair,10,10,1.0
+885,AClock,AClock,identical_pair,6,6,1.0
+889,Aconnectgui,Aconnectgui,identical_pair,11,11,1.0
+891,Configure what gets logged in your Zeitgeist activity log,Thiết lập những thứ được ghi chép trong nhật ký Zeitgeist,exact_duplicate,57,57,1.0
+892,Adanaxis,Adanaxis,identical_pair,8,8,1.0
+895,Waste's Edge,Waste's Edge,identical_pair,12,12,1.0
+897,Adun,Adun,identical_pair,4,4,1.0
+899,Aeolus,Aeolus,identical_pair,6,6,1.0
+903,Agave,Agave,identical_pair,5,5,1.0
+905,SimpleAgenda,SimpleAgenda,identical_pair,12,12,1.0
+911,Play many different solitaire games,Chơi nhiều trò chơi solitaire khác nhau,exact_duplicate,35,39,1.1142857142857143
+912,Akregator,Akregator,identical_pair,9,9,1.0
+918,Alex the Allegator 4,Alex the Allegator 4,language_suspect; identical_pair,20,20,1.0
+920,Alien Arena,Alien Arena,identical_pair,11,11,1.0
+922,AlienBlaster,AlienBlaster,identical_pair,12,12,1.0
+926,AllTray,AllTray,identical_pair,7,7,1.0
+930,Alsamixergui,Alsamixergui,identical_pair,12,12,1.0
+932,Alsaplayer,Alsaplayer,identical_pair,10,10,1.0
+937,Amide,Amide,identical_pair,5,5,1.0
+938,AMOR,AMOR,identical_pair,4,4,1.0
+940,Amora Daemon,Amora Daemon,identical_pair,12,12,1.0
+942,Amphetamine,Amphetamine,identical_pair,11,11,1.0
+946,aMSN,aMSN,identical_pair,4,4,1.0
+948,amSynth,amSynth,identical_pair,7,7,1.0
+950,aMuleGUI,aMuleGUI,identical_pair,8,8,1.0
+952,aMule,aMule,identical_pair,5,5,1.0
+954,Anagramarama,Anagramarama,identical_pair,12,12,1.0
+956,Angry Drunken Dwarves,Angry Drunken Dwarves,identical_pair,21,21,1.0
+958,Anki,Anki,identical_pair,4,4,1.0
+962,APTonCD,APTonCD,identical_pair,7,7,1.0
+964,AptURL,AptURL,identical_pair,6,6,1.0
+965,apvlv,apvlv,identical_pair,5,5,1.0
+967,AQEMU,AQEMU,identical_pair,5,5,1.0
+969,Aqualung,Aqualung,identical_pair,8,8,1.0
+971,ARandR,ARandR,identical_pair,6,6,1.0
+972,Screen Settings,Thiết lập màn hình,noise_ui_fragment,15,18,1.2
+973,ARAnyM,ARAnyM,identical_pair,6,6,1.0
+978,Ario,Ario,identical_pair,4,4,1.0
+983,Ark,Ark,identical_pair,3,3,1.0
+984,Armagetron Advanced,Armagetron Advanced,identical_pair,19,19,1.0
+986,Arora,Arora,identical_pair,5,5,1.0
+988,Artha,Artha,identical_pair,5,5,1.0
+990,Advanced Strategic Command,Advanced Strategic Command,identical_pair,26,26,1.0
+992,asciijump,asciijump,identical_pair,9,9,1.0
+994,AssaultCube,AssaultCube,identical_pair,11,11,1.0
+997,"An application to save tracks from an Audio CD as WAV, MP3, OGG, FLAC, and/or Wavpack","Chương trình lưu lại các bài hát từ đĩa CD sang dạng WAW, MP3, OGG, FLAC và/hoặc Wavpack",noise_ui_fragment,85,88,1.035294117647059
+998,Asylum,Asylum,identical_pair,6,6,1.0
+1002,Atomix,Atomix,identical_pair,6,6,1.0
+1004,Atris,Atris,identical_pair,5,5,1.0
+1006,Attal,Attal,identical_pair,5,5,1.0
+1008,Audacious,Audacious,identical_pair,9,9,1.0
+1010,Audacity,Audacity,identical_pair,8,8,1.0
+1012,Audex,Audex,identical_pair,5,5,1.0
+1015,AutoKey,AutoKey,identical_pair,7,7,1.0
+1017,Avahi Zeroconf Browser,Avahi Zeroconf Browser,identical_pair,22,22,1.0
+1023,Avidemux (Qt),Avidemux (Qt),identical_pair,13,13,1.0
+1025,Avidemux (GTK+),Avidemux (GTK+),identical_pair,15,15,1.0
+1026,Avogadro,Avogadro,identical_pair,8,8,1.0
+1030,Axel,Axel,identical_pair,4,4,1.0
+1032,ayttm,ayttm,identical_pair,5,5,1.0
+1035,Vuze,Vuze,identical_pair,4,4,1.0
+1036,Babiloo,Babiloo,identical_pair,7,7,1.0
+1038,Back In Time,Back In Time,language_suspect; identical_pair; noise_ui_fragment,12,12,1.0
+1040,Balazar Brothers,Balazar Brothers,identical_pair,16,16,1.0
+1042,Balder2D,Balder2D,identical_pair,8,8,1.0
+1044,B.A.L.L.Z.,B.A.L.L.Z.,identical_pair,10,10,1.0
+1048,Bangarang,Bangarang,identical_pair,9,9,1.0
+1052,bareFTP,bareFTP,identical_pair,7,7,1.0
+1054,Barrage,Barrage,identical_pair,7,7,1.0
+1056,BASIC-256,BASIC-256,identical_pair,9,9,1.0
+1065,Bauble,Bauble,identical_pair,6,6,1.0
+1069,Berusky,Berusky,identical_pair,7,7,1.0
+1074,BibleTime,BibleTime,identical_pair,9,9,1.0
+1077,Bibus,Bibus,identical_pair,5,5,1.0
+1079,Billard-GL,Billard-GL,identical_pair,10,10,1.0
+1081,Biloba,Biloba,identical_pair,6,6,1.0
+1083,Biniax-2,Biniax-2,identical_pair,8,8,1.0
+1087,Bitmeter,Bitmeter,identical_pair,8,8,1.0
+1089,BitPim,BitPim,identical_pair,6,6,1.0
+1091,BitStormLite,BitStormLite,identical_pair,12,12,1.0
+1095,BKchem,BKchem,identical_pair,6,6,1.0
+1097,Black-Box,Black-Box,identical_pair,9,9,1.0
+1101,BleachBit,BleachBit,identical_pair,9,9,1.0
+1103,Blender,Blender,identical_pair,7,7,1.0
+1107,Blinken,Blinken,identical_pair,7,7,1.0
+1109,Blob Wars : Blob And Conquer,Blob Wars : Blob And Conquer,language_suspect; identical_pair,28,28,1.0
+1111,Blobby Volley 2,Blobby Volley 2,identical_pair,15,15,1.0
+1112,Bloboats,Bloboats,identical_pair,8,8,1.0
+1115,Block Attack - Rise of the Blocks,Block Attack - Rise of the Blocks,language_suspect; identical_pair,33,33,1.0
+1117,BlockOut II,BlockOut II,identical_pair,11,11,1.0
+1119,Blocks Of The Undead,Blocks Of The Undead,language_suspect; identical_pair,20,20,1.0
+1120,Blogilo,Blogilo,identical_pair,7,7,1.0
+1126,Bluemindo,Bluemindo,identical_pair,9,9,1.0
+1128,BlueProximity,BlueProximity,identical_pair,13,13,1.0
+1129,Bluetile,Bluetile,identical_pair,8,8,1.0
+1130,BlueWho,BlueWho,identical_pair,7,7,1.0
+1132,bmon,bmon,identical_pair,4,4,1.0
+1134,Boa Constructor,Boa Constructor,identical_pair,15,15,1.0
+1136,Boat Scenario,Boat Scenario,identical_pair,13,13,1.0
+1142,Bomberclone,Bomberclone,identical_pair,11,11,1.0
+1144,Bombono DVD,Bombono DVD,identical_pair,11,11,1.0
+1146,Bos Wars,Bos Wars,identical_pair,8,8,1.0
+1150,Bovo,Bovo,identical_pair,4,4,1.0
+1152,bpython,bpython,identical_pair,7,7,1.0
+1157,Briquolo,Briquolo,identical_pair,8,8,1.0
+1165,Bug Squish,Bug Squish,identical_pair,10,10,1.0
+1167,Bugsx,Bugsx,identical_pair,5,5,1.0
+1170,BurgerSpace,BurgerSpace,identical_pair,11,11,1.0
+1171,Buxon,Buxon,identical_pair,5,5,1.0
+1175,bygfoot,bygfoot,identical_pair,7,7,1.0
+1178,BZFlag,BZFlag,identical_pair,6,6,1.0
+1182,Cadabra,Cadabra,identical_pair,7,7,1.0
+1185,calibre,calibre,identical_pair,7,7,1.0
+1192,"View, alter and save images from a webcam","Xem, thay đổi và lưu hình ảnh từ webcam",noise_ui_fragment,41,39,0.9512195121951219
+1193,Canorus,Canorus,identical_pair,7,7,1.0
+1194,Cantor,Cantor,identical_pair,6,6,1.0
+1196,CaRMetal,CaRMetal,identical_pair,8,8,1.0
+1200,Cbrpager,Cbrpager,identical_pair,8,8,1.0
+1202,CdCat,CdCat,identical_pair,5,5,1.0
+1204,Cecilia,Cecilia,identical_pair,7,7,1.0
+1205,Ceferino,Ceferino,identical_pair,8,8,1.0
+1206,Save the cows!,Cứu những con bò!,noise_ui_fragment,14,17,1.2142857142857142
+1207,Celestia (GLUT),Celestia (GLUT),identical_pair,15,15,1.0
+1209,Celestia (GNOME),Celestia (GNOME),identical_pair,16,16,1.0
+1210,CellWriter,CellWriter,identical_pair,10,10,1.0
+1212,Cenon,Cenon,identical_pair,5,5,1.0
+1214,Cervisia,Cervisia,identical_pair,8,8,1.0
+1215,Cgoban,Cgoban,identical_pair,6,6,1.0
+1217,Charmap,Charmap,identical_pair,7,7,1.0
+1220,CheckGMail,CheckGMail,identical_pair,10,10,1.0
+1223,Chemtool,Chemtool,identical_pair,8,8,1.0
+1225,Childsplay,Childsplay,identical_pair,10,10,1.0
+1228,Choqok,Choqok,identical_pair,6,6,1.0
+1233,Chromium B.S.U.,Chromium B.S.U.,identical_pair,15,15,1.0
+1235,Circus Linux!,Circus Linux!,identical_pair,13,13,1.0
+1237,MP3/OGG/Wav songs chord analyser,Phân tích hợp âm các bài hát MP3/OGG/WAV,noise_windows_or_unix_file_path,32,40,1.25
+1243,Claws Mail,Claws Mail,identical_pair,10,10,1.0
+1244,Clementine,Clementine,identical_pair,10,10,1.0
+1246,ClipIt,ClipIt,identical_pair,6,6,1.0
+1248,CLIPS,CLIPS,identical_pair,5,5,1.0
+1250,ClusterSSH,ClusterSSH,identical_pair,10,10,1.0
+1252,Code::Blocks IDE,Code::Blocks IDE,identical_pair,16,16,1.0
+1254,CodeLite,CodeLite,identical_pair,8,8,1.0
+1255,ColorCode,ColorCode,identical_pair,9,9,1.0
+1257,Comix,Comix,identical_pair,5,5,1.0
+1258,Compiz,Compiz,identical_pair,6,6,1.0
+1259,CompizConfig Settings Manager,Trình quản lý thiết lập CompizConfig,noise_ui_fragment,29,36,1.2413793103448276
+1263,Configure-Debian,Configure-Debian,identical_pair,16,16,1.0
+1265,Congruity,Congruity,identical_pair,9,9,1.0
+1268,ConvertAll,ConvertAll,identical_pair,10,10,1.0
+1271,Crack Attack,Crack Attack,identical_pair,12,12,1.0
+1273,Criticalmass,Criticalmass,identical_pair,12,12,1.0
+1275,Cryptkeeper,Cryptkeeper,identical_pair,11,11,1.0
+1276,Cannon Smash,Cannon Smash,identical_pair,12,12,1.0
+1278,Cuyo,Cuyo,identical_pair,4,4,1.0
+1280,Cynthiune,Cynthiune,identical_pair,9,9,1.0
+1282,Cytadela,Cytadela,identical_pair,8,8,1.0
+1284,DaemonFS,DaemonFS,identical_pair,8,8,1.0
+1285,Darkroom,Darkroom,identical_pair,8,8,1.0
+1287,Dasher,Dasher,identical_pair,6,6,1.0
+1289,dc-qt,dc-qt,identical_pair,5,5,1.0
+1301,Defendguin,Defendguin,identical_pair,10,10,1.0
+1302,Save the Penguins,Cứu những con chim cánh cụt,noise_ui_fragment,17,27,1.588235294117647
+1306,GNU Denemo,GNU Denemo,identical_pair,10,10,1.0
+1308,DeskScribe,DeskScribe,identical_pair,10,10,1.0
+1310,DeSmuME (Gtk),DeSmuME (Gtk),identical_pair,13,13,1.0
+1313,Devhelp,Devhelp,identical_pair,7,7,1.0
+1320,DiffPDF,DiffPDF,identical_pair,7,7,1.0
+1324,digiKam,digiKam,identical_pair,7,7,1.0
+1326,DjView4,DjView4,identical_pair,7,7,1.0
+1328,Dlume,Dlume,identical_pair,5,5,1.0
+1330,docbook2odf,docbook2odf,identical_pair,11,11,1.0
+1332,Dolphin,Dolphin,identical_pair,7,7,1.0
+1334,Dooble,Dooble,identical_pair,6,6,1.0
+1335,Dopewars,Dopewars,identical_pair,8,8,1.0
+1341,Dragon Player,Dragon Player,identical_pair,13,13,1.0
+1343,DRAWxtl,DRAWxtl,identical_pair,7,7,1.0
+1345,Dreamchess,Dreamchess,identical_pair,10,10,1.0
+1347,Dr.Geo,Dr.Geo,identical_pair,6,6,1.0
+1353,DrPython,DrPython,identical_pair,8,8,1.0
+1356,dvdisaster,dvdisaster,identical_pair,10,10,1.0
+1358,dvd::rip,dvd::rip,identical_pair,8,8,1.0
+1360,DVD Styler,DVD Styler,identical_pair,10,10,1.0
+1364,Eagle,Eagle,identical_pair,5,5,1.0
+1369,EasyTAG,EasyTAG,identical_pair,7,7,1.0
+1370,eboard,eboard,identical_pair,6,6,1.0
+1372,EBView,EBView,identical_pair,6,6,1.0
+1374,Eclipse,Eclipse,identical_pair,7,7,1.0
+1376,EdenMath,EdenMath,identical_pair,8,8,1.0
+1378,Efax-gtk,Efax-gtk,identical_pair,8,8,1.0
+1380,eFTE,eFTE,identical_pair,4,4,1.0
+1382,Eiciel,Eiciel,identical_pair,6,6,1.0
+1384,Einstein,Einstein,identical_pair,8,8,1.0
+1387,electric,electric,identical_pair,8,8,1.0
+1391,GNU Emacs 23,GNU Emacs 23,identical_pair,12,12,1.0
+1396,emma,emma,identical_pair,4,4,1.0
+1398,Enemylines3,Enemylines3,identical_pair,11,11,1.0
+1400,Enemylines7,Enemylines7,identical_pair,11,11,1.0
+1402,Enigma,Enigma,identical_pair,6,6,1.0
+1403,Entagged,Entagged,identical_pair,8,8,1.0
+1407,Epigrass,Epigrass,identical_pair,8,8,1.0
+1410,Epiphany,Epiphany,identical_pair,8,8,1.0
+1412,Eqonomize!,Eqonomize!,identical_pair,10,10,1.0
+1414,Eric python IDE,Eric python IDE,identical_pair,15,15,1.0
+1416,Esperanza,Esperanza,identical_pair,9,9,1.0
+1418,EtherApe,EtherApe,identical_pair,8,8,1.0
+1420,Eat The Whistle,Eat The Whistle,language_suspect; identical_pair,15,15,1.0
+1421,Euler,Euler,identical_pair,5,5,1.0
+1423,evilvte,evilvte,identical_pair,7,7,1.0
+1427,Evolvotron,Evolvotron,identical_pair,10,10,1.0
+1431,Ex Falso,Ex Falso,identical_pair,8,8,1.0
+1435,eXtrema,eXtrema,identical_pair,7,7,1.0
+1440,FatRat,FatRat,identical_pair,6,6,1.0
+1441,FAUmachine,FAUmachine,identical_pair,10,10,1.0
+1445,FCE Ultra,FCE Ultra,identical_pair,9,9,1.0
+1447,Feh,Feh,identical_pair,3,3,1.0
+1449,ferret,ferret,identical_pair,6,6,1.0
+1455,Filelight,Filelight,identical_pair,9,9,1.0
+1457,FileZilla,FileZilla,identical_pair,9,9,1.0
+1464,FlameRobin,FlameRobin,identical_pair,10,10,1.0
+1466,Flarq,Flarq,identical_pair,5,5,1.0
+1468,Fldigi,Fldigi,identical_pair,6,6,1.0
+1474,FlightGear,FlightGear,identical_pair,10,10,1.0
+1475,FloboPuyo,FloboPuyo,identical_pair,9,9,1.0
+1485,FLUID,FLUID,identical_pair,5,5,1.0
+1489,FontForge,FontForge,identical_pair,9,9,1.0
+1491,Fontmatrix,Fontmatrix,identical_pair,10,10,1.0
+1495,Fotowall,Fotowall,identical_pair,8,8,1.0
+1497,fotoxx,fotoxx,identical_pair,6,6,1.0
+1503,fprint-demo,fprint-demo,identical_pair,11,11,1.0
+1505,FQTerm,FQTerm,identical_pair,6,6,1.0
+1507,Frama-C,Frama-C,identical_pair,7,7,1.0
+1509,Fraqtive,Fraqtive,identical_pair,8,8,1.0
+1514,FreeCol,FreeCol,identical_pair,7,7,1.0
+1518,FreeDink,FreeDink,identical_pair,8,8,1.0
+1520,Free DM,Free DM,identical_pair,7,7,1.0
+1521,Freedoom,Freedoom,identical_pair,8,8,1.0
+1522,Freedroid,Freedroid,identical_pair,9,9,1.0
+1526,FreeMat,FreeMat,identical_pair,7,7,1.0
+1529,FreeTennis,FreeTennis,identical_pair,10,10,1.0
+1531,Freevial,Freevial,identical_pair,8,8,1.0
+1532,Freevo,Freevo,identical_pair,6,6,1.0
+1533,Freqtweak,Freqtweak,identical_pair,9,9,1.0
+1535,Frescobaldi,Frescobaldi,identical_pair,11,11,1.0
+1541,FSlint,FSlint,identical_pair,6,6,1.0
+1543,FTP,FTP,identical_pair,3,3,1.0
+1544,Funguloids,Funguloids,identical_pair,10,10,1.0
+1550,fvwm2,fvwm2,identical_pair,5,5,1.0
+1555,G3DViewer,G3DViewer,identical_pair,9,9,1.0
+1557,Gabedit QC-GUI,Gabedit QC-GUI,identical_pair,14,14,1.0
+1559,GADMIN-BIND,GADMIN-BIND,identical_pair,11,11,1.0
+1561,GADMIN-OPENVPN-Client,GADMIN-OPENVPN-Client,identical_pair,21,21,1.0
+1563,GADMIN-OPENVPN-Server,GADMIN-OPENVPN-Server,identical_pair,21,21,1.0
+1565,GADMIN-PROFTPD,GADMIN-PROFTPD,identical_pair,14,14,1.0
+1567,GAdmin-Rsync,GAdmin-Rsync,identical_pair,12,12,1.0
+1568,GADMIN-SAMBA,GADMIN-SAMBA,identical_pair,12,12,1.0
+1571,Galculator,Galculator,identical_pair,10,10,1.0
+1577,Gamazons,Gamazons,identical_pair,8,8,1.0
+1581,gamgi,gamgi,identical_pair,5,5,1.0
+1583,ganyremote,ganyremote,identical_pair,10,10,1.0
+1585,Gastman,Gastman,identical_pair,7,7,1.0
+1589,gbemol,gbemol,identical_pair,6,6,1.0
+1591,GbgOffice,GbgOffice,identical_pair,9,9,1.0
+1593,GBirthday,GBirthday,identical_pair,9,9,1.0
+1594,gbrainy,gbrainy,identical_pair,7,7,1.0
+1601,Gcolor2,Gcolor2,identical_pair,7,7,1.0
+1608,GConjugue,GConjugue,identical_pair,9,9,1.0
+1617,gDesklets,gDesklets,identical_pair,9,9,1.0
+1621,Geany,Geany,identical_pair,5,5,1.0
+1623,Gebabbel,Gebabbel,identical_pair,8,8,1.0
+1633,Geeqie,Geeqie,identical_pair,6,6,1.0
+1638,Grab the gems and throw them back up before they crush you,Cầm những viên ngọc và ném chúng lại trước khi nó trúng bạn,noise_ui_fragment,58,59,1.0172413793103448
+1639,Geomview,Geomview,identical_pair,8,8,1.0
+1641,Geotranz,Geotranz,identical_pair,8,8,1.0
+1646,Gespeaker,Gespeaker,identical_pair,9,9,1.0
+1648,gExtractWinIcons,gExtractWinIcons,identical_pair,16,16,1.0
+1650,Gfaim,Gfaim,identical_pair,5,5,1.0
+1656,GFingerPoken,GFingerPoken,identical_pair,12,12,1.0
+1658,gFTP,gFTP,identical_pair,4,4,1.0
+1660,GGcov,GGcov,identical_pair,5,5,1.0
+1662,GGobi,GGobi,identical_pair,5,5,1.0
+1664,ghemical,ghemical,identical_pair,8,8,1.0
+1666,Ghextris,Ghextris,identical_pair,8,8,1.0
+1668,Giggle,Giggle,identical_pair,6,6,1.0
+1670,Gigolo,Gigolo,identical_pair,6,6,1.0
+1672,Gimmix,Gimmix,identical_pair,6,6,1.0
+1678,gISOMount,gISOMount,identical_pair,9,9,1.0
+1679,gitg,gitg,identical_pair,4,4,1.0
+1681,Gjiten,Gjiten,identical_pair,6,6,1.0
+1685,GkDebconf,GkDebconf,identical_pair,9,9,1.0
+1689,gl-117,gl-117,identical_pair,6,6,1.0
+1694,Gliv,Gliv,identical_pair,4,4,1.0
+1696,Globulation 2,Globulation 2,identical_pair,13,13,1.0
+1698,Glom,Glom,identical_pair,4,4,1.0
+1700,glTron,glTron,identical_pair,6,6,1.0
+1702,Glurp,Glurp,identical_pair,5,5,1.0
+1706,gmanedit,gmanedit,identical_pair,8,8,1.0
+1712,gMFSK,gMFSK,identical_pair,5,5,1.0
+1713,Gmlive,Gmlive,identical_pair,6,6,1.0
+1716,gmorgan,gmorgan,identical_pair,7,7,1.0
+1718,Gmount-iso,Gmount-iso,identical_pair,10,10,1.0
+1724,gmusicbrowser,gmusicbrowser,identical_pair,13,13,1.0
+1725,Jukebox for large collections of mp3/ogg/flac/mpc,Máy phát nhạc cho bộ sưu tập mp3/ogg/flac/mpc lớn,noise_windows_or_unix_file_path,49,49,1.0
+1726,GMySQLcc,GMySQLcc,identical_pair,8,8,1.0
+1729,GnoeMoe,GnoeMoe,identical_pair,7,7,1.0
+1731,Gnomad 2,Gnomad 2,identical_pair,8,8,1.0
+1749,GNOME Commander,GNOME Commander,identical_pair,15,15,1.0
+1752,GNOME Do,GNOME Do,identical_pair,8,8,1.0
+1757,Hearts,Hearts,identical_pair,6,6,1.0
+1759,Klotski,Klotski,identical_pair,7,7,1.0
+1775,GNOME-Mud,GNOME-Mud,identical_pair,9,9,1.0
+1780,Nibbles,Nibbles,identical_pair,7,7,1.0
+1784,GNOME PPP,GNOME PPP,identical_pair,9,9,1.0
+1794,Sudoku,Sudoku,identical_pair,6,6,1.0
+1798,Tetravex,Tetravex,identical_pair,8,8,1.0
+1808,Gnote,Gnote,identical_pair,5,5,1.0
+1812,GNUbik,GNUbik,identical_pair,6,6,1.0
+1816,GNUDoQ,GNUDoQ,identical_pair,6,6,1.0
+1818,GNUjump,GNUjump,identical_pair,7,7,1.0
+1820,GNUmed,GNUmed,identical_pair,6,6,1.0
+1825,gnuclient,gnuclient,identical_pair,9,9,1.0
+1827,GNUSim8085,GNUSim8085,identical_pair,10,10,1.0
+1829,GoatTracker,GoatTracker,identical_pair,11,11,1.0
+1833,Golly,Golly,identical_pair,5,5,1.0
+1835,Gomoku.app,Gomoku.app,identical_pair,10,10,1.0
+1839,GOPchop,GOPchop,identical_pair,7,7,1.0
+1841,GoPlay!,GoPlay!,identical_pair,7,7,1.0
+1843,GOsa²,GOsa²,identical_pair,5,5,1.0
+1844,GOsa,GOsa,identical_pair,4,4,1.0
+1853,"Create, reorganize, and delete partitions","Tạo, tổ chức lại và xoá các phân vùng",noise_ui_fragment,41,37,0.9024390243902439
+1856,gPHPEdit,gPHPEdit,identical_pair,8,8,1.0
+1859,GPixPod,GPixPod,identical_pair,7,7,1.0
+1861,gPlanarity,gPlanarity,identical_pair,10,10,1.0
+1870,GPRename,GPRename,identical_pair,8,8,1.0
+1872,GPSCorrelate,GPSCorrelate,identical_pair,12,12,1.0
+1874,GpsDrive,GpsDrive,identical_pair,8,8,1.0
+1876,gpsk31,gpsk31,identical_pair,6,6,1.0
+1878,Grace,Grace,identical_pair,5,5,1.0
+1880,Deluxe Paint Clone,Deluxe Paint Clone,identical_pair,18,18,1.0
+1882,Granatier,Granatier,identical_pair,9,9,1.0
+1884,Granule,Granule,identical_pair,7,7,1.0
+1885,Graphmonkey,Graphmonkey,identical_pair,11,11,1.0
+1887,GraphThing,GraphThing,identical_pair,10,10,1.0
+1892,Grcm,Grcm,identical_pair,4,4,1.0
+1896,gResistor,gResistor,identical_pair,9,9,1.0
+1900,gretl,gretl,identical_pair,5,5,1.0
+1901,GRhino,GRhino,identical_pair,6,6,1.0
+1903,Gridlock,Gridlock,identical_pair,8,8,1.0
+1904,Griffith,Griffith,identical_pair,8,8,1.0
+1906,Gringotts,Gringotts,identical_pair,9,9,1.0
+1908,Grisbi,Grisbi,identical_pair,6,6,1.0
+1913,Grsync,Grsync,identical_pair,6,6,1.0
+1915,gscan2pdf,gscan2pdf,identical_pair,9,9,1.0
+1918,GShutdown,GShutdown,identical_pair,9,9,1.0
+1919,GSmartControl,GSmartControl,identical_pair,13,13,1.0
+1923,gSTM,gSTM,identical_pair,4,4,1.0
+1925,GTAMSAnalyzer,GTAMSAnalyzer,identical_pair,13,13,1.0
+1928,gtans,gtans,identical_pair,5,5,1.0
+1929,GTetrinet,GTetrinet,identical_pair,9,9,1.0
+1933,Gtick,Gtick,identical_pair,5,5,1.0
+1936,Gtk-ChTheme,Gtk-ChTheme,identical_pair,11,11,1.0
+1938,gtk-gnutella,gtk-gnutella,identical_pair,12,12,1.0
+1942,GtkAtlantic,GtkAtlantic,identical_pair,11,11,1.0
+1944,GtkBalls,GtkBalls,identical_pair,8,8,1.0
+1948,gtkGuitune,gtkGuitune,identical_pair,10,10,1.0
+1950,GtkHash,GtkHash,identical_pair,7,7,1.0
+1952,gtklick,gtklick,identical_pair,7,7,1.0
+1956,GtkPerf,GtkPerf,identical_pair,7,7,1.0
+1969,Gunroar,Gunroar,identical_pair,7,7,1.0
+1971,gurlchecker,gurlchecker,identical_pair,11,11,1.0
+1974,gv,gv,identical_pair,2,2,1.0
+1977,Gvb,Gvb,identical_pair,3,3,1.0
+1979,gWakeOnLan,gWakeOnLan,identical_pair,10,10,1.0
+1982,gwave,gwave,identical_pair,5,5,1.0
+1986,Gweled,Gweled,identical_pair,6,6,1.0
+1988,Gwenview,Gwenview,identical_pair,8,8,1.0
+1990,GWorkspace,GWorkspace,identical_pair,10,10,1.0
+1994,GWrite,GWrite,identical_pair,6,6,1.0
+1996,Gwyddion,Gwyddion,identical_pair,8,8,1.0
+1998,gxmms2,gxmms2,identical_pair,6,6,1.0
+2000,gXNeur,gXNeur,identical_pair,6,6,1.0
+2011,Hedgewars,Hedgewars,identical_pair,9,9,1.0
+2013,HelpViewer,HelpViewer,identical_pair,10,10,1.0
+2015,Heroes,Heroes,identical_pair,6,6,1.0
+2017,Hex-a-hop,Hex-a-hop,identical_pair,9,9,1.0
+2019,Hexalate,Hexalate,identical_pair,8,8,1.0
+2021,Hexter,Hexter,identical_pair,6,6,1.0
+2022,Hitori,Hitori,identical_pair,6,6,1.0
+2025,HoldingNuts,HoldingNuts,identical_pair,11,11,1.0
+2030,Artemis,Artemis,identical_pair,7,7,1.0
+2032,Athena,Athena,identical_pair; exact_duplicate,6,6,1.0
+2034,Hephaestus,Hephaestus,identical_pair,10,10,1.0
+2040,Htop,Htop,identical_pair,4,4,1.0
+2043,Iagno,Iagno,identical_pair,5,5,1.0
+2045,IceBreaker,IceBreaker,identical_pair,10,10,1.0
+2049,IDLE 3,IDLE 3,identical_pair,6,6,1.0
+2051,ifpgui,ifpgui,identical_pair,6,6,1.0
+2055,ii-esu,ii-esu,identical_pair,6,6,1.0
+2056,HIZ's ES,HIZ's ES,identical_pair,8,8,1.0
+2060,ImageJ,ImageJ,identical_pair,6,6,1.0
+2068,iptux,iptux,identical_pair,5,5,1.0
+2072,iriverter,iriverter,identical_pair,9,9,1.0
+2080,JabRef,JabRef,identical_pair,6,6,1.0
+2082,JackEQ,JackEQ,identical_pair,6,6,1.0
+2084,Jajuk,Jajuk,identical_pair,5,5,1.0
+2086,JAMin,JAMin,identical_pair,5,5,1.0
+2090,JavaMorph,JavaMorph,identical_pair,9,9,1.0
+2092,JClic,JClic,identical_pair,5,5,1.0
+2096,jEdit,jEdit,identical_pair,5,5,1.0
+2097,Jeex,Jeex,identical_pair,4,4,1.0
+2099,JFractionLab,JFractionLab,identical_pair,12,12,1.0
+2100,JFTP,JFTP,identical_pair,4,4,1.0
+2104,jigzo,jigzo,identical_pair,5,5,1.0
+2107,JMeter,JMeter,identical_pair,6,6,1.0
+2109,Josm,Josm,identical_pair,4,4,1.0
+2111,J-Pilot,J-Pilot,identical_pair,7,7,1.0
+2113,JSymphonic,JSymphonic,identical_pair,10,10,1.0
+2115,JuK,JuK,identical_pair,3,3,1.0
+2116,Jump'n'Bump,Jump'n'Bump,identical_pair,11,11,1.0
+2118,JXplorer,JXplorer,identical_pair,8,8,1.0
+2121,K3b,K3b,identical_pair,3,3,1.0
+2122,K-3D,K-3D,identical_pair,4,4,1.0
+2123,Kabikaboo,Kabikaboo,identical_pair,9,9,1.0
+2125,KAddressBook,KAddressBook,identical_pair,12,12,1.0
+2127,Kadu,Kadu,identical_pair,4,4,1.0
+2128,Kaffeine,Kaffeine,identical_pair,8,8,1.0
+2129,KAlarm,KAlarm,identical_pair,6,6,1.0
+2131,KAlgebra,KAlgebra,identical_pair,8,8,1.0
+2134,Kalzium,Kalzium,identical_pair,7,7,1.0
+2135,Kamoso,Kamoso,identical_pair,6,6,1.0
+2137,Kanagram,Kanagram,identical_pair,8,8,1.0
+2141,kanyremote,kanyremote,identical_pair,10,10,1.0
+2143,Kapman,Kapman,identical_pair,6,6,1.0
+2146,KAppTemplate,KAppTemplate,identical_pair,12,12,1.0
+2150,Kate,Kate,identical_pair,4,4,1.0
+2151,KAtomic,KAtomic,identical_pair,7,7,1.0
+2153,Katoob,Katoob,identical_pair,6,6,1.0
+2155,Kayali,Kayali,identical_pair,6,6,1.0
+2157,Preferences,Tùy thích,exact_duplicate,11,9,0.8181818181818182
+2158,KBall,KBall,identical_pair,5,5,1.0
+2160,KBibTeX,KBibTeX,identical_pair,7,7,1.0
+2163,KBlocks,KBlocks,identical_pair,7,7,1.0
+2166,KBruch,KBruch,identical_pair,6,6,1.0
+2167,KCalc,KCalc,identical_pair,5,5,1.0
+2170,KCharSelect,KCharSelect,identical_pair,11,11,1.0
+2171,KchmViewer,KchmViewer,identical_pair,10,10,1.0
+2176,KColorChooser,KColorChooser,identical_pair,13,13,1.0
+2178,KColorEdit,KColorEdit,identical_pair,10,10,1.0
+2179,KDbg,KDbg,identical_pair,4,4,1.0
+2183,Kdenlive,Kdenlive,identical_pair,8,8,1.0
+2186,Akonaditray,Akonaditray,identical_pair,11,11,1.0
+2188,kdesvn,kdesvn,identical_pair,6,6,1.0
+2191,KDiskFree,KDiskFree,identical_pair,9,9,1.0
+2193,KDiamond,KDiamond,identical_pair,8,8,1.0
+2195,KDiff3,KDiff3,identical_pair,6,6,1.0
+2197,KDocker,KDocker,identical_pair,7,7,1.0
+2199,KDrill,KDrill,identical_pair,6,6,1.0
+2200,KeePassX,KeePassX,identical_pair,8,8,1.0
+2202,Kepas,Kepas,identical_pair,5,5,1.0
+2204,KETM,KETM,identical_pair,4,4,1.0
+2206,KEuroCalc,KEuroCalc,identical_pair,9,9,1.0
+2208,Keyboardcast,Keyboardcast,identical_pair,12,12,1.0
+2212,KFileReplace,KFileReplace,identical_pair,12,12,1.0
+2216,KFloppy,KFloppy,identical_pair,7,7,1.0
+2217,KFourInLine,KFourInLine,identical_pair,11,11,1.0
+2219,KFritz,KFritz,identical_pair,6,6,1.0
+2221,KFTPGrabber,KFTPGrabber,identical_pair,11,11,1.0
+2223,KGeography,KGeography,identical_pair,10,10,1.0
+2225,KGet,KGet,identical_pair,4,4,1.0
+2227,KGmailNotifier,KGmailNotifier,identical_pair,14,14,1.0
+2229,KGoldrunner,KGoldrunner,identical_pair,11,11,1.0
+2232,KGpg,KGpg,identical_pair,4,4,1.0
+2234,KGrab,KGrab,identical_pair,5,5,1.0
+2236,KHangMan,KHangMan,identical_pair,8,8,1.0
+2239,KiCad,KiCad,identical_pair,5,5,1.0
+2241,KIconEdit,KIconEdit,identical_pair,9,9,1.0
+2242,Kid3-qt,Kid3-qt,identical_pair,7,7,1.0
+2244,Kid3,Kid3,identical_pair,4,4,1.0
+2245,Kig,Kig,identical_pair,3,3,1.0
+2247,Kigo,Kigo,identical_pair,4,4,1.0
+2250,Kiki,Kiki,identical_pair,4,4,1.0
+2252,KildClient,KildClient,identical_pair,10,10,1.0
+2254,Kile,Kile,identical_pair,4,4,1.0
+2255,Killbots,Killbots,identical_pair,8,8,1.0
+2256,KImageMapEditor,KImageMapEditor,identical_pair,15,15,1.0
+2260,Kino,Kino,identical_pair,4,4,1.0
+2264,Kiriki,Kiriki,identical_pair,6,6,1.0
+2266,Kita2,Kita2,identical_pair,5,5,1.0
+2269,Kiten,Kiten,identical_pair,5,5,1.0
+2270,Kitsune,Kitsune,identical_pair,7,7,1.0
+2272,KJots,KJots,identical_pair,5,5,1.0
+2274,KJumpingCube,KJumpingCube,identical_pair,12,12,1.0
+2277,Klavaro,Klavaro,identical_pair,7,7,1.0
+2278,Kleopatra,Kleopatra,identical_pair,9,9,1.0
+2285,Kolor Lines,Kolor Lines,identical_pair,11,11,1.0
+2286,KLinkStatus,KLinkStatus,identical_pair,11,11,1.0
+2288,KLog,KLog,identical_pair,4,4,1.0
+2290,Kluppe,Kluppe,identical_pair,6,6,1.0
+2294,KMahjongg,KMahjongg,identical_pair,9,9,1.0
+2296,KMail,KMail,identical_pair,5,5,1.0
+2299,KMess,KMess,identical_pair,5,5,1.0
+2304,KMix,KMix,identical_pair,4,4,1.0
+2305,KMLDonkey,KMLDonkey,identical_pair,9,9,1.0
+2309,KMouth,KMouth,identical_pair,6,6,1.0
+2311,KMPlayer,KMPlayer,identical_pair,8,8,1.0
+2314,KMyMoney,KMyMoney,identical_pair,8,8,1.0
+2316,KNemo,KNemo,identical_pair,5,5,1.0
+2317,KNetWalk,KNetWalk,identical_pair,8,8,1.0
+2319,KNode,KNode,identical_pair,5,5,1.0
+2322,Kobo Deluxe,Kobo Deluxe,identical_pair,11,11,1.0
+2324,Kolf,Kolf,identical_pair,4,4,1.0
+2326,Kollision,Kollision,identical_pair,9,9,1.0
+2328,KolourPaint,KolourPaint,identical_pair,11,11,1.0
+2331,Konsole,Konsole,identical_pair,7,7,1.0
+2332,KonsoleKalendar,KonsoleKalendar,identical_pair,15,15,1.0
+2333,Kontact,Kontact,identical_pair,7,7,1.0
+2335,KontrolPack,KontrolPack,identical_pair,11,11,1.0
+2338,Kopete,Kopete,identical_pair,6,6,1.0
+2340,KOrganizer,KOrganizer,identical_pair,10,10,1.0
+2341,koules,koules,identical_pair,6,6,1.0
+2344,Kover,Kover,identical_pair,5,5,1.0
+2348,KPPP,KPPP,identical_pair,4,4,1.0
+2349,kradio4,kradio4,identical_pair,7,7,1.0
+2352,Kraft,Kraft,identical_pair,5,5,1.0
+2353,Krank,Krank,identical_pair,5,5,1.0
+2361,Krfb,Krfb,identical_pair,4,4,1.0
+2363,Krita,Krita,identical_pair,5,5,1.0
+2367,KsCD,KsCD,identical_pair,4,4,1.0
+2369,KsirK,KsirK,identical_pair,5,5,1.0
+2372,KSnake,KSnake,identical_pair,6,6,1.0
+2375,KSpaceDuel,KSpaceDuel,identical_pair,10,10,1.0
+2377,KSquares,KSquares,identical_pair,8,8,1.0
+2379,SSH AskPass,SSH AskPass,identical_pair,11,11,1.0
+2381,Kst,Kst,identical_pair,3,3,1.0
+2391,KTorrent,KTorrent,identical_pair,8,8,1.0
+2394,KTouch,KTouch,identical_pair,6,6,1.0
+2397,KTurtle,KTurtle,identical_pair,7,7,1.0
+2399,Kubrick,Kubrick,identical_pair,7,7,1.0
+2401,KUIViewer,KUIViewer,identical_pair,9,9,1.0
+2403,Kupfer,Kupfer,identical_pair,6,6,1.0
+2408,KVPM,KVPM,identical_pair,4,4,1.0
+2411,KVpnc,KVpnc,identical_pair,5,5,1.0
+2419,Laby,Laby,identical_pair,4,4,1.0
+2425,Last.fm,Last.fm,identical_pair,7,7,1.0
+2429,LaTeXDraw,LaTeXDraw,identical_pair,9,9,1.0
+2431,LBreakout2,LBreakout2,identical_pair,10,10,1.0
+2433,Leafpad,Leafpad,identical_pair,7,7,1.0
+2434,Lekhonee Gnome,Lekhonee Gnome,identical_pair,14,14,1.0
+2436,Lernid,Lernid,identical_pair,6,6,1.0
+2440,Licq,Licq,identical_pair,4,4,1.0
+2446,Liguidsoap,Liguidsoap,identical_pair,10,10,1.0
+2448,Lincity-NG,Lincity-NG,identical_pair,10,10,1.0
+2449,Lincity,Lincity,identical_pair,7,7,1.0
+2451,Lingot,Lingot,identical_pair,6,6,1.0
+2453,Links 2,Links 2,identical_pair,7,7,1.0
+2455,Linphone,Linphone,identical_pair,8,8,1.0
+2457,Linsmith,Linsmith,identical_pair,8,8,1.0
+2465,LiVES,LiVES,identical_pair,5,5,1.0
+2471,llk_linux,llk_linux,identical_pair,9,9,1.0
+2473,LMarbles,LMarbles,identical_pair,8,8,1.0
+2475,LMemory,LMemory,identical_pair,7,7,1.0
+2479,LogJam,LogJam,identical_pair,6,6,1.0
+2481,Lokalize,Lokalize,identical_pair,8,8,1.0
+2483,London Law,London Law,identical_pair,10,10,1.0
+2486,LostIRC,LostIRC,identical_pair,7,7,1.0
+2491,LSkat,LSkat,identical_pair,5,5,1.0
+2493,LTris,LTris,identical_pair,5,5,1.0
+2494,Luciole,Luciole,identical_pair,7,7,1.0
+2496,luckyBackup,luckyBackup,identical_pair,11,11,1.0
+2498,Luola,Luola,identical_pair,5,5,1.0
+2506,Lyricue,Lyricue,identical_pair,7,7,1.0
+2513,Maelstrom,Maelstrom,identical_pair,9,9,1.0
+2523,Mathomatic,Mathomatic,identical_pair,10,10,1.0
+2524,MathWar,MathWar,identical_pair,7,7,1.0
+2528,Me TV,Me TV,identical_pair,5,5,1.0
+2530,MediaTomb,MediaTomb,identical_pair,9,9,1.0
+2532,medit,medit,identical_pair,5,5,1.0
+2536,MeMaker,MeMaker,identical_pair,7,7,1.0
+2538,Meritous,Meritous,identical_pair,8,8,1.0
+2540,Merkaartor,Merkaartor,identical_pair,10,10,1.0
+2541,Metacity,Metacity,identical_pair,8,8,1.0
+2542,Meterbridge,Meterbridge,identical_pair,11,11,1.0
+2545,mhWaveEdit,mhWaveEdit,identical_pair,10,10,1.0
+2547,Micropolis,Micropolis,identical_pair,10,10,1.0
+2549,Midori,Midori,identical_pair,6,6,1.0
+2551,MilkyTracker,MilkyTracker,identical_pair,12,12,1.0
+2555,Minirok,Minirok,identical_pair,7,7,1.0
+2556,Minitube,Minitube,identical_pair,8,8,1.0
+2557,Mirage,Mirage,identical_pair,6,6,1.0
+2559,MirrorMagic,MirrorMagic,identical_pair,11,11,1.0
+2560,Mistelix,Mistelix,identical_pair,8,8,1.0
+2563,Mixxx,Mixxx,identical_pair,5,5,1.0
+2565,MLDonkey,MLDonkey,identical_pair,8,8,1.0
+2571,mMass,mMass,identical_pair,5,5,1.0
+2573,mmpong-gl,mmpong-gl,identical_pair,9,9,1.0
+2577,Mokomaze,Mokomaze,identical_pair,8,8,1.0
+2581,Monkey Studio IDE,Monkey Studio IDE,identical_pair,17,17,1.0
+2582,gsharp,gsharp,identical_pair,6,6,1.0
+2585,MonoDevelop,MonoDevelop,identical_pair,11,11,1.0
+2589,Monodoc (http),Monodoc (http),identical_pair,14,14,1.0
+2592,Mash monsters and save the gnomes,Tiêu diệt những con quái vật và cứu gnome,noise_ui_fragment,33,41,1.2424242424242424
+2593,Monsterz,Monsterz,identical_pair,8,8,1.0
+2595,Moonlander,Moonlander,identical_pair,10,10,1.0
+2597,moserial Terminal,moserial Terminal,identical_pair,17,17,1.0
+2599,Mousepad,Mousepad,identical_pair,8,8,1.0
+2601,MP3 Diags,MP3 Diags,identical_pair,9,9,1.0
+2604,MPDCon,MPDCon,identical_pair,6,6,1.0
+2608,dcm2nii,dcm2nii,identical_pair,7,7,1.0
+2609,Mtink,Mtink,identical_pair,5,5,1.0
+2613,Mu-cade,Mu-cade,identical_pair,7,7,1.0
+2614,Kenta Cho's Mu-cade,Kenta Cho's Mu-cade,identical_pair,19,19,1.0
+2615,MultiGet,MultiGet,identical_pair,8,8,1.0
+2617,Mumble,Mumble,identical_pair,6,6,1.0
+2619,Murmur,Murmur,identical_pair,6,6,1.0
+2621,MusE,MusE,identical_pair,4,4,1.0
+2622,Museeq,Museeq,identical_pair,6,6,1.0
+2625,MuseScore,MuseScore,identical_pair,9,9,1.0
+2626,Musetup-gtk,Musetup-gtk,identical_pair,11,11,1.0
+2628,Mutter,Mutter,identical_pair,6,6,1.0
+2629,MyPaint,MyPaint,identical_pair,7,7,1.0
+2630,MythNetTV,MythNetTV,identical_pair,9,9,1.0
+2640,Navit,Navit,identical_pair,5,5,1.0
+2645,"Submit DNA sequences to the GenBank, EMBL, and DDBJ databases","Gửi chuỗi ADN đến cơ sở dữ liệu của GenBank, EMBL, và DDBJ",noise_ui_fragment,61,58,0.9508196721311475
+2650,Ncmpcpp,Ncmpcpp,identical_pair,7,7,1.0
+2654,NEdit,NEdit,identical_pair,5,5,1.0
+2655,Nekobee,Nekobee,identical_pair,7,7,1.0
+2658,NetEmul,NetEmul,identical_pair,7,7,1.0
+2660,X NetHack,X NetHack,identical_pair,9,9,1.0
+2661,NetPanzer,NetPanzer,identical_pair,9,9,1.0
+2663,Netrek,Netrek,identical_pair,6,6,1.0
+2666,Neverball,Neverball,identical_pair,9,9,1.0
+2668,Neverputt,Neverputt,identical_pair,9,9,1.0
+2670,Nexuiz,Nexuiz,identical_pair,6,6,1.0
+2674,Nicotine-Plus,Nicotine-Plus,identical_pair,13,13,1.0
+2676,Nikwi Deluxe,Nikwi Deluxe,identical_pair,12,12,1.0
+2678,nip2,nip2,identical_pair,4,4,1.0
+2680,Njam,Njam,identical_pair,4,4,1.0
+2682,NJplot,NJplot,identical_pair,6,6,1.0
+2685,Noiz2sa,Noiz2sa,identical_pair,7,7,1.0
+2687,NtEd,NtEd,identical_pair,4,4,1.0
+2690,NuApplet,NuApplet,identical_pair,8,8,1.0
+2694,Nzb,Nzb,identical_pair,3,3,1.0
+2697,ObexTool,ObexTool,identical_pair,8,8,1.0
+2699,Fox,Fox,identical_pair,3,3,1.0
+2701,GNU Octave,GNU Octave,identical_pair,10,10,1.0
+2703,OggConvert,OggConvert,identical_pair,10,10,1.0
+2707,Okteta,Okteta,identical_pair,6,6,1.0
+2710,OmegaT,OmegaT,identical_pair,6,6,1.0
+2715,Oolite,Oolite,identical_pair,6,6,1.0
+2718,OpenArena,OpenArena,identical_pair,9,9,1.0
+2720,OBM,OBM,identical_pair,3,3,1.0
+2722,OpenBVE,OpenBVE,identical_pair,7,7,1.0
+2724,OpenCity,OpenCity,identical_pair,8,8,1.0
+2731,OpenTTD,OpenTTD,identical_pair,7,7,1.0
+2735,OpenVAS-Client,OpenVAS-Client,identical_pair,14,14,1.0
+2737,Open Yahtzee,Open Yahtzee,identical_pair,12,12,1.0
+2741,Oregano,Oregano,identical_pair,7,7,1.0
+2742,Osmo,Osmo,identical_pair,4,4,1.0
+2745,Overgod,Overgod,identical_pair,7,7,1.0
+2749,PackETH,PackETH,identical_pair,7,7,1.0
+2751,Pacman,Pacman,identical_pair,6,6,1.0
+2756,Palapeli,Palapeli,identical_pair,8,8,1.0
+2761,Pang Zero,Pang Zero,identical_pair,9,9,1.0
+2765,Parcellite,Parcellite,identical_pair,10,10,1.0
+2766,Parley,Parley,identical_pair,6,6,1.0
+2768,PARSEC47,PARSEC47,identical_pair,8,8,1.0
+2775,Patchage,Patchage,identical_pair,8,8,1.0
+2778,Pathological,Pathological,identical_pair,12,12,1.0
+2780,Pauker,Pauker,identical_pair,6,6,1.0
+2791,Gscriptor,Gscriptor,identical_pair,9,9,1.0
+2793,PDF Chain,PDF Chain,identical_pair,9,9,1.0
+2794,pdfsam,pdfsam,identical_pair,6,6,1.0
+2796,PDF-Shuffler,PDF-Shuffler,identical_pair,12,12,1.0
+2797,Peg-E,Peg-E,identical_pair,5,5,1.0
+2806,Pente,Pente,identical_pair,5,5,1.0
+2808,Performous,Performous,identical_pair,10,10,1.0
+2810,PerlPrimer,PerlPrimer,identical_pair,10,10,1.0
+2813,pgAdmin III,pgAdmin III,identical_pair,11,11,1.0
+2817,PhotoPrint,PhotoPrint,identical_pair,10,10,1.0
+2819,MusicBrainz Picard,MusicBrainz Picard,identical_pair,18,18,1.0
+2820,Tag your music with the next generation MusicBrainz tagger,Đánh dấu thẻ nhạc của bạn với trình đánh thẻ thế hệ kế tiếp MusicBrainz,noise_ui_fragment,58,71,1.2241379310344827
+2821,PIDA,PIDA,identical_pair,4,4,1.0
+2827,Pingus,Pingus,identical_pair,6,6,1.0
+2833,PipeWalker,PipeWalker,identical_pair,10,10,1.0
+2837,PIX Bros,PIX Bros,identical_pair,8,8,1.0
+2846,SuperKaramba,SuperKaramba,identical_pair,12,12,1.0
+2848,PlayOnLinux,PlayOnLinux,identical_pair,11,11,1.0
+2851,PlopFolio,PlopFolio,identical_pair,9,9,1.0
+2853,PlotDrop,PlotDrop,identical_pair,8,8,1.0
+2857,Poe,Poe,identical_pair,3,3,1.0
+2859,Poedit,Poedit,identical_pair,6,6,1.0
+2861,PokerTH,PokerTH,identical_pair,7,7,1.0
+2863,Pondus,Pondus,identical_pair,6,6,1.0
+2865,PosteRazor,PosteRazor,identical_pair,10,10,1.0
+2868,Powder,Powder,identical_pair,6,6,1.0
+2870,Powermanga,Powermanga,identical_pair,10,10,1.0
+2872,Progress Quest,Progress Quest,identical_pair,14,14,1.0
+2876,PrefixSuffix,PrefixSuffix,identical_pair,12,12,1.0
+2879,PRICE,PRICE,identical_pair,5,5,1.0
+2881,Primrose,Primrose,identical_pair,8,8,1.0
+2884,ProjectX,ProjectX,identical_pair,8,8,1.0
+2885,ProjectCenter,ProjectCenter,identical_pair,13,13,1.0
+2887,ProjectL,ProjectL,identical_pair,8,8,1.0
+2888,HIZ's ProjectL,HIZ's ProjectL,identical_pair,14,14,1.0
+2889,Promoe,Promoe,identical_pair,6,6,1.0
+2891,Psi,Psi,identical_pair,3,3,1.0
+2893,GNU PSPP,GNU PSPP,identical_pair,8,8,1.0
+2896,PsychoPy,PsychoPy,identical_pair,8,8,1.0
+2899,PureAdmin,PureAdmin,identical_pair,9,9,1.0
+2905,PyBridge,PyBridge,identical_pair,8,8,1.0
+2906,PyChess,PyChess,identical_pair,7,7,1.0
+2910,PyKaraoke,PyKaraoke,identical_pair,9,9,1.0
+2914,pyNeighborhood,pyNeighborhood,identical_pair,14,14,1.0
+2915,PyPar2,PyPar2,identical_pair,6,6,1.0
+2917,PyPE,PyPE,identical_pair,4,4,1.0
+2920,pyRacerz,pyRacerz,identical_pair,8,8,1.0
+2922,Pyragua,Pyragua,identical_pair,7,7,1.0
+2924,pyRenamer,pyRenamer,identical_pair,9,9,1.0
+2928,PyRoom,PyRoom,identical_pair,6,6,1.0
+2930,PyScrabble,PyScrabble,identical_pair,10,10,1.0
+2935,PySyCache,PySyCache,identical_pair,9,9,1.0
+2939,gifeffit,gifeffit,identical_pair,8,8,1.0
+2941,wxGlade,wxGlade,identical_pair,7,7,1.0
+2943,PyCAD,PyCAD,identical_pair,5,5,1.0
+2944,PythonCAD,PythonCAD,identical_pair,9,9,1.0
+2946,Qalculate!,Qalculate!,identical_pair,10,10,1.0
+2948,QARecord,QARecord,identical_pair,8,8,1.0
+2950,qBittorrent,qBittorrent,identical_pair,11,11,1.0
+2951,qcomicbook,qcomicbook,identical_pair,10,10,1.0
+2955,QDevelop,QDevelop,identical_pair,8,8,1.0
+2957,QElectroTech,QElectroTech,identical_pair,12,12,1.0
+2961,qgit,qgit,identical_pair,4,4,1.0
+2963,QLandkarteGT,QLandkarteGT,identical_pair,12,12,1.0
+2965,Qlix,Qlix,identical_pair,4,4,1.0
+2967,Qmmp,Qmmp,identical_pair,4,4,1.0
+2969,qRFCView,qRFCView,identical_pair,8,8,1.0
+2971,QSource-Highlight,QSource-Highlight,identical_pair,17,17,1.0
+2974,QStarDict,QStarDict,identical_pair,9,9,1.0
+2975,Qsynth,Qsynth,identical_pair,6,6,1.0
+2981,Qt 4 Linguist,Qt 4 Linguist,identical_pair,13,13,1.0
+2983,Qt 4 Settings,Thiết lập Qt 4,noise_ui_fragment,13,14,1.0769230769230769
+2985,QtEmu,QtEmu,identical_pair,5,5,1.0
+2987,QTerm,QTerm,identical_pair,5,5,1.0
+2988,QtGain,QtGain,identical_pair,6,6,1.0
+2989,QtiPlot,QtiPlot,identical_pair,7,7,1.0
+2990,QTM,QTM,identical_pair,3,3,1.0
+2992,QtOctave,QtOctave,identical_pair,8,8,1.0
+2994,Qtractor,Qtractor,identical_pair,8,8,1.0
+2999,Quadrapassel,Quadrapassel,identical_pair,12,12,1.0
+3001,Quarry,Quarry,identical_pair,6,6,1.0
+3006,QuickSynergy,QuickSynergy,identical_pair,12,12,1.0
+3008,QuitCount,QuitCount,identical_pair,9,9,1.0
+3010,Quod Libet,Quod Libet,identical_pair,10,10,1.0
+3012,QuteCom,QuteCom,identical_pair,7,7,1.0
+3014,qutIM,qutIM,identical_pair,5,5,1.0
+3018,qwo,qwo,identical_pair,3,3,1.0
+3020,R Commander,R Commander,identical_pair,11,11,1.0
+3021,Rakarrack,Rakarrack,identical_pair,9,9,1.0
+3023,RapidSVN,RapidSVN,identical_pair,8,8,1.0
+3027,Rawstudio,Rawstudio,identical_pair,9,9,1.0
+3030,Recoll,Recoll,identical_pair,6,6,1.0
+3032,RedNotebook,RedNotebook,identical_pair,11,11,1.0
+3034,Referencer,Referencer,identical_pair,10,10,1.0
+3038,Regina,Regina,identical_pair,6,6,1.0
+3039,Reinteract,Reinteract,identical_pair,10,10,1.0
+3045,The Question,The Question,language_suspect; identical_pair,12,12,1.0
+3047,Ren'Py,Ren'Py,identical_pair,6,6,1.0
+3053,RFDump,RFDump,identical_pair,6,6,1.0
+3055,Rhinote,Rhinote,identical_pair,7,7,1.0
+3057,Ri-li,Ri-li,identical_pair,5,5,1.0
+3059,RipOff,RipOff,identical_pair,6,6,1.0
+3063,RKWard,RKWard,identical_pair,6,6,1.0
+3067,Robocode,Robocode,identical_pair,8,8,1.0
+3069,Rocs,Rocs,identical_pair,4,4,1.0
+3071,ROOT,ROOT,identical_pair,4,4,1.0
+3073,Rosegarden,Rosegarden,identical_pair,10,10,1.0
+3074,Rise of the Triad,Rise of the Triad,language_suspect; identical_pair,17,17,1.0
+3076,ROXTerm,ROXTerm,identical_pair,7,7,1.0
+3077,rRootage,rRootage,identical_pair,8,8,1.0
+3079,RSIBreak,RSIBreak,identical_pair,8,8,1.0
+3085,Rygel,Rygel,identical_pair,5,5,1.0
+3087,Sadms,Sadms,identical_pair,5,5,1.0
+3088,Sagasu,Sagasu,identical_pair,6,6,1.0
+3090,SagCAD,SagCAD,identical_pair,6,6,1.0
+3092,Sakura,Sakura,identical_pair,6,6,1.0
+3093,Sauerbraten,Sauerbraten,identical_pair,11,11,1.0
+3095,Scan Tailor,Scan Tailor,identical_pair,11,11,1.0
+3097,SciDAVis,SciDAVis,identical_pair,8,8,1.0
+3100,Scilab,Scilab,identical_pair,6,6,1.0
+3107,Screenie,Screenie,identical_pair,8,8,1.0
+3109,Screenlets,Screenlets,identical_pair,10,10,1.0
+3114,ScummVM,ScummVM,identical_pair,7,7,1.0
+3116,SDL-Ball,SDL-Ball,identical_pair,8,8,1.0
+3118,sdlBasic,sdlBasic,identical_pair,8,8,1.0
+3123,Searchmonkey,Searchmonkey,identical_pair,12,12,1.0
+3124,SeaView,SeaView,identical_pair,7,7,1.0
+3126,SecPanel,SecPanel,identical_pair,8,8,1.0
+3128,Semantik,Semantik,identical_pair,8,8,1.0
+3130,Black Box,Black Box,identical_pair,9,9,1.0
+3136,Dominosa,Dominosa,identical_pair,8,8,1.0
+3147,Inertia,Inertia,identical_pair,7,7,1.0
+3151,Loopy,Loopy,identical_pair,5,5,1.0
+3157,Netslide,Netslide,identical_pair,8,8,1.0
+3161,Pegs,Pegs,identical_pair,4,4,1.0
+3171,Solo,Solo,identical_pair,4,4,1.0
+3175,Twiddle,Twiddle,identical_pair,7,7,1.0
+3177,Unequal,Unequal,identical_pair,7,7,1.0
+3181,Shisen,Shisen,identical_pair,6,6,1.0
+3183,showFoto,showFoto,identical_pair,8,8,1.0
+3185,SimDock,SimDock,identical_pair,7,7,1.0
+3189,Simutrans,Simutrans,identical_pair,9,9,1.0
+3193,SIXpack,SIXpack,identical_pair,7,7,1.0
+3195,Skanlite,Skanlite,identical_pair,8,8,1.0
+3196,Scan and save images,Quét và lưu ảnh,noise_ui_fragment,20,15,0.75
+3197,skrooge,skrooge,identical_pair,7,7,1.0
+3199,Super Lotsa Added Stuff Hack - Extended Magic (GTK),Super Lotsa Added Stuff Hack - Extended Magic (GTK),identical_pair,51,51,1.0
+3200,SDL Slash'EM,SDL Slash'EM,identical_pair,12,12,1.0
+3201,Super Lotsa Added Stuff Hack - Extended Magic (SDL),Super Lotsa Added Stuff Hack - Extended Magic (SDL),identical_pair,51,51,1.0
+3202,X Slash'EM,X Slash'EM,identical_pair,10,10,1.0
+3203,Super Lotsa Added Stuff Hack - Extended Magic (X11),Super Lotsa Added Stuff Hack - Extended Magic (X11),identical_pair,51,51,1.0
+3205,Slingshot,Slingshot,identical_pair,9,9,1.0
+3210,Smb4K,Smb4K,identical_pair,5,5,1.0
+3214,SMPlayer,SMPlayer,identical_pair,8,8,1.0
+3216,Snake4,Snake4,identical_pair,6,6,1.0
+3218,SnowballZ,SnowballZ,identical_pair,9,9,1.0
+3220,SOFA,SOFA,identical_pair,4,4,1.0
+3226,GNU Solfege,GNU Solfege,identical_pair,11,11,1.0
+3231,SooperLooper,SooperLooper,identical_pair,12,12,1.0
+3232,Sopwith,Sopwith,identical_pair,7,7,1.0
+3236,soundKonverter,soundKonverter,identical_pair,14,14,1.0
+3239,Specimen,Specimen,identical_pair,8,8,1.0
+3240,Specto,Specto,identical_pair,6,6,1.0
+3244,SpeedCrunch,SpeedCrunch,identical_pair,11,11,1.0
+3246,xSPIM,xSPIM,identical_pair,5,5,1.0
+3248,Spout,Spout,identical_pair,5,5,1.0
+3250,SpringLobby,SpringLobby,identical_pair,11,11,1.0
+3254,Sqliteman,Sqliteman,identical_pair,9,9,1.0
+3256,Squeak,Squeak,identical_pair,6,6,1.0
+3263,Stella,Stella,identical_pair,6,6,1.0
+3267,Step,Step,identical_pair,4,4,1.0
+3269,StepBill,StepBill,identical_pair,8,8,1.0
+3271,Stopmotion,Stopmotion,identical_pair,10,10,1.0
+3275,Stormbaan Coureur,Stormbaan Coureur,identical_pair,17,17,1.0
+3277,Structure Synth,Structure Synth,identical_pair,15,15,1.0
+3279,Subcommander,Subcommander,identical_pair,12,12,1.0
+3286,Sugar,Sugar,identical_pair,5,5,1.0
+3288,Sunflow,Sunflow,identical_pair,7,7,1.0
+3290,SuperTux,SuperTux,identical_pair,8,8,1.0
+3292,SuperTux 2,SuperTux 2,identical_pair,10,10,1.0
+3298,SVN Workbench,SVN Workbench,identical_pair,13,13,1.0
+3300,Sweep,Sweep,identical_pair,5,5,1.0
+3304,Swell Foop,Swell Foop,identical_pair,10,10,1.0
+3306,Sylpheed,Sylpheed,identical_pair,8,8,1.0
+3326,Samba,Samba,identical_pair,5,5,1.0
+3327,"Create, modify, and delete samba shares","Tạo, chỉnh sửa và xoá chia sẽ samba",noise_ui_fragment,39,35,0.8974358974358975
+3328,System Settings,Thiết lập hệ thống,noise_ui_fragment,15,18,1.2
+3331,Tagua,Tagua,identical_pair,5,5,1.0
+3333,Tali,Tali,identical_pair,4,4,1.0
+3335,TalkSoup,TalkSoup,identical_pair,8,8,1.0
+3338,Share your music with close friends,Chia sẻ nhạc với bạn thân,noise_ui_fragment,35,25,0.7142857142857143
+3340,Tasque,Tasque,identical_pair,6,6,1.0
+3342,Tatan,Tatan,identical_pair,5,5,1.0
+3343,HIZ's Tatan,HIZ's Tatan,identical_pair,11,11,1.0
+3346,TecnoballZ,TecnoballZ,identical_pair,10,10,1.0
+3348,Teeworlds,Teeworlds,identical_pair,9,9,1.0
+3352,TeleGNOME,TeleGNOME,identical_pair,9,9,1.0
+3355,Tellico,Tellico,identical_pair,7,7,1.0
+3356,Tennix!,Tennix!,identical_pair,7,7,1.0
+3358,Terminator,Terminator,identical_pair,10,10,1.0
+3362,Tetzle,Tetzle,identical_pair,6,6,1.0
+3366,Texmaker,Texmaker,identical_pair,8,8,1.0
+3369,TeXworks,TeXworks,identical_pair,8,8,1.0
+3371,themonospot,themonospot,identical_pair,11,11,1.0
+3372,Theorur,Theorur,identical_pair,7,7,1.0
+3376,Tic Tac Toe,Tic Tac Toe,identical_pair,11,11,1.0
+3378,Tilda,Tilda,identical_pair,5,5,1.0
+3379,TimeMon,TimeMon,identical_pair,7,7,1.0
+3380,Titanion,Titanion,identical_pair,8,8,1.0
+3381,Kenta Cho's Titanion,Kenta Cho's Titanion,identical_pair,20,20,1.0
+3382,Tkabber,Tkabber,identical_pair,7,7,1.0
+3384,tkcvs,tkcvs,identical_pair,5,5,1.0
+3391,Tower Toppler,Tower Toppler,identical_pair,13,13,1.0
+3393,TOra,TOra,identical_pair,4,4,1.0
+3395,TORCS,TORCS,identical_pair,5,5,1.0
+3397,Torus Trooper,Torus Trooper,identical_pair,13,13,1.0
+3403,Transfermii,Transfermii,identical_pair,11,11,1.0
+3408,Traverso,Traverso,identical_pair,8,8,1.0
+3409,TreeLine,TreeLine,identical_pair,8,8,1.0
+3411,TreeView X,TreeView X,identical_pair,10,10,1.0
+3413,Trigger,Trigger,identical_pair,7,7,1.0
+3415,TrustedQSL,TrustedQSL,identical_pair,10,10,1.0
+3417,Tryton,Tryton,identical_pair,6,6,1.0
+3419,Neso,Neso,identical_pair,4,4,1.0
+3423,Tucnak 2,Tucnak 2,identical_pair,8,8,1.0
+3427,Tunapie,Tunapie,identical_pair,7,7,1.0
+3429,Tux Commander,Tux Commander,identical_pair,13,13,1.0
+3431,tuxguitar,tuxguitar,identical_pair,9,9,1.0
+3435,Tuxpuck,Tuxpuck,identical_pair,7,7,1.0
+3439,Twinkle,Twinkle,identical_pair,7,7,1.0
+3442,twpsk,twpsk,identical_pair,5,5,1.0
+3446,Ubuntu One,Ubuntu One,identical_pair,10,10,1.0
+3449,Change settings for multimedia production,Thay đổi thiết lập cho sản phẩm đa phương tiện,noise_ui_fragment,41,46,1.1219512195121952
+3452,UFRaw,UFRaw,identical_pair,5,5,1.0
+3454,Unipro UGENE,Unipro UGENE,identical_pair,12,12,1.0
+3458,Umbrello,Umbrello,identical_pair,8,8,1.0
+3462,UNetbootin,UNetbootin,identical_pair,10,10,1.0
+3464,Unison,Unison,identical_pair,6,6,1.0
+3465,Bluetooth,Bluetooth,identical_pair,9,9,1.0
+3466,Configure Bluetooth settings,Cấu hình thiết lập bluetooth,noise_ui_fragment,28,28,1.0
+3474,USBprog,USBprog,identical_pair,7,7,1.0
+3487,Val & Rick,Val & Rick,identical_pair,10,10,1.0
+3490,Valknut,Valknut,identical_pair,7,7,1.0
+3493,VBA Express,VBA Express,identical_pair,11,11,1.0
+3495,Vectoroids,Vectoroids,identical_pair,10,10,1.0
+3497,Verbiste,Verbiste,identical_pair,8,8,1.0
+3499,Commodore 128,Commodore 128,identical_pair,13,13,1.0
+3500,Commodore 64,Commodore 64,identical_pair,12,12,1.0
+3501,Commodore CBM-II,Commodore CBM-II,identical_pair,16,16,1.0
+3502,Commodore PET,Commodore PET,identical_pair,13,13,1.0
+3503,Commodore Plus/4,Commodore Plus/4,identical_pair,16,16,1.0
+3504,Commodore VIC-20,Commodore VIC-20,identical_pair,16,16,1.0
+3505,Vidalia,Vidalia,identical_pair,7,7,1.0
+3507,VideoCut,VideoCut,identical_pair,8,8,1.0
+3508,Videoporama,Videoporama,identical_pair,11,11,1.0
+3510,Viewmol,Viewmol,identical_pair,7,7,1.0
+3512,Viking,Viking,identical_pair,6,6,1.0
+3519,Virtaal,Virtaal,identical_pair,7,7,1.0
+3523,VisualBoy Advance,VisualBoy Advance,identical_pair,17,17,1.0
+3525,VisualVM,VisualVM,identical_pair,8,8,1.0
+3527,ViTE,ViTE,identical_pair,4,4,1.0
+3533,VMPK,VMPK,identical_pair,4,4,1.0
+3535,VolumeControl,VolumeControl,identical_pair,13,13,1.0
+3536,Control your volume settings,Điều khiểu thiết lập âm lượng của bạn,noise_ui_fragment,28,37,1.3214285714285714
+3539,w3af,w3af,identical_pair,4,4,1.0
+3541,Wally,Wally,identical_pair,5,5,1.0
+3543,Wammu,Wammu,identical_pair,5,5,1.0
+3550,wavesurfer,wavesurfer,identical_pair,10,10,1.0
+3554,WebIssues,WebIssues,identical_pair,9,9,1.0
+3561,weka,weka,identical_pair,4,4,1.0
+3568,Widelands,Widelands,identical_pair,9,9,1.0
+3575,WinFF,WinFF,identical_pair,5,5,1.0
+3578,Winpdb,Winpdb,identical_pair,6,6,1.0
+3580,Wireshark,Wireshark,identical_pair,9,9,1.0
+3582,Wmgui,Wmgui,identical_pair,5,5,1.0
+3584,Wmitime,Wmitime,identical_pair,7,7,1.0
+3586,Workrave,Workrave,identical_pair,8,8,1.0
+3587,wpa_gui,wpa_gui,identical_pair,7,7,1.0
+3589,WrapperFactory,WrapperFactory,identical_pair,14,14,1.0
+3593,wxFormBuilder,wxFormBuilder,identical_pair,13,13,1.0
+3595,wxMaxima,wxMaxima,identical_pair,8,8,1.0
+3597,X11VNC Server,X11VNC Server,identical_pair,13,13,1.0
+3599,Xabacus,Xabacus,identical_pair,7,7,1.0
+3603,Xara Xtreme,Xara Xtreme,identical_pair,11,11,1.0
+3605,Xarchiver,Xarchiver,identical_pair,9,9,1.0
+3607,XBill,XBill,identical_pair,5,5,1.0
+3609,XCA,XCA,identical_pair,3,3,1.0
+3611,XCFA,XCFA,identical_pair,4,4,1.0
+3616,xCHM,xCHM,identical_pair,4,4,1.0
+3618,Xdemineur,Xdemineur,identical_pair,9,9,1.0
+3620,Xdx,Xdx,identical_pair,3,3,1.0
+3622,xenwatch,xenwatch,identical_pair,8,8,1.0
+3624,Xfburn,Xfburn,identical_pair,6,6,1.0
+3627,Xfe,Xfe,identical_pair,3,3,1.0
+3629,Xfig,Xfig,identical_pair,4,4,1.0
+3631,Galaga,Galaga,identical_pair,6,6,1.0
+3633,Xgnokii,Xgnokii,identical_pair,7,7,1.0
+3640,XJump,XJump,identical_pair,5,5,1.0
+3642,Xlog,Xlog,identical_pair,4,4,1.0
+3645,xmahjongg,xmahjongg,identical_pair,9,9,1.0
+3647,XMakemol,XMakemol,identical_pair,8,8,1.0
+3651,Xmille,Xmille,identical_pair,6,6,1.0
+3654,XMMS2tray,XMMS2tray,identical_pair,9,9,1.0
+3656,Xmonad,Xmonad,identical_pair,6,6,1.0
+3659,Xmoto,Xmoto,identical_pair,5,5,1.0
+3661,xmbarrel,xmbarrel,identical_pair,8,8,1.0
+3663,xmcubes,xmcubes,identical_pair,7,7,1.0
+3665,xmdino,xmdino,identical_pair,6,6,1.0
+3667,xmhexagons,xmhexagons,identical_pair,10,10,1.0
+3669,xmmball,xmmball,identical_pair,7,7,1.0
+3671,xmmlink,xmmlink,identical_pair,7,7,1.0
+3673,xmoct,xmoct,identical_pair,5,5,1.0
+3675,xmpanex,xmpanex,identical_pair,7,7,1.0
+3677,xmpyraminx,xmpyraminx,identical_pair,10,10,1.0
+3679,xmrubik,xmrubik,identical_pair,7,7,1.0
+3681,xmskewb,xmskewb,identical_pair,7,7,1.0
+3683,xmtriangles,xmtriangles,identical_pair,11,11,1.0
+3685,xnetcardconfig,xnetcardconfig,identical_pair,14,14,1.0
+3687,Xoo,Xoo,identical_pair,3,3,1.0
+3689,Xoscope,Xoscope,identical_pair,7,7,1.0
+3691,Xosview,Xosview,identical_pair,7,7,1.0
+3693,Xournal,Xournal,identical_pair,7,7,1.0
+3695,Xpad,Xpad,identical_pair,4,4,1.0
+3697,XPaint,XPaint,identical_pair,6,6,1.0
+3699,xpdf,xpdf,identical_pair,4,4,1.0
+3703,xbarrel,xbarrel,identical_pair,7,7,1.0
+3704,xcubes,xcubes,identical_pair,6,6,1.0
+3705,xdino,xdino,identical_pair,5,5,1.0
+3707,xmball,xmball,identical_pair,6,6,1.0
+3708,xmlink,xmlink,identical_pair,6,6,1.0
+3709,xoct,xoct,identical_pair,4,4,1.0
+3710,xpanex,xpanex,identical_pair,6,6,1.0
+3711,xpyraminx,xpyraminx,identical_pair,9,9,1.0
+3712,xrubik,xrubik,identical_pair,6,6,1.0
+3713,xtriangles,xtriangles,identical_pair,10,10,1.0
+3717,XSensors,XSensors,identical_pair,8,8,1.0
+3719,Xshogi,Xshogi,identical_pair,6,6,1.0
+3723,gxvattr,gxvattr,identical_pair,7,7,1.0
+3724,XVideo Settings Utility,Tiện ích thiết lập XVideo,noise_ui_fragment,23,25,1.0869565217391304
+3725,UXVile,UXVile,identical_pair,6,6,1.0
+3727,XVile,XVile,identical_pair,5,5,1.0
+3728,XWelltris,XWelltris,identical_pair,9,9,1.0
+3733,YahtzeeSharp,YahtzeeSharp,identical_pair,12,12,1.0
+3735,Yakuake,Yakuake,identical_pair,7,7,1.0
+3737,YAPET,YAPET,identical_pair,5,5,1.0
+3739,Yarssr,Yarssr,identical_pair,6,6,1.0
+3742,Help,Trợ giúp,exact_duplicate,4,8,2.0
+3745,Yo Frankie!,Yo Frankie!,identical_pair,11,11,1.0
+3748,Cubeview,Cubeview,identical_pair,8,8,1.0
+3750,Spydr,Spydr,identical_pair,5,5,1.0
+3753,Z88,Z88,identical_pair,3,3,1.0
+3755,Zanshin,Zanshin,identical_pair,7,7,1.0
+3759,Zaz,Zaz,identical_pair,3,3,1.0
+3760,Zaz ain't Z***,Zaz ain't Z***,identical_pair,14,14,1.0
+3761,Zekr,Zekr,identical_pair,4,4,1.0
+3763,Zenmap,Zenmap,identical_pair,6,6,1.0
+3765,Zim Desktop Wiki,Zim Desktop Wiki,identical_pair,16,16,1.0
+3767,Zipper,Zipper,identical_pair,6,6,1.0
+3771,Collecting problem information,Thu thập thông tin về vấn đề,exact_duplicate,30,28,0.9333333333333333
+3773,Uploading problem information,Tải lên thông tin về vấn đề,exact_duplicate,29,27,0.9310344827586207
+3774,Uploading problem information,Tải lên thông tin về vấn đề,exact_duplicate,29,27,0.9310344827586207
+3781,Please choose (%s):,Vui lòng chọn (%s):,noise_placeholder,19,19,1.0
+3782,(%i bytes),(%i bytes),identical_pair,10,10,1.0
+3785,&Send report (%s),&Gửi báo cáo (%s),noise_placeholder,17,17,1.0
+3788,Cancel and &ignore future crashes of this program version,Hủy và bỏ &qua hỏng hóc của chương trình này những lần sau,noise_ui_fragment,57,58,1.0175438596491229
+3789,&Cancel,&Thôi,noise_ui_fragment,7,5,0.7142857142857143
+3792,Error: %s,Lỗi: %s,noise_placeholder,9,7,0.7777777777777778
+3793,Collecting problem information,Thu thập thông tin về vấn đề,exact_duplicate,30,28,0.9333333333333333
+3798,Selected: %s. Multiple choices:,Đã chọn: %s. Nhiều lựa chọn:,noise_placeholder,31,28,0.9032258064516129
+3800,Path to file (Enter to cancel):,Đường đẫn tới tệp (Enter để hủy):,noise_ui_fragment,31,33,1.064516129032258
+3807,You have some obsolete package versions installed. Please upgrade the following packages and check if the problem still occurs: %s,Bạn có vài gói phiên bản cũ. Vui lòng nâng cấp những gói sau và kiểu tra nếu lỗi vẫn xuất hiện: %s,noise_placeholder,130,98,0.7538461538461538
+3809,"Sorry, the program ""%s"" closed unexpectedly","Xin lỗi, chương trình ""%s"" đã kết thúc bất ngờ",noise_placeholder,43,46,1.069767441860465
+3810,Problem in %s,Vấn đề trong %s,noise_placeholder,13,15,1.1538461538461537
+3814,Error,Lỗi,exact_duplicate,5,3,0.6
+3822,Symptom script %s did not determine an affected package,Trình tìm triệu chứng %s không xác định được gói phần mềm đã bị ảnh hưởng,noise_placeholder,55,73,1.3272727272727274
+3823,Package %s does not exist,Gói %s không tồn tại,noise_placeholder,25,20,0.8
+3831,"The symptom ""%s"" is not known.","Không biết dấu hiệu ""%s""",noise_placeholder,30,24,0.8
+3834,%prog,%prog,identical_pair,5,5,1.0
+3841,Report the crash from given .apport or .crash file instead of the pending ones in %s. (Implied if file is given as only argument.),Báo cáo lỗi sử dụng các tệp .apport hoặc .crash thay vì sử dụng các tệp tạm trong %s. (Mặc định nếu tệp tin là tham số duy nhất.),noise_placeholder,130,129,0.9923076923076923
+3848,Unable to start web browser to open %s.,Không thể bật trình duyệt web để mở %s.,noise_placeholder,39,39,1.0
+3849,Please enter your account information for the %s bug tracking system,Vui lòng điền vào thông tin tài khoản cho hệ thống theo dõi lỗi %s,noise_placeholder,68,66,0.9705882352941176
+3854,The problem cannot be reported: %s,Không thể báo cáo vấn đề: %s,noise_placeholder,34,28,0.8235294117647058
+3874,OK to send these as attachments? [y/n],Đồng ý gửi chúng như những đính kèm? [y/n],noise_ui_fragment,38,42,1.105263157894737
+3875,Usage: %s <report>,Sử dụng: %s,noise_markup_or_html_entity; noise_placeholder,18,11,0.6111111111111112
+3885,"To change software settings, you need to authenticate.","Để thay đổi tùy chỉnh của phần mềm, bạn cần xác thực quyền.",noise_ui_fragment,54,59,1.0925925925925926
+3887,"To change software repository settings, you need to authenticate.","Để thay đổi các cài đặt kho phần mềm, bạn cần phải xác thực quyền.",noise_ui_fragment,65,66,1.0153846153846153
+3902,Cancel the task of another user,Hủy bỏ nhiệm vụ của một người dùng khác,noise_ui_fragment,31,39,1.2580645161290323
+3903,"To cancel someone else's software changes, you need to authenticate.","Để hủy bỏ các thay đổi phần mềm của một ai đó khác, bạn cần phải xác thực quyền.",noise_ui_fragment,68,80,1.1764705882352942
+3907,Downloaded %sB of %sB at %sB/s,Đã tải %sB của %sB với tốc độ %sB/s,noise_placeholder,30,35,1.1666666666666667
+3908,Downloaded %sB of %sB,Đã tải về %sB của %sB,noise_placeholder,21,21,1.0
+3913,Need to get %sB of archives.,Cần lấy %sB lưu trữ.,noise_placeholder,28,20,0.7142857142857143
+3914,"After this operation, %sB of additional disk space will be used.","Sau hành động này, %sB không gian đĩa sẽ được sử dụng.",noise_placeholder,64,54,0.84375
+3915,"After this operation, %sB of additional disk space will be freed.","Sau hành động này, %sB không gian đĩa sẽ được giải phóng.",noise_placeholder,65,57,0.8769230769230769
+4059,Installing %s,Đang cài đặt %s,noise_placeholder,13,15,1.1538461538461537
+4060,Configuring %s,Đang cấu hình %s...,noise_placeholder,14,19,1.3571428571428572
+4061,Removing %s,Đang gỡ bỏ %s...,noise_placeholder,11,16,1.4545454545454546
+4062,Completely removing %s,Đang gỡ bỏ hoàn toàn %s,noise_placeholder,22,23,1.0454545454545454
+4063,Noting disappearance of %s,Đang ghi nhận tình trạng biến mất của %s,noise_placeholder,26,40,1.5384615384615385
+4064,Running post-installation trigger %s,Đang chạy bộ gây nên tiến trình cuối cùng cài đặt %s,noise_placeholder,36,52,1.4444444444444444
+4065,Upgrading %s,Đang nâng cấp %s,noise_placeholder,12,16,1.3333333333333333
+4066,Unpacking %s,Đang mở gói %s...,noise_placeholder,12,17,1.4166666666666667
+4067,Preparing installation of %s,Đang chuẩn bị cài đặt %s,noise_placeholder,28,24,0.8571428571428571
+4068,Preparing configuration of %s,Đang chuẩn bị cấu hình %s,noise_placeholder,29,25,0.8620689655172413
+4069,Preparing removal of %s,Đang chuẩn bị gỡ bỏ %s,noise_placeholder,23,22,0.9565217391304348
+4070,Preparing complete removal of %s,Đang chuẩn bị gỡ bỏ hoàn toàn %s,noise_placeholder,32,32,1.0
+4071,Installed %s,Đã cài đặt %s,noise_placeholder,12,13,1.0833333333333333
+4072,Completely removed %s,Đã gỡ bỏ hoàn toàn %s,noise_placeholder,21,21,1.0
+4073,Removed %s,Đã gỡ bỏ %s,noise_placeholder,10,11,1.1
+4079,Processing %s,Đang xử lý %s,noise_placeholder,13,13,1.0
+4082,%,%,identical_pair,1,1,1.0
+4083,Downloaded %sB,Đã tải %sB,noise_placeholder,14,10,0.7142857142857143
+4085,CD/DVD '%s' is required,CD/DVD '%s' là bắt buộc,noise_placeholder,23,23,1.0
+4086,Please insert the above CD/DVD into the drive '%s' to install software packages from it.,Hãy đưa CD/DVD bên trên vào ổ '%s' để cài đặt các gói phần mềm từ nó.,noise_placeholder,88,69,0.7840909090909091
+4089,Reinstall,Cài lại,exact_duplicate,9,7,0.7777777777777778
+4091,Purge,Làm sạch,exact_duplicate,5,8,1.6
+4092,Upgrade,Nâng cấp,exact_duplicate,7,8,1.1428571428571428
+4093,Downgrade,Hạ cấp,exact_duplicate,9,6,0.6666666666666666
+4104,%sB will be downloaded in total.,Tổng cộng %sB sẽ được tải.,noise_placeholder,32,26,0.8125
+4105,%sB of disk space will be freed.,%sB không gian đĩa sẽ được giải phóng.,noise_placeholder,32,38,1.1875
+4106,%sB more disk space will be used.,Thêm %sB không gian đĩa sẽ được sử dụng.,noise_placeholder,33,40,1.2121212121212122
+4107,Replace your changes in '%s' with a later version of the configuration file?,Thay thế những thay đổi của bạn trong '%s' bằng một tập tin cấu hình phiên bản mới hơn?,noise_placeholder,76,87,1.144736842105263
+4113,Waiting for %s to exit,Chờ %s để thoát,noise_placeholder,22,15,0.6818181818181818
+4115,Structure of %s,Cấu trúc của %s,noise_placeholder,15,15,1.0
+4116,Description of %s,Diễn giải của %s,noise_placeholder,17,16,0.9411764705882353
+4117,Description signature of %s,Diễn giải chữ ký của %s,noise_placeholder,27,23,0.8518518518518519
+4118,Available packages from %s,Những gói sẵn dùng từ %s,noise_placeholder,26,24,0.9230769230769231
+4119,Available sources from %s,Những nguồn sẵn dùng từ %s,noise_placeholder,25,26,1.04
+4120,Available translations from %s,Những bản dịch sẵn dùng từ %s,noise_placeholder,30,29,0.9666666666666667
+4121,Translations for %s (%s) from %s,Dịch sang %s (%s) từ %s,noise_placeholder,32,23,0.71875
+4122,Translations for %s from %s,Dịch sang %s từ %s,noise_placeholder,27,18,0.6666666666666666
+4123,Translations (%s) from %s,Các bản dịch (%s) từ %s,noise_placeholder,25,23,0.92
+4124,Package %s isn't available,Gói %s không sẵn có,noise_placeholder,26,19,0.7307692307692307
+4125,Package %s isn't installed,Gói %s chưa được cài đặt,noise_placeholder,26,24,0.9230769230769231
+4126,The version %s of %s isn't installed,Phiên bản %s của %s chưa được cài đặt,noise_placeholder,36,37,1.0277777777777777
+4127,Package %s is already installed,Gói %s đã được cài đặt rồi,noise_placeholder,31,26,0.8387096774193549
+4128,The version %s of %s isn't available.,Phiên bản %s của %s không sẵn có.,noise_placeholder,37,33,0.8918918918918919
+4129,The keyserver URL is invalid: %s,Đường dẫn URL khóa máy chủ không hợp lệ: %s,noise_placeholder,32,43,1.34375
+4130,Invalid protocol of the server: %s,Giao thức máy chủ không hợp lệ: %s,noise_placeholder,34,34,1.0
+4131,Invalid key id: %s,Khóa kí danh không hợp lệ: %s,noise_placeholder,18,29,1.6111111111111112
+4132,Failed to download and install the key %s from %s: %s,Tải về và cài đặt khóa %s từ %s không thành công: %s,noise_placeholder,53,52,0.9811320754716981
+4133,Key file %s couldn't be installed: %s,Tập tin khóa %s không thể cài đặt: %s,noise_placeholder,37,37,1.0
+4134,Key with fingerprint %s couldn't be removed: %s,Khóa với vân tay %s không thể gỡ bỏ: %s,noise_placeholder,47,39,0.8297872340425532
+4135,Package %s cannot be removed.,Gói %s không thể gỡ bỏ.,noise_placeholder,29,23,0.7931034482758621
+4136,The version %s of %s is not installed,Phiên bản %s của %s chưa được cài đặt,noise_placeholder,37,37,1.0
+4137,The former version %s of %s is already installed,Phiên bản cũ %s của %s đã được cài đặt rồi,noise_placeholder,48,42,0.875
+4138,The version %s of %s is already installed,Phiên bản %s của %s đã được cài đặt rồi,noise_placeholder,41,39,0.9512195121951219
+4139,The version %s of %s isn't available,Phiên bản %s của %s không sẵn có,noise_placeholder,36,32,0.8888888888888888
+4140,You need to specify a version to downgrade %s to,Bạn cần xác định một phiên bản để hạ cấp %s xuống,noise_placeholder,48,49,1.0208333333333333
+4141,The later version %s of %s is already installed,Phiên bản mới %s của %s đã được cài rồi,noise_placeholder,47,39,0.8297872340425532
+4142,The package %s isn't available in the %s release.,Gói %s chưa sẵn có trong bản phát hành %s này.,noise_placeholder,49,46,0.9387755102040817
+4143,Package %s cannot be removed,Gói %s không thể gỡ bỏ,noise_placeholder,28,22,0.7857142857142857
+4147,The license key path %s is invalid,Đường dẫn khóa chứng nhận %s không thích hợp,noise_placeholder,34,44,1.2941176470588236
+4148,The license key already exists: %s,Khóa chứng nhận đã tồn tại: %s,noise_placeholder,34,30,0.8823529411764706
+4149,The location of the license key is unsecure since it contains symbolic links. The path %s maps to %s,Vị trí của khóa chứng nhận không an toàn do nó chứa liên kết tượng trưng. Đường dẫn %s dẫn tới %s,noise_placeholder,100,97,0.97
+4150,The directory where to install the key to doesn't exist yet: %s,Chưa tồn tại thư mục để cài khóa: %s,noise_placeholder,63,36,0.5714285714285714
+4151,Failed to write key file to: %s,Thất bại khi ghi tập tin khóa vào: %s,noise_placeholder,31,37,1.1935483870967742
+4156,but %s is installed,nhưng %s đã được cài đặt,noise_placeholder,19,24,1.263157894736842
+4157,but %s is to be installed,nhưng %s sẽ được cài đặt,noise_placeholder,25,24,0.96
+4192,Advance to the next item after changing the state of a package,Tới mục kế tiếp sau khi thay đổi tình trạng của gói,noise_ui_fragment,62,51,0.8225806451612904
+4193,"If this option is enabled, then performing an action on a package (for instance, installing or removing it) will move the selection to the next package in the list.","Bật tùy chọn này thì làm hành động với gói (chẳng hạn, cài đặt hay gỡ bỏ nó) sẽ di chuyển vùng chọn xuống gói kế tiếp trong danh sách.",noise_ui_fragment,164,134,0.8170731707317073
+4211,"If this option is enabled, then after every install run, aptitude will delete from the package cache any package files that can no longer be downloaded from any archive in sources.list.","Bật tùy chọn này thì sau mỗi lần thi hành tiến trình cài đặt, aptitude sẽ xoá khỏi bộ nhớ tạm gói bất cứ tập tin gói nào không còn có thể tải được lại xuống kho lưu trong danh sách nguồn « sources.list ».",noise_ui_fragment,185,204,1.1027027027027028
+4242,%ls: Next,%ls: Kế,noise_ui_fragment,9,7,0.7777777777777778
+4247,[%d(%d)/...] Resolving dependencies,[%d(%d)/...] Đang tháo gỡ các quan hệ phụ thuộc,noise_placeholder,35,47,1.3428571428571427
+4251,"Unable to find the source package for ""%s"".",Không tìm thấy gói nguồn cho « %s ».,noise_placeholder,43,36,0.8372093023255814
+4252,Unable to satisfy the build-depends: %s.,Không thể thỏa mãn phụ thuộc bản dựng: %s.,noise_placeholder,40,42,1.05
+4253,"Note: ""%s"", providing the virtual package ""%s"", is already installed.","Ghi chú : « %s », nếu gói ảo « %s » đã được cài đặt.",noise_placeholder,69,52,0.7536231884057971
+4254,"Note: ""%s"", providing the virtual package ""%s"", is already going to be installed.","Ghi chú : « %s », nếu gói ảo « %s » sẽ được cài đặt.",noise_placeholder,81,52,0.6419753086419753
+4255,"""%s"" exists in the package database, but it is not a real package and no package provides it.","« %s » nằm trong cơ sở dữ liệu gói, nhưng mà nó không phải là gói thật, và không có gói khác cung cấp nó",noise_placeholder,93,104,1.118279569892473
+4256,"""%s"" is a virtual package provided by:",« %s » là gói ảo được cung cấp bởi:,noise_placeholder,38,35,0.9210526315789473
+4258,"Note: selecting ""%s"" instead of the virtual package ""%s""",Ghi chú : đang lựa chọn « %s » thay cho gói ảo « %s »,noise_placeholder,56,53,0.9464285714285714
+4259,%s is already installed at the requested version (%s),« %s » đã được cài đặt ở phiên bản đã yêu cầu (%s),noise_placeholder,53,50,0.9433962264150944
+4260,"%s is not currently installed, so it will not be upgraded.","%s hiện chưa cài đặt, vì vậy nó không thể được nâng cấp.",noise_placeholder,58,56,0.9655172413793104
+4261,"%s is not currently installed, so it will not be reinstalled.",Chưa cài đặt « %s » nên sẽ không cài lại nó.,noise_placeholder,61,44,0.7213114754098361
+4262,"Package %s is not installed, so it will not be removed",Chưa cài đặt gói « %s » nên sẽ không loại bỏ nó.,noise_placeholder,54,48,0.8888888888888888
+4263,"Package %s is not installed, cannot forbid an upgrade",Chưa cài đặt gói « %s » nên không thể cấm nâng cấp,noise_placeholder,53,50,0.9433962264150944
+4264,"Package %s is not upgradable, cannot forbid an upgrade",Không thể nâng cấp gói « %s » nên đương nhiên không thể cấm nâng cấp nó.,noise_placeholder,54,72,1.3333333333333333
+4265,"Note: selecting the task ""%s: %s"" for installation",Ghi chú : đang lựa chọn gói « %s: %s » để cài đặt,noise_placeholder,50,49,0.98
+4268,"Couldn't find package ""%s"", and more than 40 packages contain ""%s"" in their name.","Không tìm thấy gói « %s », và hơn 40 gói có tên chứa « %s ».",noise_placeholder,81,60,0.7407407407407407
+4269,"Couldn't find package ""%s"". However, the following packages contain ""%s"" in their name:","Không tìm thấy gói « %s ». Tuy nhiên, những gói sau có tên chứa « %s »:",noise_placeholder,87,71,0.8160919540229885
+4270,"Couldn't find any package whose name or description matched ""%s""",Không tìm thấy gói nào có tên hay mô tả khớp với « %s »,noise_placeholder,64,55,0.859375
+4271,"Couldn't find any package matching ""%s"", and more than 40 packages contain ""%s"" in their description.","Không tìm thấy gói khớp với « %s », và hơn 40 gói có mô tả chứa « %s ».",noise_placeholder,101,71,0.7029702970297029
+4272,"Couldn't find any package matching ""%s"". However, the following packages contain ""%s"" in their description:","Không tìm thấy gói khớp với « %s ». Tuy nhiên, những gói sau có mô tả chứa « %s ».",noise_placeholder,107,82,0.7663551401869159
+4275,Changelog download failed: %s,Tải ghi ký thay đổi thất bại: %s,noise_placeholder,29,32,1.103448275862069
+4276,Changelog of %s,Bản ghi đổi của %s,noise_placeholder,15,18,1.2
+4278,"%s is not an official Debian package, cannot display its changelog.",%s không phải là gói Debian chính thức nên không thể hiển thị bản ghi các thay đổi (ChangeLog) của nó.,noise_placeholder,67,102,1.5223880597014925
+4279,Couldn't find a changelog for %s,Không tìm thấy bản ghi các thay đổi cho « %s ».,noise_placeholder,32,47,1.46875
+4281,Del %s* %spartial/*,Del %s* %spartial/*,identical_pair; noise_placeholder,19,19,1.0
+4282,Del %s %s [%sB],Del %s %s [%sB],identical_pair; noise_placeholder,15,15,1.0
+4284,Would free %sB of disk space,Sẽ giải phóng thêm %sB trên đĩa,noise_placeholder,28,31,1.1071428571428572
+4285,Freed %sB of disk space,Đã giải phóng %sB thêm chỗ trên đĩa.,noise_placeholder,23,36,1.565217391304348
+4286,Invalid operation %s,Thao tác không hợp lệ %s,noise_placeholder,20,24,1.2
+4292,"Can't find a package named ""%s""",Không tìm thấy gói nào tên « %s »,noise_placeholder,31,33,1.064516129032258
+4293,No downloadable files for %s version %s; perhaps it is a local or obsolete package?,Không có tập tin tải về được cho %s phiên bản %s; có thể nó là một gói cục bộ hay cũ ?,noise_placeholder,83,86,1.036144578313253
+4296,"No such package ""%s""",Không có gói « %s » như vậy,noise_placeholder,20,27,1.35
+4313,The following packages have been automatically kept back:,Những gói sau tự động đã được giữ lại:,noise_ui_fragment,57,38,0.6666666666666666
+4317,The following packages have been kept back:,Những gói sau đã được giữ lại:,noise_ui_fragment,43,30,0.6976744186046512
+4327,"To continue, type the phrase ""%s"":","Để tiếp tục, hãy gõ cụm từ « %s »:",noise_placeholder,34,34,1.0
+4329,*** WARNING *** Ignoring these trust violations because %s::CmdLine::Ignore-Trust-Violations is 'true'!,CẢNH BÁO Đang bỏ qua những việc vi pham sự tin vì %s::CmdLine::Ignore-Trust-Violations là 'true' (đúng),noise_placeholder,103,103,1.0
+4334,"To continue, enter ""%s""; to abort, enter ""%s"":","Để tiếp tục, nhập « %s »; còn để hủy bỏ, nhập « %s »:",noise_placeholder,46,53,1.1521739130434783
+4335,"Unrecognized input. Enter either ""%s"" or ""%s"".",Không nhận biết dữ liệu nhập. Hãy nhập hoặc « %s » hoặc « %s ».,noise_placeholder,46,63,1.3695652173913044
+4343,Need to get %sB/%sB of archives.,Cần phải lấy %sB/%sB kho.,noise_placeholder,32,25,0.78125
+4344,Need to get %sB of archives.,Cần phải lấy %sB kho.,noise_placeholder,28,21,0.75
+4345,After unpacking %sB will be used.,Sau khi giải nén %sB sẽ được chiếm.,noise_placeholder,33,35,1.0606060606060606
+4346,After unpacking %sB will be freed.,Sau khi giải nén %sB thêm sẽ được giải phóng.,noise_placeholder,34,45,1.3235294117647058
+4351,y: %F,y: %F,identical_pair,5,5,1.0
+4353,n: %F,n: %F,identical_pair,5,5,1.0
+4355,i: %F,i: %F,identical_pair,5,5,1.0
+4357,c: %F,c: %F,identical_pair,5,5,1.0
+4359,d: %F,d: %F,identical_pair,5,5,1.0
+4361,s: %F,s: %F,identical_pair,5,5,1.0
+4363,v: %F,v: %F,identical_pair,5,5,1.0
+4365,w: %F,w: %F,identical_pair,5,5,1.0
+4367,r: %F,r: %F,identical_pair,5,5,1.0
+4369,e: %F,e: %F,identical_pair,5,5,1.0
+4381,"In the list of actions to be performed, some packages will be followed by one or more characters enclosed in braces; for instance: ""aptitude{u}"". These characters provide extra information about the package's state, and can include any combination of the following:","Trong danh sách các hành động sẽ thực hiện, một vài gói sẽ được theo sau bởi một hay nhiều ký tự đóng trong ngoặc; ví dụ: ""aptitude{u}"". Những ký tự này cung cấp thêm thông tin về trạng thái gói và có thể bao gồm bất kỳ tổ hợp các chữ sau đây:",noise_placeholder,265,243,0.9169811320754717
+4388,Do you want to continue? [Y/n/?],Bạn có muốn tiếp tục chứ? [Y/n : Có/không],noise_windows_or_unix_file_path,32,42,1.3125
+4389,Resolve these dependencies by hand? [N/+/-/_/:/?],Bạn tự giải quyết quan hệ phụ thuộc này không? [N/+/-/_/:/?],noise_windows_or_unix_file_path,49,60,1.2244897959183674
+4398,Unable to open %s for writing,Không thể mở %s để ghi.,noise_placeholder,29,23,0.7931034482758621
+4399,Error writing resolver state to %s,Gặp lỗi khi ghi tình trạng bộ tháo gỡ vào %s,noise_placeholder,34,44,1.2941176470588236
+4404,move to the next solution,tiếp tục đến giải pháp kế,noise_ui_fragment,25,25,1.0
+4414,The version %s is available in the following archives:,Phiên bản %s sẵn sàng trong những kho này:,noise_placeholder,54,42,0.7777777777777778
+4415,Select the version of %s that should be used:,Chọn phiên bản của %s cần dùng:,noise_placeholder,45,31,0.6888888888888889
+4416,Invalid response. Please enter an integer between 1 and %d.,Đáp ứng không hợp lệ: hãy nhập một số nguyên giữa 1 và %d.,noise_placeholder,59,58,0.9830508474576272
+4418,"Expected a version or ""%s"" after ""%s""",Đợi một phiên bản hoặc « %s » nằm sau « %s »,noise_placeholder,37,44,1.1891891891891893
+4419,"%s has no version named ""%s""",%s không có phiên bản tên « %s ».,noise_placeholder,28,33,1.1785714285714286
+4420,Allowing the removal of %s,Đang cho phép việc gỡ bỏ %s,noise_placeholder,26,27,1.0384615384615385
+4421,Allowing the installation of %s version %s (%s),Đang cho phép việc cài đặt %s phiên bản %s (%s),noise_placeholder,47,47,1.0
+4422,Rejecting the removal of %s,Đang từ chối việc gỡ bỏ %s,noise_placeholder,27,26,0.9629629629629629
+4423,Rejecting the installation of %s version %s (%s),Đang từ chối việc cài đặt %s phiên bản %s (%s),noise_placeholder,48,46,0.9583333333333334
+4424,No longer requiring the removal of %s,Không còn cần thiết lại việc gỡ bỏ %s,noise_placeholder,37,37,1.0
+4425,No longer requiring the installation of %s version %s (%s),Không còn cần thiết lại việc cài đặt %s phiên bản %s (%s),noise_placeholder,58,57,0.9827586206896551
+4426,Requiring the removal of %s,Cần thiết việc gỡ bỏ %s,noise_placeholder,27,23,0.8518518518518519
+4427,Requiring the installation of %s version %s (%s),Cần thiết việc cài đặt %s phiên bản %s (%s).,noise_placeholder,48,44,0.9166666666666666
+4428,Allowing this recommendation to be ignored: %s,Cho phép khuyến nghị này được bỏ qua: %s,noise_placeholder,46,40,0.8695652173913043
+4429,Always obeying this recommendation: %s,Luôn theo đề nghị này: %s,noise_placeholder,38,25,0.6578947368421053
+4430,No longer ignoring this recommendation: %s,Không bao giờ bỏ qua khuyến nghị này: %s,noise_placeholder,42,40,0.9523809523809523
+4431,Ignoring this recommendation: %s,Bỏ qua khuyến nghị này: %s,noise_placeholder,32,26,0.8125
+4432,"Action ""%s""","Hành động ""%s""Pkg1 depends upon Pkg2",noise_placeholder,11,36,3.272727272727273
+4436,"Enter ""r %s"" to allow this action to appear in new solutions.","Nhập ""r %s"" để cho phép hành động này xuất hiện trong các giải pháp mới.rreject",noise_placeholder,61,79,1.2950819672131149
+4437,"Enter ""r %s"" to prevent this action from appearing in new solutions.","Nhập ""r %s"" để ngăn hành động này xuất hiện trong các giải pháp mới.aapprove",noise_placeholder,68,76,1.1176470588235294
+4438,"Enter ""a %s"" to cease requiring that new solutions include this action if possible.","Nhập ""a %s"" để ngừng yêu cầu giải pháp mới bao hàm hành động này khi có thể.aapprove",noise_placeholder,83,84,1.0120481927710843
+4439,"Enter ""a %s"" to require that new solutions include this action if possible.","Nhập ""a %s"" để yêu cầu giải pháp mới bao hàm hành động này khi có thể.",noise_placeholder,75,70,0.9333333333333333
+4441,"Would resolve dependencies, but dependency resolution is disabled. (%s::ProblemResolver::StepLimit = 0)","Có thể giải quyết quan hệ phụ thuộc, nhưng khả năng giải quyết quan hệ phụ thuộc hiện thời bị tắt. (%s::ProblemResolver::StepLimit = 0)",noise_placeholder,103,135,1.3106796116504855
+4445,Accept this solution? [Y/n/q/?],"Chấp nhận giải pháp này không? [Y] có, [n] không, [q] hỏi, [?] trợ giúp",noise_windows_or_unix_file_path,31,71,2.2903225806451615
+4455,Unable to resolve dependencies for the upgrade because the resolver timed out. You may be able to solve this problem by increasing Aptitude::ProblemResolver::StepLimit (currently %d).,Không thể giải quyết phụ thuộc để nâng cấp vì bộ giải quyết hết thời gian. Bạn có thể giải quyết vấn đề này bằng cách tăng Aptitude::ProblemResolver::StepLimit (hiện %d).,noise_placeholder,183,170,0.9289617486338798
+4457,Unable to resolve dependencies for the upgrade: %s,Không thể giải quyết phụ thuộc để nâng cấp: %s,noise_placeholder,50,46,0.92
+4458,iconv of %s failed.,việc iconv « %s » bị lỗi.,noise_placeholder,19,25,1.3157894736842106
+4460,but %s is to be installed.,nhưng mà %s sẽ được cài đặt.,noise_placeholder,26,28,1.0769230769230769
+4461,but %s is installed and it is kept back.,nhưng mà %s được cài đặt và nó được giữ lại.,noise_placeholder; noise_ui_fragment,40,44,1.1
+4462,but %s is installed.,nhưng mà %s đã được cài đặt.,noise_placeholder,20,28,1.4
+4476,%s; will be purged because nothing depends on it,%s; sẽ được tẩy sạch vì không có gói nào phụ thuộc vào nó nữa,noise_placeholder,48,61,1.2708333333333333
+4477,%s; will be purged,%s; sẽ bị tẩy,noise_placeholder,18,13,0.7222222222222222
+4478,%s; will be removed because nothing depends on it,%s; sẽ được gỡ bỏ vì không có gói nào phụ thuộc vào nó,noise_placeholder,49,54,1.1020408163265305
+4479,%s; will be removed,%s; sẽ được gỡ bỏ,noise_placeholder,19,17,0.8947368421052632
+4480,%s%s; will be downgraded [%s -> %s],%s%s; sẽ được hạ cấp [%s -> %s],noise_placeholder,35,31,0.8857142857142857
+4481,%s%s; will be upgraded [%s -> %s],%s%s; sẽ được nâng cấp [%s -> %s],noise_placeholder,33,33,1.0
+4484,%s%s; will be installed,%s%s; sẽ được cài đặt,noise_placeholder,23,21,0.9130434782608695
+4485,%s%s; will be installed automatically,%s%s; sẽ được cài đặt tự động,noise_placeholder,37,29,0.7837837837837838
+4486,%s; version %s will be installed,%s; phiên bản %s sẽ được cài đặt,noise_placeholder,32,32,1.0
+4487,%s; version %s will be installed automatically,%s; phiên bản %s sẽ được cài đặt tự động,noise_placeholder,46,40,0.8695652173913043
+4506,MD5sum:,MD5sum:,identical_pair,7,7,1.0
+4519,Unable to locate package %s,Không thể định vị gói %s,noise_placeholder,27,24,0.8888888888888888
+4520,Unable to parse pattern %s,Không thể phân tích hình mẫu %s,noise_placeholder,26,31,1.1923076923076923
+4521,Would download/install/remove packages.,Nên tải về / cài đặt/ gỡ bỏ các gói.,noise_windows_or_unix_file_path,39,36,0.9230769230769231
+4525,"Adding user tag ""%s"" to the package ""%s"".",Đang thêm thẻ người dùng « %s » vào gói « %s ».,noise_placeholder,41,47,1.146341463414634
+4526,"Removing user tag ""%s"" from the package ""%s"".",Đang gỡ bỏ thẻ người dùng « %s » khỏi gói « %s ».,noise_placeholder,45,49,1.0888888888888888
+4527,%s: too few arguments; expected at least a tag name and a package.,%s: quá ít đối số ; đợi ít nhất một tên thẻ và một gói.,noise_placeholder,66,55,0.8333333333333334
+4528,No candidate version found for %s,Không tìm thấy phiên bản ứng cử cho %s,noise_placeholder,33,38,1.1515151515151516
+4529,No current or candidate version found for %s,Không tìm thấy phiên bản ứng cử hoặc hiện thời cho %s,noise_placeholder,44,53,1.2045454545454546
+4530,"Unable to find an archive ""%s"" for the package ""%s""",Không tìm thấy kho « %s » cho gói « %s »,noise_placeholder,51,40,0.7843137254901961
+4531,"Unable to find a version ""%s"" for the package ""%s""",Không tìm thấy phiên bản « %s » cho gói « %s »,noise_placeholder,50,46,0.92
+4535,Package %s:,Gói %s:,noise_placeholder,11,7,0.6363636363636364
+4536,Source package %s:,Gói nguồn %s:,noise_placeholder,18,13,0.7222222222222222
+4537,Archive %s:,Kho lưu %s:,noise_placeholder,11,11,1.0
+4538,--group-by_BAR_archive,--group-by_BAR_archive,identical_pair,22,22,1.0
+4539,--group-by_BAR_auto,--group-by_BAR_auto,identical_pair,19,19,1.0
+4540,--group-by_BAR_none,--group-by_BAR_none,identical_pair,19,19,1.0
+4541,--group-by_BAR_package,--group-by_BAR_package,identical_pair,22,22,1.0
+4542,--group-by_BAR_source-package,--group-by_BAR_source-package,identical_pair,29,29,1.0
+4543,--group-by_BAR_source-version,--group-by_BAR_source-version,identical_pair,29,29,1.0
+4544,"Invalid package grouping mode ""%s"" (should be ""auto"", ""none"", ""package"", or ""source-package"")","Chế độ nhóm gói ""%s"" không hợp lệ (nên là ""auto"",""none"", ""package"" hay ""source-package"")",noise_placeholder,93,88,0.946236559139785
+4556,Install(%s),Cài(%s),noise_placeholder,11,7,0.6363636363636364
+4557,Remove(%s),Bỏ(%s),noise_placeholder,10,6,0.6
+4558,Install(%s provides %s),Cài(%s cung cấp %s),noise_placeholder,23,19,0.8260869565217391
+4559,Remove(%s provides %s),Bỏ(%s cung cấp %s,noise_placeholder,22,17,0.7727272727272727
+4569,++ --> ENQUEUING %s Provides %s,++ --> ĐANG XẾP HÀNG %s cung cấp %s,noise_placeholder,31,35,1.1290322580645162
+4571,Unable to find a reason to remove %s.,Không tìm thấy lý do cần gỡ bỏ %s.,noise_placeholder,37,34,0.918918918918919
+4572,Unable to find a reason to install %s.,Không tìm thấy lý do cần cài đặt %s.,noise_placeholder,38,36,0.9473684210526315
+4573,Packages requiring %s:,Các gói yêu cầu %s:,noise_placeholder,22,19,0.8636363636363636
+4574,"No package named ""%s"" exists.",Không có gói tên « %s » tồn tại.,noise_placeholder,29,32,1.103448275862069
+4576,%s: this command requires at least one argument (the package to query).,%s: lệnh này yêu cầu ít nhất một tham số (gói để truy vấn).,noise_placeholder,71,59,0.8309859154929577
+4579,[ ERR] %s,[ LỖI] %s,noise_placeholder,9,9,1.0
+4587,Downloaded %sB in %s (%sB/s).,Đã tải về %sB trong %s (%sB/g).,noise_placeholder,29,31,1.0689655172413792
+4590,Cancel,Thôi,noise_ui_fragment,6,4,0.6666666666666666
+4592,"[ %i%% ] (%sB/s, %s remaining)","[ %i%% ] (%sB/s, còn lại %s)",noise_placeholder,30,28,0.9333333333333333
+4594,[ %i%% ],[ %i%% ],identical_pair,8,8,1.0
+4596,"Please insert the disc labeled ""%s"" into the drive ""%s""",Hãy nạp đĩa có nhãn « %s » vào ổ « %s »,noise_placeholder,55,39,0.7090909090909091
+4602,"Couldn't open ""%s"" for writing",Không thể mở « %s » để ghi,noise_placeholder,30,26,0.8666666666666667
+4603,Error parsing a user-tag for the package %s: unexpected end-of-line following %s.,Gặp lỗi khi phân tích một thẻ người dùng cho gói %s: kết thúc dòng bất thường đằng sau %s.,noise_placeholder,81,90,1.1111111111111112
+4604,"Unterminated '""' in the user-tags list of the package %s.",Gặp sổ chéo ngược « \\ » chưa chấm dứt trong danh sách các thẻ người dùng của gói %s.,noise_placeholder,57,85,1.4912280701754386
+4612,failed to remove %s,lỗi gỡ bỏ %s,noise_placeholder,19,12,0.631578947368421
+4613,failed to rename %s to %s,lỗi thay đổi tên %s thành %s,noise_placeholder,25,28,1.12
+4614,couldn't replace %s with %s,không thể thay thế %s bằng %s,noise_placeholder,27,29,1.0740740740740742
+4620,%s is readable but not writable; unable to write configuration file.,%s có khả năng đọc nhưng không có khả năng ghi nên không thể ghi tập tin cấu hình.,noise_placeholder,68,82,1.2058823529411764
+4621,Unable to replace %s with new configuration file,Không thể thay thế %s bằng tập tin cấu hình mới.,noise_placeholder,48,48,1.0
+4624,"Invalid hint ""%s"": expected an action, but found nothing.","Gợi ý ""%s"" không hợp lệ: cần một hành động nhưng lại không tìm thấy gì.",noise_placeholder,57,71,1.2456140350877194
+4625,"Invalid hint ""%s"": expected a component name and a number, but found nothing.","Gợi ý ""%s"" không hợp lệ: cần một tên thành phần hay một số nhưng lại không tìm thấy gì.",noise_placeholder,77,87,1.12987012987013
+4626,"Invalid hint ""%s"": expected the numeric value following the component name, but found nothing.","Gợi ý ""%s"" không hợp lệ: cần giá trị số theo sau bởi tên thành phần nhưng lại không tìm thấy gì.",noise_placeholder,94,96,1.0212765957446808
+4627,"Invalid hint ""%s"": the numeric component ""%s"" cannot be parsed.","Gợi ý ""%s"" không hợp lệ: thành phần số ""%s"" không thể được phân tích.",noise_placeholder,63,69,1.0952380952380953
+4628,"Invalid hint ""%s"": expected a level, but found nothing.","Gợi ý ""%s"" không hợp lệ: cần một cấp độ nhưng không tìm thấy gì.",noise_placeholder,55,64,1.1636363636363636
+4629,"Invalid hint ""%s"": expected a target, but found nothing.","Gợi ý ""%s"" không hợp lệ: cần một đích nhưng không tìm thấy gì.",noise_placeholder,56,62,1.1071428571428572
+4630,"Invalid hint ""%s"": invalid target: %s","Gợi ý ""%s"" không hợp lệ: đích không hợp lệ: %s",noise_placeholder,37,46,1.2432432432432432
+4631,"Invalid hint ""%s"": the action ""%s"" should be ""approve"", ""reject"", or a number.","Gợi ý ""%s"" không hợp lệ: hành động ""%s"" phải là ""approve"", ""reject"" hay là một số.",noise_placeholder,78,82,1.0512820512820513
+4632,"Invalid safety level ""%s"" (not ""discard"", ""maximum"", ""minimum"", or an integer).","Cấp an toàn không hợp lệ ""%s"" (không phải ""discard"", ""maximum"", ""minimum"" hay một số nguyên).",noise_placeholder,79,93,1.1772151898734178
+4635,Failed to fetch %s: %s,Lỗi lấy %s: %s,noise_placeholder,22,14,0.6363636363636364
+4641,Unable to stat %s.,Không thể lấy trạng thái về %s.,noise_placeholder,18,31,1.7222222222222223
+4642,Unable to create truncated cache: %s.,Không thể tạo bộ đệm bị xén: %s.,noise_placeholder,37,32,0.8648648648648649
+4643,Unable to open %s to log actions,Không thể mở %s để ghi lưu các hành động,noise_placeholder,32,40,1.25
+4644,Error generating local time (%s),Gặp lỗi khi tạo ra giờ địa phương (%s),noise_placeholder,32,38,1.1875
+4648,%sB of disk space will be used,%sB chỗ trên đĩa sẽ được chiếm,noise_placeholder,30,30,1.0
+4649,%sB of disk space will be freed,%sB thêm chỗ trên đĩa sẽ được giải phóng,noise_placeholder,31,40,1.2903225806451613
+4650,[UPGRADE] %s %s -> %s,[NÂNG CẤP] %s %s -> %s,noise_placeholder,21,22,1.0476190476190477
+4651,[DOWNGRADE] %s %s -> %s,[HẠ CẤP] %s %s -> %s,noise_placeholder,23,20,0.8695652173913043
+4662,????????,????????,identical_pair,8,8,1.0
+4663,[%s] %s,[%s] %s,identical_pair; noise_placeholder,7,7,1.0
+4667,Unknown action type: %s,Không rõ kiểu hành động: %s,noise_placeholder,23,27,1.173913043478261
+4668,Unterminated literal string after %s,Có chuỗi nghĩa chữ chưa chấm dứt nằm sau %s,noise_placeholder,36,43,1.1944444444444444
+4669,Unknown priority %s,Không rõ ưu tiên %s,noise_placeholder,19,19,1.0
+4672,Unknown dependency type: %s,Không rõ kiểu quan hệ phụ thuộc: %s,noise_placeholder,27,35,1.2962962962962963
+4673,"Unknown term type: ""%s"".",?,extreme_length_ratio; noise_placeholder,24,1,0.041666666666666664
+4681,I wasn't able to locate a file for the %s package. This might mean you need to manually fix this package. (due to missing arch),Không thể định vị một tập tin cho gói %s. Có lẽ bạn cần phải tự sửa chữa gói này (do kiến trúc còn thiếu),noise_placeholder,127,105,0.8267716535433071
+4682,The package index files are corrupted. No Filename: field for package %s.,Các tập tin phụ lục gói bị hỏng. Không có trường « Tên tập tin: » cho gói %s.,noise_placeholder,73,77,1.0547945205479452
+4683,Failed to download changelogs: %s,Thất bại khi tải bản ghi thay đổi: %s,noise_placeholder,33,37,1.121212121212121
+4685,Warning: group %s is involved in a cycle,Cảnh báo : nhóm %s bị lặp,noise_placeholder,40,25,0.625
+4686,Cannot open package hierarchy file %s,Không thể mở tập tin phân cấp gói %s,noise_placeholder,37,36,0.972972972972973
+4689,"Bad record encountered (Package=%s, Group=%s), skipping","Gặp mục ghi sai (Gói=%s, Nhóm=%s) nên nhảy qua",noise_placeholder,55,46,0.8363636363636363
+4690,"Multiple descriptions found for group %s, ignoring one","Gặp nhiều mô tả cho nhóm %s, bỏ qua một cái",noise_placeholder,54,43,0.7962962962962963
+4691,Unable to create the output file: child killed by signal %d.,Không thể tạo tập tin kết xuất: tiến trình con bị tắt bởi tín hiệu %d.,noise_placeholder,60,70,1.1666666666666667
+4692,Unable to create the output file: child exited with status %d.,Không thể tạo tập tin kết xuất: tiến trình con thoát với trạng thái %d.,noise_placeholder,62,71,1.1451612903225807
+4697,"Expected '%s', but got EOF.",Mong đợi '%s' nhưng nhận được EOF.,noise_placeholder,27,34,1.2592592592592593
+4698,"Expected '%s', but got '%s'.","Mong đợi '%s', nhưng nhận được '%s'.",noise_placeholder,28,36,1.2857142857142858
+4701,"Expected %s, but got EOF.","Mong đợi %s, nhưng nhận được EOF.",noise_placeholder,25,33,1.32
+4702,"Expected %s, but got '%c'.","Mong đợi %s, nhưng nhận được '%c'.",noise_placeholder,26,34,1.3076923076923077
+4706,"Invalid integer: ""%s"".","Số nguyên không hợp lệ: ""%s"".",noise_placeholder,22,29,1.3181818181818181
+4709,Expected %s,Mong đợi %s,noise_placeholder,11,11,1.0
+4711,Unexpected %s,Không mong đợi %s,noise_placeholder,13,17,1.3076923076923077
+4712,"Unable to create temporary directory from template ""%s"": %s",Không thể tạo thư mục tạm từ mẫu « %s »: %s,noise_placeholder,59,43,0.7288135593220338
+4713,"Unable to create temporary filename from prefix ""%s""","Không thể tạo tên tập tin tạm từ tiền tố ""%s""",noise_placeholder,52,45,0.8653846153846154
+4714,"Unable to stat ""%s""",Không thể lấy trạng thái về « %s »,noise_placeholder,19,34,1.7894736842105263
+4715,"Unable to remove ""%s""",Không thể gỡ bỏ « %s »,noise_placeholder,21,22,1.0476190476190477
+4716,"Unable to list files in ""%s""",Không thể liệt kê các tập tin nằm trong « %s »,noise_placeholder,28,46,1.6428571428571428
+4717,"Failure closing directory ""%s""",Lỗi đóng thư mục « %s »,noise_placeholder,30,23,0.7666666666666667
+4718,"Unable to remove directory ""%s""",Không thể phân tách mẫu sau « %s ».,noise_placeholder,31,35,1.1290322580645162
+4725,"Cancel all pending installations, removals, holds, and upgrades.","Thôi các việc cài đặt, gỡ bỏ, giữ lại và nâng cấp bị hoãn.",noise_ui_fragment,64,58,0.90625
+4726,Delete package files which were previously downloaded,Xóa các tập tin gói đã tải về trước,noise_ui_fragment,53,35,0.660377358490566
+4727,Delete package files which can no longer be downloaded,Xóa các tập tin gói không còn tải về được,noise_ui_fragment,54,41,0.7592592592592593
+4729,Restart the program as root; your settings will be preserved,Khởi động lại chương trình như root; các thiết lập của bạn sẽ được bảo toàn,noise_ui_fragment,60,75,1.25
+4734,_View,_Xem,exact_duplicate,5,4,0.8
+4738,_Help,Trợ _giúp,exact_duplicate,5,9,1.8
+4747,Apply these settings to all active package lists.,Áp dụng các thiết lập này vào tất cả danh sách gói hoạt động.,noise_ui_fragment,49,61,1.2448979591836735
+4772,Calculate the next solution that has not yet been generated.,Tính toán giải pháp kế tiếp mà vẫn chưa được tạo ra.,noise_ui_fragment,60,52,0.8666666666666667
+4773,Perform the actions in the currently selected solution and close this tab.,Thực hiện hành động trong giải pháp đã chọn hiện tại và đóng thẻ này.,noise_ui_fragment,74,69,0.9324324324324325
+4777,Upgrade,Nâng cấp,exact_duplicate,7,8,1.1428571428571428
+4792,Preferences,Tùy thích,exact_duplicate,11,9,0.8181818181818182
+4797,Failed to download the changelog: %s,Thất bại khi tải bản ghi thay đổi: %s,noise_placeholder,36,37,1.0277777777777777
+4798,Parsing the changelog of %s version %s...,Đang phân tích bản ghi thay đổi của %s phiên bản %s...,noise_placeholder,41,54,1.3170731707317074
+4799,You can only view changelogs of official Debian packages; the origin of %s is unknown.,Bạn có thể chỉ xem các bản ghi thay đổi của các gói Debian chính thức; nguồn gốc của %s không rõ.,noise_placeholder,86,97,1.127906976744186
+4800,You can only view changelogs of official Debian packages; %s is from %s.,Bạn có thể chỉ xem các bản ghi thay đổi của các gói Debian chính thức; %s là từ %s.,noise_placeholder,72,83,1.1527777777777777
+4801,Downloading the changelog of %s version %s...,Đang tải bản ghi thay đổi của %s phiên bản %s...,noise_placeholder,45,48,1.0666666666666667
+4802,Preparing to download the changelog of %s version %s.,Đang chuẩn bị tải bản ghi thay đổi của %s phiên bản %s.,noise_placeholder,53,55,1.0377358490566038
+4808,"Unable to calculate an upgrade. Press ""%s"" to manually search for a solution.","Không thể tính toán một nâng cấp. Nhấn ""%s"" để tự tìm một giải pháp.",noise_placeholder,77,68,0.8831168831168831
+4809,Internal error encountered while calculating an upgrade: %s,Gặp lỗi bên trong khi đang tính toán một nâng cấp: %s,noise_placeholder,59,53,0.8983050847457628
+4821,URI,URI,identical_pair,3,3,1.0
+4825,%s: %sB/s,%s: %sB/s,identical_pair; noise_placeholder,9,9,1.0
+4826,"%s: %lu/%lu, %sB/s","%s: %lu/%lu, %sB/s",identical_pair; noise_placeholder,18,18,1.0
+4827,"%s: %lu/%lu, stalled","%s: %lu/%lu, đã ngừng",noise_placeholder,20,21,1.05
+4828,"%s: %sB of %sB at %sB/s, %s remaining","%s: %sB trong %sB với tốc độ %sB/s, còn lại %s",noise_placeholder,37,46,1.2432432432432432
+4829,"%s: %sB of %sB, stalled","%s: %sB trong %sB, đã ngừng",noise_placeholder,23,27,1.173913043478261
+4832,%s: Unable to create a Unix-domain socket: %s,%s: Không thể tạo một socket miền Unix: %s,noise_placeholder,45,42,0.9333333333333333
+4833,"Internal error: the temporary socket name ""%s"" is too long!","Lỗi bên trong: tên socket tạm ""%s"" quá dài!",noise_placeholder,59,43,0.7288135593220338
+4834,%s: Unable to accept a connection: %s,%s: Không thể chấp nhận một kết nối: %s,noise_placeholder,37,39,1.054054054054054
+4835,[%s] dpkg process starting...,[%s] tiến trình dpkg đang bắt đầu...,noise_placeholder,29,36,1.2413793103448276
+4836,[%s] dpkg process complete.,[%s] tiến trình dpkg hoàn tất.,noise_placeholder,27,30,1.1111111111111112
+4837,[%s] dpkg process failed.,[%s] tiến trình dpkg thất bại.,noise_placeholder,25,30,1.2
+4838,[%s] dpkg process complete; there are more packages left to process.,[%s] tiến trình dpkg hoàn tất; có nhiều gói còn lại để xử lý.,noise_placeholder,68,61,0.8970588235294118
+4839,Upgrade to %s version %s,Nâng cấp lên %s phiên bản %s,noise_placeholder,24,28,1.1666666666666667
+4840,Install %s version %s,Cài đặt %s phiên bản %s,noise_placeholder,21,23,1.0952380952380953
+4841,Downgrade to %s version %s,Hạ cấp xuống %s phiên bản %s,noise_placeholder,26,28,1.0769230769230769
+4842,Don't hold %s at its current version.,Không giữ %s tại phiên bản hiện tại của nó.,noise_placeholder,37,43,1.162162162162162
+4843,Cancel any actions on %s.,Hủy bất kỳ hành động nào trên %s.,noise_placeholder; noise_ui_fragment,25,33,1.32
+4844,Cancel the purge of %s.,Hủy làm sạch %s.,noise_placeholder; noise_ui_fragment,23,16,0.6956521739130435
+4845,Cancel the removal of %s.,Hủy gỡ bỏ %s.,noise_placeholder; noise_ui_fragment,25,13,0.52
+4846,Cancel the upgrade of %s.,Hủy nâng cấp %s.,noise_placeholder; noise_ui_fragment,25,16,0.64
+4847,Cancel the installation of %s.,Hủy cài đặt %s.,noise_placeholder; noise_ui_fragment,30,15,0.5
+4848,Cancel the downgrade of %s.,Hủy hạ cấp %s.,noise_placeholder; noise_ui_fragment,27,14,0.5185185185185185
+4849,Cancel the reinstallation of %s.,Hủy cài đặt lại %s.,noise_placeholder; noise_ui_fragment,32,19,0.59375
+4850,Remove %s,Gỡ bỏ %s,exact_duplicate; noise_placeholder,9,8,0.8888888888888888
+4851,Purge %s,Làm sạch %s,noise_placeholder,8,11,1.375
+4852,Hold %s at its current version.,Giữ %s tại phiên bản hiện tại của nó.,noise_placeholder,31,37,1.1935483870967742
+4853,Mark %s as automatically installed.,Đánh dấu %s là tự động cài đặt.,noise_placeholder,35,31,0.8857142857142857
+4854,Mark %s as manually installed.,Đánh dấu %s là cài đặt bằng tay.,noise_placeholder,30,32,1.0666666666666667
+4855,%s is a virtual package provided by:,%s là một gói ảo cung cấp bởi:,noise_placeholder,36,30,0.8333333333333334
+4858,Name,Tên,exact_duplicate,4,3,0.75
+4860,"Columns of ""%s"":","Cột của ""%s"":",noise_placeholder,16,13,0.8125
+4861,"Editing the columns of ""%s""","Đang sửa cột của ""%s""",noise_placeholder,27,21,0.7777777777777778
+4869,"This file list pertains to the currently installed version ""%s"", not the selected version ""%s"".","Tập tin này liệt kê các quan hệ với phiên bản ""%s"" đã cài đặt hiện tại, không phải phiên bản ""%s"" đã chọn.",noise_placeholder,95,106,1.1157894736842104
+4878,Reinstall,Cài lại,exact_duplicate,9,7,0.7777777777777778
+4879,Downgrade,Hạ cấp,exact_duplicate,9,6,0.6666666666666666
+4889,Update %s?,Cập nhật %s?,noise_placeholder,10,12,1.2
+4890,Replace configuration file '%s'?,Thay thế tập tin cấu hình '%s'?,noise_placeholder,32,31,0.96875
+4891,"The configuration file %s was modified (by you or by a script). An updated version is shipped in this package. If you want to keep your current version, choose 'No'. Do you want to replace the current file and install the new package maintainers version?","Tập tin cấu hình %s đã được thay đổi (bởi bạn hoặc một tập lệnh). Một phiên bản đã cập nhật được kèm trong gói này. Nếu bạn muốn giữ phiên bản hiện tại của mình, hãy chọn 'Không"". Bạn có muốn thay thế tập tin hiện tại và cài đặt phiên bản mới từ nhà duy trì không?",noise_placeholder,254,264,1.0393700787401574
+4892,Comparing %s to %s...,Đang so sánh %s với %s...,noise_placeholder,21,25,1.1904761904761905
+4896,%s: %s,%s: %s,identical_pair; exact_duplicate; noise_placeholder,6,6,1.0
+4897,Error in package %s,Lỗi trong gói %s,noise_placeholder,19,16,0.8421052631578947
+4898,Asking whether to replace the configuration file %s,Hỏi xem có thay thế tập tin cấu hình %s không,noise_placeholder,51,45,0.8823529411764706
+4905,Download size: %sB.,Kích thước tải về: %sB.,noise_placeholder,19,23,1.2105263157894737
+4906,Tags of %s:,Thẻ của %s:,noise_placeholder,11,11,1.0
+4910,Purge,Làm sạch,exact_duplicate,5,8,1.6
+4916,Unable to load the user interface definition file %s/aptitude.glade.,Không thể nạp tập tin định nghĩa giao diện người dùng %s/aptitude.glade.,noise_placeholder,68,72,1.0588235294117647
+4925,"No packages matched ""%s"".","Không có gói khớp ""%s"".",noise_placeholder,25,23,0.92
+4928,%s was installed automatically.,%s đã được cài đặt tự động.,noise_placeholder,31,27,0.8709677419354839
+4929,%s is being installed automatically.,%s đang được cài đặt tự động.,noise_placeholder,36,29,0.8055555555555556
+4930,%s was installed manually.,%s đã cài đặt bằng tay.,noise_placeholder,26,23,0.8846153846153846
+4931,%s is being installed manually.,%s đang được cài đặt bằng tay.,noise_placeholder,31,30,0.967741935483871
+4942,"Packages being held back These packages could be upgraded, but you have asked for them to be held at their current version.","Gói đang được giữ lại Những gói này có thể được nâng cấp, nhưng mà bạn đã yêu cầu giữ lại chúng ở phiên bản hiện thời.",noise_ui_fragment,123,118,0.959349593495935
+4949,Error in dependency resolver: %s,Lỗi trong bộ giải quyết phụ thuộc: %s,noise_placeholder,32,37,1.15625
+4950,"Fatal error in dependency resolver. You can continue searching, but some solutions might be impossible to generate. %s","Lỗi nghiêm trọng trong bộ giải quyết phụ thuộc. Bạn có thể tiếp tục tìm kiếm, nhưng một số giải pháp sẽ không thể được tạo ra. %s",noise_placeholder,118,129,1.0932203389830508
+4953,Removing %s is rejected.,Gỡ bỏ %s bị từ chối.,noise_placeholder,24,20,0.8333333333333334
+4954,Canceling the installation of %s is rejected.,Hủy cài đặt %s bị từ chối.,noise_placeholder,45,26,0.5777777777777777
+4955,Canceling the removal of %s is rejected.,Hủy gỡ bỏ %s bị từ chối.,noise_placeholder,40,24,0.6
+4956,Keeping %s at version %s is rejected.,Giữ %s tại phiên bản %s bị từ chối.,noise_placeholder,37,35,0.9459459459459459
+4957,Installing %s version %s is rejected.,Cài đặt %s phiên bản %s bị từ chối.,noise_placeholder,37,35,0.9459459459459459
+4958,Downgrading %s to version %s is rejected.,Hạ cấp %s xuống phiên bản %s bị từ chối.,noise_placeholder,41,40,0.975609756097561
+4959,Upgrading %s to version %s is rejected.,Nâng cấp %s lên phiên bản %s bị từ chối.,noise_placeholder,39,40,1.0256410256410255
+4960,Removing %s is preferred over all un-accepted alternatives.,Gỡ bỏ %s được ưu tiên trên tất cả các thay thế chưa được chấp nhận.,noise_placeholder,59,67,1.1355932203389831
+4961,Canceling the installation of %s is preferred over all un-accepted alternatives.,Hủy cài đặt %s được ưu tiên trên tất cả các thay thế chưa được chấp nhận.,noise_placeholder,80,73,0.9125
+4962,Canceling the removal of %s is preferred over all un-accepted alternatives.,Hủy gỡ bỏ %s được ưu tiên trên tất cả các thay thế chưa được chấp nhận.,noise_placeholder,75,71,0.9466666666666667
+4963,Keeping %s at version %s is preferred over all un-accepted alternatives.,Giữ %s tại phiên bản %s được ưu tiên trên tất cả các thay thế chưa được chấp nhận.,noise_placeholder,72,82,1.1388888888888888
+4964,Installing %s version %s is preferred over all un-accepted alternatives.,Cài đặt %s phiên bản %s được ưu tiên trên tất cả các thay thế chưa được chấp nhận.,noise_placeholder,72,82,1.1388888888888888
+4965,Downgrading %s to version %s is preferred over all un-accepted alternatives.,Hạ cấp %s xuống phiên bản %s được ưu tiên trên tất cả các thay thế chưa được chấp nhận.,noise_placeholder,76,87,1.144736842105263
+4966,Upgrading %s to version %s is preferred over all un-accepted alternatives.,Nâng cấp %s lên phiên bản %s được ưu tiên trên tất cả các thay thế chưa được chấp nhận.,noise_placeholder,74,87,1.1756756756756757
+4969,%s depends upon %s,%s phụ thuộc vào %s,noise_placeholder,18,19,1.0555555555555556
+4970,%s pre-depends upon %s,%s phụ thuộc sẵn vào %s,noise_placeholder,22,23,1.0454545454545454
+4971,%s suggests %s,%s đề nghị %s,noise_placeholder,14,13,0.9285714285714286
+4972,%s recommends %s,%s khuyên %s,noise_placeholder,16,12,0.75
+4973,%s conflicts with %s,%s xung đột với %s,noise_placeholder,20,18,0.9
+4974,%s breaks %s,%s ngắt %s,noise_placeholder,12,10,0.8333333333333334
+4975,%s replaces %s,%s thay thế %s,noise_placeholder,14,14,1.0
+4976,%s obsoletes %s,%s làm cũ %s,noise_placeholder,15,12,0.8
+4983,Remove %s [%s (%s)],Gỡ bỏ %s [%s (%s)],noise_placeholder,19,18,0.9473684210526315
+4984,Install %s [%s (%s)],Cài đặt %s [%s (%s)],noise_placeholder,20,20,1.0
+4985,Cancel the installation of %s,Hủy cài đặt %s,exact_duplicate; noise_placeholder; noise_ui_fragment,29,14,0.4827586206896552
+4986,Cancel the removal of %s,Hủy gỡ bỏ %s,noise_placeholder; noise_ui_fragment,24,12,0.5
+4987,Keep %s at version %s (%s),Giữ %s tại phiên bản %s (%s),noise_placeholder,26,28,1.0769230769230769
+4988,Upgrade %s [%s (%s) -> %s (%s)],Nâng cấp %s [%s (%s) -> %s (%s)],noise_placeholder,31,32,1.032258064516129
+4989,Downgrade %s [%s (%s) -> %s (%s)],Hạ cấp %s [%s (%s) -> %s (%s)],noise_placeholder,33,30,0.9090909090909091
+4990,Remove %s,Gỡ bỏ %s,exact_duplicate; noise_placeholder,9,8,0.8888888888888888
+4991,remove %s,gỡ bỏ %s,noise_placeholder,9,8,0.8888888888888888
+4992,Keep %s at version %s,Giữ %s tại phiên bản %s,noise_placeholder,21,23,1.0952380952380953
+4993,keep %s at version %s,giữ %s tại phiên bản %s,noise_placeholder,21,23,1.0952380952380953
+4994,Cancel the installation of %s,Hủy cài đặt %s,exact_duplicate; noise_placeholder; noise_ui_fragment,29,14,0.4827586206896552
+4995,cancel the installation of %s,hủy cài đặt %s,noise_placeholder; noise_ui_fragment,29,14,0.4827586206896552
+4996,Install %s %s,Cài đặt %s %s,noise_placeholder,13,13,1.0
+4997,install %s %s,cài đặt %s %s,noise_placeholder,13,13,1.0
+4998,Downgrade %s to version %s,Hạ cấp %s xuống phiên bản %s,noise_placeholder,26,28,1.0769230769230769
+4999,downgrade %s to version %s,hạ cấp %s xuống phiên bản %s,noise_placeholder,26,28,1.0769230769230769
+5000,Upgrade %s to version %s,Nâng cấp %s lên phiên bản %s,noise_placeholder,24,28,1.1666666666666667
+5001,upgrade %s to version %s,nâng cấp %s lên phiên bản %s,noise_placeholder,24,28,1.1666666666666667
+5002,Leave %s unresolved,Để %s không được giải quyết,noise_placeholder,19,27,1.4210526315789473
+5003,leave %s unresolved,để %s không được giải quyết,noise_placeholder,19,27,1.4210526315789473
+5008,Solution %s of %s.,Giải pháp %s trong %s.,noise_placeholder,18,22,1.2222222222222223
+5010,"Unrecognized color name ""%s""",Tên màu không nhận ra « %s ».,noise_placeholder,28,29,1.0357142857142858
+5011,"Unrecognized attribute name ""%s""",Tên thuộc tính không nhận ra « %s ».,noise_placeholder,32,36,1.125
+5012,"Invalid entry in style definition group: ""%s""",Gặp mục nhập không hợp lệ trong nhóm xác định kiểu dáng: « %s »,noise_placeholder,45,63,1.4
+5013,"Invalid tagless entry in style definition group: ""%s""",Gặp mục nhập không có thẻ mà không hợp lệ trong nhóm xác định kiểu dáng: « %s »,noise_placeholder,53,79,1.490566037735849
+5015,Unknown style attribute %s,Không rõ thuộc tính kiểu dáng %s,noise_placeholder,26,32,1.2307692307692308
+5016,"Invalid entry in keybinding group: ""%s""",Gặp mục nhập không hợp lệ trong nhóm tổ hợp phím: « %s »,noise_placeholder,39,56,1.435897435897436
+5017,"Ignoring invalid keybinding ""%s"" -> ""%s""",Đang bỏ qua tổ hợp phím không hợp lệ « %s » -> « %s »,noise_placeholder,40,53,1.325
+5021,"Unknown grouping policy ""%s""",Không rõ chính sách gộp nhóm « %s »,noise_placeholder,28,35,1.25
+5022,Terminal policy '%s' should be the last policy in the list,Chính sách chấm dứt « %s » nên là chính sách cuối cùng trong danh sách,noise_placeholder,58,70,1.206896551724138
+5023,"Bad section name '%s' (use 'none', 'topdir', 'subdir', or 'subdirs')","Tên phần sai « %s » (hãy dùng « none » [không có], « topdir » [thư mục đầu], « subdir » [thư mục con] hay « subdirs » [các thư mục con])",noise_placeholder,68,136,2.0
+5024,Bad passthrough setting '%s' (use 'passthrough' or 'nopassthrough'),Thiết lập kiểu passthrough (gởi qua) sai « %s » (hãy dùng « passthrough » [gởi qua] hoặc « nopassthrough » [không gởi qua]),noise_placeholder,67,123,1.835820895522388
+5025,Unable to parse pattern at '%s',Không thể phân tích hình mẫu ở « %s »,noise_placeholder,31,37,1.1935483870967742
+5026,"Unable to parse pattern after ""%s""",Không thể phân tích hình mẫu nằm sau « %s »,noise_placeholder,34,43,1.2647058823529411
+5027,"Unexpectedly empty tree title after ""%s""",Gặp tựa cây trống một cách bất thường nằm sau « %s »,noise_placeholder,40,52,1.3
+5028,"Expected '{', ')', or ',' following '_BAR__BAR_', got '%s'","Mong đợi '{', ')' hoặc ',' theo sau '_BAR__BAR_', đã nhận '%s'",noise_placeholder,58,62,1.0689655172413792
+5031,"Couldn't parse layout: unknown view item type ""%s""",Không thể phân tích bố trí: không biết kiểu mục ô xem « %s »,noise_placeholder,50,60,1.2
+5035,Unknown alignment type '%s',Không rõ kiểu canh lề « %s »,noise_placeholder,27,28,1.037037037037037
+5038,Invalid sorting policy type '%s',Kiểu chính sách sắp xếp không hợp lệ « %s ».,noise_placeholder,32,44,1.375
+5040,"Can't decode wide-character string after ""%s""",Không thể giải mã chuỗi ký tự rộng nằm sau « %s »,noise_placeholder,45,49,1.0888888888888888
+5041,%s %s compiled at %s %s,%s %s được biên dịch vào %s %s,noise_placeholder,23,30,1.3043478260869565
+5042,Compiler: g++ %s,Bộ biên dịch: g++ %s,noise_placeholder,16,20,1.25
+5044,apt version %d.%d.%d,apt phiên bản %d.%d.%d,noise_placeholder,20,22,1.1
+5046,NCurses version %s,NCurses phiên bản: %s,noise_placeholder,18,21,1.1666666666666667
+5047,libsigc++ version: %s,libsigc++ phiên bản: %s,noise_placeholder,21,23,1.0952380952380953
+5048,Gtk+ version %d.%d.%d,Gtk+ phiên bản %d.%d.%d,noise_placeholder,21,23,1.0952380952380953
+5049,Gtk-- version %d.%d.%d,Gtk-- phiên bản %d.%d.%d,noise_placeholder,22,24,1.0909090909090908
+5052,NCurses version: %s,NCurses phiên bản: %s,noise_placeholder,19,21,1.105263157894737
+5053,cwidget version: %s,cwidget phiên bản: %s,noise_placeholder,19,21,1.105263157894737
+5054,Apt version: %s,Apt phiên bản: %s,noise_placeholder,15,17,1.1333333333333333

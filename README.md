@@ -89,11 +89,54 @@ data/raw/<source>/
 3. Lưu version nguồn, license, collection date và rule xử lý trong metadata.
 4. Mỗi thí nghiệm sau này phải ghi model, dataset version, seed, hardware, metric, RAM và latency.
 
+## Phase 02 — Data audit
+
+Notebook `notebooks/02_data_audit/02_01_source_data_audit.ipynb` audit từng nguồn RAW mà không sửa dữ liệu. Report bao gồm schema, checksum RAW, null/blank, encoding, ngôn ngữ, alignment, duplicate, length, noise, provenance/license và mẫu review tái lập được.
+
+Mỗi nguồn tạo:
+
+```text
+data/audit/<source>/
+├── audit_report.json
+├── review_candidates.csv
+└── random_review_sample.csv
+```
+
+Audit tách hai gate độc lập:
+
+- `ready_for_cleaning`: cho phép chạy Phase 03.
+- `approved_for_dataset_building`: bắt buộc trước Phase 05, training hoặc phát hành dataset/artifact cuối.
+
+License hoặc provenance chưa xác minh không chặn cleaning, nhưng giữ `approved_for_dataset_building = false`.
+
+## Phase 03 — Data cleaning
+
+Notebook `notebooks/03_data_cleaning/03_01_rule_based_cleaning.ipynb` chạy riêng cho từng nguồn sau Phase 02 schema 1.1. RAW chỉ được đọc. Notebook xác minh SHA-256 RAW, checksum audit report và `ready_for_cleaning = true` trước khi tạo interim artifact.
+
+Các rule 1.1.0:
+
+- Chuẩn hoá Unicode NFC và whitespace.
+- Loại blank/null, non-string, replacement/control character và exact duplicate sau chuẩn hoá.
+- Giữ `audit_flags` và `requires_phase_04_review` trên interim pairs; Phase 04 quyết định các trường hợp noise, alignment, length ratio và language theo ngữ cảnh IT.
+
+Mỗi nguồn tạo:
+
+```text
+data/interim/<source>/
+├── cleaned_pairs.parquet
+├── cleaned_pairs.jsonl
+├── rejected_pairs.parquet
+├── cleaning_report.json
+└── cleaning_manifest.json
+```
+
+`cleaning_manifest.json` giữ checksum cho tất cả output và audit report đã dùng. `data/interim/` không được commit vì có thể lớn; notebook, audit report và rule được version control.
+
 ## Trạng thái
 
 - [x] Phase 01: Data collection
-- [ ] Phase 02: Data audit
-- [ ] Phase 03: Data cleaning
+- [x] Phase 02: Data audit
+- [x] Phase 03: Data cleaning
 - [ ] Phase 04: IT filtering
 - [ ] Phase 05: Dataset building
 - [ ] Baseline / domain adaptation / KD / quantization / offline deployment

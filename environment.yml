@@ -8,11 +8,12 @@ dependencies:
   - jupyterlab
   - ipykernel
   - pip:
-      # Dependencies used by notebooks/01_data_collection.
+      # Dependencies used by notebooks/01_data_collection through 03_data_cleaning.
       # Versions were captured from the notebooks' saved outputs.
       - datasets==5.0.1
       - pandas==3.0.5
       - httpx==0.28.1
       - mtdata==0.4.3
+      # Phase 01 writes RAW Parquet; Phases 02-03 read/write audit and interim Parquet.
       # pandas.DataFrame.to_parquet() requires a Parquet engine.
       - pyarrow

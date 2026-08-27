@@ -1,6 +1,6 @@
 {
-  "audit_schema_version": "1.0",
-  "audit_timestamp_utc": "2026-08-20T07:56:25.750396+00:00",
+  "audit_schema_version": "1.1",
+  "audit_timestamp_utc": "2026-08-27T08:14:43.936073+00:00",
   "source_short_name": "gnome",
   "raw_file_integrity": {
     "path": "data\\raw\\gnome\\gnome_raw.parquet",
@@ -144,10 +144,14 @@
     "license_needs_verification": true
   },
   "decision": {
-    "decision": "needs_review",
-    "blocking_issues": [
-      "License cần xác minh trước khi phát hành/huấn luyện artifact cuối."
+    "decision": "pass_to_cleaning",
+    "ready_for_cleaning": true,
+    "cleaning_notes": [],
+    "review_required_before_dataset_building": true,
+    "approved_for_dataset_building": false,
+    "dataset_building_blocking_issues": [
+      "License cần xác minh trước khi đưa source vào dataset cuối hoặc huấn luyện."
     ],
-    "note": "Các cờ duplicate, noise và alignment là input cho manual review/Phase 03; không được tự động coi là dữ liệu cần xóa."
+    "note": "Duplicate, noise, alignment và language flags là input cho review/Phase 03-04; license/provenance phải được xác minh trước Phase 05, training hoặc phát hành artifact cuối."
   }
 }

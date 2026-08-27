@@ -1,6 +1,6 @@
-﻿source_short_name,raw_rows,blank_or_null_pairs,encoding_issue_pairs,exact_duplicate_extra_rows,alignment_indicator_pairs,review_candidates,license_needs_verification,decision,audit_timestamp_utc
-envitech_reasoning,15115,0,0,1425,0,2465,True,needs_review,2026-08-20T07:23:46.201537+00:00
-gnome,149,0,0,1,0,17,True,needs_review,2026-08-20T07:56:25.750396+00:00
-kde4,42782,0,6,2888,1827,8968,True,needs_review,2026-08-20T07:57:18.692688+00:00
-tech_viet_translation,100767,0,0,306,130,6341,True,needs_review,2026-08-20T07:55:15.581267+00:00
-ubuntu,5056,0,0,20,20,1670,True,needs_review,2026-08-20T07:56:54.876816+00:00
+﻿source_short_name,raw_rows,blank_or_null_pairs,encoding_issue_pairs,exact_duplicate_extra_rows,alignment_indicator_pairs,review_candidates,license_needs_verification,ready_for_cleaning,approved_for_dataset_building,decision,audit_timestamp_utc
+envitech_reasoning,15115,0,0,1425,0,2465,True,True,False,pass_to_cleaning,2026-08-27T08:13:55.125638+00:00
+gnome,149,0,0,1,0,17,True,True,False,pass_to_cleaning,2026-08-27T08:14:43.936073+00:00
+kde4,42782,0,6,2888,1827,8968,True,True,False,pass_to_cleaning_with_flags,2026-08-27T08:15:32.574023+00:00
+tech_viet_translation,100767,0,0,306,130,6341,True,True,False,pass_to_cleaning,2026-08-27T08:14:25.834273+00:00
+ubuntu,5056,0,0,20,20,1670,True,True,False,pass_to_cleaning,2026-08-27T08:15:04.280759+00:00

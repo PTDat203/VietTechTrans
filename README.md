@@ -127,12 +127,34 @@ data/interim/<source>/
 
 `cleaning_manifest.json` giữ checksum cho tất cả output và audit report đã dùng. `data/interim/` không được commit vì có thể lớn; notebook, audit report và rule được version control.
 
+## Phase 04 — IT filtering
+
+Notebook `notebooks/04_it_filtering/04_01_it_filtering.ipynb` đọc `cleaned_pairs.parquet` cùng manifest Phase 03 và xác minh checksum trước khi lọc. Notebook gán taxonomy IT (`coding`, `ai_ml`, `hardware`, `system`, `ui_localization`, `command_cli`, `documentation`) bằng rule có version; không dùng audit flag làm điều kiện loại tự động.
+
+- Audit flag có policy rõ ràng: `blank_or_null`, `encoding_issue`, `identical_pair`, `exact_duplicate` và các `noise_*` bị auto-reject; `language_suspect`, `extreme_length_ratio`, `very_long_pair` vào `manual_review`. Cờ không nhận diện cũng vào `manual_review`; auto-reject có ưu tiên khi một pair mang nhiều cờ.
+- Người review điền `manual_review_decisions.csv` rồi chạy lại notebook để áp dụng quyết định `approve` hoặc `reject`.
+- `envitech_reasoning` chỉ được approve tự động khi có bằng chứng keyword thuộc taxonomy, vì RAW nguồn này có cả dữ liệu ngoài IT. Các corpus technology/localization khác có source prior được ghi rõ trong artifact.
+- Phase 05 chỉ được dùng source có `approved_for_dataset_building = true`, nghĩa là không còn pair `manual_review`.
+
+Mỗi nguồn tạo:
+
+```text
+data/it_corpus/<source>/
+├── approved_it_pairs.parquet
+├── approved_it_pairs.jsonl
+├── rejected_or_non_it_pairs.parquet
+├── manual_review_pairs.csv
+├── manual_review_decisions.csv
+├── it_filtering_report.json
+└── it_filtering_manifest.json
+```
+
 ## Trạng thái
 
 - [x] Phase 01: Data collection
 - [x] Phase 02: Data audit
 - [x] Phase 03: Data cleaning
-- [ ] Phase 04: IT filtering
+- [x] Phase 04: IT filtering (đã xử lý audit flags, hoàn tất manual review và mở gate Phase 05)
 - [ ] Phase 05: Dataset building
 - [ ] Baseline / domain adaptation / KD / quantization / offline deployment
 

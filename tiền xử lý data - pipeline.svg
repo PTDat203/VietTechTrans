@@ -109,7 +109,7 @@
     <text x="25" y="124" class="detail">SHA-256 per artifact</text>
     <text x="25" y="150" class="artifact">Version + seed + checksums</text>
   </g>
-  <path d="M800 476 V540" stroke="#58718a" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M1480 476 V550 H1460" stroke="#58718a" stroke-width="3" marker-end="url(#arrow)" fill="none"/>
   <path d="M260 740 V820 H1340 V740" stroke="#58718a" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
   <rect x="260" y="850" width="1080" height="105" rx="18" fill="#183f5b"/>
   <text x="800" y="890" text-anchor="middle" style="font-family:Arial,sans-serif;font-size:25px;font-weight:700;fill:white">Ready for baseline MT experiments</text>

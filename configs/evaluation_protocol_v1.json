@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "protocol_version": "core_mt_baseline_v1",
+  "status": "frozen_before_baseline",
+  "dataset_release": "phase05_release_v1",
+  "directions": ["en_to_vi", "vi_to_en"],
+  "evaluation_sets": ["general_test", "it_test"],
+  "metrics": {
+    "primary": {"name": "chrF++", "version": "TBD_at_runtime", "beta": 2, "word_order": 2},
+    "secondary": {"name": "sacreBLEU", "version": "TBD_at_runtime", "tokenizer": "none", "case": "mixed", "effective_order": false},
+    "reporting_rule": "Report each metric separately for each model, direction, and test set. Do not average General Test and IT Test."
+  },
+  "normalization": {
+    "input": "Use released text exactly; do not apply corpus-cleaning rules after the release is frozen.",
+    "output": "Score raw model text after removing only framework-added special tokens and surrounding whitespace.",
+    "reference": "Use released reference text exactly."
+  },
+  "inference": {
+    "seed": 42,
+    "num_beams": 5,
+    "max_new_tokens": 256,
+    "batch_size": 1,
+    "model_revision": "pin immutable revision or commit SHA",
+    "generation_overrides": "No model-specific quality tuning beyond mandatory language-code settings."
+  },
+  "benchmark": {
+    "device": "record OS, CPU, GPU, RAM, runtime and precision",
+    "warmup_sentences": 32,
+    "latency_repeats": 5,
+    "latency_unit": "milliseconds per sentence; report median and p95",
+    "ram": "peak process RSS during inference, recorded separately per model/direction/test set",
+    "model_size": "serialized artifact bytes and parameter count where available"
+  },
+  "artifacts": ["resolved_config.json", "predictions.jsonl", "metrics.json", "benchmark.json", "environment.txt", "run.log"],
+  "selection_policy": "Teacher/student or adaptation candidates may be selected only from the complete, frozen comparison table."
+}

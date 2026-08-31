@@ -4,7 +4,7 @@
 
 VietTechTrans xây dựng corpus song ngữ Anh–Việt tập trung vào miền Công nghệ thông tin để phục vụ nghiên cứu dịch máy chạy offline. Bộ dữ liệu hướng đến ba nhu cầu: so sánh các mô hình dịch máy lõi trên dữ liệu IT, nghiên cứu domain adaptation/knowledge distillation, và đánh giá mô hình gọn nhẹ trong bối cảnh triển khai cục bộ.
 
-Corpus không nhằm thay thế một benchmark dịch máy tổng quát. IT test split được giữ riêng để đo năng lực dịch trong miền IT, còn benchmark tổng quát cần được bổ sung từ một nguồn độc lập ở thí nghiệm tiếp theo.
+Corpus không nhằm thay thế một benchmark dịch máy tổng quát. IT test split được giữ riêng để đo năng lực dịch trong miền IT. Benchmark tổng quát là release độc lập `general_test_flores200_devtest_v1` (FLORES-200 `devtest`, EN↔VI, CC-BY-SA 4.0); không được trộn nó vào corpus IT hoặc dùng để chọn checkpoint/hyperparameter.
 
 ## Composition
 
@@ -31,8 +31,7 @@ Phase 05 xuất corpus profiling, phân bố subdomain theo split, global dedup 
 
 - Taxonomy hiện là rule-based và chỉ gồm bảy nhãn trên; nó không tách riêng networking, security hay software.
 - Các corpus localization có thể làm tăng tỷ lệ câu ngắn, câu UI và cụm từ kỹ thuật lặp lại; 5-gram overlap cần được diễn giải cùng với exact leakage checks, không dùng một mình để kết luận leakage.
-- Human-validation worksheet hiện chỉ có 5 dòng minh họa, không đủ để ước lượng precision hoặc inter-annotator agreement có ý nghĩa thống kê.
-- Bộ dữ liệu không bao gồm General Test độc lập; không dùng IT test để suy rộng kết luận sang mọi miền ngôn ngữ.
+- General Test FLORES-200 là benchmark tổng quát, không phản ánh riêng văn phong phần mềm hay tài liệu kỹ thuật; báo cáo phải giữ kết quả General Test và IT Test tách biệt.
 
 ## Reproducibility and maintenance
 

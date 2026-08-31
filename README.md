@@ -13,15 +13,17 @@ Nghiên cứu xây dựng hệ thống dịch máy **Anh ↔ Việt chạy offli
 
 ![Tiền xử lý data pipeline](<tiền xử lý data - pipeline.svg>)
 
+![CORE MT pipeline](<core MT pipeline.svg>)
+
 ```text
 Data collection
 → Data audit
 → Data cleaning
 → IT filtering
-→ Dataset building (train/val/test)
+→ Dataset building (train/validation/IT Test + independent General Test)
 → Baseline: OPUS-MT / EnViT5 / M2M-100
-→ Domain adaptation
 → Core MT comparison
+→ Domain adaptation
 → Teacher + student selection
 → Knowledge Distillation
 → Quantization
@@ -159,12 +161,13 @@ Notebook `notebooks/05_dataset_building/05_01_build_dataset.ipynb` chuẩn bị 
 
 ```text
 data/processed/it_en_vi_v1/       # train/validation/it_test, dedup artifact, manifest
+data/processed/general_test_flores200_devtest_v1/ # independent General Test release
 data/final_report/it_en_vi_v1/    # CSV/JSON/HTML charts, Dataset Card, report manifest
 ```
 
-`DATASET_CARD.md` ở project root là tài liệu nguồn được version-control; Phase 05 điền số liệu build rồi copy bản kết quả vào `data/final_report/it_en_vi_v1/DATASET_CARD.md`.
+`DATASET_CARD.md` ở project root là tài liệu nguồn được version-control; Phase 05 điền số liệu build rồi copy bản kết quả vào `data/final_report/it_en_vi_v1/DATASET_CARD.md`. General Test dùng FLORES-200 `devtest` (EN↔VI), được build và sealed riêng theo [Phase 05 release gate](PHASE_05_RELEASE.md).
 
-Split dùng seed `42`, target ratio 80/10/10 và group theo câu tiếng Anh chuẩn hoá để không rò rỉ source text giữa split.
+Split IT dùng seed `42`, target ratio 80/10/10 và group theo câu tiếng Anh chuẩn hoá để không rò rỉ source text giữa split. General Test là benchmark độc lập, không được trộn vào split IT và không được dùng để chọn checkpoint/hyperparameter.
 
 ## Trạng thái
 
@@ -172,8 +175,9 @@ Split dùng seed `42`, target ratio 80/10/10 và group theo câu tiếng Anh chu
 - [x] Phase 02: Data audit
 - [x] Phase 03: Data cleaning
 - [x] Phase 04: IT filtering (đã xử lý audit flags, hoàn tất manual review và mở gate Phase 05)
-- [x] Phase 05: Dataset building and evidence report
-- [ ] Baseline / domain adaptation / KD / quantization / offline deployment
+- [x] Phase 05: dataset release, General Test and protocol locked
+- [ ] Phase 06: CORE MT baseline — xem [pipeline](PHASE_06_CORE_MT.md) và `core MT pipeline.svg`
+- [ ] Domain adaptation / KD / quantization / offline deployment
 
 English-Vietnamese Machine Translation for IT Domain
 

@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "dataset_version": "general_test_flores200_devtest_v1",
+  "role": "general_test",
+  "status": "approved_source_pending_build",
+  "source": {
+    "name": "FLORES-200 devtest",
+    "publisher": "Meta / facebookresearch",
+    "source_url": "https://github.com/facebookresearch/flores/tree/main/flores200",
+    "download_url": "https://dl.fbaipublicfiles.com/nllb/flores200_dataset.tar.gz",
+    "license": "CC-BY-SA-4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "citation": "NLLB Team et al. (2022), No Language Left Behind.",
+    "source_split": "devtest",
+    "expected_rows": 1012,
+    "source_language_file": "eng_Latn.devtest",
+    "target_language_file": "vie_Latn.devtest"
+  },
+  "policy": {
+    "must_not_be_used_for": ["training", "checkpoint_selection", "hyperparameter_selection", "taxonomy_rule_tuning", "manual_data_repair"],
+    "permitted_use": "final evaluation only after the protocol is frozen",
+    "general_domain_rationale": "FLORES-200 consists of professionally translated web-article sentences and is external to the five IT-corpus sources."
+  }
+}

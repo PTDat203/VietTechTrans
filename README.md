@@ -11,6 +11,8 @@ Nghiên cứu xây dựng hệ thống dịch máy **Anh ↔ Việt chạy offli
 
 ## Pipeline
 
+![Tiền xử lý data pipeline](<tiền xử lý data - pipeline.svg>)
+
 ```text
 Data collection
 → Data audit
@@ -56,6 +58,8 @@ notebooks/
     ├── 01_03_gnome_download.ipynb
     ├── 01_04_ubuntu_download.ipynb
     └── 01_05_kde_download.ipynb
+└── 05_dataset_building/
+    └── 05_01_build_dataset.ipynb
 environment.yml
 requirements.txt
 ```
@@ -149,13 +153,26 @@ data/it_corpus/<source>/
 └── it_filtering_manifest.json
 ```
 
+## Phase 05 — Dataset building and evidence report
+
+Notebook `notebooks/05_dataset_building/05_01_build_dataset.ipynb` chuẩn bị và **hiển thị trước** corpus profile, phân bố subdomain theo split, global exact dedup, 5-gram leakage check, attrition funnel, Sankey và worksheet human validation `head(5)`. Chỉ cell cuối cùng mới ghi output.
+
+```text
+data/processed/it_en_vi_v1/       # train/validation/it_test, dedup artifact, manifest
+data/final_report/it_en_vi_v1/    # CSV/JSON/HTML charts, Dataset Card, report manifest
+```
+
+`DATASET_CARD.md` ở project root là tài liệu nguồn được version-control; Phase 05 điền số liệu build rồi copy bản kết quả vào `data/final_report/it_en_vi_v1/DATASET_CARD.md`.
+
+Split dùng seed `42`, target ratio 80/10/10 và group theo câu tiếng Anh chuẩn hoá để không rò rỉ source text giữa split.
+
 ## Trạng thái
 
 - [x] Phase 01: Data collection
 - [x] Phase 02: Data audit
 - [x] Phase 03: Data cleaning
 - [x] Phase 04: IT filtering (đã xử lý audit flags, hoàn tất manual review và mở gate Phase 05)
-- [ ] Phase 05: Dataset building
+- [x] Phase 05: Dataset building and evidence report
 - [ ] Baseline / domain adaptation / KD / quantization / offline deployment
 
 English-Vietnamese Machine Translation for IT Domain

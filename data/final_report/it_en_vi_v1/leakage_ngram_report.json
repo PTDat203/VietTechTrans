@@ -1,0 +1,23 @@
+{
+  "ngram_size": 5,
+  "normalized_exact_pair_overlap": {
+    "validation": 0,
+    "it_test": 0
+  },
+  "english_leakage_group_overlap": {
+    "validation": 0,
+    "it_test": 0
+  },
+  "train_ngram_overlap": {
+    "validation": {
+      "shared_unique_5grams": 6330,
+      "evaluation_unique_5grams": 87789,
+      "percentage_of_evaluation_5grams_seen_in_train": 7.2105
+    },
+    "it_test": {
+      "shared_unique_5grams": 6203,
+      "evaluation_unique_5grams": 86836,
+      "percentage_of_evaluation_5grams_seen_in_train": 7.1434
+    }
+  }
+}

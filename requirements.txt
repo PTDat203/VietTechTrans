@@ -10,3 +10,5 @@ pyarrow
 # Required to run the notebooks.
 jupyterlab
 ipykernel
+# Phase 05 interactive evidence charts.
+plotly==6.1.2

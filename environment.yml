@@ -17,3 +17,5 @@ dependencies:
       # Phase 01 writes RAW Parquet; Phases 02-03 read/write audit and interim Parquet.
       # pandas.DataFrame.to_parquet() requires a Parquet engine.
       - pyarrow
+      # Phase 05 interactive evidence charts.
+      - plotly==6.1.2

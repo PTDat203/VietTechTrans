@@ -1,0 +1,5 @@
+﻿stage,pairs
+RAW collected,163869
+After rule-based cleaning,159220
+After IT filtering,138479
+After global exact deduplication,138139

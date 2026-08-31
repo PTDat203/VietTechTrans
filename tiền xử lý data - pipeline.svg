@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1050" viewBox="0 0 1600 1050" role="img" aria-labelledby="title desc">
+  <title id="title">VietTechTrans data preprocessing pipeline: Phases 01 to 05</title>
+  <desc id="desc">A five-phase reproducible English-Vietnamese IT corpus pipeline from raw collection to versioned train validation and IT test datasets with evidence reports.</desc>
+  <defs>
+    <style>
+      text { font-family: Arial, sans-serif; fill: #18304b; }
+      .title { font-size: 34px; font-weight: 700; }
+      .subtitle { font-size: 17px; fill: #4d647a; }
+      .phase { font-size: 20px; font-weight: 700; fill: white; }
+      .step { font-size: 18px; font-weight: 700; }
+      .detail { font-size: 14px; fill: #4d647a; }
+      .artifact { font-size: 14px; fill: #165b75; font-weight: 700; }
+      .gate { font-size: 13px; font-weight: 700; fill: #804e00; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L10,3 L0,6 Z" fill="#58718a"/></marker>
+  </defs>
+  <rect width="1600" height="1050" fill="#f7fafc"/>
+  <text x="800" y="56" text-anchor="middle" class="title">VietTechTrans — Tiền xử lý data pipeline</text>
+  <text x="800" y="84" text-anchor="middle" class="subtitle">Anh–Việt miền IT · Phase 01 → Phase 05 · checksum, gate và khả năng tái lập</text>
+
+  <g transform="translate(70,125)">
+    <rect width="280" height="220" rx="18" fill="#e7f0ff" stroke="#4c83c3" stroke-width="2"/>
+    <rect width="280" height="45" rx="18" fill="#3478bd"/><rect y="26" width="280" height="19" fill="#3478bd"/>
+    <text x="140" y="30" text-anchor="middle" class="phase">Phase 01 · Data collection</text>
+    <text x="22" y="77" class="step">Thu thập 5 nguồn</text>
+    <text x="22" y="104" class="detail">EnVi-Tech · Tech-Viet · GNOME</text>
+    <text x="22" y="126" class="detail">Ubuntu · KDE4</text>
+    <text x="22" y="158" class="detail">Inspect · statistics · candidate flags</text>
+    <text x="22" y="193" class="artifact">RAW JSONL / Parquet + metadata</text>
+  </g>
+  <g transform="translate(370,125)">
+    <rect width="280" height="220" rx="18" fill="#edf7ed" stroke="#5c9a68" stroke-width="2"/>
+    <rect width="280" height="45" rx="18" fill="#4e8d5b"/><rect y="26" width="280" height="19" fill="#4e8d5b"/>
+    <text x="140" y="30" text-anchor="middle" class="phase">Phase 02 · Data audit</text>
+    <text x="22" y="77" class="step">Audit không sửa RAW</text>
+    <text x="22" y="104" class="detail">Schema · null · encoding · language</text>
+    <text x="22" y="126" class="detail">alignment · duplicate · noise</text>
+    <text x="22" y="158" class="detail">Random sample và review candidates</text>
+    <text x="22" y="193" class="artifact">Audit report + ready_for_cleaning</text>
+  </g>
+  <g transform="translate(670,125)">
+    <rect width="280" height="220" rx="18" fill="#fff4df" stroke="#d69d3d" stroke-width="2"/>
+    <rect width="280" height="45" rx="18" fill="#c9851f"/><rect y="26" width="280" height="19" fill="#c9851f"/>
+    <text x="140" y="30" text-anchor="middle" class="phase">Phase 03 · Data cleaning</text>
+    <text x="22" y="77" class="step">Rule-based cleaning</text>
+    <text x="22" y="104" class="detail">Unicode NFC · whitespace</text>
+    <text x="22" y="126" class="detail">blank / control / exact dedup</text>
+    <text x="22" y="158" class="detail">Giữ audit flag để Phase 04 quyết định</text>
+    <text x="22" y="193" class="artifact">Interim pairs + cleaning manifest</text>
+  </g>
+  <g transform="translate(970,125)">
+    <rect width="280" height="220" rx="18" fill="#f8eefa" stroke="#9b69b3" stroke-width="2"/>
+    <rect width="280" height="45" rx="18" fill="#8853a0"/><rect y="26" width="280" height="19" fill="#8853a0"/>
+    <text x="140" y="30" text-anchor="middle" class="phase">Phase 04 · IT filtering</text>
+    <text x="22" y="77" class="step">Taxonomy IT có version</text>
+    <text x="22" y="104" class="detail">coding · AI/ML · hardware · system</text>
+    <text x="22" y="126" class="detail">UI · CLI · documentation</text>
+    <text x="22" y="158" class="detail">Auto reject + manual review worksheet</text>
+    <text x="22" y="193" class="artifact">Approved IT corpus + filtering manifest</text>
+  </g>
+  <g transform="translate(1270,125)">
+    <rect width="260" height="220" rx="18" fill="#e8f8f8" stroke="#328a8a" stroke-width="2"/>
+    <rect width="260" height="45" rx="18" fill="#257d7d"/><rect y="26" width="260" height="19" fill="#257d7d"/>
+    <text x="130" y="30" text-anchor="middle" class="phase">Phase 05 · Dataset</text>
+    <text x="20" y="77" class="step">Build &amp; evidence</text>
+    <text x="20" y="104" class="detail">Global exact dedup</text>
+    <text x="20" y="126" class="detail">Leakage-safe 80 / 10 / 10 split</text>
+    <text x="20" y="158" class="detail">Profile · charts · Dataset Card</text>
+    <text x="20" y="193" class="artifact">Versioned corpus + final report</text>
+  </g>
+
+  <path d="M350 235 H370 M650 235 H670 M950 235 H970 M1250 235 H1270" stroke="#58718a" stroke-width="3" marker-end="url(#arrow)" fill="none"/>
+  <g transform="translate(110,392)">
+    <rect width="1380" height="84" rx="14" fill="#fff7e6" stroke="#e3a333" stroke-width="2"/>
+    <text x="28" y="33" class="gate">QUALITY GATES</text>
+    <text x="28" y="59" class="detail">Phase 02: ready_for_cleaning → Phase 03: checksum + cleaning manifest → Phase 04: manual review resolved → Phase 05: approved_for_dataset_building = true</text>
+  </g>
+
+  <text x="800" y="530" text-anchor="middle" class="title" style="font-size:25px">Phase 05 — kết quả sau khi xem và phê duyệt trong notebook</text>
+  <g transform="translate(110,570)">
+    <rect width="300" height="170" rx="16" fill="#ffffff" stroke="#6c8ea8" stroke-width="2"/>
+    <text x="150" y="36" text-anchor="middle" class="step">Dataset versioned</text>
+    <text x="25" y="72" class="detail">train / validation / it_test</text>
+    <text x="25" y="98" class="detail">global duplicates removed</text>
+    <text x="25" y="124" class="detail">seed 42 · group-safe split</text>
+    <text x="25" y="150" class="artifact">data/processed/it_en_vi_v1</text>
+  </g>
+  <g transform="translate(470,570)">
+    <rect width="300" height="170" rx="16" fill="#ffffff" stroke="#6c8ea8" stroke-width="2"/>
+    <text x="150" y="36" text-anchor="middle" class="step">Quality evidence</text>
+    <text x="25" y="72" class="detail">Corpus profile · subdomain balance</text>
+    <text x="25" y="98" class="detail">Exact + 5-gram leakage check</text>
+    <text x="25" y="124" class="detail">Human review sample head(5)</text>
+    <text x="25" y="150" class="artifact">CSV / JSON / charts</text>
+  </g>
+  <g transform="translate(830,570)">
+    <rect width="300" height="170" rx="16" fill="#ffffff" stroke="#6c8ea8" stroke-width="2"/>
+    <text x="150" y="36" text-anchor="middle" class="step">Visual evidence</text>
+    <text x="25" y="72" class="detail">Data attrition funnel</text>
+    <text x="25" y="98" class="detail">Source → subdomain → split</text>
+    <text x="25" y="124" class="detail">Interactive HTML charts</text>
+    <text x="25" y="150" class="artifact">data/final_report/it_en_vi_v1</text>
+  </g>
+  <g transform="translate(1190,570)">
+    <rect width="300" height="170" rx="16" fill="#ffffff" stroke="#6c8ea8" stroke-width="2"/>
+    <text x="150" y="36" text-anchor="middle" class="step">Reproducibility</text>
+    <text x="25" y="72" class="detail">Dataset Card · known limitations</text>
+    <text x="25" y="98" class="detail">dataset/final-report manifests</text>
+    <text x="25" y="124" class="detail">SHA-256 per artifact</text>
+    <text x="25" y="150" class="artifact">Version + seed + checksums</text>
+  </g>
+  <path d="M800 476 V540" stroke="#58718a" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M260 740 V820 H1340 V740" stroke="#58718a" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <rect x="260" y="850" width="1080" height="105" rx="18" fill="#183f5b"/>
+  <text x="800" y="890" text-anchor="middle" style="font-family:Arial,sans-serif;font-size:25px;font-weight:700;fill:white">Ready for baseline MT experiments</text>
+  <text x="800" y="923" text-anchor="middle" style="font-family:Arial,sans-serif;font-size:17px;fill:#d8e9f5">OPUS-MT · EnViT5 · M2M-100 → domain adaptation → KD → quantization → offline benchmark</text>
+  <text x="800" y="1005" text-anchor="middle" class="subtitle">Pipeline version 1.5 · Phase 01–05 complete · 2026-08-31</text>
+</svg>

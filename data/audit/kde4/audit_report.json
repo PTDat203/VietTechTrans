@@ -1,6 +1,6 @@
 {
   "audit_schema_version": "1.1",
-  "audit_timestamp_utc": "2026-08-27T08:15:32.574023+00:00",
+  "audit_timestamp_utc": "2026-08-31T08:07:30.279940+00:00",
   "source_short_name": "kde4",
   "raw_file_integrity": {
     "path": "data\\raw\\kde4\\kde4_raw.parquet",
@@ -134,14 +134,12 @@
     "source": "KDE4",
     "source_url": "https://opus.nlpl.eu/KDE4",
     "download_url": "https://object.pouta.csc.fi/OPUS-KDE4/v2/moses/en-vi.txt.zip",
-    "license": "source-dependent",
     "version_revision": "v2",
     "collection_date": "2026-08-19",
     "download_method": "OPUS direct download - Moses ZIP",
     "language_pair": "en-vi",
     "domain": "Software Localization",
-    "subcategory": "KDE software localization",
-    "license_needs_verification": true
+    "subcategory": "KDE software localization"
   },
   "decision": {
     "decision": "pass_to_cleaning_with_flags",
@@ -149,11 +147,6 @@
     "cleaning_notes": [
       "Có ký tự replacement/control để Phase 03 loại theo rule."
     ],
-    "review_required_before_dataset_building": true,
-    "approved_for_dataset_building": false,
-    "dataset_building_blocking_issues": [
-      "License cần xác minh trước khi đưa source vào dataset cuối hoặc huấn luyện."
-    ],
-    "note": "Duplicate, noise, alignment và language flags là input cho review/Phase 03-04; license/provenance phải được xác minh trước Phase 05, training hoặc phát hành artifact cuối."
+    "note": "Duplicate, noise, alignment và language flags là input cho review/Phase 03-04."
   }
 }

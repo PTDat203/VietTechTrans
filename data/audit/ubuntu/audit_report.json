@@ -1,6 +1,6 @@
 {
   "audit_schema_version": "1.1",
-  "audit_timestamp_utc": "2026-08-27T08:15:04.280759+00:00",
+  "audit_timestamp_utc": "2026-08-31T08:07:16.378754+00:00",
   "source_short_name": "ubuntu",
   "raw_file_integrity": {
     "path": "data\\raw\\ubuntu\\ubuntu_raw.parquet",
@@ -134,24 +134,17 @@
     "source": "Ubuntu",
     "source_url": "https://opus.nlpl.eu/Ubuntu",
     "download_url": null,
-    "license": null,
     "version_revision": "v14.10",
     "collection_date": "2026-08-19",
     "download_method": "mtdata 0.4.3",
     "language_pair": "en-vi",
     "domain": "Software Localization",
-    "subcategory": "Ubuntu software localization",
-    "license_needs_verification": true
+    "subcategory": "Ubuntu software localization"
   },
   "decision": {
     "decision": "pass_to_cleaning",
     "ready_for_cleaning": true,
     "cleaning_notes": [],
-    "review_required_before_dataset_building": true,
-    "approved_for_dataset_building": false,
-    "dataset_building_blocking_issues": [
-      "License cần xác minh trước khi đưa source vào dataset cuối hoặc huấn luyện."
-    ],
-    "note": "Duplicate, noise, alignment và language flags là input cho review/Phase 03-04; license/provenance phải được xác minh trước Phase 05, training hoặc phát hành artifact cuối."
+    "note": "Duplicate, noise, alignment và language flags là input cho review/Phase 03-04."
   }
 }

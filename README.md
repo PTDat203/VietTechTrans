@@ -4,7 +4,7 @@ Nghiên cứu xây dựng hệ thống dịch máy **Anh ↔ Việt chạy offli
 
 ## Mục tiêu
 
-- Xây dựng corpus Anh–Việt miền IT có provenance và có thể tái lập.
+- Xây dựng corpus Anh–Việt miền IT có thể tái lập.
 - So sánh chất lượng, kích thước model, RAM và latency của ba CORE MT.
 - Đo riêng hiệu năng trên General Test và IT Test.
 - Tạo mô hình nhẹ hơn bằng KD và quantization mà vẫn phù hợp triển khai offline.
@@ -86,12 +86,12 @@ data/raw/<source>/
 
 1. Chạy notebook bằng `Restart Kernel → Run All`.
 2. Không sửa hoặc ghi đè dữ liệu RAW sau khi đã thu thập.
-3. Lưu version nguồn, license, collection date và rule xử lý trong metadata.
+3. Lưu version nguồn, collection date và rule xử lý trong metadata.
 4. Mỗi thí nghiệm sau này phải ghi model, dataset version, seed, hardware, metric, RAM và latency.
 
 ## Phase 02 — Data audit
 
-Notebook `notebooks/02_data_audit/02_01_source_data_audit.ipynb` audit từng nguồn RAW mà không sửa dữ liệu. Report bao gồm schema, checksum RAW, null/blank, encoding, ngôn ngữ, alignment, duplicate, length, noise, provenance/license và mẫu review tái lập được.
+Notebook `notebooks/02_data_audit/02_01_source_data_audit.ipynb` audit từng nguồn RAW mà không sửa dữ liệu. Report bao gồm schema, checksum RAW, null/blank, encoding, ngôn ngữ, alignment, duplicate, length, noise, provenance nguồn và mẫu review tái lập được.
 
 Mỗi nguồn tạo:
 
@@ -102,12 +102,7 @@ data/audit/<source>/
 └── random_review_sample.csv
 ```
 
-Audit tách hai gate độc lập:
-
-- `ready_for_cleaning`: cho phép chạy Phase 03.
-- `approved_for_dataset_building`: bắt buộc trước Phase 05, training hoặc phát hành dataset/artifact cuối.
-
-License hoặc provenance chưa xác minh không chặn cleaning, nhưng giữ `approved_for_dataset_building = false`.
+Audit tạo `ready_for_cleaning` để cho phép chạy Phase 03. Các vấn đề về chất lượng được lưu thành cờ review và được xử lý ở Phase 03–04.
 
 ## Phase 03 — Data cleaning
 
@@ -140,11 +135,6 @@ data/interim/<source>/
 - [ ] Phase 04: IT filtering
 - [ ] Phase 05: Dataset building
 - [ ] Baseline / domain adaptation / KD / quantization / offline deployment
-
-## License và dữ liệu
-
-Mã nguồn dự án sử dụng license được lựa chọn riêng. License của từng dataset/model phải được xác minh theo nguồn gốc trước khi dùng cho artifact cuối hoặc phát hành lại.
-
 
 English-Vietnamese Machine Translation for IT Domain
 

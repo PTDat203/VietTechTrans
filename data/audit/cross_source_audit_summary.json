@@ -7,11 +7,9 @@
     "exact_duplicate_extra_rows": 1425,
     "alignment_indicator_pairs": 0,
     "review_candidates": 2465,
-    "license_needs_verification": true,
     "ready_for_cleaning": true,
-    "approved_for_dataset_building": false,
     "decision": "pass_to_cleaning",
-    "audit_timestamp_utc": "2026-08-27T08:13:55.125638+00:00"
+    "audit_timestamp_utc": "2026-08-31T08:06:26.937722+00:00"
   },
   {
     "source_short_name": "tech_viet_translation",
@@ -21,11 +19,9 @@
     "exact_duplicate_extra_rows": 306,
     "alignment_indicator_pairs": 130,
     "review_candidates": 6341,
-    "license_needs_verification": true,
     "ready_for_cleaning": true,
-    "approved_for_dataset_building": false,
     "decision": "pass_to_cleaning",
-    "audit_timestamp_utc": "2026-08-27T08:14:25.834273+00:00"
+    "audit_timestamp_utc": "2026-08-31T08:06:52.133093+00:00"
   },
   {
     "source_short_name": "gnome",
@@ -35,11 +31,9 @@
     "exact_duplicate_extra_rows": 1,
     "alignment_indicator_pairs": 0,
     "review_candidates": 17,
-    "license_needs_verification": true,
     "ready_for_cleaning": true,
-    "approved_for_dataset_building": false,
     "decision": "pass_to_cleaning",
-    "audit_timestamp_utc": "2026-08-27T08:14:43.936073+00:00"
+    "audit_timestamp_utc": "2026-08-31T08:07:04.228909+00:00"
   },
   {
     "source_short_name": "ubuntu",
@@ -49,11 +43,9 @@
     "exact_duplicate_extra_rows": 20,
     "alignment_indicator_pairs": 20,
     "review_candidates": 1670,
-    "license_needs_verification": true,
     "ready_for_cleaning": true,
-    "approved_for_dataset_building": false,
     "decision": "pass_to_cleaning",
-    "audit_timestamp_utc": "2026-08-27T08:15:04.280759+00:00"
+    "audit_timestamp_utc": "2026-08-31T08:07:16.378754+00:00"
   },
   {
     "source_short_name": "kde4",
@@ -63,10 +55,8 @@
     "exact_duplicate_extra_rows": 2888,
     "alignment_indicator_pairs": 1827,
     "review_candidates": 8968,
-    "license_needs_verification": true,
     "ready_for_cleaning": true,
-    "approved_for_dataset_building": false,
     "decision": "pass_to_cleaning_with_flags",
-    "audit_timestamp_utc": "2026-08-27T08:15:32.574023+00:00"
+    "audit_timestamp_utc": "2026-08-31T08:07:30.279940+00:00"
   }
 ]

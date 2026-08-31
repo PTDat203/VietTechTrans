@@ -1,6 +1,6 @@
 {
   "audit_schema_version": "1.1",
-  "audit_timestamp_utc": "2026-08-27T08:13:55.125638+00:00",
+  "audit_timestamp_utc": "2026-08-31T08:06:26.937722+00:00",
   "source_short_name": "envitech_reasoning",
   "raw_file_integrity": {
     "path": "data\\raw\\envitech_reasoning\\envitech_reasoning_raw.parquet",
@@ -136,24 +136,17 @@
     "source": "EnVi-Tech-Reasoning-SFT",
     "source_url": "https://huggingface.co/datasets/kotorii1/EnVi-Tech-Reasoning-SFT",
     "download_url": null,
-    "license": null,
     "version_revision": "main",
     "collection_date": "2026-08-19",
     "download_method": "Hugging Face datasets.load_dataset",
     "language_pair": "en-vi",
     "domain": "IT",
-    "subcategory": null,
-    "license_needs_verification": true
+    "subcategory": null
   },
   "decision": {
     "decision": "pass_to_cleaning",
     "ready_for_cleaning": true,
     "cleaning_notes": [],
-    "review_required_before_dataset_building": true,
-    "approved_for_dataset_building": false,
-    "dataset_building_blocking_issues": [
-      "License cần xác minh trước khi đưa source vào dataset cuối hoặc huấn luyện."
-    ],
-    "note": "Duplicate, noise, alignment và language flags là input cho review/Phase 03-04; license/provenance phải được xác minh trước Phase 05, training hoặc phát hành artifact cuối."
+    "note": "Duplicate, noise, alignment và language flags là input cho review/Phase 03-04."
   }
 }

@@ -13,6 +13,7 @@ data/splits/
 
 models/
 checkpoints/
+runs/
 wandb/
 mlruns/
 

@@ -1,0 +1,47 @@
+{
+  "protocol_version": "core_mt_baseline_v2",
+  "dataset_release": "phase05_release_v1",
+  "status": "complete_for_opus_mt_only",
+  "results": {
+    "en_to_vi": {
+      "model_id": "Helsinki-NLP/opus-mt-en-vi",
+      "resolved_revision": "989c9fb9ec63987901022baf0182dcec3e149be6",
+      "general_test": {
+        "chrF++": 52.11565313036366,
+        "sacreBLEU": 30.050171496566207,
+        "peak_process_rss_bytes": 871157760,
+        "latency_median_ms": 660.6713999062777,
+        "latency_p95_ms": 1101.204500067979
+      },
+      "it_test": {
+        "chrF++": 50.71495644166946,
+        "sacreBLEU": 31.60951448685866,
+        "peak_process_rss_bytes": 930766848,
+        "latency_median_ms": 365.7971997745335,
+        "latency_p95_ms": 610.0683002732694
+      }
+    },
+    "vi_to_en": {
+      "model_id": "Helsinki-NLP/opus-mt-vi-en",
+      "resolved_revision": "c8d2853e77f5fae31124d993e0b35176b1c8914e",
+      "general_test": {
+        "chrF++": 50.80152548024469,
+        "sacreBLEU": 21.25457574690409,
+        "peak_process_rss_bytes": 893333504,
+        "latency_median_ms": 508.12129999940225,
+        "latency_p95_ms": 805.9923999990133
+      },
+      "it_test": {
+        "chrF++": 49.249921054004744,
+        "sacreBLEU": 20.533409729309422,
+        "peak_process_rss_bytes": 969687040,
+        "latency_median_ms": 292.8433999986737,
+        "latency_p95_ms": 553.8472000007459
+      }
+    }
+  },
+  "notes": [
+    "Metrics are reported separately by test set; do not average General Test and IT Test.",
+    "EnViT5 and M2M-100 results are not present, so this is not a three-core comparison."
+  ]
+}

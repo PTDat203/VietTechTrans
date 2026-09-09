@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "experiment_family": "core_mt_baseline_v2",
+  "model_key": "envit5",
+  "provider": "VietAI",
+  "architecture": "T5 encoder-decoder",
+  "policy": "Use the official pretrained checkpoint only. Resolve main to an immutable commit SHA before loading and store that SHA in resolved_config.json.",
+  "directions": {
+    "en_to_vi": {
+      "model_id": "VietAI/envit5-translation",
+      "revision": "main",
+      "source_prefix": "en:",
+      "target_prefix": "vi:",
+      "prefix_reason": "The official model card supplies English source sentences with the en: task prefix and shows Vietnamese decoded outputs with vi:."
+    },
+    "vi_to_en": {
+      "model_id": "VietAI/envit5-translation",
+      "revision": "main",
+      "source_prefix": "vi:",
+      "target_prefix": "en:",
+      "prefix_reason": "The official model card supplies Vietnamese source sentences with the vi: task prefix and shows English decoded outputs with en:."
+    }
+  }
+}

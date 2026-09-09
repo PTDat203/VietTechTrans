@@ -1,13 +1,14 @@
 # VietTechTrans
 
-Nghiên cứu xây dựng hệ thống dịch máy **Anh ↔ Việt chạy offline**, ưu tiên miền IT. Dự án đánh giá ba mô hình lõi: **OPUS-MT, EnViT5 và M2M-100**, sau đó nghiên cứu domain adaptation, Knowledge Distillation (KD), quantization và benchmark triển khai offline.
+Corpus và baseline dịch máy Anh–Việt có thể tái lập cho miền IT. Phase 01–05
+chuẩn bị data release; Phase 06 so sánh các checkpoint pretrained trước khi có
+bất kỳ fine-tuning hoặc domain adaptation nào.
 
 ## Mục tiêu
 
 - Xây dựng corpus Anh–Việt miền IT có thể tái lập.
-- So sánh chất lượng, kích thước model, RAM và latency của ba CORE MT.
-- Đo riêng hiệu năng trên General Test và IT Test.
-- Tạo mô hình nhẹ hơn bằng KD và quantization mà vẫn phù hợp triển khai offline.
+- Phát hành IT Test và General Test độc lập với manifest, checksum và kiểm tra leakage.
+- Đo riêng chất lượng, RAM và latency của OPUS-MT, EnViT5 và M2M-100 trên hai test set.
 
 ## Pipeline
 
@@ -22,20 +23,14 @@ Data collection
 → IT filtering
 → Dataset building (train/validation/IT Test + independent General Test)
 → Baseline: OPUS-MT / EnViT5 / M2M-100
-→ Core MT comparison
-→ Domain adaptation
-→ Teacher + student selection
-→ Knowledge Distillation
-→ Quantization
-→ Offline benchmark
-→ Error analysis + thesis evidence
+→ CORE comparison
 ```
 
-> RAW data, technology candidate và IT-usable data là ba trạng thái khác nhau. Không chọn teacher trước khi hoàn thành comparison của ba CORE MT.
+> RAW data, technology candidate và IT-usable data là ba trạng thái khác nhau.
 
 ## Cài môi trường
 
-```bash
+```powershell
 conda env create -f environment.yml
 conda activate envi-it-mt
 jupyter lab
@@ -43,10 +38,14 @@ jupyter lab
 
 Hoặc dùng pip:
 
-```bash
+```powershell
 pip install -r requirements.txt
 jupyter lab
 ```
+
+Môi trường đã kiểm tra là Windows 11 x64, Python 3.14.6 và PyTorch CPU
+2.14.0. Hướng dẫn đầy đủ, điều kiện Phase 05, checkpoint và lệnh chạy nằm ở
+[REPRODUCIBILITY.md](REPRODUCIBILITY.md).
 
 ## Cấu trúc hiện tại
 
@@ -62,6 +61,14 @@ notebooks/
     └── 01_05_kde_download.ipynb
 └── 05_dataset_building/
     └── 05_01_build_dataset.ipynb
+└── 06_core_mt/
+    ├── 06_01_shared_core_setup.ipynb
+    ├── 06_02_opus_mt_baseline.ipynb
+    ├── 06_03_opus_mt_baseline_vi_to_en.ipynb
+    ├── 06_04_envit5_baseline_en_to_vi.ipynb
+    └── 06_05_envit5_baseline_vi_to_en.ipynb
+src/core_mt/                     # Shared protocol, runner và model adapters
+tests/                           # Unit tests không tải checkpoint
 environment.yml
 requirements.txt
 ```
@@ -176,8 +183,10 @@ Split IT dùng seed `42`, target ratio 80/10/10 và group theo câu tiếng Anh 
 - [x] Phase 03: Data cleaning
 - [x] Phase 04: IT filtering (đã xử lý audit flags, hoàn tất manual review và mở gate Phase 05)
 - [x] Phase 05: dataset release, General Test and protocol locked
-- [ ] Phase 06: CORE MT baseline — xem [pipeline](PHASE_06_CORE_MT.md) và `core MT pipeline.svg`
-- [ ] Domain adaptation / KD / quantization / offline deployment
+- [x] Phase 06A: shared CORE MT layer
+- [x] Phase 06B: OPUS-MT baseline EN→VI và VI→EN
+- [ ] Phase 06C: EnViT5 baseline (code/notebook sẵn sàng; chưa có result cuối)
+- [ ] Phase 06D: M2M-100 baseline và CORE comparison
 
 English-Vietnamese Machine Translation for IT Domain
 

@@ -1,0 +1,41 @@
+{
+  "schema_version": "2.0",
+  "protocol_version": "core_mt_baseline_v2",
+  "status": "frozen_before_baseline",
+  "supersedes": "core_mt_baseline_v1",
+  "change_reason": "Score quality once on every released sentence; measure latency on a fixed deterministic subset instead of repeating full corpora.",
+  "dataset_release": "phase05_release_v1",
+  "directions": ["en_to_vi", "vi_to_en"],
+  "evaluation_sets": ["general_test", "it_test"],
+  "metrics": {
+    "primary": {"name": "chrF++", "beta": 2, "word_order": 2},
+    "secondary": {"name": "sacreBLEU", "tokenizer": "none", "case": "mixed", "effective_order": false},
+    "reporting_rule": "Report each metric separately for each model, direction, and test set. Do not average General Test and IT Test."
+  },
+  "normalization": {
+    "input": "Use released text exactly; do not apply corpus-cleaning rules after release.",
+    "output": "Score raw decoded model text after removing only framework-added special tokens and surrounding whitespace.",
+    "reference": "Use released reference text exactly."
+  },
+  "inference": {
+    "seed": 42,
+    "num_beams": 5,
+    "max_new_tokens": 256,
+    "batch_size": 1,
+    "model_revision": "Resolve the official requested revision to an immutable commit SHA before inference.",
+    "generation_overrides": "No model-specific quality tuning beyond mandatory model-interface settings."
+  },
+  "benchmark": {
+    "quality_passes": 1,
+    "quality_scope": "Score every released sentence exactly once per test set.",
+    "warmup_sentences": 32,
+    "latency_sample_size": 128,
+    "latency_sampling": "Select up to 128 rows deterministically by SHA-256(seed:row_id), without replacement, independently for each test set.",
+    "latency_repeats": 5,
+    "latency_unit": "milliseconds per sentence",
+    "ram": "Peak process RSS across the full quality pass and latency probe, recorded separately for each model/direction/test set.",
+    "model_size": "Serialized loaded artifact bytes and parameter count where available."
+  },
+  "artifacts": ["resolved_config.json", "predictions.jsonl", "metrics.json", "benchmark.json", "environment.txt", "run.log"],
+  "selection_policy": "Teacher/student or adaptation candidates may be selected only from the complete frozen comparison table for this protocol version."
+}

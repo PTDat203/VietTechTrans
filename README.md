@@ -47,6 +47,10 @@ Môi trường đã kiểm tra là Windows 11 x64, Python 3.14.6 và PyTorch CPU
 2.14.0. Hướng dẫn đầy đủ, điều kiện Phase 05, checkpoint và lệnh chạy nằm ở
 [REPRODUCIBILITY.md](REPRODUCIBILITY.md).
 
+Máy mới không thể chạy baseline chỉ bằng `git pull`: cần tải thêm Phase 05
+release bundle từ GitHub Release rồi giải nén vào project. Xem phần “Phase 05
+release bundle” trong [REPRODUCIBILITY.md](REPRODUCIBILITY.md).
+
 ## Cấu trúc hiện tại
 
 ```text

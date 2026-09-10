@@ -37,20 +37,27 @@ python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
-Xác minh code trước khi tải model:
+## Phase 05 release bundle
+
+Git chỉ chứa source code, report nhỏ và quyết định manual review. Các split
+Phase 05 không nằm trong Git vì khoảng 189 MB. Máy mới cần tải asset
+`phase05_release_v1.zip` từ GitHub Release `phase05-release-v1`.
+
+Sau khi tải, chạy tại root project:
 
 ```powershell
+python tools\verify_phase05_release.py --archive .\phase05_release_v1.zip
+Expand-Archive .\phase05_release_v1.zip -DestinationPath .
+python tools\validate_phase05_gate.py
 python -m unittest discover -s tests -p "test_*.py"
 python tools\check_core_shared.py
 ```
 
-## Data prerequisite
+Checksum toàn bộ ZIP được ghi tại
+`reports/phase05_release_v1_asset.sha256`; checksum từng file nằm trong ZIP.
+Không chạy model khi `PHASE_05_GATE=FAIL`.
 
-Các thư mục `data/raw`, `data/interim`, `data/processed`, `data/it_corpus` và
-`data/splits` không được Git commit. Máy mới phải tự chạy notebook Phase 01–05
-hoặc phục hồi đúng Phase 05 release từ artifact đã được lưu trữ riêng.
-
-Đặc biệt, Phase 06 cần hai test set sealed:
+Bundle sẽ tạo hai thư mục sealed:
 
 ```text
 data/processed/general_test_flores200_devtest_v1/general_test.jsonl
@@ -59,6 +66,15 @@ data/processed/it_en_vi_v1/it_test.jsonl
 
 Hãy chạy `python tools\validate_phase05_gate.py`. Lệnh phải trả về
 `PHASE_05_GATE=PASS`; nếu thiếu data/checksum không đúng, dừng tại đây.
+
+## Khi cần sửa lại Phase 01–05
+
+Raw, interim và phần lớn Phase 04 artifact vẫn không được commit do dung lượng.
+Tải lại năm nguồn theo notebook Phase 01, rồi chạy lần lượt notebook Phase
+02, 03, 04 và 05. Các file
+`data/it_corpus/<source>/manual_review_decisions.csv` được commit để giữ đúng
+quyết định review thủ công đã dùng cho release này. Không thay đổi chúng nếu
+muốn tái tạo `phase05_release_v1`.
 
 ## Chạy baseline
 
@@ -99,3 +115,6 @@ OPUS-MT EN→VI và VI→EN hoàn thành theo `core_mt_baseline_v2`. Bản tóm 
 EnViT5 và M2M-100 chưa có baseline cuối trong Git tại thời điểm tài liệu này
 được cập nhật. Không dùng kết quả OPUS-MT để chọn model thắng hoặc thực hiện
 domain adaptation trước khi đủ bảng so sánh ba CORE MT.
+
+Thành viên dùng IDE Antigravity và Claude xem hướng dẫn thao tác tại
+[ANTIGRAVITY_CLAUDE_HANDOFF.md](ANTIGRAVITY_CLAUDE_HANDOFF.md).

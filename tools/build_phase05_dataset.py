@@ -140,7 +140,11 @@ def save_phase05_outputs(evidence, figures=None):
     }
     card = template.read_text(encoding="utf-8")
     for placeholder, value in replacements.items(): card = card.replace(placeholder, value)
-    p=FINAL/"DATASET_CARD.md"; p.write_text(card,encoding="utf-8"); reports.append(p)
+    # Artifact này có checksum được version-control; luôn ghi LF để checkout
+    # Windows/macOS/Linux có cùng byte stream khi .gitattributes áp dụng.
+    p=FINAL/"DATASET_CARD.md"
+    with p.open("w", encoding="utf-8", newline="\n") as handle: handle.write(card)
+    reports.append(p)
     if figures:
         for name, fig in figures.items(): p=FINAL/f"{name}.html"; fig.write_html(p,include_plotlyjs="cdn"); reports.append(p)
     p=FINAL/"final_report_manifest.json"; p.write_text(json.dumps({"manifest_schema_version":"1.0","dataset_version":VERSION,"split_seed":SEED,"artifacts":[{"path":z.relative_to(ROOT).as_posix(),"bytes":z.stat().st_size,"sha256":sha(z)} for z in reports]},ensure_ascii=False,indent=2),encoding="utf-8")

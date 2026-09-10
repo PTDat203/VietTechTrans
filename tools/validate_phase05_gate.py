@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 IT = ROOT / "data" / "processed" / "it_en_vi_v1"
 GENERAL = ROOT / "data" / "processed" / "general_test_flores200_devtest_v1"
-PROTOCOL = ROOT / "configs" / "evaluation_protocol_v1.json"
+PROTOCOL = ROOT / "configs" / "evaluation_protocol_v2.json"
 FINAL_REPORT = ROOT / "data" / "final_report" / "it_en_vi_v1" / "final_report_manifest.json"
 
 

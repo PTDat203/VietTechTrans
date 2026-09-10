@@ -8,12 +8,18 @@ __pycache__/
 data/raw/
 data/interim/
 data/processed/
-data/it_corpus/
+# Phase 04 artifacts are large, except human decisions required to reproduce
+# the Phase 05 release.
+data/it_corpus/*
+!data/it_corpus/*/
+data/it_corpus/*/*
+!data/it_corpus/*/manual_review_decisions.csv
 data/splits/
 
 models/
 checkpoints/
 runs/
+releases/
 wandb/
 mlruns/
 

@@ -1,7 +1,7 @@
 {
   "manifest_schema_version": "1.1",
   "dataset_version": "it_en_vi_v1",
-  "refreshed_at_utc": "2026-08-31T17:34:27.202949+00:00",
+  "refreshed_at_utc": "2026-09-10T10:45:54.074531+00:00",
   "artifacts": [
     {
       "path": "data/final_report/it_en_vi_v1/corpus_profile.csv",
@@ -20,8 +20,8 @@
     },
     {
       "path": "data/final_report/it_en_vi_v1/dataset_card.md",
-      "bytes": 3261,
-      "sha256": "0d46c39c1aed1fbdec62927168f2c04a6ab7af1e028ea854e92e61eb5cdec0a8"
+      "bytes": 3225,
+      "sha256": "74c7ea51dcf51ace88285db650983f02acc8c7d5c3873ce2e89868992e779453"
     },
     {
       "path": "data/final_report/it_en_vi_v1/global_dedup_report.json",

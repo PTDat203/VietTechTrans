@@ -1,0 +1,4 @@
+# Phase 05 stores byte-level checksums for this tracked report artifact.
+# Keep the checkout byte stream stable across Windows/macOS/Linux.
+DATASET_CARD.md text eol=lf
+data/final_report/it_en_vi_v1/dataset_card.md text eol=lf

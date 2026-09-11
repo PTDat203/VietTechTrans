@@ -1,0 +1,6 @@
+﻿dataset_row_id,split,source_short_name,it_subdomain,en_clean,vi_clean,reviewer_it_relevant,reviewer_translation_aligned,reviewer_notes
+00002551b2afaa45b3d2bda4ab0ce101b5b4cd974512468dcf287149248a6e30,train,tech_viet_translation,ai_ml;hardware,"Black Friday Tech Deals Live: Latest PC hardware, CPU, GPU, SSD, and laptop sales still available today","Ưu đãi công nghệ Thứ Sáu Đen trực tiếp: Doanh số bán phần cứng, CPU, GPU, SSD và máy tính xách tay mới nhất của PC vẫn có sẵn cho đến ngày nay",,,
+0000a4dce19ef688b86d08f6d1e9a6f3c02d0ec601795774fb6c6a9742311edd,train,kde4,coding,Encoding,Bộ ký tự,,,
+00010b84c19ab190d747a0f98941e3bf61c06e67d37c586ba72969fbe8a0ed89,train,tech_viet_translation,documentation,ESA finds Martian water reservoir that’s two-miles deep,ESA tìm thấy hồ chứa nước sao Hỏa sâu 2 dặm,,,
+00011c5a39e4f82f3391d4b3e475b7517b43cd57c068e049193bc5972d31d9fd,train,tech_viet_translation,ui_localization,These new iPhone screen protector kits make applying one so much easier,Những bộ bảo vệ màn hình iPhone mới này giúp việc áp dụng bộ bảo vệ màn hình trở nên dễ dàng hơn rất nhiều,,,
+00016db7c01ad957de0ae3a4383c7744dd51dbe1f7eae94874a621cfbc371c3d,train,kde4,ui_localization,You did not provide a backup suffix or prefix. Using default suffix: '~ ',Bạn chưa cung cấp hậu tố hoặc tiền tố sao lưu nên dùng hậu tố mặc định: « ~ »,,,

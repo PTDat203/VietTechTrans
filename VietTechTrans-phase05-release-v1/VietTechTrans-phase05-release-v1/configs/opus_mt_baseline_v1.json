@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "experiment_family": "core_mt_baseline_v1",
+  "model_key": "opus_mt",
+  "provider": "Helsinki-NLP",
+  "architecture": "Marian encoder-decoder",
+  "policy": "Use official pretrained checkpoints only. Resolve main to an immutable commit SHA before loading and store that SHA in resolved_config.json.",
+  "directions": {
+    "en_to_vi": {
+      "model_id": "Helsinki-NLP/opus-mt-en-vi",
+      "revision": "main",
+      "source_prefix": ">>vie<<",
+      "prefix_reason": "The official eng-vie model card requires a sentence-initial target-language token; Vietnamese target ID is vie."
+    },
+    "vi_to_en": {
+      "model_id": "Helsinki-NLP/opus-mt-vi-en",
+      "revision": "main",
+      "source_prefix": "",
+      "prefix_reason": "The official vie-eng model card lists one English target language and does not specify a required target-language prefix."
+    }
+  }
+}

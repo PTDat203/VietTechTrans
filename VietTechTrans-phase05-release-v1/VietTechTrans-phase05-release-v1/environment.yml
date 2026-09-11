@@ -1,0 +1,28 @@
+name: envi-it-mt
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.14.6
+  - pip
+  - jupyterlab=4.5.9
+  - ipykernel=6.31.0
+  - nbformat=5.10.4
+  - nbconvert=7.17.1
+  - matplotlib=3.11.0
+  - pip:
+      # Windows CPU environment used for the recorded Phase 01–06 runs.
+      - datasets==5.0.1
+      - pandas==3.0.5
+      - httpx==0.28.1
+      - mtdata==0.4.3
+      - pyarrow==25.0.1
+      # Phase 05 interactive evidence charts.
+      - plotly==6.1.2
+      # Phase 06 — OPUS-MT and EnViT5 pretrained CPU baselines.
+      - transformers==4.57.6
+      - torch==2.14.0
+      - huggingface_hub==0.36.2
+      - sacrebleu==2.6.0
+      - psutil==7.2.2
+      - sentencepiece==0.2.2

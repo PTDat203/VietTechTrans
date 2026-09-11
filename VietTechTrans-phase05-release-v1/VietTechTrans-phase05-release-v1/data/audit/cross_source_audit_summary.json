@@ -1,0 +1,62 @@
+[
+  {
+    "source_short_name": "envitech_reasoning",
+    "raw_rows": 15115,
+    "blank_or_null_pairs": 0,
+    "encoding_issue_pairs": 0,
+    "exact_duplicate_extra_rows": 1425,
+    "alignment_indicator_pairs": 0,
+    "review_candidates": 2465,
+    "ready_for_cleaning": true,
+    "decision": "pass_to_cleaning",
+    "audit_timestamp_utc": "2026-08-31T08:06:26.937722+00:00"
+  },
+  {
+    "source_short_name": "tech_viet_translation",
+    "raw_rows": 100767,
+    "blank_or_null_pairs": 0,
+    "encoding_issue_pairs": 0,
+    "exact_duplicate_extra_rows": 306,
+    "alignment_indicator_pairs": 130,
+    "review_candidates": 6341,
+    "ready_for_cleaning": true,
+    "decision": "pass_to_cleaning",
+    "audit_timestamp_utc": "2026-08-31T08:06:52.133093+00:00"
+  },
+  {
+    "source_short_name": "gnome",
+    "raw_rows": 149,
+    "blank_or_null_pairs": 0,
+    "encoding_issue_pairs": 0,
+    "exact_duplicate_extra_rows": 1,
+    "alignment_indicator_pairs": 0,
+    "review_candidates": 17,
+    "ready_for_cleaning": true,
+    "decision": "pass_to_cleaning",
+    "audit_timestamp_utc": "2026-08-31T08:07:04.228909+00:00"
+  },
+  {
+    "source_short_name": "ubuntu",
+    "raw_rows": 5056,
+    "blank_or_null_pairs": 0,
+    "encoding_issue_pairs": 0,
+    "exact_duplicate_extra_rows": 20,
+    "alignment_indicator_pairs": 20,
+    "review_candidates": 1670,
+    "ready_for_cleaning": true,
+    "decision": "pass_to_cleaning",
+    "audit_timestamp_utc": "2026-08-31T08:07:16.378754+00:00"
+  },
+  {
+    "source_short_name": "kde4",
+    "raw_rows": 42782,
+    "blank_or_null_pairs": 0,
+    "encoding_issue_pairs": 6,
+    "exact_duplicate_extra_rows": 2888,
+    "alignment_indicator_pairs": 1827,
+    "review_candidates": 8968,
+    "ready_for_cleaning": true,
+    "decision": "pass_to_cleaning_with_flags",
+    "audit_timestamp_utc": "2026-08-31T08:07:30.279940+00:00"
+  }
+]

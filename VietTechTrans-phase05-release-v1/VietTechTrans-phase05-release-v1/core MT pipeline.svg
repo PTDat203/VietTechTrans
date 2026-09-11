@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1460" viewBox="0 0 1800 1460" role="img" aria-labelledby="title desc">
+  <title id="title">CORE MT baseline pipeline: shared stages and model-specific branches</title>
+  <desc id="desc">A flowchart for OPUS-MT, EnViT5 and M2M-100 baseline evaluation before IT domain adaptation.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 Z" fill="#52606d"/></marker>
+    <style>
+      .bg { fill:#f7f9fc; } .title { font:700 32px Arial,sans-serif; fill:#172b4d; } .sub { font:400 18px Arial,sans-serif; fill:#52606d; }
+      .h { font:700 20px Arial,sans-serif; fill:#172b4d; } .t { font:400 17px Arial,sans-serif; fill:#172b4d; } .small { font:400 15px Arial,sans-serif; fill:#42526e; }
+      .common { fill:#e8f2ff; stroke:#3578c7; stroke-width:2; } .branch-opus { fill:#fff1e5; stroke:#d66b1d; stroke-width:2; }
+      .branch-envit { fill:#e8f7ef; stroke:#2d8a57; stroke-width:2; } .branch-m2m { fill:#f3ecff; stroke:#7b50b5; stroke-width:2; }
+      .end { fill:#eef4f0; stroke:#39724f; stroke-width:2; } .warn { fill:#fff8db; stroke:#bf8b18; stroke-width:2; }
+      .line { stroke:#52606d; stroke-width:2.5; fill:none; marker-end:url(#arrow); } .dash { stroke:#8a94a6; stroke-width:2; fill:none; stroke-dasharray:7 6; }
+      .tag { font:700 14px Arial,sans-serif; fill:#fff; } .legend { font:400 15px Arial,sans-serif; fill:#344563; }
+    </style>
+  </defs>
+  <rect class="bg" width="1800" height="1460"/>
+  <text class="title" x="900" y="55" text-anchor="middle">PHASE CORE MT — PRETRAINED BASELINE TRƯỚC DOMAIN ADAPTATION</text>
+  <text class="sub" x="900" y="84" text-anchor="middle">Khối xanh: dùng chung cho cả ba CORE MT · Khối màu: adapter/checkpoint riêng theo model</text>
+
+  <rect class="warn" x="490" y="115" rx="15" width="820" height="86"/>
+  <text class="h" x="900" y="149" text-anchor="middle">Điều kiện vào phase: Phase 05 release gate PASS</text>
+  <text class="t" x="900" y="178" text-anchor="middle">IT corpus sealed · General Test sealed · protocol đánh giá đã frozen</text>
+
+  <path class="line" d="M900 201 L900 244"/>
+  <rect class="common" x="390" y="245" rx="16" width="1020" height="110"/>
+  <rect x="410" y="265" rx="8" width="180" height="26" fill="#3578c7"/><text class="tag" x="500" y="284" text-anchor="middle">BƯỚC CHUNG</text>
+  <text class="h" x="900" y="293" text-anchor="middle">Thiết lập baseline công bằng</text>
+  <text class="t" x="900" y="323" text-anchor="middle">Chỉ checkpoint pretrained chính thức · không fine-tune · không đọc IT train/validation</text>
+  <text class="small" x="900" y="346" text-anchor="middle">Khóa seed, beam, max length, batch size, metric, warm-up và cách đo RAM/latency</text>
+
+  <path class="line" d="M900 355 L900 398"/>
+  <rect class="common" x="390" y="399" rx="16" width="1020" height="92"/>
+  <text class="h" x="900" y="437" text-anchor="middle">Chọn chiều dịch chung: EN→VI hoặc VI→EN</text>
+  <text class="t" x="900" y="467" text-anchor="middle">Cùng câu nguồn/reference, cùng General Test và IT Test cho mọi model</text>
+
+  <path class="line" d="M900 491 L900 535 L300 535 L300 583"/>
+  <path class="line" d="M900 535 L900 583"/>
+  <path class="line" d="M900 535 L1500 535 L1500 583"/>
+
+  <rect class="branch-opus" x="80" y="585" rx="16" width="440" height="230"/>
+  <rect x="102" y="606" rx="8" width="145" height="26" fill="#d66b1d"/><text class="tag" x="175" y="625" text-anchor="middle">NHÁNH OPUS-MT</text>
+  <text class="h" x="300" y="666" text-anchor="middle">Checkpoint bilingual theo direction</text>
+  <text class="t" x="300" y="700" text-anchor="middle">EN→VI: opus-mt-en-vi</text>
+  <text class="t" x="300" y="727" text-anchor="middle">VI→EN: opus-mt-vi-en</text>
+  <line x1="120" y1="747" x2="480" y2="747" stroke="#d66b1d" stroke-width="1.5"/>
+  <text class="t" x="300" y="780" text-anchor="middle">Adapter riêng: target token</text>
+  <text class="small" x="300" y="803" text-anchor="middle">&gt;&gt;vie&lt;&lt; hoặc &gt;&gt;eng&lt;&lt; + câu nguồn</text>
+
+  <rect class="branch-envit" x="680" y="585" rx="16" width="440" height="230"/>
+  <rect x="702" y="606" rx="8" width="138" height="26" fill="#2d8a57"/><text class="tag" x="771" y="625" text-anchor="middle">NHÁNH ENViT5</text>
+  <text class="h" x="900" y="666" text-anchor="middle">Một checkpoint bilingual</text>
+  <text class="t" x="900" y="700" text-anchor="middle">VietAI/envit5-translation</text>
+  <text class="small" x="900" y="727" text-anchor="middle">T5 text-to-text cho cả hai direction</text>
+  <line x1="720" y1="747" x2="1080" y2="747" stroke="#2d8a57" stroke-width="1.5"/>
+  <text class="t" x="900" y="780" text-anchor="middle">Adapter riêng: source prefix</text>
+  <text class="small" x="900" y="803" text-anchor="middle">en: + câu Anh hoặc vi: + câu Việt</text>
+
+  <rect class="branch-m2m" x="1280" y="585" rx="16" width="440" height="230"/>
+  <rect x="1302" y="606" rx="8" width="152" height="26" fill="#7b50b5"/><text class="tag" x="1378" y="625" text-anchor="middle">NHÁNH M2M-100</text>
+  <text class="h" x="1500" y="666" text-anchor="middle">Một checkpoint multilingual</text>
+  <text class="t" x="1500" y="700" text-anchor="middle">facebook/m2m100_418M</text>
+  <text class="small" x="1500" y="727" text-anchor="middle">Many-to-many, 100 ngôn ngữ</text>
+  <line x1="1320" y1="747" x2="1680" y2="747" stroke="#7b50b5" stroke-width="1.5"/>
+  <text class="t" x="1500" y="780" text-anchor="middle">Adapter riêng: language code</text>
+  <text class="small" x="1500" y="803" text-anchor="middle">src_lang + forced BOS token của target</text>
+
+  <path class="line" d="M300 815 L300 862 L900 862 L900 910"/>
+  <path class="line" d="M900 815 L900 910"/>
+  <path class="line" d="M1500 815 L1500 862 L900 862"/>
+  <rect class="common" x="390" y="912" rx="16" width="1020" height="104"/>
+  <rect x="410" y="932" rx="8" width="180" height="26" fill="#3578c7"/><text class="tag" x="500" y="951" text-anchor="middle">BƯỚC CHUNG</text>
+  <text class="h" x="900" y="963" text-anchor="middle">Inference theo protocol chung</text>
+  <text class="t" x="900" y="990" text-anchor="middle">Load tokenizer + model · dịch raw input · bỏ special token framework và trim whitespace</text>
+
+  <path class="line" d="M900 1016 L900 1059"/>
+  <rect class="common" x="390" y="1060" rx="16" width="1020" height="128"/>
+  <text class="h" x="900" y="1096" text-anchor="middle">Đánh giá riêng hai test set</text>
+  <rect x="460" y="1120" rx="10" width="370" height="45" fill="#d7eaff" stroke="#3578c7"/><text class="t" x="645" y="1149" text-anchor="middle">General Test: năng lực dịch tổng quát</text>
+  <rect x="970" y="1120" rx="10" width="370" height="45" fill="#d7eaff" stroke="#3578c7"/><text class="t" x="1155" y="1149" text-anchor="middle">IT Test: transfer sang miền IT</text>
+
+  <path class="line" d="M900 1188 L900 1231"/>
+  <rect class="common" x="390" y="1232" rx="16" width="1020" height="102"/>
+  <text class="h" x="900" y="1268" text-anchor="middle">Ghi bằng chứng cho từng model × direction × test set</text>
+  <text class="t" x="900" y="1296" text-anchor="middle">chrF++ · SacreBLEU · model size · peak RAM · median latency · p95 latency</text>
+  <text class="small" x="900" y="1320" text-anchor="middle">Lưu prediction, revision checkpoint, config, hardware, environment và log</text>
+
+  <path class="line" d="M900 1334 L900 1372"/>
+  <rect class="end" x="390" y="1373" rx="16" width="1020" height="62"/>
+  <text class="h" x="900" y="1411" text-anchor="middle">CORE comparison: 3 model × 2 direction × 2 test set = 12 ô độc lập → mới sẵn sàng Domain Adaptation</text>
+
+  <rect x="75" y="1368" width="230" height="61" rx="10" fill="#fff" stroke="#c1c7d0"/>
+  <rect x="92" y="1383" width="22" height="18" fill="#e8f2ff" stroke="#3578c7"/><text class="legend" x="126" y="1398">Bước chung</text>
+  <rect x="92" y="1407" width="22" height="18" fill="#fff1e5" stroke="#d66b1d"/><text class="legend" x="126" y="1422">Nhánh riêng</text>
+</svg>

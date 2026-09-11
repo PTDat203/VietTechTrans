@@ -1,0 +1,152 @@
+{
+  "audit_schema_version": "1.1",
+  "audit_timestamp_utc": "2026-08-31T08:07:30.279940+00:00",
+  "source_short_name": "kde4",
+  "raw_file_integrity": {
+    "path": "data\\raw\\kde4\\kde4_raw.parquet",
+    "bytes": 1551207,
+    "sha256": "0171299fe73223aea450e7667d388940b76da3013c6e4c20c91ba5e7647fc521"
+  },
+  "schema": {
+    "row_count": 42782,
+    "column_count": 2,
+    "raw_columns": [
+      "en",
+      "vi"
+    ],
+    "raw_dtypes": {
+      "en": "str",
+      "vi": "str"
+    },
+    "text_column_mapping_for_audit_only": {
+      "en": "en",
+      "vi": "vi"
+    },
+    "required_text_columns_present": true
+  },
+  "missing_values": {
+    "en_null": 0,
+    "vi_null": 0,
+    "en_blank_or_null": 0,
+    "vi_blank_or_null": 0,
+    "pair_with_blank_or_null_side": 0
+  },
+  "encoding": {
+    "en_replacement_or_control_char": 3,
+    "vi_replacement_or_control_char": 3,
+    "pair_with_encoding_issue": 6
+  },
+  "language_heuristics": {
+    "en_contains_vietnamese_diacritic": 16,
+    "vi_without_diacritic_but_has_english_function_word": 221,
+    "pair_language_suspect": 231
+  },
+  "duplicates": {
+    "rows_in_exact_duplicate_groups": 4329,
+    "extra_exact_duplicate_rows": 2888,
+    "rows_in_duplicate_en_groups": 10984,
+    "rows_in_duplicate_vi_groups": 17940,
+    "identical_nonempty_en_vi_pairs": 1342
+  },
+  "length_statistics": {
+    "en_char_count": {
+      "count": 42782.0,
+      "mean": 29.99086064232621,
+      "std": 64.64260987673691,
+      "min": 1.0,
+      "1%": 3.0,
+      "5%": 4.0,
+      "25%": 9.0,
+      "50%": 15.0,
+      "75%": 26.0,
+      "95%": 103.0,
+      "99%": 281.0,
+      "max": 2387.0
+    },
+    "vi_char_count": {
+      "count": 42782.0,
+      "mean": 30.288088448412886,
+      "std": 64.13494987644404,
+      "min": 1.0,
+      "1%": 3.0,
+      "5%": 4.0,
+      "25%": 9.0,
+      "50%": 16.0,
+      "75%": 28.0,
+      "95%": 97.0,
+      "99%": 282.0,
+      "max": 2387.0
+    },
+    "length_ratio_vi_en": {
+      "count": 42782.0,
+      "mean": 1.295826750547704,
+      "std": 1.7148556185368573,
+      "min": 0.00744047619047619,
+      "1%": 0.09302325581395349,
+      "5%": 0.3333333333333333,
+      "25%": 0.8181818181818182,
+      "50%": 1.0204081632653061,
+      "75%": 1.3333333333333333,
+      "95%": 2.7142857142857144,
+      "99%": 6.5,
+      "max": 132.5
+    }
+  },
+  "alignment_indicators": {
+    "identical_nonempty_pair": 1342,
+    "extreme_length_ratio_lt_0_20_or_gt_5_00": 1827,
+    "very_long_pair_over_1000_chars_on_either_side": 28,
+    "language_suspect_pair": 231
+  },
+  "noise": {
+    "url": {
+      "en_count": 76,
+      "vi_count": 70,
+      "pair_count": 82
+    },
+    "markup_or_html_entity": {
+      "en_count": 42,
+      "vi_count": 67,
+      "pair_count": 80
+    },
+    "windows_or_unix_file_path": {
+      "en_count": 8,
+      "vi_count": 6,
+      "pair_count": 13
+    },
+    "placeholder": {
+      "en_count": 134,
+      "vi_count": 108,
+      "pair_count": 137
+    },
+    "ui_fragment": {
+      "en_count": 1577,
+      "vi_count": 73,
+      "pair_count": 1618
+    }
+  },
+  "manual_review": {
+    "flagged_candidate_count": 8968,
+    "random_sample_size": 30,
+    "random_sample_seed": 42
+  },
+  "provenance": {
+    "source": "KDE4",
+    "source_url": "https://opus.nlpl.eu/KDE4",
+    "download_url": "https://object.pouta.csc.fi/OPUS-KDE4/v2/moses/en-vi.txt.zip",
+    "version_revision": "v2",
+    "collection_date": "2026-08-19",
+    "download_method": "OPUS direct download - Moses ZIP",
+    "language_pair": "en-vi",
+    "domain": "Software Localization",
+    "subcategory": "KDE software localization"
+  },
+  "decision": {
+    "decision": "pass_to_cleaning_with_flags",
+    "ready_for_cleaning": true,
+    "cleaning_notes": [
+      "Có ký tự replacement/control để Phase 03 loại theo rule."
+    ],
+    "note": "Duplicate, noise, alignment và language flags là input cho review/Phase 03-04."
+  }
+}

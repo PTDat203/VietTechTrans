@@ -1,0 +1,119 @@
+{
+  "release_schema_version": "1.0",
+  "release_version": "phase05_release_v1",
+  "created_at_utc": "2026-09-10T10:47:00.727280+00:00",
+  "source_revision": "cb494cd1ccb9f64fb47bb29632204b5e967b4d8c",
+  "extraction_root": "repository root",
+  "files": [
+    {
+      "path": "data/processed/general_test_flores200_devtest_v1/dataset_manifest.json",
+      "bytes": 1603,
+      "sha256": "2edfdff6109b0235ec62224d64d88c75e4a3fb5bfea24e10add0495704d6096e"
+    },
+    {
+      "path": "data/processed/general_test_flores200_devtest_v1/general_test.csv",
+      "bytes": 391270,
+      "sha256": "2584d1b78aaf149ddf2cbe708ab9dbee3f60fdb028d8d06547521c51730570c0"
+    },
+    {
+      "path": "data/processed/general_test_flores200_devtest_v1/general_test.jsonl",
+      "bytes": 429193,
+      "sha256": "f99101b251c8163e75f5fac20ab1298c38e848b1557c605ec66077122973533e"
+    },
+    {
+      "path": "data/processed/general_test_flores200_devtest_v1/leakage_report.json",
+      "bytes": 426,
+      "sha256": "ddcb49a843140b519e745a16491917ca6bb076a9cd56cf1b6eded55d8ea092b6"
+    },
+    {
+      "path": "data/processed/it_en_vi_v1/DATASET_CARD.md",
+      "bytes": 2101,
+      "sha256": "e88677a2704ca37f549c5be8941c76655f6c8ec35c5094c803348f78c9e23bfa"
+    },
+    {
+      "path": "data/processed/it_en_vi_v1/corpus_profile.json",
+      "bytes": 4653,
+      "sha256": "23c65a143aada535d232a896099309f36c96e69f289a1ea26b1e37b6142c0023"
+    },
+    {
+      "path": "data/processed/it_en_vi_v1/data_attrition_funnel.json",
+      "bytes": 303,
+      "sha256": "14af00189901f54b29be866ee77a60d9a9938588e189ef0098f44de89e0bead1"
+    },
+    {
+      "path": "data/processed/it_en_vi_v1/data_attrition_funnel.png",
+      "bytes": 48390,
+      "sha256": "6961dc41e48deb1fdc80c6e3991f1b8a26866a08b393e4bdadbe846dd550bc5a"
+    },
+    {
+      "path": "data/processed/it_en_vi_v1/dataset_manifest.json",
+      "bytes": 1616,
+      "sha256": "7972fca08b9e7843a18c521e0c27e01e025fc4230448ec6cae9f85d665386489"
+    },
+    {
+      "path": "data/processed/it_en_vi_v1/dataset_report.json",
+      "bytes": 3215,
+      "sha256": "17a491b762555b68734cd28d1d3796a284678bb9787e6c65932febc6595edaa4"
+    },
+    {
+      "path": "data/processed/it_en_vi_v1/global_duplicates_removed.parquet",
+      "bytes": 77909,
+      "sha256": "c963fa5e6194c9228a19a14437a8f0f9682669a6a018a99b60e7dc129bd623fa"
+    },
+    {
+      "path": "data/processed/it_en_vi_v1/human_validation_sanity_sample_5.csv",
+      "bytes": 1387,
+      "sha256": "979c531750b8789c92ac68e4a1ac9f1be0239a2bed879e556b03beee99144f66"
+    },
+    {
+      "path": "data/processed/it_en_vi_v1/it_test.jsonl",
+      "bytes": 7905204,
+      "sha256": "a2420a4414b7886155f12ca48cef5a80f92ae6339a149ab8dfc3cafd645d182c"
+    },
+    {
+      "path": "data/processed/it_en_vi_v1/it_test.parquet",
+      "bytes": 4234210,
+      "sha256": "81df784fa5684f8907b51fbdc89cd1b9134c71948a458c1fa626836987063335"
+    },
+    {
+      "path": "data/processed/it_en_vi_v1/leakage_report.json",
+      "bytes": 731,
+      "sha256": "b4ac04f1ada3386e07832a81f9a15d50b2a78572b69142ad8e148a50771c22e7"
+    },
+    {
+      "path": "data/processed/it_en_vi_v1/source_subdomain_split_sankey.html",
+      "bytes": 4854694,
+      "sha256": "0a8ee735584a03448b1dbe7e4c95dc4d1311548336b075e274f5d8f4d6fdf385"
+    },
+    {
+      "path": "data/processed/it_en_vi_v1/split_subdomain_distribution.png",
+      "bytes": 76656,
+      "sha256": "2a99e47428acf2a2bccc2099f9b9bee737570e93ba2c614f299c3f6044439f91"
+    },
+    {
+      "path": "data/processed/it_en_vi_v1/split_subdomain_distribution_percent.csv",
+      "bytes": 254,
+      "sha256": "4c08b1647cff4ab83847d6aa2fda81abe97d494d86551ecdd3a8bf5d29301a19"
+    },
+    {
+      "path": "data/processed/it_en_vi_v1/train.jsonl",
+      "bytes": 62932179,
+      "sha256": "1284e35a73640994482330cf43f4a2a7a0c8d978b4cd76705deb45d15a0977bb"
+    },
+    {
+      "path": "data/processed/it_en_vi_v1/train.parquet",
+      "bytes": 33085860,
+      "sha256": "348392339416e8dd152ed59125edb00071e01ec2dd8147070405f49e1d7515c1"
+    },
+    {
+      "path": "data/processed/it_en_vi_v1/validation.jsonl",
+      "bytes": 7953125,
+      "sha256": "bcdd917f1e7ca2399c55595c2b09c9418ba563220edf93847fe9320c230441de"
+    },
+    {
+      "path": "data/processed/it_en_vi_v1/validation.parquet",
+      "bytes": 4239789,
+      "sha256": "40a26d8f0fc83de5c1bf6d3b3a252635aa25673032f6cfa1e655d6fd339522e8"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": "2.0",
+  "candidates": {
+    "opus_mt": {
+      "role": "lightweight bilingual reference",
+      "provider": "Helsinki-NLP",
+      "directions": {
+        "en_to_vi": {"model_id": "Helsinki-NLP/opus-mt-en-vi", "input_prefix": ">>vie<<", "input_prefix_role": "target_language"},
+        "vi_to_en": {"model_id": "Helsinki-NLP/opus-mt-vi-en", "input_prefix": "", "input_prefix_role": "target_language"}
+      }
+    },
+    "envit5": {
+      "role": "English-Vietnamese pretrained reference",
+      "provider": "VietAI",
+      "directions": {
+        "en_to_vi": {
+          "model_id": "VietAI/envit5-translation",
+          "input_prefix": "en:",
+          "input_prefix_role": "source_language",
+          "output_control_prefix": "vi:",
+          "generation_kwargs": {"max_length": 512},
+          "runtime_settings_source": "https://huggingface.co/VietAI/envit5-translation",
+          "runtime_settings_reason": "The official model-card example uses max_length=512 and shows vi: as the decoded EN-to-VI language-control prefix."
+        },
+        "vi_to_en": {
+          "model_id": "VietAI/envit5-translation",
+          "input_prefix": "vi:",
+          "input_prefix_role": "source_language",
+          "output_control_prefix": "en:",
+          "generation_kwargs": {"max_length": 512},
+          "runtime_settings_source": "https://huggingface.co/VietAI/envit5-translation",
+          "runtime_settings_reason": "The official model-card example uses max_length=512 and shows en: as the decoded VI-to-EN language-control prefix."
+        }
+      }
+    },
+    "nllb200_distilled_600m": {
+      "role": "multilingual transfer reference",
+      "provider": "Meta",
+      "directions": {
+        "en_to_vi": {"model_id": "facebook/nllb-200-distilled-600M", "source_language": "eng_Latn", "target_language": "vie_Latn"},
+        "vi_to_en": {"model_id": "facebook/nllb-200-distilled-600M", "source_language": "vie_Latn", "target_language": "eng_Latn"}
+      }
+    }
+  },
+  "adaptation_policy": "Training choices belong in a separately versioned, human-approved experiment record. This file intentionally contains no learning rate, epoch count, batch size, or selection threshold."
+}

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2020" height="610" viewBox="0 0 2020 610" role="img" aria-labelledby="title desc">
+  <title id="title">Phase 02 theo bảy bước liên tiếp</title>
+  <desc id="desc">Mỗi bước gồm tên chính, các công việc nhỏ và kết quả dùng cho bước tiếp theo để chọn Core MT EN-VI và VI-EN.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0 0L10 5 0 10z" fill="#475569"/></marker>
+    <style>
+      text{font-family:Arial,sans-serif;fill:#172033}.title{font-size:28px;font-weight:700}.subtitle{font-size:16px;fill:#475569}.main{font-size:17px;font-weight:700}.task{font-size:13px}.out{font-size:14px;font-weight:700}.label{font-size:12px;fill:#475569}.mainbox{fill:#e8f1fb;stroke:#3974c9;stroke-width:2}.taskbox{fill:#f7faff;stroke:#94a3b8;stroke-width:1.5}.resultbox{fill:#eef8f1;stroke:#2f7d4e;stroke-width:2}.finalbox{fill:#fff8e8;stroke:#a97416;stroke-width:2}.arrow{stroke:#475569;stroke-width:2;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <text x="55" y="48" class="title">Phase 02 — Chọn Core MT EN→VI và VI→EN</text>
+  <text x="55" y="75" class="subtitle">Mỗi kết quả được ghi thành evidence trước khi đi sang bước tiếp theo. Final test chỉ được mở ở bước cuối.</text>
+
+  <!-- 1 -->
+  <rect x="55" y="110" width="250" height="54" rx="8" class="mainbox"/><text x="180" y="144" text-anchor="middle" class="main">1. Kiểm tra input</text>
+  <rect x="55" y="190" width="250" height="44" rx="6" class="taskbox"/><text x="180" y="218" text-anchor="middle" class="task">Kiểm tra Phase 01 gate và checksum</text>
+  <rect x="55" y="246" width="250" height="44" rx="6" class="taskbox"/><text x="180" y="274" text-anchor="middle" class="task">Xác nhận final test vẫn khóa</text>
+  <rect x="55" y="375" width="250" height="58" rx="8" class="resultbox"/><text x="180" y="411" text-anchor="middle" class="out">Input Phase 02 hợp lệ</text>
+  <path class="arrow" d="M180 164V180M180 234V242M180 290V365"/>
+
+  <!-- 2 -->
+  <rect x="340" y="110" width="250" height="54" rx="8" class="mainbox"/><text x="465" y="144" text-anchor="middle" class="main">2. Pretrained screening</text>
+  <rect x="340" y="190" width="250" height="44" rx="6" class="taskbox"/><text x="465" y="218" text-anchor="middle" class="task">12 run: 3 model × 2 chiều × 2 tập</text>
+  <rect x="340" y="246" width="250" height="44" rx="6" class="taskbox"/><text x="465" y="274" text-anchor="middle" class="task">Ghi prediction, metric, config, revision</text>
+  <rect x="340" y="375" width="250" height="58" rx="8" class="resultbox"/><text x="465" y="411" text-anchor="middle" class="out">Evidence pretrained</text>
+  <path class="arrow" d="M465 164V180M465 234V242M465 290V365"/>
+
+  <!-- 3 -->
+  <rect x="625" y="110" width="250" height="54" rx="8" class="mainbox"/><text x="750" y="144" text-anchor="middle" class="main">3. Chọn candidate</text>
+  <rect x="625" y="190" width="250" height="44" rx="6" class="taskbox"/><text x="750" y="218" text-anchor="middle" class="task">So IT chrF++, SacreBLEU và output</text>
+  <rect x="625" y="246" width="250" height="44" rx="6" class="taskbox"/><text x="750" y="274" text-anchor="middle" class="task">Kiểm tra General Validation</text>
+  <rect x="625" y="375" width="250" height="58" rx="8" class="resultbox"/><text x="750" y="411" text-anchor="middle" class="out">Selection record mỗi chiều</text>
+  <path class="arrow" d="M750 164V180M750 234V242M750 290V365"/>
+
+  <!-- 4 -->
+  <rect x="910" y="110" width="250" height="54" rx="8" class="mainbox"/><text x="1035" y="144" text-anchor="middle" class="main">4. Chuẩn bị adaptation</text>
+  <rect x="910" y="190" width="250" height="44" rx="6" class="taskbox"/><text x="1035" y="218" text-anchor="middle" class="task">Kiểm tra VRAM/feasibility</text>
+  <rect x="910" y="246" width="250" height="44" rx="6" class="taskbox"/><text x="1035" y="274" text-anchor="middle" class="task">Viết experiment record trước train</text>
+  <rect x="910" y="375" width="250" height="58" rx="8" class="resultbox"/><text x="1035" y="411" text-anchor="middle" class="out">Cấu hình train đã ghi</text>
+  <path class="arrow" d="M1035 164V180M1035 234V242M1035 290V365"/>
+
+  <!-- 5 -->
+  <rect x="1195" y="110" width="250" height="54" rx="8" class="mainbox"/><text x="1320" y="144" text-anchor="middle" class="main">5. IT adaptation</text>
+  <rect x="1195" y="190" width="250" height="44" rx="6" class="taskbox"/><text x="1320" y="218" text-anchor="middle" class="task">Train chỉ bằng IT Train</text>
+  <rect x="1195" y="246" width="250" height="44" rx="6" class="taskbox"/><text x="1320" y="274" text-anchor="middle" class="task">Lưu checkpoint và training run</text>
+  <rect x="1195" y="375" width="250" height="58" rx="8" class="resultbox"/><text x="1320" y="411" text-anchor="middle" class="out">Checkpoint adapted</text>
+  <path class="arrow" d="M1320 164V180M1320 234V242M1320 290V365"/>
+
+  <!-- 6 -->
+  <rect x="1480" y="110" width="250" height="54" rx="8" class="mainbox"/><text x="1605" y="144" text-anchor="middle" class="main">6. Đánh giá và review</text>
+  <rect x="1480" y="190" width="250" height="44" rx="6" class="taskbox"/><text x="1605" y="218" text-anchor="middle" class="task">Chạy IT + General Validation</text>
+  <rect x="1480" y="246" width="250" height="44" rx="6" class="taskbox"/><text x="1605" y="274" text-anchor="middle" class="task">Review 50 câu IT đã khóa</text>
+  <rect x="1480" y="375" width="250" height="58" rx="8" class="resultbox"/><text x="1605" y="411" text-anchor="middle" class="out">Evidence adapted + review</text>
+  <path class="arrow" d="M1605 164V180M1605 234V242M1605 290V365"/>
+
+  <!-- 7 -->
+  <rect x="1765" y="110" width="205" height="54" rx="8" class="mainbox"/><text x="1868" y="144" text-anchor="middle" class="main">7. Freeze và report</text>
+  <rect x="1765" y="190" width="205" height="44" rx="6" class="taskbox"/><text x="1868" y="218" text-anchor="middle" class="task">Freeze Core mỗi chiều</text>
+  <rect x="1765" y="246" width="205" height="44" rx="6" class="taskbox"/><text x="1868" y="274" text-anchor="middle" class="task">Final gate, 4 final run</text>
+  <rect x="1765" y="375" width="205" height="58" rx="8" class="finalbox"/><text x="1868" y="411" text-anchor="middle" class="out">Core MT + final report</text>
+  <path class="arrow" d="M1868 164V180M1868 234V242M1868 290V365"/>
+
+  <path class="arrow" d="M305 404H330V137H335M590 404H615V137H620M875 404H900V137H905M1160 404H1185V137H1190M1445 404H1470V137H1475M1730 404H1755V137H1760"/>
+  <text x="318" y="470" text-anchor="middle" class="label">screening</text><text x="603" y="470" text-anchor="middle" class="label">candidate</text><text x="888" y="470" text-anchor="middle" class="label">cấu hình</text><text x="1173" y="470" text-anchor="middle" class="label">checkpoint</text><text x="1458" y="470" text-anchor="middle" class="label">validation</text><text x="1743" y="470" text-anchor="middle" class="label">quyết định Core</text>
+  <text x="55" y="545" class="label">Final test chỉ xuất hiện ở bước 7, sau khi Core/checkpoint đã được freeze. Kết quả final không được dùng để đổi candidate hoặc tham số.</text>
+</svg>

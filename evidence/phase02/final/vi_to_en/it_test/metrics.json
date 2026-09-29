@@ -1,0 +1,21 @@
+{
+  "dataset_role": "it_test",
+  "rows": 15244,
+  "inference_batch_size": 1,
+  "segmented_rows": 0,
+  "max_input_segments": 1,
+  "chrF++": 65.21046905877384,
+  "sacreBLEU": 41.20083232150958,
+  "sacrebleu_version": "2.6.0",
+  "metric_config": {
+    "chrF++": {
+      "beta": 2,
+      "word_order": 2
+    },
+    "sacreBLEU": {
+      "tokenize": "none",
+      "lowercase": false,
+      "use_effective_order": false
+    }
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "stage": "adaptation_training",
+  "model": {
+    "key": "envit5",
+    "model_id": "VietAI/envit5-translation",
+    "source_checkpoint_revision": "840bc88104d5a4277af740eaedb024df8c3093e7"
+  },
+  "adaptation_method": {
+    "name": "lora",
+    "lora": {
+      "rank": 8,
+      "alpha": 16,
+      "dropout": 0.0,
+      "target_modules": [
+        "q",
+        "v"
+      ],
+      "bias": "none",
+      "task_type": "SEQ_2_SEQ_LM"
+    }
+  },
+  "direction": "vi_to_en",
+  "experiment_id": "envit5-vi-to-en-lora-v1",
+  "checkpoint_id": "final-epoch-1",
+  "checkpoint": {
+    "path": "models/phase02/envit5-vi-to-en-lora-v1/final-epoch-1",
+    "sha256_tree": "3d2475f0f6075d3332dbd2a258da9ef6d85675eb4f5846b0bf7fcbf456cb5c12"
+  },
+  "experiment_record": {
+    "path": "evidence/phase02/envit5/vi_to_en/adapted/envit5-vi-to-en-lora-v1/experiment_record.md",
+    "sha256": "567b0ec134d75acb2bd8d87cef24e559de831407ee745a4d85e08e812a7c540c"
+  },
+  "train_data": {
+    "role": "adaptation_train",
+    "path": "data/processed/it_en_vi/train.jsonl",
+    "sha256": "d6dbad4f61a57289935465a05194dd1d88003c2d63c55b90698dd19f10f1b98e",
+    "rows": 121547
+  },
+  "language_control": {
+    "input_prefix": "vi:",
+    "target_control_prefix": "en:",
+    "target_prefix_in_labels": true,
+    "note": "EnViT5 language-control prefixes are checkpoint format, not rewritten dataset text."
+  },
+  "training_configuration": {
+    "epochs": 1.0,
+    "per_device_train_batch_size": 1,
+    "gradient_accumulation_steps": 8,
+    "effective_batch_size": 8,
+    "learning_rate": 0.0002,
+    "seed": 42,
+    "optimizer": "adamw_torch",
+    "lr_scheduler_type": "linear",
+    "warmup_ratio": 0.0,
+    "save_strategy": "no; one final checkpoint is saved after training",
+    "evaluation_during_training": "none",
+    "logging_steps": 1000,
+    "mixed_precision": "fp16",
+    "use_cpu_requested": false,
+    "source_truncation": false,
+    "target_truncation": false
+  },
+  "runtime": {
+    "python": "3.11.15",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "torch": "2.14.0+cu130",
+    "transformers": "4.57.6",
+    "tokenizers": "0.22.1",
+    "huggingface_hub": "0.36.2",
+    "sentencepiece": "0.2.2",
+    "accelerate": "1.14.0",
+    "cuda_available": true,
+    "cuda_device_names": [
+      "NVIDIA GeForce RTX 3050 Ti Laptop GPU"
+    ]
+  },
+  "trainer_metrics": {
+    "train_runtime": 24958.3758,
+    "train_samples_per_second": 4.87,
+    "train_steps_per_second": 0.609,
+    "total_flos": 3906256887014400.0,
+    "train_loss": 1.1222565703538274,
+    "epoch": 1.0
+  },
+  "runner_sha256": "f47bfb9ca0f13257c5b343c95bba0247e9b3ae36fdbfcc29e76d8b4290b10b78",
+  "adaptation_module_sha256": "0a1a10ebac68cac6443e53bf11e18c91e54352cb110a75a161d85423164454b6",
+  "protocol_sha256": "3408bea292378dd23b0294ce41d852c193c6997bb238eff43be3a95db3fcce35",
+  "candidate_config_sha256": "c36712ae571cdd6748354ed6302b2dd0e32c064aff38d7a878735a8f7ca447b8",
+  "command": [
+    "tools\\run_phase02_adaptation.py",
+    "--model",
+    "envit5",
+    "--method",
+    "lora",
+    "--direction",
+    "vi_to_en",
+    "--experiment-id",
+    "envit5-vi-to-en-lora-v1",
+    "--checkpoint-id",
+    "final-epoch-1",
+    "--epochs",
+    "1",
+    "--per-device-train-batch-size",
+    "1",
+    "--gradient-accumulation-steps",
+    "8",
+    "--learning-rate",
+    "2e-4",
+    "--seed",
+    "42",
+    "--fp16",
+    "--lora-rank",
+    "8",
+    "--lora-alpha",
+    "16",
+    "--lora-dropout",
+    "0"
+  ],
+  "started_at_utc": "2026-09-24T02:28:08.602029+00:00",
+  "completed_at_utc": "2026-09-24T09:24:13.848333+00:00"
+}

@@ -1,0 +1,16 @@
+{
+  "name": "viettechtrans-report-assets",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Render workflow SVG files used by the graduation-report tools.",
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "scripts": {
+    "render:workflows": "node tools/render_workflow_svgs.mjs",
+    "render:workflows:portrait": "node tools/render_portrait_workflows.mjs"
+  },
+  "dependencies": {
+    "sharp": "0.35.5"
+  }
+}

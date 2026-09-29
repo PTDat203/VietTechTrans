@@ -1,24 +1,21 @@
-"""Nền tảng dùng chung của Phase 06 CORE MT.
-
-Luồng nghiên cứu được giữ tách thành ba tầng:
-
-``Phase 05 sealed data → shared CORE layer → adapter theo từng model``.
-
-Module này chỉ export các khái niệm chung: direction, protocol đã khóa và hai
-test set cuối. OPUS-MT, EnViT5 và M2M-100 không xuất hiện ở đây, để kết quả
-khác nhau sau này có thể được quy về model thay vì ba pipeline khác nhau.
-"""
+"""Nền tảng Phase 2: screening, IT adaptation và chọn Core MT."""
 
 from .contracts import Direction, TranslationAdapter
-from .data import LockedEvaluationSet, TestExample, load_locked_evaluation_set
-from .protocol import EvaluationProtocol, load_frozen_protocol
+from .data import ParallelExample, Phase02Dataset, load_general_validation, load_it_role
+from .protocol import Phase02Protocol, load_phase02_protocol
+from .baseline import CandidateSpec, PretrainedAdapter, load_candidate_spec, run_pretrained_evaluation
 
 __all__ = [
     "Direction",
-    "EvaluationProtocol",
-    "LockedEvaluationSet",
-    "TestExample",
+    "CandidateSpec",
+    "Phase02Protocol",
+    "ParallelExample",
+    "Phase02Dataset",
     "TranslationAdapter",
-    "load_frozen_protocol",
-    "load_locked_evaluation_set",
+    "PretrainedAdapter",
+    "load_candidate_spec",
+    "load_phase02_protocol",
+    "load_it_role",
+    "load_general_validation",
+    "run_pretrained_evaluation",
 ]

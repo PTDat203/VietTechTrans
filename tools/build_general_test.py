@@ -1,4 +1,9 @@
-"""Build a sealed General Test from reviewed, parallel source files."""
+"""Build a sealed General Test from FLORES devtest files.
+
+The entry point reads two explicit input files, checks overlap against the IT
+release, then writes a separate final-evaluation artifact. Phase 02 must not
+use it before the final-reporting gate.
+"""
 from __future__ import annotations
 
 import argparse
@@ -12,8 +17,8 @@ from pathlib import Path
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
-CONFIG = ROOT / "configs" / "data" / "general_test_flores200_devtest_v1.json"
-OUT = ROOT / "data" / "processed" / "general_test_flores200_devtest_v1"
+CONFIG = ROOT / "configs" / "data" / "general_test_flores200_devtest.json"
+OUT = ROOT / "data" / "processed" / "general_test_flores200_devtest"
 
 
 def sha256(path: Path) -> str:
@@ -36,7 +41,7 @@ def lines(path: Path) -> list[str]:
 
 
 def locked_split(split: str) -> pd.DataFrame:
-    path = ROOT / "data" / "processed" / "it_en_vi_v1" / f"{split}.jsonl"
+    path = ROOT / "data" / "processed" / "it_en_vi" / f"{split}.jsonl"
     if not path.is_file():
         raise FileNotFoundError(f"Missing locked IT test: {path}")
     frame = pd.read_json(path, lines=True)
@@ -49,11 +54,10 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--en", type=Path, required=True, help="FLORES eng_Latn.devtest")
     parser.add_argument("--vi", type=Path, required=True, help="FLORES vie_Latn.devtest")
-    parser.add_argument("--force", action="store_true", help="Replace a prior unsealed build only.")
     args = parser.parse_args()
     config = json.loads(CONFIG.read_text(encoding="utf-8"))
-    if OUT.exists() and any(OUT.iterdir()) and not args.force:
-        raise FileExistsError(f"Refusing to overwrite release: {OUT}. Use a new version or --force before sealing.")
+    if OUT.exists() and any(OUT.iterdir()):
+        raise FileExistsError(f"Refusing to overwrite an existing General Test release: {OUT}. Choose a new release configuration.")
 
     en, vi = lines(args.en), lines(args.vi)
     if len(en) != len(vi):

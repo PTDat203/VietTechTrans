@@ -1,0 +1,104 @@
+{
+  "stage": "final_evaluation",
+  "dataset_role": "it_test",
+  "source_data": "data/processed/it_en_vi/it_test.jsonl",
+  "source_data_sha256": "ab422721d25ac8277665d498b034118c9cab30f19fbc2114c55a65e72ac3fc47",
+  "frozen_core_decision": {
+    "path": "evidence/phase02/core_mt_decision.json",
+    "sha256": "1791078e24144c6e244a0121768cbc424832967486b29d2a929b2eab40f403d2",
+    "model": "envit5",
+    "direction": "en_to_vi"
+  },
+  "experiment_id": "envit5-en-to-vi-lora-v1",
+  "evaluated_checkpoint": {
+    "id": "final-epoch-1",
+    "path": "models/phase02/envit5-en-to-vi-lora-v1/final-epoch-1",
+    "sha256_tree": "d96171cb2ccecbdb56e60744695084bc5f82b3ac11e8d512e53d99514bd12d11"
+  },
+  "training_run": {
+    "path": "evidence/phase02/envit5/en_to_vi/adapted/envit5-en-to-vi-lora-v1/training_run.json",
+    "sha256": "1921a509ca8b85acccd4646e4169bfed826b3ec3f79bcd2270332ce3b94541fa",
+    "source_pretrained_checkpoint_revision": "840bc88104d5a4277af740eaedb024df8c3093e7",
+    "adaptation_method": {
+      "name": "lora",
+      "lora": {
+        "rank": 8,
+        "alpha": 16,
+        "dropout": 0.0,
+        "target_modules": [
+          "q",
+          "v"
+        ],
+        "bias": "none",
+        "task_type": "SEQ_2_SEQ_LM"
+      }
+    }
+  },
+  "runner_sha256": "d9534c6baac2e51173c32a5efed8e23590250169e3824be5c31860a468987fda",
+  "adapter_sha256": "de1519435e991a7b5574195c57f847e4b81bebc4f29b817c6727ef7f6ba1c957",
+  "adaptation_module_sha256": "0a1a10ebac68cac6443e53bf11e18c91e54352cb110a75a161d85423164454b6",
+  "protocol_sha256": "3408bea292378dd23b0294ce41d852c193c6997bb238eff43be3a95db3fcce35",
+  "candidate_config_sha256": "c36712ae571cdd6748354ed6302b2dd0e32c064aff38d7a878735a8f7ca447b8",
+  "created_at_utc": "2026-09-25T21:45:07.746220+00:00",
+  "adapter": {
+    "model_id": "VietAI/envit5-translation",
+    "model_key": "envit5",
+    "adaptation_method": "lora",
+    "direction": "en_to_vi",
+    "checkpoint_revision": "840bc88104d5a4277af740eaedb024df8c3093e7",
+    "transformers_version": "4.57.6",
+    "torch_version": "2.14.0+cu130",
+    "tokenizers_version": "0.22.1",
+    "huggingface_hub_version": "0.36.2",
+    "sentencepiece_version": "0.2.2",
+    "python_version": "3.11.15",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "runtime": {
+      "python": "3.11.15",
+      "platform": "Windows-10-10.0.26200-SP0",
+      "torch": "2.14.0+cu130",
+      "transformers": "4.57.6",
+      "tokenizers": "0.22.1",
+      "huggingface_hub": "0.36.2",
+      "sentencepiece": "0.2.2"
+    },
+    "generation_policy": "checkpoint_default_with_official_model_card_runtime_settings",
+    "checkpoint_generation_config": {
+      "max_length": 20,
+      "min_length": 0,
+      "num_beams": 1,
+      "length_penalty": 1.0,
+      "early_stopping": false,
+      "no_repeat_ngram_size": 0,
+      "renormalize_logits": false,
+      "pad_token_id": 0,
+      "eos_token_id": 1,
+      "decoder_start_token_id": 0
+    },
+    "generation_overrides": {
+      "max_length": 512
+    },
+    "generation_settings_source": "https://huggingface.co/VietAI/envit5-translation",
+    "generation_settings_reason": "The official model-card example uses max_length=512 and shows vi: as the decoded EN-to-VI language-control prefix.",
+    "output_normalization": {
+      "policy": "remove_exact_leading_control_prefix_and_one_delimiter_whitespace",
+      "control_prefix": "vi:",
+      "normalized_output_segments": 15244
+    },
+    "input_length_policy": {
+      "name": "no_finite_checkpoint_input_limit",
+      "checkpoint_input_token_limit": null,
+      "applied_only_when_source_exceeds_limit": false,
+      "generation_settings_changed": false
+    },
+    "required_language_control": {
+      "input_prefix": "en:",
+      "input_prefix_role": "source_language",
+      "source_language": null,
+      "target_language": null
+    }
+  },
+  "inference_batch_size": 1,
+  "prediction_file": "predictions.jsonl",
+  "metrics_file": "metrics.json"
+}

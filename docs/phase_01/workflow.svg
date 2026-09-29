@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="610" viewBox="0 0 1700 610" role="img" aria-labelledby="title desc">
+  <title id="title">Phase 01 theo năm bước liên tiếp</title>
+  <desc id="desc">Mỗi bước gồm tên chính, các công việc nhỏ và kết quả dùng cho bước tiếp theo.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0 0L10 5 0 10z" fill="#475569"/></marker>
+    <style>
+      text{font-family:Arial,sans-serif;fill:#172033}.title{font-size:28px;font-weight:700}.subtitle{font-size:16px;fill:#475569}.main{font-size:18px;font-weight:700}.task{font-size:14px}.out{font-size:15px;font-weight:700}.label{font-size:13px;fill:#475569}.mainbox{fill:#e8f1fb;stroke:#3974c9;stroke-width:2}.taskbox{fill:#f7faff;stroke:#94a3b8;stroke-width:1.5}.resultbox{fill:#eef8f1;stroke:#2f7d4e;stroke-width:2}.finalbox{fill:#fff8e8;stroke:#a97416;stroke-width:2}.arrow{stroke:#475569;stroke-width:2;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <text x="55" y="48" class="title">Phase 01 — Dataset IT EN↔VI</text>
+  <text x="55" y="75" class="subtitle">Kết quả của một bước là đầu vào trực tiếp cho bước kế tiếp.</text>
+
+  <!-- Bước 1 -->
+  <rect x="55" y="110" width="270" height="54" rx="8" class="mainbox"/><text x="190" y="144" text-anchor="middle" class="main">1. Bản sao dữ liệu gốc</text>
+  <rect x="55" y="190" width="270" height="44" rx="6" class="taskbox"/><text x="190" y="218" text-anchor="middle" class="task">Lưu nguồn và file gốc</text>
+  <rect x="55" y="246" width="270" height="44" rx="6" class="taskbox"/><text x="190" y="274" text-anchor="middle" class="task">Đếm dòng và tạo checksum</text>
+  <rect x="55" y="302" width="270" height="44" rx="6" class="taskbox"/><text x="190" y="330" text-anchor="middle" class="task">Giữ nguyên dữ liệu RAW</text>
+  <path class="arrow" d="M190 164V180"/>
+  <path class="arrow" d="M190 234V242M190 290V298"/>
+  <rect x="55" y="375" width="270" height="58" rx="8" class="resultbox"/><text x="190" y="411" text-anchor="middle" class="out">RAW có thể truy vết</text>
+  <path class="arrow" d="M190 346V365"/>
+
+  <!-- Bước 2 -->
+  <rect x="380" y="110" width="270" height="54" rx="8" class="mainbox"/><text x="515" y="144" text-anchor="middle" class="main">2. Audit dữ liệu</text>
+  <rect x="380" y="190" width="270" height="44" rx="6" class="taskbox"/><text x="515" y="218" text-anchor="middle" class="task">Kiểm tra schema, null, blank</text>
+  <rect x="380" y="246" width="270" height="44" rx="6" class="taskbox"/><text x="515" y="274" text-anchor="middle" class="task">Kiểm tra ký tự hỏng, duplicate</text>
+  <rect x="380" y="302" width="270" height="44" rx="6" class="taskbox"/><text x="515" y="330" text-anchor="middle" class="task">Kiểm tra lệch độ dài, cặp câu dài</text>
+  <path class="arrow" d="M515 164V180M515 234V242M515 290V298"/>
+  <rect x="380" y="375" width="270" height="58" rx="8" class="resultbox"/><text x="515" y="411" text-anchor="middle" class="out">Audit report</text>
+  <path class="arrow" d="M515 346V365"/>
+
+  <!-- Bước 3 -->
+  <rect x="705" y="110" width="270" height="54" rx="8" class="mainbox"/><text x="840" y="144" text-anchor="middle" class="main">3. Làm sạch</text>
+  <rect x="705" y="190" width="270" height="44" rx="6" class="taskbox"/><text x="840" y="218" text-anchor="middle" class="task">Chuẩn hóa text</text>
+  <rect x="705" y="246" width="270" height="44" rx="6" class="taskbox"/><text x="840" y="274" text-anchor="middle" class="task">Loại lỗi dữ liệu rõ ràng</text>
+  <rect x="705" y="302" width="270" height="44" rx="6" class="taskbox"/><text x="840" y="330" text-anchor="middle" class="task">Loại duplicate chính xác</text>
+  <path class="arrow" d="M840 164V180M840 234V242M840 290V298"/>
+  <rect x="705" y="375" width="270" height="58" rx="8" class="resultbox"/><text x="840" y="411" text-anchor="middle" class="out">Cặp câu hợp lệ đã làm sạch</text>
+  <path class="arrow" d="M840 346V365"/>
+
+  <!-- Bước 4 -->
+  <rect x="1030" y="110" width="270" height="54" rx="8" class="mainbox"/><text x="1165" y="144" text-anchor="middle" class="main">4. Nhóm nội dung IT</text>
+  <rect x="1030" y="190" width="270" height="44" rx="6" class="taskbox"/><text x="1165" y="218" text-anchor="middle" class="task">Gán primary_group</text>
+  <rect x="1030" y="246" width="270" height="44" rx="6" class="taskbox"/><text x="1165" y="274" text-anchor="middle" class="task">Gán technical_tags</text>
+  <rect x="1030" y="302" width="270" height="44" rx="6" class="taskbox"/><text x="1165" y="330" text-anchor="middle" class="task">Ghi group_method</text>
+  <path class="arrow" d="M1165 164V180M1165 234V242M1165 290V298"/>
+  <rect x="1030" y="375" width="270" height="58" rx="8" class="resultbox"/><text x="1165" y="411" text-anchor="middle" class="out">Cặp câu có thông tin IT</text>
+  <path class="arrow" d="M1165 346V365"/>
+
+  <!-- Bước 5 -->
+  <rect x="1355" y="110" width="290" height="54" rx="8" class="mainbox"/><text x="1500" y="144" text-anchor="middle" class="main">5. Chia tập và kiểm tra release</text>
+  <rect x="1355" y="190" width="290" height="44" rx="6" class="taskbox"/><text x="1500" y="218" text-anchor="middle" class="task">Chia Train, Validation, IT Test</text>
+  <rect x="1355" y="246" width="290" height="44" rx="6" class="taskbox"/><text x="1500" y="274" text-anchor="middle" class="task">Kiểm tra checksum và rò rỉ dữ liệu</text>
+  <rect x="1355" y="302" width="290" height="44" rx="6" class="taskbox"/><text x="1500" y="330" text-anchor="middle" class="task">Tạo manifest và gói input Phase 02</text>
+  <path class="arrow" d="M1500 164V180M1500 234V242M1500 290V298"/>
+  <rect x="1355" y="375" width="290" height="58" rx="8" class="finalbox"/><text x="1500" y="411" text-anchor="middle" class="out">Release it_en_vi · gate PASS</text>
+  <path class="arrow" d="M1500 346V365"/>
+
+  <!-- Kết quả nối bước -->
+  <path class="arrow" d="M325 404H370V137H375"/>
+  <path class="arrow" d="M650 404H695V137H700"/>
+  <path class="arrow" d="M975 404H1020V137H1025"/>
+  <path class="arrow" d="M1300 404H1345V137H1350"/>
+  <text x="350" y="470" text-anchor="middle" class="label">đầu vào audit</text>
+  <text x="675" y="470" text-anchor="middle" class="label">lỗi cần xử lý</text>
+  <text x="1000" y="470" text-anchor="middle" class="label">cặp câu hợp lệ</text>
+  <text x="1325" y="470" text-anchor="middle" class="label">metadata IT</text>
+  <text x="55" y="545" class="label">Đầu ra: IT Train, IT Validation, manifest, checksum và báo cáo cho Phase 02. IT Test và General Test không nằm trong gói dùng cho screening/adaptation.</text>
+</svg>

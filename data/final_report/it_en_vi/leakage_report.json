@@ -1,0 +1,10 @@
+{
+  "validation": {
+    "normalized_exact_pair_overlap": 0,
+    "normalized_english_overlap": 0
+  },
+  "it_test": {
+    "normalized_exact_pair_overlap": 0,
+    "normalized_english_overlap": 0
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "stage": "adapted_evaluation",
+  "dataset_role": "general_validation",
+  "source_data": "data/processed/general_validation_en_vi/general_validation.jsonl",
+  "source_data_sha256": "11dd3ca7091dea46e95d5e56933fcc676ef48f612157f044a583a895a6991d4f",
+  "experiment_id": "envit5-vi-to-en-lora-v1",
+  "evaluated_checkpoint": {
+    "id": "final-epoch-1",
+    "path": "models/phase02/envit5-vi-to-en-lora-v1/final-epoch-1",
+    "sha256_tree": "3d2475f0f6075d3332dbd2a258da9ef6d85675eb4f5846b0bf7fcbf456cb5c12"
+  },
+  "training_run": {
+    "path": "evidence/phase02/envit5/vi_to_en/adapted/envit5-vi-to-en-lora-v1/training_run.json",
+    "sha256": "2950b4c5cf8044daf82b826182429568818173ae768383698d9a683e22ce1e7d",
+    "source_pretrained_checkpoint_revision": "840bc88104d5a4277af740eaedb024df8c3093e7",
+    "adaptation_method": {
+      "name": "lora",
+      "lora": {
+        "rank": 8,
+        "alpha": 16,
+        "dropout": 0.0,
+        "target_modules": [
+          "q",
+          "v"
+        ],
+        "bias": "none",
+        "task_type": "SEQ_2_SEQ_LM"
+      }
+    }
+  },
+  "runner_sha256": "1976c5af91f6cadc9f8e6d38837fe3cd53c2ce780f42f03739fb081beb8ce2c8",
+  "adapter_sha256": "f42de37e6771b744285718a0ad7436e421ba5601b06b82ad6b5b3893d07ed034",
+  "adaptation_module_sha256": "0a1a10ebac68cac6443e53bf11e18c91e54352cb110a75a161d85423164454b6",
+  "protocol_sha256": "3408bea292378dd23b0294ce41d852c193c6997bb238eff43be3a95db3fcce35",
+  "candidate_config_sha256": "c36712ae571cdd6748354ed6302b2dd0e32c064aff38d7a878735a8f7ca447b8",
+  "created_at_utc": "2026-09-24T11:21:20.039581+00:00",
+  "adapter": {
+    "model_id": "VietAI/envit5-translation",
+    "model_key": "envit5",
+    "adaptation_method": "lora",
+    "direction": "vi_to_en",
+    "checkpoint_revision": "840bc88104d5a4277af740eaedb024df8c3093e7",
+    "transformers_version": "4.57.6",
+    "torch_version": "2.14.0+cu130",
+    "tokenizers_version": "0.22.1",
+    "huggingface_hub_version": "0.36.2",
+    "sentencepiece_version": "0.2.2",
+    "python_version": "3.11.15",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "runtime": {
+      "python": "3.11.15",
+      "platform": "Windows-10-10.0.26200-SP0",
+      "torch": "2.14.0+cu130",
+      "transformers": "4.57.6",
+      "tokenizers": "0.22.1",
+      "huggingface_hub": "0.36.2",
+      "sentencepiece": "0.2.2"
+    },
+    "generation_policy": "checkpoint_default_with_official_model_card_runtime_settings",
+    "checkpoint_generation_config": {
+      "max_length": 20,
+      "min_length": 0,
+      "num_beams": 1,
+      "length_penalty": 1.0,
+      "early_stopping": false,
+      "no_repeat_ngram_size": 0,
+      "renormalize_logits": false,
+      "pad_token_id": 0,
+      "eos_token_id": 1,
+      "decoder_start_token_id": 0
+    },
+    "generation_overrides": {
+      "max_length": 512
+    },
+    "generation_settings_source": "https://huggingface.co/VietAI/envit5-translation",
+    "generation_settings_reason": "The official model-card example uses max_length=512 and shows en: as the decoded VI-to-EN language-control prefix.",
+    "output_normalization": {
+      "policy": "remove_exact_leading_control_prefix_and_one_delimiter_whitespace",
+      "control_prefix": "en:",
+      "normalized_output_segments": 997
+    },
+    "input_length_policy": {
+      "name": "no_finite_checkpoint_input_limit",
+      "checkpoint_input_token_limit": null,
+      "applied_only_when_source_exceeds_limit": false,
+      "generation_settings_changed": false
+    },
+    "required_language_control": {
+      "input_prefix": "vi:",
+      "input_prefix_role": "source_language",
+      "source_language": null,
+      "target_language": null
+    }
+  },
+  "inference_batch_size": 1,
+  "prediction_file": "predictions.jsonl",
+  "metrics_file": "metrics.json"
+}

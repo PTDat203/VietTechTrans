@@ -1,10 +1,10 @@
-"""Hợp đồng dữ liệu giữa shared layer và các nhánh model.
+"""Hợp đồng dữ liệu giữa shared layer và các nhánh model của Phase 2.
 
 `Direction` chuẩn hóa hai phép dịch EN→VI và VI→EN. `TranslationAdapter` mô
 tả tối thiểu một model sau này phải làm được: tải một checkpoint, nhận câu
 nguồn với generation settings chung, và trả về prediction thô. Nhờ hợp đồng
 này, runner chung không cần biết OPUS-MT dùng prefix, EnViT5 dùng text prompt
-hay M2M-100 dùng language code.
+hay NLLB-200 dùng language code.
 """
 from __future__ import annotations
 
@@ -30,7 +30,8 @@ class TranslationAdapter(Protocol):
     """Giao diện bắt buộc của một nhánh model.
 
     Adapter chỉ xử lý khác biệt bắt buộc của checkpoint. Nó không được tự đổi
-    beam size, max token, test set hoặc thực hiện domain adaptation.
+    generation settings, tập dữ liệu hay quy tắc đánh giá. Domain adaptation
+    được điều phối ở tầng thí nghiệm, không ẩn trong adapter.
     """
 
     model_key: str
@@ -39,8 +40,11 @@ class TranslationAdapter(Protocol):
     def load(self) -> None:
         """Load one immutable official pretrained checkpoint."""
 
-    def translate(self, source_text: str, *, num_beams: int, max_new_tokens: int) -> str:
-        """Return decoded text after framework special-token removal only."""
+    def translate(self, source_text: str) -> str:
+        """Return one prediction using the checkpoint's saved generation config."""
+
+    def translate_many(self, source_texts: list[str]) -> list[str]:
+        """Return aligned predictions for a batch using the same checkpoint config."""
 
     def metadata(self) -> dict[str, object]:
         """Return checkpoint identity, resolved revision and runtime metadata."""

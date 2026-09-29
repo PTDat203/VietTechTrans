@@ -1,0 +1,23 @@
+{
+  "dataset_version": "it_en_vi",
+  "language_pair": "en-vi",
+  "domain": "IT",
+  "split_seed": 42,
+  "split_ratios": {"train": 0.8, "validation": 0.1, "it_test": 0.1},
+  "sources": {
+    "envitech_reasoning": {"en": "en", "vi": "vi", "source_revision": "raw-snapshot-only"},
+    "tech_viet_translation": {"en": "instruction", "vi": "output", "source_revision": "raw-snapshot-only"},
+    "gnome": {"en": "en", "vi": "vi", "source_revision": "v1"},
+    "ubuntu": {"en": "en", "vi": "vi", "source_revision": "v14.10"},
+    "kde4": {"en": "en", "vi": "vi", "source_revision": "v2"}
+  },
+  "primary_groups": [
+    "Hỗ trợ kỹ thuật / xử lý sự cố",
+    "Software / UI",
+    "CLI / Command",
+    "Code & Technical Reference"
+  ],
+  "technical_tags": ["has_error", "has_command", "has_ui", "has_code_or_api", "has_path", "has_config", "has_version"],
+  "group_methods": ["rule_based", "default_group"],
+  "group_rules_version": "1.0.0"
+}

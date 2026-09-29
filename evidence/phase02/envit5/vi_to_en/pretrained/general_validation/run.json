@@ -1,0 +1,71 @@
+{
+  "stage": "pretrained",
+  "dataset_role": "general_validation",
+  "source_data": "data/processed/general_validation_en_vi/general_validation.jsonl",
+  "source_data_sha256": "11dd3ca7091dea46e95d5e56933fcc676ef48f612157f044a583a895a6991d4f",
+  "runner_sha256": "95f0cfcaa4eff9256f83a6ec851676bfa127ade5808a59d6ef05c3d9508320e1",
+  "adapter_sha256": "4ac0cbf54149c7492b6dd50f56c9865743732eb20c8e119a572c0573bff75d21",
+  "protocol_sha256": "d4130058bcdb2c5ba8efe7d260a9b7ef1f241d2ec0fa4effbe44a8891edb99db",
+  "candidate_config_sha256": "c36712ae571cdd6748354ed6302b2dd0e32c064aff38d7a878735a8f7ca447b8",
+  "created_at_utc": "2026-09-18T09:59:37.265723+00:00",
+  "adapter": {
+    "model_id": "VietAI/envit5-translation",
+    "model_key": "envit5",
+    "direction": "vi_to_en",
+    "checkpoint_revision": "840bc88104d5a4277af740eaedb024df8c3093e7",
+    "transformers_version": "4.57.6",
+    "torch_version": "2.14.0+cpu",
+    "tokenizers_version": "0.22.1",
+    "huggingface_hub_version": "0.36.2",
+    "sentencepiece_version": "0.2.2",
+    "python_version": "3.11.15",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "runtime": {
+      "python": "3.11.15",
+      "platform": "Windows-10-10.0.26200-SP0",
+      "torch": "2.14.0+cpu",
+      "transformers": "4.57.6",
+      "tokenizers": "0.22.1",
+      "huggingface_hub": "0.36.2",
+      "sentencepiece": "0.2.2"
+    },
+    "generation_policy": "checkpoint_default_with_official_model_card_runtime_settings",
+    "checkpoint_generation_config": {
+      "max_length": 20,
+      "min_length": 0,
+      "num_beams": 1,
+      "length_penalty": 1.0,
+      "early_stopping": false,
+      "no_repeat_ngram_size": 0,
+      "renormalize_logits": false,
+      "pad_token_id": 0,
+      "eos_token_id": 1,
+      "decoder_start_token_id": 0
+    },
+    "generation_overrides": {
+      "max_length": 512
+    },
+    "generation_settings_source": "https://huggingface.co/VietAI/envit5-translation",
+    "generation_settings_reason": "The official model-card example uses max_length=512 and shows en: as the decoded VI-to-EN language-control prefix.",
+    "output_normalization": {
+      "policy": "remove_exact_leading_control_prefix_and_one_delimiter_whitespace",
+      "control_prefix": "en:",
+      "normalized_output_segments": 997
+    },
+    "input_length_policy": {
+      "name": "no_finite_checkpoint_input_limit",
+      "checkpoint_input_token_limit": null,
+      "applied_only_when_source_exceeds_limit": false,
+      "generation_settings_changed": false
+    },
+    "required_language_control": {
+      "input_prefix": "vi:",
+      "input_prefix_role": "source_language",
+      "source_language": null,
+      "target_language": null
+    }
+  },
+  "inference_batch_size": 8,
+  "prediction_file": "predictions.jsonl",
+  "metrics_file": "metrics.json"
+}

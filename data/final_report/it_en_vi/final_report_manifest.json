@@ -1,0 +1,41 @@
+{
+  "schema_version": "2.0",
+  "dataset_version": "it_en_vi",
+  "artifacts": [
+    {
+      "path": "data/final_report/it_en_vi/audit_report.json",
+      "bytes": 2263,
+      "sha256": "90dd9224c230569e8c297c216febf355309ee7dcb4ec839e43e8a26abda38028"
+    },
+    {
+      "path": "data/final_report/it_en_vi/data_attrition.json",
+      "bytes": 101,
+      "sha256": "a2f87747223a47f5022d0bc54eb757ec938b916bb5efad07e054783af5a02c42"
+    },
+    {
+      "path": "data/final_report/it_en_vi/DATASET_CARD.md",
+      "bytes": 350,
+      "sha256": "0dc14ea013961703a7393091ff2d4195d8eeed08a8f18a8a10f4f9bbd657beb8"
+    },
+    {
+      "path": "data/final_report/it_en_vi/leakage_report.json",
+      "bytes": 206,
+      "sha256": "27fb34ff5baa179dac1aa2aa02928fc3ec84079be5ef2f7606d80101c34c15b5"
+    },
+    {
+      "path": "data/final_report/it_en_vi/primary_group_distribution.csv",
+      "bytes": 499,
+      "sha256": "2df4e6cee3cea49c5cd45fa4d9c811d3dc8689a6bad375a82b9e93d7589835b9"
+    },
+    {
+      "path": "data/final_report/it_en_vi/source_distribution.csv",
+      "bytes": 119,
+      "sha256": "31025727242175f0c7779cb13c9c341c6b6192bd7167188d552a67bda54f2ca9"
+    },
+    {
+      "path": "data/final_report/it_en_vi/technical_tag_distribution.csv",
+      "bytes": 141,
+      "sha256": "299509751bc3ca925fdc52cb08ce1afca986b2196a30c8791344ad6fe9a1692f"
+    }
+  ]
+}

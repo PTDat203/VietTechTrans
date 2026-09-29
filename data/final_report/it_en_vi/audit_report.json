@@ -1,0 +1,76 @@
+{
+  "by_source": [
+    {
+      "source_short_name": "envitech_reasoning",
+      "rows": 15115,
+      "non_string": 0,
+      "null_or_blank": 0,
+      "control_or_replacement_character": 0,
+      "identical_en_vi": 0,
+      "extreme_length_ratio": 3,
+      "very_long_pair": 0,
+      "language_suspect_no_latin_letters": 0,
+      "exact_duplicate_in_source": 1425
+    },
+    {
+      "source_short_name": "tech_viet_translation",
+      "rows": 100767,
+      "non_string": 0,
+      "null_or_blank": 0,
+      "control_or_replacement_character": 0,
+      "identical_en_vi": 18,
+      "extreme_length_ratio": 165,
+      "very_long_pair": 0,
+      "language_suspect_no_latin_letters": 1,
+      "exact_duplicate_in_source": 306
+    },
+    {
+      "source_short_name": "gnome",
+      "rows": 149,
+      "non_string": 0,
+      "null_or_blank": 0,
+      "control_or_replacement_character": 0,
+      "identical_en_vi": 5,
+      "extreme_length_ratio": 0,
+      "very_long_pair": 0,
+      "language_suspect_no_latin_letters": 1,
+      "exact_duplicate_in_source": 1
+    },
+    {
+      "source_short_name": "ubuntu",
+      "rows": 5056,
+      "non_string": 0,
+      "null_or_blank": 0,
+      "control_or_replacement_character": 0,
+      "identical_en_vi": 1087,
+      "extreme_length_ratio": 30,
+      "very_long_pair": 1,
+      "language_suspect_no_latin_letters": 12,
+      "exact_duplicate_in_source": 20
+    },
+    {
+      "source_short_name": "kde4",
+      "rows": 42782,
+      "non_string": 0,
+      "null_or_blank": 0,
+      "control_or_replacement_character": 6,
+      "identical_en_vi": 1336,
+      "extreme_length_ratio": 3034,
+      "very_long_pair": 28,
+      "language_suspect_no_latin_letters": 714,
+      "exact_duplicate_in_source": 2888
+    }
+  ],
+  "total": {
+    "rows": 163869,
+    "non_string": 0,
+    "null_or_blank": 0,
+    "control_or_replacement_character": 6,
+    "identical_en_vi": 2446,
+    "extreme_length_ratio": 3232,
+    "very_long_pair": 29,
+    "language_suspect_no_latin_letters": 728,
+    "exact_duplicate_in_source": 4640
+  },
+  "policy": "Audit signals are reported. Only blank/non-string/control-character input and exact duplicates are rejected automatically."
+}

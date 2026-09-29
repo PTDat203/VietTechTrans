@@ -6,22 +6,19 @@ __pycache__/
 .cache/
 
 data/raw/
-data/interim/
 data/processed/
-# Phase 04 artifacts are large, except human decisions required to reproduce
-# the Phase 05 release.
-data/it_corpus/*
-!data/it_corpus/*/
-data/it_corpus/*/*
-!data/it_corpus/*/manual_review_decisions.csv
 data/splits/
 
 models/
 checkpoints/
 runs/
-releases/
+releases/*
+!releases/phase02_input_it_en_vi.zip
 wandb/
 mlruns/
+
+# Large generated screening artifacts; retain small JSON evidence deliberately.
+evidence/**/predictions.jsonl
 
 
 # Byte-compiled / optimized / DLL files
@@ -236,4 +233,12 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local agent instructions and AI-assisted document artifacts.
+/AGENTS.md
+/PROJECT_RULES.md
+/.tmp_docx_muc_tieu/
+/_reference_report/
+/_report_style.json
+/Nhóm 14_Mục tiêu đồ án tốt nghiệp_đã cập nhật.docx
 

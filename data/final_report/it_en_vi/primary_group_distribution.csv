@@ -1,0 +1,13 @@
+﻿split,primary_group,pairs
+it_test,CLI / Command,26
+it_test,Code & Technical Reference,13555
+it_test,Hỗ trợ kỹ thuật / xử lý sự cố,1089
+it_test,Software / UI,574
+train,CLI / Command,192
+train,Code & Technical Reference,108065
+train,Hỗ trợ kỹ thuật / xử lý sự cố,8703
+train,Software / UI,4587
+validation,CLI / Command,25
+validation,Code & Technical Reference,13579
+validation,Hỗ trợ kỹ thuật / xử lý sự cố,1081
+validation,Software / UI,568

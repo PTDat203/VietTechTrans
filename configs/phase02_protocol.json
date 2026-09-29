@@ -1,0 +1,60 @@
+{
+  "schema_version": "3.4",
+  "phase": "phase_02_core_mt_selection",
+  "status": "frozen_before_experiments",
+  "dataset_release": "it_en_vi",
+  "goal": "Select one EN-to-VI Core MT and one VI-to-EN Core MT for later compact deployment research. This phase does not claim that a teacher runs on the target weak device.",
+  "directions": ["en_to_vi", "vi_to_en"],
+  "candidates": ["opus_mt", "envit5", "nllb200_distilled_600m"],
+  "data_roles": {
+    "adaptation_train": "data/processed/it_en_vi/train.jsonl",
+    "selection_validation": "data/processed/it_en_vi/validation.jsonl",
+    "general_validation": "data/processed/general_validation_en_vi/general_validation.jsonl",
+    "locked_final_evaluation": {
+      "it_test": "data/processed/it_en_vi/it_test.jsonl",
+      "general_test": "data/processed/general_test_flores200_devtest/general_test.jsonl",
+      "access_rule": "Open exactly once only after the Core MT decision for both directions is written and frozen. Final results cannot change the selected Core MT."
+    }
+  },
+  "workflow": [
+    "Run each pretrained candidate on IT Validation and General Validation in both directions.",
+    "Record the candidate(s) retained for IT adaptation and the evidence-based reason; do not use an invented threshold or weighted score.",
+    "Adapt only retained candidate(s) using IT Train. The human-approved experiment record declares either full fine-tuning or LoRA before training.",
+    "Evaluate adapted checkpoints on IT Validation and General Validation.",
+    "Review the pre-sealed IT Validation sample for adapted candidate(s). Record translation_error and technical_error only.",
+    "Freeze one Core MT per direction from the complete validation and review evidence.",
+    "Run the frozen Core MT once on IT Test and General Test for final reporting; do not reopen selection."
+  ],
+  "evidence_contract": {
+    "root": "evidence/phase02",
+    "pretrained": "evidence/phase02/<model>/<direction>/pretrained/<dataset_role>/{predictions.jsonl,metrics.json,run.json}; run.json records documented checkpoint runtime controls and output normalization when required.",
+    "adaptation_feasibility": "docs/phase_02/lora_hardware_feasibility.md records the fixed-hardware preflight used to choose a feasible adaptation method; it contains no translation-quality result and does not replace an experiment record.",
+    "adaptation_training": "evidence/phase02/<model>/<direction>/adapted/<experiment_id>/{experiment_record.md,training_run.json}; checkpoint files are stored outside evidence at models/phase02/<experiment_id>/<checkpoint_id>/.",
+    "adapted_evaluation": "evidence/phase02/<model>/<direction>/adapted/<experiment_id>/<checkpoint_id>/<dataset_role>/{predictions.jsonl,metrics.json,run.json}; each evaluated checkpoint has one completed directory for selection_validation and one for general_validation.",
+    "selection": "evidence/phase02/selection/<direction>.md",
+    "review": "reviews/phase02_<model>_<direction>_<checkpoint_id>_review.csv",
+    "decision": "evidence/phase02/core_mt_decision.json",
+    "final": "evidence/phase02/final/<direction>/<dataset_role>/{predictions.jsonl,metrics.json,run.json}",
+    "write_rule": "A completed evidence directory is immutable. A failed run remains in a sibling .running directory and is never used as evidence."
+  },
+  "evaluation": {
+    "automatic": {"primary": "chrF++", "secondary": "SacreBLEU"},
+    "technical_analysis": "Use existing technical_tags only for descriptive breakdowns when the sample has enough cases. Do not create a composite technical score.",
+    "manual_review": "Use one IT Validation sample sealed before any predictions are inspected. Record only translation_error and technical_error as yes/no/unclear.",
+    "general_validation": "Report pretrained and adapted results separately as an outside-domain guardrail. It is not an optimization target and has no invented pass threshold.",
+    "selection": "Choose separately for EN-to-VI and VI-to-EN from the recorded evidence. Do not average directions or use a weighted composite score.",
+    "final_evaluation": "IT Test and General Test are reporting-only data. Their outputs are not selection evidence."
+  },
+  "checkpoint_runtime_controls": "Use the checkpoint GenerationConfig by default. A model-card runtime control may be used only when the official checkpoint documentation states it, it is stored in phase02_models.json with its source, and run.json records the applied value. Removing a documented leading language-control output prefix before scoring is output normalization, not rewriting translation content.",
+  "input_length_handling": "When a source exceeds a checkpoint's documented input-token limit, the runner uses deterministic whitespace segmentation and character-boundary fallback, translates every segment with the documented checkpoint runtime controls, and joins segment outputs. It records the limit and segmented-row counts. This preserves source text and is not generation tuning.",
+  "adaptation_method": "For a retained candidate, use either full fine-tuning or one declared LoRA configuration. The method, precision and every LoRA setting are recorded before training. A GPU preflight may only establish hardware feasibility from IT Train; it does not use translation quality to select a configuration.",
+  "prohibited": [
+    "training on validation or final-evaluation data",
+    "using IT Test or General Test before the Core MT decision is frozen",
+    "changing the Core MT decision after final evaluation",
+    "composite scores, invented thresholds, LLM-as-a-judge, or new technical taxonomies",
+    "post-hoc manual-review sampling",
+    "generative AI for rewriting, synthetic data, judging, ranking, or automatic data repair",
+    "notebook code that writes predictions, metrics, review decisions, selection records, or final results"
+  ]
+}

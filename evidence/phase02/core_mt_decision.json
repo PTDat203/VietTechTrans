@@ -1,0 +1,15 @@
+{
+  "status": "frozen_before_final_evaluation",
+  "selections": {
+    "en_to_vi": {
+      "model": "envit5",
+      "checkpoint": "models/phase02/envit5-en-to-vi-lora-v1/final-epoch-1",
+      "rationale": "Đã chọn checkpoint EnViT5 adapted. Trên IT Validation, chrF++ tăng từ 64.981633 lên 71.174877 và SacreBLEU tăng từ 48.974620 lên 57.762843. Trên General Validation, chrF++ tăng từ 59.822968 lên 60.364459 và SacreBLEU tăng từ 38.398872 lên 39.238366. Review 50 câu đã hoàn thành trước khi khóa quyết định."
+    },
+    "vi_to_en": {
+      "model": "envit5",
+      "checkpoint": "models/phase02/envit5-vi-to-en-lora-v1/final-epoch-1",
+      "rationale": "Đã chọn checkpoint EnViT5 adapted theo mục tiêu miền IT. Trên IT Validation, chrF++ tăng từ 60.431968 lên 65.383472 và SacreBLEU tăng từ 31.983891 lên 41.319147. General Validation giảm: chrF++ từ 60.143713 xuống 58.449516 và SacreBLEU từ 32.063374 xuống 29.842579. Giới hạn này được ghi nhận. Review 50 câu đã hoàn thành trước khi khóa quyết định."
+    }
+  }
+}

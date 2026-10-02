@@ -82,7 +82,7 @@ class Speaker(private val engines: SpeechEngines, private val normalizer: TtsTex
         var samples = 0L
         // Must be a real class, not a lambda: sherpa's JNI looks up
         // `invoke([F)Ljava/lang/Integer;`, which Kotlin 2.x indy lambdas do not have
-        // (NoSuchMethodError -> native abort on the first sentence).
+        // (NoSuchMethodError -> native abort on the first sentence). R8 keeps it via proguard-rules.pro.
         val callback = object : (FloatArray) -> Int {
             override fun invoke(pcm: FloatArray): Int {
                 if (first == null) first = nowMs() - t0

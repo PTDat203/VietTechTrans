@@ -11,6 +11,7 @@ import vn.viettechtrans.app.speech.Listener
 import vn.viettechtrans.app.speech.Speaker
 import vn.viettechtrans.app.speech.SpeechEngines
 import vn.viettechtrans.app.text.TtsTextNormalizer
+import vn.viettechtrans.app.turn.TurnRunner
 
 /** Build facts shown in Settings → Giới thiệu and written into evidence. */
 data class BuildInfo(
@@ -56,4 +57,7 @@ class AppContainer(context: Context) {
     val speaker: Speaker by lazy { Speaker(speechEngines, ttsNormalizer) }
 
     val translators = TranslatorRegistry(appContext) { coreMt() }
+
+    /** Listen → clean → translate → speak, shared by the Dịch and Hội thoại screens. */
+    val turns: TurnRunner by lazy { TurnRunner(this) }
 }

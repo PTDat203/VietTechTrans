@@ -46,6 +46,7 @@ android {
             applicationIdSuffix = ".dev"
             versionNameSuffix = "-dev"
             buildConfigField("boolean", "OFFLINE_BUILD", "false")
+            proguardFile("proguard-dev.pro")
         }
     }
 

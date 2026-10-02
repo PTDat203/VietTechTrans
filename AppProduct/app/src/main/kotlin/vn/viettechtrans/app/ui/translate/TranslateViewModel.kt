@@ -15,14 +15,12 @@ import kotlinx.coroutines.launch
 import vn.viettechtrans.app.AppContainer
 import vn.viettechtrans.app.mt.Direction
 import vn.viettechtrans.app.mt.Lang
-import vn.viettechtrans.app.mt.MtException
-import vn.viettechtrans.app.mt.MtInputNormalizer
 import vn.viettechtrans.app.speech.EngineRole
 import vn.viettechtrans.app.speech.ListenConfig
 import vn.viettechtrans.app.speech.ListenOutcome
 import vn.viettechtrans.app.speech.Listener
-import vn.viettechtrans.app.speech.nowMs
 import vn.viettechtrans.app.text.SttPostProcessor
+import vn.viettechtrans.app.turn.MtOutcome
 import vn.viettechtrans.app.turn.TurnTimings
 
 enum class Phase { IDLE, LOADING, LISTENING, RECOGNIZING, TRANSLATING, SPEAKING }
@@ -52,7 +50,6 @@ data class TranslateUiState(
 class TranslateViewModel(private val c: AppContainer) : ViewModel() {
     companion object {
         const val MAX_TYPED_CHARS = 1000
-        const val MT_WATCHDOG_MS = 10_000L
 
         /** Let the first frames render before parsing tens of MB of models. */
         const val PRELOAD_DELAY_MS = 1_500L
@@ -80,7 +77,27 @@ class TranslateViewModel(private val c: AppContainer) : ViewModel() {
         launchSafe { c.speechEngines.loading.collect { l -> _state.update { it.copy(loading = l) } } }
         launchSafe { c.speechEngines.loaded.collect { l -> _state.update { it.copy(loadedMs = l) } } }
         launchSafe { c.speaker.speaking.collect { s -> if (!s) _state.update { if (it.phase == Phase.SPEAKING) it.copy(phase = Phase.IDLE) else it } } }
-        preload(delayMs = PRELOAD_DELAY_MS)
+    }
+
+    /** Screen became visible (also when coming back from Hội thoại): keep only this direction's models. */
+    fun onShown() = preload(delayMs = PRELOAD_DELAY_MS)
+
+    /** "⇄": reverse the direction; the last translation becomes the new input (like Google Translate). */
+    fun swap() {
+        val s = _state.value
+        if (s.busy || s.phase == Phase.LISTENING || s.phase == Phase.LOADING) return
+        c.speaker.stop()
+        _state.update {
+            it.copy(
+                direction = it.direction.reverse,
+                input = it.translation?.take(MAX_TYPED_CHARS) ?: it.input,
+                translation = null,
+                lastSource = null,
+                timings = null,
+                notice = null,
+            )
+        }
+        preload(delayMs = 0)
     }
 
     /**
@@ -166,29 +183,21 @@ class TranslateViewModel(private val c: AppContainer) : ViewModel() {
     }
 
     private suspend fun runTranslation(text: String, direction: Direction, timings: TurnTimings) {
-        val translator = c.translators.active()
-        if (translator == null) {
-            _state.update { it.copy(phase = Phase.IDLE, translation = null, lastSource = text, timings = timings) }
-            return
-        }
         _state.update { it.copy(phase = Phase.TRANSLATING, notice = null) }
-        val watchdog = launchSafe {
-            delay(MT_WATCHDOG_MS)
+        val result = c.turns.translate(text, direction) {
             _state.update { it.copy(notice = "Mô hình dịch chưa phản hồi… Có thể bấm Huỷ.") }
         }
-        val t0 = nowMs()
-        val translated = try {
-            translator.prepare(setOf(direction))
-            translator.translate(direction, MtInputNormalizer.normalize(text)).text
-        } catch (e: MtException) {
-            _state.update { it.copy(phase = Phase.IDLE, notice = e.message, lastSource = text) }
-            return
-        } finally {
-            watchdog.cancel()
+        when (result) {
+            MtOutcome.NoTranslator ->
+                _state.update { it.copy(phase = Phase.IDLE, translation = null, lastSource = text, timings = timings) }
+            is MtOutcome.Failed ->
+                _state.update { it.copy(phase = Phase.IDLE, notice = result.message, lastSource = text) }
+            is MtOutcome.Ok -> {
+                val withMt = timings.copy(mtMs = result.mtMs)
+                _state.update { it.copy(translation = result.text, lastSource = text, timings = withMt, notice = null) }
+                speak(result.text, direction.target) { first -> _state.update { it.copy(timings = withMt.copy(ttsFirstAudioMs = first)) } }
+            }
         }
-        val withMt = timings.copy(mtMs = nowMs() - t0)
-        _state.update { it.copy(translation = translated, lastSource = text, timings = withMt, notice = null) }
-        speak(translated, direction.target) { first -> _state.update { it.copy(timings = withMt.copy(ttsFirstAudioMs = first)) } }
     }
 
     fun playTranslation() {

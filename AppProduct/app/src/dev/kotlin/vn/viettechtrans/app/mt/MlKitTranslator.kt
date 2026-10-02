@@ -48,7 +48,8 @@ class MlKitTranslator : Translator {
             for (d in directions) client(d).downloadModelIfNeeded(DownloadConditions.Builder().build()).await()
             _status.value = TranslatorStatus.Ready
         } catch (e: Exception) {
-            _status.value = TranslatorStatus.Unavailable("Chưa tải được gói ML Kit (cần mạng một lần)")
+            android.util.Log.w("VttMlKit", "model download failed for $directions", e)
+            _status.value = TranslatorStatus.Unavailable("Chưa tải được gói ML Kit (cần mạng một lần): ${e.message}")
             throw MtException.NetworkRequired()
         }
     }

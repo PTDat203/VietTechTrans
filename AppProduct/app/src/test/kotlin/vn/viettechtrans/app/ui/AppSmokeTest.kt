@@ -31,15 +31,18 @@ class AppSmokeTest {
     @get:Rule
     val compose = createAndroidComposeRule<MainActivity>()
 
-    private fun str(id: Int) = compose.activity.getString(id)
+    private fun str(id: Int, vararg args: Any) = compose.activity.getString(id, *args)
+
+    /** Tabs of the floating pill bar expose their label as the content description. */
+    private fun navItem(label: String) = hasContentDescription(label) and isSelectable()
 
     @Test
     fun everyDestinationOpensAndHelpWorks() {
         for (dest in TopDestination.entries) {
             val label = str(dest.label)
-            compose.onNode(hasText(label) and isSelectable()).performClick()
+            compose.onNode(navItem(label)).performClick()
             compose.waitForIdle()
-            compose.onNode(hasText(label) and isSelectable()).assertIsSelected()
+            compose.onNode(navItem(label)).assertIsSelected()
             // Screen title uses the same text as the navigation label (a button may reuse it too).
             assertTrue(label, compose.onAllNodes(hasText(label) and !isSelectable()).fetchSemanticsNodes().isNotEmpty())
         }
@@ -51,7 +54,7 @@ class AppSmokeTest {
 
     @Test
     fun settingsShowsMissingMtPackage() {
-        compose.onNode(hasText(str(R.string.nav_settings)) and isSelectable()).performClick()
+        compose.onNode(navItem(str(R.string.nav_settings))).performClick()
         val expected = str(R.string.settings_translator_none)
         compose.waitUntil(timeoutMillis = 10_000) {
             compose.onAllNodes(hasText(expected)).fetchSemanticsNodes().isNotEmpty()
@@ -59,9 +62,26 @@ class AppSmokeTest {
     }
 
     @Test
-    fun translateScreenHasBothDirections() {
-        compose.onNode(hasText(str(R.string.dir_vi_to_en)) and isSelectable()).assertIsSelected()
-        compose.onNode(hasText(str(R.string.dir_en_to_vi)) and isSelectable()).performClick()
-        compose.onNode(hasText(str(R.string.dir_en_to_vi)) and isSelectable()).assertIsSelected()
+    fun translateScreenSwapsDirection() {
+        compose.onNode(navItem(str(R.string.nav_translate))).performClick()
+        compose.waitForIdle()
+        val label = str(R.string.translate_input_label, str(R.string.lang_vi))
+        assertTrue(compose.onAllNodes(hasText(label)).fetchSemanticsNodes().isNotEmpty())
+        compose.onNode(hasContentDescription(str(R.string.translate_swap))).performClick()
+        compose.waitForIdle()
+        val swapped = str(R.string.translate_input_label, str(R.string.lang_en))
+        assertTrue(compose.onAllNodes(hasText(swapped)).fetchSemanticsNodes().isNotEmpty())
+    }
+
+    @Test
+    fun conversationIsTheStartScreenWithBothLanguageButtons() {
+        compose.onNode(navItem(str(R.string.nav_conversation))).assertIsSelected()
+        compose.onNode(hasContentDescription(str(R.string.party_vi_speak))).assertExists()
+        compose.onNode(hasContentDescription(str(R.string.party_en_speak))).assertExists()
+        // Switch to the face-to-face layout and back.
+        compose.onNode(hasContentDescription(str(R.string.conv_layout_split))).performClick()
+        compose.waitForIdle()
+        compose.onNode(hasContentDescription(str(R.string.conv_layout_chat))).performClick()
+        compose.waitForIdle()
     }
 }

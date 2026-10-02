@@ -50,11 +50,44 @@
 
     <!-- Translate screen -->
     <string name="translate_input_label">Câu %1$s (gõ hoặc nói)</string>
+    <string name="translate_swap">Đảo chiều dịch</string>
     <string name="translate_speak">Nói</string>
     <string name="result_title">Bản dịch (%1$s)</string>
+    <string name="translate_subtitle">Gõ, nói hoặc nghe</string>
 
     <!-- Conversation screen -->
-    <string name="conversation_coming">Hội thoại hai người (A nói tiếng Việt, B nói tiếng Anh, chen lời Cắt/Chờ): M6.</string>
+    <string name="conv_layout_chat">Kiểu khung chat</string>
+    <string name="conv_layout_split">Kiểu chia đôi, ngồi đối diện</string>
+    <string name="conv_auto">Luân phiên tự động</string>
+    <string name="conv_policy_cut">Chen lời: Cắt</string>
+    <string name="conv_policy_queue">Chen lời: Chờ</string>
+    <string name="conv_rotate_top">Xoay nửa trên</string>
+    <string name="conv_clear">Xoá cuộc nói chuyện</string>
+    <string name="conv_subtitle">Tiếng Việt ⇄ English</string>
+    <string name="conv_empty_title">Bắt đầu trò chuyện</string>
+    <string name="conv_empty">Mỗi người bấm nút ngôn ngữ của mình để nói. App dịch và đọc cho người kia nghe.</string>
+    <string name="conv_type">Gõ chữ</string>
+    <string name="conv_type_hint">Nhập câu cần dịch</string>
+    <string name="conv_send_vi">Gửi tiếng Việt</string>
+    <string name="conv_send_en">Send English</string>
+    <string name="conv_status_interrupted">bị ngắt</string>
+    <string name="conv_status_not_played">chưa phát</string>
+    <string name="conv_status_translating">đang dịch…</string>
+    <string name="conv_status_no_mt">chưa có mô hình dịch</string>
+    <string name="conv_status_failed">dịch lỗi</string>
+    <string name="conv_replay">Nghe lại</string>
+
+    <!-- Labels of each person's half, written in that person's language -->
+    <string name="party_vi_button">Tiếng Việt</string>
+    <string name="party_vi_speak">Chạm để nói tiếng Việt</string>
+    <string name="party_vi_listening">Đang nghe…</string>
+    <string name="party_vi_waiting">Đang chờ lượt…</string>
+    <string name="party_vi_processing">Đang dịch…</string>
+    <string name="party_en_button">English</string>
+    <string name="party_en_speak">Tap to speak English</string>
+    <string name="party_en_listening">Listening…</string>
+    <string name="party_en_waiting">Waiting for your turn…</string>
+    <string name="party_en_processing">Translating…</string>
 
     <!-- History screen -->
     <string name="history_coming">Lịch sử (câu gốc và bản dịch cùng ID, chỉ xem và nghe lại): M7.</string>

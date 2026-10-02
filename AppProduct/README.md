@@ -18,11 +18,11 @@ Không sửa `Core/`. Đề xuất cho Core ghi trong [docs/design_check.md](doc
 | M-pre | `artifacts.lock.json`, `fetch_artifacts.py`, fixture parity từ Core, khung tài liệu | xong (2026-09-30) |
 | M0 | Cài công cụ, khung Gradle + Compose, flavor, manifest offline | xong (2026-10-01), chờ thử trên máy thật |
 | M1 | Interface dịch (`mt/`) và test parity | xong (2026-10-01): 19 test, 544 ca parity với Core |
-| M2 | Nối runtime sherpa-onnx, `check_apk.py` | chưa làm |
-| M3 | TTS và đường ống evidence | chưa làm |
-| M4 | STT trên file WAV | chưa làm |
-| M5 | Mic thật, màn Dịch, bộ dịch | chưa làm |
-| M6 | Hội thoại hai người (Cắt/Chờ) | chưa làm |
+| M2 | Nối runtime sherpa-onnx, `check_apk.py` | runtime xong (2026-10-01); còn `check_apk.py` |
+| M3 | TTS và đường ống evidence | TTS xong (int8, phát song song); còn bộ đo evidence |
+| M4 | STT trên file WAV | STT mic xong (VAD, chữ tạm thời); còn bộ đo WAV/loopback |
+| M5 | Mic thật, màn Dịch, bộ dịch | xong (2026-10-02): màn Dịch có nút ⇄, ML Kit ở bản dev |
+| M6 | Hội thoại hai người (Cắt/Chờ) | xong (2026-10-02): khung chat + chia đôi, luân phiên tự động; chờ thử bằng mic thật |
 | M7 | Lịch sử, chính sách RAM, cài đặt | chưa làm |
 | M8 | Thực nghiệm, Hướng dẫn, báo cáo | chưa làm |
 

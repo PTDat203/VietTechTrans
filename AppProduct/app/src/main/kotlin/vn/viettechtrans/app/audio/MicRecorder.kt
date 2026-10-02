@@ -26,6 +26,9 @@ class MicRecorder(private val context: Context) {
     private var running = false
     private var thread: Thread? = null
 
+    /** True while a capture thread owns the microphone. */
+    val isRunning: Boolean get() = running || thread?.isAlive == true
+
     fun hasPermission(): Boolean =
         ContextCompat.checkSelfPermission(context, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED
 

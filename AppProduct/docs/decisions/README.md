@@ -10,7 +10,7 @@ Mỗi lựa chọn công nghệ đưa vào code có một báo cáo mini (sketch
 | DR-02 | Runtime giọng nói | M2 | chưa viết |
 | DR-03 | STT (VI + EN + VAD) | M4 | chưa viết |
 | DR-04 | TTS (+ espeak-ng, lexicon) | M3 | chưa viết |
-| DR-05 | Hội thoại & chen lời | M6 | chưa viết |
+| DR-05 | Hội thoại & chen lời | M6 | [đã chốt](DR-05_hoi_thoai_chen_loi.md) |
 | DR-06 | Lịch sử | M7 | chưa viết |
 | DR-07 | Engine dịch & gói MT | M5 | chưa viết |
 | DR-08 | Đo đạc & evidence | M8 | chưa viết |

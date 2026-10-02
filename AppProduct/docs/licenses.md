@@ -29,6 +29,7 @@ giọng khác (cũng cần kiểm license).
 | ML Kit Translate (`com.google.mlkit:translate`) | Chỉ flavor `dev` | Điều khoản ML Kit của Google | Không có trong APK offline (`check_apk.py` kiểm); không dùng làm evidence |
 | AndroidX, Jetpack Compose, Room, Paging, DataStore | Toàn app | Apache-2.0 | Giữ file license |
 | Material Symbols (icon vector trong `res/drawable`) | Icon điều hướng, nút | Apache-2.0 | Giữ thông báo bản quyền |
+| Be Vietnam Pro (4 độ đậm, `res/font`, ~0.5 MB) | Font chữ toàn app (thiết kế cho dấu tiếng Việt) | SIL OFL 1.1 | Kèm file license `third_party/fonts/BeVietnamPro-OFL.txt`; không bán riêng font |
 | Kotlin stdlib, kotlinx.coroutines, kotlinx.serialization | Toàn app | Apache-2.0 | Giữ file license |
 
 Chỉ dùng khi test trên PC, không có trong APK: JUnit 4 (EPL-1.0), Robolectric

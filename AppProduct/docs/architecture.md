@@ -168,3 +168,14 @@ của A; ghi rõ trong Hướng dẫn và đo ở TN-04.
 2. Tối đa một người ở trạng thái `Listening`.
 3. Mỗi lượt kết thúc đúng một lần và được lưu tối đa một lần.
 4. Lượt đã bỏ phát thì không bao giờ phát.
+
+## Cập nhật 2026-10-02: màn Hội thoại
+
+- Tab đầu là **Hội thoại**, có hai bố cục chuyển bằng nút trên thanh tiêu đề:
+  - **Khung chat** (mặc định): bong bóng Việt bên trái, Anh bên phải; dưới cùng 🎤 Tiếng Việt · ⌨ · 🎤 English.
+  - **Chia đôi đối diện:** nửa trên (English) xoay 180°.
+- **Luân phiên tự động** (công tắc, mặc định tắt): đọc xong bản dịch thì tự mở mic cho người kia; 6 s im lặng thì dừng.
+- **Chen lời Cắt/Chờ:** chọn bằng chip trên màn.
+- **Logic:** máy trạng thái thuần `turn/ConversationReducer.kt`; các bước của một lượt dùng chung `turn/TurnRunner.kt` với màn Dịch.
+- **Màn Dịch:** thanh "[nguồn] ⇄ [đích]" thay hai tab.
+- Chi tiết và so sánh các app tham khảo: [decisions/DR-05_hoi_thoai_chen_loi.md](decisions/DR-05_hoi_thoai_chen_loi.md).

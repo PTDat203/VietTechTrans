@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.selection.SelectionContainer
-import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -28,6 +27,7 @@ import vn.viettechtrans.app.Diagnostics
 import vn.viettechtrans.app.R
 import vn.viettechtrans.app.mt.CoreMt
 import vn.viettechtrans.app.ui.common.ScreenScaffold
+import vn.viettechtrans.app.ui.common.VttCard
 
 /** M0: "Giới thiệu" card (build facts + translator status). Settings proper arrive in M7. */
 @Composable
@@ -57,9 +57,8 @@ fun SettingsScreen(container: AppContainer, onHelp: () -> Unit) {
     }
 
     ScreenScaffold(title = stringResource(R.string.nav_settings), onHelp = onHelp) {
-        Card(modifier = Modifier.fillMaxWidth()) {
-            Column(modifier = Modifier.padding(16.dp)) {
-                Text(stringResource(R.string.diag_title), style = MaterialTheme.typography.titleMedium)
+        VttCard(modifier = Modifier.fillMaxWidth(), title = stringResource(R.string.diag_title), icon = R.drawable.ic_graphic_eq) {
+            Column {
                 InfoRow(stringResource(R.string.diag_memory), memory)
                 InfoRow(
                     stringResource(R.string.diag_last_exit),
@@ -77,9 +76,8 @@ fun SettingsScreen(container: AppContainer, onHelp: () -> Unit) {
                 TextButton(onClick = { refresh++ }) { Text(stringResource(R.string.diag_refresh)) }
             }
         }
-        Card(modifier = Modifier.fillMaxWidth()) {
-            Column(modifier = Modifier.padding(16.dp)) {
-                Text(stringResource(R.string.settings_about), style = MaterialTheme.typography.titleMedium)
+        VttCard(modifier = Modifier.fillMaxWidth(), title = stringResource(R.string.settings_about), icon = R.drawable.ic_info) {
+            Column {
                 InfoRow(
                     stringResource(R.string.settings_build),
                     stringResource(if (info.offlineBuild) R.string.build_offline else R.string.build_dev) + " · " + info.buildType,
@@ -105,7 +103,12 @@ fun SettingsScreen(container: AppContainer, onHelp: () -> Unit) {
 @Composable
 private fun InfoRow(label: String, value: String) {
     Row(modifier = Modifier.fillMaxWidth().padding(top = 8.dp)) {
-        Text(label, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.width(96.dp))
+        Text(
+            label,
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.width(104.dp),
+        )
         Text(value, style = MaterialTheme.typography.bodyMedium)
     }
 }

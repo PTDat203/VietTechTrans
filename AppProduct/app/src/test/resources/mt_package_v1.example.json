@@ -1,0 +1,167 @@
+{
+  "schema_version": "1.0",
+  "package_id": "envit5-lora-v1-ort1.30.0-int8-r1",
+  "package_version": "1.0.0",
+  "created_at_utc": "<yyyy-mm-ddThh:mm:ss+00:00>",
+  "model_role": "core_mt",
+  "base_model": {
+    "model_id": "VietAI/envit5-translation",
+    "revision": "840bc88104d5a4277af740eaedb024df8c3093e7"
+  },
+  "runtime": {
+    "engine": "onnxruntime",
+    "engine_version": "1.30.0",
+    "execution_provider": "cpu",
+    "abis": [
+      "arm64-v8a",
+      "x86_64"
+    ]
+  },
+  "quantization": {
+    "method": "dynamic_int8",
+    "tool": "onnxruntime.quantization 1.30.0",
+    "per_channel": false
+  },
+  "tokenizer": {
+    "type": "sentencepiece",
+    "file": "tokenizer/spiece.model",
+    "sp_piece_count": 50000,
+    "vocab_size": 50048,
+    "add_bos": false,
+    "add_eos": true,
+    "pad_id": 0,
+    "eos_id": 1,
+    "unk_id": 2,
+    "decode_skip_ids": [
+      0,
+      1,
+      2
+    ],
+    "decode_skip_id_ranges": [
+      [
+        50000,
+        50047
+      ]
+    ]
+  },
+  "input_normalization": "phase01_nfc_whitespace_v1",
+  "directions": {
+    "en_to_vi": {
+      "input_prefix": "en:",
+      "output_control_prefix": "vi:",
+      "output_normalization": "remove_exact_leading_control_prefix_and_one_delimiter_whitespace",
+      "files": {
+        "encoder": "en_to_vi/encoder_model.onnx",
+        "decoder": "en_to_vi/decoder_model_merged.onnx"
+      },
+      "generation": {
+        "strategy": "greedy",
+        "num_beams": 1,
+        "max_length": 512,
+        "decoder_start_token_id": 0,
+        "eos_token_id": 1
+      },
+      "input_length_policy": {
+        "max_input_tokens": null,
+        "on_exceed": "segment_whitespace"
+      },
+      "source_checkpoint": {
+        "path": "models/phase02/envit5-en-to-vi-lora-v1/final-epoch-1",
+        "sha256_tree": "d96171cb2ccecbdb56e60744695084bc5f82b3ac11e8d512e53d99514bd12d11"
+      },
+      "golden_file": "golden/en_to_vi.jsonl",
+      "quality": {
+        "checkpoint_it_test": {
+          "chrF++": 70.33,
+          "sacreBLEU": 56.82
+        },
+        "exported": null
+      }
+    },
+    "vi_to_en": {
+      "input_prefix": "vi:",
+      "output_control_prefix": "en:",
+      "output_normalization": "remove_exact_leading_control_prefix_and_one_delimiter_whitespace",
+      "files": {
+        "encoder": "vi_to_en/encoder_model.onnx",
+        "decoder": "vi_to_en/decoder_model_merged.onnx"
+      },
+      "generation": {
+        "strategy": "greedy",
+        "num_beams": 1,
+        "max_length": 512,
+        "decoder_start_token_id": 0,
+        "eos_token_id": 1
+      },
+      "input_length_policy": {
+        "max_input_tokens": null,
+        "on_exceed": "segment_whitespace"
+      },
+      "source_checkpoint": {
+        "path": "models/phase02/envit5-vi-to-en-lora-v1/final-epoch-1",
+        "sha256_tree": "3d2475f0f6075d3332dbd2a258da9ef6d85675eb4f5846b0bf7fcbf456cb5c12"
+      },
+      "golden_file": "golden/vi_to_en.jsonl",
+      "quality": {
+        "checkpoint_it_test": {
+          "chrF++": 65.21,
+          "sacreBLEU": 41.2
+        },
+        "exported": null
+      }
+    }
+  },
+  "files": [
+    {
+      "path": "tokenizer/spiece.model",
+      "bytes": 1102207,
+      "sha256": "3b4eda923bbac1726e8fda66254a8783ecc705be5577149ee8c98074efdb5de5"
+    },
+    {
+      "path": "en_to_vi/encoder_model.onnx",
+      "bytes": 0,
+      "sha256": "<sha256>"
+    },
+    {
+      "path": "en_to_vi/decoder_model_merged.onnx",
+      "bytes": 0,
+      "sha256": "<sha256>"
+    },
+    {
+      "path": "vi_to_en/encoder_model.onnx",
+      "bytes": 0,
+      "sha256": "<sha256>"
+    },
+    {
+      "path": "vi_to_en/decoder_model_merged.onnx",
+      "bytes": 0,
+      "sha256": "<sha256>"
+    },
+    {
+      "path": "golden/en_to_vi.jsonl",
+      "bytes": 0,
+      "sha256": "<sha256>"
+    },
+    {
+      "path": "golden/vi_to_en.jsonl",
+      "bytes": 0,
+      "sha256": "<sha256>"
+    },
+    {
+      "path": "LICENSE_NOTES.md",
+      "bytes": 0,
+      "sha256": "<sha256>"
+    }
+  ],
+  "core_refs": [
+    {
+      "path": "evidence/phase02/core_mt_decision.json",
+      "sha256": "1791078e24144c6e244a0121768cbc424832967486b29d2a929b2eab40f403d2"
+    },
+    {
+      "path": "configs/phase02_models.json",
+      "sha256": "c36712ae571cdd6748354ed6302b2dd0e32c064aff38d7a878735a8f7ca447b8"
+    }
+  ],
+  "license_notes": "LICENSE_NOTES.md"
+}

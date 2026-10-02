@@ -1,0 +1,72 @@
+# Lexicon v0: cách đọc thuật ngữ IT cho giọng tiếng Việt (vi_VN-vais1000-medium).
+# Định dạng: thuật ngữ<TAB>cách đọc. Không phân biệt hoa thường. Thực nghiệm TN-07.
+# Viết tay; danh sách ứng viên đầy đủ hơn: docs/data/it_term_candidates.tsv (từ IT Train).
+API	ây pi ai
+AI	ây ai
+IT	ai ti
+OK	ô kê
+CPU	xi pi iu
+GPU	gi pi iu
+RAM	ram
+SSD	ét ét đi
+USB	iu ét bi
+HTML	ết ti em eo
+CSS	xi ét ét
+SQL	ét kiu eo
+JSON	giây sơn
+URL	iu a eo
+app	áp
+apps	áp
+bug	bấc
+debug	đi bấc
+code	cốt
+coding	cốt đinh
+file	phai
+files	phai
+server	xơ vơ
+database	đa ta bết
+container	công tê nơ
+docker	đốc cơ
+git	ghít
+github	ghít hấp
+commit	cơ mít
+push	pút
+pull	pun
+merge	mơ giơ
+branch	bờ ranh
+deploy	đi ploi
+backend	bách en
+frontend	phờ ron en
+framework	phờ rêm uốc
+plugin	pờ lấc in
+module	mô đun
+terminal	tơ mi nồ
+cloud	cờ lao
+router	rao tơ
+wifi	oai phai
+wi-fi	oai phai
+web	uếp
+website	uếp sai
+email	i meo
+online	on lai
+offline	óp lai
+login	lóc in
+logout	lóc ao
+password	pát uốt
+update	ấp đết
+upgrade	ấp grết
+download	đao lốt
+upload	ấp lốt
+laptop	láp tốp
+windows	uyn đâu
+linux	li nấc
+android	an đờ roi
+iphone	ai phôn
+google	gu gồ
+facebook	phây búc
+youtube	diu túp
+python	pai thơn
+java	gia va
+javascript	gia va xờ críp
+kotlin	cốt lin
+chatgpt	chát gi pi ti

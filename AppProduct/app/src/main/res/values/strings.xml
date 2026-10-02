@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">VietTechTrans</string>
+
+    <!-- Navigation -->
+    <string name="nav_translate">Dịch</string>
+    <string name="nav_conversation">Hội thoại</string>
+    <string name="nav_history">Lịch sử</string>
+    <string name="nav_experiments">Thực nghiệm</string>
+    <string name="nav_settings">Cài đặt</string>
+    <string name="nav_manual">Hướng dẫn</string>
+    <string name="cd_help">Mở hướng dẫn</string>
+    <string name="cd_back">Quay lại</string>
+
+    <!-- Direction -->
+    <string name="dir_vi_to_en">Việt → Anh</string>
+    <string name="dir_en_to_vi">Anh → Việt</string>
+
+    <!-- Common notices -->
+    <string name="banner_no_mt">Chưa có mô hình dịch offline (Phase 04). App chỉ hiện câu gốc.</string>
+    <string name="skeleton_notice">Bản khung (M0): màn hình đã có, chức năng được thêm dần theo mốc.</string>
+
+    <!-- Languages and models -->
+    <string name="lang_vi">Tiếng Việt</string>
+    <string name="lang_en">Tiếng Anh</string>
+    <string name="role_stt_vi">nhận dạng tiếng Việt</string>
+    <string name="role_stt_en">nhận dạng tiếng Anh</string>
+    <string name="role_tts_vi">giọng đọc tiếng Việt</string>
+    <string name="role_tts_en">giọng đọc tiếng Anh</string>
+
+    <!-- Turn status -->
+    <string name="phase_idle">Chạm nút micro để nói</string>
+    <string name="phase_starting_mic">Đang mở micro…</string>
+    <string name="phase_loading">Đang nạp mô hình (%1$s)…</string>
+    <string name="phase_preparing">Đang chuẩn bị mô hình (%1$s); vẫn gõ được</string>
+    <string name="models_ready">Đã nạp: %1$s</string>
+    <string name="phase_listening">Đang nghe… nói xong sẽ tự dừng, hoặc chạm để dừng</string>
+    <string name="phase_recognizing">Đang nhận dạng…</string>
+    <string name="phase_translating">Đang dịch…</string>
+    <string name="phase_speaking">Đang đọc…</string>
+
+    <!-- Actions -->
+    <string name="action_translate">Dịch</string>
+    <string name="action_cancel">Huỷ</string>
+    <string name="action_close">Đóng</string>
+    <string name="action_stop_speaking">Dừng đọc</string>
+    <string name="action_play_source">Nghe câu gốc</string>
+    <string name="action_play_translation">Nghe bản dịch</string>
+    <string name="mic_permission_needed">Cần quyền micro để nói. Bạn vẫn gõ được.</string>
+
+    <!-- Translate screen -->
+    <string name="translate_input_label">Câu %1$s (gõ hoặc nói)</string>
+    <string name="translate_speak">Nói</string>
+    <string name="result_title">Bản dịch (%1$s)</string>
+
+    <!-- Conversation screen -->
+    <string name="conversation_coming">Hội thoại hai người (A nói tiếng Việt, B nói tiếng Anh, chen lời Cắt/Chờ): M6.</string>
+
+    <!-- History screen -->
+    <string name="history_coming">Lịch sử (câu gốc và bản dịch cùng ID, chỉ xem và nghe lại): M7.</string>
+
+    <!-- Experiments screen -->
+    <string name="experiments_coming">Thực nghiệm (TN-01…TN-07) và đo thời gian, RAM, dung lượng: M3–M8.</string>
+
+    <!-- Settings screen -->
+    <string name="settings_about">Giới thiệu</string>
+    <string name="settings_build">Bản</string>
+    <string name="settings_version">Phiên bản</string>
+    <string name="settings_git">Git</string>
+    <string name="settings_git_dirty">(có thay đổi chưa commit)</string>
+    <string name="settings_translator">Bộ dịch</string>
+    <string name="settings_translator_checking">Đang kiểm tra…</string>
+    <string name="settings_translator_none">Chưa có gói MT (Phase 04)</string>
+    <string name="settings_translator_invalid">Gói MT lỗi: %1$s</string>
+    <string name="settings_translator_ready">Core MT sẵn sàng</string>
+    <string name="settings_translator_dev_note">Bản dev: ML Kit Translate (từ M5), không dùng làm evidence.</string>
+    <string name="build_offline">offline (không có quyền Internet)</string>
+    <string name="build_dev">dev (thử nghiệm, có ML Kit từ M5)</string>
+
+    <!-- Diagnostics -->
+    <string name="diag_title">Chẩn đoán</string>
+    <string name="diag_memory">Bộ nhớ</string>
+    <string name="diag_last_exit">Lần thoát trước</string>
+    <string name="diag_last_crash">Lỗi gần nhất (gửi cho nhóm khi báo lỗi)</string>
+    <string name="diag_none">Không có</string>
+    <string name="diag_refresh">Làm mới</string>
+
+    <!-- Manual screen -->
+    <string name="manual_coming">Nội dung hướng dẫn đầy đủ ở M8. Các mục:</string>
+</resources>

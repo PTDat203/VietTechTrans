@@ -1,0 +1,298 @@
+{
+  "schema_version": "1.0",
+  "artifacts": [
+    {
+      "id": "sherpa-onnx-static-link-onnxruntime-1.13.8",
+      "role": "runtime_aar",
+      "version": "1.13.8",
+      "license": "sherpa-onnx: Apache-2.0. Thư viện JNI link tĩnh onnxruntime (MIT) và espeak-ng qua piper-phonemize (GPL-3.0-or-later); phân phối APK có TTS phải tuân theo GPL-3.0.",
+      "source": "https://github.com/k2-fsa/sherpa-onnx/releases/tag/v1.13.8",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/v1.13.8/sherpa-onnx-static-link-onnxruntime-1.13.8.aar",
+      "archive": {
+        "bytes": 38691998,
+        "sha256": "b22c3fc1b6a45666d28892bb2f7694beeb77a8362d7ebd77c1a5431ec9435471"
+      },
+      "install": {
+        "kind": "copy",
+        "dest": "third_party/sherpa-onnx",
+        "files": [
+          {
+            "from": "sherpa-onnx-static-link-onnxruntime-1.13.8.aar",
+            "to": "sherpa-onnx-static-link-onnxruntime-1.13.8.aar",
+            "key": "aar",
+            "bytes": 38691998,
+            "sha256": "b22c3fc1b6a45666d28892bb2f7694beeb77a8362d7ebd77c1a5431ec9435471"
+          }
+        ]
+      }
+    },
+    {
+      "id": "silero_vad",
+      "role": "vad",
+      "version": "v4",
+      "license": "MIT (snakers4/silero-vad). Bản v4 do k2-fsa xuất sang ONNX, chỉ giữ nhánh 16 kHz.",
+      "source": "https://github.com/snakers4/silero-vad",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/silero_vad.onnx",
+      "sherpa": {
+        "kind": "silero_vad"
+      },
+      "archive": {
+        "bytes": 643854,
+        "sha256": "9e2449e1087496d8d4caba907f23e0bd3f78d91fa552479bb9c23ac09cbb1fd6"
+      },
+      "install": {
+        "kind": "copy",
+        "dest": "app/src/main/assets/models/vad",
+        "files": [
+          {
+            "from": "silero_vad.onnx",
+            "to": "silero_vad.onnx",
+            "key": "model",
+            "bytes": 643854,
+            "sha256": "9e2449e1087496d8d4caba907f23e0bd3f78d91fa552479bb9c23ac09cbb1fd6"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sherpa-onnx-zipformer-vi-30M-int8-2026-02-09",
+      "role": "stt_vi",
+      "license": "CC BY-NC-ND 4.0 (hynt/Zipformer-30M-RNNT-6000h, giải VLSP 2025): chỉ dùng phi thương mại, phân phối nguyên bản không sửa, ghi công tác giả. Bản int8 do k2-fsa xuất sang ONNX. Phù hợp đồ án; không dùng thương mại. Chọn ngày 2026-10-01 để giảm dung lượng (32 MB thay 77 MB).",
+      "source": "https://huggingface.co/hynt/Zipformer-30M-RNNT-6000h",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-zipformer-vi-30M-int8-2026-02-09.tar.bz2",
+      "sherpa": {
+        "kind": "offline_transducer",
+        "output_style": "upper_no_punct"
+      },
+      "archive": {
+        "bytes": 26442384,
+        "sha256": "da8b637947091829d7ee9eda23da2a4ec7caa399233a3f4e34eb719fb2ea6b9b"
+      },
+      "install": {
+        "kind": "extract",
+        "dest": "app/src/main/assets/models/stt_vi",
+        "files": [
+          {
+            "from": "sherpa-onnx-zipformer-vi-30M-int8-2026-02-09/encoder.int8.onnx",
+            "to": "encoder.int8.onnx",
+            "key": "encoder",
+            "bytes": 27699063,
+            "sha256": "8ef5286dd427eb108055c2ddc1982aa31e544706072d5ea228729292dacade68"
+          },
+          {
+            "from": "sherpa-onnx-zipformer-vi-30M-int8-2026-02-09/decoder.onnx",
+            "to": "decoder.onnx",
+            "key": "decoder",
+            "bytes": 5165084,
+            "sha256": "cf2aa385b82c9d5d40cd29c3188af52d0249b3b78f0d4b7eb84ad502d50c7e7f"
+          },
+          {
+            "from": "sherpa-onnx-zipformer-vi-30M-int8-2026-02-09/joiner.int8.onnx",
+            "to": "joiner.int8.onnx",
+            "key": "joiner",
+            "bytes": 1033417,
+            "sha256": "7311d2e17b810ecea515d79c71cc4668af8759256a06fa01d27047772320c821"
+          },
+          {
+            "from": "sherpa-onnx-zipformer-vi-30M-int8-2026-02-09/tokens.txt",
+            "to": "tokens.txt",
+            "key": "tokens",
+            "bytes": 23238,
+            "sha256": "ca8171f8bbd516c050b627582f2125c8f5f1f6ed967ab41b0fa9aae2cf61b492"
+          },
+          {
+            "from": "sherpa-onnx-zipformer-vi-30M-int8-2026-02-09/README.md",
+            "to": "README.md",
+            "key": "readme",
+            "bytes": 89,
+            "sha256": "25ef401db87cfa8025c7241a4b5eaa53835b84358177e1e70a3c98393e83a0bd"
+          }
+        ],
+        "test_wavs": {
+          "from": "sherpa-onnx-zipformer-vi-30M-int8-2026-02-09/test_wavs",
+          "dest": ".cache/test_wavs/stt_vi"
+        }
+      }
+    },
+    {
+      "id": "sherpa-onnx-moonshine-tiny-en-quantized-2026-02-27",
+      "role": "stt_en",
+      "license": "MIT (Moonshine AI): file LICENSE trong gói ghi mô hình tiếng Anh theo MIT (SECTION 1); mô hình ngôn ngữ khác theo Moonshine Community License (phi thương mại), không dùng. Cài kèm LICENSE để giữ thông báo MIT.",
+      "source": "https://github.com/moonshine-ai/moonshine",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-moonshine-tiny-en-quantized-2026-02-27.tar.bz2",
+      "sherpa": {
+        "kind": "offline_moonshine_v2",
+        "output_style": "cased_punct"
+      },
+      "archive": {
+        "bytes": 29858559,
+        "sha256": "9ec31b342d8fa3240c3b81b8f82e1cf7e3ac467c93ca5a999b741d5887164f8d"
+      },
+      "install": {
+        "kind": "extract",
+        "dest": "app/src/main/assets/models/stt_en",
+        "files": [
+          {
+            "from": "sherpa-onnx-moonshine-tiny-en-quantized-2026-02-27/encoder_model.ort",
+            "to": "encoder_model.ort",
+            "key": "encoder",
+            "bytes": 13281600,
+            "sha256": "94e90a4654fc45cdfedb77c4c08e1739f48862998e58fada384b25118134f221"
+          },
+          {
+            "from": "sherpa-onnx-moonshine-tiny-en-quantized-2026-02-27/decoder_model_merged.ort",
+            "to": "decoder_model_merged.ort",
+            "key": "merged_decoder",
+            "bytes": 30412256,
+            "sha256": "cf524c4862d36e9e5ab032eddc73637efd822d70e868ac575cf1a46e1e4708a0"
+          },
+          {
+            "from": "sherpa-onnx-moonshine-tiny-en-quantized-2026-02-27/tokens.txt",
+            "to": "tokens.txt",
+            "key": "tokens",
+            "bytes": 549350,
+            "sha256": "2870d843e14c1e187bf1913a521562a63b53933814bd7f2145120468f494a049"
+          },
+          {
+            "from": "sherpa-onnx-moonshine-tiny-en-quantized-2026-02-27/LICENSE",
+            "to": "LICENSE",
+            "key": "license",
+            "bytes": 13344,
+            "sha256": "6148d7574a6554b7379b633cfd4c4fe5840c3f548d13bc83e00b52dc6fa00abd"
+          }
+        ],
+        "test_wavs": {
+          "from": "sherpa-onnx-moonshine-tiny-en-quantized-2026-02-27/test_wavs",
+          "dest": ".cache/test_wavs/stt_en"
+        }
+      }
+    },
+    {
+      "id": "vits-piper-vi_VN-vais1000-medium-int8",
+      "role": "tts_vi",
+      "license": "Trọng số Piper: MIT (rhasspy/piper-voices). Dữ liệu VAIS-1000: CC BY 4.0. Giọng fine-tune từ en_US lessac-medium, mà dữ liệu lessac (Blizzard 2013) chỉ cho nghiên cứu, cấm thương mại → chỉ dùng trong đồ án phi thương mại. Bản int8 (lượng tử hoá) do k2-fsa phát hành; chọn ngày 2026-10-01 để giảm dung lượng (≈19 MB thay 63 MB).",
+      "source": "https://huggingface.co/rhasspy/piper-voices/tree/main/vi/vi_VN/vais1000/medium",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/vits-piper-vi_VN-vais1000-medium-int8.tar.bz2",
+      "sherpa": {
+        "kind": "offline_tts_vits",
+        "noise_scale": 0.667,
+        "noise_scale_w": 0.8,
+        "length_scale": 1.0
+      },
+      "archive": {
+        "bytes": 21574925,
+        "sha256": "60e8b82a27cfb9bfa527f5789f0879d02ec73a7397659973b937c823c326d5dd"
+      },
+      "install": {
+        "kind": "extract",
+        "dest": "app/src/main/assets/models/tts_vi",
+        "files": [
+          {
+            "from": "vits-piper-vi_VN-vais1000-medium-int8/vi_VN-vais1000-medium.onnx",
+            "to": "vi_VN-vais1000-medium.onnx",
+            "key": "model",
+            "bytes": 18579717,
+            "sha256": "93629ce587c330f3da1f62c691175f2fbe3f1aa4d84f9a05239cb2fd97b9da95"
+          },
+          {
+            "from": "vits-piper-vi_VN-vais1000-medium-int8/tokens.txt",
+            "to": "tokens.txt",
+            "key": "tokens",
+            "bytes": 921,
+            "sha256": "87c8ef66eae5473ed0cc0366b3964c736ca6c5f676c979522ea31234e47430b9"
+          },
+          {
+            "from": "vits-piper-vi_VN-vais1000-medium-int8/MODEL_CARD",
+            "to": "MODEL_CARD",
+            "key": "model_card",
+            "bytes": 361,
+            "sha256": "302db8a930ffc2b1c2181db26deaf8272116eca2b08b8f80da6375b0a994af7b"
+          }
+        ],
+        "espeak_data": {
+          "from": "vits-piper-vi_VN-vais1000-medium-int8/espeak-ng-data",
+          "dest": "app/src/main/assets/models/espeak-ng-data",
+          "keep_dicts": [
+            "en_dict",
+            "vi_dict"
+          ],
+          "license": "GPL-3.0-or-later (espeak-ng)",
+          "file_count": 244,
+          "bytes": 954522,
+          "sha256_tree": "10cc7219599abc112e19819dd870658a632907d6bb654c368f46e5f4bfc820df"
+        }
+      }
+    },
+    {
+      "id": "vits-piper-en_US-ljspeech-medium-int8",
+      "role": "tts_en",
+      "license": "Trọng số Piper: MIT (rhasspy/piper-voices). Dữ liệu LJ Speech: public domain. Giọng huấn luyện từ đầu, không kế thừa lessac. Bản int8 (lượng tử hoá) do k2-fsa phát hành; chọn ngày 2026-10-01 để giảm dung lượng (≈19 MB thay 63 MB).",
+      "source": "https://huggingface.co/rhasspy/piper-voices/tree/main/en/en_US/ljspeech/medium",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/vits-piper-en_US-ljspeech-medium-int8.tar.bz2",
+      "sherpa": {
+        "kind": "offline_tts_vits",
+        "noise_scale": 0.667,
+        "noise_scale_w": 0.333,
+        "length_scale": 1.0
+      },
+      "archive": {
+        "bytes": 21090429,
+        "sha256": "24dc3bd77dd48c291e52c297878d3437c9492f245d823d7f6a06c4bbb67f4b6b"
+      },
+      "install": {
+        "kind": "extract",
+        "dest": "app/src/main/assets/models/tts_en",
+        "files": [
+          {
+            "from": "vits-piper-en_US-ljspeech-medium-int8/en_US-ljspeech-medium.onnx",
+            "to": "en_US-ljspeech-medium.onnx",
+            "key": "model",
+            "bytes": 19349795,
+            "sha256": "206a8403baad4df7642156918a6ebe205798290d82f24d0d0119d7afa8a2738e"
+          },
+          {
+            "from": "vits-piper-en_US-ljspeech-medium-int8/tokens.txt",
+            "to": "tokens.txt",
+            "key": "tokens",
+            "bytes": 940,
+            "sha256": "ef3a7e4a8d1af0c9d4dc45aaae1a6242ebe24a7ed6f3d025a49eb29682784c6d"
+          },
+          {
+            "from": "vits-piper-en_US-ljspeech-medium-int8/MODEL_CARD",
+            "to": "MODEL_CARD",
+            "key": "model_card",
+            "bytes": 517,
+            "sha256": "fbee1529c89d36b3fe76d7e9f3f832dce17f44900a52d76a9bda735654766b4d"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gtcrn_simple",
+      "role": "denoiser",
+      "license": "MIT (Xiaobin-Rong/gtcrn). Bản gtcrn_simple do k2-fsa xuất sang ONNX, 16 kHz. Chỉ dùng cho thực nghiệm TN-02.",
+      "source": "https://github.com/Xiaobin-Rong/gtcrn",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/speech-enhancement-models/gtcrn_simple.onnx",
+      "sherpa": {
+        "kind": "offline_denoiser_gtcrn"
+      },
+      "archive": {
+        "bytes": 535638,
+        "sha256": "e77603ac0c23dac3227dd2d7135b3a585cbee2679048aecfa886657d3ae1b534"
+      },
+      "install": {
+        "kind": "copy",
+        "dest": "app/src/main/assets/models/denoiser",
+        "files": [
+          {
+            "from": "gtcrn_simple.onnx",
+            "to": "gtcrn_simple.onnx",
+            "key": "model",
+            "bytes": 535638,
+            "sha256": "e77603ac0c23dac3227dd2d7135b3a585cbee2679048aecfa886657d3ae1b534"
+          }
+        ]
+      }
+    }
+  ]
+}

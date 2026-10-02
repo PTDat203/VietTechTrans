@@ -1,0 +1,38 @@
+# Evidence, lock files, fixtures and manifests are verified by SHA-256 over
+# their exact bytes. With core.autocrlf=true (Windows) git rewrites LF to CRLF
+# in the working copy, so a recorded hash stops matching the file on disk.
+# Core/.gitattributes pins only two dataset cards and hit this problem.
+# Pin text files to LF here; keep binary artifacts free of any conversion.
+# One pattern per line: gitattributes does not accept several patterns on a line.
+* text=auto
+
+*.json text eol=lf
+*.jsonl text eol=lf
+*.md text eol=lf
+*.tsv text eol=lf
+*.txt text eol=lf
+*.kt text eol=lf
+*.kts text eol=lf
+*.py text eol=lf
+*.toml text eol=lf
+*.properties text eol=lf
+*.xml text eol=lf
+*.pro text eol=lf
+*.gradle text eol=lf
+gradlew text eol=lf
+
+# Windows batch files need CRLF.
+*.bat text eol=crlf
+
+# Binary artifacts: no EOL conversion, no text diff or merge.
+*.aar binary
+*.jar binary
+*.png binary
+*.jpg binary
+*.webp binary
+*.onnx binary
+*.ort binary
+*.wav binary
+*.bz2 binary
+*.zip binary
+*.docx binary

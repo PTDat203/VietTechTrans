@@ -1,0 +1,3377 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "phase01_nfc_whitespace_v1",
+  "generated_at_utc": "2026-09-30T15:37:57+00:00",
+  "provenance": {
+    "core_commit": "124721fbc802554b062fa840957a5098916708a4",
+    "core_source": "Core/tools/build_phase01.py",
+    "core_source_blob_sha256": "a04d145451f997aa278812d3fdf258147432fb31220e181a1a6ae6af142ab462",
+    "core_symbols": [
+      "norm",
+      "CONTROL"
+    ],
+    "generator": "AppProduct/tools/build_text_fixtures.py",
+    "python_version": "3.14.7",
+    "unicodedata_version": "16.0.0",
+    "random_seed": 42
+  },
+  "python_whitespace_codepoints": [
+    9,
+    10,
+    11,
+    12,
+    13,
+    28,
+    29,
+    30,
+    31,
+    32,
+    133,
+    160,
+    5760,
+    8192,
+    8193,
+    8194,
+    8195,
+    8196,
+    8197,
+    8198,
+    8199,
+    8200,
+    8201,
+    8202,
+    8232,
+    8233,
+    8239,
+    8287,
+    12288
+  ],
+  "deleted_codepoints_rule": {
+    "definition": "Deleted before NFC: code points matched by Core CONTROL that are not Python whitespace (str.isspace), plus U+FFFD.",
+    "core_control_pattern": "[\\x00-\\x08\\x0b\\x0c\\x0e-\\x1f\\x7f-\\x9f]",
+    "codepoints": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      127,
+      128,
+      129,
+      130,
+      131,
+      132,
+      134,
+      135,
+      136,
+      137,
+      138,
+      139,
+      140,
+      141,
+      142,
+      143,
+      144,
+      145,
+      146,
+      147,
+      148,
+      149,
+      150,
+      151,
+      152,
+      153,
+      154,
+      155,
+      156,
+      157,
+      158,
+      159,
+      65533
+    ]
+  },
+  "cases": [
+    {
+      "id": "empty",
+      "input": "",
+      "expected": "",
+      "core_would_reject": true
+    },
+    {
+      "id": "whitespace_only",
+      "input": " \t\n\u00a0\u3000\u2028",
+      "expected": "",
+      "core_would_reject": true
+    },
+    {
+      "id": "leading_trailing_spaces",
+      "input": "   Mở terminal   ",
+      "expected": "Mở terminal",
+      "core_would_reject": false
+    },
+    {
+      "id": "tab_newline_runs",
+      "input": "Bước 1:\t\tmở\n\n\nfile\t \ncấu hình",
+      "expected": "Bước 1: mở file cấu hình",
+      "core_would_reject": false
+    },
+    {
+      "id": "crlf_line_endings",
+      "input": "dòng 1\r\ndòng 2\r\n",
+      "expected": "dòng 1 dòng 2",
+      "core_would_reject": false
+    },
+    {
+      "id": "nbsp_u00a0",
+      "input": "Tiếng\u00a0Việt",
+      "expected": "Tiếng Việt",
+      "core_would_reject": false
+    },
+    {
+      "id": "ideographic_space_u3000",
+      "input": "Xin\u3000chào",
+      "expected": "Xin chào",
+      "core_would_reject": false
+    },
+    {
+      "id": "line_separator_u2028",
+      "input": "dòng một\u2028dòng hai",
+      "expected": "dòng một dòng hai",
+      "core_would_reject": false
+    },
+    {
+      "id": "paragraph_separator_u2029",
+      "input": "đoạn một\u2029đoạn hai",
+      "expected": "đoạn một đoạn hai",
+      "core_would_reject": false
+    },
+    {
+      "id": "narrow_nbsp_u202f",
+      "input": "10\u202fGB",
+      "expected": "10 GB",
+      "core_would_reject": false
+    },
+    {
+      "id": "en_quad_u2000",
+      "input": "a\u2000b",
+      "expected": "a b",
+      "core_would_reject": false
+    },
+    {
+      "id": "all_29_whitespace",
+      "input": "A\t\n\u000b\f\r\u001c\u001d\u001e\u001f \u0085\u00a0\u1680\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u2028\u2029\u202f\u205f\u3000B\t\n\u000b\f\r\u001c\u001d\u001e\u001f \u0085\u00a0\u1680\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u2028\u2029\u202f\u205f\u3000",
+      "expected": "A B",
+      "core_would_reject": true
+    },
+    {
+      "id": "info_separators_u001c_u001f",
+      "input": "x\u001cy\u001dz\u001ew\u001fv",
+      "expected": "x y z w v",
+      "core_would_reject": true
+    },
+    {
+      "id": "next_line_u0085",
+      "input": "một\u0085hai",
+      "expected": "một hai",
+      "core_would_reject": true
+    },
+    {
+      "id": "vertical_tab_form_feed",
+      "input": "một\u000bhai\fba",
+      "expected": "một hai ba",
+      "core_would_reject": true
+    },
+    {
+      "id": "replacement_char_ufffd",
+      "input": "Tiếng Vi\ufffdệt",
+      "expected": "Tiếng Việt",
+      "core_would_reject": true
+    },
+    {
+      "id": "c0_control_u0001",
+      "input": "run\u0001 test",
+      "expected": "run test",
+      "core_would_reject": true
+    },
+    {
+      "id": "null_u0000",
+      "input": "a\u0000b",
+      "expected": "ab",
+      "core_would_reject": true
+    },
+    {
+      "id": "delete_u007f",
+      "input": "abc\u007fdef",
+      "expected": "abcdef",
+      "core_would_reject": true
+    },
+    {
+      "id": "c1_controls_u0080_u009f",
+      "input": "a\u0080b\u009fc",
+      "expected": "abc",
+      "core_would_reject": true
+    },
+    {
+      "id": "ansi_escape_u001b",
+      "input": "\u001b[31mLỗi\u001b[0m build",
+      "expected": "[31mLỗi[0m build",
+      "core_would_reject": true
+    },
+    {
+      "id": "only_deleted_chars",
+      "input": "\u0001\u0002\ufffd",
+      "expected": "",
+      "core_would_reject": true
+    },
+    {
+      "id": "deleted_char_between_spaces",
+      "input": "a \u0001 b",
+      "expected": "a b",
+      "core_would_reject": true
+    },
+    {
+      "id": "deleted_char_before_combining_mark",
+      "input": "e\u0001\u0301",
+      "expected": "é",
+      "core_would_reject": true
+    },
+    {
+      "id": "nfd_vietnamese",
+      "input": "Tie\u0302\u0301ng Vie\u0323\u0302t co\u0301 da\u0302\u0301u kho\u031b\u0309i đo\u0323\u0302ng",
+      "expected": "Tiếng Việt có dấu khởi động",
+      "core_would_reject": false
+    },
+    {
+      "id": "nfd_vietnamese_uppercase",
+      "input": "ĐU\u031bO\u031b\u0300NG DA\u0302\u0303N TE\u0323\u0302P",
+      "expected": "ĐƯỜNG DẪN TỆP",
+      "core_would_reject": false
+    },
+    {
+      "id": "nfc_vietnamese_unchanged",
+      "input": "Tiếng Việt có dấu khởi động",
+      "expected": "Tiếng Việt có dấu khởi động",
+      "core_would_reject": false
+    },
+    {
+      "id": "marks_out_of_canonical_order",
+      "input": "Ca\u0302\u0323p nha\u0323\u0302t Mo\u0301\u031bi",
+      "expected": "Cập nhật Mới",
+      "core_would_reject": false
+    },
+    {
+      "id": "combining_mark_after_space",
+      "input": "a \u0301b",
+      "expected": "a \u0301b",
+      "core_would_reject": false
+    },
+    {
+      "id": "no_lowercasing",
+      "input": "API Docker GPU TIẾNG VIỆT iPhone",
+      "expected": "API Docker GPU TIẾNG VIỆT iPhone",
+      "core_would_reject": false
+    },
+    {
+      "id": "curly_quotes_guillemets",
+      "input": "Chọn “Lưu” và ‘Thoát’ «OK»",
+      "expected": "Chọn “Lưu” và ‘Thoát’ «OK»",
+      "core_would_reject": false
+    },
+    {
+      "id": "nfc_not_nfkc",
+      "input": "ﬁle Ｗｉｎ x² ①",
+      "expected": "ﬁle Ｗｉｎ x² ①",
+      "core_would_reject": false
+    },
+    {
+      "id": "emoji",
+      "input": "Xong rồi 👍🏽🎉",
+      "expected": "Xong rồi 👍🏽🎉",
+      "core_would_reject": false
+    },
+    {
+      "id": "emoji_zwj_sequence",
+      "input": "Gia đình 👨\u200d👩\u200d👧",
+      "expected": "Gia đình 👨\u200d👩\u200d👧",
+      "core_would_reject": false
+    },
+    {
+      "id": "zero_width_space_u200b_kept",
+      "input": "Node\u200b.js",
+      "expected": "Node\u200b.js",
+      "core_would_reject": false
+    },
+    {
+      "id": "bom_ufeff_kept",
+      "input": "\ufeffmở file",
+      "expected": "\ufeffmở file",
+      "core_would_reject": false
+    },
+    {
+      "id": "mixed_en_vi_command",
+      "input": "Chạy lệnh  `git pull`  rồi   restart   service nginx.",
+      "expected": "Chạy lệnh `git pull` rồi restart service nginx.",
+      "core_would_reject": false
+    },
+    {
+      "id": "mixed_en_vi_error",
+      "input": "Em đã deploy lên server staging, nhưng API trả về lỗi 500 Internal Server Error.",
+      "expected": "Em đã deploy lên server staging, nhưng API trả về lỗi 500 Internal Server Error.",
+      "core_would_reject": false
+    },
+    {
+      "id": "mixed_en_vi_ui",
+      "input": "Open\u00a0 Settings → Bảo mật →  bật 2FA",
+      "expected": "Open Settings → Bảo mật → bật 2FA",
+      "core_would_reject": false
+    },
+    {
+      "id": "windows_path",
+      "input": "Mở C:\\Program Files\\App\\config.ini\tđể sửa",
+      "expected": "Mở C:\\Program Files\\App\\config.ini để sửa",
+      "core_would_reject": false
+    },
+    {
+      "id": "unix_command",
+      "input": "sudo apt-get install -y python3-pip && pip3 install \"numpy>=1.26\"",
+      "expected": "sudo apt-get install -y python3-pip && pip3 install \"numpy>=1.26\"",
+      "core_would_reject": false
+    },
+    {
+      "id": "url_and_version",
+      "input": "Tải Python 3.12.1 tại https://www.python.org/downloads/",
+      "expected": "Tải Python 3.12.1 tại https://www.python.org/downloads/",
+      "core_would_reject": false
+    },
+    {
+      "id": "placeholders",
+      "input": "Đã xoá %1 tệp trong thư mục %2",
+      "expected": "Đã xoá %1 tệp trong thư mục %2",
+      "core_would_reject": false
+    },
+    {
+      "id": "multiline_code_collapsed",
+      "input": "def main():\n    print(\"xin chào\")\n",
+      "expected": "def main(): print(\"xin chào\")",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_000",
+      "input": "JFCrn]\u0005",
+      "expected": "JFCrn]",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_001",
+      "input": "\tD#\u0302\u0011\u0082qẠáồ\u001f\rểêÍS:H6'pWk)",
+      "expected": "D#\u0302qẠáồ ểêÍS:H6'pWk)",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_002",
+      "input": "\u0303\u0300[ẻửế\u2001\u2007",
+      "expected": "\u0303\u0300[ẻửế",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_003",
+      "input": "ÊủLY\u0323ÙÍo\u0300ZIiXẤũHỮ",
+      "expected": "ÊủLỴÙÍòZIiXẤũHỮ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_004",
+      "input": "\u001fjdi\u031b\u0303\u0088oồOỐsậỈ\u2001\u2003\u001f",
+      "expected": "jdĩ\u031boồOỐsậỈ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_005",
+      "input": "}o^'I?i\u0309\u200aUi\u0303\u009a\u0000\u0303\f",
+      "expected": "}o^'I?ỉ Uĩ\u0303",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_006",
+      "input": "o\u0306!i'qq[\u001c\u001f\u2003\u0309QùWẦÓ",
+      "expected": "ŏ!i'qq[ \u0309QùWẦÓ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_007",
+      "input": "\u2001\f\u001eÉ)D.Ca=hDieQEJ\\!B\b",
+      "expected": "É)D.Ca=hDieQEJ\\!B",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_008",
+      "input": "\u0323Õởềề\u2000\u2000\n\u2008\u2007Zo\u0301\u0084ờẠÙý)mg@\u009e",
+      "expected": "\u0323Õởềề ZóờẠÙý)mg@",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_009",
+      "input": "v0",
+      "expected": "v0",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_010",
+      "input": "\u205f\u001c\u1680i\u0323\u0306ụẩo\u0003O\u205f\u2003\u001c",
+      "expected": "ị\u0306ụẩoO",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_011",
+      "input": "\u0005",
+      "expected": "",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_012",
+      "input": "i]EZp\u0300\u0302",
+      "expected": "i]EZp\u0300\u0302",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_013",
+      "input": "[-+%A\u0301\u0302FẴỢẤèả\u2005\f\u000b\u0012\u0015đỳỄY\u0323i\u0300Y",
+      "expected": "[-+%Á\u0302FẴỢẤèả đỳỄỴìY",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_014",
+      "input": "ĂuủE\u0323U\n\tY\u0301\u2009\u2000\u2004jẵỄphõ\n",
+      "expected": "ĂuủẸU Ý jẵỄphõ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_015",
+      "input": "U\u0301ểÊjÕyôơỌQ0ồTễ",
+      "expected": "ÚểÊjÕyôơỌQ0ồTễ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_016",
+      "input": "Cz6SU\u0300ĐẠđẠu\u031b\u0300ÀẵễsỘA\u0306\u0300",
+      "expected": "Cz6SÙĐẠđẠừÀẵễsỘẰ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_017",
+      "input": "3a%'^}ỖđKY\u031bY\u0303\u031bU\u0309",
+      "expected": "3a%'^}ỖđKY\u031bỸ\u031bỦ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_018",
+      "input": "lẶỎgàE\u0323\u0302\u2008\u001d\u0087ẽĂỶJCyo\u0303ằâ",
+      "expected": "lẶỎgàỆ ẽĂỶJCyõằâ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_019",
+      "input": "\u205f\u2028\u000b\u3000\u2007\u0300\u1680\u001e",
+      "expected": "\u0300",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_020",
+      "input": "2SỸ\u2004",
+      "expected": "2SỸ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_021",
+      "input": "r7\\&\u008fi\u0323\u031b\u001f\u2028",
+      "expected": "r7\\&ị\u031b",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_022",
+      "input": "e\u0303\u031by\u0303\u0005ửỈ",
+      "expected": "ẽ\u031bỹửỈ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_023",
+      "input": "Ô\u2004\u2001\u001d",
+      "expected": "Ô",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_024",
+      "input": "\u2009\t\u205f\u0309\u00a0u\u0306\u0309\t\u1680O\u031b\u0309\u0001",
+      "expected": "\u0309 ŭ\u0309 Ở",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_025",
+      "input": "\u03022r7xgH\u001d\u2001e\u0309\u0306\u200a\u0003U",
+      "expected": "\u03022r7xgH ẻ\u0306 U",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_026",
+      "input": "zc",
+      "expected": "zc",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_027",
+      "input": "ĩŨB7`GVvXìốẦdN,]W\u001d\u000b\u2005Sy\u0083A\u0300\u2000",
+      "expected": "ĩŨB7`GVvXìốẦdN,]W SyÀ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_028",
+      "input": "\r\u2000\u001c\u0092y\u0323\u0306Ạ\u2028\u2006\u2008\u1680",
+      "expected": "ỵ\u0306Ạ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_029",
+      "input": "Px!BI\u0323\u0306ykE}0\u2028\u001e\u2009\u2009\u2002\u2001L",
+      "expected": "Px!BỊ\u0306ykE}0 L",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_030",
+      "input": "\u001e \u2008\u0303\u2003\u00a0\u2000\u001a",
+      "expected": "\u0303",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_031",
+      "input": " \u001fYídQụƯy\u0302\u0303ãVc",
+      "expected": "YídQụƯŷ\u0303ãVc",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_032",
+      "input": "Ia\u0300\u0301",
+      "expected": "Ià\u0301",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_033",
+      "input": "\u0085\u001c9oi\u000b\u2005t+I\u0300\u2006\u2029\u2006ÍỞỜẴq\u2005\u2006",
+      "expected": "9oi t+Ì ÍỞỜẴq",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_034",
+      "input": "\u0306",
+      "expected": "\u0306",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_035",
+      "input": "JẻồhéÕ\u2006\u2002 ",
+      "expected": "JẻồhéÕ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_036",
+      "input": "UĂT",
+      "expected": "UĂT",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_037",
+      "input": "DH=.[z\u2004ọÁỏèẫổE\u0306O\u0306\u0309P:Gd],\u0302",
+      "expected": "DH=.[z ọÁỏèẫổĔŎ\u0309P:Gd],\u0302",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_038",
+      "input": "\u0302ỸGỜẠỘCỨêỦy\u0306\u0300\u2002 \u2008",
+      "expected": "\u0302ỸGỜẠỘCỨêỦy\u0306\u0300",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_039",
+      "input": "\u0002\u0085U\u0302\u0323\u0086\u001d\u007f\u0323",
+      "expected": "Ụ\u0302 \u0323",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_040",
+      "input": "I)ƠSỪ=\u0300hãh\u001ep?t\"E\u0306\u0309",
+      "expected": "I)ƠSỪ=\u0300hãh p?t\"Ĕ\u0309",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_041",
+      "input": "ởtÝò1R#O\u0303\u0323dƯẼÈ\u0099\u0080\u205f\u001dỈửỌâẨ",
+      "expected": "ởtÝò1R#Ọ\u0303dƯẼÈ ỈửỌâẨ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_042",
+      "input": "\u2008\u2029ẵĩỰrI\u0300\u200aHôéỦU\u0300\u031b\u0080O\u031b",
+      "expected": "ẵĩỰrÌ HôéỦỪƠ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_043",
+      "input": "PẰứêỘếv_Md",
+      "expected": "PẰứêỘếv_Md",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_044",
+      "input": "y\u0303",
+      "expected": "ỹ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_045",
+      "input": "bỌ\u031bẻw\u2008\u001e\u2002\u031bDỹỢỹK](u",
+      "expected": "bỢẻw \u031bDỹỢỹK](u",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_046",
+      "input": "\u2005 \u001f\u2001\u205f",
+      "expected": "",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_047",
+      "input": "ƯễữÍ\u0303\u0301a\u0303\u0302",
+      "expected": "ƯễữÍ\u0303\u0301ã\u0302",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_048",
+      "input": "\u2028\u2029ÊưCởyU4e-uI\u0301\u0302\u0016ƯẲÉjsC]\u00a0\u000b\u2029",
+      "expected": "ÊưCởyU4e-uÍ\u0302ƯẲÉjsC]",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_049",
+      "input": "'p6U\u031b\u0303ằyjẬ\u03007`M@0oẵo\u0302",
+      "expected": "'p6ỮằyjẬ\u03007`M@0oẵô",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_050",
+      "input": "ỠỄLS\u0082\u031b\f\u202f\u2002\u0309E\u0301\u205fU\u0323o\u0303",
+      "expected": "ỠỄLS\u031b \u0309É Ụõ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_051",
+      "input": "\u2008DsăầÈỳ",
+      "expected": "DsăầÈỳ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_052",
+      "input": "\u0300A.BDQàÃõịe",
+      "expected": "\u0300A.BDQàÃõịe",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_053",
+      "input": "JbTẪạộÀấỒaìậŨỚo\u0323",
+      "expected": "JbTẪạộÀấỒaìậŨỚọ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_054",
+      "input": "[%M6?dZ2^n\u2001\u000b\u3000:sizCp\u0096e\u0309\u031b@)}B35ÉỠÓÔ2O\\",
+      "expected": "[%M6?dZ2^n :sizCpẻ\u031b@)}B35ÉỠÓÔ2O\\",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_055",
+      "input": "e\u03003Vq*h.*\u001aT\\2}",
+      "expected": "è3Vq*h.*T\\2}",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_056",
+      "input": "O\u0306",
+      "expected": "Ŏ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_057",
+      "input": "IƯẸ\u007f,C2\u009a\u0302\u0301I`i\u0306",
+      "expected": "IƯẸ,C2\u0302\u0301I`ĭ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_058",
+      "input": "\u0309>d&BW16R",
+      "expected": "\u0309>d&BW16R",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_059",
+      "input": "a\u031b\u0323yầ4[2",
+      "expected": "ạ\u031byầ4[2",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_060",
+      "input": "\u0323\u001d\u2028\u0007I\u0323\u0302O\u0309Au\u0303E",
+      "expected": "\u0323 Ị\u0302ỎAũE",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_061",
+      "input": "ÍcjLÊèÒc6jO\u0309\u0309\f\u1680v<6",
+      "expected": "ÍcjLÊèÒc6jỎ\u0309 v<6",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_062",
+      "input": "nF3.\u000b\u1680\u205fI\u0302\u0301$ySS~ểõi\u0323",
+      "expected": "nF3. Î\u0301$ySS~ểõị",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_063",
+      "input": "ỬÙkoỚO\u0303",
+      "expected": "ỬÙkoỚÕ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_064",
+      "input": "đỦỜBy\u031b\u0004a\u0306O\u0302\u0309",
+      "expected": "đỦỜBy\u031băỔ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_065",
+      "input": "\u0302\u2007\u001d\u0085\u0323\u000enR|k\u0092ý\u2003\u2003",
+      "expected": "\u0302 \u0323nR|ký",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_066",
+      "input": "ỆĂĨ\u2008\u2006?QiQm*\u001f\u200a\u031bu\u0303\u2006*W?U\u00a0\t\u00a0",
+      "expected": "ỆĂĨ ?QiQm* \u031bũ *W?U",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_067",
+      "input": "ẺỪóôm#(\u0002i\u0301",
+      "expected": "ẺỪóôm#(í",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_068",
+      "input": "\u031b\u2000u\u0323",
+      "expected": "\u031b ụ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_069",
+      "input": "ựẦỦỡỄ\u0323\u2028\u1680\u008a\u202fóỷấEƯuI5",
+      "expected": "ựẦỦỡỆ\u0303 óỷấEƯuI5",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_070",
+      "input": "êưỞẸgY#VẻỆừắi\u03018`r\u2006\tGgv\u0083",
+      "expected": "êưỞẸgY#VẻỆừắí8`r Ggv",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_071",
+      "input": "a\u0300DzỢậ",
+      "expected": "àDzỢậ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_072",
+      "input": "\u2004\t\u2007\u008d",
+      "expected": "",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_073",
+      "input": "ỔàxU\u0301Ui&(#\u008c",
+      "expected": "ỔàxÚUi&(#",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_074",
+      "input": "\n\u2007",
+      "expected": "",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_075",
+      "input": "y\u031bE~[QrfT(U\u0309ậX ù",
+      "expected": "y\u031bE~[QrfT(ỦậX ù",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_076",
+      "input": "u\u0323\u031b",
+      "expected": "ự",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_077",
+      "input": "ỀầH",
+      "expected": "ỀầH",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_078",
+      "input": "A\u0309\u0085\u001c\u2002\u00a0\u2029\u00162k3:x(y\u0302",
+      "expected": "Ả 2k3:x(ŷ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_079",
+      "input": "y\u0301\u031b\u200ae\u0306\u2003\u2029ỏ",
+      "expected": "ý\u031b ĕ ỏ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_080",
+      "input": "\r?UO\u031bỞỄỆỜémỂÒẤGẠằỸĨjíY\u0301\u031b\fỞ",
+      "expected": "?UƠỞỄỆỜémỂÒẤGẠằỸĨjíÝ\u031b Ở",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_081",
+      "input": "\u2029I\u031b\u0017",
+      "expected": "I\u031b",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_082",
+      "input": "VTDộẾÝùỬằe\u0306\u0323A\u0323\u031b",
+      "expected": "VTDộẾÝùỬằẹ\u0306Ạ\u031b",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_083",
+      "input": "O?7^%SDqờịỖ\ufffd%ổốẪỸĂẻU\u0301O\u0323Iz",
+      "expected": "O?7^%SDqờịỖ%ổốẪỸĂẻÚỌIz",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_084",
+      "input": "e,H@A,1\u0302\u2004 \u2007e\u0303\u030241\u001d\u0085\u031by\u031b\u0309\u008c",
+      "expected": "e,H@A,1\u0302 ẽ\u030241 \u031bỷ\u031b",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_085",
+      "input": "u\u0300\r",
+      "expected": "ù",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_086",
+      "input": "X;1Ận",
+      "expected": "X;1Ận",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_087",
+      "input": "ỮỶ\u3000 \u000b\u2001\u001e\u001d\u0303K",
+      "expected": "ỮỶ \u0303K",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_088",
+      "input": "\u0323AỂỎỂg+*yI\u0323\u0302A\u0300O\u031b\u0301\u0081",
+      "expected": "\u0323AỂỎỂg+*yỊ\u0302ÀỚ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_089",
+      "input": "eÈŨỸỠọv\bO\u0323\u0302y\u031b\u0309u\u03238H@-,ấpỤỗaB\u0309",
+      "expected": "eÈŨỸỠọvỘỷ\u031bụ8H@-,ấpỤỗaB\u0309",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_090",
+      "input": "mc4I\u0301\u0302",
+      "expected": "mc4Í\u0302",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_091",
+      "input": "\u200a\n\u2009ủjẬJỤ\u0080y\u0323\u001bo\u0303\u0302E\u0309\u031bO\u0306\u0080\u2028\u2029",
+      "expected": "ủjẬJỤỵõ\u0302Ẻ\u031bŎ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_092",
+      "input": "y\u0300\u001f\u200a\u2002dẢ",
+      "expected": "ỳ dẢ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_093",
+      "input": "O\u0300L\u0013ế\u2009\u2002ra)u0@\u2007\u001de\u0306",
+      "expected": "ÒLế ra)u0@ ĕ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_094",
+      "input": "ZẵộÔơ\"xLe+:nu\u0301\u0306ĐỢFỹXớãA\u0301\u031b\u0019\\mxr\u001e\t",
+      "expected": "ZẵộÔơ\"xLe+:nú\u0306ĐỢFỹXớãÁ\u031b\\mxr",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_095",
+      "input": "\u2001u\u0306UNuZ^\u0096",
+      "expected": "ŭUNuZ^",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_096",
+      "input": "LV;CCr\u2001\u0303\u2004\u2002\u2028\u009c",
+      "expected": "LV;CCr \u0303",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_097",
+      "input": "sẻaỚbUa\u0089dọổẬỴ",
+      "expected": "sẻaỚbUadọổẬỴ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_098",
+      "input": "A|-!l$\u2001ÔỠkẩj\u2029 \u200aGaB-2e ",
+      "expected": "A|-!l$ ÔỠkẩj GaB-2e",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_099",
+      "input": "EF\u3000\u1680\u1680\u000b\bA\u0323\bă",
+      "expected": "EF Ạă",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_100",
+      "input": "\u200a\u2004\u2000\u0080ỢẼởZệ1;cEAi",
+      "expected": "ỢẼởZệ1;cEAi",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_101",
+      "input": "\u0302\u2008\u2009\u205f",
+      "expected": "\u0302",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_102",
+      "input": "âÓƠửeụ",
+      "expected": "âÓƠửeụ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_103",
+      "input": "ẮửnẨn",
+      "expected": "ẮửnẨn",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_104",
+      "input": "U\u0301\u0013\u001f\n\u008eNỔiỬầẼ\u0085\u2009\u2000 \u2028\u0087ẴV",
+      "expected": "Ú NỔiỬầẼ ẴV",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_105",
+      "input": "\u2004\u2004\u2003ỳỹúĐ",
+      "expected": "ỳỹúĐ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_106",
+      "input": "\u000b\u2004Á",
+      "expected": "Á",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_107",
+      "input": "\u0302.}\u0012\u205fY\u0302\u0301\u2009\u0300",
+      "expected": "\u0302.} Ŷ\u0301 \u0300",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_108",
+      "input": "ẪĂÍÚcE\u0323\u03068OAVO0CscH)\u0309o\u0303\u202f\u001e\u2002",
+      "expected": "ẪĂÍÚcẸ\u03068OAVO0CscH)\u0309õ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_109",
+      "input": "Y\u0306\u0309E\u0323Eẫaẳé0ửđVọảụ\u0086a\u0309)0bc&e\u0302\u0301",
+      "expected": "Y\u0306\u0309ẸEẫaẳé0ửđVọảụả)0bc&ế",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_110",
+      "input": "ỡy\u0015y\u0306\u2005\u001ePẻHZ\u2004\u2002b`vk\"3o",
+      "expected": "ỡyy\u0306 PẻHZ b`vk\"3o",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_111",
+      "input": "\u0323Ua\u0303ỏWÒéẴ",
+      "expected": "\u0323UãỏWÒéẴ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_112",
+      "input": "\u0300\u0309\u001a",
+      "expected": "\u0300\u0309",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_113",
+      "input": "ZẻỰẼấế\u202f:;/\t\u2007A\u0303\u0306pJÍẽyẲèẽÁôÍW",
+      "expected": "ZẻỰẼấế :;/ Ã\u0306pJÍẽyẲèẽÁôÍW",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_114",
+      "input": "\u00a0\fN\u2028\u001f",
+      "expected": "N",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_115",
+      "input": "ớ\u2004\u2004",
+      "expected": "ớ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_116",
+      "input": "\t)l/\u0303 \u2028\u000b\u0014\u031b\ri\u0306\u0301",
+      "expected": ")l/\u0303 \u031b ĭ\u0301",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_117",
+      "input": "u\u0300\u0306AỬsxợỢMa\u202f\u2006\u2001\u0085\u2006\r i\u0303",
+      "expected": "ù\u0306AỬsxợỢMa ĩ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_118",
+      "input": "y\u031b\u0323\u202f\u2029\f\u2005fờOgằ\u001d\u2001\u2029i\u0309Y\u0301",
+      "expected": "ỵ\u031b fờOgằ ỉÝ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_119",
+      "input": "\u2001\u0323\u0309\u0089\n\u2029\u00a0\u008fF",
+      "expected": "\u0323\u0309 F",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_120",
+      "input": "wâkFNF\u2029\u2000my\u0309\u2028\u2008\u031b",
+      "expected": "wâkFNF mỷ \u031b",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_121",
+      "input": "nL1ksSNR6A\u0087e\u0309\u0302aI\u0301",
+      "expected": "nL1ksSNR6Aẻ\u0302aÍ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_122",
+      "input": "\u000fi\u0306\u0309\t\u200a",
+      "expected": "ĭ\u0309",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_123",
+      "input": "rỔĨáẠUn'xUPìÀLỨ\u0091y\u031b\u0323U\u031b\u0303íựÂV_ĨỒsón",
+      "expected": "rỔĨáẠUn'xUPìÀLỨỵ\u031bỮíựÂV_ĨỒsón",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_124",
+      "input": "\u2002\u0095ổỨẰóớy\u031bryX*\u0092\u2008\u2002",
+      "expected": "ổỨẰóớy\u031bryX*",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_125",
+      "input": "\u001c\u000b\u0302ẳÃừ\u0017kỬgÝoI(U(4(B2n@",
+      "expected": "\u0302ẳÃừkỬgÝoI(U(4(B2n@",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_126",
+      "input": "y\u0303pEA.a\u0302\u0301\u0303",
+      "expected": "ỹpEA.ấ\u0303",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_127",
+      "input": "u\u0303\u0301\u00940hi\u0301i\u0309\u0301\u2001\u000b$J_V",
+      "expected": "ṹ0híỉ\u0301 $J_V",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_128",
+      "input": "\u2005\t6>\\`Ti\u0081ũỬÁẪy\u0323\u031bm\fỠàỔù",
+      "expected": "6>\\`TiũỬÁẪỵ\u031bm ỠàỔù",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_129",
+      "input": "U\u0300A\u0302\u0301Y\u0300",
+      "expected": "ÙẤỲ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_130",
+      "input": "9jừỸOỜả",
+      "expected": "9jừỸOỜả",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_131",
+      "input": "E\u0301",
+      "expected": "É",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_132",
+      "input": "ẹểểẤe\u0302\u0301",
+      "expected": "ẹểểẤế",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_133",
+      "input": "\u0302\u031b\u200a\u001dxPỜụr~XS2OÃF)/\u0301",
+      "expected": "\u031b\u0302 xPỜụr~XS2OÃF)/\u0301",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_134",
+      "input": "u\u0309",
+      "expected": "ủ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_135",
+      "input": "ỈệựỮ",
+      "expected": "ỈệựỮ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_136",
+      "input": "bUOqX\u0309a\u0300\u0306Bfh \u2007\u2009\u009a\u2009\u1680'';tJkI\u0301",
+      "expected": "bUOqX\u0309à\u0306Bfh '';tJkÍ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_137",
+      "input": "\u2007\u2028\u202f`3~ỳo6;:\\[w{",
+      "expected": "`3~ỳo6;:\\[w{",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_138",
+      "input": "\"S\u008aY\u0301",
+      "expected": "\"SÝ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_139",
+      "input": "Q\u2003\u000bI\u0309i\u0323O\u0300",
+      "expected": "Q ỈịÒ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_140",
+      "input": "Ýàâãỳâ\u1680\r",
+      "expected": "Ýàâãỳâ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_141",
+      "input": "|@1CPYẨẢé\u0303",
+      "expected": "|@1CPYẨẢé\u0303",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_142",
+      "input": "\u0094C%",
+      "expected": "C%",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_143",
+      "input": "\u3000",
+      "expected": "",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_144",
+      "input": "I\u0306\u00a0kẶzỄrỬợ\u0099áÕ(Sa[W",
+      "expected": "Ĭ kẶzỄrỬợáÕ(Sa[W",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_145",
+      "input": "&E\n\ro\u0082O\u031b",
+      "expected": "&E oƠ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_146",
+      "input": "\b\u2005",
+      "expected": "",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_147",
+      "input": "[qELu\u0303\u0306ùễôễổỞ\u2000\f\u001bÂÙÀí^M\u0302õêW",
+      "expected": "[qELũ\u0306ùễôễổỞ ÂÙÀí^M\u0302õêW",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_148",
+      "input": "U\u031bA\u0302\u200a\u2004\u001enrpb",
+      "expected": "ƯÂ nrpb",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_149",
+      "input": "ợÓ",
+      "expected": "ợÓ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_150",
+      "input": ".HjciỜĩêĐỉặ\u001c\u0309\t\u1680\u00a0",
+      "expected": ".HjciỜĩêĐỉặ \u0309",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_151",
+      "input": "ẠỚọ<;F?L\u3000\u2004\u000b",
+      "expected": "ẠỚọ<;F?L",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_152",
+      "input": "\u2000aýBfạÍA\u0303\u031by\u0300",
+      "expected": "aýBfạÍÃ\u031bỳ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_153",
+      "input": "y\u0323",
+      "expected": "ỵ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_154",
+      "input": "ếýcẩư\u0309O\u0301Y\u031bI\u0309e\u0300:C9aQ;zXơẪ",
+      "expected": "ếýcẩửÓY\u031bỈè:C9aQ;zXơẪ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_155",
+      "input": ".{",
+      "expected": ".{",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_156",
+      "input": "UjV{[\f\u0085 U\u0309",
+      "expected": "UjV{[ Ủ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_157",
+      "input": "U\u0301\u031b\u200a\u2009Y\u0300\u0309\u0302ẨwưDksQjE",
+      "expected": "Ứ Ỳ\u0309\u0302ẨwưDksQjE",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_158",
+      "input": "YY\u0302\u0301Gn}X\u2000\u001c\u3000\u3000\u1680",
+      "expected": "YŶ\u0301Gn}X",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_159",
+      "input": "\u0080,@^CèẳẲăy\u0302ốégêA\u031b",
+      "expected": ",@^CèẳẲăŷốégêA\u031b",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_160",
+      "input": "\u0309ếY\u0309",
+      "expected": "\u0309ếỶ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_161",
+      "input": "\u0015a\u0302\u2004\u202f\u2002ẾlL[=\u0323ằDẮoNY8",
+      "expected": "â ẾlL[=\u0323ằDẮoNY8",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_162",
+      "input": "y\u0301\u001c\u200147Hkẫọ\\A\u031b\u0323\u0082\u0094",
+      "expected": "ý 47Hkẫọ\\Ạ\u031b",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_163",
+      "input": "\u0300\u000b\u1680,%,]<ỚũỡỐ3z=s/HA",
+      "expected": "\u0300 ,%,]<ỚũỡỐ3z=s/HA",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_164",
+      "input": "\u0085\u205f\u001f\u0086<.%1o1lq\u0306mK'S0a\u0323\u031bỎỏy\u0309",
+      "expected": "<.%1o1lq\u0306mK'S0ạ\u031bỎỏỷ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_165",
+      "input": "\u2009\u001e",
+      "expected": "",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_166",
+      "input": "\u3000\u00a0",
+      "expected": "",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_167",
+      "input": "o\u0306\u0309",
+      "expected": "ŏ\u0309",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_168",
+      "input": "o\u0306\u0309\u202f\u2002\u2028\u2003",
+      "expected": "ŏ\u0309",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_169",
+      "input": "uiN{#\u2028\u008dyze6{zJ",
+      "expected": "uiN{# yze6{zJ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_170",
+      "input": "\u1680\u2007\fV!\u0323qhẸẼQêĂgu,B",
+      "expected": "V!\u0323qhẸẼQêĂgu,B",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_171",
+      "input": "úÁGÕỶăq?w/G:u\u0303\u0306",
+      "expected": "úÁGÕỶăq?w/G:ũ\u0306",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_172",
+      "input": "\u2008\u2003\u0309\u0306[V*?/",
+      "expected": "\u0309\u0306[V*?/",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_173",
+      "input": "E\u031bJ>PI\u031b\u0301t\u0085\u2008\r\"LH1ZX{,yR}cDŨLỀỲe\u0303\u200a",
+      "expected": "E\u031bJ>PÍ\u031bt \"LH1ZX{,yR}cDŨLỀỲẽ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_174",
+      "input": "\u0099ÈHẹưÊừE\u0303\u0306g>--\u0306",
+      "expected": "ÈHẹưÊừẼ\u0306g>--\u0306",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_175",
+      "input": "íOÍbẴ\u205fùẺ\u3000\u2001\rEa\u0300\u001d\u2028ồỨẹịx",
+      "expected": "íOÍbẴ ùẺ Eà ồỨẹịx",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_176",
+      "input": "\u2000\u2002\n\u0011o\u0323a=~FC_A\u0302\u008e",
+      "expected": "ọa=~FC_Â",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_177",
+      "input": "ây\u0306\u0309\u2028\u001dạứừịăqỲỗỉỂ",
+      "expected": "ây\u0306\u0309 ạứừịăqỲỗỉỂ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_178",
+      "input": "\u001f\u2028\u2004",
+      "expected": "",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_179",
+      "input": "g[n@co14Wp)u\u031b\u0301\f\u2008\u2003I\u0300\u0306EùÀỴùỀ\u001c\n\u0088",
+      "expected": "g[n@co14Wp)ứ Ì\u0306EùÀỴùỀ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_180",
+      "input": "\u001e\tlo,\\\"tj}}mGẲÀÙầ",
+      "expected": "lo,\\\"tj}}mGẲÀÙầ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_181",
+      "input": "Ắe\u0306",
+      "expected": "Ắĕ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_182",
+      "input": "[?",
+      "expected": "[?",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_183",
+      "input": "y\u0300\u0306Ó\u001f\u202f",
+      "expected": "ỳ\u0306Ó",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_184",
+      "input": "\u2007\u3000ịn1\u0323\u0323ÍỀwắPỪệỌƠ",
+      "expected": "ịn1\u0323\u0323ÍỀwắPỪệỌƠ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_185",
+      "input": "@Ob",
+      "expected": "@Ob",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_186",
+      "input": "\u0300E\u0301a\u0302ỦỬổéỨa\u0303\u0013\u0092\u202f\u001e4,5l",
+      "expected": "\u0300ÉâỦỬổéỨã 4,5l",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_187",
+      "input": "\f\u2002Z\u2004\u0000<>M$*LỠẺỂấừ\u2004\u2028\u0323",
+      "expected": "Z <>M$*LỠẺỂấừ \u0323",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_188",
+      "input": "\fẺi\u031b\u0300\u202f\u001f\u0300",
+      "expected": "Ẻì\u031b \u0300",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_189",
+      "input": "B6y|U\u0300\u0306\u2008\u2005",
+      "expected": "B6y|Ù\u0306",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_190",
+      "input": "ábầh\u2002\u2003\u2028oộĩểĨI\u0303\u0080\u2009\u2028\u001ei\u0306\u0309\u2009\u3000\u200a\u0018",
+      "expected": "ábầh oộĩểĨĨ ĭ\u0309",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_191",
+      "input": "O\u0301Y\u0301\u031b*9-\u0309\u0017\u2003WLIu",
+      "expected": "ÓÝ\u031b*9-\u0309 WLIu",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_192",
+      "input": "Yy\u2006\ufffdFjĨữÝS",
+      "expected": "Yy FjĨữÝS",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_193",
+      "input": "X1^O\u0003Gz<4C>E\u0303éớộỶíÌ",
+      "expected": "X1^OGz<4C>ẼéớộỶíÌ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_194",
+      "input": "\u2004\u001f",
+      "expected": "",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_195",
+      "input": "ỹáĐÚVôO\u0309",
+      "expected": "ỹáĐÚVôỎ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_196",
+      "input": "o\u0323đỲồÔf\u0081CB[I\u0301\u0306\\A\u0300\u0302G(}KV$$5!",
+      "expected": "ọđỲồÔfCB[Í\u0306\\À\u0302G(}KV$$5!",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_197",
+      "input": "e\u0323",
+      "expected": "ẹ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_198",
+      "input": "cáAậủỐểúdTỘ",
+      "expected": "cáAậủỐểúdTỘ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_199",
+      "input": "Ợe",
+      "expected": "Ợe",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_200",
+      "input": "ièn",
+      "expected": "ièn",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_201",
+      "input": "y\u0309\u0306]p'a\u0306\u0302",
+      "expected": "ỷ\u0306]p'ă\u0302",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_202",
+      "input": "O\u03034WY",
+      "expected": "Õ4WY",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_203",
+      "input": "\u2004",
+      "expected": "",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_204",
+      "input": "ỊfẲCỏẴa\u0300/Y')kA\u0301",
+      "expected": "ỊfẲCỏẴà/Y')kÁ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_205",
+      "input": "ớư\u0301ờ\u0302\u0086\u0004o\u0300\u0323O\u0300\u0302",
+      "expected": "ớứờ\u0302ọ\u0300Ò\u0302",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_206",
+      "input": "ỪỞĐ\u0301",
+      "expected": "ỪỞĐ\u0301",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_207",
+      "input": "lỂẤỔỗFC|\u202f\u00a0ĐỤÙỚỀÂ\f\u001c\u2007\u0306Y\u0303jc#=d-\u0309\u0300",
+      "expected": "lỂẤỔỗFC| ĐỤÙỚỀÂ \u0306Ỹjc#=d-\u0309\u0300",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_208",
+      "input": "\u0015",
+      "expected": "",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_209",
+      "input": "\u0087ỊừqI\u0323U#b[PổỶóỚkkƯỀặưỪửVDfẾĨỦỠâ",
+      "expected": "ỊừqỊU#b[PổỶóỚkkƯỀặưỪửVDfẾĨỦỠâ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_210",
+      "input": "O\u0303",
+      "expected": "Õ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_211",
+      "input": "\u031b\u1680\u00a0\u2005GWC%ZI\u0306\u0323ổứéỶi\u0301y\u0309]99A\u031b",
+      "expected": "\u031b GWC%ZỊ\u0306ổứéỶíỷ]99A\u031b",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_212",
+      "input": "fq\u031bỶặmõẩổO\u0323~[KkB5\u0323\u001e",
+      "expected": "fq\u031bỶặmõẩổỌ~[KkB5\u0323",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_213",
+      "input": "\u031b\u031b\u0301PẺỠsrđỈịễạỲPỒọv8;",
+      "expected": "\u031b\u031b\u0301PẺỠsrđỈịễạỲPỒọv8;",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_214",
+      "input": "#pl9[eàNGỖ\u0082E\u0301\u2005\u2029\u0306\u001f\u205f/(0Y",
+      "expected": "#pl9[eàNGỖÉ \u0306 /(0Y",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_215",
+      "input": "\u0306",
+      "expected": "\u0306",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_216",
+      "input": "@A_O\f\r\u2005\u001f\u001f\u0083\u0303\u0301\u2000\u009b\u0087",
+      "expected": "@A_O \u0303\u0301",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_217",
+      "input": "Y\u0323\u0306\r\u205f\u205fD5`umB",
+      "expected": "Ỵ\u0306 D5`umB",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_218",
+      "input": "\u2029\u2004\u0302Cáêõ\u2000\u000b\u000bO\u0300XZ;@%K\u0302ỬƠảùIỸO",
+      "expected": "\u0302Cáêõ ÒXZ;@%K\u0302ỬƠảùIỸO",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_219",
+      "input": "\u0095ỗMẵẾựlJ\u2008\u1680\u001d\u2003\t)E\u0306\u0301\t\u001f\u001c\f\u2004\u000b",
+      "expected": "ỗMẵẾựlJ )Ĕ\u0301",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_220",
+      "input": "Y\u0323\u0302\u2005\u2002ỢOỢ\u0302\u001f>C]`ỌÊỸ\u0000A\u0300",
+      "expected": "Ỵ\u0302 ỢOỢ\u0302 >C]`ỌÊỸÀ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_221",
+      "input": "w8OTB\u0301OởỮùữựo\u0301\u0303í",
+      "expected": "w8OTB\u0301OởỮùữựó\u0303í",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_222",
+      "input": "\t\u2028\u205f\u0002",
+      "expected": "",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_223",
+      "input": "I\u0306\u0309E\u0300\u0302\u0002\u001b\u2028\u001c\u2001%6O_bboếẬẾ\u0301",
+      "expected": "Ĭ\u0309È\u0302 %6O_bboếẬẾ\u0301",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_224",
+      "input": "\u0015ỦwẺo\u0309",
+      "expected": "ỦwẺỏ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_225",
+      "input": "O\u0306\u0309PứếYẢỖÍợõọ\u001c\r\u3000\u008bA\u0306\u0323",
+      "expected": "Ŏ\u0309PứếYẢỖÍợõọ Ặ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_226",
+      "input": "ụE\u031b",
+      "expected": "ụE\u031b",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_227",
+      "input": "A\u0306\u0303]:z\u031bA\u0306\u0309\u0301\r\u205f\u001c",
+      "expected": "Ẵ]:z\u031bẲ\u0301",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_228",
+      "input": "\u2006\u2005\u1680uU\u0303y\u0303\u031b\u0323\u001c",
+      "expected": "uŨỵ\u031b\u0303",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_229",
+      "input": "ữJỷTẻủ",
+      "expected": "ữJỷTẻủ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_230",
+      "input": "\f)gdY\u0099",
+      "expected": ")gdY",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_231",
+      "input": "<tk\u001e\u001e",
+      "expected": "<tk",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_232",
+      "input": "\r\r\u2003ẳI\u0323\u0306\u2009\u0010",
+      "expected": "ẳỊ\u0306",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_233",
+      "input": "\u0323\u0309\u0091\u0018u\u0300\u031ba\u0306\u0303\u009dẰỦc!9Mb3L\u0300",
+      "expected": "\u0323\u0309ừẵẰỦc!9Mb3L\u0300",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_234",
+      "input": "\u007f",
+      "expected": "",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_235",
+      "input": "\u2000\u1680\u001eFĨÌưÀẻ\u001e\u2003\u2028\u0301",
+      "expected": "FĨÌưÀẻ \u0301",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_236",
+      "input": "\u009ci\u0302ệDỠ\u0323a\u0302\u0300",
+      "expected": "îệDỢ\u0303ầ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_237",
+      "input": "nKo\u0300b\"ỒẦỮy\u031bhI\u2004\u001dY\u0302",
+      "expected": "nKòb\"ỒẦỮy\u031bhI Ŷ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_238",
+      "input": "\u001e\u200a6m\u0093ĨOẦẪ",
+      "expected": "6mĨOẦẪ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_239",
+      "input": ")%pG9>U\u0300ữ",
+      "expected": ")%pG9>Ùữ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_240",
+      "input": "O\u0303Fbf-\u2006\r\u00a0u\"<R=hhTdễĩỪửẨ\u009b",
+      "expected": "ÕFbf- u\"<R=hhTdễĩỪửẨ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_241",
+      "input": "\u001d\t\u2009\u200a\rI\u0309y\u0323\u0302\u205f\u202f\u031b",
+      "expected": "Ỉỵ\u0302 \u031b",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_242",
+      "input": "\u000e\u202f\u001f",
+      "expected": "",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_243",
+      "input": "O\u0302\u0301U\u0300\u009d\u2003\r\u2006 I\u031b\u0300qùyme,",
+      "expected": "ỐÙ Ì\u031bqùyme,",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_244",
+      "input": "\u2006\u2009\u2005O\u0301A\u2001*1VI&f~je\u0323",
+      "expected": "ÓA *1VI&f~jẹ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_245",
+      "input": "ỈởỡaIAơiiÔ",
+      "expected": "ỈởỡaIAơiiÔ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_246",
+      "input": "\u0303\u2008\u2000\u3000",
+      "expected": "\u0303",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_247",
+      "input": "gÓ\u001a",
+      "expected": "gÓ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_248",
+      "input": "\u008f\u3000\u0085\u0019",
+      "expected": "",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_249",
+      "input": "\u2000\u202f\u200aI\u0309Y\u0306\u0309/c%áẴưăQÃ",
+      "expected": "ỈY\u0306\u0309/c%áẴưăQÃ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_250",
+      "input": "\u008c\u031b6y\u0303\u0300Ẵêm\u001d\u200a\u000bO\u0302\u0323a\u0300",
+      "expected": "\u031b6ỹ\u0300Ẵêm Ộà",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_251",
+      "input": "o\u0306\u0302 \u0002Y\u0323ầM",
+      "expected": "ŏ\u0302 ỴầM",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_252",
+      "input": "\u2005\u2003\u000bẮỊõịY\u0323ZHkZ#\r\u2028\r\u001d\u2002\u1680\u0300",
+      "expected": "ẮỊõịỴZHkZ# \u0300",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_253",
+      "input": "\u0300Á\u2008\u2005\\\u00a0\u00a0ẼsHvS;\r\u2001\nPỆ",
+      "expected": "\u0300Á \\ ẼsHvS; PỆ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_254",
+      "input": "gõẰãẺR58c",
+      "expected": "gõẰãẺR58c",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_255",
+      "input": "dũúfỴỵ\u0087\u031b-[&fuyẢấÚHả",
+      "expected": "dũúfỴỵ\u031b-[&fuyẢấÚHả",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_256",
+      "input": "\u001f\u2008\u205fu",
+      "expected": "u",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_257",
+      "input": "ÝVếẤ\u2004\u000b\u001cỢjWăặÂÈỨỊồ^TTU\u0300y\u0302\u0301",
+      "expected": "ÝVếẤ ỢjWăặÂÈỨỊồ^TTÙŷ\u0301",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_258",
+      "input": "Í\u0094\u0300\u2005ẦuĐỚ\bóoePùó",
+      "expected": "Í\u0300 ẦuĐỚóoePùó",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_259",
+      "input": "\b\u2007\u031biy",
+      "expected": "\u031biy",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_260",
+      "input": "\u2001\u200ai\u0300w\u0301\u0300\u0300ằỀẻQỤò",
+      "expected": "ìẃ\u0300\u0300ằỀẻQỤò",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_261",
+      "input": "\u0323E\u0309ỡừbI0Cậơ\u2002\u2009\u0085\u2000\u2006\u0085\u1680\u2006",
+      "expected": "\u0323ẺỡừbI0Cậơ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_262",
+      "input": "\u0302\u0006\u202f\u3000%'\n\u2004\u1680\u0099L4\u2028\u202fY\u0302\u0303\u000e",
+      "expected": "\u0302 %' L4 Ŷ\u0303",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_263",
+      "input": "\u200a\u0007SfòỊỌE\u0302\u0309P_@ỉêìUỞCO\u0323gÍâỗ",
+      "expected": "SfòỊỌỂP_@ỉêìUỞCỌgÍâỗ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_264",
+      "input": "\u031bơWNN~5izE\u0309",
+      "expected": "\u031bơWNN~5izẺ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_265",
+      "input": "\"EB.[\u2000\u2001/aF)J\u0300shU\u0300\u0301e\u001c",
+      "expected": "\"EB.[ /aF)J\u0300shÙ\u0301e",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_266",
+      "input": "\u031b\u2005\u00a0\nPVW)iL8R",
+      "expected": "\u031b PVW)iL8R",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_267",
+      "input": "e\u031b\u0301\u0306\u2009\u2006\u2029i\u0303\u031b\u0323",
+      "expected": "é\u031b\u0306 ị\u031b\u0303",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_268",
+      "input": "\u2029\u001c\u0300e=pA;\n\u0085UĂỹđÂẴỲ\u0019^",
+      "expected": "\u0300e=pA; UĂỹđÂẴỲ^",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_269",
+      "input": "i\u031bÉMỤ\u2007ôAỢdI\u0306o\u031b",
+      "expected": "i\u031bÉMỤ ôAỢdĬơ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_270",
+      "input": "y\u0302\u0303\u2004\u202f\u001c\u0309ìÂUẤV0l\"ỞẶụ\u0018Ệl4\u0001",
+      "expected": "ŷ\u0303 \u0309ìÂUẤV0l\"ỞẶụỆl4",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_271",
+      "input": "\u000eƯaẦIZẵ\u2009\u205f\u0007f^/7fn",
+      "expected": "ƯaẦIZẵ f^/7fn",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_272",
+      "input": "y\u0301ẰÃ\u0019\f\u001f\rìãz\u0089(S\u0019o\u0323",
+      "expected": "ýẰÃ ìãz(Sọ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_273",
+      "input": ";R(\r]gnX",
+      "expected": ";R( ]gnX",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_274",
+      "input": "Yw{/",
+      "expected": "Yw{/",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_275",
+      "input": "\u00a0 \u0085LcẻÚlị7m6N^?\u001e\u001eỵỂỊờTE\u0306\u030097vA\u031b\u0323*@jI\u0306\u0301",
+      "expected": "LcẻÚlị7m6N^? ỵỂỊờTĔ\u030097vẠ\u031b*@jĬ\u0301",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_276",
+      "input": "\u000b\u0085rỖỘlẺfJL",
+      "expected": "rỖỘlẺfJL",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_277",
+      "input": "\u0323/7P*m",
+      "expected": "\u0323/7P*m",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_278",
+      "input": "Ỏđt/WP\"?[BCàõJọ \u1680\u2006\u0323OẨO\u0306\u0300",
+      "expected": "Ỏđt/WP\"?[BCàõJọ \u0323OẨŎ\u0300",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_279",
+      "input": "\u205fa\u0323*ToKdE\u2005\u1680\u2007U\u0306\u0309óởiỈa\u0302\u0301cs}![3ó",
+      "expected": "ạ*ToKdE Ŭ\u0309óởiỈấcs}![3ó",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_280",
+      "input": "\u2006\u2000\u2006ÝỐhỞ\u001e\u001c\t\u2005\u2002ỰÁỌfnỂ+\u00a0\f\u2005",
+      "expected": "ÝỐhỞ ỰÁỌfnỂ+",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_281",
+      "input": "~~\u009fI\u031b\u0306BJLé\u009c\u0301\u0302",
+      "expected": "~~Ĭ\u031bBJLé\u0301\u0302",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_282",
+      "input": "\u009a6$8,a\u0306\u0303\u0301\u03018-v,g[",
+      "expected": "6$8,ẵ\u0301\u03018-v,g[",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_283",
+      "input": "\u0302u\u0302\u0323u\u0303o:w.t[\u2029\u001c",
+      "expected": "\u0302ụ\u0302ũo:w.t[",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_284",
+      "input": "ờbẳẺ/t\u2028\u1680ƠZDổủna\u0300",
+      "expected": "ờbẳẺ/t ƠZDổủnà",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_285",
+      "input": "\u2002 \u2028\u2004\u001e\u2009\u1680\u2002",
+      "expected": "",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_286",
+      "input": "ỘãẰỚÍIu\u0303\u031b@-Y\u200a\u001e\u200a",
+      "expected": "ỘãẰỚÍIữ@-Y",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_287",
+      "input": "ÉNQờẤ\u0000b\u20035SC}KGằ\u0306[B/>p:IFkớ",
+      "expected": "ÉNQờẤb 5SC}KGằ\u0306[B/>p:IFkớ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_288",
+      "input": "ẲÚJ6J2_\\P",
+      "expected": "ẲÚJ6J2_\\P",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_289",
+      "input": "ÃXQhHE\u0300ỊơFỨễỖụxEễ",
+      "expected": "ÃXQhHÈỊơFỨễỖụxEễ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_290",
+      "input": "e~G5c\"DàẵKĨÁĐỊnàỶV\u2000\u1680CaX_9'TQ^M\u2007",
+      "expected": "e~G5c\"DàẵKĨÁĐỊnàỶV CaX_9'TQ^M",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_291",
+      "input": "i\u0302\u0303\u0002",
+      "expected": "î\u0303",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_292",
+      "input": "SĨễa\u0302\u0301Y\u0300\u000b\u2029\u0092y\u031b\u0300",
+      "expected": "SĨễấỲ ỳ\u031b",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_293",
+      "input": "o\u0300",
+      "expected": "ò",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_294",
+      "input": "\u205f\u205f\u2004oửèẵỏỨ<fF`ộm6;ậễìỮs\u03002R\f\u2008",
+      "expected": "oửèẵỏỨ<fF`ộm6;ậễìỮs\u03002R",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_295",
+      "input": "\bOậíÃỗSỄhỳoặò;Wuc!kw@.K1_8ỏDO\u0306\u0301",
+      "expected": "OậíÃỗSỄhỳoặò;Wuc!kw@.K1_8ỏDŎ\u0301",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_296",
+      "input": "\u000b\u2007\u202fI\u0306íb",
+      "expected": "Ĭíb",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_297",
+      "input": "\u0303\u0089",
+      "expected": "\u0303",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_298",
+      "input": "\u2008\u001d\u001fot\u001c\u001c?",
+      "expected": "ot ?",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_299",
+      "input": "y\u0303\u0323g\u0010Ừ\u0007",
+      "expected": "ỵ\u0303gỪ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_300",
+      "input": "ỜroẬỒợy",
+      "expected": "ỜroẬỒợy",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_301",
+      "input": "0z\u000b\u2002\n\u3000\u001d",
+      "expected": "0z",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_302",
+      "input": "\u1680U\u0301Y\u0302\u0301\u0302E\u001c\u2028i\u0323\u031b\u0300%!B.",
+      "expected": "ÚŶ\u0301\u0302E ị\u031b\u0300%!B.",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_303",
+      "input": "\t\u200a\u205f\u001e\u001eO\u031b\u0323ff8~\u0002\u1680\u2002\u2029\"Ek*~0BqTL",
+      "expected": "Ợff8~ \"Ek*~0BqTL",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_304",
+      "input": "9Y\u0323\u0302\u2028\r",
+      "expected": "9Ỵ\u0302",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_305",
+      "input": "AÙUjX_Q&eY\u0300\u0306]UgoXy\u031bIÈự",
+      "expected": "AÙUjX_Q&eỲ\u0306]UgoXy\u031bIÈự",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_306",
+      "input": "9-`ACPe\u031b\u0303E\u0306\u0323\u0094\u0017\u00a0\u2029\u20086lwKjnệSõ",
+      "expected": "9-`ACPẽ\u031bẸ\u0306 6lwKjnệSõ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_307",
+      "input": "ỴA1^(ẼỒỜFyicFÈỌoẺO\u0309\u031bỗỵứ \u2028",
+      "expected": "ỴA1^(ẼỒỜFyicFÈỌoẺỞỗỵứ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_308",
+      "input": "ĂỠổ",
+      "expected": "ĂỠổ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_309",
+      "input": "dẰờộVRữì,q4U\u0302\u0323I\u0302\u0309A\u2001Y\u0089O\u0306\u0323",
+      "expected": "dẰờộVRữì,q4Ụ\u0302Î\u0309A YỌ\u0306",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_310",
+      "input": "i\u0300\u0007o\u0323\u000b\u0085?y-&Ce\u009f\u2008\u000b\u2003",
+      "expected": "ìọ ?y-&Ce",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_311",
+      "input": "ẨuuÝUYs|2V\t o\u0306\u0323\u2000\u2029\u2001i\u0309\u0306",
+      "expected": "ẨuuÝUYs|2V ọ\u0306 ỉ\u0306",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_312",
+      "input": "ŨaÈWla0>o\u0302\u0323",
+      "expected": "ŨaÈWla0>ộ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_313",
+      "input": "\u2004\u2002-M\"\u0098",
+      "expected": "-M\"",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_314",
+      "input": "àẴDC\u2007e\u0302\u0301O\u0323\u0302\u2007\u2008\u202f\f\u00a0\u0097",
+      "expected": "àẴDC ếỘ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_315",
+      "input": "u-hÙRòuu\u0300\u031b\u0091y=xm/ẪẤPẶẢa\u0301ĂỆỪỌẺụ",
+      "expected": "u-hÙRòuừy=xm/ẪẤPẶẢáĂỆỪỌẺụ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_316",
+      "input": "\u0013xQacW\u0095",
+      "expected": "xQacW",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_317",
+      "input": "\u000b\fỤ",
+      "expected": "Ụ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_318",
+      "input": "i\u0323\u0302oỏQứÂĩủỐc\n\u001d",
+      "expected": "ị\u0302oỏQứÂĩủỐc",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_319",
+      "input": "$.h8pGM",
+      "expected": "$.h8pGM",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_320",
+      "input": ":",
+      "expected": ":",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_321",
+      "input": "\u0300ẸắêõẠoe\u0302\u0323\u0302",
+      "expected": "\u0300ẸắêõẠoệ\u0302",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_322",
+      "input": "ỡĂỗdáZ#{\u2009\u2005MễờÊ\u001d\u2003ệẤỉÚr\"U{K\u0097P",
+      "expected": "ỡĂỗdáZ#{ MễờÊ ệẤỉÚr\"U{KP",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_323",
+      "input": "K6/N\u2004\u205f\u2000ŨU\f\u1680\u2001\u0093s",
+      "expected": "K6/N ŨU s",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_324",
+      "input": "\u2005\f\u200aỂùsỎ2}\u2028\u2009\u0301\u2002\u2008",
+      "expected": "ỂùsỎ2} \u0301",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_325",
+      "input": "\u2003\u001fễỉỷỨ\u2007ế\"W:O\u0323[\u009a\u001d ",
+      "expected": "ễỉỷỨ ế\"W:Ọ[",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_326",
+      "input": "\u001f\u2004\u0085\u008b35OW4\nIẶUổỨ \u2028\f",
+      "expected": "35OW4 IẶUổỨ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_327",
+      "input": "\u2004\u2008\u2004\u0323\u205f\u001c\u2003H\".W\u0303O\u0302US\u0302A\u0303\u0302o\u0301",
+      "expected": "\u0323 H\".W\u0303ÔUŜÃ\u0302ó",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_328",
+      "input": "\u0306oRvPe6[2\u0309a\u0323",
+      "expected": "\u0306oRvPe6[2\u0309ạ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_329",
+      "input": "\u1680\u0085\u2005m_]Ay\u0301\u031b\u2002BKHgM\u0309",
+      "expected": "m_]Aý\u031b BKHgM\u0309",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_330",
+      "input": "\u0306\u0306\u0303o\u0309",
+      "expected": "\u0306\u0306\u0303ỏ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_331",
+      "input": "M#M3[(u\u0309\u0323\u0010{%x,\"B\u2007\u2004",
+      "expected": "M#M3[(ụ\u0309{%x,\"B",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_332",
+      "input": "\u200a\u2007\n\u0011A\u0301\u0302\u205f\u202fA0IK?ue\u0301ắỳo\u0306\u0309òắỵY",
+      "expected": "Á\u0302 A0IK?uéắỳŏ\u0309òắỵY",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_333",
+      "input": "kA\u0302\u0303ệm\u0007\u0093\u0301\u001e\u0306",
+      "expected": "kẪệḿ \u0306",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_334",
+      "input": "i\u031b\u0309BJ\u001f\u205f\u0302\u00a0\u2009\fy\u0306\u0303",
+      "expected": "ỉ\u031bBJ \u0302 y\u0306\u0303",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_335",
+      "input": "Y\u0302\\EG)XNA\u0309GMlEU\u0309E\u0300\u0302\u2009\u2000`H",
+      "expected": "Ŷ\\EG)XNẢGMlEỦÈ\u0302 `H",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_336",
+      "input": "1:~\u0098a\u031bỜEòàÓùe\u031bỸWPỌẨỞỤộPrA\u0302",
+      "expected": "1:~a\u031bỜEòàÓùe\u031bỸWPỌẨỞỤộPrÂ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_337",
+      "input": "Ìmừă?;=Dl\u001fÓ\u0309\u0301",
+      "expected": "Ìmừă?;=Dl Ó\u0309\u0301",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_338",
+      "input": "v+p&36]\"púởÁẰỬÍ",
+      "expected": "v+p&36]\"púởÁẰỬÍ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_339",
+      "input": "\u2006NởỒõắẮÀ",
+      "expected": "NởỒõắẮÀ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_340",
+      "input": "\u0323pPF\t\u205f",
+      "expected": "\u0323pPF",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_341",
+      "input": "\u001d\u2009\u1680\u2006\u001f\u000bhgQE8u\u0090\u1680\u2008",
+      "expected": "hgQE8u",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_342",
+      "input": "ặoơỵỗ\u0088y\u0302\u0083ìẤâẠẾỖĂ",
+      "expected": "ặoơỵỗŷìẤâẠẾỖĂ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_343",
+      "input": "\u0301\u0019\u0085\u2004\u001d",
+      "expected": "\u0301",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_344",
+      "input": "xe\u001c\u2009\f\u3000",
+      "expected": "xe",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_345",
+      "input": "T{*!\f\u205fẸKxÝẢkJpũ\u0302\u009a\u031b",
+      "expected": "T{*! ẸKxÝẢkJpữ\u0302",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_346",
+      "input": "\"]dK^V.nPẻ\u2008\u2002\u2001U\u0300\u0323",
+      "expected": "\"]dK^V.nPẻ Ụ\u0300",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_347",
+      "input": "\u031bEI\u0302\u0309GwEZA",
+      "expected": "\u031bEÎ\u0309GwEZA",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_348",
+      "input": " \u2007Ẵ\u200a\u2029",
+      "expected": "Ẵ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_349",
+      "input": "\u031bo\u0323\u3000\u1680\u2005\u2006\u2028",
+      "expected": "\u031bọ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_350",
+      "input": "e\u0309R7]C?aBFa73k\r\rO\u0303jf$n$",
+      "expected": "ẻR7]C?aBFa73k Õjf$n$",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_351",
+      "input": "\u2001\u0301I\u031b[\u2029âẽÔUy\u0309\u031b",
+      "expected": "\u0301I\u031b[ âẽÔUỷ\u031b",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_352",
+      "input": "ẻua\u0323obv@",
+      "expected": "ẻuạobv@",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_353",
+      "input": "\u1680\u205f\u2008\u0323i\u031b\u0303ở`ủ\r\u2007\u001e\u205f\u2029\u2004",
+      "expected": "\u0323ĩ\u031bở`ủ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_354",
+      "input": "7s8\fTỜ\t\u205f",
+      "expected": "7s8 TỜ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_355",
+      "input": "\u0300lỊấU\u205f\u2002\u0301Z!$.\u0323ẫbạỐnẤ",
+      "expected": "\u0300lỊấU \u0301Z!$.\u0323ẫbạỐnẤ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_356",
+      "input": "?18<?S5\u001cE\u0303ưqPÉu\u3000O\u0306\u0309QẹK\u001c",
+      "expected": "?18<?S5 ẼưqPÉu Ŏ\u0309QẹK",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_357",
+      "input": "ỨếÔỬẶiầHT]Ựẳ",
+      "expected": "ỨếÔỬẶiầHT]Ựẳ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_358",
+      "input": "E\u0302\u0300I\u0306",
+      "expected": "ỀĬ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_359",
+      "input": "ỶuLểUầ\u202f\u2028;\u0306\u0002",
+      "expected": "ỶuLểUầ ;\u0306",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_360",
+      "input": "=pồẮV\u2002\u200a\u205f?Uo\u2028\u20288Ruo\u0301\u0306",
+      "expected": "=pồẮV ?Uo 8Ruó\u0306",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_361",
+      "input": "\u2000\u3000\u2029\u2008\u00a0sb|%",
+      "expected": "sb|%",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_362",
+      "input": "OZv\u1680",
+      "expected": "OZv",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_363",
+      "input": "ẩBWJỴ",
+      "expected": "ẩBWJỴ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_364",
+      "input": "\u3000\u2008\ufffdu\u0306\u0090ỎỚEúfz",
+      "expected": "ŭỎỚEúfz",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_365",
+      "input": "\u00a0\u3000\u2029\u3000Io\u0323\u031b)N%R>ắ\u008eI\u0309hVH=#T@",
+      "expected": "Iợ)N%R>ắỈhVH=#T@",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_366",
+      "input": "\u2005\u200aRE-+",
+      "expected": "RE-+",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_367",
+      "input": "\u0300e\u0306\u0309e\u0309ỐỌẻêẫỐũỚéỄ\u0081\u0309Y\u0309\u031b\r",
+      "expected": "\u0300ĕ\u0309ẻỐỌẻêẫỐũỚéỄ\u0309Ỷ\u031b",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_368",
+      "input": "WỢịU\ufffd\u0007Ũẳồje\u0300u\u0300\u0302i\u0306\u0300\u0309KBx",
+      "expected": "WỢịUŨẳồjèù\u0302ĭ\u0300\u0309KBx",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_369",
+      "input": ")A \u2005\u2001E\u0301\u0306\u205fo\u0309\u2004\n\u001f\u2007\u000b",
+      "expected": ")A É\u0306 ỏ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_370",
+      "input": "={N*?*ky<(,%y8#c",
+      "expected": "={N*?*ky<(,%y8#c",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_371",
+      "input": "\u0010AF{",
+      "expected": "AF{",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_372",
+      "input": "\u2029\u008fE\u031b3x1OWGlovKsxGN0xYXmO",
+      "expected": "E\u031b3x1OWGlovKsxGN0xYXmO",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_373",
+      "input": "\u001f\u1680zqữỬÝỲ",
+      "expected": "zqữỬÝỲ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_374",
+      "input": "hO7\u0082d0>D).]*@lÕỚ#AsV(v",
+      "expected": "hO7d0>D).]*@lÕỚ#AsV(v",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_375",
+      "input": "\u0083\u00847\u0301",
+      "expected": "7\u0301",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_376",
+      "input": "9O\u031b\u0303\u0017",
+      "expected": "9Ỡ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_377",
+      "input": "ckđẴẹÒ",
+      "expected": "ckđẴẹÒ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_378",
+      "input": "iẠỖủwỲo\u0309\u031b",
+      "expected": "iẠỖủwỲở",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_379",
+      "input": "y\u0323r?a:8aw0*`{!\u000b\u2029\u3000d\\4]pY\u031b\u0309",
+      "expected": "ỵr?a:8aw0*`{! d\\4]pỶ\u031b",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_380",
+      "input": "Vy4b",
+      "expected": "Vy4b",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_381",
+      "input": "^{Txy\u0309\"{{",
+      "expected": "^{Txỷ\"{{",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_382",
+      "input": "ợ\u205fe\u0302\u0323\u031bH+ÃỡNăR\u0090A\u0300\u0302\f\u2008\u0086",
+      "expected": "ợ ệ\u031bH+ÃỡNăRÀ\u0302",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_383",
+      "input": "u\u0300\u2001\u0085\t\u0085dC_2jổĐa\u2029\t\u0303",
+      "expected": "ù dC_2jổĐa \u0303",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_384",
+      "input": "ŨấÈỴt\u03235-pkhe",
+      "expected": "ŨấÈỴṭ5-pkhe",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_385",
+      "input": "E\u0300;=3]gLWZm\u0309IzảỠỈ\u3000\u2006",
+      "expected": "È;=3]gLWZm\u0309IzảỠỈ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_386",
+      "input": "@]d\u0085\u2005\u001db\u0306\u0300\u031b\u0015i\u0306\u0301qi\u031b\u0303",
+      "expected": "@]d b\u031b\u0306\u0300ĭ\u0301qĩ\u031b",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_387",
+      "input": "a\u0306\u0300jấỐẼợùđẺởKŨ\u2009\u0085\u205f\u0303\u0301\u001c\f\u2002",
+      "expected": "ằjấỐẼợùđẺởKŨ \u0303\u0301",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_388",
+      "input": "C_D7<BĐÌúÓẾT",
+      "expected": "C_D7<BĐÌúÓẾT",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_389",
+      "input": "\u0007",
+      "expected": "",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_390",
+      "input": "o\u0302\u0300ộưÀhỳơ",
+      "expected": "ồộưÀhỳơ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_391",
+      "input": "HmrW@oRAI\u0302\u0303\u0309",
+      "expected": "HmrW@oRAÎ\u0303\u0309",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_392",
+      "input": "qyÌRỆẨt",
+      "expected": "qyÌRỆẨt",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_393",
+      "input": "x\u0300\u0017ýấBY\u0301[;iv\u0080",
+      "expected": "x\u0300ýấBÝ[;iv",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_394",
+      "input": "Y\u0301\u031bO\u0309\u031b\u2029\u2005\u2007Cz\u1680ỐÌmỹgẽẲ\u00a0\u001e\u2005",
+      "expected": "Ý\u031bỞ Cz ỐÌmỹgẽẲ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_395",
+      "input": "\u2006\u0085\u2000",
+      "expected": "",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_396",
+      "input": "\u2000\u00a0\u001f\u16804Du\u0300\u0089\u0092Dmpe(z",
+      "expected": "4DùDmpe(z",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_397",
+      "input": "ĐỷẶOÃở\u031b\u0015KSZ\u2028\u2007\t\u2003\u2028\r",
+      "expected": "ĐỷẶOÃở\u031bKSZ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_398",
+      "input": "Zủ\u2003\u0323\u2029\u000bo\u0309\u205f\u2004r,q",
+      "expected": "Zủ \u0323 ỏ r,q",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_399",
+      "input": "[TRC\u2008\u2028\u2004 \u0085\u0302\u0302",
+      "expected": "[TRC \u0302\u0302",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_400",
+      "input": "lBu\u0309\u1680",
+      "expected": "lBủ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_401",
+      "input": "\u0080ễĐlỞ",
+      "expected": "ễĐlỞ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_402",
+      "input": "n]\u0010:!dxzi\u001d\u001ey\u0300",
+      "expected": "n]:!dxzi ỳ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_403",
+      "input": "P0\fỒỤđĨúẦỖ\u2006\u0301\u0300\u0096\u001d\t",
+      "expected": "P0 ỒỤđĨúẦỖ \u0301\u0300",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_404",
+      "input": "\u202f\u2029\u001e\u2003Y\u0306\u0323",
+      "expected": "Ỵ\u0306",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_405",
+      "input": "A\u0306\u0309yỖ",
+      "expected": "ẲyỖ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_406",
+      "input": "\u001c\u2009\u2005`fEuY\u031bỌhỉỄ#I\u0306\u0303dj>_\u0085\u200a",
+      "expected": "`fEuY\u031bỌhỉỄ#Ĭ\u0303dj>_",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_407",
+      "input": "ẵảỷìLÙỪ\u000b\u0093ƠóỦẠốỗmwLp'\u000b",
+      "expected": "ẵảỷìLÙỪ ƠóỦẠốỗmwLp'",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_408",
+      "input": "i\u0303",
+      "expected": "ĩ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_409",
+      "input": "'B4`g>\u0092_N4g\u0302",
+      "expected": "'B4`g>_N4ĝ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_410",
+      "input": "\u001e",
+      "expected": "",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_411",
+      "input": "êạ\tov}vf1$P*=ủeÒỔí",
+      "expected": "êạ ov}vf1$P*=ủeÒỔí",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_412",
+      "input": "ỀAE\u0301I",
+      "expected": "ỀAÉI",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_413",
+      "input": "\u0303B\u2028\u2006\u2009\u009b",
+      "expected": "\u0303B",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_414",
+      "input": "ềtẬ\u2028\u2009\re\u0309I\u0309qUãửă\u0306O\u0301ro\u0301\u0306}/",
+      "expected": "ềtẬ ẻỈqUãửă\u0306Óró\u0306}/",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_415",
+      "input": "U\u03031?KdDU\u0302\u0323SYưvÍỴe\u0300\u001dsAqlw.\u009e",
+      "expected": "Ũ1?KdDỤ\u0302SYưvÍỴè sAqlw.",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_416",
+      "input": "ẻỔZÚẦợỳỐơvýE\u0301\u031bYWv",
+      "expected": "ẻỔZÚẦợỳỐơvýÉ\u031bYWv",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_417",
+      "input": "\u2003\u2006\u202f\u2028\u205f\u000bA\u0303\u2001 \u2006\u2002\u000bi\u0301",
+      "expected": "Ã í",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_418",
+      "input": "#A\u0309\u0306\u2007\u2005epX+",
+      "expected": "#Ả\u0306 epX+",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_419",
+      "input": "ỹYẸÝ\u2009\u00a0\u2009X2FF9e",
+      "expected": "ỹYẸÝ X2FF9e",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_420",
+      "input": "\\?sH:6ýuoì|XY{.k\u0011\u202f",
+      "expected": "\\?sH:6ýuoì|XY{.k",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_421",
+      "input": "Y\u0323\u031b\u205f\u000b\f\u0303ủÒSa\u0309`\u2000\u2007 ",
+      "expected": "Ỵ\u031b \u0303ủÒSả`",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_422",
+      "input": "ỆớỪờ\u0007\u202f\u001d\u001cờÕƠA\u0306",
+      "expected": "ỆớỪờ ờÕƠĂ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_423",
+      "input": "kWpO\u0300ỪMếả",
+      "expected": "kWpÒỪMếả",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_424",
+      "input": "e",
+      "expected": "e",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_425",
+      "input": "\u009b:%I!\u2006\u2000y\u031b\u0303",
+      "expected": ":%I! ỹ\u031b",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_426",
+      "input": "\n\u00a0\u205fE\u202f\u3000\rp&J`FU\u0323\u031bDY\u0300",
+      "expected": "E p&J`FỰDỲ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_427",
+      "input": "\u2006\u200a\u200628[XL:y|s\u008d\u0002",
+      "expected": "28[XL:y|s",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_428",
+      "input": " \ufffd\u3000",
+      "expected": "",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_429",
+      "input": "[(EFIT3PXU\u0309r'>}!lUo\u0323\u031b",
+      "expected": "[(EFIT3PXỦr'>}!lUợ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_430",
+      "input": "e\u0300.yo\u0303Ínà",
+      "expected": "è.yõÍnà",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_431",
+      "input": "'yX2OA\u03006OsLC\u2001\r\u2006O",
+      "expected": "'yX2OÀ6OsLC O",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_432",
+      "input": "E\u0323ẮUÌẫY\u0301!~\u202f\u2008g",
+      "expected": "ẸẮUÌẫÝ!~ g",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_433",
+      "input": "A\u0303\u031b~KK`y\u0081P-M6@u,r\u2002 \u3000ụợ",
+      "expected": "Ã\u031b~KK`yP-M6@u,r ụợ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_434",
+      "input": "A\u0309",
+      "expected": "Ả",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_435",
+      "input": "T\n@R.3t",
+      "expected": "T @R.3t",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_436",
+      "input": "íỨẶQsÌRLIẹÙ\u2007\u2007\t\fp\u2008\u2003\u001e",
+      "expected": "íỨẶQsÌRLIẹÙ p",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_437",
+      "input": "\u0323",
+      "expected": "\u0323",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_438",
+      "input": "xX9?`\u2005\ri|'TăỊi\u009b",
+      "expected": "xX9?` i|'TăỊi",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_439",
+      "input": "\u2003\u0306íờtRờá\u0084i\u0300je\u0018",
+      "expected": "\u0306íờtRờáìje",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_440",
+      "input": "\u000f\t\u001e L['4r\u0323o\u031b\u0300sM",
+      "expected": "L['4ṛờsM",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_441",
+      "input": "hụrỀẠzỐégỹỵ\u3000\u001c\u1680\u001f",
+      "expected": "hụrỀẠzỐégỹỵ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_442",
+      "input": "úèBÁCỆkIFÝuôẤỘÍFjIp')0iQ>la\u0301\u0306CWnp",
+      "expected": "úèBÁCỆkIFÝuôẤỘÍFjIp')0iQ>lá\u0306CWnp",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_443",
+      "input": "\u0097I\u0323\u0302i",
+      "expected": "Ị\u0302i",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_444",
+      "input": "\u00a0\u008c\u0309\r\u001f\t\u0096ĩỏÌlÁấ",
+      "expected": "\u0309 ĩỏÌlÁấ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_445",
+      "input": "vỒUỢờƠI\u0303\u031bCẹÂ\u205f\u000b~ổ",
+      "expected": "vỒUỢờƠĨ\u031bCẹÂ ~ổ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_446",
+      "input": "K\u0088]$~r\u2003\u2008\u0095b;ya\u2004\u200a\u00a0JbPvặv\u2008\u0013",
+      "expected": "K]$~r b;ya JbPvặv",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_447",
+      "input": "r$T\"WvV]F(",
+      "expected": "r$T\"WvV]F(",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_448",
+      "input": "a\u0306\u0303\u0309",
+      "expected": "ẵ\u0309",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_449",
+      "input": "E\u0323a;6a\u0306a\u0303",
+      "expected": "Ẹa;6ăã",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_450",
+      "input": "\u001d\u000b\u0089",
+      "expected": "",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_451",
+      "input": "\u2002[GÒỆẴỂ",
+      "expected": "[GÒỆẴỂ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_452",
+      "input": "ÁễƠIƠÊỘ{zoặòÒ\u0085\u3000\nợỤKÁíỒ\u2002\u2029\u2008",
+      "expected": "ÁễƠIƠÊỘ{zoặòÒ ợỤKÁíỒ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_453",
+      "input": "e\u031b\u0301tS\u0000",
+      "expected": "é\u031btS",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_454",
+      "input": "R2/b39A\u0306ôÝớýẠ`F\\",
+      "expected": "R2/b39ĂôÝớýẠ`F\\",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_455",
+      "input": "UểTỰ\u031bBCọứíẵÃỡõ\u2006ấ\u2003 ",
+      "expected": "UểTỰ\u031bBCọứíẵÃỡõ ấ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_456",
+      "input": "ỔỤẫ\u0083oIUa\u0301\u031b",
+      "expected": "ỔỤẫoIUá\u031b",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_457",
+      "input": "gu\u0309\u0306",
+      "expected": "gủ\u0306",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_458",
+      "input": "ỨỂÈU)qQUU.\u008fO\u0301\u3000=:",
+      "expected": "ỨỂÈU)qQUU.Ó =:",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_459",
+      "input": "@yy{5(",
+      "expected": "@yy{5(",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_460",
+      "input": "a\u031b\u0301Ồge\u0300\u0306\u2003\u2003/JâkẫÒỬPcỶéÝỈjĨ\u001f\u001d\u001c,B",
+      "expected": "á\u031bỒgè\u0306 /JâkẫÒỬPcỶéÝỈjĨ ,B",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_461",
+      "input": "6#{}&i\u0302\u0303cặDõU\u0300cìS=:VPk\u0015wẲẬẩC~J",
+      "expected": "6#{}&î\u0303cặDõÙcìS=:VPkwẲẬẩC~J",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_462",
+      "input": "Y\u001f\u205f\u2007\u0300",
+      "expected": "Y \u0300",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_463",
+      "input": "Áúo\u2001ZỘỄõỤê\u2001ởl\u001c\u2007 uwY\u0300",
+      "expected": "Áúo ZỘỄõỤê ởl uwỲ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_464",
+      "input": "ỔFỎếZ",
+      "expected": "ỔFỎếZ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_465",
+      "input": "ãuếÌỈă?FkaR{kzr\u3000\u2001\u202fĐỤôfa",
+      "expected": "ãuếÌỈă?FkaR{kzr ĐỤôfa",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_466",
+      "input": "\u00171saCd",
+      "expected": "1saCd",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_467",
+      "input": "\r\u00a0E\u0300ừTj;",
+      "expected": "ÈừTj;",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_468",
+      "input": "kf:ỔbU\u0301u\u0306\u00a0\u001f\u2029t",
+      "expected": "kf:ỔbÚŭ t",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_469",
+      "input": "Y\u0309\f\u0309",
+      "expected": "Ỷ \u0309",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_470",
+      "input": "ẪỈÊi\u0309\u0306ỒgỮd\u0088",
+      "expected": "ẪỈÊỉ\u0306ỒgỮd",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_471",
+      "input": "\u009dẽoXỒ\u008dẹữẾàúạa\u0302I\u0302\u0309\u001dó{sW~d`",
+      "expected": "ẽoXỒẹữẾàúạâÎ\u0309 ó{sW~d`",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_472",
+      "input": "U\u0306\u205f\u001c\tỏẻỳ+\u2028óbSẴ",
+      "expected": "Ŭ ỏẻỳ+ óbSẴ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_473",
+      "input": "\u0085\u2001\u2029othw#ubY\u3000\u2001\u2004u\u031b\u0309WqBZ<Yx\u008f",
+      "expected": "othw#ubY ửWqBZ<Yx",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_474",
+      "input": "\u0085\u2007\u001c\n",
+      "expected": "",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_475",
+      "input": "\u001fjI\u0302\u0303B\u0302o\u0300",
+      "expected": "jÎ\u0303B\u0302ò",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_476",
+      "input": "+f+9flNbY\u0303\u0306y\u2003\f\u2003",
+      "expected": "+f+9flNbỸ\u0306y",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_477",
+      "input": "W9.eLOÙl|DB^@",
+      "expected": "W9.eLOÙl|DB^@",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_478",
+      "input": "ỸvGỴẺ\u0085o\u0300\u031b",
+      "expected": "ỸvGỴẺ ờ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_479",
+      "input": "\u0306AỮềãỏE\u0300e\u0301",
+      "expected": "\u0306AỮềãỏÈé",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_480",
+      "input": "\u0303i\u2002\u001f\r\f\u2005\u00a0",
+      "expected": "\u0303i",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_481",
+      "input": "\u205f\u2006ỂỶzẤE\u0323YjảôểẮÌ",
+      "expected": "ỂỶzẤẸYjảôểẮÌ",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_482",
+      "input": "\u0309X777?",
+      "expected": "\u0309X777?",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_483",
+      "input": "\u000bễÒỖùÓĐR:!ŨìẠỠẵfõDũẨ\u0302\u030938Bc^",
+      "expected": "ễÒỖùÓĐR:!ŨìẠỠẵfõDũẨ\u0302\u030938Bc^",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_484",
+      "input": "e\u031b\u0300I\u0309\u0302ỵớấêỔẺA\u0303\u2004\u2009ỘÊRmĨả\u009b",
+      "expected": "è\u031bỈ\u0302ỵớấêỔẺÃ ỘÊRmĨả",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_485",
+      "input": "Z\u031bE\u0302\u0309I\u0303q>5>\u0306y1\u009aÌụẸủở\u0302",
+      "expected": "Z\u031bỂĨq>5>\u0306y1ÌụẸủở\u0302",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_486",
+      "input": "I\u0303\"@600TE\u031b\u0300\u001c\u2004\u031b\u0083",
+      "expected": "Ĩ\"@600TÈ\u031b \u031b",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_487",
+      "input": "e\u031b\u0323@0n\"<(4#-e\\L\u001e\u1680\f\u001d\u00a0",
+      "expected": "ẹ\u031b@0n\"<(4#-e\\L",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_488",
+      "input": "\u2009\u2029\u200a\u00a0ĂÁIÀÂ\u001e\t\u3000\tV%\u0303I\u0301",
+      "expected": "ĂÁIÀÂ V%\u0303Í",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_489",
+      "input": "EỊấnỔĨộỎẨỸồ\fíBnỊAe\u03013.td<{(",
+      "expected": "EỊấnỔĨộỎẨỸồ íBnỊAé3.td<{(",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_490",
+      "input": "\u0309~q6>=T",
+      "expected": "\u0309~q6>=T",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_491",
+      "input": "ưẴỡdỳZ\u2008\nU\u0300",
+      "expected": "ưẴỡdỳZ Ù",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_492",
+      "input": "6\u0306KHé\u202f\u001d\u2002j!=jỒÌẤCỞốảơI\u0302",
+      "expected": "6\u0306KHé j!=jỒÌẤCỞốảơÎ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_493",
+      "input": "i\u0306\u0098",
+      "expected": "ĭ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_494",
+      "input": ":d\u0001\u0089ỂìẬ",
+      "expected": ":dỂìẬ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_495",
+      "input": "RÃƯù{)@",
+      "expected": "RÃƯù{)@",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_496",
+      "input": "\u2029\u2002\u2000\u0081ộợPY\u0302\u0301\u3000\u2001",
+      "expected": "ộợPŶ\u0301",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_497",
+      "input": "\u0301o\u0309\u0303a\u0301\u0015\u0309e\u0306",
+      "expected": "\u0301ỏ\u0303á\u0309ĕ",
+      "core_would_reject": true
+    },
+    {
+      "id": "random_498",
+      "input": "o\u0302\u0301y\u0302\u0300QB7+PD",
+      "expected": "ốŷ\u0300QB7+PD",
+      "core_would_reject": false
+    },
+    {
+      "id": "random_499",
+      "input": "K:B&jy\u0309E\u0300\u001f\f\u2006u\u0302,a7KqZ",
+      "expected": "K:B&jỷÈ û,a7KqZ",
+      "core_would_reject": true
+    }
+  ]
+}

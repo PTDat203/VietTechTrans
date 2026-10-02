@@ -1,0 +1,28 @@
+# Android / Gradle
+.gradle/
+build/
+*/build/
+local.properties
+.idea/
+*.iml
+captures/
+.cxx/
+.kotlin/
+.externalNativeBuild/
+
+# Artifacts pinned in artifacts.lock.json and installed by tools/fetch_artifacts.py
+.cache/
+third_party/**/*.aar
+app/src/main/assets/models/
+# Phase 04 MT package (docs/contracts/mt_package_v1.md), installed the same way
+app/src/main/assets/mt/
+
+# Build outputs
+*.apk
+*.aab
+
+# Unfinished evidence runs are never evidence
+evidence/**/*.running/
+
+# Python
+tools/**/__pycache__/

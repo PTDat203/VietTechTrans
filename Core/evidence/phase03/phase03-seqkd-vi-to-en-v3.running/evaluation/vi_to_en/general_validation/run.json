@@ -1,0 +1,59 @@
+{
+  "stage": "phase03_student_evaluation",
+  "run_id": "phase03-seqkd-vi-to-en-v3",
+  "direction": "vi_to_en",
+  "dataset_role": "general_validation",
+  "source_data": "data/processed/general_validation_en_vi/general_validation.jsonl",
+  "source_data_sha256": "11dd3ca7091dea46e95d5e56933fcc676ef48f612157f044a583a895a6991d4f",
+  "evaluated_checkpoint": {
+    "path": "models/phase03/phase03-seqkd-vi-to-en-v3/final-epoch-1",
+    "sha256_tree": "fbcba2c1dbaa377073ab69893fabb51127c9de39609d1815f8fb97202442cb53",
+    "parameter_count": 72177152,
+    "serialized_bytes": 289784104
+  },
+  "training_run": {
+    "path": "evidence/phase03/phase03-seqkd-vi-to-en-v3.running/training/vi_to_en/training_run.json",
+    "sha256": "48248aca6ef549b2d53784ae6f93d385ef9e204b0976dba32c71f9f8e7ba99ad"
+  },
+  "teacher_target_input": {
+    "target_path": "evidence/phase03/phase03-seqkd-vi-to-en-v3.running/teacher_targets/vi_to_en.jsonl",
+    "target_sha256": "0d1251e8f0dc2ea46522b65130bc1b3aeca5e303dd5a5f3cc755714b1c4b5069",
+    "rows": 121539
+  },
+  "student_generation_config_sha256": "587f41e395869f7aacebe3d9eb2f8d739066c8a5aa97bfe5456fbf306482b16e",
+  "runner_sha256": "3d91e7a0f220c997e6f4044e03c83c4b7be794c379511740c216e407a98edcee",
+  "protocols": [
+    {
+      "path": "configs/phase03_protocol.json",
+      "sha256": "6c24a108e76bd8a8d264b14cd8ad50393ddfe80627f42d50166df1088945db22"
+    },
+    {
+      "path": "configs/phase03_protocol_vi_to_en_v2.json",
+      "sha256": "aa2e1e6c81c71f0e64cf478f54e73b94912a365e54643ecfabfbc485bfde9c5e"
+    },
+    {
+      "path": "configs/phase03_protocol_teacher_target_reuse_vi_to_en_v3.json",
+      "sha256": "6dcdbcc8b3cd7839a9d3b0f03fd3c6ad7ce84df2c3dcf4132d9a4ca308651a64"
+    }
+  ],
+  "experiment_record_sha256": "3c977318bca188b8d0b211d05680396673c67b5a0e990541f31e3c86493f42c3",
+  "evaluation_amendment": {
+    "path": "configs/phase03_evaluation_input_length_amendment_vi_to_en_v3.json",
+    "sha256": "9921843fb8d6071b9c2da0fc7ffea21b5ea90f94ceebd05a2357ee456dcf6a45"
+  },
+  "runtime": {
+    "torch": "2.14.0+cu130",
+    "transformers": "4.57.6",
+    "device": {
+      "type": "cuda",
+      "index": 0,
+      "name": "NVIDIA GeForce RTX 3050 Ti Laptop GPU"
+    }
+  },
+  "inference_batch_size": 8,
+  "student_prediction_file": "student_predictions.jsonl",
+  "student_metrics_file": "student_metrics.json",
+  "teacher_comparable_metrics_file": "teacher_comparable_metrics.json",
+  "comparison_scope_file": "comparison_scope.json",
+  "created_at_utc": "2026-10-04T15:19:37.075270+00:00"
+}

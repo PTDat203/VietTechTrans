@@ -7,8 +7,9 @@ chọn Core MT, tạo student model và triển khai offline.
 
 Phase 01 và Phase 02 đã hoàn tất theo evidence local: dataset `it_en_vi` đã
 khóa, Core MT đã được freeze cho hai chiều EN→VI và VI→EN, và final reporting
-đã hoàn tất. Phase 03 đến Phase 05 là các bước tiếp theo, chưa có evidence thực
-nghiệm trong repository.
+đã hoàn tất. Phase 03 đã freeze hai Student Main-Core cho Phase 4: EN→VI
+`phase03-seqkd-en-to-vi-v2` và VI→EN `phase03-seqkd-vi-to-en-v3`. Phase 04
+và Phase 05 chưa có evidence thực nghiệm.
 
 ## Workflow
 
@@ -36,6 +37,8 @@ Sơ đồ đầy đủ: [project_workflow.svg](docs/project_workflow.svg).
 | Kết quả và giới hạn Phase 02 | [docs/phase_02/final_report.md](docs/phase_02/final_report.md), [docs/provenance_and_reproducibility.md](docs/provenance_and_reproducibility.md) |
 | Workflow Phase 02 | [docs/phase_02/workflow.svg](docs/phase_02/workflow.svg) |
 | Workflow Phase 03 | [docs/phase_03/workflow.svg](docs/phase_03/workflow.svg) |
+| Thiết kế và câu hỏi nghiên cứu Phase 03 | [docs/phase_03/README.md](docs/phase_03/README.md) |
+| Cách lấy Main-Core cho Phase 4 | [docs/phase_04/README.md](docs/phase_04/README.md), [Phase 3 decision](evidence/phase03/main_core_decision.json) |
 | Workflow Phase 04 | [docs/phase_04/workflow.svg](docs/phase_04/workflow.svg) |
 | Workflow Phase 05 | [docs/phase_05/workflow.svg](docs/phase_05/workflow.svg) |
 | Hướng dẫn chạy lại | [manual/README.md](manual/README.md) |

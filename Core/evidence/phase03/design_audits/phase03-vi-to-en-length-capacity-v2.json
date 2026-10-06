@@ -1,0 +1,30 @@
+{
+  "stage": "phase03_student_length_capacity_check",
+  "check_id": "phase03-vi-to-en-length-capacity-v2",
+  "created_at_utc": "2026-09-30T11:20:27.498573+00:00",
+  "purpose": "Test the fixed Student checkpoint at the two audited >512-token inputs; no text or output is stored.",
+  "student": {
+    "model_id": "Helsinki-NLP/opus-mt-vi-en",
+    "revision": "c8d2853e77f5fae31124d993e0b35176b1c8914e"
+  },
+  "tokenizer_truncation": false,
+  "position_capacity": {
+    "config_max_position_embeddings": 512,
+    "model.encoder.embed_positions.rows": 512,
+    "model.decoder.embed_positions.rows": 512
+  },
+  "rows": [
+    {
+      "dataset_row_id": "c3415a68a988702f855e8e6dd23398b2aa2dddea771f47428df941a3305fcff3",
+      "input_tokens": 552,
+      "generate_status": "blocked_before_generate",
+      "reason": "Input exceeds the checkpoint positional capacity of 512 tokens."
+    },
+    {
+      "dataset_row_id": "e679898355a6de521823b1c00f22fb949c007177097554d77d2428577d0a51f6",
+      "input_tokens": 515,
+      "generate_status": "blocked_before_generate",
+      "reason": "Input exceeds the checkpoint positional capacity of 512 tokens."
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "phase": "phase_03_student_distillation",
+  "status": "approved_before_experiment",
+  "purpose": "Define the sole approved eligibility correction for the VI-to-EN Phase 03 reuse run after the v2 integrity gate found four over-limit, degenerate Teacher targets. The Phase 01 IT Train file is not changed.",
+  "source_data": "data/processed/it_en_vi/train.jsonl",
+  "source_rows": 121547,
+  "eligible_rows": 121539,
+  "parent_input_policy": {
+    "path": "configs/phase03_vi_to_en_v2_input_policy.json",
+    "sha256": "b152e34084ad7c6c21fe1f38935e91748d58f80df8848be541cf20475fcdc7af"
+  },
+  "excluded_rows": [
+    {"dataset_row_id": "c3415a68a988702f855e8e6dd23398b2aa2dddea771f47428df941a3305fcff3", "reason": "exceeds_fixed_student_input_capacity_in_parent_policy"},
+    {"dataset_row_id": "e679898355a6de521823b1c00f22fb949c007177097554d77d2428577d0a51f6", "reason": "exceeds_fixed_student_input_capacity_in_parent_policy"},
+    {"dataset_row_id": "8e53e283484f5624ade61e3791ddcaa71df6030db70960f0575a9e1baf0780ef", "reason": "contentless_parallel_pair_in_parent_policy"},
+    {"dataset_row_id": "ee111c9ad966968cf0e2212ec80b2a44f9be56e789826f2623e36ef2d01fa24f", "reason": "contentless_parallel_pair_in_parent_policy"},
+    {"dataset_row_id": "17e7e477bd1ea1b7cb23a7302364e048ed8fdf7859991ef644510badcb9ed2da", "reason": "over_limit_degenerate_teacher_target_in_parent_run", "student_target_tokens": 514},
+    {"dataset_row_id": "404358bd56778bb4c53a1edb034b75cd33d36b06825e0c68727e4efc584a6e1d", "reason": "over_limit_degenerate_teacher_target_in_parent_run", "student_target_tokens": 515},
+    {"dataset_row_id": "63a75d7bf16327a02500902951c74d61ebf8e6966733be898b86d89c7a4cbbac", "reason": "over_limit_degenerate_teacher_target_in_parent_run", "student_target_tokens": 513},
+    {"dataset_row_id": "ab04abe93f4173d4c918b0de5ae7f78d59da6d7f9d0ddae2d1b2f70234bb912b", "reason": "over_limit_degenerate_teacher_target_in_parent_run", "student_target_tokens": 684}
+  ],
+  "parent_run": {
+    "run_id": "phase03-seqkd-vi-to-en-v2",
+    "target_path": "evidence/phase03/phase03-seqkd-vi-to-en-v2.running/teacher_targets/vi_to_en.jsonl",
+    "target_sha256": "02362bc7300e452aeeaba2e2b91d4d16a0e379d2fdda2144481664f7aa50bb69",
+    "integrity_report_path": "evidence/phase03/phase03-seqkd-vi-to-en-v2.running/teacher_targets/vi_to_en.integrity.json",
+    "integrity_report_sha256": "702b008241b0381e3f468f78ce2ddc6823104eab8f146d2131fadab2ecdd119f",
+    "train_sha256": "d6dbad4f61a57289935465a05194dd1d88003c2d63c55b90698dd19f10f1b98e"
+  },
+  "rule": "Reuse only the 121539 persisted parent targets whose IDs are eligible under this exact configuration. The four new exclusions are the complete over_limit_rows list from the verified parent integrity report. Do not regenerate, truncate, rewrite, quality-filter, or conditionally exclude any target.",
+  "approval_required": "This correction changes the Phase 03 VI-to-EN eligibility boundary and must be approved before the reuse runner is executed."
+}

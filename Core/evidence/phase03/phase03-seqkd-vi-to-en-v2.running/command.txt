@@ -1,0 +1,1 @@
+tools\run_phase03_teacher_targets.py --direction vi_to_en --run-id phase03-seqkd-vi-to-en-v2

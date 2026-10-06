@@ -1,0 +1,187 @@
+{
+  "stage": "phase03_hardware_preflight",
+  "preflight_id": "phase03-hardware-preflight-v1",
+  "created_at_utc": "2026-09-30T10:20:04.576867+00:00",
+  "purpose": "GPU feasibility only; this is not a KD experiment or quality evidence.",
+  "data_boundary": {
+    "input": "data\\processed\\it_en_vi\\train.jsonl",
+    "sample_rule": "first 8 rows in file order; no source, reference or generated text is stored",
+    "dataset_row_ids": [
+      "00002551b2afaa45b3d2bda4ab0ce101b5b4cd974512468dcf287149248a6e30",
+      "0000a4dce19ef688b86d08f6d1e9a6f3c02d0ec601795774fb6c6a9742311edd",
+      "00010b84c19ab190d747a0f98941e3bf61c06e67d37c586ba72969fbe8a0ed89",
+      "00011c5a39e4f82f3391d4b3e475b7517b43cd57c068e049193bc5972d31d9fd",
+      "00016db7c01ad957de0ae3a4383c7744dd51dbe1f7eae94874a621cfbc371c3d",
+      "000208ed1df913063ca90c7bbad7d79bc05ef2c11b53ed7897de5c1796b35779",
+      "000231f9762eacf2173f350747d61c96e807df2bf50a83bddf6c7175f9866561",
+      "000314efbb18f43cf903b047b8f8a3230ff87d2ba40c26a33ad8aa50c0fc02a7"
+    ],
+    "prohibited": [
+      "data/processed/it_en_vi/it_test.jsonl",
+      "data/processed/general_test_flores200_devtest/general_test.jsonl"
+    ]
+  },
+  "runtime": {
+    "python": "3.11.15",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "torch": "2.14.0+cu130",
+    "transformers": "4.57.6",
+    "cuda": "13.0",
+    "gpu_name": "NVIDIA GeForce RTX 3050 Ti Laptop GPU",
+    "gpu_total_memory_gib": 4.0,
+    "precision": "fp16"
+  },
+  "scope": {
+    "teacher_generation": "one in-memory inference per attempted physical batch; max_length=512 from frozen Phase 02 runtime",
+    "student_training": "one forward/backward/AdamW step per attempted physical batch; AdamW lr=0.0 prevents a learning update",
+    "not_performed": [
+      "full teacher target generation",
+      "target persistence",
+      "student checkpoint persistence",
+      "validation",
+      "test",
+      "quality metric",
+      "model or decoding selection"
+    ]
+  },
+  "directions": {
+    "en_to_vi": {
+      "teacher": {
+        "identity": {
+          "base_model_path": "models\\envit5\\840bc88104d5a4277af740eaedb024df8c3093e7",
+          "adapter_checkpoint": "models/phase02/envit5-en-to-vi-lora-v1/final-epoch-1",
+          "source_prefix": "en:",
+          "output_control_prefix": "vi:",
+          "generation_overrides": {
+            "max_length": 512
+          }
+        },
+        "attempts": [
+          {
+            "batch_size": 8,
+            "status": "pass",
+            "peak_allocated_gib": 0.628,
+            "peak_reserved_gib": 0.646
+          },
+          {
+            "batch_size": 4,
+            "status": "pass",
+            "peak_allocated_gib": 0.615,
+            "peak_reserved_gib": 0.633
+          },
+          {
+            "batch_size": 2,
+            "status": "pass",
+            "peak_allocated_gib": 0.608,
+            "peak_reserved_gib": 0.625
+          },
+          {
+            "batch_size": 1,
+            "status": "pass",
+            "peak_allocated_gib": 0.605,
+            "peak_reserved_gib": 0.621
+          }
+        ]
+      },
+      "student": {
+        "model_id": "Helsinki-NLP/opus-mt-en-vi",
+        "revision": "989c9fb9ec63987901022baf0182dcec3e149be6",
+        "attempts": [
+          {
+            "batch_size": 4,
+            "status": "pass",
+            "optimizer": "AdamW",
+            "optimizer_lr": 0.0,
+            "peak_allocated_gib": 0.684,
+            "peak_reserved_gib": 0.721
+          },
+          {
+            "batch_size": 2,
+            "status": "pass",
+            "optimizer": "AdamW",
+            "optimizer_lr": 0.0,
+            "peak_allocated_gib": 0.684,
+            "peak_reserved_gib": 0.713
+          },
+          {
+            "batch_size": 1,
+            "status": "pass",
+            "optimizer": "AdamW",
+            "optimizer_lr": 0.0,
+            "peak_allocated_gib": 0.684,
+            "peak_reserved_gib": 0.711
+          }
+        ]
+      }
+    },
+    "vi_to_en": {
+      "teacher": {
+        "identity": {
+          "base_model_path": "models\\envit5\\840bc88104d5a4277af740eaedb024df8c3093e7",
+          "adapter_checkpoint": "models/phase02/envit5-vi-to-en-lora-v1/final-epoch-1",
+          "source_prefix": "vi:",
+          "output_control_prefix": "en:",
+          "generation_overrides": {
+            "max_length": 512
+          }
+        },
+        "attempts": [
+          {
+            "batch_size": 8,
+            "status": "pass",
+            "peak_allocated_gib": 0.637,
+            "peak_reserved_gib": 0.666
+          },
+          {
+            "batch_size": 4,
+            "status": "pass",
+            "peak_allocated_gib": 0.624,
+            "peak_reserved_gib": 0.631
+          },
+          {
+            "batch_size": 2,
+            "status": "pass",
+            "peak_allocated_gib": 0.617,
+            "peak_reserved_gib": 0.623
+          },
+          {
+            "batch_size": 1,
+            "status": "pass",
+            "peak_allocated_gib": 0.614,
+            "peak_reserved_gib": 0.619
+          }
+        ]
+      },
+      "student": {
+        "model_id": "Helsinki-NLP/opus-mt-vi-en",
+        "revision": "c8d2853e77f5fae31124d993e0b35176b1c8914e",
+        "attempts": [
+          {
+            "batch_size": 4,
+            "status": "pass",
+            "optimizer": "AdamW",
+            "optimizer_lr": 0.0,
+            "peak_allocated_gib": 0.684,
+            "peak_reserved_gib": 0.707
+          },
+          {
+            "batch_size": 2,
+            "status": "pass",
+            "optimizer": "AdamW",
+            "optimizer_lr": 0.0,
+            "peak_allocated_gib": 0.684,
+            "peak_reserved_gib": 0.713
+          },
+          {
+            "batch_size": 1,
+            "status": "pass",
+            "optimizer": "AdamW",
+            "optimizer_lr": 0.0,
+            "peak_allocated_gib": 0.684,
+            "peak_reserved_gib": 0.709
+          }
+        ]
+      }
+    }
+  }
+}

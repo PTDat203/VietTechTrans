@@ -1,0 +1,59 @@
+{
+  "status": "blocked_target_over_limit",
+  "expected_rows": 121543,
+  "persisted_target_rows": 121543,
+  "structural_errors": {
+    "missing_dataset_row_ids": [],
+    "duplicate_dataset_row_ids": [],
+    "unexpected_dataset_row_ids": [],
+    "source_hash_mismatch_dataset_row_ids": [],
+    "empty_target_dataset_row_ids": []
+  },
+  "over_limit_rows": [
+    {
+      "dataset_row_id": "17e7e477bd1ea1b7cb23a7302364e048ed8fdf7859991ef644510badcb9ed2da",
+      "student_target_tokens": 514
+    },
+    {
+      "dataset_row_id": "404358bd56778bb4c53a1edb034b75cd33d36b06825e0c68727e4efc584a6e1d",
+      "student_target_tokens": 515
+    },
+    {
+      "dataset_row_id": "63a75d7bf16327a02500902951c74d61ebf8e6966733be898b86d89c7a4cbbac",
+      "student_target_tokens": 513
+    },
+    {
+      "dataset_row_id": "ab04abe93f4173d4c918b0de5ae7f78d59da6d7f9d0ddae2d1b2f70234bb912b",
+      "student_target_tokens": 684
+    }
+  ],
+  "student_token_limit": 512,
+  "student_training_permitted": false,
+  "stage": "phase03_teacher_target_integrity",
+  "run_id": "phase03-seqkd-vi-to-en-v2",
+  "direction": "vi_to_en",
+  "target_path": "evidence/phase03/phase03-seqkd-vi-to-en-v2.running/teacher_targets/vi_to_en.jsonl",
+  "target_sha256": "02362bc7300e452aeeaba2e2b91d4d16a0e379d2fdda2144481664f7aa50bb69",
+  "teacher_generation": {
+    "precision": "fp16",
+    "batch_size": 16,
+    "generation_config": {
+      "max_length": 512,
+      "min_length": 0,
+      "do_sample": false,
+      "num_beams": 1,
+      "early_stopping": false,
+      "length_penalty": 1.0,
+      "repetition_penalty": 1.0,
+      "no_repeat_ngram_size": 0,
+      "decoder_start_token_id": 0,
+      "eos_token_id": 1,
+      "pad_token_id": 0
+    }
+  },
+  "student_tokenizer": {
+    "model_id": "Helsinki-NLP/opus-mt-vi-en",
+    "revision": "c8d2853e77f5fae31124d993e0b35176b1c8914e"
+  },
+  "created_at_utc": "2026-10-04T13:49:02.527027+00:00"
+}

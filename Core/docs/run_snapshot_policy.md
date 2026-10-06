@@ -34,6 +34,16 @@ Snapshot phải hoàn tất trước train, inference hoặc scoring. Không dù
 - Không sửa nội dung completed evidence. Run mới với thay đổi source, config,
   input hoặc checkpoint phải có `run-id` mới.
 
+## Ngoại lệ lịch sử Phase 03
+
+Hai Main-Core Phase 03 đã freeze vẫn giữ tên thư mục `.running` vì decision,
+checksum và lineage đã tham chiếu đúng các đường dẫn đó. Không đổi tên hoặc di
+chuyển chúng. Với hai run này, trạng thái cuối cùng chỉ lấy từ
+`evidence/phase03/main_core_decision.json`.
+
+Ngoại lệ này không áp dụng cho run mới. Run mới phải có đủ snapshot trước khi
+chạy và dùng trạng thái thư mục theo quy tắc ở trên.
+
 ## Phạm vi
 
 Policy này không tạo thêm model, metric hay selection rule. Nó chỉ bảo toàn

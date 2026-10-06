@@ -1,0 +1,36 @@
+{
+  "files": [
+    {
+      "path": "command.txt",
+      "sha256": "d75c2a069e34d690a04f5435b3a3647dd0810743c0c769d42f0721189a5ad56b"
+    },
+    {
+      "path": "config_snapshot/phase03-seqkd-en-to-vi-v1.json",
+      "sha256": "4c98d00f6fda7e7e791da265607a7bfa69c0f7f3eef5491a511ddf55ba8e93ed"
+    },
+    {
+      "path": "config_snapshot/phase03_input_length_policy.json",
+      "sha256": "babc27ca85370fce4aaefdccca64673c310533404cfbb5fe93b4f3a58fe55e72"
+    },
+    {
+      "path": "config_snapshot/phase03_protocol.json",
+      "sha256": "6c24a108e76bd8a8d264b14cd8ad50393ddfe80627f42d50166df1088945db22"
+    },
+    {
+      "path": "dependency_versions.txt",
+      "sha256": "b25ea69ac91c64439341047c1e496ec9330a3edbc920287f8ced04582581bb77"
+    },
+    {
+      "path": "input_manifest.json",
+      "sha256": "c6c71978b22a52d2d5d5268446ab3a4aaa66a11e69c58e5c7b4ea7d782c5d01b"
+    },
+    {
+      "path": "runtime.json",
+      "sha256": "8e17f60f13a44ec48992172ea5683fe4ccd8072dad9c32e4ad8378bc30c48d0c"
+    },
+    {
+      "path": "source_snapshot/run_phase03_teacher_targets.py",
+      "sha256": "22b8363fb675623f11697d41a6aa118e3483ffdf37ac031f6788fd2c96c219da"
+    }
+  ]
+}

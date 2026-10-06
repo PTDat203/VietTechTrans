@@ -1,0 +1,14 @@
+{
+  "train": {
+    "path": "data/processed/it_en_vi/train.jsonl",
+    "sha256": "d6dbad4f61a57289935465a05194dd1d88003c2d63c55b90698dd19f10f1b98e"
+  },
+  "teacher_checkpoint": {
+    "path": "models/phase02/envit5-en-to-vi-lora-v1/final-epoch-1",
+    "sha256_tree": "d96171cb2ccecbdb56e60744695084bc5f82b3ac11e8d512e53d99514bd12d11"
+  },
+  "student": {
+    "model_id": "Helsinki-NLP/opus-mt-en-vi",
+    "revision": "989c9fb9ec63987901022baf0182dcec3e149be6"
+  }
+}

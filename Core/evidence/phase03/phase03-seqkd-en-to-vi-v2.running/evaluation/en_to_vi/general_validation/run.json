@@ -1,0 +1,47 @@
+{
+  "stage": "phase03_student_evaluation",
+  "run_id": "phase03-seqkd-en-to-vi-v2",
+  "direction": "en_to_vi",
+  "dataset_role": "general_validation",
+  "source_data": "data/processed/general_validation_en_vi/general_validation.jsonl",
+  "source_data_sha256": "11dd3ca7091dea46e95d5e56933fcc676ef48f612157f044a583a895a6991d4f",
+  "evaluated_checkpoint": {
+    "path": "models/phase03/phase03-seqkd-en-to-vi-v2/final-epoch-1",
+    "sha256_tree": "c2f037f8548437bbd6edcaabc33b91f65c6fc7dcbd1124aa78239afe4b8e43bb",
+    "parameter_count": 72149504,
+    "serialized_bytes": 289671718
+  },
+  "training_run": {
+    "path": "evidence/phase03/phase03-seqkd-en-to-vi-v2.running/training/en_to_vi/training_run.json",
+    "sha256": "a6578e775c3e5ad88473592407a44dc80b484cfa1a7e8175f9c2ea7c66fe7077"
+  },
+  "teacher_target_input": {
+    "target_path": "evidence/phase03/phase03-seqkd-en-to-vi-v2.running/teacher_targets/en_to_vi.jsonl",
+    "target_sha256": "88334a61ce29c0607dfcbfa38e1ba65f62b673f3d08b5c1d8be2ff67759065c2",
+    "rows": 121544
+  },
+  "student_generation_config_sha256": "0141a1252fa6874a42153b54107664bfa68f1d4517239f099702cc2d34c9cd15",
+  "runner_sha256": "0d4f31169db3f8c3aaced377dde957f54fd31c25a2fc7a8d540a5fa0768f7e06",
+  "protocol_sha256": "6c24a108e76bd8a8d264b14cd8ad50393ddfe80627f42d50166df1088945db22",
+  "reuse_protocol_sha256": "c47f635de319c15d7fd8c6ba7aa589c4aa43c70cf6525ba46ec813271d374c46",
+  "experiment_record_sha256": "17a1e2f56a6f605ab4ca0e3f24b02f57f3d7b1cf036326bf4c6ac04cd98b4a60",
+  "evaluation_amendment": {
+    "path": "configs/phase03_evaluation_input_length_amendment_en_to_vi_v1.json",
+    "sha256": "1446d9f7ac1bacc21bd5b4aedbb3f1a17116b2c66af69da1f5e652ebba9f26f9"
+  },
+  "runtime": {
+    "torch": "2.14.0+cu130",
+    "transformers": "4.57.6",
+    "device": {
+      "type": "cuda",
+      "index": 0,
+      "name": "NVIDIA GeForce RTX 3050 Ti Laptop GPU"
+    }
+  },
+  "inference_batch_size": 8,
+  "student_prediction_file": "student_predictions.jsonl",
+  "student_metrics_file": "student_metrics.json",
+  "teacher_comparable_metrics_file": "teacher_comparable_metrics.json",
+  "comparison_scope_file": "comparison_scope.json",
+  "created_at_utc": "2026-10-02T09:24:16.254188+00:00"
+}

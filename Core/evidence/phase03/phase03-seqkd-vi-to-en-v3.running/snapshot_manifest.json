@@ -1,0 +1,56 @@
+{
+  "files": [
+    {
+      "path": "command.txt",
+      "sha256": "4c00b3f670c4461578958d2addcb99a4b09b7067a66d1d268dab24abb7426ee8"
+    },
+    {
+      "path": "config_snapshot/phase03-seqkd-vi-to-en-v3.json",
+      "sha256": "3c977318bca188b8d0b211d05680396673c67b5a0e990541f31e3c86493f42c3"
+    },
+    {
+      "path": "config_snapshot/phase03_protocol_teacher_target_reuse_vi_to_en_v3.json",
+      "sha256": "6dcdbcc8b3cd7839a9d3b0f03fd3c6ad7ce84df2c3dcf4132d9a4ca308651a64"
+    },
+    {
+      "path": "config_snapshot/phase03_teacher_target_reuse_vi_to_en_v3.json",
+      "sha256": "b7581c1a816e84c2faac400c6ee7f7617a644ba2e7ce47533f190816535c3f2b"
+    },
+    {
+      "path": "config_snapshot/phase03_vi_to_en_v2_input_policy.json",
+      "sha256": "b152e34084ad7c6c21fe1f38935e91748d58f80df8848be541cf20475fcdc7af"
+    },
+    {
+      "path": "dependency_versions.txt",
+      "sha256": "b25ea69ac91c64439341047c1e496ec9330a3edbc920287f8ced04582581bb77"
+    },
+    {
+      "path": "reuse_lineage.json",
+      "sha256": "556dbf952e82047d2a0f0d3e3619cc16b3c287bcf60568d00c6db298d8384ba3"
+    },
+    {
+      "path": "source_snapshot/prepare_phase03_review_sheet.py",
+      "sha256": "4547392ac1f17c0b5f1ade0e7ed8c128b9c37a3b9b81cb133ab054d5807a8062"
+    },
+    {
+      "path": "source_snapshot/reuse_phase03_teacher_targets_vi_to_en_v3.py",
+      "sha256": "ea38c1b6cb72fcf5535945ee5ade78391f06a13348c3c5d197ccfa9f3ef8c518"
+    },
+    {
+      "path": "source_snapshot/run_phase03_student_evaluation.py",
+      "sha256": "3d91e7a0f220c997e6f4044e03c83c4b7be794c379511740c216e407a98edcee"
+    },
+    {
+      "path": "source_snapshot/run_phase03_student_training.py",
+      "sha256": "a5188e9f41943e6d1a19fa9a952264a90de3a3e9d497fe55905d343005e9fcbe"
+    },
+    {
+      "path": "teacher_targets/vi_to_en.integrity.json",
+      "sha256": "2ac42bfe99f2e91f8f4b4f683425e3b571b09ec02ebfdcbecf4db87a2ca3286f"
+    },
+    {
+      "path": "teacher_targets/vi_to_en.jsonl",
+      "sha256": "0d1251e8f0dc2ea46522b65130bc1b3aeca5e303dd5a5f3cc755714b1c4b5069"
+    }
+  ]
+}

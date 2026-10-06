@@ -22,3 +22,6 @@ torch==2.14.0
 huggingface_hub==0.36.2
 sacrebleu==2.6.0
 sentencepiece==0.2.2
+
+# Test runner for read-only validation tests.
+pytest==9.1.1

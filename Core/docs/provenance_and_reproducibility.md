@@ -45,3 +45,20 @@ dữ kiện tạo ra sau run.
 Mọi run mới phải theo [run_snapshot_policy.md](run_snapshot_policy.md). Quy
 trình này chỉ áp dụng từ Phase 03 trở đi, không áp dụng ngược cho evidence Phase
 02 đã khóa.
+
+## Giới hạn snapshot lịch sử của Phase 03
+
+Hai checkpoint Student đã freeze cho Phase 4 được xác định trong
+`evidence/phase03/main_core_decision.json`. Artifact lịch sử giữ nguyên đường
+dẫn `.running`; trạng thái cuối cùng nằm ở decision, không nằm ở tên thư mục.
+
+| Run | Có | Thiếu | Cách hiểu đúng |
+|---|---|---|---|
+| EN→VI `phase03-seqkd-en-to-vi-v2` | Config, command, dependency, lineage, target, training record, evaluation, review | Source snapshot chính xác của runner training/evaluation; `runtime.json`; `input_manifest.json` | Checkpoint, metric và review vẫn kiểm tra được theo decision. Không thể tái lập tuyệt đối source code đã tạo run. |
+| VI→EN `phase03-seqkd-vi-to-en-v3` | Config, command, dependency, lineage, target, source snapshot reuse/training/evaluation/review, training record, evaluation, review | `runtime.json`; `input_manifest.json` riêng của v3 | Chuỗi source runner tốt hơn EN→VI v2, nhưng snapshot v3 chưa đủ mọi artifact theo policy. |
+
+Không tạo snapshot hồi tố và không copy source hiện tại vào artifact cũ. Việc đó
+không làm evidence đáng tin hơn. Validator provenance sẽ báo
+`PASS_WITH_DISCLOSED_HISTORICAL_LIMIT` cho hai run này khi các artifact còn lại
+khớp. Khi Phase 4 được thực hiện trên repository/máy khác, run mới cần có
+snapshot đầy đủ và không dùng ngoại lệ này.

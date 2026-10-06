@@ -1,0 +1,19 @@
+{
+  "stage": "phase03_teacher_target_reuse",
+  "parent_run": {
+    "run_id": "phase03-seqkd-en-to-vi-v1",
+    "target_path": "evidence/phase03/phase03-seqkd-en-to-vi-v1.running/teacher_targets/en_to_vi.jsonl",
+    "target_sha256": "8dea777d8dd87666823c8f952bc8d87822ec43c3e7ab32aed701787a75a71ee9",
+    "integrity_report_path": "evidence/phase03/phase03-seqkd-en-to-vi-v1.running/teacher_targets/en_to_vi.integrity.json",
+    "integrity_report_sha256": "2dd463d3a9dd37d25bdb9f6ff7313cfef40277ab23bbfb507764a6ef50f6494c",
+    "train_sha256": "d6dbad4f61a57289935465a05194dd1d88003c2d63c55b90698dd19f10f1b98e"
+  },
+  "excluded_dataset_row_ids": [
+    "8e53e283484f5624ade61e3791ddcaa71df6030db70960f0575a9e1baf0780ef",
+    "dab0dc864d4f615e86e1d6ce8c1a909c202786375619b8bee5dec157189d4d48",
+    "ee111c9ad966968cf0e2212ec80b2a44f9be56e789826f2623e36ef2d01fa24f"
+  ],
+  "reused_rows": 121544,
+  "reused_target_sha256": "88334a61ce29c0607dfcbfa38e1ba65f62b673f3d08b5c1d8be2ff67759065c2",
+  "created_at_utc": "2026-10-01T06:56:16.431077+00:00"
+}

@@ -96,6 +96,15 @@ kiểm tra trên GPU hiện có.
 
 Kết quả sau khi Core được khóa: [báo cáo cuối](final_report.md).
 
+## Bàn giao EN→VI sang Phase 03
+
+Core EN→VI đã khóa là EnViT5 LoRA tại
+`models/phase02/envit5-en-to-vi-lora-v1/final-epoch-1`. Phase 03 chỉ được dùng
+checkpoint này làm Teacher; không mở lại selection hay thay Core theo kết quả
+Student. Phase 03 đã freeze Student EN→VI v2 và VI→EN v3 làm Main-Core cho
+Phase 4. Xem trạng thái, evidence và giới hạn tại
+[README Phase 03](../phase_03/README.md).
+
 ## Phase 02 có thể trình bày
 
 - Candidate đã khảo sát, model ID và runtime control được dùng.

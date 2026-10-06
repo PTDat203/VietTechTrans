@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "phase": "phase_03_student_distillation",
+  "status": "approved_before_experiment",
+  "purpose": "Freeze the only approved exclusion from Phase 03 distillation/training input without changing the Phase 01 IT Train file.",
+  "source_data": "data/processed/it_en_vi/train.jsonl",
+  "source_rows": 121547,
+  "audit_record": "evidence/phase03/design_audits/phase03-input-length-audit-v1.json",
+  "rule": "Exclude a source only when its no-truncation token count exceeds the fixed Student encoder positional capacity. Do not truncate, segment, rewrite, or otherwise modify the source.",
+  "directions": {
+    "en_to_vi": {
+      "student_input_limit_tokens": 512,
+      "excluded_rows": [],
+      "eligible_rows": 121547
+    },
+    "vi_to_en": {
+      "student_input_limit_tokens": 512,
+      "excluded_rows": [
+        {"dataset_row_id": "c3415a68a988702f855e8e6dd23398b2aa2dddea771f47428df941a3305fcff3", "input_tokens": 552},
+        {"dataset_row_id": "e679898355a6de521823b1c00f22fb949c007177097554d77d2428577d0a51f6", "input_tokens": 515}
+      ],
+      "eligible_rows": 121545
+    }
+  },
+  "not_a_runtime_policy": "This policy applies only to Phase 03 training data. Phase 04 must separately define any handling of user inputs longer than the accepted Main-Core capacity."
+}

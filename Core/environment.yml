@@ -8,10 +8,10 @@ dependencies:
   - python=3.11.15
   - pip
   - jupyterlab=4.5.9
-      - ipykernel=6.31.0
-      - nbformat=5.10.4
-      - nbconvert=7.17.1
-      - matplotlib=3.11.0
+  - ipykernel=6.31.0
+  - nbformat=5.10.4
+  - nbconvert=7.17.1
+  - matplotlib=3.11.0
   - pip:
       # Baseline dependencies. The completed Phase 02 GPU runtime is recorded
       # separately in docs/environment.md and its evidence files.
@@ -29,3 +29,5 @@ dependencies:
       - huggingface_hub==0.36.2
       - sacrebleu==2.6.0
       - sentencepiece==0.2.2
+      # Read-only test runner used by tests/.
+      - pytest==9.1.1

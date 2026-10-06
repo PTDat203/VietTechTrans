@@ -1,0 +1,7 @@
+{
+  "schema_version": "2.0",
+  "status": "draft_for_design_review",
+  "purpose": "Immutable student identities proposed for Phase 03; training settings belong in a separate approved experiment record.",
+  "students": {"student": {"architecture": "MarianMT", "role": "Proposed Phase 03 Student; after acceptance, its frozen checkpoint becomes the Main-Core for Phase 4", "directions": {"en_to_vi": {"model_id": "Helsinki-NLP/opus-mt-en-vi", "revision": "989c9fb9ec63987901022baf0182dcec3e149be6", "snapshot_sha256_tree": "421c494a589ee2164bd169746f8bf9a939082ad03cd7e49756352231757e9088", "input_prefix": ">>vie<<", "revision_evidence": "evidence/phase02/opus_mt/en_to_vi/pretrained/selection_validation/run.json"}, "vi_to_en": {"model_id": "Helsinki-NLP/opus-mt-vi-en", "revision": "c8d2853e77f5fae31124d993e0b35176b1c8914e", "snapshot_sha256_tree": "f186755d1d13bbd8afcba4721e4568470da6a516de9949180cca7eb82f1d7499", "input_prefix": "", "revision_evidence": "evidence/phase02/opus_mt/vi_to_en/pretrained/selection_validation/run.json"}}}},
+  "not_a_claim": "This definition does not claim the student is device-ready or is the smallest possible EN↔VI model. Those claims require separate Phase 04 evidence."
+}

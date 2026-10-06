@@ -1,0 +1,25 @@
+{
+  "status": "pass",
+  "expected_rows": 121539,
+  "persisted_target_rows": 121539,
+  "structural_errors": {
+    "missing_dataset_row_ids": [],
+    "duplicate_dataset_row_ids": [],
+    "unexpected_dataset_row_ids": [],
+    "source_hash_mismatch_dataset_row_ids": [],
+    "empty_target_dataset_row_ids": []
+  },
+  "over_limit_rows": [],
+  "student_token_limit": 512,
+  "student_training_permitted": true,
+  "stage": "phase03_teacher_target_reuse_integrity",
+  "run_id": "phase03-seqkd-vi-to-en-v3",
+  "direction": "vi_to_en",
+  "target_path": "evidence/phase03/phase03-seqkd-vi-to-en-v3.running/teacher_targets/vi_to_en.jsonl",
+  "target_sha256": "0d1251e8f0dc2ea46522b65130bc1b3aeca5e303dd5a5f3cc755714b1c4b5069",
+  "student_tokenizer": {
+    "model_id": "Helsinki-NLP/opus-mt-vi-en",
+    "revision": "c8d2853e77f5fae31124d993e0b35176b1c8914e"
+  },
+  "created_at_utc": "2026-10-04T14:09:50.486968+00:00"
+}

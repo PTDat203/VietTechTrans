@@ -1,0 +1,23 @@
+{
+  "stage": "phase03_manual_review_sheet",
+  "run_id": "phase03-seqkd-vi-to-en-v3",
+  "direction": "vi_to_en",
+  "sealed_manifest": {
+    "path": "reviews/phase02_it_validation_review_manifest.json",
+    "sha256": "bc75dee1e0af8cd76811ef321469020a4154965c7df1f3a645c868572d89354e",
+    "rows": 50
+  },
+  "student_predictions": {
+    "path": "evidence/phase03/phase03-seqkd-vi-to-en-v3.running/evaluation/vi_to_en/selection_validation/student_predictions.jsonl",
+    "sha256": "6c7b7884e9e7857368bdd44514a9c607c65d28247497707f3605bf26053831d0"
+  },
+  "teacher_predictions": {
+    "path": "evidence/phase02/envit5/vi_to_en/adapted/envit5-vi-to-en-lora-v1/final-epoch-1/selection_validation/predictions.jsonl",
+    "sha256": "45a115e97d4bea2b55cd577280da3ea122d253804778d6cb5f12a94c6b68df93"
+  },
+  "review_fields": [
+    "translation_error",
+    "technical_error",
+    "note"
+  ]
+}

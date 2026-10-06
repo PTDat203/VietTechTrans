@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "phase": "phase_03_student_distillation",
+  "status": "approved_before_experiment",
+  "purpose": "Define the sole approved eligibility correction for the EN-to-VI Phase 03 reuse run. The Phase 01 IT Train file is not changed.",
+  "source_data": "data/processed/it_en_vi/train.jsonl",
+  "source_rows": 121547,
+  "eligible_rows": 121544,
+  "excluded_rows": [
+    {"dataset_row_id": "8e53e283484f5624ade61e3791ddcaa71df6030db70960f0575a9e1baf0780ef", "reason": "empty_teacher_target_in_parent_run"},
+    {"dataset_row_id": "dab0dc864d4f615e86e1d6ce8c1a909c202786375619b8bee5dec157189d4d48", "reason": "empty_teacher_target_in_parent_run"},
+    {"dataset_row_id": "ee111c9ad966968cf0e2212ec80b2a44f9be56e789826f2623e36ef2d01fa24f", "reason": "empty_teacher_target_in_parent_run"}
+  ],
+  "parent_run": {
+    "run_id": "phase03-seqkd-en-to-vi-v1",
+    "target_path": "evidence/phase03/phase03-seqkd-en-to-vi-v1.running/teacher_targets/en_to_vi.jsonl",
+    "target_sha256": "8dea777d8dd87666823c8f952bc8d87822ec43c3e7ab32aed701787a75a71ee9",
+    "integrity_report_path": "evidence/phase03/phase03-seqkd-en-to-vi-v1.running/teacher_targets/en_to_vi.integrity.json",
+    "integrity_report_sha256": "2dd463d3a9dd37d25bdb9f6ff7313cfef40277ab23bbfb507764a6ef50f6494c",
+    "train_sha256": "d6dbad4f61a57289935465a05194dd1d88003c2d63c55b90698dd19f10f1b98e"
+  },
+  "rule": "Reuse only the non-empty persisted parent targets whose IDs are eligible under this exact configuration. Do not regenerate, rewrite, quality-filter, or conditionally exclude any other target.",
+  "approval_required": "This correction changes the Phase 03 EN-to-VI eligibility boundary and must be approved before the reuse runner is executed."
+}

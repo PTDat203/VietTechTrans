@@ -1,0 +1,29 @@
+{
+  "stage": "phase03_manual_review_external_import",
+  "run_id": "phase03-seqkd-vi-to-en-v3",
+  "direction": "vi_to_en",
+  "external_review": {
+    "path": "C:\\Users\\ADMIN\\Documents\\Codex\\2026-10-04\\m-i-d-ng-n-n\\outputs\\student_v3_review.tsv",
+    "sha256": "5718a7d46d322576e9d0245af6c45da8e0751cb27670505fa9221c84374490cb",
+    "rows": 50
+  },
+  "applied_overrides": [
+    {
+      "dataset_row_id": "db414723815c686f613549db4098c5b4e623b504beb0d0eda5148e0178538961",
+      "translation_error": "yes",
+      "technical_error": "no",
+      "note": "Student renders “hands-on with Vision Pro” as “Reality Experience with Vision Pro”, changing the intended meaning."
+    },
+    {
+      "dataset_row_id": "ed5d4dfe80c358fb255af9c83684a89f68477bfae02cf6e7623e28d47eacd092",
+      "translation_error": "yes",
+      "technical_error": "yes",
+      "note": "Student omits the product version “Series 8”."
+    }
+  ],
+  "output_review": {
+    "path": "reviews/phase03_phase03-seqkd-vi-to-en-v3_vi_to_en_review.completed.csv",
+    "sha256": "0d871072d96031ed430205b182bc64f5a1bf6d88118fce426da1b58a6cd527ae"
+  },
+  "created_at_utc": "2026-10-04T16:32:42.726413+00:00"
+}

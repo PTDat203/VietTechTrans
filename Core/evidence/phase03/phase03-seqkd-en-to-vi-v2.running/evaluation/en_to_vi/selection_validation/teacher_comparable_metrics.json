@@ -1,0 +1,25 @@
+{
+  "dataset_role": "selection_validation",
+  "rows": 15252,
+  "teacher_prediction_source": {
+    "path": "evidence/phase02/envit5/en_to_vi/adapted/envit5-en-to-vi-lora-v1/final-epoch-1/selection_validation/predictions.jsonl",
+    "sha256": "235a5f1ab60b28aa1636051ffa4688ded60476b56047bbbe7c44210a8f39f288",
+    "run_path": "evidence/phase02/envit5/en_to_vi/adapted/envit5-en-to-vi-lora-v1/final-epoch-1/selection_validation/run.json",
+    "run_sha256": "fb52eae49c86a3c59b49b128db9e99407b89b4847a9c163369e0dab9aff71d4e"
+  },
+  "teacher_inference": "not_run; metrics recomputed from the approved Phase 02 prediction artifact",
+  "chrF++": 71.17942954946798,
+  "sacreBLEU": 57.75643807058885,
+  "sacrebleu_version": "2.6.0",
+  "metric_config": {
+    "chrF++": {
+      "beta": 2,
+      "word_order": 2
+    },
+    "sacreBLEU": {
+      "tokenize": "none",
+      "lowercase": false,
+      "use_effective_order": false
+    }
+  }
+}

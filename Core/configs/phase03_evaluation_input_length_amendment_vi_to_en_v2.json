@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "phase": "phase_03_student_distillation",
+  "status": "approved_before_experiment",
+  "purpose": "Define the VI-to-EN Phase 03 validation comparison cohort when one IT Validation source exceeds the fixed Student capacity. This does not modify any dataset, checkpoint, Teacher prediction, or Phase 02 evidence.",
+  "student_run_id": "phase03-seqkd-vi-to-en-v2",
+  "student_input_limit_tokens": 512,
+  "rule": "Evaluate the Student and recompute Teacher metrics only on the eligible rows specified for each validation dataset. Do not truncate, segment, rewrite, or quality-filter a source. The excluded IT Validation row is reported as unsupported length.",
+  "datasets": {
+    "selection_validation": {
+      "path": "data/processed/it_en_vi/validation.jsonl",
+      "sha256": "022eb09d7a4a8853902b943f22959b0fb69bf92356575bfd87ab7913aa02a8ad",
+      "source_rows": 15253,
+      "eligible_rows": 15252,
+      "excluded_rows": [
+        {"dataset_row_id": "948273d4ab1d4f0978ca1ad3b664b36ecc0e78b704514d7598e4deafd606e5ad", "student_input_tokens": 935, "reason": "exceeds_fixed_student_input_capacity"}
+      ],
+      "teacher_predictions": {
+        "path": "evidence/phase02/envit5/vi_to_en/adapted/envit5-vi-to-en-lora-v1/final-epoch-1/selection_validation/predictions.jsonl",
+        "sha256": "45a115e97d4bea2b55cd577280da3ea122d253804778d6cb5f12a94c6b68df93",
+        "run_path": "evidence/phase02/envit5/vi_to_en/adapted/envit5-vi-to-en-lora-v1/final-epoch-1/selection_validation/run.json",
+        "run_sha256": "1d33c774f7cb16988937c70885944155a9b42fc3339e1c86ea91510b1da317b6"
+      }
+    },
+    "general_validation": {
+      "path": "data/processed/general_validation_en_vi/general_validation.jsonl",
+      "sha256": "11dd3ca7091dea46e95d5e56933fcc676ef48f612157f044a583a895a6991d4f",
+      "source_rows": 997,
+      "eligible_rows": 997,
+      "excluded_rows": [],
+      "teacher_predictions": {
+        "path": "evidence/phase02/envit5/vi_to_en/adapted/envit5-vi-to-en-lora-v1/final-epoch-1/general_validation/predictions.jsonl",
+        "sha256": "9bd7c5a94e1b2170cd4a0c33f1cf70518b6c022af709817717b0d4afb404b32c",
+        "run_path": "evidence/phase02/envit5/vi_to_en/adapted/envit5-vi-to-en-lora-v1/final-epoch-1/general_validation/run.json",
+        "run_sha256": "327d1eb249fb06f84b077325b7e0db8a7558f4276774653aba8da5707443f56a"
+      }
+    }
+  },
+  "approval_required": "This amendment and the VI-to-EN v2 run amendment must be approved before Phase 03 Student evaluation."
+}

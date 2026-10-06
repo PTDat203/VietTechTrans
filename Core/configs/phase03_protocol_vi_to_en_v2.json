@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "phase": "phase_03_student_distillation",
+  "status": "frozen_before_experiments",
+  "purpose": "Amend the VI-to-EN run boundary before any Teacher target is generated. This does not change Phase 01 data or the frozen parent protocol.",
+  "parent_protocol": {
+    "path": "configs/phase03_protocol.json",
+    "sha256": "6c24a108e76bd8a8d264b14cd8ad50393ddfe80627f42d50166df1088945db22"
+  },
+  "input_policy": "configs/phase03_vi_to_en_v2_input_policy.json",
+  "experiment_record": "configs/phase03_experiments/phase03-seqkd-vi-to-en-v2.json",
+  "execution_rule": "The Teacher-target runner may execute only after this amendment is frozen_before_experiments and both the policy and experiment record are approved_before_experiment.",
+  "prohibitions": ["modify_phase01_train", "truncate_source", "exclude_target_by_predicate", "rewrite_target", "quality_filter_target", "train_before_integrity_pass"]
+}

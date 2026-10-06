@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "phase": "phase_03_student_distillation",
+  "status": "frozen_before_experiments",
+  "purpose": "Amend only the failed VI-to-EN v2 Teacher-target staging run. It creates a new audited run from valid persisted targets and does not alter Phase 01 data or the failed v2 artifact.",
+  "parent_protocol": {
+    "path": "configs/phase03_protocol_vi_to_en_v2.json",
+    "sha256": "aa2e1e6c81c71f0e64cf478f54e73b94912a365e54643ecfabfbc485bfde9c5e"
+  },
+  "reuse_policy": "configs/phase03_teacher_target_reuse_vi_to_en_v3.json",
+  "experiment_record": "configs/phase03_experiments/phase03-seqkd-vi-to-en-v3.json",
+  "execution_rule": "The reuse runner may execute only after this protocol is frozen_before_experiments and both the reuse policy and experiment record are approved_before_experiment.",
+  "prohibitions": ["modify_parent_run", "modify_phase01_train", "run_teacher_generation", "truncate_target", "rewrite_target", "quality_filter_target", "exclude_target_by_predicate", "train_before_reuse_integrity_pass"]
+}

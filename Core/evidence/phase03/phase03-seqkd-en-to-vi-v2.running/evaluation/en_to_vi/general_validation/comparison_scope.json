@@ -1,0 +1,18 @@
+{
+  "dataset_role": "general_validation",
+  "dataset": {
+    "path": "data/processed/general_validation_en_vi/general_validation.jsonl",
+    "sha256": "11dd3ca7091dea46e95d5e56933fcc676ef48f612157f044a583a895a6991d4f",
+    "source_rows": 997,
+    "eligible_rows": 997
+  },
+  "student_input_limit_tokens": 512,
+  "excluded_rows": [],
+  "teacher_predictions": {
+    "path": "evidence/phase02/envit5/en_to_vi/adapted/envit5-en-to-vi-lora-v1/final-epoch-1/general_validation/predictions.jsonl",
+    "sha256": "981a268d562afd5e8539480fd809a1c71951d08c4a18a71d28cbdb4691444e5a",
+    "run_path": "evidence/phase02/envit5/en_to_vi/adapted/envit5-en-to-vi-lora-v1/final-epoch-1/general_validation/run.json",
+    "run_sha256": "2d6d0dab463a6109c1796bb9db3e88a4967fa6712e52efe5afac4eb4a3c2cf2a"
+  },
+  "teacher_inference": "not_run; existing Phase 02 predictions were reused only to recompute comparable corpus metrics"
+}

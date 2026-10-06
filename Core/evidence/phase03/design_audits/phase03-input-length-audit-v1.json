@@ -1,0 +1,125 @@
+{
+  "stage": "phase03_input_length_audit",
+  "audit_id": "phase03-input-length-audit-v1",
+  "created_at_utc": "2026-09-30T10:26:44.952717+00:00",
+  "purpose": "Determine whether a fixed Student input-length policy is required before Phase 03 execution.",
+  "input": "data\\processed\\it_en_vi\\train.jsonl",
+  "data_boundary": "IT Train only; no text, reference, target, prediction, metric or model artifact is stored.",
+  "runtime": {
+    "python": "3.11.15",
+    "platform": "Windows-10-10.0.26200-SP0"
+  },
+  "directions": {
+    "en_to_vi": {
+      "student": {
+        "model_id": "Helsinki-NLP/opus-mt-en-vi",
+        "revision": "989c9fb9ec63987901022baf0182dcec3e149be6",
+        "input_prefix": ">>vie<<"
+      },
+      "source_field": "en_clean",
+      "architecture_input_limit_tokens": 512,
+      "rows": 121547,
+      "max_tokens": 440,
+      "rows_over_limit": 0,
+      "percent_over_limit": 0.0,
+      "rows_over_threshold": {
+        "128": 97,
+        "256": 19,
+        "384": 3,
+        "512": 0
+      },
+      "longest_rows": [
+        {
+          "dataset_row_id": "e679898355a6de521823b1c00f22fb949c007177097554d77d2428577d0a51f6",
+          "tokens": 440
+        },
+        {
+          "dataset_row_id": "74812e52242206b437e6a8d3571fec3df3da0c81dc037351cba6e63df6c9a47e",
+          "tokens": 399
+        },
+        {
+          "dataset_row_id": "c3415a68a988702f855e8e6dd23398b2aa2dddea771f47428df941a3305fcff3",
+          "tokens": 386
+        },
+        {
+          "dataset_row_id": "2d8eedb5fc77ca7746031f067e2b4b23c3340483fa6da413d5a8d0dd9cd99923",
+          "tokens": 372
+        },
+        {
+          "dataset_row_id": "a8dbf10eeccf9674c4ad070fb1116efc05786d9d0dfbca1f2d5ff38a90fb63a4",
+          "tokens": 331
+        },
+        {
+          "dataset_row_id": "fb60f31d3bd46d1b37fa55fe80b32aaa85925f3d156141bea1ee993e155dc370",
+          "tokens": 330
+        },
+        {
+          "dataset_row_id": "4e4ccc9e060f9dc370c3eeb8c738846ddc82eb15f653a4db41fd6376b015a913",
+          "tokens": 319
+        },
+        {
+          "dataset_row_id": "4a604060b282d7fd959c3fa9d6fcff0b0d55f6da5d9e1b1677a445cf78fa507e",
+          "tokens": 307
+        }
+      ],
+      "elapsed_seconds": 16.152,
+      "rows_per_second": 7525.32
+    },
+    "vi_to_en": {
+      "student": {
+        "model_id": "Helsinki-NLP/opus-mt-vi-en",
+        "revision": "c8d2853e77f5fae31124d993e0b35176b1c8914e",
+        "input_prefix": ""
+      },
+      "source_field": "vi_clean",
+      "architecture_input_limit_tokens": 512,
+      "rows": 121547,
+      "max_tokens": 552,
+      "rows_over_limit": 2,
+      "percent_over_limit": 0.001645,
+      "rows_over_threshold": {
+        "128": 135,
+        "256": 27,
+        "384": 4,
+        "512": 2
+      },
+      "longest_rows": [
+        {
+          "dataset_row_id": "c3415a68a988702f855e8e6dd23398b2aa2dddea771f47428df941a3305fcff3",
+          "tokens": 552
+        },
+        {
+          "dataset_row_id": "e679898355a6de521823b1c00f22fb949c007177097554d77d2428577d0a51f6",
+          "tokens": 515
+        },
+        {
+          "dataset_row_id": "74812e52242206b437e6a8d3571fec3df3da0c81dc037351cba6e63df6c9a47e",
+          "tokens": 476
+        },
+        {
+          "dataset_row_id": "7131e76bbd1a881ecb2fa3879f100df873b14859ed3843321d62c589b4064c07",
+          "tokens": 434
+        },
+        {
+          "dataset_row_id": "2d8eedb5fc77ca7746031f067e2b4b23c3340483fa6da413d5a8d0dd9cd99923",
+          "tokens": 375
+        },
+        {
+          "dataset_row_id": "fb60f31d3bd46d1b37fa55fe80b32aaa85925f3d156141bea1ee993e155dc370",
+          "tokens": 368
+        },
+        {
+          "dataset_row_id": "4a604060b282d7fd959c3fa9d6fcff0b0d55f6da5d9e1b1677a445cf78fa507e",
+          "tokens": 364
+        },
+        {
+          "dataset_row_id": "a8dbf10eeccf9674c4ad070fb1116efc05786d9d0dfbca1f2d5ff38a90fb63a4",
+          "tokens": 359
+        }
+      ],
+      "elapsed_seconds": 16.298,
+      "rows_per_second": 7457.75
+    }
+  },
+  "total_elapsed_seconds": 38.722
+}

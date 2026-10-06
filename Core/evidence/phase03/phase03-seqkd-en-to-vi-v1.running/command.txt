@@ -1,0 +1,1 @@
+tools\run_phase03_teacher_targets.py --direction en_to_vi

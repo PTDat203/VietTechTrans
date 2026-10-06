@@ -15,8 +15,9 @@ const workflows = [
     ["Audit dữ liệu", "Kiểm tra schema, null, blank và trùng lặp"],
     ["Làm sạch", "Chuẩn hóa text, loại lỗi dữ liệu rõ ràng"],
     ["Nhóm nội dung IT", "Gán primary_group và technical_tags"],
-    ["Chia tập và gate", "Tạo manifest, kiểm tra checksum và leakage"],
-  ], "Release it_en_vi sẵn sàng cho Giai đoạn 2"],
+    ["Khóa IT release", "Chia IT Train/Validation/Test, kiểm tra leakage và manifest"],
+    ["Tập ngoài miền và gate", "Tạo FLORES dev/devtest, kiểm tra overlap, checksum và schema"],
+  ], "IT Train, IT Validation và General Validation sẵn sàng cho Giai đoạn 2"],
   ["02", "Giai đoạn 2 — Chọn Core MT", "Chọn một Core MT cho mỗi chiều EN→VI và VI→EN.", [
     ["Kiểm tra input", "Xác nhận dataset gate PASS; test vẫn khóa"],
     ["Đánh giá pretrained", "3 model × 2 chiều × 2 tập validation"],
@@ -29,10 +30,11 @@ const workflows = [
   ["03", "Giai đoạn 3 — Tạo Student MT", "Tạo mô hình gọn từ Core MT đã chốt.", [
     ["Nhận Core MT", "Đọc checkpoint, revision và generation config"],
     ["Lập protocol Student", "Ghi dữ liệu, seed, checkpoint và metric"],
-    ["Distillation", "Chỉ dùng nguồn từ IT Train"],
-    ["Đánh giá Student", "So với Core MT trên validation"],
-    ["Chốt Student", "Lưu checkpoint và cấu hình được giữ"],
-  ], "Student MT cho Giai đoạn 4"],
+    ["Target và integrity", "Teacher tạo/reuse target từ IT Train; kiểm tra ID và độ dài"],
+    ["Train Student", "Student học source → Teacher target và lưu checkpoint cuối"],
+    ["Đánh giá và review", "IT/General Validation, so Teacher, review 50 row ID"],
+    ["Quyết định Main-Core", "Người phụ trách freeze hoặc reject từng Student"],
+  ], "Main-Core, hash checkpoint và decision để máy khác dùng ở Giai đoạn 4"],
   ["04", "Giai đoạn 4 — MT chạy offline", "Đưa Student MT vào Android và kiểm tra chạy cục bộ.", [
     ["Nhận Student", "Đọc checkpoint, tokenizer và baseline chất lượng"],
     ["Export và kiểm tra", "So output bản export với checkpoint gốc"],

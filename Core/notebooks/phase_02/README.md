@@ -1,4 +1,4 @@
-# Notebook evidence Phase 02
+# Notebook bằng chứng Phase 02
 
 Chạy notebook theo thứ tự số. Chúng là sổ đọc evidence: không có cell train, gọi model, sửa dataset, tạo prediction, ghi metric hay điền review. Lệnh tạo evidence nằm trong `tools/`; quyết định selection/Core do người chịu trách nhiệm ghi bằng artifact bất biến.
 

@@ -1,0 +1,161 @@
+{
+  "schema_version": "1.0",
+  "stage": "phase03_main_core_decision",
+  "status": "completed_with_two_frozen_directions_for_phase04",
+  "decision_scope": "Both EN-to-VI and VI-to-EN Student checkpoints are frozen as Main-Core inputs for Phase 4.",
+  "authorization": [
+    "User confirmed freeze of Student v1 VI-to-EN v3 for Phase 4.",
+    "User confirmed freeze of Student EN-to-VI v2 for Phase 4."
+  ],
+  "decisions": {
+    "vi_to_en": {
+      "status": "frozen_for_phase04",
+      "student_label": "Student v1",
+      "run_id": "phase03-seqkd-vi-to-en-v3",
+      "experiment_record": {
+        "path": "configs/phase03_experiments/phase03-seqkd-vi-to-en-v3.json",
+        "sha256": "3c977318bca188b8d0b211d05680396673c67b5a0e990541f31e3c86493f42c3"
+      },
+      "student": {
+        "architecture": "MarianMT",
+        "model_id": "Helsinki-NLP/opus-mt-vi-en",
+        "revision": "c8d2853e77f5fae31124d993e0b35176b1c8914e",
+        "input_prefix": ""
+      },
+      "checkpoint": {
+        "path": "models/phase03/phase03-seqkd-vi-to-en-v3/final-epoch-1",
+        "sha256_tree": "fbcba2c1dbaa377073ab69893fabb51127c9de39609d1815f8fb97202442cb53"
+      },
+      "training": {
+        "path": "evidence/phase03/phase03-seqkd-vi-to-en-v3.running/training/vi_to_en/training_run.json",
+        "sha256": "48248aca6ef549b2d53784ae6f93d385ef9e204b0976dba32c71f9f8e7ba99ad",
+        "rows": 121539,
+        "epochs": 1,
+        "train_runtime_seconds": 1895.4523,
+        "train_loss": 1.0225820768596594
+      },
+      "teacher_target_input": {
+        "path": "evidence/phase03/phase03-seqkd-vi-to-en-v3.running/teacher_targets/vi_to_en.jsonl",
+        "sha256": "0d1251e8f0dc2ea46522b65130bc1b3aeca5e303dd5a5f3cc755714b1c4b5069",
+        "rows": 121539,
+        "integrity_report": "evidence/phase03/phase03-seqkd-vi-to-en-v3.running/teacher_targets/vi_to_en.integrity.json"
+      },
+      "evaluation": {
+        "selection_validation": {
+          "rows": 15252,
+          "student_metrics": {
+            "path": "evidence/phase03/phase03-seqkd-vi-to-en-v3.running/evaluation/vi_to_en/selection_validation/student_metrics.json",
+            "sha256": "9a6effd48214a13a40eb109c389199858dd1b48cbc2c98e2822efc8295598bfa",
+            "chrF++": 61.30055256774961,
+            "sacreBLEU": 36.29519808936608
+          },
+          "teacher_comparable_metrics": {
+            "path": "evidence/phase03/phase03-seqkd-vi-to-en-v3.running/evaluation/vi_to_en/selection_validation/teacher_comparable_metrics.json",
+            "sha256": "8b014abd73307d92da2ae2edd9fcce2f1416d2fde13ac876390745cdb156a179",
+            "chrF++": 65.33982082538495,
+            "sacreBLEU": 41.22989415207682
+          },
+          "scope": "Comparable cohort excludes the one approved 935-token unsupported Student input; Teacher metrics are recomputed from existing Phase 02 predictions."
+        },
+        "general_validation": {
+          "rows": 997,
+          "student_metrics": {
+            "path": "evidence/phase03/phase03-seqkd-vi-to-en-v3.running/evaluation/vi_to_en/general_validation/student_metrics.json",
+            "sha256": "bb3356efeeeb979c76dc8796897f409c2d5a9a09a2a3bebd388ae3f0a7c3ee0f",
+            "chrF++": 46.19954555547699,
+            "sacreBLEU": 17.51729868539159
+          },
+          "teacher_comparable_metrics": {
+            "path": "evidence/phase03/phase03-seqkd-vi-to-en-v3.running/evaluation/vi_to_en/general_validation/teacher_comparable_metrics.json",
+            "sha256": "f385bfa0a06b8cba7eb7c71216b7bfbb906e72cb2acbd1face3e9f46808aa8ce",
+            "chrF++": 58.449515552014056,
+            "sacreBLEU": 29.84257944211641
+          }
+        }
+      },
+      "manual_review": {
+        "path": "reviews/phase03_phase03-seqkd-vi-to-en-v3_vi_to_en_review.completed.csv",
+        "sha256": "0d871072d96031ed430205b182bc64f5a1bf6d88118fce426da1b58a6cd527ae",
+        "rows": 50,
+        "translation_error_yes": 24,
+        "technical_error_yes": 19
+      }
+    },
+    "en_to_vi": {
+      "status": "frozen_for_phase04",
+      "run_id": "phase03-seqkd-en-to-vi-v2",
+      "experiment_record": {
+        "path": "configs/phase03_experiments/phase03-seqkd-en-to-vi-v2.json",
+        "sha256": "17a1e2f56a6f605ab4ca0e3f24b02f57f3d7b1cf036326bf4c6ac04cd98b4a60"
+      },
+      "student": {
+        "architecture": "MarianMT",
+        "model_id": "Helsinki-NLP/opus-mt-en-vi",
+        "revision": "989c9fb9ec63987901022baf0182dcec3e149be6",
+        "input_prefix": ">>vie<<"
+      },
+      "checkpoint": {
+        "path": "models/phase03/phase03-seqkd-en-to-vi-v2/final-epoch-1",
+        "sha256_tree": "c2f037f8548437bbd6edcaabc33b91f65c6fc7dcbd1124aa78239afe4b8e43bb"
+      },
+      "training": {
+        "path": "evidence/phase03/phase03-seqkd-en-to-vi-v2.running/training/en_to_vi/training_run.json",
+        "sha256": "a6578e775c3e5ad88473592407a44dc80b484cfa1a7e8175f9c2ea7c66fe7077",
+        "rows": 121544,
+        "epochs": 1,
+        "train_runtime_seconds": 1940.8542,
+        "train_loss": 0.9118236246996527
+      },
+      "teacher_target_input": {
+        "path": "evidence/phase03/phase03-seqkd-en-to-vi-v2.running/teacher_targets/en_to_vi.jsonl",
+        "sha256": "88334a61ce29c0607dfcbfa38e1ba65f62b673f3d08b5c1d8be2ff67759065c2",
+        "rows": 121544,
+        "integrity_report": "evidence/phase03/phase03-seqkd-en-to-vi-v2.running/teacher_targets/en_to_vi.integrity.json"
+      },
+      "evaluation": {
+        "selection_validation": {
+          "rows": 15252,
+          "student_metrics": {
+            "path": "evidence/phase03/phase03-seqkd-en-to-vi-v2.running/evaluation/en_to_vi/selection_validation/student_metrics.json",
+            "sha256": "dcda36a743bb581a57d6796cf4df5960c4e5a8655584336a10fe61707d03ef24",
+            "chrF++": 66.54720958801619,
+            "sacreBLEU": 51.210707196159525
+          },
+          "teacher_comparable_metrics": {
+            "path": "evidence/phase03/phase03-seqkd-en-to-vi-v2.running/evaluation/en_to_vi/selection_validation/teacher_comparable_metrics.json",
+            "sha256": "c0cef3a7fec14d66ad3d6692042bde1f82961ea6bce4c1d0d385ebf487e539d9",
+            "chrF++": 71.17942954946798,
+            "sacreBLEU": 57.75643807058885
+          },
+          "scope": "Comparable cohort excludes the one approved 686-token unsupported Student input; Teacher metrics are recomputed from existing Phase 02 predictions."
+        },
+        "general_validation": {
+          "rows": 997,
+          "student_metrics": {
+            "path": "evidence/phase03/phase03-seqkd-en-to-vi-v2.running/evaluation/en_to_vi/general_validation/student_metrics.json",
+            "sha256": "c0b73c64204a4a1e0f41377a367ffec2499d3b1e58d55c7cd2764295dd980e15",
+            "chrF++": 52.44303575785503,
+            "sacreBLEU": 30.42607676737377
+          },
+          "teacher_comparable_metrics": {
+            "path": "evidence/phase03/phase03-seqkd-en-to-vi-v2.running/evaluation/en_to_vi/general_validation/teacher_comparable_metrics.json",
+            "sha256": "ff8264272d9d1e0ce81e8c0532fdcfcd84ba172b8be0b050fa7a36e6c3a4f6ca",
+            "chrF++": 60.36445912252603,
+            "sacreBLEU": 39.23836551308017
+          }
+        }
+      },
+      "manual_review": {
+        "path": "reviews/phase03_phase03-seqkd-en-to-vi-v2_en_to_vi_review.csv",
+        "sha256": "1e7a4d78d97c09eeff5b5c3e1569c1bcecac4a43f369ca40c8fa4cef920e297e",
+        "rows": 50,
+        "translation_error_yes": 28,
+        "technical_error_yes": 19
+      },
+      "provenance_limit": "The historical v2 snapshot does not include the exact training and evaluation runner sources. This limitation is preserved and disclosed; no source snapshot was added retrospectively."
+    }
+  },
+  "evidence_location": "Completed historical artifacts remain at their recorded .running paths. They are not moved or rewritten because their provenance fields and checksums refer to those paths.",
+  "created_at_utc": "2026-10-04T18:24:47.3036514Z",
+  "completed_at_utc": "2026-10-05T00:00:00Z"
+}

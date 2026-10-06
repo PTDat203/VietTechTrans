@@ -1,0 +1,55 @@
+{
+  "stage": "phase03_student_training",
+  "run_id": "phase03-seqkd-vi-to-en-v3",
+  "direction": "vi_to_en",
+  "student": {
+    "model_id": "Helsinki-NLP/opus-mt-vi-en",
+    "revision": "c8d2853e77f5fae31124d993e0b35176b1c8914e",
+    "snapshot_sha256_tree": "f186755d1d13bbd8afcba4721e4568470da6a516de9949180cca7eb82f1d7499"
+  },
+  "training_configuration": {
+    "seed": 42,
+    "data_seed": 42,
+    "optim": "adamw_torch_fused",
+    "learning_rate": 5e-05,
+    "lr_scheduler_type": "linear",
+    "warmup_ratio": 0.0,
+    "weight_decay": 0.0,
+    "max_grad_norm": 1.0,
+    "num_train_epochs": 1,
+    "evaluation_strategy": "no",
+    "save_strategy": "no",
+    "load_best_model_at_end": false,
+    "physical_batch": 4,
+    "gradient_accumulation": 4,
+    "effective_batch": 16,
+    "fp16": true
+  },
+  "input": {
+    "target_path": "evidence/phase03/phase03-seqkd-vi-to-en-v3.running/teacher_targets/vi_to_en.jsonl",
+    "target_sha256": "0d1251e8f0dc2ea46522b65130bc1b3aeca5e303dd5a5f3cc755714b1c4b5069",
+    "rows": 121539
+  },
+  "checkpoint": {
+    "path": "models/phase03/phase03-seqkd-vi-to-en-v3/final-epoch-1",
+    "sha256_tree": "fbcba2c1dbaa377073ab69893fabb51127c9de39609d1815f8fb97202442cb53"
+  },
+  "runtime": {
+    "torch": "2.14.0+cu130",
+    "transformers": "4.57.6",
+    "device": {
+      "type": "cuda",
+      "index": 0,
+      "name": "NVIDIA GeForce RTX 3050 Ti Laptop GPU"
+    }
+  },
+  "trainer_metrics": {
+    "train_runtime": 1895.4523,
+    "train_samples_per_second": 64.121,
+    "train_steps_per_second": 4.008,
+    "total_flos": 934408164409344.0,
+    "train_loss": 1.0225820768596594,
+    "epoch": 1.0
+  },
+  "completed_at_utc": "2026-10-04T14:42:36.520018+00:00"
+}

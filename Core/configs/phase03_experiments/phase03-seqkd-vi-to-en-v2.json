@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "phase": "phase_03_student_distillation",
+  "status": "approved_before_experiment",
+  "run_id": "phase03-seqkd-vi-to-en-v2",
+  "direction": "vi_to_en",
+  "execution_device": {"type": "cuda", "index": 0, "name": "NVIDIA GeForce RTX 3050 Ti Laptop GPU"},
+  "teacher": {
+    "model_id": "VietAI/envit5-translation",
+    "model_revision": "840bc88104d5a4277af740eaedb024df8c3093e7",
+    "base_model_path": "models/envit5/840bc88104d5a4277af740eaedb024df8c3093e7",
+    "base_model_sha256_tree": "23f3b02477347a3598ac210c59d9f6b1f5ba365e0fc5f92df33e412ebb4e38d5",
+    "checkpoint": "models/phase02/envit5-vi-to-en-lora-v1/final-epoch-1",
+    "checkpoint_sha256_tree": "3d2475f0f6075d3332dbd2a258da9ef6d85675eb4f5846b0bf7fcbf456cb5c12",
+    "source_prefix": "vi:",
+    "output_control_prefix": "en:",
+    "precision": "fp16",
+    "generation_batch_size": 16,
+    "generation": {"max_length": 512, "min_length": 0, "do_sample": false, "num_beams": 1, "early_stopping": false, "length_penalty": 1.0, "repetition_penalty": 1.0, "no_repeat_ngram_size": 0, "decoder_start_token_id": 0, "eos_token_id": 1, "pad_token_id": 0}
+  },
+  "student": {"model_id": "Helsinki-NLP/opus-mt-vi-en", "revision": "c8d2853e77f5fae31124d993e0b35176b1c8914e", "snapshot_sha256_tree": "f186755d1d13bbd8afcba4721e4568470da6a516de9949180cca7eb82f1d7499", "input_prefix": "", "fp16": true, "per_device_train_batch_size": 4, "gradient_accumulation_steps": 4, "effective_batch_size": 16, "per_device_eval_batch_size": 8},
+  "training": {"seed": 42, "data_seed": 42, "optim": "adamw_torch_fused", "learning_rate": 5e-5, "lr_scheduler_type": "linear", "warmup_ratio": 0.0, "weight_decay": 0.0, "max_grad_norm": 1.0, "num_train_epochs": 1, "evaluation_strategy": "no", "save_strategy": "no", "load_best_model_at_end": false},
+  "data": {"source": "data/processed/it_en_vi/train.jsonl", "input_length_policy": "configs/phase03_vi_to_en_v2_input_policy.json", "eligible_rows": 121543, "validation_after_training": ["data/processed/it_en_vi/validation.jsonl", "data/processed/general_validation_en_vi/general_validation.jsonl"], "prohibited": ["data/processed/it_en_vi/it_test.jsonl", "data/processed/general_test_flores200_devtest/general_test.jsonl"]},
+  "target_integrity": {"student_token_limit": 512, "scan_scope": "Tokenize every persisted Teacher target with this Student tokenizer after generation completes and before Student training.", "on_any_target_over_limit": "training_blocked_needs_protocol_review", "required_report_fields": ["dataset_row_id", "student_target_tokens"], "preserve_teacher_targets": true, "forbidden_automatic_actions": ["truncate_target", "exclude_target", "rewrite_target", "regenerate_target"]},
+  "output": {"final_checkpoint": "models/phase03/phase03-seqkd-vi-to-en-v2/final-epoch-1"},
+  "final_approval_required": "Do not execute until the VI-to-EN v2 amendment, input policy, and experiment record are approved."
+}

@@ -1,15 +1,16 @@
 # VietTechTrans
 
-VietTechTrans là dự án dịch máy Anh–Việt cho nội dung IT. Dự án đi từ dataset,
-chọn Core MT, tạo student model và triển khai offline.
+VietTechTrans là phần Core của dự án dịch máy Anh–Việt cho nội dung IT: xây
+dựng dataset, chọn Core MT và tạo Student Main-Core.
 
 ## Tiến độ hiện tại
 
 Phase 01 và Phase 02 đã hoàn tất theo evidence local: dataset `it_en_vi` đã
 khóa, Core MT đã được freeze cho hai chiều EN→VI và VI→EN, và final reporting
 đã hoàn tất. Phase 03 đã freeze hai Student Main-Core cho Phase 4: EN→VI
-`phase03-seqkd-en-to-vi-v2` và VI→EN `phase03-seqkd-vi-to-en-v3`. Phase 04
-và Phase 05 chưa có evidence thực nghiệm.
+`phase03-seqkd-en-to-vi-v2` và VI→EN `phase03-seqkd-vi-to-en-v3`. Core dừng
+ở đây. Phase 4 được thực hiện trên máy local khác; repository này chỉ giữ
+hướng dẫn bàn giao checkpoint và hash.
 
 ## Workflow
 
@@ -18,14 +19,12 @@ Phase 01  Dataset IT EN↔VI
     ↓
 Phase 02  Screening, thích nghi IT và chọn Core MT
     ↓
-Phase 03  Knowledge distillation
+Phase 03  Knowledge distillation và freeze Student Main-Core
     ↓
-Phase 04  Tối ưu chạy offline
-    ↓
-Phase 05  STT → MT → TTS
+Bàn giao checkpoint + hash cho máy Phase 4 khác
 ```
 
-Sơ đồ đầy đủ: [project_workflow.svg](docs/project_workflow.svg).
+Sơ đồ Core: [project_workflow.svg](docs/project_workflow.svg).
 
 ## Tài liệu
 
@@ -39,8 +38,7 @@ Sơ đồ đầy đủ: [project_workflow.svg](docs/project_workflow.svg).
 | Workflow Phase 03 | [docs/phase_03/workflow.svg](docs/phase_03/workflow.svg) |
 | Thiết kế và câu hỏi nghiên cứu Phase 03 | [docs/phase_03/README.md](docs/phase_03/README.md) |
 | Cách lấy Main-Core cho Phase 4 | [docs/phase_04/README.md](docs/phase_04/README.md), [Phase 3 decision](evidence/phase03/main_core_decision.json) |
-| Workflow Phase 04 | [docs/phase_04/workflow.svg](docs/phase_04/workflow.svg) |
-| Workflow Phase 05 | [docs/phase_05/workflow.svg](docs/phase_05/workflow.svg) |
+| Bàn giao Main-Core sang máy Phase 4 khác | [docs/phase_04/README.md](docs/phase_04/README.md) |
 | Hướng dẫn chạy lại | [manual/README.md](manual/README.md) |
 | Môi trường và provenance | [docs/environment.md](docs/environment.md), [docs/provenance_and_reproducibility.md](docs/provenance_and_reproducibility.md) |
 | Quy trình snapshot cho run mới | [docs/run_snapshot_policy.md](docs/run_snapshot_policy.md) |

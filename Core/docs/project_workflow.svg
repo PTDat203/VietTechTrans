@@ -1,50 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1560" height="570" viewBox="0 0 1560 570" role="img" aria-labelledby="title desc">
-  <title id="title">Toàn bộ dự án theo năm phase liên tiếp</title>
-  <desc id="desc">Mỗi phase gồm công việc chính và đầu ra được dùng làm đầu vào cho phase kế tiếp.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="794" height="1123" viewBox="0 0 794 1123" role="img" aria-labelledby="title desc">
+  <title id="title">VietTechTrans Core — Phase 01 đến Phase 03</title>
+  <desc id="desc">Luồng Core theo chiều dọc: dataset đã khóa, Core MT đã freeze, Student Main-Core và gói bàn giao sang máy Phase 4 khác.</desc>
   <defs>
-    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0 0L10 5 0 10z" fill="#475569"/></marker>
-    <style>
-      text{font-family:Arial,sans-serif;fill:#172033}.title{font-size:28px;font-weight:700}.subtitle{font-size:16px;fill:#475569}.main{font-size:18px;font-weight:700}.task{font-size:14px}.out{font-size:15px;font-weight:700}.label{font-size:13px;fill:#475569}.mainbox{fill:#e8f1fb;stroke:#3974c9;stroke-width:2}.taskbox{fill:#f7faff;stroke:#94a3b8;stroke-width:1.5}.resultbox{fill:#eef8f1;stroke:#2f7d4e;stroke-width:2}.finalbox{fill:#fff8e8;stroke:#a97416;stroke-width:2}.arrow{stroke:#475569;stroke-width:2;fill:none;marker-end:url(#arrow)}
-    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#475569"/></marker>
+    <style>text{font-family:Arial,sans-serif;fill:#172033}.title{font-size:27px;font-weight:700}.subtitle{font-size:15px;fill:#475569}.phase{font-size:21px;font-weight:700}.detail{font-size:16px;fill:#334155}.out{font-size:18px;font-weight:700}.box{fill:#f5f9ff;stroke:#3974c9;stroke-width:2}.result{fill:#eef8f1;stroke:#2f7d4e;stroke-width:2}.handoff{fill:#fff8e8;stroke:#a97416;stroke-width:2}.arrow{stroke:#475569;stroke-width:2.5;fill:none;marker-end:url(#arrow)}</style>
   </defs>
-  <text x="55" y="48" class="title">VietTechTrans — luồng từ dataset đến ứng dụng</text>
-  <text x="55" y="75" class="subtitle">Đầu ra của phase trước là đầu vào được kiểm tra cho phase sau.</text>
-
-  <!-- Phase 01 -->
-  <rect x="55" y="110" width="270" height="54" rx="8" class="mainbox"/><text x="190" y="144" text-anchor="middle" class="main">Phase 01 — Dataset</text>
-  <rect x="55" y="190" width="270" height="44" rx="6" class="taskbox"/><text x="190" y="218" text-anchor="middle" class="task">RAW, audit, cleaning, nhóm IT</text>
-  <rect x="55" y="246" width="270" height="44" rx="6" class="taskbox"/><text x="190" y="274" text-anchor="middle" class="task">Split, manifest, checksum, gate</text>
-  <rect x="55" y="365" width="270" height="58" rx="8" class="resultbox"/><text x="190" y="401" text-anchor="middle" class="out">Dataset release it_en_vi</text>
-  <path class="arrow" d="M190 164V180M190 234V242M190 290V355"/>
-
-  <!-- Phase 02 -->
-  <rect x="365" y="110" width="270" height="54" rx="8" class="mainbox"/><text x="500" y="144" text-anchor="middle" class="main">Phase 02 — Core MT</text>
-  <rect x="365" y="190" width="270" height="44" rx="6" class="taskbox"/><text x="500" y="218" text-anchor="middle" class="task">Screening, selection, IT adaptation</text>
-  <rect x="365" y="246" width="270" height="44" rx="6" class="taskbox"/><text x="500" y="274" text-anchor="middle" class="task">Validation, review, freeze, final report</text>
-  <rect x="365" y="365" width="270" height="58" rx="8" class="resultbox"/><text x="500" y="401" text-anchor="middle" class="out">Core/checkpoint cho 2 chiều</text>
-  <path class="arrow" d="M500 164V180M500 234V242M500 290V355"/>
-
-  <!-- Phase 03 -->
-  <rect x="675" y="110" width="270" height="54" rx="8" class="mainbox"/><text x="810" y="144" text-anchor="middle" class="main">Phase 03 — Student</text>
-  <rect x="675" y="190" width="270" height="44" rx="6" class="taskbox"/><text x="810" y="218" text-anchor="middle" class="task">Dùng Core đã freeze làm teacher</text>
-  <rect x="675" y="246" width="270" height="44" rx="6" class="taskbox"/><text x="810" y="274" text-anchor="middle" class="task">Distillation và đánh giá Student</text>
-  <rect x="675" y="365" width="270" height="58" rx="8" class="resultbox"/><text x="810" y="401" text-anchor="middle" class="out">Student MT đã freeze</text>
-  <path class="arrow" d="M810 164V180M810 234V242M810 290V355"/>
-
-  <!-- Phase 04 -->
-  <rect x="985" y="110" width="270" height="54" rx="8" class="mainbox"/><text x="1120" y="144" text-anchor="middle" class="main">Phase 04 — Offline</text>
-  <rect x="985" y="190" width="270" height="44" rx="6" class="taskbox"/><text x="1120" y="218" text-anchor="middle" class="task">Export và đóng gói MT cục bộ</text>
-  <rect x="985" y="246" width="270" height="44" rx="6" class="taskbox"/><text x="1120" y="274" text-anchor="middle" class="task">Chạy Android; đo RAM, dung lượng, latency</text>
-  <rect x="985" y="365" width="270" height="58" rx="8" class="resultbox"/><text x="1120" y="401" text-anchor="middle" class="out">MT offline đã benchmark</text>
-  <path class="arrow" d="M1120 164V180M1120 234V242M1120 290V355"/>
-
-  <!-- Phase 05 -->
-  <rect x="1295" y="110" width="210" height="54" rx="8" class="mainbox"/><text x="1400" y="144" text-anchor="middle" class="main">Phase 05 — Ứng dụng</text>
-  <rect x="1295" y="190" width="210" height="44" rx="6" class="taskbox"/><text x="1400" y="218" text-anchor="middle" class="task">STT → MT → TTS đều cục bộ</text>
-  <rect x="1295" y="246" width="210" height="44" rx="6" class="taskbox"/><text x="1400" y="274" text-anchor="middle" class="task">Test Airplane mode hai chiều</text>
-  <rect x="1295" y="365" width="210" height="58" rx="8" class="finalbox"/><text x="1400" y="396" text-anchor="middle" class="out">Ứng dụng offline</text><text x="1400" y="416" text-anchor="middle" class="out">có evidence</text>
-  <path class="arrow" d="M1400 164V180M1400 234V242M1400 290V355"/>
-
-  <path class="arrow" d="M325 394H355V137H360M635 394H665V137H670M945 394H975V137H980M1255 394H1285V137H1290"/>
-  <text x="345" y="465" text-anchor="middle" class="label">dataset đã khóa</text><text x="655" y="465" text-anchor="middle" class="label">Core MT</text><text x="965" y="465" text-anchor="middle" class="label">student</text><text x="1275" y="465" text-anchor="middle" class="label">MT offline</text>
+  <text x="52" y="45" class="title">VietTechTrans Core — Phase 01 đến Phase 03</text>
+  <text x="397" y="73" text-anchor="middle" class="subtitle">Repository chỉ lưu phần nghiên cứu và evidence Core.</text>
+  <rect x="72" y="120" width="650" height="150" rx="12" class="box"/><text x="397" y="158" text-anchor="middle" class="phase">Phase 01 — Dataset IT EN↔VI</text><text x="397" y="193" text-anchor="middle" class="detail">RAW → audit → cleaning → phân nhóm → split</text><text x="397" y="220" text-anchor="middle" class="detail">manifest, checksum, leakage gate</text><text x="397" y="250" text-anchor="middle" class="out">Kết quả: release `it_en_vi` đã khóa</text>
+  <path d="M397 270V325" class="arrow"/>
+  <rect x="72" y="345" width="650" height="150" rx="12" class="box"/><text x="397" y="383" text-anchor="middle" class="phase">Phase 02 — Chọn Core MT</text><text x="397" y="418" text-anchor="middle" class="detail">screening → selection → LoRA adaptation</text><text x="397" y="445" text-anchor="middle" class="detail">validation, review 50 câu, final reporting</text><text x="397" y="475" text-anchor="middle" class="out">Kết quả: Core EN→VI và VI→EN đã freeze</text>
+  <path d="M397 495V550" class="arrow"/>
+  <rect x="72" y="570" width="650" height="150" rx="12" class="box"/><text x="397" y="608" text-anchor="middle" class="phase">Phase 03 — Student Main-Core</text><text x="397" y="643" text-anchor="middle" class="detail">Teacher target → integrity → train Student</text><text x="397" y="670" text-anchor="middle" class="detail">validation, review 50 câu, decision</text><text x="397" y="700" text-anchor="middle" class="out">Kết quả: Student Main-Core hai chiều đã freeze</text>
+  <path d="M397 720V775" class="arrow"/>
+  <rect x="72" y="795" width="650" height="120" rx="12" class="handoff"/><text x="397" y="837" text-anchor="middle" class="phase">Bàn giao cho máy Phase 4 khác</text><text x="397" y="870" text-anchor="middle" class="detail">Checkpoint + SHA-256 tree + Main-Core decision</text><text x="397" y="897" text-anchor="middle" class="detail">Không có mã app hay artifact Phase 4 trong Core</text>
 </svg>

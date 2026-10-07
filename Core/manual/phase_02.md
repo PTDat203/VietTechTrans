@@ -1,6 +1,6 @@
 # Chạy Phase 02
 
-Chạy lệnh từ `C:\Users\ADMIN\ENVI-IT-MT`. Notebook chỉ đọc evidence;
+Chạy lệnh từ thư mục `C:\DoAn\Core`. Notebook chỉ đọc evidence;
 script trong `tools/` mới tạo prediction, metric hoặc checkpoint.
 Điểm bắt đầu và đường đi của từng script: [implementation.md](../docs/phase_02/implementation.md).
 

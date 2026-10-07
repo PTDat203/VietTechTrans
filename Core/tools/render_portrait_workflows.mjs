@@ -35,21 +35,6 @@ const workflows = [
     ["Đánh giá và review", "IT/General Validation, so Teacher, review 50 row ID"],
     ["Quyết định Main-Core", "Người phụ trách freeze hoặc reject từng Student"],
   ], "Main-Core, hash checkpoint và decision để máy khác dùng ở Giai đoạn 4"],
-  ["04", "Giai đoạn 4 — MT chạy offline", "Đưa Student MT vào Android và kiểm tra chạy cục bộ.", [
-    ["Nhận Student", "Đọc checkpoint, tokenizer và baseline chất lượng"],
-    ["Export và kiểm tra", "So output bản export với checkpoint gốc"],
-    ["Đóng gói cục bộ", "Đưa model, tokenizer và config vào app"],
-    ["Chạy trên thiết bị", "Dịch EN→VI và VI→EN không cần API"],
-    ["Đo thông tin chạy", "Ghi thời gian, RAM và dung lượng app/model"],
-  ], "MT offline cho Giai đoạn 5"],
-  ["05", "Giai đoạn 5 — Ứng dụng STT MT TTS", "Tích hợp các thành phần cục bộ thành ứng dụng giao tiếp.", [
-    ["Nhận MT offline", "Dùng model và runtime từ Giai đoạn 4"],
-    ["Chọn STT và TTS", "Có EN/VI, Android, license rõ và chạy local"],
-    ["Đóng gói ứng dụng", "Đưa STT, MT, TTS và asset vào app"],
-    ["Tích hợp luồng", "Audio → STT → MT → TTS → audio"],
-    ["Kiểm tra offline", "Tắt Wi-Fi và dữ liệu di động, test hai chiều"],
-    ["Báo cáo ứng dụng", "Ghi thời gian, thiết bị, APK và model version"],
-  ], "Ứng dụng giao tiếp offline có evidence"],
 ];
 
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");

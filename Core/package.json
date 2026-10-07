@@ -2,7 +2,7 @@
   "name": "viettechtrans-report-assets",
   "private": true,
   "version": "1.0.0",
-  "description": "Render workflow SVG files used by the graduation-report tools.",
+  "description": "Render workflow diagrams for Core Phase 01–03.",
   "engines": {
     "node": ">=20.9.0"
   },

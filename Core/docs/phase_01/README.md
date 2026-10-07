@@ -52,7 +52,7 @@ và metadata tại `data/raw/envitech_reasoning/metadata.json`,
 **Trả lời:** FLORES-200 được dùng riêng làm tập kiểm tra ngoài miền, không trộn
 vào IT release. Bộ dữ liệu có sẵn hai split `dev` và `devtest`, phù hợp để tách
 General Validation khỏi General Test theo protocol. Nhờ đó Phase 02 có thêm một
-điểm kiểm tra trên dữ liệu không thuộc các nguồn IT đã dùng để adaptation. . Nguồn, split và kiểm tra overlap được ghi trong
+điểm kiểm tra trên dữ liệu không thuộc các nguồn IT đã dùng để adaptation. Nguồn, split và kiểm tra overlap được ghi trong
 `configs/data/general_test_flores200_devtest.json`; 
 - xem [tài liệu FLORES-200](https://github.com/facebookresearch/flores/blob/main/flores200/README.md?plain=1).
 

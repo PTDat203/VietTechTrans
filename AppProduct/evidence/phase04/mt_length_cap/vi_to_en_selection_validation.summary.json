@@ -1,0 +1,138 @@
+{
+  "rows": 15252,
+  "uncapped_q8": {
+    "chrF++": 61.25765870223262,
+    "sacreBLEU": 36.2437341510367
+  },
+  "capped": {
+    "chrF++": 61.34761444428752,
+    "sacreBLEU": 36.27760320205592
+  },
+  "app": {
+    "chrF++": 61.35155004721119,
+    "sacreBLEU": 36.28224792580005
+  },
+  "changed_by_cap": 5,
+  "changed_by_app": 14,
+  "uncapped_longer_than_limit": 5,
+  "decoder_steps": {
+    "mean": 15.872869131917126,
+    "p95": 29.0,
+    "max": 462,
+    "rows_at_limit": 13
+  },
+  "changed_rows": [
+    {
+      "row_id": "1e294c3073c1f4656511df1cd3383aa5b047c871ab29d09006a04632bde54082",
+      "src_tokens": 17,
+      "uncapped_out_tokens": 22,
+      "out_tokens": 22,
+      "uncapped": "RC Dual Raspberry Pi Pi Pi Pi Pico W Power RC controller and car",
+      "app": "RC Dual Raspberry Pi Pico W Power RC controller and car"
+    },
+    {
+      "row_id": "293dec29b5591eb39e4da8056c4987d7222d97f5a04c52a9c36b21bd63ed1a19",
+      "src_tokens": 215,
+      "uncapped_out_tokens": 183,
+      "out_tokens": 183,
+      "uncapped": "Control This module helps check if the joystick is working correctly. If it offers wrong values for the axis, you can fix it with the balancer. This module tries to find all control devices by checking / dev/ js{0- and / dev/ input/ js[0- If you have another device file, enter it in the combo box. The Button List shows the state of buttons on your controller, the X-axis list shows the current values of the axes. NOTE: The current Linux device driver (K4, 2.4) can only automatically detect 2-axis, 4-axis, 4-axis, 4-axis, 4-axis, 4-axis, 4-axis, 4-axis, 4-axis, 4-axis, 4-axis, 4-axis/ CNM/ CTMDDDDDDDDD",
+      "app": "Control This module helps check if the joystick is working correctly. If it offers wrong values for the axis, you can fix it with the balancer. This module tries to find all control devices by checking / dev/ js{0- and / dev/ input/ js[0- If you have another device file, enter it in the combo box. The Button List shows the state of buttons on your controller, the X-axis list shows the current values of the axes. NOTE: The current Linux device driver (K4, 2.4) can only automatically detect 2-axis, 4-axis, CNM/ CTMDDDDDDDDD"
+    },
+    {
+      "row_id": "488ebfa68c6d658615a95970bd36aeab8d531b016aca3622df732d56f325a6a4",
+      "src_tokens": 47,
+      "uncapped_out_tokens": 32,
+      "out_tokens": 32,
+      "uncapped": "iPhone SI P i P i i i i i i i i i i i i i S i i 4 DIRECT - 10 major changes",
+      "app": "iPhone SI P i P i S i i 4 DIRECT - 10 major changes"
+    },
+    {
+      "row_id": "5162b4c45a3cc3ec2deb0cbd1ec78c0a8d32330afb69bd04028f6fe17a44ca48",
+      "src_tokens": 26,
+      "uncapped_out_tokens": 511,
+      "out_tokens": 71,
+      "uncapped": "Simulates the Rubic Snake puzzle game. http: //en. wikipedia. org/ wiki/ http: //en. wikipedia. org/ wiki/ http: //en. org/ wiki/ http: //en. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ http: //en. wikipedia. org/ wiki/ wiki/ wiki/ http: /en. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: // wiki/ wiki/ wiki/ wiki/ http: // wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: http: wiki/ wiki/ wiki/ wiki/ wiki/ http: http: /en. wikipedia/ wiki/ http: http: http: http: /en Written/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia. wikipedia. wikipedia. wikipedia. wikipedia/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: // wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki",
+      "app": "Simulates the Rubic Snake puzzle game. http: //en. wikipedia. org/ wiki/ http: //en. wikipedia. org/ wiki/ http: //en. wikipedia. org/ wiki/ wiki/ http: //en. wikipedia. org/ wiki"
+    },
+    {
+      "row_id": "55d267baeca00df92cb8221cd66138ae153058112d0588f20727fe83c55d1dfe",
+      "src_tokens": 15,
+      "uncapped_out_tokens": 15,
+      "out_tokens": 15,
+      "uncapped": "Daily Report: see carbon Carbon Carbon Carbon Carbon melts ice on Mars",
+      "app": "Daily Report: see carbon melts ice on Mars"
+    },
+    {
+      "row_id": "87fd40497de41642a09b459ea3173d4fbb6e4b43fa78efacd2c4bba8ee311e3c",
+      "src_tokens": 21,
+      "uncapped_out_tokens": 511,
+      "out_tokens": 53,
+      "uncapped": "Simulates going down a mine shaft, or a dancing worm. http: //en. wikipedia. org/ wiki/ Lit. wikipedia. org/ wiki/ Lit. org/ wiki/ Lit. wikipedia. org/ wiki/ Lit. org/ wiki/ Lit. http: / /en. wikipedia. org/en. org/en. wikipedia. org/ wiki/ Mot. wikipedia. org/ wiki/ Mot. org/ wiki/ Mot. wikipedia. org/ http: //en. wikipedia. org/ wiki/ wiki/ wiki/ http: /en. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: // wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. org/ http: // wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en Written/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia/ wiki/ wiki/ wiki/ wiki/ http: /en. org/ wiki/ http: /en. wikipedia/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en Written/ wiki/ wiki/ wiki/ wiki/ http: /en Written/ http: /en. wikipedia. wikipedia/ wiki/ wiki/ wiki/ http: /en. wikipedia/ wiki/ wiki/ wiki/ http: wikipedia. wikipedia. wikipedia. wikipedia. wikipedia. wikipedia. wikipedia. wikipedia. wikipedia. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia/ http: /en/ http: /en. wikipedia/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/",
+      "app": "Simulates going down a mine shaft, or a dancing worm. http: //en. wikipedia. org/ wiki/ Lit. wikipedia. org/ wiki/ Lit. org/ wiki/ Lit. wikipedia. org/ wiki/ Lit"
+    },
+    {
+      "row_id": "889bfe3c56403a18732bfea8e6bd9e54a7901a078dbe87663b4a4319fb25b30d",
+      "src_tokens": 26,
+      "uncapped_out_tokens": 25,
+      "out_tokens": 25,
+      "uncapped": "Two Raspberry Pi Pi Pi Pi Picos powering the embedded watch, with dual-screen LED display",
+      "app": "Two Raspberry Pi Picos powering the embedded watch, with dual-screen LED display"
+    },
+    {
+      "row_id": "95802077ec87918dce9217b4fc90236f1e5af6f2f40071a01915e3d8d94e7775",
+      "src_tokens": 402,
+      "uncapped_out_tokens": 380,
+      "out_tokens": 380,
+      "uncapped": "This paper size indicates paper size where paper tiles are printed. To select other paper sizes for poster tiles, go to the \"Create\" bar of this dialog, then select a paper size in the dropdown list. The paper size is mostly available for that printer-powered paper size. To select the paper sizes supported by your printer can be read from the printer driver's'bar (as specified in PHS, the printer description list is dropped). Note that the \"Size\" is probably not supported by the poster (e. e. e. ), even if your printer can be read from this printer, simply use a small paper pointer, such as \"Address\". Note that you need to select a small print when you want to select the \"A\". Note that you want to select a print from the right-click button below. You need to try to select the \"A\" button to try to print to print button to print to print to print button to print button to print to print to print to print to print to print to print to print to print below the \"A\". You need to select \"A\". You need to print \"A\". You need to select \"A\". You need to print \"A\". You need to select \"A\". You need to select \"A\". You need to print \"A\". You need to select \"A\". You need to print \"A\" on the right-click \"A\". You need to select \"A\" on the right\". You need to select \"A\". You need to select \"A\" on the right\". You need to select \"A\" on the right\". You need to print \"A\". You must have a small\". You need to select \"A\".",
+      "app": "This paper size indicates paper size where paper tiles are printed. To select other paper sizes for poster tiles, go to the \"Create\" bar of this dialog, then select a paper size in the dropdown list. The paper size is mostly available for that printer-powered paper size. To select the paper sizes supported by your printer can be read from the printer driver's'bar (as specified in PHS, the printer description list is dropped). Note that the \"Size\" is probably not supported by the poster (e. e. e. ), even if your printer can be read from this printer, simply use a small paper pointer, such as \"Address\". Note that you need to select a small print when you want to select the \"A\". Note that you want to select a print from the right-click button below. You need to try to select the \"A\" button to try to print to print button to print to print to print button to print button to print below the \"A\". You need to select \"A\". You need to print \"A\". You need to select \"A\". You need to print \"A\". You need to select \"A\". You need to select \"A\". You need to print \"A\". You need to select \"A\". You need to print \"A\" on the right-click \"A\". You need to select \"A\" on the right\". You need to select \"A\". You need to select \"A\" on the right\". You need to select \"A\" on the right\". You need to print \"A\". You must have a small\". You need to select \"A\"."
+    },
+    {
+      "row_id": "98efe6ddd50dcfc6f8b9ae6cb1e87a50cb5b4ae20ffca0edbe3dcead56c38bf1",
+      "src_tokens": 26,
+      "uncapped_out_tokens": 511,
+      "out_tokens": 71,
+      "uncapped": "Draws a rotating and distorted ball with many paint points on it. http: //en. wikipedia. org/ wiki/ wiki/ http: //en. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ wiki/ http: //en. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: // wiki/ wiki/ wiki/ wiki/ wiki/ http: // wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: // wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia. wikipedia. wikipedia. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: http: http: http: http: http: http: http: /en. wikipedia/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: http: http: http: http: http: http: /en/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki",
+      "app": "Draws a rotating and distorted ball with many paint points on it. http: //en. wikipedia. org/ wiki/ wiki/ http: //en. wikipedia. org/ wiki/ http: //en. wikipedia. org/ wiki/"
+    },
+    {
+      "row_id": "bd55c8d0674519b0e611fbe898a7e85cff1b2e0e52ceec6460cd8b7aea192e85",
+      "src_tokens": 23,
+      "uncapped_out_tokens": 511,
+      "out_tokens": 24,
+      "uncapped": "Simulates toys with pens and baby plastic gears. http: //en. wikipedia. org/ wiki/ wiki/ http: //en. wikipedia. org/ wiki/ wiki/ http: //en. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ wiki/ http: //en. wikipedia. org/ wiki/ wiki/ wiki/ http: /en. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. org/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: http: http: http: http: http: http: http: http: http: http: http: http: http: http: http: // wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: // wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: // wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: wikipedia/ wiki/ http: http: http: http: /en/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/",
+      "app": "Simulates a toy with a pen and baby plastic gears. Written by Azerit Singh; 1999."
+    },
+    {
+      "row_id": "d2bf337d3fadfaf67917b1a0040ae9910cab175760a54e9023d16513a0ac33b8",
+      "src_tokens": 126,
+      "uncapped_out_tokens": 104,
+      "out_tokens": 104,
+      "uncapped": "Audio Audio Audio Audio CDs will let you easily remove wav, MP3, and Ogg v3 files from CD- ROM or DVDs. Toyotae is called by typing \"audiocd\" in Konqueror's location bar. In this module, you can easily configure all aspects of theslave file as encryption, search CAD, and set up devices. Note that MP3 and Ogg v3 code is only used if KDE is built with recent versions of the library and Ogg.",
+      "app": "Audio CDs will let you easily remove wav, MP3, and Ogg v3 files from CD- ROM or DVDs. Toyotae is called by typing \"audiocd\" in Konqueror's location bar. In this module, you can easily configure all aspects of theslave file as encryption, search CAD, and set up devices. Note that MP3 and Ogg v3 code is only used if KDE is built with recent versions of the library and Ogg."
+    },
+    {
+      "row_id": "d7dcde117e07fbc89e3608f6575697b7523a3e29486a92d655d5ddfb20586fff",
+      "src_tokens": 10,
+      "uncapped_out_tokens": 239,
+      "out_tokens": 38,
+      "uncapped": "Junkyard Gem: 1986 nổillowyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+      "app": "Junkyard Gem: 1986 nổillowyyyyyyyyyyyyyyyyyyyyyyyyyyy"
+    },
+    {
+      "row_id": "ea0805fdc2a49020c373336a842b7f442662ce8971ce021854cf2bce465b6802",
+      "src_tokens": 25,
+      "uncapped_out_tokens": 27,
+      "out_tokens": 27,
+      "uncapped": "CATL introduces Tinxixing logistics commercial battery battery battery battery life with long battery life and ultrafast charging",
+      "app": "CATL introduces Tinxixing logistics commercial battery life with long battery life and ultrafast charging"
+    },
+    {
+      "row_id": "f9ccb1150ca7336371fc77108842e5316abe0bfd2a3eea2fc1ce819ca3be5c79",
+      "src_tokens": 38,
+      "uncapped_out_tokens": 26,
+      "out_tokens": 26,
+      "uncapped": "Cooler Master Master Master Master Master Master Master Master Master’s flexible approach in console management rival to Stream Deck coming this summer",
+      "app": "Cooler Master Master’s flexible approach in console management rival to Stream Deck coming this summer"
+    }
+  ]
+}

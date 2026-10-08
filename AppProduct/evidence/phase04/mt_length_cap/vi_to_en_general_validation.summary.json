@@ -1,0 +1,25 @@
+{
+  "rows": 997,
+  "uncapped_q8": {
+    "chrF++": 46.210506929936166,
+    "sacreBLEU": 17.494677338464545
+  },
+  "capped": {
+    "chrF++": 46.210506929936166,
+    "sacreBLEU": 17.494677338464545
+  },
+  "app": {
+    "chrF++": 46.210506929936166,
+    "sacreBLEU": 17.494677338464545
+  },
+  "changed_by_cap": 0,
+  "changed_by_app": 0,
+  "uncapped_longer_than_limit": 0,
+  "decoder_steps": {
+    "mean": 27.54062186559679,
+    "p95": 44.0,
+    "max": 74,
+    "rows_at_limit": 0
+  },
+  "changed_rows": []
+}

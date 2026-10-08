@@ -1,0 +1,211 @@
+{
+  "stage": "phase04_app_mt_export_quality",
+  "variant": "q8",
+  "package_id": "vtt-main-core-phase03-q8",
+  "quantization": {
+    "method": "matmul_nbits",
+    "bits": 8,
+    "block_size": 32,
+    "symmetric": false,
+    "accuracy_level": 4,
+    "note": "8-bit weights per block of 32; activations quantized per block at compute time"
+  },
+  "datasets": "Phase 03 Student evaluation cohorts (student_predictions.jsonl: same rows, sources, references)",
+  "metrics": "core_mt.metrics.score_predictions (chrF++ beta=2 word_order=2; sacreBLEU tokenize=none)",
+  "decoder": "tools/mt/marian_ref.py beam_search (port of transformers 4.57 _beam_search; Kotlin BeamSearch.kt is its port)",
+  "runtime": {
+    "onnxruntime": "1.30.0",
+    "python": "3.14.7",
+    "cpu": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+    "threads_per_process": 2,
+    "parallel_processes": 8
+  },
+  "note": "host_latency_ms is measured on the PC with 8 processes sharing the CPU; it is not a phone latency.",
+  "results": {
+    "en_to_vi/selection_validation": {
+      "predictions_sha256": "62b1926c4df3052ae8273619820d1f34e68dc06cadf4913d7e75d7b4bbae8d81",
+      "rows": 15252,
+      "onnx": {
+        "chrF++": 66.53592862944716,
+        "sacreBLEU": 51.190887712144864
+      },
+      "phase03_student": {
+        "chrF++": 66.54720958801619,
+        "sacreBLEU": 51.210707196159525
+      },
+      "exact_match_with_phase03": 0.9434828219249934,
+      "host_latency_ms": {
+        "mean": 1386.1780946761078,
+        "p50": 379.35,
+        "p95": 1274.8599999999992
+      },
+      "metric_config": {
+        "chrF++": {
+          "beta": 2,
+          "word_order": 2
+        },
+        "sacreBLEU": {
+          "tokenize": "none",
+          "lowercase": false,
+          "use_effective_order": false
+        }
+      },
+      "sacrebleu_version": "2.6.0"
+    },
+    "en_to_vi/general_validation": {
+      "predictions_sha256": "eee412027612ca9f248f628bde051f580241c0202cb6ea500e61e1f8a71d2466",
+      "rows": 997,
+      "onnx": {
+        "chrF++": 52.45511968310983,
+        "sacreBLEU": 30.39899482473747
+      },
+      "phase03_student": {
+        "chrF++": 52.44303575785503,
+        "sacreBLEU": 30.426076767373786
+      },
+      "exact_match_with_phase03": 0.8234704112337011,
+      "host_latency_ms": {
+        "mean": 681.30481444333,
+        "p50": 629.4,
+        "p95": 1243.08
+      },
+      "metric_config": {
+        "chrF++": {
+          "beta": 2,
+          "word_order": 2
+        },
+        "sacreBLEU": {
+          "tokenize": "none",
+          "lowercase": false,
+          "use_effective_order": false
+        }
+      },
+      "sacrebleu_version": "2.6.0"
+    },
+    "en_to_vi/graph": {
+      "path": "en_to_vi/model.onnx",
+      "sha256": "1b1b6aeae937f596be91de1099fcf6108d9dda169d464125cd555461b5730a17",
+      "bytes": 91328819,
+      "source_checkpoint": {
+        "run_id": "phase03-seqkd-en-to-vi-v2",
+        "path": "models/phase03/phase03-seqkd-en-to-vi-v2/final-epoch-1",
+        "sha256_tree": "c2f037f8548437bbd6edcaabc33b91f65c6fc7dcbd1124aa78239afe4b8e43bb",
+        "student": {
+          "architecture": "MarianMT",
+          "model_id": "Helsinki-NLP/opus-mt-en-vi",
+          "revision": "989c9fb9ec63987901022baf0182dcec3e149be6",
+          "input_prefix": ">>vie<<"
+        }
+      },
+      "generation": {
+        "strategy": "beam_search",
+        "num_beams": 4,
+        "max_length": 512,
+        "length_penalty": 1.0,
+        "early_stopping": false,
+        "decoder_start_token_id": 53684,
+        "eos_token_id": 0,
+        "forced_eos_token_id": 0,
+        "bad_words_ids": [
+          [
+            53684
+          ]
+        ],
+        "renormalize_logits": true
+      }
+    },
+    "vi_to_en/selection_validation": {
+      "predictions_sha256": "2797892cff99c36e452992e5054fc4f53c6c69acf60f180de7025788eff17603",
+      "rows": 15252,
+      "onnx": {
+        "chrF++": 61.25765870223262,
+        "sacreBLEU": 36.2437341510367
+      },
+      "phase03_student": {
+        "chrF++": 61.30055256774961,
+        "sacreBLEU": 36.29519808936608
+      },
+      "exact_match_with_phase03": 0.9435483870967742,
+      "host_latency_ms": {
+        "mean": 531.729746918437,
+        "p50": 430.4,
+        "p95": 1208.0899999999997
+      },
+      "metric_config": {
+        "chrF++": {
+          "beta": 2,
+          "word_order": 2
+        },
+        "sacreBLEU": {
+          "tokenize": "none",
+          "lowercase": false,
+          "use_effective_order": false
+        }
+      },
+      "sacrebleu_version": "2.6.0"
+    },
+    "vi_to_en/general_validation": {
+      "predictions_sha256": "05c4831784a59a6facea8ab3884c2435733713912d3165429d8ac62d801a5a8a",
+      "rows": 997,
+      "onnx": {
+        "chrF++": 46.210506929936166,
+        "sacreBLEU": 17.494677338464545
+      },
+      "phase03_student": {
+        "chrF++": 46.19954555547699,
+        "sacreBLEU": 17.51729868539159
+      },
+      "exact_match_with_phase03": 0.7422266800401204,
+      "host_latency_ms": {
+        "mean": 849.2323971915747,
+        "p50": 756.1,
+        "p95": 1662.3199999999983
+      },
+      "metric_config": {
+        "chrF++": {
+          "beta": 2,
+          "word_order": 2
+        },
+        "sacreBLEU": {
+          "tokenize": "none",
+          "lowercase": false,
+          "use_effective_order": false
+        }
+      },
+      "sacrebleu_version": "2.6.0"
+    },
+    "vi_to_en/graph": {
+      "path": "vi_to_en/model.onnx",
+      "sha256": "17d0178592278bb251c2a99d83b08e40c7b3a7a0c350718e44ba3dc39d32186f",
+      "bytes": 91367915,
+      "source_checkpoint": {
+        "run_id": "phase03-seqkd-vi-to-en-v3",
+        "path": "models/phase03/phase03-seqkd-vi-to-en-v3/final-epoch-1",
+        "sha256_tree": "fbcba2c1dbaa377073ab69893fabb51127c9de39609d1815f8fb97202442cb53",
+        "student": {
+          "architecture": "MarianMT",
+          "model_id": "Helsinki-NLP/opus-mt-vi-en",
+          "revision": "c8d2853e77f5fae31124d993e0b35176b1c8914e",
+          "input_prefix": ""
+        }
+      },
+      "generation": {
+        "strategy": "beam_search",
+        "num_beams": 6,
+        "max_length": 512,
+        "length_penalty": 1.0,
+        "early_stopping": false,
+        "decoder_start_token_id": 53738,
+        "eos_token_id": 0,
+        "forced_eos_token_id": 0,
+        "bad_words_ids": [
+          [
+            53738
+          ]
+        ],
+        "renormalize_logits": true
+      }
+    }
+  },
+  "created_at_utc": "2026-10-07T08:57:19+00:00"
+}

@@ -3,22 +3,16 @@
     <string name="app_name">VietTechTrans</string>
 
     <!-- Navigation -->
-    <string name="nav_translate">Dịch</string>
+    <string name="nav_translate">Dịch nhanh</string>
     <string name="nav_conversation">Hội thoại</string>
-    <string name="nav_history">Lịch sử</string>
-    <string name="nav_experiments">Thực nghiệm</string>
     <string name="nav_settings">Cài đặt</string>
     <string name="nav_manual">Hướng dẫn</string>
     <string name="cd_help">Mở hướng dẫn</string>
     <string name="cd_back">Quay lại</string>
-
-    <!-- Direction -->
-    <string name="dir_vi_to_en">Việt → Anh</string>
-    <string name="dir_en_to_vi">Anh → Việt</string>
+    <string name="cd_history">Mở danh sách cuộc trò chuyện</string>
 
     <!-- Common notices -->
-    <string name="banner_no_mt">Chưa có mô hình dịch offline (Phase 04). App chỉ hiện câu gốc.</string>
-    <string name="skeleton_notice">Bản khung (M0): màn hình đã có, chức năng được thêm dần theo mốc.</string>
+    <string name="banner_no_mt">Chưa có mô hình dịch trong bản cài này. App chỉ hiện câu gốc.</string>
 
     <!-- Languages and models -->
     <string name="lang_vi">Tiếng Việt</string>
@@ -43,6 +37,7 @@
     <string name="action_translate">Dịch</string>
     <string name="action_cancel">Huỷ</string>
     <string name="action_close">Đóng</string>
+    <string name="action_save">Lưu</string>
     <string name="action_stop_speaking">Dừng đọc</string>
     <string name="action_play_source">Nghe câu gốc</string>
     <string name="action_play_translation">Nghe bản dịch</string>
@@ -53,49 +48,66 @@
     <string name="translate_swap">Đảo chiều dịch</string>
     <string name="translate_speak">Nói</string>
     <string name="result_title">Bản dịch (%1$s)</string>
-    <string name="translate_subtitle">Gõ, nói hoặc nghe</string>
+    <string name="translate_subtitle">Dịch một chiều, không lưu lịch sử</string>
 
     <!-- Conversation screen -->
-    <string name="conv_layout_chat">Kiểu khung chat</string>
-    <string name="conv_layout_split">Kiểu chia đôi, ngồi đối diện</string>
-    <string name="conv_auto">Luân phiên tự động</string>
-    <string name="conv_policy_cut">Chen lời: Cắt</string>
-    <string name="conv_policy_queue">Chen lời: Chờ</string>
-    <string name="conv_rotate_top">Xoay nửa trên</string>
-    <string name="conv_clear">Xoá cuộc nói chuyện</string>
+    <string name="conv_new">Cuộc trò chuyện mới</string>
+    <string name="conv_new_title">Cuộc trò chuyện mới</string>
     <string name="conv_subtitle">Tiếng Việt ⇄ English</string>
     <string name="conv_empty_title">Bắt đầu trò chuyện</string>
-    <string name="conv_empty">Mỗi người bấm nút ngôn ngữ của mình để nói. App dịch và đọc cho người kia nghe.</string>
+    <string name="conv_empty">Mỗi người bấm nút ngôn ngữ của mình để nói. App dịch và đọc cho người kia nghe. Nếu app nghe nhầm, bấm ✎ trên câu để sửa rồi dịch lại.</string>
     <string name="conv_type">Gõ chữ</string>
     <string name="conv_type_hint">Nhập câu cần dịch</string>
     <string name="conv_send_vi">Gửi tiếng Việt</string>
     <string name="conv_send_en">Send English</string>
+    <string name="conv_edit">Sửa câu</string>
+    <string name="conv_edit_title_vi">Sửa câu tiếng Việt</string>
+    <string name="conv_edit_title_en">Edit English sentence</string>
+    <string name="conv_edit_hint">Sửa chữ cho đúng (ví dụ khi app nghe nhầm), app sẽ dịch và đọc lại.</string>
+    <string name="conv_edit_send">Dịch lại</string>
     <string name="conv_status_interrupted">bị ngắt</string>
     <string name="conv_status_not_played">chưa phát</string>
     <string name="conv_status_translating">đang dịch…</string>
     <string name="conv_status_no_mt">chưa có mô hình dịch</string>
     <string name="conv_status_failed">dịch lỗi</string>
+    <string name="conv_status_edited">đã sửa</string>
     <string name="conv_replay">Nghe lại</string>
 
-    <!-- Labels of each person's half, written in that person's language -->
+    <!-- Labels of each person's controls, written in that person's language -->
     <string name="party_vi_button">Tiếng Việt</string>
     <string name="party_vi_speak">Chạm để nói tiếng Việt</string>
     <string name="party_vi_listening">Đang nghe…</string>
-    <string name="party_vi_waiting">Đang chờ lượt…</string>
     <string name="party_vi_processing">Đang dịch…</string>
     <string name="party_en_button">English</string>
     <string name="party_en_speak">Tap to speak English</string>
     <string name="party_en_listening">Listening…</string>
-    <string name="party_en_waiting">Waiting for your turn…</string>
     <string name="party_en_processing">Translating…</string>
 
-    <!-- History screen -->
-    <string name="history_coming">Lịch sử (câu gốc và bản dịch cùng ID, chỉ xem và nghe lại): M7.</string>
-
-    <!-- Experiments screen -->
-    <string name="experiments_coming">Thực nghiệm (TN-01…TN-07) và đo thời gian, RAM, dung lượng: M3–M8.</string>
+    <!-- History panel -->
+    <string name="history_empty">Chưa có cuộc trò chuyện nào. Nói hoặc gõ câu đầu tiên để bắt đầu.</string>
+    <string name="history_today">Hôm nay</string>
+    <string name="history_yesterday">Hôm qua</string>
+    <string name="history_week">7 ngày qua</string>
+    <string name="history_month">30 ngày qua</string>
+    <string name="history_older">Cũ hơn</string>
+    <string name="history_item_meta">%1$d câu · %2$s</string>
+    <string name="history_item_menu">Tuỳ chọn cho %1$s</string>
+    <string name="history_rename">Đổi tên</string>
+    <string name="history_delete">Xoá</string>
+    <string name="history_delete_title">Xoá cuộc trò chuyện?</string>
+    <string name="history_delete_text">Xoá \"%1$s\" và mọi câu trong đó. Không khôi phục được.</string>
 
     <!-- Settings screen -->
+    <string name="check_title">Kiểm tra máy này</string>
+    <string name="check_text">Đo máy của bạn bằng chính các mô hình của app (nạp mô hình, tốc độ dịch, đọc và nghe, RAM) và cho biết có đạt cấu hình tối thiểu không. Mất khoảng 1–2 phút, không cần mạng.</string>
+    <string name="check_start">Bắt đầu kiểm tra</string>
+    <string name="check_running">Đang kiểm tra…</string>
+    <string name="check_copy">Sao chép kết quả</string>
+    <string name="settings_history">Lịch sử trò chuyện</string>
+    <string name="settings_history_saved">Đã lưu</string>
+    <string name="settings_history_size">%1$d cuộc · %2$s KB</string>
+    <string name="settings_history_delete_all">Xoá toàn bộ lịch sử</string>
+    <string name="settings_history_delete_all_text">Xoá %1$d cuộc trò chuyện đã lưu. Không khôi phục được.</string>
     <string name="settings_about">Giới thiệu</string>
     <string name="settings_build">Bản</string>
     <string name="settings_version">Phiên bản</string>
@@ -103,12 +115,10 @@
     <string name="settings_git_dirty">(có thay đổi chưa commit)</string>
     <string name="settings_translator">Bộ dịch</string>
     <string name="settings_translator_checking">Đang kiểm tra…</string>
-    <string name="settings_translator_none">Chưa có gói MT (Phase 04)</string>
-    <string name="settings_translator_invalid">Gói MT lỗi: %1$s</string>
-    <string name="settings_translator_ready">Core MT sẵn sàng</string>
-    <string name="settings_translator_dev_note">Bản dev: ML Kit Translate (từ M5), không dùng làm evidence.</string>
-    <string name="build_offline">offline (không có quyền Internet)</string>
-    <string name="build_dev">dev (thử nghiệm, có ML Kit từ M5)</string>
+    <string name="settings_translator_none">Chưa có gói mô hình dịch</string>
+    <string name="settings_translator_invalid">Gói mô hình dịch lỗi: %1$s</string>
+    <string name="settings_translator_ready">Sẵn sàng (%1$s)</string>
+    <string name="build_offline">offline, không cần mạng</string>
 
     <!-- Diagnostics -->
     <string name="diag_title">Chẩn đoán</string>
@@ -117,7 +127,4 @@
     <string name="diag_last_crash">Lỗi gần nhất (gửi cho nhóm khi báo lỗi)</string>
     <string name="diag_none">Không có</string>
     <string name="diag_refresh">Làm mới</string>
-
-    <!-- Manual screen -->
-    <string name="manual_coming">Nội dung hướng dẫn đầy đủ ở M8. Các mục:</string>
 </resources>

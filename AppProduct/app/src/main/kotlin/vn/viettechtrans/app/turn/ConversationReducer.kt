@@ -13,20 +13,10 @@ enum class Party(val lang: Lang) {
     val direction: Direction get() = Direction.fromSource(lang)
 }
 
-/** What happens when someone taps while another turn is active (sketch "chen 2" / "chen 3"). */
-enum class InterruptPolicy { CUT, QUEUE }
-
-data class ConversationConfig(
-    val policy: InterruptPolicy = InterruptPolicy.CUT,
-    /** After a translation has been spoken, open the mic for the other person automatically. */
-    val autoAlternate: Boolean = false,
-)
-
 sealed interface ConvPhase {
     data object Idle : ConvPhase
 
-    /** [auto]: opened by auto-alternation (a silent timeout just ends the alternation). */
-    data class Listening(val party: Party, val turn: Int, val auto: Boolean) : ConvPhase
+    data class Listening(val party: Party, val turn: Int) : ConvPhase
 
     /** Recognizing + translating the foreground turn. */
     data class Processing(val party: Party, val turn: Int) : ConvPhase
@@ -37,8 +27,6 @@ sealed interface ConvPhase {
 
 data class ConversationState(
     val phase: ConvPhase = ConvPhase.Idle,
-    /** QUEUE policy: who tapped while busy; their mic opens when the current turn is over. */
-    val pending: Party? = null,
     /** Turns cut off by another speaker: still recognized/translated/saved, never spoken. */
     val background: Map<Int, Party> = emptyMap(),
     val nextTurn: Int = 1,
@@ -60,14 +48,23 @@ sealed interface ConvEvent {
     data class SpeakDone(val speakId: Int) : ConvEvent
     data object StopSpeaking : ConvEvent
     data class Replay(val text: String, val lang: Lang) : ConvEvent
+
+    /** The source of an earlier message was corrected (STT misheard, typo): translate and speak it again. */
+    data class Edited(val turn: Int, val party: Party, val text: String) : ConvEvent
+
+    /** Another conversation is shown: stop everything; new turns start at [minNextTurn] or later. */
+    data class Reset(val minNextTurn: Int) : ConvEvent
 }
 
 enum class MessageStatus { TRANSLATING, OK, NOT_PLAYED, NO_TRANSLATOR, FAILED }
 
 sealed interface ConvEffect {
-    data class StartListen(val party: Party, val turn: Int, val auto: Boolean) : ConvEffect
+    data class StartListen(val party: Party, val turn: Int) : ConvEffect
     data class StopListen(val turn: Int) : ConvEffect
     data class AddMessage(val turn: Int, val party: Party, val text: String) : ConvEffect
+
+    /** Replace the source of message [turn] by [text] and clear its old translation. */
+    data class ReplaceSource(val turn: Int, val text: String) : ConvEffect
     data class Translate(val turn: Int, val party: Party, val text: String) : ConvEffect
     data class SetTranslation(val turn: Int, val text: String?, val status: MessageStatus, val mtMs: Long? = null) : ConvEffect
     data class Speak(val speakId: Int, val turn: Int?, val lang: Lang, val text: String) : ConvEffect
@@ -79,73 +76,47 @@ sealed interface ConvEffect {
 }
 
 /**
- * Pure state machine of the two-person conversation (plan "Máy trạng thái lượt nói",
- * docs/decisions/DR-05). Half-duplex: the reducer never asks to open the mic while
- * speech is playing (a StopSpeak effect always comes first). Stale events (ids that
- * no longer match) are ignored, so late callbacks cannot corrupt the state.
+ * Pure state machine of the two-person conversation (docs/decisions/DR-05, simplified by
+ * DR-09: tapping always cuts the running turn; no waiting queue, no automatic alternation).
+ * Half-duplex: the mic never opens while speech is playing (a StopSpeak effect always comes
+ * first). Stale events (ids that no longer match) are ignored, so late callbacks — also those
+ * of a conversation that was closed — cannot corrupt the state.
  */
 object ConversationReducer {
-    fun reduce(
-        s: ConversationState,
-        e: ConvEvent,
-        cfg: ConversationConfig,
-    ): Pair<ConversationState, List<ConvEffect>> = when (e) {
-        is ConvEvent.Tap -> onTap(s, e.party, cfg)
+    const val BUSY_NOTICE = "Đợi lượt đang nói hoặc đang dịch xong rồi sửa"
+
+    fun reduce(s: ConversationState, e: ConvEvent): Pair<ConversationState, List<ConvEffect>> = when (e) {
+        is ConvEvent.Tap -> onTap(s, e.party)
         is ConvEvent.Typed -> onTyped(s, e)
-        is ConvEvent.ListenEnded -> onListenEnded(s, e, cfg)
-        is ConvEvent.Translated -> onTranslated(s, e, cfg)
-        is ConvEvent.SpeakDone -> onSpeakDone(s, e, cfg)
-        ConvEvent.StopSpeaking -> onStopSpeaking(s, cfg)
+        is ConvEvent.ListenEnded -> onListenEnded(s, e)
+        is ConvEvent.Translated -> onTranslated(s, e)
+        is ConvEvent.SpeakDone -> onSpeakDone(s, e)
+        ConvEvent.StopSpeaking -> onStopSpeaking(s)
         is ConvEvent.Replay -> onReplay(s, e)
+        is ConvEvent.Edited -> onEdited(s, e)
+        is ConvEvent.Reset -> onReset(s, e)
     }
 
-    private fun startListening(
-        s: ConversationState,
-        party: Party,
-        auto: Boolean,
-        effects: List<ConvEffect> = emptyList(),
-    ): Pair<ConversationState, List<ConvEffect>> {
+    private fun startListening(s: ConversationState, party: Party, effects: List<ConvEffect> = emptyList()): Pair<ConversationState, List<ConvEffect>> {
         val turn = s.nextTurn
-        return s.copy(phase = ConvPhase.Listening(party, turn, auto), nextTurn = turn + 1, pending = null) to
-            (effects + ConvEffect.StartListen(party, turn, auto))
+        return s.copy(phase = ConvPhase.Listening(party, turn), nextTurn = turn + 1) to (effects + ConvEffect.StartListen(party, turn))
     }
 
-    private fun onTap(s: ConversationState, party: Party, cfg: ConversationConfig): Pair<ConversationState, List<ConvEffect>> =
-        when (val p = s.phase) {
-            ConvPhase.Idle -> startListening(s, party, auto = false)
+    private fun stopSpeech(p: ConvPhase.Speaking, keepTurn: Int? = null): List<ConvEffect> =
+        listOfNotNull(ConvEffect.StopSpeak, p.turn?.takeIf { it != keepTurn }?.let { ConvEffect.MarkInterrupted(it) })
 
-            is ConvPhase.Listening -> when {
-                // Own button again: end my turn now.
-                p.party == party -> s.copy(phase = ConvPhase.Processing(p.party, p.turn)) to listOf(ConvEffect.StopListen(p.turn))
-                cfg.policy == InterruptPolicy.CUT -> {
-                    val bg = s.copy(background = s.background + (p.turn to p.party))
-                    startListening(bg, party, auto = false, listOf(ConvEffect.StopListen(p.turn)))
-                }
-                else -> togglePending(s, party)
+    private fun onTap(s: ConversationState, party: Party): Pair<ConversationState, List<ConvEffect>> = when (val p = s.phase) {
+        ConvPhase.Idle -> startListening(s, party)
+        // Own button again: end my turn now. The other button: my turn goes on in the background.
+        is ConvPhase.Listening ->
+            if (p.party == party) {
+                s.copy(phase = ConvPhase.Processing(p.party, p.turn)) to listOf(ConvEffect.StopListen(p.turn))
+            } else {
+                startListening(s.copy(background = s.background + (p.turn to p.party)), party, listOf(ConvEffect.StopListen(p.turn)))
             }
-
-            is ConvPhase.Processing -> when {
-                cfg.policy == InterruptPolicy.CUT -> {
-                    val bg = s.copy(background = s.background + (p.turn to p.party))
-                    startListening(bg, party, auto = false)
-                }
-                else -> togglePending(s, party)
-            }
-
-            is ConvPhase.Speaking -> when {
-                p.turn == null || cfg.policy == InterruptPolicy.CUT -> {
-                    val fx = buildList {
-                        add(ConvEffect.StopSpeak)
-                        p.turn?.let { add(ConvEffect.MarkInterrupted(it)) }
-                    }
-                    startListening(s, party, auto = false, fx)
-                }
-                else -> togglePending(s, party)
-            }
-        }
-
-    private fun togglePending(s: ConversationState, party: Party) =
-        s.copy(pending = if (s.pending == party) null else party) to emptyList<ConvEffect>()
+        is ConvPhase.Processing -> startListening(s.copy(background = s.background + (p.turn to p.party)), party)
+        is ConvPhase.Speaking -> startListening(s, party, stopSpeech(p))
+    }
 
     private fun onTyped(s: ConversationState, e: ConvEvent.Typed): Pair<ConversationState, List<ConvEffect>> {
         val text = e.text.trim()
@@ -155,22 +126,26 @@ object ConversationReducer {
         val fx = listOf(ConvEffect.AddMessage(turn, e.party, text), ConvEffect.Translate(turn, e.party, text))
         return when (val p = next.phase) {
             ConvPhase.Idle -> next.copy(phase = ConvPhase.Processing(e.party, turn)) to fx
-            is ConvPhase.Speaking ->
-                next.copy(phase = ConvPhase.Processing(e.party, turn)) to
-                    (listOfNotNull(ConvEffect.StopSpeak, p.turn?.let { ConvEffect.MarkInterrupted(it) }) + fx)
+            is ConvPhase.Speaking -> next.copy(phase = ConvPhase.Processing(e.party, turn)) to (stopSpeech(p) + fx)
             // Someone is talking or a turn is processing: show and translate it, but do not speak it.
             else -> next.copy(background = next.background + (turn to e.party)) to fx
         }
     }
 
-    private fun afterTurn(s: ConversationState, party: Party?, cfg: ConversationConfig, allowAuto: Boolean): Pair<ConversationState, List<ConvEffect>> {
-        val idle = s.copy(phase = ConvPhase.Idle)
-        s.pending?.let { return startListening(idle, it, auto = false) }
-        if (allowAuto && cfg.autoAlternate && party != null) return startListening(idle, party.other, auto = true)
-        return idle to emptyList()
+    private fun onEdited(s: ConversationState, e: ConvEvent.Edited): Pair<ConversationState, List<ConvEffect>> {
+        val text = e.text.trim()
+        if (text.isEmpty() || e.turn >= s.nextTurn) return s to emptyList()
+        if (e.turn in s.background) return s to listOf(ConvEffect.Notice(BUSY_NOTICE))
+        val fx = listOf(ConvEffect.ReplaceSource(e.turn, text), ConvEffect.Translate(e.turn, e.party, text))
+        return when (val p = s.phase) {
+            ConvPhase.Idle -> s.copy(phase = ConvPhase.Processing(e.party, e.turn)) to fx
+            is ConvPhase.Speaking -> s.copy(phase = ConvPhase.Processing(e.party, e.turn)) to (stopSpeech(p, keepTurn = e.turn) + fx)
+            // Mic open or a translation running: the user edits again when it is over.
+            else -> s to listOf(ConvEffect.Notice(BUSY_NOTICE))
+        }
     }
 
-    private fun onListenEnded(s: ConversationState, e: ConvEvent.ListenEnded, cfg: ConversationConfig): Pair<ConversationState, List<ConvEffect>> {
+    private fun onListenEnded(s: ConversationState, e: ConvEvent.ListenEnded): Pair<ConversationState, List<ConvEffect>> {
         val bgParty = s.background[e.turn]
         if (bgParty != null) {
             return when (val r = e.result) {
@@ -178,28 +153,21 @@ object ConversationReducer {
                 else -> s.copy(background = s.background - e.turn) to emptyList()
             }
         }
-        val p = s.phase
-        val current = when (p) {
-            is ConvPhase.Listening -> p.takeIf { it.turn == e.turn }?.let { it.party to it.auto }
-            is ConvPhase.Processing -> p.takeIf { it.turn == e.turn }?.let { it.party to false }
+        val party = when (val p = s.phase) {
+            is ConvPhase.Listening -> p.party.takeIf { p.turn == e.turn }
+            is ConvPhase.Processing -> p.party.takeIf { p.turn == e.turn }
             else -> null
         } ?: return s to emptyList() // stale
-        val (party, auto) = current
+        val idle = s.copy(phase = ConvPhase.Idle)
         return when (val r = e.result) {
             is Heard.Text -> s.copy(phase = ConvPhase.Processing(party, e.turn)) to
                 listOf(ConvEffect.AddMessage(e.turn, party, r.text), ConvEffect.Translate(e.turn, party, r.text))
-            Heard.NoSpeech -> {
-                val (next, fx) = afterTurn(s, party, cfg, allowAuto = false)
-                next to (if (auto) fx else listOf(ConvEffect.Notice("Không nghe thấy giọng nói")) + fx)
-            }
-            is Heard.Failed -> {
-                val (next, fx) = afterTurn(s, party, cfg, allowAuto = false)
-                next to (listOf(ConvEffect.Notice(r.message)) + fx)
-            }
+            Heard.NoSpeech -> idle to listOf(ConvEffect.Notice("Không nghe thấy giọng nói"))
+            is Heard.Failed -> idle to listOf(ConvEffect.Notice(r.message))
         }
     }
 
-    private fun onTranslated(s: ConversationState, e: ConvEvent.Translated, cfg: ConversationConfig): Pair<ConversationState, List<ConvEffect>> {
+    private fun onTranslated(s: ConversationState, e: ConvEvent.Translated): Pair<ConversationState, List<ConvEffect>> {
         val r = e.result
         if (e.turn in s.background) {
             val (text, status, ms) = when (r) {
@@ -211,6 +179,7 @@ object ConversationReducer {
         }
         val p = s.phase as? ConvPhase.Processing
         if (p == null || p.turn != e.turn) return s to emptyList() // stale
+        val idle = s.copy(phase = ConvPhase.Idle)
         return when (r) {
             is MtOutcome.Ok -> {
                 val id = s.nextSpeak
@@ -219,41 +188,37 @@ object ConversationReducer {
                     ConvEffect.Speak(id, e.turn, p.party.other.lang, r.text),
                 )
             }
-            MtOutcome.NoTranslator -> {
-                val (next, fx) = afterTurn(s, p.party, cfg, allowAuto = true)
-                next to (listOf(ConvEffect.SetTranslation(e.turn, null, MessageStatus.NO_TRANSLATOR)) + fx)
-            }
-            is MtOutcome.Failed -> {
-                val (next, fx) = afterTurn(s, p.party, cfg, allowAuto = false)
-                next to (listOf(ConvEffect.SetTranslation(e.turn, null, MessageStatus.FAILED), ConvEffect.Notice(r.message)) + fx)
-            }
+            MtOutcome.NoTranslator -> idle to listOf(ConvEffect.SetTranslation(e.turn, null, MessageStatus.NO_TRANSLATOR))
+            is MtOutcome.Failed -> idle to listOf(ConvEffect.SetTranslation(e.turn, null, MessageStatus.FAILED), ConvEffect.Notice(r.message))
         }
     }
 
-    private fun onSpeakDone(s: ConversationState, e: ConvEvent.SpeakDone, cfg: ConversationConfig): Pair<ConversationState, List<ConvEffect>> {
+    private fun onSpeakDone(s: ConversationState, e: ConvEvent.SpeakDone): Pair<ConversationState, List<ConvEffect>> {
         val p = s.phase as? ConvPhase.Speaking
         if (p == null || p.speakId != e.speakId) return s to emptyList() // stale (already stopped/replaced)
-        return afterTurn(s, p.party, cfg, allowAuto = p.turn != null)
+        return s.copy(phase = ConvPhase.Idle) to emptyList()
     }
 
-    private fun onStopSpeaking(s: ConversationState, cfg: ConversationConfig): Pair<ConversationState, List<ConvEffect>> {
+    private fun onStopSpeaking(s: ConversationState): Pair<ConversationState, List<ConvEffect>> {
         val p = s.phase as? ConvPhase.Speaking ?: return s to emptyList()
-        // A manual stop ends auto-alternation; a queued speaker still gets the turn.
-        val (next, fx) = afterTurn(s, p.party, cfg, allowAuto = false)
-        return next to (listOfNotNull(ConvEffect.StopSpeak, p.turn?.let { ConvEffect.MarkInterrupted(it) }) + fx)
+        return s.copy(phase = ConvPhase.Idle) to stopSpeech(p)
     }
 
     private fun onReplay(s: ConversationState, e: ConvEvent.Replay): Pair<ConversationState, List<ConvEffect>> {
         val p = s.phase
         if (p !is ConvPhase.Idle && p !is ConvPhase.Speaking) return s to emptyList() // mic open or processing
         val id = s.nextSpeak
-        val fx = buildList {
-            if (p is ConvPhase.Speaking) {
-                add(ConvEffect.StopSpeak)
-                p.turn?.let { add(ConvEffect.MarkInterrupted(it)) }
-            }
-            add(ConvEffect.Speak(id, null, e.lang, e.text))
+        val fx = (if (p is ConvPhase.Speaking) stopSpeech(p) else emptyList()) + ConvEffect.Speak(id, null, e.lang, e.text)
+        return s.copy(phase = ConvPhase.Speaking(null, null, id), nextSpeak = id + 1) to fx
+    }
+
+    private fun onReset(s: ConversationState, e: ConvEvent.Reset): Pair<ConversationState, List<ConvEffect>> {
+        val fx = when (val p = s.phase) {
+            is ConvPhase.Listening -> listOf(ConvEffect.StopListen(p.turn))
+            is ConvPhase.Speaking -> listOf(ConvEffect.StopSpeak)
+            else -> emptyList()
         }
-        return s.copy(phase = ConvPhase.Speaking(null, null, id), nextSpeak = id + 1, pending = null) to fx
+        // Turn ids keep growing, so late results of the old conversation can never match a new turn.
+        return ConversationState(nextTurn = maxOf(s.nextTurn, e.minNextTurn), nextSpeak = s.nextSpeak) to fx
     }
 }

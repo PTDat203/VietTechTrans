@@ -1,0 +1,29 @@
+{
+  "rows": 15252,
+  "onnx": {
+    "chrF++": 66.30045133510471,
+    "sacreBLEU": 50.921415267976464
+  },
+  "phase03_student": {
+    "chrF++": 66.54720958801619,
+    "sacreBLEU": 51.210707196159525
+  },
+  "exact_match_with_phase03": 0.673157618672961,
+  "host_latency_ms": {
+    "mean": 670.3169289273538,
+    "p50": 641.9,
+    "p95": 1355.2
+  },
+  "metric_config": {
+    "chrF++": {
+      "beta": 2,
+      "word_order": 2
+    },
+    "sacreBLEU": {
+      "tokenize": "none",
+      "lowercase": false,
+      "use_effective_order": false
+    }
+  },
+  "sacrebleu_version": "2.6.0"
+}

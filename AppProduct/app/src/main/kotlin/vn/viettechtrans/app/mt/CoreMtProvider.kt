@@ -1,28 +1,25 @@
 package vn.viettechtrans.app.mt
 
 import android.content.Context
-import android.content.res.AssetFileDescriptor
 import android.content.res.AssetManager
 import java.io.FileNotFoundException
 import java.io.IOException
+import vn.viettechtrans.app.mt.marian.MarianTranslator
 
-/** Result of looking for an MT package in `assets/mt/`. */
+/** Result of looking for the MT package in `assets/mt/`. */
 sealed interface CoreMt {
-    /** No `assets/mt/manifest.json`: the offline build shows the source text only. */
+    /** No `assets/mt/manifest.json` (tools/mt/package_mt.py not run): the app shows the source text only. */
     data object NotInstalled : CoreMt
 
     data class Invalid(val reasons: List<String>) : CoreMt
 
-    data class Available(val translator: Translator) : CoreMt
+    data class Available(val translator: Translator, val manifest: MtPackageManifest) : CoreMt
 }
 
-/**
- * Entry point for the Core/Student MT package (Phase 04). Until Phase 04 adds
- * `CoreMtTranslator`, a valid package is still reported as not usable.
- */
+/** Entry point for the Main-Core MT package (Phase 03 Student, packaged in Phase 04). */
 object CoreMtProvider {
     fun open(context: Context): CoreMt {
-        val assets = context.assets
+        val assets = context.applicationContext.assets
         val text = try {
             assets.open(MtPackageManifest.ASSET_PATH).use { it.readBytes().decodeToString() }
         } catch (e: FileNotFoundException) {
@@ -35,34 +32,15 @@ object CoreMtProvider {
         } catch (e: IllegalArgumentException) { // includes SerializationException
             return CoreMt.Invalid(listOf("manifest.json sai định dạng: ${e.message}"))
         }
-        val problems = MtPackageValidator.validate(manifest) { path -> assetSize(assets, "mt/$path") }
+        val problems = MtPackageValidator.validate(manifest) { path -> exists(assets, "mt/$path") }
         if (problems.isNotEmpty()) return CoreMt.Invalid(problems)
-        // Phase 04: return CoreMt.Available(CoreMtTranslator(context, manifest))
-        return CoreMt.Invalid(listOf("CoreMtTranslator chưa có (Phase 04)"))
+        return CoreMt.Available(MarianTranslator(assets, manifest), manifest)
     }
 
-    /** Size of an asset; works for uncompressed (openFd) and compressed assets. */
-    private fun assetSize(assets: AssetManager, path: String): Long? {
-        try {
-            assets.openFd(path).use { fd ->
-                if (fd.length != AssetFileDescriptor.UNKNOWN_LENGTH) return fd.length
-            }
-        } catch (e: IOException) {
-            // Compressed assets cannot be opened as a file descriptor; count the stream below.
-        }
-        return try {
-            assets.open(path).use { stream ->
-                var total = 0L
-                val buffer = ByteArray(64 * 1024)
-                while (true) {
-                    val read = stream.read(buffer)
-                    if (read < 0) break
-                    total += read
-                }
-                total
-            }
-        } catch (e: IOException) {
-            null
-        }
+    private fun exists(assets: AssetManager, path: String): Boolean = try {
+        assets.open(path).close()
+        true
+    } catch (e: IOException) {
+        false
     }
 }

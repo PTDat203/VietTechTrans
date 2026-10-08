@@ -81,7 +81,7 @@ fun roleName(role: EngineRole): String = stringResource(
 )
 
 @Composable
-fun TranslateScreen(container: AppContainer, onHelp: () -> Unit) {
+fun TranslateScreen(container: AppContainer, onBack: () -> Unit, onHelp: () -> Unit) {
     val vm: TranslateViewModel = viewModel { TranslateViewModel(container) }
     val s by vm.state.collectAsStateWithLifecycle()
     val permissionText = stringResource(R.string.mic_permission_needed)
@@ -97,6 +97,7 @@ fun TranslateScreen(container: AppContainer, onHelp: () -> Unit) {
         title = stringResource(R.string.nav_translate),
         subtitle = stringResource(R.string.translate_subtitle),
         onHelp = onHelp,
+        onBack = onBack,
     ) {
         LanguageBar(
             source = s.direction.source,

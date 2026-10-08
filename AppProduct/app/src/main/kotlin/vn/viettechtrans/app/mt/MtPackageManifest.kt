@@ -6,8 +6,8 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonElement
 
 /**
- * `assets/mt/manifest.json` of an MT package (docs/contracts/mt_package_v1.md §4).
- * Unknown optional fields are ignored; a missing required field fails [parse].
+ * `assets/mt/manifest.json` of the MT package (docs/contracts/mt_package_v2.md), written by
+ * tools/mt/package_mt.py. Unknown optional fields are ignored; a missing required field fails [parse].
  */
 @Serializable
 data class MtPackageManifest(
@@ -16,22 +16,15 @@ data class MtPackageManifest(
     @SerialName("package_version") val packageVersion: String,
     @SerialName("created_at_utc") val createdAtUtc: String,
     @SerialName("model_role") val modelRole: String,
-    @SerialName("base_model") val baseModel: BaseModel,
+    val architecture: String,
     val runtime: Runtime,
-    val quantization: Quantization,
-    val tokenizer: TokenizerSpec,
+    val quantization: JsonElement,
     @SerialName("input_normalization") val inputNormalization: String,
     val directions: Map<String, DirectionSpec>,
     val files: List<FileEntry>,
     @SerialName("core_refs") val coreRefs: List<CoreRef> = emptyList(),
     @SerialName("license_notes") val licenseNotes: String,
 ) {
-    @Serializable
-    data class BaseModel(
-        @SerialName("model_id") val modelId: String,
-        val revision: String,
-    )
-
     @Serializable
     data class Runtime(
         val engine: String,
@@ -41,38 +34,26 @@ data class MtPackageManifest(
     )
 
     @Serializable
-    data class Quantization(
-        val method: String,
-        val tool: String? = null,
-        @SerialName("per_channel") val perChannel: Boolean? = null,
-    )
-
-    @Serializable
     data class TokenizerSpec(
         val type: String,
-        val file: String,
-        @SerialName("sp_piece_count") val spPieceCount: Int,
+        @SerialName("source_spm") val sourceSpm: String,
+        val vocab: String,
         @SerialName("vocab_size") val vocabSize: Int,
-        @SerialName("add_bos") val addBos: Boolean,
-        @SerialName("add_eos") val addEos: Boolean,
-        @SerialName("pad_id") val padId: Int,
         @SerialName("eos_id") val eosId: Int,
         @SerialName("unk_id") val unkId: Int,
-        @SerialName("decode_skip_ids") val decodeSkipIds: List<Int>,
-        @SerialName("decode_skip_id_ranges") val decodeSkipIdRanges: List<List<Int>>,
+        @SerialName("pad_id") val padId: Int,
     )
 
     @Serializable
     data class DirectionSpec(
+        val model: String,
+        val tokenizer: TokenizerSpec,
         @SerialName("input_prefix") val inputPrefix: String,
-        @SerialName("output_control_prefix") val outputControlPrefix: String? = null,
-        @SerialName("output_normalization") val outputNormalization: String,
-        val files: Map<String, String>,
         val generation: Generation,
         @SerialName("input_length_policy") val inputLengthPolicy: InputLengthPolicy,
         @SerialName("source_checkpoint") val sourceCheckpoint: SourceCheckpoint,
         @SerialName("golden_file") val goldenFile: String,
-        val quality: Quality,
+        val quality: JsonElement? = null,
     )
 
     @Serializable
@@ -80,33 +61,26 @@ data class MtPackageManifest(
         val strategy: String,
         @SerialName("num_beams") val numBeams: Int,
         @SerialName("max_length") val maxLength: Int,
+        @SerialName("length_penalty") val lengthPenalty: Float,
+        @SerialName("early_stopping") val earlyStopping: Boolean,
         @SerialName("decoder_start_token_id") val decoderStartTokenId: Int,
         @SerialName("eos_token_id") val eosTokenId: Int,
+        @SerialName("forced_eos_token_id") val forcedEosTokenId: Int,
+        @SerialName("bad_words_ids") val badWordsIds: List<List<Int>>,
+        @SerialName("renormalize_logits") val renormalizeLogits: Boolean,
     )
 
     @Serializable
     data class InputLengthPolicy(
-        @SerialName("max_input_tokens") val maxInputTokens: Int? = null,
+        @SerialName("max_input_tokens") val maxInputTokens: Int,
         @SerialName("on_exceed") val onExceed: String,
     )
 
     @Serializable
     data class SourceCheckpoint(
+        @SerialName("run_id") val runId: String,
         val path: String,
         @SerialName("sha256_tree") val sha256Tree: String,
-    )
-
-    @Serializable
-    data class Quality(
-        @SerialName("checkpoint_it_test") val checkpointItTest: Scores? = null,
-        /** Structure fixed at Phase 04 (quality of the export on IT Validation). */
-        val exported: JsonElement? = null,
-    )
-
-    @Serializable
-    data class Scores(
-        @SerialName("chrF++") val chrfPlusPlus: Double,
-        @SerialName("sacreBLEU") val sacreBleu: Double,
     )
 
     @Serializable
@@ -120,6 +94,7 @@ data class MtPackageManifest(
     data class CoreRef(
         val path: String,
         val sha256: String,
+        val source: String? = null,
     )
 
     companion object {
@@ -132,24 +107,28 @@ data class MtPackageManifest(
     }
 }
 
-/** Structural checks of docs/contracts/mt_package_v1.md §7; hashes are checked by tools/check_apk.py. */
+/**
+ * Structural checks of docs/contracts/mt_package_v2.md: everything the app's decoder assumes
+ * (beam search of transformers 4.57, pad banned, renormalized) must be what the package declares.
+ * File hashes are checked by tools/check_apk.py; exact sizes when a file is loaded
+ * (MarianTranslator.read), so opening the app never inflates the 180 MB of models.
+ */
 object MtPackageValidator {
-    const val SUPPORTED_MAJOR = 1
+    const val SUPPORTED_MAJOR = 2
 
     private val ID_RE = Regex("[A-Za-z0-9][A-Za-z0-9._-]*")
     private val SEMVER_RE = Regex("""\d+\.\d+\.\d+([-+][0-9A-Za-z.-]+)?""")
     private val SCHEMA_RE = Regex("""(\d+)\.(\d+)""")
     private val SHA256_RE = Regex("[0-9a-f]{64}")
     private val UTC_RE = Regex("""\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?\+00:00""")
-    private val ROLES = setOf("core_mt", "student_mt")
     private val ABIS = setOf("arm64-v8a", "x86_64")
-    private val ON_EXCEED = setOf("segment_whitespace")
+    private val PREFIX = mapOf("en_to_vi" to ">>vie<<", "vi_to_en" to "")
 
     /**
      * Returns problems in Vietnamese; empty means valid.
-     * [assetSize] returns the size of `assets/mt/<path>` or null when the file is missing.
+     * [exists] tells whether `assets/mt/<path>` is in the APK.
      */
-    fun validate(m: MtPackageManifest, assetSize: (String) -> Long?): List<String> {
+    fun validate(m: MtPackageManifest, exists: (String) -> Boolean): List<String> {
         val problems = mutableListOf<String>()
         fun check(ok: Boolean, message: () -> String) {
             if (!ok) problems += message()
@@ -162,41 +141,37 @@ object MtPackageValidator {
         check(ID_RE.matches(m.packageId)) { "package_id không hợp lệ: ${m.packageId}" }
         check(SEMVER_RE.matches(m.packageVersion)) { "package_version không phải semver: ${m.packageVersion}" }
         check(UTC_RE.matches(m.createdAtUtc)) { "created_at_utc phải là ISO-8601 +00:00: ${m.createdAtUtc}" }
-        check(m.modelRole in ROLES) { "model_role phải là core_mt hoặc student_mt: ${m.modelRole}" }
-        check(m.baseModel.modelId.isNotBlank() && m.baseModel.revision.isNotBlank()) { "base_model thiếu model_id/revision" }
-
+        check(m.modelRole == "main_core") { "model_role phải là main_core: ${m.modelRole}" }
+        check(m.architecture == "MarianMT") { "architecture phải là MarianMT: ${m.architecture}" }
         check(m.runtime.engine == "onnxruntime") { "runtime.engine phải là onnxruntime: ${m.runtime.engine}" }
         check(m.runtime.executionProvider == "cpu") { "runtime.execution_provider phải là cpu" }
         check(m.runtime.abis.isNotEmpty() && ABIS.containsAll(m.runtime.abis)) {
             "runtime.abis phải là tập con khác rỗng của $ABIS: ${m.runtime.abis}"
         }
-
-        val tok = m.tokenizer
-        check(tok.type == "sentencepiece") { "tokenizer.type phải là sentencepiece: ${tok.type}" }
-        check(tok.decodeSkipIdRanges.all { it.size == 2 && it[0] <= it[1] }) { "tokenizer.decode_skip_id_ranges sai dạng [đầu, cuối]" }
         check(m.inputNormalization == MtInputNormalizer.ID) {
             "input_normalization phải là ${MtInputNormalizer.ID}: ${m.inputNormalization}"
         }
 
         check(m.directions.isNotEmpty()) { "directions rỗng" }
-        val referenced = mutableListOf(tok.file, m.licenseNotes)
+        val referenced = mutableListOf(m.licenseNotes)
         for ((id, d) in m.directions) {
-            check(Direction.entries.any { it.id == id }) { "directions có chiều lạ: $id" }
-            check(d.inputPrefix.isNotEmpty()) { "$id: input_prefix rỗng" }
-            check(d.outputNormalization == OutputPrefixStripper.POLICY || d.outputNormalization == "none") {
-                "$id: output_normalization không hỗ trợ: ${d.outputNormalization}"
-            }
-            check("encoder" in d.files && "decoder" in d.files) { "$id: files phải có encoder và decoder" }
+            check(id in PREFIX) { "directions có chiều lạ: $id" }
+            check(PREFIX[id] == null || d.inputPrefix == PREFIX[id]) { "$id: input_prefix phải là \"${PREFIX[id]}\"" }
+            val t = d.tokenizer
+            check(t.type == "marian_sentencepiece_unigram") { "$id: tokenizer.type không hỗ trợ: ${t.type}" }
+            check(listOf(t.eosId, t.unkId, t.padId).all { it in 0 until t.vocabSize }) { "$id: id đặc biệt nằm ngoài vocab" }
             val g = d.generation
-            check(g.strategy == "greedy" && g.numBeams == 1) { "$id: generation phải là greedy, num_beams 1" }
+            check(g.strategy == "beam_search" && g.numBeams >= 1) { "$id: generation phải là beam_search" }
             check(g.maxLength > 1) { "$id: generation.max_length phải > 1" }
-            check(d.inputLengthPolicy.maxInputTokens == null || d.inputLengthPolicy.maxInputTokens > 0) {
-                "$id: max_input_tokens phải > 0 hoặc null"
+            check(!g.earlyStopping) { "$id: app chỉ hỗ trợ early_stopping=false" }
+            check(g.forcedEosTokenId == g.eosTokenId) { "$id: forced_eos_token_id phải bằng eos_token_id" }
+            check(g.badWordsIds == listOf(listOf(t.padId)) && g.renormalizeLogits) {
+                "$id: graph chỉ cấm pad và chuẩn hoá lại log-prob; bad_words_ids/renormalize_logits khác"
             }
-            check(d.inputLengthPolicy.onExceed in ON_EXCEED) { "$id: on_exceed không hỗ trợ: ${d.inputLengthPolicy.onExceed}" }
+            check(d.inputLengthPolicy.maxInputTokens > 0) { "$id: max_input_tokens phải > 0" }
+            check(d.inputLengthPolicy.onExceed == "split_sentences") { "$id: on_exceed không hỗ trợ: ${d.inputLengthPolicy.onExceed}" }
             check(SHA256_RE.matches(d.sourceCheckpoint.sha256Tree)) { "$id: source_checkpoint.sha256_tree không hợp lệ" }
-            referenced += d.files.values
-            referenced += d.goldenFile
+            referenced += listOf(d.model, t.sourceSpm, t.vocab, d.goldenFile)
         }
 
         val listed = m.files.associateBy { it.path }
@@ -205,11 +180,7 @@ object MtPackageValidator {
             check(isSafeRelativePath(entry.path)) { "path không an toàn: ${entry.path}" }
             check(entry.bytes > 0) { "${entry.path}: bytes phải > 0" }
             check(SHA256_RE.matches(entry.sha256)) { "${entry.path}: sha256 phải là 64 ký tự hex thường" }
-            val actual = assetSize(entry.path)
-            check(actual != null) { "thiếu file trong assets/mt: ${entry.path}" }
-            check(actual == null || entry.bytes <= 0 || actual == entry.bytes) {
-                "${entry.path}: kích thước $actual B khác manifest ${entry.bytes} B"
-            }
+            check(exists(entry.path)) { "thiếu file trong assets/mt: ${entry.path}" }
         }
         for (path in referenced.distinct()) {
             check(path in listed) { "file được tham chiếu nhưng không có trong files[]: $path" }

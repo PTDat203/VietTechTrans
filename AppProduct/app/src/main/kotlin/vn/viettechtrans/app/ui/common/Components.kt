@@ -36,12 +36,16 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import vn.viettechtrans.app.R
 import vn.viettechtrans.app.ui.theme.LocalGradients
 
-/** Large screen header on a soft brand gradient: optional back button, title, subtitle, actions. */
+/**
+ * Screen header on a soft brand gradient: optional leading button (← back, or ☰ with
+ * [navIcon]), title, subtitle, actions. [compact]: one-line title (conversation titles).
+ */
 @Composable
 fun VttHeader(
     title: String,
@@ -49,6 +53,8 @@ fun VttHeader(
     subtitle: String? = null,
     onBack: (() -> Unit)? = null,
     backDescription: String? = null,
+    navIcon: Int = R.drawable.ic_arrow_back,
+    compact: Boolean = false,
     actions: @Composable RowScope.() -> Unit = {},
 ) {
     Box(
@@ -67,12 +73,18 @@ fun VttHeader(
                         contentColor = MaterialTheme.colorScheme.primary,
                     ),
                 ) {
-                    Icon(painterResource(R.drawable.ic_arrow_back), contentDescription = backDescription)
+                    Icon(painterResource(navIcon), contentDescription = backDescription)
                 }
                 Spacer(Modifier.width(12.dp))
             }
             Column(modifier = Modifier.weight(1f)) {
-                Text(title, style = MaterialTheme.typography.headlineMedium, color = MaterialTheme.colorScheme.onBackground)
+                Text(
+                    title,
+                    style = if (compact) MaterialTheme.typography.titleLarge else MaterialTheme.typography.headlineMedium,
+                    color = MaterialTheme.colorScheme.onBackground,
+                    maxLines = if (compact) 1 else 2,
+                    overflow = TextOverflow.Ellipsis,
+                )
                 if (subtitle != null) {
                     Text(subtitle, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }

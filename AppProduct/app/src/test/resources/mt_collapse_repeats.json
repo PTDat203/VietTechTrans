@@ -1,0 +1,137 @@
+{
+ "generator": "tools/mt/marian_ref.py collapse_repeats (validation outputs of evidence/phase04/mt_export_q8 that change, plus edge cases)",
+ "cases": [
+  {
+   "text": "Please, please, please, please, please, please.",
+   "expected": "Please."
+  },
+  {
+   "text": "No, no, no, no, no, no, no, no,",
+   "expected": "No"
+  },
+  {
+   "text": "Bộ đồng bộ đồng bộ đồng bộ đồng bộ",
+   "expected": "Bộ đồng bộ"
+  },
+  {
+   "text": "really really really",
+   "expected": "really really really"
+  },
+  {
+   "text": "Game Boy  advance",
+   "expected": "Game Boy  advance"
+  },
+  {
+   "text": "Hello",
+   "expected": "Hello"
+  },
+  {
+   "text": "",
+   "expected": ""
+  },
+  {
+   "text": "Tai nghe chơi game Mivi Commando Z7 với thời lượng pin 50h &amp; chế độ độ độ độ độ trễ thấp 35ms ra mắt tại Ấn Độ",
+   "expected": "Tai nghe chơi game Mivi Commando Z7 với thời lượng pin 50h &amp; chế độ trễ thấp 35ms ra mắt tại Ấn Độ"
+  },
+  {
+   "text": "Giải phóng sức mạnh của AI tổng quát: Đảm bảo tương lai của doanh nghiệp của bạn tại Atlanta AI I I I I I I I I I I I I I I I I Iction Tour (Ngày 10 tháng 10)",
+   "expected": "Giải phóng sức mạnh của AI tổng quát: Đảm bảo tương lai của doanh nghiệp của bạn tại Atlanta AI I Iction Tour (Ngày 10 tháng 10)"
+  },
+  {
+   "text": "A- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g-",
+   "expected": "A- g-"
+  },
+  {
+   "text": "Bộ đồng bộ đồng bộ đồng bộ đồng bộ",
+   "expected": "Bộ đồng bộ"
+  },
+  {
+   "text": "Mercedes cầm tay lái: Kiểm tra quyền tự chủ Drive Pilot L3 trong lưu lượng lưu lượng lưu lượng lưu lượng",
+   "expected": "Mercedes cầm tay lái: Kiểm tra quyền tự chủ Drive Pilot L3 trong lưu lượng"
+  },
+  {
+   "text": "U- x- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g-",
+   "expected": "U- x- g-"
+  },
+  {
+   "text": "Ưu đãi tốt nhất của Apple trong tuần: Nhận mức giá thấp trên MacBook Air, Air Air Air Air và Mac Mini",
+   "expected": "Ưu đãi tốt nhất của Apple trong tuần: Nhận mức giá thấp trên MacBook Air, và Mac Mini"
+  },
+  {
+   "text": "Kweicuse Moutai và Luckyin để sản xuất cà phê pha trà trà trà trà Baijiu một món hàng thường xuyên trong bối cảnh doanh số bán hàng nóng",
+   "expected": "Kweicuse Moutai và Luckyin để sản xuất cà phê pha trà Baijiu một món hàng thường xuyên trong bối cảnh doanh số bán hàng nóng"
+  },
+  {
+   "text": "Công nghệ âm thanh ra mắt tai nghe ATH-TWX7 TWS với ANC lai, chế độ độ độ độ trễ thấp",
+   "expected": "Công nghệ âm thanh ra mắt tai nghe ATH-TWX7 TWS với ANC lai, chế độ trễ thấp"
+  },
+  {
+   "text": "CDs The VPN VPN VPN VPN được gọi bằng cách gõ vào thanh vị trí của Konqueror. Trong mô- đun này, bạn có thể cấu hình bảng mã và thiết lập. Ghi chú rằng mã hóa CD- ROM hoặc DVD của bạn chỉ có sẵn nếu KDE được xây dựng với phiên bản gần đây của thư viện LAME hoặc Ogg.",
+   "expected": "CDs The VPN được gọi bằng cách gõ vào thanh vị trí của Konqueror. Trong mô- đun này, bạn có thể cấu hình bảng mã và thiết lập. Ghi chú rằng mã hóa CD- ROM hoặc DVD của bạn chỉ có sẵn nếu KDE được xây dựng với phiên bản gần đây của thư viện LAME hoặc Ogg."
+  },
+  {
+   "text": "Tối ưu hóa các truy vấn cơ sở dữ liệu là rất cần thiết để đáp ứng ứng ứng ứng dụng.",
+   "expected": "Tối ưu hóa các truy vấn cơ sở dữ liệu là rất cần thiết để đáp ứng dụng."
+  },
+  {
+   "text": "Leonov, cũng được biết đến là 'cosmonaut No. 11, là một phần của nhóm vũ trụ gốc của Liên bang Liên bang Liên bang Liên bang Liên bang.",
+   "expected": "Leonov, cũng được biết đến là 'cosmonaut No. 11, là một phần của nhóm vũ trụ gốc của Liên bang."
+  },
+  {
+   "text": "Một tế bào là gì? Từ ngữ này đến từ từ từ từ tiếng La- tinh, nghĩa là 'cả phòng nhỏ' và nó được tạo ra đầu tiên bởi một nhà sao chép vi mô quan sát cấu trúc nút thắt.",
+   "expected": "Một tế bào là gì? Từ ngữ này đến từ tiếng La- tinh, nghĩa là 'cả phòng nhỏ' và nó được tạo ra đầu tiên bởi một nhà sao chép vi mô quan sát cấu trúc nút thắt."
+  },
+  {
+   "text": "RC Dual Raspberry Pi Pi Pi Pi Pico W Power RC controller and car",
+   "expected": "RC Dual Raspberry Pi Pico W Power RC controller and car"
+  },
+  {
+   "text": "Control This module helps check if the joystick is working correctly. If it offers wrong values for the axis, you can fix it with the balancer. This module tries to find all control devices by checking / dev/ js{0- and / dev/ input/ js[0- If you have another device file, enter it in the combo box. The Button List shows the state of buttons on your controller, the X-axis list shows the current values of the axes. NOTE: The current Linux device driver (K4, 2.4) can only automatically detect 2-axis, 4-axis, 4-axis, 4-axis, 4-axis, 4-axis, 4-axis, 4-axis, 4-axis, 4-axis, 4-axis, 4-axis/ CNM/ CTMDDDDDDDDD",
+   "expected": "Control This module helps check if the joystick is working correctly. If it offers wrong values for the axis, you can fix it with the balancer. This module tries to find all control devices by checking / dev/ js{0- and / dev/ input/ js[0- If you have another device file, enter it in the combo box. The Button List shows the state of buttons on your controller, the X-axis list shows the current values of the axes. NOTE: The current Linux device driver (K4, 2.4) can only automatically detect 2-axis, 4-axis, CNM/ CTMDDDDDDDDD"
+  },
+  {
+   "text": "iPhone SI P i P i i i i i i i i i i i i i S i i 4 DIRECT - 10 major changes",
+   "expected": "iPhone SI P i P i S i i 4 DIRECT - 10 major changes"
+  },
+  {
+   "text": "Simulates the Rubic Snake puzzle game. http: //en. wikipedia. org/ wiki/ http: //en. wikipedia. org/ wiki/ http: //en. org/ wiki/ http: //en. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ http: //en. wikipedia. org/ wiki/ wiki/ wiki/ http: /en. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: // wiki/ wiki/ wiki/ wiki/ http: // wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: http: wiki/ wiki/ wiki/ wiki/ wiki/ http: http: /en. wikipedia/ wiki/ http: http: http: http: /en Written/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia. wikipedia. wikipedia. wikipedia. wikipedia/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: // wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki",
+   "expected": "Simulates the Rubic Snake puzzle game. http: //en. wikipedia. org/ wiki/ http: //en. wikipedia. org/ wiki/ http: //en. org/ wiki/ http: //en. wikipedia. org/ wiki/ http: //en. wikipedia. org/ wiki/ wiki/ wiki/ http: /en. wikipedia. org/ wiki/ http: // wiki/ http: // wiki/ http: /en. wikipedia. org/ wiki/ http: /en. wikipedia. wikipedia. org/ wiki/ http: /en. wikipedia/ wiki/ http: http: wiki/ http: http: /en. wikipedia/ wiki/ http: /en Written/ wiki/ http: /en. wikipedia. wiki/ http: /en. wikipedia/ wiki/ http: // wiki/ http: /en. wikipedia/ wiki"
+  },
+  {
+   "text": "Daily Report: see carbon Carbon Carbon Carbon Carbon melts ice on Mars",
+   "expected": "Daily Report: see carbon melts ice on Mars"
+  },
+  {
+   "text": "Simulates going down a mine shaft, or a dancing worm. http: //en. wikipedia. org/ wiki/ Lit. wikipedia. org/ wiki/ Lit. org/ wiki/ Lit. wikipedia. org/ wiki/ Lit. org/ wiki/ Lit. http: / /en. wikipedia. org/en. org/en. wikipedia. org/ wiki/ Mot. wikipedia. org/ wiki/ Mot. org/ wiki/ Mot. wikipedia. org/ http: //en. wikipedia. org/ wiki/ wiki/ wiki/ http: /en. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: // wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. org/ http: // wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en Written/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia/ wiki/ wiki/ wiki/ wiki/ http: /en. org/ wiki/ http: /en. wikipedia/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en Written/ wiki/ wiki/ wiki/ wiki/ http: /en Written/ http: /en. wikipedia. wikipedia/ wiki/ wiki/ wiki/ http: /en. wikipedia/ wiki/ wiki/ wiki/ http: wikipedia. wikipedia. wikipedia. wikipedia. wikipedia. wikipedia. wikipedia. wikipedia. wikipedia. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia/ http: /en/ http: /en. wikipedia/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/",
+   "expected": "Simulates going down a mine shaft, or a dancing worm. http: //en. wikipedia. org/ wiki/ Lit. wikipedia. org/ wiki/ Lit. org/ wiki/ Lit. wikipedia. org/ wiki/ Lit. org/ wiki/ Lit. http: / /en. wikipedia. org/en. org/en. wikipedia. org/ wiki/ Mot. wikipedia. org/ wiki/ Mot. org/ wiki/ Mot. wikipedia. org/ http: //en. wikipedia. org/ wiki/ wiki/ wiki/ http: /en. wikipedia. org/ wiki/ http: /en. wikipedia. org/ wiki/ http: /en. wikipedia. wikipedia. org/ wiki/ http: // wiki/ http: /en. org/ http: // wiki/ http: /en/ wiki/ http: /en Written/ wiki/ http: /en. wikipedia/ wiki/ http: /en. org/ wiki/ http: /en. wikipedia/ wiki/ http: /en Written/ wiki/ http: /en Written/ http: /en. wikipedia. wikipedia/ wiki/ wiki/ wiki/ http: /en. wikipedia/ wiki/ wiki/ wiki/ http: wikipedia. org/ wiki/ http: /en. wikipedia/ http: /en/ http: /en. wikipedia/ wiki/"
+  },
+  {
+   "text": "Two Raspberry Pi Pi Pi Pi Picos powering the embedded watch, with dual-screen LED display",
+   "expected": "Two Raspberry Pi Picos powering the embedded watch, with dual-screen LED display"
+  },
+  {
+   "text": "This paper size indicates paper size where paper tiles are printed. To select other paper sizes for poster tiles, go to the \"Create\" bar of this dialog, then select a paper size in the dropdown list. The paper size is mostly available for that printer-powered paper size. To select the paper sizes supported by your printer can be read from the printer driver's'bar (as specified in PHS, the printer description list is dropped). Note that the \"Size\" is probably not supported by the poster (e. e. e. ), even if your printer can be read from this printer, simply use a small paper pointer, such as \"Address\". Note that you need to select a small print when you want to select the \"A\". Note that you want to select a print from the right-click button below. You need to try to select the \"A\" button to try to print to print button to print to print to print button to print button to print to print to print to print to print to print to print to print to print below the \"A\". You need to select \"A\". You need to print \"A\". You need to select \"A\". You need to print \"A\". You need to select \"A\". You need to select \"A\". You need to print \"A\". You need to select \"A\". You need to print \"A\" on the right-click \"A\". You need to select \"A\" on the right\". You need to select \"A\". You need to select \"A\" on the right\". You need to select \"A\" on the right\". You need to print \"A\". You must have a small\". You need to select \"A\".",
+   "expected": "This paper size indicates paper size where paper tiles are printed. To select other paper sizes for poster tiles, go to the \"Create\" bar of this dialog, then select a paper size in the dropdown list. The paper size is mostly available for that printer-powered paper size. To select the paper sizes supported by your printer can be read from the printer driver's'bar (as specified in PHS, the printer description list is dropped). Note that the \"Size\" is probably not supported by the poster (e. e. e. ), even if your printer can be read from this printer, simply use a small paper pointer, such as \"Address\". Note that you need to select a small print when you want to select the \"A\". Note that you want to select a print from the right-click button below. You need to try to select the \"A\" button to try to print to print button to print to print to print button to print button to print below the \"A\". You need to select \"A\". You need to print \"A\". You need to select \"A\". You need to print \"A\". You need to select \"A\". You need to select \"A\". You need to print \"A\". You need to select \"A\". You need to print \"A\" on the right-click \"A\". You need to select \"A\" on the right\". You need to select \"A\". You need to select \"A\" on the right\". You need to select \"A\" on the right\". You need to print \"A\". You must have a small\". You need to select \"A\"."
+  },
+  {
+   "text": "Draws a rotating and distorted ball with many paint points on it. http: //en. wikipedia. org/ wiki/ wiki/ http: //en. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ wiki/ http: //en. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: // wiki/ wiki/ wiki/ wiki/ wiki/ http: // wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: // wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia. wikipedia. wikipedia. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: http: http: http: http: http: http: http: /en. wikipedia/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: http: http: http: http: http: http: /en/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki",
+   "expected": "Draws a rotating and distorted ball with many paint points on it. http: //en. wikipedia. org/ wiki/ wiki/ http: //en. wikipedia. org/ wiki/ http: //en. wikipedia. org/ wiki/ http: // wiki/ http: // wiki/ http: // wiki/ http: /en. wikipedia. org/ wiki/ http: /en. wikipedia/ wiki/ http: /en. wikipedia/ wiki/ http: /en. wikipedia/ wiki/ http: /en/ wiki"
+  },
+  {
+   "text": "Simulates toys with pens and baby plastic gears. http: //en. wikipedia. org/ wiki/ wiki/ http: //en. wikipedia. org/ wiki/ wiki/ http: //en. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ wiki/ http: //en. wikipedia. org/ wiki/ wiki/ wiki/ http: /en. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. wikipedia. org/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: /en. org/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: http: http: http: http: http: http: http: http: http: http: http: http: http: http: http: // wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: // wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: // wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ http: wikipedia/ wiki/ http: http: http: http: /en/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/ wiki/",
+   "expected": "Simulates toys with pens and baby plastic gears. http: //en. wikipedia. org/ wiki/ wiki/ http: //en. wikipedia. org/ wiki/ wiki/ http: //en. wikipedia. org/ wiki/ http: //en. wikipedia. org/ wiki/ wiki/ wiki/ http: /en. wikipedia. org/ wiki/ http: /en. wikipedia. org/ wiki/ http: /en. wikipedia. org/ wiki/ http: /en. wikipedia. org/ wiki/ http: /en. org/ wiki/ http/ wiki/ http/ wiki/ http: // wiki/ http: // wiki/ http: // wiki/ http: wikipedia/ wiki/ http: /en/ wiki/"
+  },
+  {
+   "text": "Audio Audio Audio Audio CDs will let you easily remove wav, MP3, and Ogg v3 files from CD- ROM or DVDs. Toyotae is called by typing \"audiocd\" in Konqueror's location bar. In this module, you can easily configure all aspects of theslave file as encryption, search CAD, and set up devices. Note that MP3 and Ogg v3 code is only used if KDE is built with recent versions of the library and Ogg.",
+   "expected": "Audio CDs will let you easily remove wav, MP3, and Ogg v3 files from CD- ROM or DVDs. Toyotae is called by typing \"audiocd\" in Konqueror's location bar. In this module, you can easily configure all aspects of theslave file as encryption, search CAD, and set up devices. Note that MP3 and Ogg v3 code is only used if KDE is built with recent versions of the library and Ogg."
+  },
+  {
+   "text": "CATL introduces Tinxixing logistics commercial battery battery battery battery life with long battery life and ultrafast charging",
+   "expected": "CATL introduces Tinxixing logistics commercial battery life with long battery life and ultrafast charging"
+  },
+  {
+   "text": "Cooler Master Master Master Master Master Master Master Master Master’s flexible approach in console management rival to Stream Deck coming this summer",
+   "expected": "Cooler Master Master’s flexible approach in console management rival to Stream Deck coming this summer"
+  }
+ ]
+}

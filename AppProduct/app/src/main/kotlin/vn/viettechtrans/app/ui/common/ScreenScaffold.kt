@@ -3,6 +3,8 @@ package vn.viettechtrans.app.ui.common
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
@@ -17,7 +19,7 @@ import vn.viettechtrans.app.R
 /**
  * Common screen frame: large gradient header with a "?" button (opens the manual
  * section) and scrollable content capped at 720dp wide so large screens stay readable.
- * The floating navigation bar below handles the system navigation insets.
+ * The content stays clear of the system navigation bar and the keyboard.
  */
 @Composable
 fun ScreenScaffold(
@@ -39,6 +41,8 @@ fun ScreenScaffold(
         Column(
             modifier = Modifier
                 .fillMaxSize()
+                .navigationBarsPadding()
+                .imePadding()
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 16.dp, vertical = 12.dp),
             horizontalAlignment = Alignment.CenterHorizontally,

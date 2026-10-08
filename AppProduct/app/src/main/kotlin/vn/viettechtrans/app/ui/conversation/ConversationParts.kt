@@ -50,20 +50,18 @@ import vn.viettechtrans.app.ui.common.onCardControlColor
 import vn.viettechtrans.app.ui.theme.LocalGradients
 
 /** UI strings of one person's controls, in that person's language (B sees English). */
-data class PartyStrings(val button: String, val speak: String, val listening: String, val waiting: String, val processing: String)
+data class PartyStrings(val button: String, val speak: String, val listening: String, val processing: String)
 
 @Composable
 fun partyStrings(party: Party): PartyStrings = if (party == Party.A) {
     PartyStrings(
         stringResource(R.string.party_vi_button), stringResource(R.string.party_vi_speak),
-        stringResource(R.string.party_vi_listening), stringResource(R.string.party_vi_waiting),
-        stringResource(R.string.party_vi_processing),
+        stringResource(R.string.party_vi_listening), stringResource(R.string.party_vi_processing),
     )
 } else {
     PartyStrings(
         stringResource(R.string.party_en_button), stringResource(R.string.party_en_speak),
-        stringResource(R.string.party_en_listening), stringResource(R.string.party_en_waiting),
-        stringResource(R.string.party_en_processing),
+        stringResource(R.string.party_en_listening), stringResource(R.string.party_en_processing),
     )
 }
 
@@ -106,7 +104,6 @@ fun PartyMicButton(party: Party, ui: ConversationUi, onTap: () -> Unit, modifier
         Text(s.button, style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
         val status = when {
             listening -> s.listening
-            ui.engine.pending == party -> s.waiting
             ui.processing == party -> s.processing
             else -> null
         }
@@ -152,9 +149,12 @@ private fun StatusPill(text: String, color: Color) {
     }
 }
 
-/** One chat bubble: speaker's language badge, original (small), translation (large), replay. */
+/**
+ * One chat bubble: speaker's language badge, original (small), translation (large), replay and
+ * "Sửa" (correct the original when STT misheard or a typo slipped in, then translate again).
+ */
 @Composable
-fun MessageBubble(m: ChatMessage, onReplay: () -> Unit, modifier: Modifier = Modifier) {
+fun MessageBubble(m: ChatMessage, canEdit: Boolean, onReplay: () -> Unit, onEdit: () -> Unit, modifier: Modifier = Modifier) {
     val left = m.party == Party.A
     val on = onBubbleColor(m.party)
     Box(
@@ -174,6 +174,7 @@ fun MessageBubble(m: ChatMessage, onReplay: () -> Unit, modifier: Modifier = Mod
                     statusLabel(m)?.let {
                         StatusPill(it, if (m.status == MessageStatus.FAILED) MaterialTheme.colorScheme.error else on)
                     }
+                    if (m.edited) StatusPill(stringResource(R.string.conv_status_edited), on)
                 }
                 Spacer(Modifier.height(6.dp))
                 Text(
@@ -192,7 +193,26 @@ fun MessageBubble(m: ChatMessage, onReplay: () -> Unit, modifier: Modifier = Mod
                 }
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     if (m.timings.totalMs != null && m.translation != null) {
-                        Text(m.timings.format(), style = MaterialTheme.typography.labelSmall, color = on.copy(alpha = 0.55f))
+                        // Wraps instead of pushing the replay button out of the bubble.
+                        Text(
+                            m.timings.format(),
+                            style = MaterialTheme.typography.labelSmall,
+                            color = on.copy(alpha = 0.55f),
+                            modifier = Modifier.weight(1f, fill = false),
+                        )
+                    }
+                    Spacer(Modifier.width(4.dp))
+                    FilledTonalIconButton(
+                        onClick = onEdit,
+                        enabled = canEdit,
+                        modifier = Modifier.size(36.dp),
+                        colors = IconButtonDefaults.filledTonalIconButtonColors(containerColor = cardColor().copy(alpha = 0.7f)),
+                    ) {
+                        Icon(
+                            painterResource(R.drawable.ic_edit),
+                            contentDescription = stringResource(R.string.conv_edit),
+                            modifier = Modifier.size(18.dp),
+                        )
                     }
                     Spacer(Modifier.width(4.dp))
                     FilledTonalIconButton(

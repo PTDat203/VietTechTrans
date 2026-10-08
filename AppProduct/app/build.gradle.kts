@@ -35,20 +35,7 @@ android {
         buildConfigField("boolean", "GIT_DIRTY", gitDirty.toString())
     }
 
-    flavorDimensions += "dist"
-    productFlavors {
-        create("offline") {
-            dimension = "dist"
-            buildConfigField("boolean", "OFFLINE_BUILD", "true")
-        }
-        create("dev") {
-            dimension = "dist"
-            applicationIdSuffix = ".dev"
-            versionNameSuffix = "-dev"
-            buildConfigField("boolean", "OFFLINE_BUILD", "false")
-            proguardFile("proguard-dev.pro")
-        }
-    }
+    // One build only, fully offline (2026-10-07: the dev flavor with ML Kit was removed, DR-09).
 
     buildTypes {
         release {
@@ -81,6 +68,15 @@ android {
 
     // Model assets stay compressed in the APK (−35 MB, 2026-10-01: user asked for a smaller
     // app); they are inflated once per load, in the background, after the UI is shown.
+    // The 8-bit MT graphs only shrink 7% but follow the same rule.
+
+    packaging {
+        jniLibs {
+            // 32-bit ABIs are not supported; the sherpa AAR still carries a 32-bit libonnxruntime.so
+            // that would clash with onnxruntime-android's. The 64-bit sherpa JNI links ORT statically.
+            excludes += setOf("lib/x86/**", "lib/armeabi-v7a/**")
+        }
+    }
 
     testOptions {
         // Robolectric UI smoke tests on the JVM need merged resources.
@@ -92,8 +88,8 @@ dependencies {
     // Offline speech runtime (VAD, STT, TTS); ONNX Runtime is linked statically inside.
     // Fetched by tools/fetch_artifacts.py, pinned in artifacts.lock.json (not in git).
     implementation(files("../third_party/sherpa-onnx/sherpa-onnx-static-link-onnxruntime-1.13.8.aar"))
-    // Temporary translator for the dev flavor only (never in the offline APK).
-    "devImplementation"(libs.mlkit.translate)
+    // Main-Core MT (Phase 03 Student, packaged by tools/mt/package_mt.py into assets/mt/).
+    implementation(libs.onnxruntime.android)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
@@ -104,12 +100,13 @@ dependencies {
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
-    implementation(libs.androidx.compose.material3.adaptive.navigation.suite)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.serialization.json)
     debugImplementation(libs.androidx.compose.ui.tooling)
 
     testImplementation(libs.junit)
+    // Desktop build of the same ONNX Runtime: runs the packaged MT graph in JVM tests (MarianGoldenTest).
+    testImplementation(libs.onnxruntime.jvm)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.robolectric)
     testImplementation(libs.androidx.test.ext.junit)

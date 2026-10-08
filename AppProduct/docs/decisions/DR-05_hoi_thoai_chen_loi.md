@@ -1,6 +1,6 @@
 # DR-05 — Hội thoại hai người và chen lời
 
-**Trạng thái:** đã chốt · **Ngày:** 2026-10-02 · **Người viết:** Đạt (Claude soạn) ·
+**Trạng thái:** đã chốt; luân phiên, quy tắc Chờ và bố cục chia đôi thay thế bởi [DR-09](DR-09_thu_gon_app.md) · **Ngày:** 2026-10-02 · **Người viết:** Đạt (Claude soạn) ·
 **Liên quan:** mốc M6; `turn/ConversationReducer.kt`, `turn/TurnRunner.kt`,
 `ui/conversation/*`, DR-03 (STT), DR-04 (TTS)
 

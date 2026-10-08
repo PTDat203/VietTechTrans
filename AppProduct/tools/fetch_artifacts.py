@@ -7,7 +7,12 @@ to ``.cache/test_wavs/<role>/``, and ``espeak-ng-data`` keeps only the listed
 ``*_dict`` files. The run ends by writing ``app/src/main/assets/models/manifest.json``,
 from which the app reads model roles and file names.
 
-Standard library only (Python 3.9+). Run from ``AppProduct`` with the repo .venv::
+A file entry with ``derive`` is not used as extracted: the archive member (pinned by
+``derive.source_bytes``/``source_sha256``) is converted by ``derive.tool`` and the result is
+pinned by the entry's ``bytes``/``sha256`` (Piper voices: tools/tts/piper_weight_only.py).
+
+Standard library only (Python 3.9+); a ``derive`` tool runs with the same interpreter and may need
+more (numpy + onnx for Piper: the repo .venv has them). Run from ``AppProduct`` with the repo .venv::
 
     ..\\.venv\\Scripts\\python.exe tools\\fetch_artifacts.py            # fetch + install
     ..\\.venv\\Scripts\\python.exe tools\\fetch_artifacts.py --record   # also fill null hashes in the lock
@@ -24,6 +29,7 @@ import json
 import os
 import re
 import shutil
+import subprocess
 import sys
 import tarfile
 import time
@@ -140,7 +146,7 @@ def _check_pair(holder, keys: tuple, what: str) -> None:
         value = holder.get(key, "missing")
         if value is None:
             continue
-        if key == "sha256" or key == "sha256_tree":
+        if key.endswith("sha256") or key == "sha256_tree":
             if not isinstance(value, str) or not SHA256_RE.match(value):
                 raise FetchError(f"{what}.{key}: expected 64 lowercase hex characters or null")
         elif isinstance(value, bool) or not isinstance(value, int) or value < 0:
@@ -185,6 +191,11 @@ def validate_lock(lock) -> None:
             safe_rel(entry.get("to"), f"{aid}: files.to")
             if not isinstance(entry.get("key"), str) or not entry["key"]:
                 raise FetchError(f"{aid}: every file needs a key")
+            derive = entry.get("derive")
+            if derive is not None:
+                _check_pair(derive, ("source_bytes", "source_sha256"), f"{aid}.files.derive")
+                if not safe_rel(derive.get("tool"), f"{aid}: derive.tool").startswith("tools/") or inst["kind"] != "extract":
+                    raise FetchError(f"{aid}: derive needs an 'extract' install and a tool under tools/")
         for what in ("key", "to", "from"):
             values = [entry[what] for entry in files]
             if len(set(values)) != len(values):
@@ -235,6 +246,8 @@ def unrecorded(art: dict) -> list:
     names = [f"archive.{k}" for k in ("bytes", "sha256") if art["archive"][k] is None]
     for entry in art["install"]["files"]:
         names += [f"{entry['key']}.{k}" for k in ("bytes", "sha256") if entry[k] is None]
+        if "derive" in entry:
+            names += [f"{entry['key']}.derive.{k}" for k in ("source_bytes", "source_sha256") if entry["derive"][k] is None]
     espeak = art["install"].get("espeak_data")
     if espeak:
         names += [f"espeak_data.{k}" for k in ("file_count", "bytes", "sha256_tree") if espeak[k] is None]
@@ -428,6 +441,18 @@ def install_copy(art: dict, archive: Path, ctx: Context) -> None:
         tmp.unlink(missing_ok=True)
 
 
+def run_derive(art: dict, entry: dict, source: Path, target: Path, ctx: Context) -> tuple:
+    """Convert an extracted member with its derive tool; returns (size, sha256) of the result."""
+    tool = entry["derive"]["tool"]
+    print(f"  derive {entry['to']} with {tool}", flush=True)
+    proc = subprocess.run([sys.executable, "-I", str(ctx.root / tool), str(source), str(target)],
+                          capture_output=True, text=True, encoding="utf-8", errors="replace")
+    if proc.returncode != 0 or not target.is_file():
+        last = (proc.stderr or proc.stdout).strip().splitlines()[-1:] or ["no output"]
+        raise FetchError(f"{art['id']}: {tool} failed: {last[0]}")
+    return target.stat().st_size, sha256_file(target)
+
+
 def install_extract(art: dict, archive: Path, ctx: Context) -> None:
     """Stream the archive once; stage every output directory, then swap it in."""
     aid, inst = art["id"], art["install"]
@@ -452,6 +477,8 @@ def install_extract(art: dict, archive: Path, ctx: Context) -> None:
                 if member.name in wanted:
                     _check_member(member, stages[0], aid)
                     target = stages[0] / wanted[member.name]["to"]
+                    if "derive" in wanted[member.name]:
+                        target = target.with_name(target.name + ".source")
                     found[member.name] = _write_member(tar, member, target)
                     continue
                 for prefix, stage, _final, keep in sections:
@@ -467,7 +494,15 @@ def install_extract(art: dict, archive: Path, ctx: Context) -> None:
         if missing:
             raise FetchError(f"{aid}: missing in archive: {', '.join(missing)}")
         for name, (size, digest) in found.items():
-            check_file(wanted[name], size, digest, f"{aid}.{wanted[name]['key']}", ctx)
+            entry = wanted[name]
+            if "derive" in entry:
+                source = stages[0] / (entry["to"] + ".source")
+                what = f"{aid}.{entry['key']}.derive"
+                check_value(entry["derive"], "source_sha256", digest, what, ctx)
+                check_value(entry["derive"], "source_bytes", size, what, ctx)
+                size, digest = run_derive(art, entry, source, stages[0] / entry["to"], ctx)
+                source.unlink()
+            check_file(entry, size, digest, f"{aid}.{entry['key']}", ctx)
         for prefix, stage, _final, _keep in sections:
             if not any(stage.iterdir()):
                 raise FetchError(f"{aid}: no archive member under {prefix}")

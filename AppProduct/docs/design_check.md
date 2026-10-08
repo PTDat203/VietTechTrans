@@ -65,7 +65,7 @@ Luồng chạy, nạp model theo màn và bảng xử lý lỗi: [architecture.m
 | Ngôn ngữ, UI | Kotlin, Jetpack Compose; một module Gradle `:app` |
 | Android | minSdk 26; compile/target SDK theo template Android Studio, ghim trong `gradle/libs.versions.toml` (chốt ở M0) |
 | ABI | arm64-v8a, x86_64 (emulator); ABI split; không hỗ trợ 32-bit |
-| Flavor | `offline` (không có quyền INTERNET), `dev` (thêm ML Kit, không dùng làm evidence) |
+| Bản build | Một bản, không có quyền INTERNET (bản `dev` dùng ML Kit đã bỏ 2026-10-07, DR-09) |
 | Máy test | AVD API 35, RAM 4 GB (`VTT_API35_4GB`); nhắm máy khoảng 4 GB RAM; chưa có máy thật |
 
 ### 3.2 Model và runtime
@@ -82,7 +82,7 @@ Hash chính xác của từng file: `artifacts.lock.json`.
 | TTS EN | `vits-piper-en_US-ljspeech-medium-int8` | 18.5 MB | Dữ liệu public domain |
 | espeak-ng-data | chỉ giữ từ điển vi và en | 0.95 MB (bản đủ 18 MB) | GPL-3.0 |
 | Khử nhiễu (chỉ TN-02) | `gtcrn_simple.onnx` | 0.54 MB | MIT |
-| MT | gói theo `mt_package_v1` (Phase 04) | chưa có | theo gói |
+| MT | Main-Core Phase 03 (Student MarianMT), `assets/mt/` theo `mt_package_v2` | 2 × 82,5 MB (4-bit, lớp đầu ra 4+4 bit; 8-bit 91 MB đến 2026-10-08) | Apache-2.0 (OPUS-MT) + giới hạn sử dụng OpenRAIL (chưng cất từ EnViT5) |
 
 Ngày 2026-10-01 (người dùng yêu cầu app nhẹ hơn): đổi STT VI sang bản 30M, TTS sang int8, bỏ `noCompress` → asset 118.2 MB, APK release arm64: offline 104.2 MB, dev 120.4 MB (trước: 272.9 / 290.4 MB bản debug). Đo ở M-pre: asset 250.2 MB (260 file); thư viện native trong AAR (chưa nén)
 24.2 MB cho arm64-v8a, 27.4 MB cho x86_64. Kích thước APK thật đo bằng
@@ -131,32 +131,35 @@ mốc đầu–cuối: [contracts/evidence_app_v1.md](contracts/evidence_app_v1.
 | Khác biệt | Lý do | Ảnh hưởng |
 |---|---|---|
 | STT/TTS (Phase 05) làm trước Phase 03/04; MT gắn sau qua `Translator` và gói MT | Adapter và Student chưa có trên máy em | Evidence giai đoạn này chưa có MT; `APP_OFFLINE_E2E=WAITING` |
-| ML Kit Translate trong bản `dev` | Thử luồng hội thoại khi chưa có Core MT | Cần mạng một lần để tải gói (~30 MB); không bao giờ là evidence; APK offline không có ML Kit (`check_apk.py` kiểm) |
+| ~~ML Kit Translate trong bản `dev`~~ (bỏ 2026-10-07 khi đã gắn Main-Core MT) | Thử luồng hội thoại khi chưa có Core MT | Không còn; app chỉ có một bản offline |
 | Test trên emulator | Chưa có máy thật | Số liệu emulator chỉ kiểm tra chức năng; Phase 05 vẫn cần máy thật |
-| Thêm hội thoại hai người, chen lời, lịch sử (text), Hướng dẫn trong app, màn Thực nghiệm và TN-01…07 | Yêu cầu trong sketch; sơ đồ Core không có | Thêm DR và TN; không đổi hợp đồng MT |
-| Transcript sửa được, có "Dịch lại" | Xử lý khi STT nhận sai | Mỗi lần sửa tạo dòng lịch sử mới; evidence ghi cờ `edited` |
+| Thêm hội thoại hai người, chen lời (chỉ Cắt), lịch sử (text, kiểu ChatGPT), Hướng dẫn trong app; màn Thực nghiệm đã bỏ 2026-10-07 (DR-09) | Yêu cầu trong sketch; sơ đồ Core không có | Thêm DR và TN; không đổi hợp đồng MT |
+| Câu đã gửi sửa được (✎), có "Dịch lại" | Xử lý khi STT nhận sai | Câu được thay trong lịch sử, có cờ `edited` |
 | Ký tự điều khiển và U+FFFD bị xoá, không loại cả câu | Phase 01 loại dòng; app không loại được input của người dùng | Với text không có các ký tự này, kết quả giống `norm()` (kiểm bằng fixture) |
 
-## 6. Hợp đồng Phase 04 (tóm tắt)
+## 6. Gói MT trên app (Phase 04, đã làm 2026-10-07)
 
-Chi tiết: [contracts/mt_package_v1.md](contracts/mt_package_v1.md).
+Chi tiết: [contracts/mt_package_v2.md](contracts/mt_package_v2.md) (thay bản nháp v1 viết cho EnViT5).
+Core Phase 03 đã freeze Student MarianMT làm Main-Core cả hai chiều
+(`evidence/phase03/main_core_decision.json`, commit `50fb865`); README Phase 04 của Core giao
+việc convert, lượng tử hoá, đo cho phía app.
 
-- Gói ở `app/src/main/assets/mt/`: `manifest.json`, `tokenizer/spiece.model`,
-  ONNX encoder và decoder mỗi chiều, `golden/<chiều>.jsonl`, `LICENSE_NOTES.md`.
-  Không commit; ghim trong `artifacts.lock.json`, cài bằng `fetch_artifacts.py`.
-- Runtime ONNX Runtime Android (CPU), ABI arm64-v8a và x86_64; `model_role` là
-  `core_mt` hoặc `student_mt`.
-- Đầu vào: chuẩn hoá `phase01_nfc_whitespace_v1`, ghép `en:` / `vi:` liền với
-  text (không dấu cách), SentencePiece, thêm eos 1, không BOS.
-- Sinh: greedy, `num_beams` 1, `max_length` 512, `decoder_start_token_id` 0,
-  `eos_token_id` 1.
-- Đầu ra: bỏ id 0–2 và 50000–50047, decode, bỏ đúng tiền tố `vi:` / `en:` và
-  một khoảng trắng.
-- Golden `{id, source, expected}` sinh bằng bản ONNX export chạy Python trên IT
-  Validation; không dùng IT Test hay General Test.
-- Hash trên byte LF; đổi byte nào thì đổi `package_id`; app nhận
-  `schema_version` major 1.
-- Phase 04 chỉ sửa: `mt/**`, dependency ONNX Runtime, `assets/mt/`, mục lock.
+- Kiểm `sha256_tree` của hai checkpoint theo thuật toán của Core: khớp decision.
+- Graph ONNX tự dựng từ trọng số (encoder + 1 bước decoder có KV-cache trong một file, embedding
+  lưu một lần); bản fp32 khớp Hugging Face 30/30 câu, sai lệch log-prob 2·10⁻⁵.
+- Lượng tử hoá 8-bit theo khối 32 (`MatMulNBits`, accuracy level 4): 91 MB/chiều. chrF++ trên đúng
+  các tập Phase 03 dùng: EN→VI 66,54 (IT Val., Student 66,55) và 52,46 (General Val., 52,44);
+  VI→EN 61,26 (61,30) và 46,21 (46,20). Evidence: `evidence/phase04/mt_export_q8/`.
+- **2026-10-08 đổi sang 4-bit khối 16 (71 MB/chiều), rồi lớp đầu ra 4+4 bit (82,5 MB/chiều, DR-07 §14)**: trên điện thoại thật bản 8-bit dịch 15–30 s/câu vì
+  ONNX Runtime 1.30 chỉ có kernel 8-bit nhanh trên ARM khi CPU có dotprod/i8mm; thiếu thì giải nén cả ma
+  trận trọng số mỗi bước. 4-bit có kernel cho mọi ARM64, nhanh khoảng 10 lần trên máy đó; chrF++ thấp hơn
+  8-bit 0,06–0,34 với 4-bit thường; lớp đầu ra lưu 4-bit + 4-bit phần dư đưa về 0,04–0,14 (EN→VI 66,42 / 52,38;
+  VI→EN 61,31 / 46,10). Evidence: `evidence/phase04/mt_export_q4r/`, DR-07 §13–14. GPTQ với câu IT không giúp
+  (thiếu dữ liệu train miền chung để hiệu chỉnh).
+- Đầu vào giữ đúng Phase 03: chuẩn hoá `phase01_nfc_whitespace_v1`, `>>vie<<` + câu cho EN→VI,
+  tokenizer Marian (port Kotlin, khớp HF 4 873 câu/chiều). Giải mã đúng `generation_config` của
+  checkpoint: beam 4 (EN→VI), beam 6 (VI→EN), `max_length` 512.
+- Câu dài hơn 512 token (Phase 03 để Phase 04 tự định): tách theo câu, không cắt.
 
 ## 7. Phát hiện trong Core
 
@@ -223,14 +226,28 @@ Chi tiết: [contracts/mt_package_v1.md](contracts/mt_package_v1.md).
      biệt hoa thường). Với checkpoint Phase 02, ghi rõ "tính trên Windows" và kiểm
      bằng chính hàm của Core trên Windows.
 
+9. **Student Phase 03 (VI→EN) với câu rất ngắn và tiếng Việt không dấu** (thử trên điện thoại
+   2026-10-07; kiểm lại bằng chính checkpoint PyTorch `phase03-seqkd-vi-to-en-v3` với
+   `generation_config` của nó, app cho đúng từng token như PyTorch):
+   - Không dấu dịch sai: "chao ban" → "Order", "cam on ban" → "cam on board", "toi muon di ga tau" →
+     "Implemente move the route", "xin chao" → "Please, please, …" (26 lần). Có dấu thì đúng:
+     "chào bạn" → "Hello", "tôi muốn đi ga tàu" → "I want to go to the train station".
+   - Câu một hai từ: "không" → "No, no, no, …"; "chào bạn" ra "Hello" nhưng beam search chạy
+     511 bước (PyTorch trên PC 28,8 s; điện thoại 12,7 s), "vâng" 302 bước. Nguyên nhân:
+     `num_beams=6`, `early_stopping=false`, `max_length=512`; beam tốt nhất xong ở bước 2, các beam
+     còn lại không gặp EOS nên chạy tới 512. Trên Validation cũng có (vd. 4 câu VI→EN 511 token).
+   - App đã xử lý phía mình (DR-07 cập nhật 2026-10-07): giới hạn độ dài 2 × token nguồn + 20 (tới
+     ngưỡng thì trả câu hoàn chỉnh tốt nhất), gộp lặp, cảnh báo khi gõ không dấu. Không đổi model.
+   - Đề xuất cho Core: thêm dữ liệu câu hội thoại ngắn và bản không dấu của câu nguồn tiếng Việt khi
+     train Student; cân nhắc ghi `max_new_tokens` theo độ dài nguồn (hoặc `early_stopping=true`) vào
+     `generation_config`; thêm vài câu ngắn kiểu "chào bạn", "vâng", "không" vào bộ đánh giá.
+
 ## 8. Câu hỏi cho anh
 
-1. Gói MT: hai model merged, mỗi chiều khoảng 317 MB (int8)? Màn Hội thoại cần
-   cả hai chiều cùng STT/TTS, ước tính từ 1 GB RAM trở lên. Hay dùng Student,
-   hay một base dùng chung cộng adapter LoRA chạy bằng ONNX Runtime?
-2. Student có giữ tiền tố `en:` / `vi:` và tokenizer của EnViT5 không?
-3. `max_input_tokens`: giữ không giới hạn như Phase 02 hay đặt giới hạn cho máy
-   yếu? Nếu đặt, tách câu như `_split_source` được không?
+1. ~~Gói MT dùng model nào?~~ Đã trả lời bằng Phase 03: Student MarianMT (2 × 91 MB sau
+   lượng tử hoá; RAM đo trên AVD 657 MB PSS khi đủ 4 model giọng nói + 2 model dịch).
+2. ~~Student có giữ tiền tố `en:` / `vi:`?~~ Không: `>>vie<<` cho EN→VI, tokenizer Marian.
+3. ~~`max_input_tokens`?~~ 512 (vị trí của Marian); app tách theo câu khi dài hơn.
 4. Golden file lấy từ IT Validation: anh đồng ý không? Bao nhiêu dòng, ai sinh?
 5. MT có chịu được text kiểu STT (không dấu câu, chữ thường trừ chữ đầu, số đọc
    thành chữ) không? Phase 03 có tăng cường dữ liệu kiểu này không?
@@ -246,6 +263,6 @@ Chi tiết: [contracts/mt_package_v1.md](contracts/mt_package_v1.md).
 | Trả lời mục 8 | anh | … |
 | Chuyển hai adapter LoRA, `it_en_vi`, `general_validation_en_vi` cho Đạt (kiểm `sha256_tree`) | anh | … |
 | Quyết định các đề xuất ở mục 7 | anh | … |
-| Chốt `mt_package_v1` | anh, Đạt | Phase 04 |
-| Viết `CoreMtTranslator` | theo câu 8.7 | Phase 04 |
+| Rà `mt_package_v2` và số đo `evidence/phase04/mt_export_q8/` | anh | … |
+| Đo tốc độ, RAM trên máy thật (arm64) | Đạt | Phase 05 |
 | Cập nhật tài liệu này | Đạt | M8 |

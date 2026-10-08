@@ -1,0 +1,114 @@
+{
+  "rows": 15252,
+  "uncapped_q8": {
+    "chrF++": 66.53592862944716,
+    "sacreBLEU": 51.190887712144864
+  },
+  "capped": {
+    "chrF++": 66.56150523484295,
+    "sacreBLEU": 51.20257508268602
+  },
+  "app": {
+    "chrF++": 66.56333583355982,
+    "sacreBLEU": 51.20357593924915
+  },
+  "changed_by_cap": 2,
+  "changed_by_app": 11,
+  "uncapped_longer_than_limit": 2,
+  "decoder_steps": {
+    "mean": 18.69669551534225,
+    "p95": 33.0,
+    "max": 334,
+    "rows_at_limit": 2
+  },
+  "changed_rows": [
+    {
+      "row_id": "050b0ffcf53b72ba22057e372e2063ba810c95a291898593e06bf614eb43a45a",
+      "src_tokens": 31,
+      "uncapped_out_tokens": 37,
+      "out_tokens": 37,
+      "uncapped": "Tai nghe chơi game Mivi Commando Z7 với thời lượng pin 50h &amp; chế độ độ độ độ độ trễ thấp 35ms ra mắt tại Ấn Độ",
+      "app": "Tai nghe chơi game Mivi Commando Z7 với thời lượng pin 50h &amp; chế độ trễ thấp 35ms ra mắt tại Ấn Độ"
+    },
+    {
+      "row_id": "0dffa7b1bb68fb27e862a4ae3b769939b5b2f9c8f41606a936b01598e9bc4249",
+      "src_tokens": 35,
+      "uncapped_out_tokens": 47,
+      "out_tokens": 47,
+      "uncapped": "Giải phóng sức mạnh của AI tổng quát: Đảm bảo tương lai của doanh nghiệp của bạn tại Atlanta AI I I I I I I I I I I I I I I I I Iction Tour (Ngày 10 tháng 10)",
+      "app": "Giải phóng sức mạnh của AI tổng quát: Đảm bảo tương lai của doanh nghiệp của bạn tại Atlanta AI I Iction Tour (Ngày 10 tháng 10)"
+    },
+    {
+      "row_id": "5b714579fd946f7eaa1f6b751024ad5f2f6e529e657f2dea735115bf4b70139a",
+      "src_tokens": 4,
+      "uncapped_out_tokens": 511,
+      "out_tokens": 25,
+      "uncapped": "A- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g-",
+      "app": "A- g- ri- g- gName"
+    },
+    {
+      "row_id": "63ccb9054657b6d59fcebb844ce807039c047098bd9ecd7046cc4b68656bc2b3",
+      "src_tokens": 9,
+      "uncapped_out_tokens": 10,
+      "out_tokens": 10,
+      "uncapped": "Bộ đồng bộ đồng bộ đồng bộ đồng bộ",
+      "app": "Bộ đồng bộ"
+    },
+    {
+      "row_id": "656762d4579bd31969997cc42dbc05443a0fc739f7094ed3b5e501b298c81eea",
+      "src_tokens": 15,
+      "uncapped_out_tokens": 25,
+      "out_tokens": 25,
+      "uncapped": "Mercedes cầm tay lái: Kiểm tra quyền tự chủ Drive Pilot L3 trong lưu lượng lưu lượng lưu lượng lưu lượng",
+      "app": "Mercedes cầm tay lái: Kiểm tra quyền tự chủ Drive Pilot L3 trong lưu lượng"
+    },
+    {
+      "row_id": "6961edaeded5d1571a99e4928caf6dd6acfa029aa120075545a331940e55ad3f",
+      "src_tokens": 5,
+      "uncapped_out_tokens": 511,
+      "out_tokens": 15,
+      "uncapped": "U- x- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g- g-",
+      "app": "U- x- g- riName"
+    },
+    {
+      "row_id": "7f1464a63b09405242fb675446b9b3685f3aa882c36c409af4b43025740423da",
+      "src_tokens": 28,
+      "uncapped_out_tokens": 27,
+      "out_tokens": 27,
+      "uncapped": "Ưu đãi tốt nhất của Apple trong tuần: Nhận mức giá thấp trên MacBook Air, Air Air Air Air và Mac Mini",
+      "app": "Ưu đãi tốt nhất của Apple trong tuần: Nhận mức giá thấp trên MacBook Air, và Mac Mini"
+    },
+    {
+      "row_id": "c092fcc0fc5c10fd2a3a334452927626a5626572ebe0b88af2eb61c5ca643641",
+      "src_tokens": 29,
+      "uncapped_out_tokens": 38,
+      "out_tokens": 38,
+      "uncapped": "Kweicuse Moutai và Luckyin để sản xuất cà phê pha trà trà trà trà Baijiu một món hàng thường xuyên trong bối cảnh doanh số bán hàng nóng",
+      "app": "Kweicuse Moutai và Luckyin để sản xuất cà phê pha trà Baijiu một món hàng thường xuyên trong bối cảnh doanh số bán hàng nóng"
+    },
+    {
+      "row_id": "c105d16e959b5225a10668b8f979da198692ad84467359d22be044472d3406fe",
+      "src_tokens": 35,
+      "uncapped_out_tokens": 31,
+      "out_tokens": 31,
+      "uncapped": "Công nghệ âm thanh ra mắt tai nghe ATH-TWX7 TWS với ANC lai, chế độ độ độ độ trễ thấp",
+      "app": "Công nghệ âm thanh ra mắt tai nghe ATH-TWX7 TWS với ANC lai, chế độ trễ thấp"
+    },
+    {
+      "row_id": "d2bf337d3fadfaf67917b1a0040ae9910cab175760a54e9023d16513a0ac33b8",
+      "src_tokens": 110,
+      "uncapped_out_tokens": 75,
+      "out_tokens": 75,
+      "uncapped": "CDs The VPN VPN VPN VPN được gọi bằng cách gõ vào thanh vị trí của Konqueror. Trong mô- đun này, bạn có thể cấu hình bảng mã và thiết lập. Ghi chú rằng mã hóa CD- ROM hoặc DVD của bạn chỉ có sẵn nếu KDE được xây dựng với phiên bản gần đây của thư viện LAME hoặc Ogg.",
+      "app": "CDs The VPN được gọi bằng cách gõ vào thanh vị trí của Konqueror. Trong mô- đun này, bạn có thể cấu hình bảng mã và thiết lập. Ghi chú rằng mã hóa CD- ROM hoặc DVD của bạn chỉ có sẵn nếu KDE được xây dựng với phiên bản gần đây của thư viện LAME hoặc Ogg."
+    },
+    {
+      "row_id": "f9cfa9c1f7343b9a4ec8f006e2bab40689730fbc8144652fb72082a36b9f25c6",
+      "src_tokens": 17,
+      "uncapped_out_tokens": 23,
+      "out_tokens": 23,
+      "uncapped": "Tối ưu hóa các truy vấn cơ sở dữ liệu là rất cần thiết để đáp ứng ứng ứng ứng dụng.",
+      "app": "Tối ưu hóa các truy vấn cơ sở dữ liệu là rất cần thiết để đáp ứng dụng."
+    }
+  ]
+}

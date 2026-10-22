@@ -3,13 +3,14 @@ __pycache__/
 /AppProduct/Documents/
 /.idea/
 
-# Local-only Student upgrade experiment. These artifacts are intentionally
-# excluded from all commits until the experiment is explicitly concluded.
-/Core/configs/phase03_protocol_student_reuse_vi_to_en_2ep_v*.json
-/Core/configs/phase03_student_reuse_vi_to_en_2ep_v*.json
-/Core/configs/phase03_evaluation_input_length_amendment_vi_to_en_student_reuse_2ep_v*.json
-/Core/configs/phase03_experiments/phase03-student-reuse-vi-to-en-2ep-v*.json
-/Core/tools/reuse_phase03_teacher_targets_vi_to_en_student_reuse_2ep_v*.py
-/Core/tests/test_phase03_student_reuse_vi_to_en_2ep.py
-/Core/evidence/phase03/phase03-student-reuse-vi-to-en-2ep-v*.running/
-/Core/models/phase03/phase03-student-reuse-vi-to-en-2ep-v*/
+# Local-only Main-Core v2 research. Nothing below this directory is staged or
+# published until the owner approves a selected result for integration.
+/Core/local_experiments/main_core_v2/
+
+# Local-only Main-Core v3 data-first research. Nothing below this directory is
+# staged or published until the owner approves a selected result for integration.
+/Core/local_experiments/main_core_v3/
+
+# Local-only Main-Core v4 research. Nothing below this directory is staged or
+# published until the owner approves a selected result for integration.
+/Core/local_experiments/main_core_v4/

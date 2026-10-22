@@ -192,7 +192,7 @@ Chi tiết: [contracts/mt_package_v1.md](contracts/mt_package_v1.md).
    `d96171cb…`; `models/phase02/envit5-vi-to-en-lora-v1/final-epoch-1`,
    `3d2475f0…`), `data/processed/it_en_vi/`,
    `data/processed/general_validation_en_vi/` và các `predictions.jsonl` của
-   Phase 02. `manual/phase_02.md` chạy lệnh từ `C:\Users\ADMIN\ENVI-IT-MT`. Em
+   Phase 02. `manual/phase_02.md` chạy lệnh từ `C:\DoAn\Core`. Em
    cần chúng để thử export, sinh golden trên IT Validation và thử câu thật.
 4. **`environment.yml`:** dòng 11–14 (`ipykernel`, `nbformat`, `nbconvert`,
    `matplotlib`) thụt vào dưới `- jupyterlab=4.5.9`; PyYAML đọc thành một chuỗi

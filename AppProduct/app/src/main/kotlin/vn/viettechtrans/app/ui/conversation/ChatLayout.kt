@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -30,6 +31,7 @@ fun ChatLayout(
     onTap: (Party) -> Unit,
     onKeyboard: () -> Unit,
     onReplay: (ChatMessage) -> Unit,
+    onEdit: (ChatMessage) -> Unit,
     header: @Composable () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -57,7 +59,7 @@ fun ChatLayout(
                 }
             }
             items(ui.messages, key = { it.turn }) { m ->
-                MessageBubble(m, onReplay = { onReplay(m) }, modifier = Modifier.animateItem())
+                MessageBubble(m, canEdit = ui.canEdit(m), onReplay = { onReplay(m) }, onEdit = { onEdit(m) }, modifier = Modifier.animateItem())
             }
             ui.listening?.let { party ->
                 item(key = "partial") { ListeningBubble(party, ui.partial, Modifier.animateItem()) }
@@ -65,7 +67,7 @@ fun ChatLayout(
         }
         // Floating control dock: one mic per language with the keyboard between them.
         Surface(
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 4.dp),
+            modifier = Modifier.fillMaxWidth().navigationBarsPadding().padding(start = 12.dp, end = 12.dp, top = 4.dp, bottom = 10.dp),
             shape = MaterialTheme.shapes.extraLarge,
             color = cardColor(),
             shadowElevation = 6.dp,

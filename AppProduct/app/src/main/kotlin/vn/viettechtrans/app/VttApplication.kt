@@ -13,7 +13,7 @@ class VttApplication : Application() {
         container = AppContainer(this)
     }
 
-    /** RAM policy: free the speech models when the app goes to the background or memory is low. */
+    /** RAM policy: free the speech and MT models when the app goes to the background or memory is low. */
     @Suppress("DEPRECATION")
     override fun onTrimMemory(level: Int) {
         super.onTrimMemory(level)
@@ -22,11 +22,13 @@ class VttApplication : Application() {
         ) {
             container.speaker.stop()
             container.speechEngines.releaseAll()
+            container.translators.releaseAll()
         }
     }
 
     override fun onLowMemory() {
         super.onLowMemory()
         container.speechEngines.releaseAll()
+        container.translators.releaseAll()
     }
 }

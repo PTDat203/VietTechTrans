@@ -168,11 +168,11 @@
       }
     },
     {
-      "id": "vits-piper-vi_VN-vais1000-medium-int8",
+      "id": "vits-piper-vi_VN-vais1000-medium",
       "role": "tts_vi",
-      "license": "Trọng số Piper: MIT (rhasspy/piper-voices). Dữ liệu VAIS-1000: CC BY 4.0. Giọng fine-tune từ en_US lessac-medium, mà dữ liệu lessac (Blizzard 2013) chỉ cho nghiên cứu, cấm thương mại → chỉ dùng trong đồ án phi thương mại. Bản int8 (lượng tử hoá) do k2-fsa phát hành; chọn ngày 2026-10-01 để giảm dung lượng (≈19 MB thay 63 MB).",
+      "license": "Trọng số Piper: MIT (rhasspy/piper-voices). Dữ liệu VAIS-1000: CC BY 4.0. Giọng fine-tune từ en_US lessac-medium, mà dữ liệu lessac (Blizzard 2013) chỉ cho nghiên cứu, cấm thương mại → chỉ dùng trong đồ án phi thương mại. Bản trong app: fp32 gốc của k2-fsa, chỉ nén trọng số Conv sang int8 bằng tools/tts/piper_weight_only.py (2026-10-07; thay bản int8 động của k2-fsa vì chậm hơn 1,7–3,9 lần và lệch giọng gốc).",
       "source": "https://huggingface.co/rhasspy/piper-voices/tree/main/vi/vi_VN/vais1000/medium",
-      "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/vits-piper-vi_VN-vais1000-medium-int8.tar.bz2",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/vits-piper-vi_VN-vais1000-medium.tar.bz2",
       "sherpa": {
         "kind": "offline_tts_vits",
         "noise_scale": 0.667,
@@ -180,29 +180,34 @@
         "length_scale": 1.0
       },
       "archive": {
-        "bytes": 21574925,
-        "sha256": "60e8b82a27cfb9bfa527f5789f0879d02ec73a7397659973b937c823c326d5dd"
+        "bytes": 67154040,
+        "sha256": "fa1367710767d36ed5cf13b4a449e20c35ffd12791c2e47c2e64142bfa55551a"
       },
       "install": {
         "kind": "extract",
         "dest": "app/src/main/assets/models/tts_vi",
         "files": [
           {
-            "from": "vits-piper-vi_VN-vais1000-medium-int8/vi_VN-vais1000-medium.onnx",
+            "from": "vits-piper-vi_VN-vais1000-medium/vi_VN-vais1000-medium.onnx",
             "to": "vi_VN-vais1000-medium.onnx",
             "key": "model",
-            "bytes": 18579717,
-            "sha256": "93629ce587c330f3da1f62c691175f2fbe3f1aa4d84f9a05239cb2fd97b9da95"
+            "bytes": 18305695,
+            "sha256": "bed4074e082c79250abf098682704276b40b2dcc0edd014c541948395cfed66f",
+            "derive": {
+              "tool": "tools/tts/piper_weight_only.py",
+              "source_bytes": 63149198,
+              "source_sha256": "df1512ef3265609f147ae23726b8c8867c6d28e60acb9ffca3545e11783b809f"
+            }
           },
           {
-            "from": "vits-piper-vi_VN-vais1000-medium-int8/tokens.txt",
+            "from": "vits-piper-vi_VN-vais1000-medium/tokens.txt",
             "to": "tokens.txt",
             "key": "tokens",
             "bytes": 921,
             "sha256": "87c8ef66eae5473ed0cc0366b3964c736ca6c5f676c979522ea31234e47430b9"
           },
           {
-            "from": "vits-piper-vi_VN-vais1000-medium-int8/MODEL_CARD",
+            "from": "vits-piper-vi_VN-vais1000-medium/MODEL_CARD",
             "to": "MODEL_CARD",
             "key": "model_card",
             "bytes": 361,
@@ -210,7 +215,7 @@
           }
         ],
         "espeak_data": {
-          "from": "vits-piper-vi_VN-vais1000-medium-int8/espeak-ng-data",
+          "from": "vits-piper-vi_VN-vais1000-medium/espeak-ng-data",
           "dest": "app/src/main/assets/models/espeak-ng-data",
           "keep_dicts": [
             "en_dict",
@@ -224,11 +229,11 @@
       }
     },
     {
-      "id": "vits-piper-en_US-ljspeech-medium-int8",
+      "id": "vits-piper-en_US-ljspeech-medium",
       "role": "tts_en",
-      "license": "Trọng số Piper: MIT (rhasspy/piper-voices). Dữ liệu LJ Speech: public domain. Giọng huấn luyện từ đầu, không kế thừa lessac. Bản int8 (lượng tử hoá) do k2-fsa phát hành; chọn ngày 2026-10-01 để giảm dung lượng (≈19 MB thay 63 MB).",
+      "license": "Trọng số Piper: MIT (rhasspy/piper-voices). Dữ liệu LJ Speech: public domain. Giọng huấn luyện từ đầu, không kế thừa lessac. Bản trong app: fp32 gốc của k2-fsa, chỉ nén trọng số Conv sang int8 bằng tools/tts/piper_weight_only.py (2026-10-07; thay bản int8 động của k2-fsa vì chậm hơn 1,7–3,9 lần và lệch giọng gốc).",
       "source": "https://huggingface.co/rhasspy/piper-voices/tree/main/en/en_US/ljspeech/medium",
-      "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/vits-piper-en_US-ljspeech-medium-int8.tar.bz2",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/vits-piper-en_US-ljspeech-medium.tar.bz2",
       "sherpa": {
         "kind": "offline_tts_vits",
         "noise_scale": 0.667,
@@ -236,29 +241,34 @@
         "length_scale": 1.0
       },
       "archive": {
-        "bytes": 21090429,
-        "sha256": "24dc3bd77dd48c291e52c297878d3437c9492f245d823d7f6a06c4bbb67f4b6b"
+        "bytes": 67169893,
+        "sha256": "3dfb4b759d8be032a4903a9538d128b0fda2a06ab1de6cbc2d93a97e2dd83dba"
       },
       "install": {
         "kind": "extract",
         "dest": "app/src/main/assets/models/tts_en",
         "files": [
           {
-            "from": "vits-piper-en_US-ljspeech-medium-int8/en_US-ljspeech-medium.onnx",
+            "from": "vits-piper-en_US-ljspeech-medium/en_US-ljspeech-medium.onnx",
             "to": "en_US-ljspeech-medium.onnx",
             "key": "model",
-            "bytes": 19349795,
-            "sha256": "206a8403baad4df7642156918a6ebe205798290d82f24d0d0119d7afa8a2738e"
+            "bytes": 18688004,
+            "sha256": "7b2b676b944f6e93ede04bc158e81615198ccadd1e063f960c8bd732b20679a6",
+            "derive": {
+              "tool": "tools/tts/piper_weight_only.py",
+              "source_bytes": 63531507,
+              "source_sha256": "8ceba58a4b540d4e7e7e24ad079cf0d92762a4fd334e059f12940787c6c37b3d"
+            }
           },
           {
-            "from": "vits-piper-en_US-ljspeech-medium-int8/tokens.txt",
+            "from": "vits-piper-en_US-ljspeech-medium/tokens.txt",
             "to": "tokens.txt",
             "key": "tokens",
             "bytes": 940,
             "sha256": "ef3a7e4a8d1af0c9d4dc45aaae1a6242ebe24a7ed6f3d025a49eb29682784c6d"
           },
           {
-            "from": "vits-piper-en_US-ljspeech-medium-int8/MODEL_CARD",
+            "from": "vits-piper-en_US-ljspeech-medium/MODEL_CARD",
             "to": "MODEL_CARD",
             "key": "model_card",
             "bytes": 517,

@@ -14,7 +14,7 @@ captures/
 .cache/
 third_party/**/*.aar
 app/src/main/assets/models/
-# Phase 04 MT package (docs/contracts/mt_package_v1.md), installed the same way
+# Main-Core MT package (docs/contracts/mt_package_v2.md), built by tools/mt/package_mt.py
 app/src/main/assets/mt/
 
 # Build outputs

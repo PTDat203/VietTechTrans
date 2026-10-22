@@ -1,0 +1,45 @@
+{
+  "schema_version": "2.0",
+  "package_id": "vtt-main-core-phase03-q8",
+  "package_version": "1.0.0",
+  "created_at_utc": "2026-10-07T08:00:00+00:00",
+  "model_role": "main_core",
+  "architecture": "MarianMT",
+  "runtime": {"engine": "onnxruntime", "engine_version": "1.30.0", "execution_provider": "cpu", "abis": ["arm64-v8a", "x86_64"], "opset": 17, "graph": "tools/mt/build_marian_onnx.py"},
+  "quantization": {"method": "matmul_nbits", "bits": 8, "block_size": 32, "symmetric": false, "accuracy_level": 4},
+  "input_normalization": "phase01_nfc_whitespace_v1",
+  "directions": {
+    "en_to_vi": {
+      "model": "en_to_vi/model.onnx",
+      "tokenizer": {"type": "marian_sentencepiece_unigram", "source_spm": "en_to_vi/source.spm", "vocab": "en_to_vi/vocab.txt", "vocab_size": 53685, "eos_id": 0, "unk_id": 1, "pad_id": 53684},
+      "input_prefix": ">>vie<<",
+      "generation": {"strategy": "beam_search", "num_beams": 4, "max_length": 512, "length_penalty": 1.0, "early_stopping": false, "decoder_start_token_id": 53684, "eos_token_id": 0, "forced_eos_token_id": 0, "bad_words_ids": [[53684]], "renormalize_logits": true},
+      "input_length_policy": {"max_input_tokens": 512, "on_exceed": "split_sentences"},
+      "source_checkpoint": {"run_id": "phase03-seqkd-en-to-vi-v2", "path": "models/phase03/phase03-seqkd-en-to-vi-v2/final-epoch-1", "sha256_tree": "c2f037f8548437bbd6edcaabc33b91f65c6fc7dcbd1124aa78239afe4b8e43bb", "student": {"model_id": "Helsinki-NLP/opus-mt-en-vi"}},
+      "golden_file": "en_to_vi/golden.jsonl",
+      "quality": {"phase03_checkpoint": {"general_validation": {"rows": 997, "chrF++": 52.44, "sacreBLEU": 30.43}}}
+    },
+    "vi_to_en": {
+      "model": "vi_to_en/model.onnx",
+      "tokenizer": {"type": "marian_sentencepiece_unigram", "source_spm": "vi_to_en/source.spm", "vocab": "vi_to_en/vocab.txt", "vocab_size": 53739, "eos_id": 0, "unk_id": 1, "pad_id": 53738},
+      "input_prefix": "",
+      "generation": {"strategy": "beam_search", "num_beams": 6, "max_length": 512, "length_penalty": 1.0, "early_stopping": false, "decoder_start_token_id": 53738, "eos_token_id": 0, "forced_eos_token_id": 0, "bad_words_ids": [[53738]], "renormalize_logits": true},
+      "input_length_policy": {"max_input_tokens": 512, "on_exceed": "split_sentences"},
+      "source_checkpoint": {"run_id": "phase03-seqkd-vi-to-en-v3", "path": "models/phase03/phase03-seqkd-vi-to-en-v3/final-epoch-1", "sha256_tree": "fbcba2c1dbaa377073ab69893fabb51127c9de39609d1815f8fb97202442cb53"},
+      "golden_file": "vi_to_en/golden.jsonl"
+    }
+  },
+  "files": [
+    {"path": "LICENSE_NOTES.md", "bytes": 1500, "sha256": "1111111111111111111111111111111111111111111111111111111111111111"},
+    {"path": "en_to_vi/golden.jsonl", "bytes": 9000, "sha256": "2222222222222222222222222222222222222222222222222222222222222222"},
+    {"path": "en_to_vi/model.onnx", "bytes": 91328819, "sha256": "3333333333333333333333333333333333333333333333333333333333333333"},
+    {"path": "en_to_vi/source.spm", "bytes": 808000, "sha256": "4444444444444444444444444444444444444444444444444444444444444444"},
+    {"path": "en_to_vi/vocab.txt", "bytes": 700000, "sha256": "5555555555555555555555555555555555555555555555555555555555555555"},
+    {"path": "vi_to_en/golden.jsonl", "bytes": 9000, "sha256": "6666666666666666666666666666666666666666666666666666666666666666"},
+    {"path": "vi_to_en/model.onnx", "bytes": 91367915, "sha256": "7777777777777777777777777777777777777777777777777777777777777777"},
+    {"path": "vi_to_en/source.spm", "bytes": 755000, "sha256": "8888888888888888888888888888888888888888888888888888888888888888"},
+    {"path": "vi_to_en/vocab.txt", "bytes": 700000, "sha256": "9999999999999999999999999999999999999999999999999999999999999999"}
+  ],
+  "core_refs": [{"path": "Core/evidence/phase03/main_core_decision.json", "sha256": "abababababababababababababababababababababababababababababababab", "source": "git 50fb865:Core/evidence/phase03/main_core_decision.json"}],
+  "license_notes": "LICENSE_NOTES.md"
+}

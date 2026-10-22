@@ -3,15 +3,12 @@ package vn.viettechtrans.app.mt
 import kotlinx.coroutines.flow.StateFlow
 
 enum class TranslatorKind {
-    /** Core/Student MT package (Phase 04); the only kind that can be offline evidence. */
+    /** Main-Core MT package (Phase 03 Student, packaged in Phase 04). */
     CORE_MT,
-
-    /** Google ML Kit Translate, `dev` flavor only; never evidence. */
-    MLKIT_DEV,
 }
 
 data class TranslatorInfo(
-    /** e.g. "core-mt:<package_id>" or "mlkit-dev:17.0.3"; written into history and evidence. */
+    /** e.g. "core-mt:<package_id>"; written into history and evidence. */
     val id: String,
     val kind: TranslatorKind,
     val version: String,
@@ -26,8 +23,6 @@ sealed interface TranslatorStatus {
     data class Preparing(val progress: Float?) : TranslatorStatus
     data object Ready : TranslatorStatus
 
-    /** ML Kit model not downloaded yet (dev flavor). */
-    data object NeedsDownload : TranslatorStatus
     data class Unavailable(val reasonVi: String) : TranslatorStatus
 }
 
@@ -39,7 +34,6 @@ data class TranslationResult(
 
 sealed class MtException(message: String, cause: Throwable? = null) : Exception(message, cause) {
     class NotReady(message: String) : MtException(message)
-    class NetworkRequired : MtException("Bản dev cần mạng một lần để tải gói ML Kit")
     class InputTooLong(val tokens: Int, val max: Int) : MtException("Câu quá dài ($tokens/$max token)")
     class RuntimeFailure(cause: Throwable) : MtException("Lỗi bộ dịch", cause)
 }
@@ -48,7 +42,7 @@ sealed class MtException(message: String, cause: Throwable? = null) : Exception(
  * Boundary between the app and any MT engine. The pipeline normalizes input with
  * [MtInputNormalizer], measures `translate()` and runs the watchdog; the translator
  * owns prefixes, tokenization and over-length handling
- * (docs/contracts/mt_package_v1.md §5.2).
+ * (docs/contracts/mt_package_v2.md).
  */
 interface Translator : AutoCloseable {
     val info: TranslatorInfo

@@ -4,7 +4,7 @@ import java.text.Normalizer
 
 /**
  * Input normalization applied by the pipeline before ANY translator
- * (policy `phase01_nfc_whitespace_v1`, docs/contracts/mt_package_v1.md §5.1).
+ * (policy `phase01_nfc_whitespace_v1`, docs/contracts/mt_package_v2.md).
  *
  * Equals Core's `build_phase01.norm()` (NFC, collapse Python whitespace runs to one
  * space, strip) after deleting the characters Phase 01 rejected: Core `CONTROL`

@@ -1,0 +1,42 @@
+{
+  "rows": 997,
+  "uncapped_q8": {
+    "chrF++": 52.45511968310983,
+    "sacreBLEU": 30.39899482473747
+  },
+  "capped": {
+    "chrF++": 52.45511968310983,
+    "sacreBLEU": 30.39899482473747
+  },
+  "app": {
+    "chrF++": 52.456962032992124,
+    "sacreBLEU": 30.396765513220743
+  },
+  "changed_by_cap": 0,
+  "changed_by_app": 2,
+  "uncapped_longer_than_limit": 0,
+  "decoder_steps": {
+    "mean": 33.55265797392177,
+    "p95": 54.0,
+    "max": 84,
+    "rows_at_limit": 0
+  },
+  "changed_rows": [
+    {
+      "row_id": "general_validation:252",
+      "src_tokens": 36,
+      "uncapped_out_tokens": 38,
+      "out_tokens": 38,
+      "uncapped": "Leonov, cũng được biết đến là 'cosmonaut No. 11, là một phần của nhóm vũ trụ gốc của Liên bang Liên bang Liên bang Liên bang Liên bang.",
+      "app": "Leonov, cũng được biết đến là 'cosmonaut No. 11, là một phần của nhóm vũ trụ gốc của Liên bang."
+    },
+    {
+      "row_id": "general_validation:576",
+      "src_tokens": 46,
+      "uncapped_out_tokens": 48,
+      "out_tokens": 48,
+      "uncapped": "Một tế bào là gì? Từ ngữ này đến từ từ từ từ tiếng La- tinh, nghĩa là 'cả phòng nhỏ' và nó được tạo ra đầu tiên bởi một nhà sao chép vi mô quan sát cấu trúc nút thắt.",
+      "app": "Một tế bào là gì? Từ ngữ này đến từ tiếng La- tinh, nghĩa là 'cả phòng nhỏ' và nó được tạo ra đầu tiên bởi một nhà sao chép vi mô quan sát cấu trúc nút thắt."
+    }
+  ]
+}

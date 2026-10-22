@@ -1,6 +1,6 @@
 # DR-01 — Nền tảng app
 
-**Trạng thái:** đã chốt · **Ngày:** 2026-10-01 · **Người viết:** Đạt (Claude soạn) ·
+**Trạng thái:** đã chốt; flavor `dev` và thanh điều hướng dưới thay thế bởi [DR-09](DR-09_thu_gon_app.md) · **Ngày:** 2026-10-01 · **Người viết:** Đạt (Claude soạn) ·
 **Liên quan:** mốc M0, M1; `app/build.gradle.kts`, `gradle/libs.versions.toml`,
 `docs/setup_windows.md`
 

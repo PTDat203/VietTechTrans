@@ -220,6 +220,20 @@ class SpeechEngines(private val context: Context) {
         )
     }
 
+    /** Device check (Settings): synthesize without playback, on the TTS thread. Returns samples and sample rate. */
+    suspend fun synthesize(lang: Lang, text: String): Pair<FloatArray, Int> {
+        val engine = tts(lang)
+        if (!engine.lease.acquire()) throw EngineClosedException()
+        try {
+            return withContext(ttsDispatcher) {
+                val audio = engine.tts.generate(text, 0, 1.0f)
+                audio.samples to audio.sampleRate
+            }
+        } finally {
+            engine.lease.releaseUse()
+        }
+    }
+
     /** Frees every model not in [keep] (freed when no longer in use). */
     fun retainOnly(keep: Set<EngineRole>) {
         val dropStt = synchronized(stt) {

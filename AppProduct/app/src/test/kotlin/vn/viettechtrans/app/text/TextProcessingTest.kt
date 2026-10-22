@@ -81,3 +81,19 @@ class TtsTextNormalizerTest {
         assertTrue(chunks.all { it.split(' ').size <= TtsTextNormalizer.MAX_CHUNK_WORDS })
     }
 }
+
+class VietnameseDiacriticsTest {
+    @Test
+    fun typedWithoutDiacriticsIsDetected() {
+        assertTrue(VietnameseDiacritics.missing("chao ban"))
+        assertTrue(VietnameseDiacritics.missing("toi muon di ga tau."))
+    }
+
+    @Test
+    fun normalVietnameseAndSingleWordsAreNot() {
+        assertFalse(VietnameseDiacritics.missing("chào bạn"))
+        assertFalse(VietnameseDiacritics.missing("di đi"))
+        assertFalse(VietnameseDiacritics.missing("ok"))
+        assertFalse(VietnameseDiacritics.missing("Docker 3.12"))
+    }
+}

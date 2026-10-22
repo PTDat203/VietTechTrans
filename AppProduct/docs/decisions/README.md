@@ -6,14 +6,15 @@ Mỗi lựa chọn công nghệ đưa vào code có một báo cáo mini (sketch
 
 | DR | Chủ đề | Mốc viết | Trạng thái |
 |---|---|---|---|
-| DR-01 | Nền tảng app | M0 | [đã chốt](DR-01_nen_tang_app.md) |
+| DR-01 | Nền tảng app | M0 | [đã chốt](DR-01_nen_tang_app.md), một phần thay bởi DR-09 |
 | DR-02 | Runtime giọng nói | M2 | chưa viết |
 | DR-03 | STT (VI + EN + VAD) | M4 | chưa viết |
-| DR-04 | TTS (+ espeak-ng, lexicon) | M3 | chưa viết |
-| DR-05 | Hội thoại & chen lời | M6 | [đã chốt](DR-05_hoi_thoai_chen_loi.md) |
-| DR-06 | Lịch sử | M7 | chưa viết |
-| DR-07 | Engine dịch & gói MT | M5 | chưa viết |
+| DR-04 | TTS: Piper VITS, chỉ nén trọng số | 2026-10-07 | [đã chốt](DR-04_tts.md) |
+| DR-05 | Hội thoại & chen lời | M6 | [đã chốt](DR-05_hoi_thoai_chen_loi.md), một phần thay bởi DR-09 |
+| DR-06 | Lịch sử | 2026-10-07 | [đã chốt](DR-06_lich_su.md) |
+| DR-07 | Engine dịch & gói MT | Phase 04 | [đã chốt](DR-07_engine_dich_goi_mt.md) |
 | DR-08 | Đo đạc & evidence | M8 | chưa viết |
+| DR-09 | Thu gọn app (một bản offline, bỏ chức năng phụ) | 2026-10-07 | [đã chốt](DR-09_thu_gon_app.md) |
 
 Quy ước:
 

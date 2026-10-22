@@ -20,6 +20,7 @@ import vn.viettechtrans.app.speech.ListenConfig
 import vn.viettechtrans.app.speech.ListenOutcome
 import vn.viettechtrans.app.speech.Listener
 import vn.viettechtrans.app.text.SttPostProcessor
+import vn.viettechtrans.app.text.VietnameseDiacritics
 import vn.viettechtrans.app.turn.MtOutcome
 import vn.viettechtrans.app.turn.TurnTimings
 
@@ -112,6 +113,7 @@ class TranslateViewModel(private val c: AppContainer) : ViewModel() {
             c.speechEngines.retainOnly(setOf(EngineRole.stt(d.source), EngineRole.tts(d.target)))
             runCatching { c.speechEngines.stt(d.source) }
             runCatching { c.speechEngines.tts(d.target) }
+            runCatching { c.translators.retainOnly(setOf(d)) }
         }
     }
 
@@ -194,7 +196,8 @@ class TranslateViewModel(private val c: AppContainer) : ViewModel() {
                 _state.update { it.copy(phase = Phase.IDLE, notice = result.message, lastSource = text) }
             is MtOutcome.Ok -> {
                 val withMt = timings.copy(mtMs = result.mtMs)
-                _state.update { it.copy(translation = result.text, lastSource = text, timings = withMt, notice = null) }
+                val notice = VietnameseDiacritics.NOTICE.takeIf { direction.source == Lang.VI && VietnameseDiacritics.missing(text) }
+                _state.update { it.copy(translation = result.text, lastSource = text, timings = withMt, notice = notice) }
                 speak(result.text, direction.target) { first -> _state.update { it.copy(timings = withMt.copy(ttsFirstAudioMs = first)) } }
             }
         }

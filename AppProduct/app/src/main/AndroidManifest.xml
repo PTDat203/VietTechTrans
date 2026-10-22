@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Speech input (requested at runtime from M5). -->
+    <!-- Speech input (asked at runtime the first time a mic button is tapped). -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
+    <!-- The app runs fully offline: no network permission may reach the merged manifest,
+         even if a library declares one. -->
+    <uses-permission
+        android:name="android.permission.INTERNET"
+        tools:node="remove" />
+    <uses-permission
+        android:name="android.permission.ACCESS_NETWORK_STATE"
+        tools:node="remove" />
+
+    <!-- largeHeap: each translation model (91 MB) is read into memory once while it loads. -->
     <application
         android:name=".VttApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
+        android:largeHeap="true"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.VietTechTrans">

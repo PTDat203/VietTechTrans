@@ -41,8 +41,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import vn.viettechtrans.app.R
+import vn.viettechtrans.app.mt.rules.RuleNote
 import vn.viettechtrans.app.turn.MessageStatus
 import vn.viettechtrans.app.turn.Party
+import vn.viettechtrans.app.turn.TurnRunner
 import vn.viettechtrans.app.ui.common.LangBadge
 import vn.viettechtrans.app.ui.common.TalkButton
 import vn.viettechtrans.app.ui.common.cardColor
@@ -135,7 +137,32 @@ fun statusLabel(m: ChatMessage): String? = when {
     m.status == MessageStatus.NOT_PLAYED -> stringResource(R.string.conv_status_not_played)
     m.status == MessageStatus.NO_TRANSLATOR -> stringResource(R.string.conv_status_no_mt)
     m.status == MessageStatus.FAILED -> stringResource(R.string.conv_status_failed)
+    m.status == MessageStatus.INVALID -> stringResource(R.string.conv_status_invalid)
     else -> null
+}
+
+/**
+ * The rule notes of a message (policy R13: "cảnh báo rule đã kích hoạt"), one line each; R08 lists the terms to check.
+ * R03 and R11 are information, the others warnings.
+ */
+@Composable
+fun RuleNotes(notes: List<RuleNote>, checkTerms: List<String>, color: Color, modifier: Modifier = Modifier) {
+    if (notes.isEmpty()) return
+    Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(2.dp)) {
+        for (n in notes) {
+            val info = n == RuleNote.KEPT_LITERAL || n == RuleNote.REPEATS_COLLAPSED
+            val text = if (n == RuleNote.CHECK_TERMS && checkTerms.isNotEmpty()) {
+                stringResource(R.string.rule_terms, n.text, checkTerms.joinToString(", "))
+            } else {
+                n.text
+            }
+            Text(
+                (if (info) "ⓘ " else "⚠ ") + text,
+                style = MaterialTheme.typography.labelSmall,
+                color = if (info) color.copy(alpha = 0.75f) else MaterialTheme.colorScheme.error,
+            )
+        }
+    }
 }
 
 @Composable
@@ -172,7 +199,7 @@ fun MessageBubble(m: ChatMessage, canEdit: Boolean, onReplay: () -> Unit, onEdit
                     LangBadge(langCode(m.party), partyBrush(m.party))
                     Text(partyStrings(m.party).button, style = MaterialTheme.typography.labelMedium, color = on.copy(alpha = 0.7f))
                     statusLabel(m)?.let {
-                        StatusPill(it, if (m.status == MessageStatus.FAILED) MaterialTheme.colorScheme.error else on)
+                        StatusPill(it, if (m.status == MessageStatus.FAILED || m.status == MessageStatus.INVALID) MaterialTheme.colorScheme.error else on)
                     }
                     if (m.edited) StatusPill(stringResource(R.string.conv_status_edited), on)
                 }
@@ -191,11 +218,23 @@ fun MessageBubble(m: ChatMessage, canEdit: Boolean, onReplay: () -> Unit, onEdit
                         modifier = Modifier.padding(top = 4.dp, end = 8.dp),
                     )
                 }
+                if (m.status == MessageStatus.INVALID) {
+                    // R12: no translation is shown; the source stays for "Sửa".
+                    Text(
+                        TurnRunner.INVALID_OUTPUT,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.error,
+                        modifier = Modifier.padding(top = 4.dp, end = 8.dp),
+                    )
+                }
+                RuleNotes(m.notes, m.checkTerms, on, Modifier.padding(top = 4.dp, end = 8.dp))
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    if (m.timings.totalMs != null && m.translation != null) {
+                    // R13: keyboard text shows only "MT … ms"; spoken text the whole STT · MT · TTS line.
+                    val timing = if (m.typed) m.timings.formatTextOnly() else m.timings.format().takeIf { m.timings.totalMs != null }
+                    if (timing != null && m.translation != null) {
                         // Wraps instead of pushing the replay button out of the bubble.
                         Text(
-                            m.timings.format(),
+                            timing,
                             style = MaterialTheme.typography.labelSmall,
                             color = on.copy(alpha = 0.55f),
                             modifier = Modifier.weight(1f, fill = false),

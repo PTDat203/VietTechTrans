@@ -59,8 +59,12 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import vn.viettechtrans.app.AppContainer
 import vn.viettechtrans.app.R
 import vn.viettechtrans.app.mt.Lang
+import vn.viettechtrans.app.mt.rules.RuleNote
+import vn.viettechtrans.app.mt.rules.TextRules
 import vn.viettechtrans.app.speech.EngineRole
 import vn.viettechtrans.app.ui.common.GradientButton
+import vn.viettechtrans.app.ui.common.InputCounter
+import vn.viettechtrans.app.ui.common.MismatchDialog
 import vn.viettechtrans.app.ui.common.NoticeCard
 import vn.viettechtrans.app.ui.common.ScreenScaffold
 import vn.viettechtrans.app.ui.common.TalkButton
@@ -106,7 +110,7 @@ fun TranslateScreen(container: AppContainer, onBack: () -> Unit, onHelp: () -> U
             onSwap = vm::swap,
         )
 
-        InputCard(s, onInput = vm::onInput, onTranslate = vm::translateInput, onPlaySource = vm::playSource)
+        InputCard(s, onInput = vm::onInput, onTranslate = { vm.translateInput() }, onPlaySource = vm::playSource)
 
         Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
             TalkButton(
@@ -165,7 +169,10 @@ fun TranslateScreen(container: AppContainer, onBack: () -> Unit, onHelp: () -> U
             ResultCard(
                 target = s.direction.target,
                 translation = s.translation.orEmpty(),
-                timings = s.timings?.format(),
+                // R13: typed text shows only "MT … ms" (nothing when the model was not called).
+                timings = if (s.typedResult) s.timings?.formatTextOnly() else s.timings?.format(),
+                notes = s.notes,
+                checkTerms = s.checkTerms,
                 speaking = s.phase == Phase.SPEAKING,
                 enabled = !s.busy,
                 onPlay = vm::playTranslation,
@@ -179,6 +186,14 @@ fun TranslateScreen(container: AppContainer, onBack: () -> Unit, onHelp: () -> U
             Text(s.timings!!.format(), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
         Spacer(Modifier.size(8.dp))
+    }
+    if (s.mismatch != null) {
+        MismatchDialog(
+            chosen = s.direction.source,
+            onSwitch = { vm.answerMismatch(switchLanguage = true) },
+            onForce = { vm.answerMismatch(switchLanguage = false) },
+            onDismiss = vm::dismissMismatch,
+        )
     }
 }
 
@@ -255,17 +270,13 @@ private fun InputCard(s: TranslateUiState, onInput: (String) -> Unit, onTranslat
                     disabledIndicatorColor = Color.Transparent,
                 ),
             )
+            val tooLong = TextRules.typedLength(s.input) > TextRules.MAX_CHARS
             Row(
                 modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
             ) {
-                Text(
-                    "${s.input.length}/${TranslateViewModel.MAX_TYPED_CHARS}",
-                    style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.weight(1f),
-                )
+                Box(modifier = Modifier.weight(1f)) { InputCounter(s.input, s.emptyTried) }
                 FilledTonalIconButton(
                     onClick = onPlaySource,
                     enabled = !s.busy && s.input.isNotBlank(),
@@ -276,10 +287,11 @@ private fun InputCard(s: TranslateUiState, onInput: (String) -> Unit, onTranslat
                 ) {
                     Icon(painterResource(R.drawable.ic_volume_up), contentDescription = stringResource(R.string.action_play_source))
                 }
+                // R02: an empty box shows "Hãy nhập nội dung cần dịch." when tapped; more than 500 characters locks it.
                 GradientButton(
                     text = stringResource(R.string.action_translate),
                     onClick = onTranslate,
-                    enabled = !s.busy && s.input.isNotBlank(),
+                    enabled = !s.busy && !tooLong,
                     icon = R.drawable.ic_translate,
                 )
             }
@@ -293,6 +305,8 @@ private fun ResultCard(
     target: Lang,
     translation: String,
     timings: String?,
+    notes: List<RuleNote>,
+    checkTerms: List<String>,
     speaking: Boolean,
     enabled: Boolean,
     onPlay: () -> Unit,
@@ -314,6 +328,11 @@ private fun ResultCard(
             )
             SelectionContainer {
                 Text(translation, style = MaterialTheme.typography.headlineSmall, color = Color.White)
+            }
+            for (n in notes) {
+                val info = n == RuleNote.KEPT_LITERAL || n == RuleNote.REPEATS_COLLAPSED
+                val text = if (n == RuleNote.CHECK_TERMS && checkTerms.isNotEmpty()) stringResource(R.string.rule_terms, n.text, checkTerms.joinToString(", ")) else n.text
+                Text((if (info) "ⓘ " else "⚠ ") + text, style = MaterialTheme.typography.labelMedium, color = Color.White.copy(alpha = if (info) 0.8f else 1f))
             }
             Row(verticalAlignment = Alignment.CenterVertically) {
                 IconButton(

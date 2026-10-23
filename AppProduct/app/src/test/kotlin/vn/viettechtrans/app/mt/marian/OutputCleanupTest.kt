@@ -30,4 +30,11 @@ class OutputCleanupTest {
         assertEquals("No", OutputCleanup.collapseRepeats("No, no, no, no, no, no, no, no,"))
         assertEquals("really really really", OutputCleanup.collapseRepeats("really really really"))
     }
+
+    /** The R11 table of the text-rule policy v1. */
+    @Test
+    fun policyExamples() {
+        assertEquals("Please deploy.", OutputCleanup.collapseRepeats("Please please please please deploy."))
+        assertEquals("No no no.", OutputCleanup.collapseRepeats("No no no."))
+    }
 }

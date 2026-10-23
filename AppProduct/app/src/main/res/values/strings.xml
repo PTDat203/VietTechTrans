@@ -17,6 +17,8 @@
     <!-- Languages and models -->
     <string name="lang_vi">Tiếng Việt</string>
     <string name="lang_en">Tiếng Anh</string>
+    <string name="lang_vi_inline">tiếng Việt</string>
+    <string name="lang_en_inline">tiếng Anh</string>
     <string name="role_stt_vi">nhận dạng tiếng Việt</string>
     <string name="role_stt_en">nhận dạng tiếng Anh</string>
     <string name="role_tts_vi">giọng đọc tiếng Việt</string>
@@ -55,7 +57,7 @@
     <string name="conv_new_title">Cuộc trò chuyện mới</string>
     <string name="conv_subtitle">Tiếng Việt ⇄ English</string>
     <string name="conv_empty_title">Bắt đầu trò chuyện</string>
-    <string name="conv_empty">Mỗi người bấm nút ngôn ngữ của mình để nói. App dịch và đọc cho người kia nghe. Nếu app nghe nhầm, bấm ✎ trên câu để sửa rồi dịch lại.</string>
+    <string name="conv_empty">Mỗi người bấm nút ngôn ngữ của mình để nói; app dịch và đọc cho người kia nghe. Câu gõ bằng ⌨ chỉ được dịch, bấm 🔊 để nghe. Nếu app nghe nhầm, bấm ✎ trên câu để sửa rồi dịch lại.</string>
     <string name="conv_type">Gõ chữ</string>
     <string name="conv_type_hint">Nhập câu cần dịch</string>
     <string name="conv_send_vi">Gửi tiếng Việt</string>
@@ -63,15 +65,28 @@
     <string name="conv_edit">Sửa câu</string>
     <string name="conv_edit_title_vi">Sửa câu tiếng Việt</string>
     <string name="conv_edit_title_en">Edit English sentence</string>
-    <string name="conv_edit_hint">Sửa chữ cho đúng (ví dụ khi app nghe nhầm), app sẽ dịch và đọc lại.</string>
+    <string name="conv_edit_hint">Sửa chữ cho đúng (ví dụ khi app nghe nhầm), app sẽ dịch lại; bấm 🔊 để nghe.</string>
     <string name="conv_edit_send">Dịch lại</string>
     <string name="conv_status_interrupted">bị ngắt</string>
     <string name="conv_status_not_played">chưa phát</string>
     <string name="conv_status_translating">đang dịch…</string>
     <string name="conv_status_no_mt">chưa có mô hình dịch</string>
     <string name="conv_status_failed">dịch lỗi</string>
+    <string name="conv_status_invalid">không dịch được</string>
     <string name="conv_status_edited">đã sửa</string>
     <string name="conv_replay">Nghe lại</string>
+
+    <!-- Text-rule policy v1 (docs/contracts/mt_app_rule_policy_v1.md) -->
+    <string name="input_counter">%1$d/%2$d</string>
+    <string name="input_empty">Hãy nhập nội dung cần dịch.</string>
+    <string name="input_too_long">Nội dung tối đa 500 ký tự.</string>
+    <string name="mismatch_title_en">Câu này có vẻ là tiếng Anh</string>
+    <string name="mismatch_title_vi">Câu này có vẻ là tiếng Việt</string>
+    <string name="mismatch_text">Bạn đã chọn dịch từ %1$s, nhưng câu có vẻ là %2$s. App không tự đổi chiều dịch.</string>
+    <string name="mismatch_switch_en">Đổi sang English</string>
+    <string name="mismatch_switch_vi">Đổi sang Tiếng Việt</string>
+    <string name="mismatch_force">Vẫn dịch</string>
+    <string name="rule_terms">%1$s: %2$s</string>
 
     <!-- Labels of each person's controls, written in that person's language -->
     <string name="party_vi_button">Tiếng Việt</string>
@@ -127,4 +142,13 @@
     <string name="diag_last_crash">Lỗi gần nhất (gửi cho nhóm khi báo lỗi)</string>
     <string name="diag_none">Không có</string>
     <string name="diag_refresh">Làm mới</string>
+    <string name="rules_log_title">Nhật ký rule dịch</string>
+    <string name="rules_log_text">Câu cần kiểm tra thuật ngữ (R08), bản dịch không hợp lệ (R12) và các lần chọn \"Vẫn dịch\" (R06) được ghi trên máy để kiểm tra lại. Đã ghi %1$d mục.</string>
+    <string name="rules_log_copy">Sao chép nhật ký</string>
+    <string name="rules_log_clear">Xoá nhật ký</string>
+    <string name="rules_cases_title">Bộ case rule dịch (v1)</string>
+    <string name="rules_cases_text">Chạy %1$d câu cố định của policy rule dịch qua đúng luồng của app (rule, mô hình, kiểm tra bản dịch) và lưu kết quả để đối chiếu với bản trên PC. Mất khoảng 1 phút.</string>
+    <string name="rules_cases_start">Chạy bộ case</string>
+    <string name="rules_cases_running">Đang chạy…</string>
+    <string name="rules_cases_copy">Sao chép kết quả</string>
 </resources>

@@ -1,0 +1,997 @@
+# Review table of app/src/main/assets/text/mt_rule_lexicon_v1.json (policy mt_app_rule_policy_v1 section 7).
+# group: acronyms | technologies | technologies_case_sensitive | keep_with_context_warning | short_dialogue_* | exclude.
+# how: agreed = both reviewers chose the same group and spelling; judged = a judge decided a disagreement or an addition;
+# author = changed by the implementer after the review (see review.author_fixes in the JSON).
+group	canonical	candidate_forms	how	reason
+acronyms	4G	4G	agreed	Established mobile-network designation; kept unchanged ('mạng 4G').
+acronyms	5G	5G	agreed	Mobile network standard; kept as '5G' in 99.5% of references; no ordinary-word reading.
+acronyms	AI	AI	agreed	Established IT acronym kept as AI (91% in Train); exact case keeps Vietnamese 'ai'/'Ai' (who) out.
+acronyms	AMOLED	AMOLED	agreed	Established display-technology acronym; always kept.
+acronyms	API	API	agreed	Policy acronym; exact-case.
+acronyms	APK	APK	agreed	Android package acronym; never translated.
+acronyms	APU	APU	agreed	Established processor acronym (accelerated processing unit); kept unchanged.
+acronyms	AR	AR	agreed	Augmented reality acronym; kept as AR in Vietnamese; no Vietnamese homograph.
+acronyms	ARM	Arm	judged	Capitalized 'Arm' is ordinary (MT 'Thiết bị'), so list the CPU architecture acronym ARM in exact case.
+acronyms	AWS	AWS	agreed	Amazon Web Services cloud acronym; never translated; exact-case.
+acronyms	BIOS	BIOS	agreed	Established firmware acronym; kept unchanged.
+acronyms	CD	CD	agreed	Compact disc or continuous delivery; kept as CD in Vietnamese.
+acronyms	CI/CD	CI/CD	agreed	Policy acronym; always kept.
+acronyms	CLI	CLI	judged	Design-listed acronym (command-line interface); q4r distorts it to ITI in a VI→EN sentence.
+acronyms	CPU	CPU	agreed	Policy acronym; established, always kept, exact-case match.
+acronyms	CRUD	CRUD	judged	Design-listed acronym; exact-case matching avoids the ordinary word crud; q4r keeps it.
+acronyms	CSS	CSS	agreed	Established web acronym; listed in design criteria.
+acronyms	CSS3	CSS3	agreed	CSS level 3 in capitals; in-sentence probe shows MT breaks it EN→VI.
+acronyms	CSV	CSV	judged	Ubiquitous file-format acronym; probe VI→EN gave 'KSnapshot' and sentences mangle it.
+acronyms	CUDA	CUDA	agreed	NVIDIA GPU computing platform acronym; always kept unchanged.
+acronyms	DDR5	DDR5	agreed	Memory standard; kept in 100% of references; exact case.
+acronyms	DLSS	DLSS	agreed	NVIDIA upscaling technology acronym; always kept (49/50).
+acronyms	DMA	DMA	agreed	Direct memory access (also EU Digital Markets Act); kept as DMA either way.
+acronyms	DNS	DNS	judged	Design-listed networking acronym; kept 96% in Train and by q4r alone and in sentences.
+acronyms	DPI	DPI	agreed	Established IT acronym (dots per inch, deep packet inspection); kept unchanged.
+acronyms	DRAM	DRAM	agreed	Established memory acronym; kept unchanged.
+acronyms	EXIF	EXIF	agreed	Image-metadata standard acronym; kept.
+acronyms	FHD	FHD	agreed	Full HD display acronym; always kept.
+acronyms	FPS	FPS	agreed	Frames per second or first-person shooter; kept as FPS in Vietnamese.
+acronyms	GC	GC	judged	Established developer acronym (garbage collection, 'GC overhead limit exceeded'); kept as GC in every sense.
+acronyms	GCP	GCP	agreed	Google Cloud Platform acronym; never translated; model breaks it VI to EN.
+acronyms	GPS	GPS	agreed	Positioning technology acronym; kept in 94% of references.
+acronyms	GPT	GPT	agreed	Established AI-model (and GUID Partition Table) acronym; never translated.
+acronyms	GPU	GPU	agreed	Graphics processing unit; established hardware acronym, always kept as GPU.
+acronyms	GUI	GUI	agreed	Graphical User Interface; usually kept; exact case avoids unaccented 'gui' (gửi).
+acronyms	HBM	HBM	agreed	High Bandwidth Memory; hardware acronym always kept.
+acronyms	HDMI	HDMI	agreed	Established hardware interface acronym; kept unchanged.
+acronyms	HDR	HDR	agreed	High dynamic range; imaging/display tech acronym always kept.
+acronyms	HTML	HTML	agreed	Markup language acronym; always kept; curated term.
+acronyms	HTML5	HTML5	agreed	Markup standard version; always kept; curated term.
+acronyms	HTTP	HTTP	agreed	Policy preserve_exact acronym; always kept.
+acronyms	HTTPS	HTTPS	agreed	Protocol acronym listed in the policy.
+acronyms	I/O	I/O	agreed	Input/output acronym (also Google I/O); always kept.
+acronyms	ID	ID	agreed	Established IT acronym (identifier); Vietnamese keep 'ID'; exact case.
+acronyms	IDE	IDE	judged	Design-listed developer acronym; kept 85% in Train; q4r distorts it to IPE in a sentence.
+acronyms	IoT	IoT	judged	Design-listed acronym, matched in exact case IoT; kept in all Train rows and by q4r.
+acronyms	IP	IP	agreed	Design-listed networking acronym; kept in both directions.
+acronyms	IPS	IPS	agreed	Display panel / intrusion prevention acronym; kept in 96% of references.
+acronyms	ISO	ISO	agreed	Standard/disk-image acronym; always kept in Vietnamese.
+acronyms	JS	JS	agreed	JavaScript abbreviation; exact case.
+acronyms	JSON	JSON	agreed	Data format acronym; always kept.
+acronyms	JWT	JWT	agreed	Policy-listed acronym.
+acronyms	KDE	KDE	agreed	Established all-caps desktop/software project name; never translated; exact-case.
+acronyms	LCD	LCD	agreed	Display technology acronym; kept in 99% of references.
+acronyms	LED	LED	agreed	Established hardware/display acronym kept as 'đèn LED'; exact case avoids the verb 'led'.
+acronyms	LLM	LLM	agreed	Established AI acronym (large language model); listed in design criteria.
+acronyms	LTE	LTE	agreed	Established mobile-network acronym; kept unchanged.
+acronyms	MB	MB	agreed	Established IT unit abbreviation (megabyte); kept unchanged.
+acronyms	ML	ML	agreed	Machine Learning; kept in 93.5% of references; exact case (not 'ml' milliliter).
+acronyms	NAND	NAND	agreed	Established flash-memory/logic-gate acronym; never translated.
+acronyms	NAS	NAS	agreed	Established storage acronym (network-attached storage); never translated.
+acronyms	NFC	NFC	agreed	Near-field communication (also Unicode NFC); always kept.
+acronyms	NFT	NFT	agreed	Established blockchain acronym; kept in Vietnamese.
+acronyms	NLP	NLP	judged	Design-listed AI acronym; q4r distorts it to NHP in an EN→VI sentence, which R08 should flag.
+acronyms	NPU	NPU	agreed	Neural processing unit acronym; always kept.
+acronyms	NVMe	NVMe	judged	Storage interface standard acronym, exact case NVMe; kept 97% in Train; once garbled as 'NVM Me'.
+acronyms	OCR	OCR	judged	Well-known text-recognition acronym kept in Vietnamese; probe VI→EN gave 'Swift'.
+acronyms	OLED	OLED	agreed	Display technology acronym; always kept (98% of references); exact case.
+acronyms	OOP	OOP	judged	Design-listed acronym (object-oriented programming); q4r keeps it alone and in sentences.
+acronyms	ORM	ORM	judged	Design-listed developer acronym (object-relational mapping); q4r keeps it alone and in sentences.
+acronyms	OS	OS	agreed	Operating system; established IT acronym from the design list.
+acronyms	PC	PC	agreed	Established IT acronym (personal computer); Vietnamese keep 'PC'; exact case avoids collisions.
+acronyms	PDF	PDF	agreed	Established file-format acronym; always kept.
+acronyms	PHP	PHP	agreed	Programming language acronym; always kept.
+acronyms	PSU	PSU	agreed	Power supply unit acronym; kept by PC-hardware users.
+acronyms	QD-OLED	QD-OLED	agreed	Display-technology acronym; always kept.
+acronyms	QR	QR	agreed	Established acronym (QR code, 'mã QR'); never translated.
+acronyms	RAM	RAM	agreed	Policy acronym; exact case keeps ordinary 'ram' out.
+acronyms	RCS	RCS	judged	Established messaging-standard acronym (Rich Communication Services); always kept as RCS in Vietnamese.
+acronyms	REST	REST	agreed	API architectural style; exact case avoids ordinary 'rest'.
+acronyms	RGB	RGB	agreed	Established color-model acronym in IT/graphics; kept unchanged.
+acronyms	RISC-V	RISC-V	agreed	Open instruction-set architecture name in capitals; kept unchanged.
+acronyms	SaaS	SaaS	judged	Well-known cloud acronym, exact case SaaS; kept 97% in Train (38 rows) and by q4r.
+acronyms	SDK	SDK	agreed	Policy preserve_exact acronym; always kept.
+acronyms	SoC	SoC	agreed	System on chip; exact case avoids unaccented Vietnamese 'soc' (sóc, sốc).
+acronyms	SQL	SQL	agreed	Policy acronym; exact-case.
+acronyms	SSD	SSD	agreed	Established storage acronym (solid-state drive); kept unchanged in both directions.
+acronyms	SSH	SSH	judged	Design-listed acronym (Secure Shell); kept 95% in Train and by q4r; never translated.
+acronyms	SSL	SSL	agreed	Established security-protocol acronym; never translated.
+acronyms	SVG	SVG	judged	Common vector-image format acronym; probe VI→EN gave 'GHz'.
+acronyms	TCP	TCP	judged	Design-listed protocol acronym; q4r turns it into TPC in VI→EN sentences, which R08 should flag.
+acronyms	TDP	TDP	agreed	Thermal Design Power, CPU/GPU spec; kept in 97% of references.
+acronyms	TLS	TLS	judged	Design-listed security acronym; q4r renders it TILS alone and TSS in sentences, so R03/R08 help.
+acronyms	UDP	UDP	judged	Design-listed protocol acronym; q4r distorts it to UDR in EN→VI sentences, which R08 should flag.
+acronyms	UI	UI	agreed	User Interface; Vietnamese IT keeps 'UI'; exact case avoids interjection 'ui'; listed in design.
+acronyms	URL	URL	agreed	Established IT acronym from the design list.
+acronyms	USB	USB	agreed	Established hardware acronym; always kept.
+acronyms	USB-C	USB-C	agreed	Connector standard, always kept; its own entry out-matches plain USB.
+acronyms	UX	UX	judged	Design-listed acronym (user experience), pairs with UI; kept 91% in Train and by q4r.
+acronyms	VPN	VPN	agreed	Established networking acronym from the design list.
+acronyms	VR	VR	agreed	Virtual reality; established tech acronym kept as VR.
+acronyms	VRAM	VRAM	agreed	Established hardware acronym (video RAM); never translated.
+acronyms	XML	XML	agreed	Established data-format acronym.
+acronyms	XR	XR	agreed	Extended reality acronym; always kept.
+acronyms	YAML	YAML	agreed	Established data-format acronym; listed in design criteria.
+technologies	.NET	.NET	agreed	Framework name; never translated.
+technologies	Alexa	Alexa	judged	Amazon voice-assistant service, kept in 95% of references; as a personal name also untranslated.
+technologies	Android Studio	Android Studio	agreed	IDE name; never translated.
+technologies	AngularJS	AngularJS	agreed	Framework name; no ordinary meaning, unlike 'angular'.
+technologies	Ansible	Ansible	agreed	Automation tool; in-sentence probe shows MT breaks it EN→VI.
+technologies	Apache Spark	Apache Spark	agreed	Big-data framework; in-sentence probe shows MT breaks lower/capitalized forms.
+technologies	Apple Music	Apple Music	agreed	Apple streaming service name; never translated.
+technologies	Apple Watch	Apple Watch	agreed	Apple smartwatch product name; never translated in either direction.
+technologies	ASP.NET	ASP.NET	agreed	Microsoft web framework; always kept; curated term.
+technologies	Bing	Bing	judged	Microsoft search engine and API service, same kind as Google in the design; never translated.
+technologies	Bitbucket	Bitbucket	agreed	Git hosting service; never translated.
+technologies	Bluetooth	Bluetooth	agreed	Wireless standard name; no ordinary meaning; model breaks lowercase EN to VI.
+technologies	C#	C#	agreed	Programming language name; always kept.
+technologies	C++	C++	agreed	Programming language name; always kept.
+technologies	CarPlay	CarPlay	judged	Apple in-car software platform with its own iOS framework; never translated, no ordinary-word reading.
+technologies	CentOS	CentOS	agreed	Linux distribution name; no ordinary meaning.
+technologies	ChatGPT	ChatGPT	agreed	Unambiguous AI service name, kept 99% in Train; never translated.
+technologies	Chromebook	Chromebook	agreed	ChromeOS laptop platform; never translated.
+technologies	Cloudflare	Cloudflare	agreed	CDN/security service; never translated.
+technologies	DALL-E	DALL-E	agreed	OpenAI image model name; never translated; a name, not an acronym.
+technologies	Debian	Debian	agreed	Linux distribution name; no ordinary meaning.
+technologies	DevOps	DevOps	judged	Engineering practice name always kept (11/11 Train rows, q4r too); sibling of MLOps; never translated.
+technologies	Dimensity	Dimensity	agreed	MediaTek chip platform name; no ordinary meaning.
+technologies	Django	Django	agreed	Web framework; MT mistranslated it in sentence probes (VI→EN 0/6).
+technologies	Docker	Docker	agreed	Policy-listed technology; lowercase 'docker' (dockworker) is rare, IT usage dominates.
+technologies	DynamoDB	DynamoDB	agreed	AWS database; never translated.
+technologies	Elasticsearch	Elasticsearch	agreed	Search engine name; no ordinary meaning.
+technologies	Express.js	Express.js	agreed	Node.js framework; '.js' form is unambiguous, unlike plain 'Express'.
+technologies	Facebook	Facebook	agreed	Social platform with developer APIs; always kept (99.5% of references); not an ordinary word.
+technologies	FastAPI	FastAPI	agreed	Python web framework; in-sentence probe shows MT breaks it EN→VI.
+technologies	Figma	Figma	agreed	Design tool; never translated.
+technologies	Firebase	Firebase	agreed	Google backend platform; always kept; curated term.
+technologies	Firefox	Firefox	agreed	Browser name; no ordinary meaning.
+technologies	Firestore	Firestore	agreed	Firebase database name; always kept; curated term.
+technologies	Galaxy Tab	Galaxy Tab	agreed	Samsung tablet product line; never translated.
+technologies	Geekbench	Geekbench	agreed	Benchmark software name; no ordinary meaning.
+technologies	GeForce	GeForce	agreed	NVIDIA GPU brand; never translated.
+technologies	Git	Git	agreed	Policy technology; version-control tool; lowercase 'git' is also its command.
+technologies	GitHub	GitHub	agreed	Code-hosting platform; in-sentence probe shows MT breaks lowercase forms.
+technologies	GitHub Actions	GitHub Actions	judged	CI/CD platform name; probe EN→VI gave 'Hành động GitHub'.
+technologies	GitLab	GitLab	agreed	DevOps platform name; always kept; curated term.
+technologies	Gmail	Gmail	agreed	Email service name; never translated; no ordinary meaning.
+technologies	Golang	Golang	agreed	Go language alias; unambiguous unlike 'Go'.
+technologies	Google Cloud	Google Cloud	agreed	Cloud platform name, kept in all Train rows; never translated.
+technologies	Google Drive	Google Drive	judged	Cloud storage service, unambiguous full name; kept 98% in Train and by q4r; services in scope.
+technologies	Google Play	Google Play	judged	Android app platform/service; complete name never translated, unlike bare Play; pairs with App Store.
+technologies	Gradle	Gradle	agreed	Build tool name; no ordinary meaning; model breaks it EN to VI.
+technologies	Grafana	Grafana	agreed	Monitoring tool name; no ordinary meaning.
+technologies	GraphQL	GraphQL	agreed	Query language name; MT never kept it in probes.
+technologies	gRPC	gRPC	agreed	RPC framework name; case-insensitive match also covers grpc/GRPC.
+technologies	Hadoop	Hadoop	agreed	Big-data framework name; always kept; curated term.
+technologies	Heroku	Heroku	agreed	Cloud platform; in-sentence probe shows MT breaks it EN→VI.
+technologies	HomeKit	HomeKit	agreed	Apple smart-home framework; no ordinary meaning.
+technologies	Hugging Face	Hugging Face	agreed	AI model hub; in-sentence probe shows MT breaks lower/capitalized forms; ordinary-phrase reading negligible.
+technologies	HyperOS	HyperOS	agreed	Xiaomi operating system; never translated.
+technologies	iCloud	iCloud	judged	Apple cloud service, unambiguous; kept in all 51 Train rows and by q4r; services are in scope.
+technologies	iMessage	iMessage	agreed	Apple messaging service; never translated.
+technologies	Instagram	Instagram	agreed	Software platform/service name; never translated; no ordinary meaning.
+technologies	Intel Core	Intel Core	agreed	Intel CPU product line; never translated.
+technologies	IntelliJ IDEA	IntelliJ IDEA	agreed	IDE product name; phrase unambiguous; model breaks it EN to VI.
+technologies	iOS	iOS	agreed	Apple OS name with no ordinary meaning in any casing.
+technologies	iPad	iPad	agreed	Apple tablet product name with no ordinary-word reading; always kept.
+technologies	iPadOS	iPadOS	agreed	Apple OS name; no ordinary meaning.
+technologies	iPhone	iPhone	agreed	Apple phone platform common in IT support; always kept (98.5% of references); not an ordinary word.
+technologies	Java	Java	judged	Programming language; lowercase java (coffee slang) is rare, and the model garbles lowercase java alone.
+technologies	JavaScript	JavaScript	agreed	Policy example; language name, never translated.
+technologies	Jenkins	Jenkins	agreed	CI server; surname reading is also kept unchanged.
+technologies	Jira	Jira	agreed	Atlassian tool; not an ordinary word.
+technologies	jQuery	jQuery	agreed	JavaScript library name; always kept; curated term.
+technologies	Jupyter	Jupyter	judged	Notebook platform name, never translated; q4r keeps it; spelling distinct from planet Jupiter.
+technologies	K8s	K8s	agreed	Kubernetes numeronym; never translated.
+technologies	Kafka	Kafka	agreed	Apache Kafka (author name also kept); model breaks it in both directions.
+technologies	Keras	Keras	agreed	Deep-learning library name; unambiguous.
+technologies	Kibana	Kibana	agreed	Elastic visualization tool name; no ordinary meaning.
+technologies	Konqueror	Konqueror	agreed	KDE browser/file manager; never translated.
+technologies	Kotlin	Kotlin	agreed	Programming language name; always kept.
+technologies	Kubernetes	Kubernetes	agreed	Policy-listed technology; never translated.
+technologies	LangChain	LangChain	agreed	LLM framework name; unambiguous.
+technologies	Laravel	Laravel	agreed	PHP framework; never translated.
+technologies	Linux	Linux	agreed	Operating system listed in the policy; no ordinary-word reading.
+technologies	MacBook Air	MacBook Air	agreed	Apple laptop product name; never translated.
+technologies	macOS	macOS	agreed	Apple OS name; no ordinary meaning in either language.
+technologies	MagSafe	MagSafe	judged	Apple magnetic connector/charging technology, like Thunderbolt; never translated, no ordinary-word reading.
+technologies	MariaDB	MariaDB	agreed	Database; never translated.
+technologies	MATLAB	MATLAB	agreed	Software name; case-insensitive also covers 'Matlab'; model breaks canonical VI to EN.
+technologies	Microsoft Office	Microsoft Office	judged	Complete software-suite name, unlike ambiguous Office; model wrongly gives Văn phòng Microsoft alone.
+technologies	MLOps	MLOps	agreed	Practice name always kept as MLOps (97/97 rows).
+technologies	Mongo	Mongo	agreed	Common short name for MongoDB and its shell; not an ordinary word.
+technologies	MongoDB	MongoDB	agreed	Database name; unambiguous.
+technologies	MySQL	MySQL	agreed	Policy technology; always kept; model often breaks it VI to EN.
+technologies	NestJS	NestJS	agreed	Node.js framework name; no ordinary meaning.
+technologies	Netflix	Netflix	judged	Streaming service name, a kind the design admits; never translated in either direction, no ordinary-word reading.
+technologies	Netlify	Netlify	agreed	Hosting platform name; MT never kept it in probes.
+technologies	Next.js	Next.js	agreed	React framework; '.js' makes it unambiguous, unlike bare 'Next'.
+technologies	Nginx	Nginx	agreed	Web server name; always kept; curated term.
+technologies	Node.js	Node.js	agreed	JavaScript runtime name; always kept; model breaks lowercase EN to VI.
+technologies	NoSQL	NoSQL	agreed	Database category name; unambiguous in any case.
+technologies	npm	npm	agreed	Node package manager name; never translated; no ordinary meaning.
+technologies	NumPy	NumPy	agreed	Python library name; no ordinary meaning.
+technologies	Nuxt.js	Nuxt.js	agreed	Vue framework; never translated.
+technologies	OAuth	OAuth	agreed	Authorization protocol name; always kept; curated term.
+technologies	OAuth2	OAuth2	agreed	Authorization protocol name (mixed case); never translated.
+technologies	Objective-C	Objective-C	judged	Programming language name; q4r garbles it alone and in sentences ('Đối tượng- C', 'OSLive-C').
+technologies	OpenAI	OpenAI	agreed	AI platform/API name used by developers (OpenAI API, SDK); never translated, no ordinary meaning.
+technologies	OpenAPI	OpenAPI	judged	API specification standard; probe EN→VI rendered it as 'OpenAI'.
+technologies	OpenCV	OpenCV	agreed	Computer vision library; never translated.
+technologies	OxygenOS	OxygenOS	agreed	OnePlus OS name; no ordinary meaning.
+technologies	passwd	passwd	judged	Unix passwd command/file name, not an English word; q4r mangles it alone ('mật khẩu', 'of Tevet').
+technologies	PCIe	PCIe	agreed	Interface standard; mixed case, unambiguous in any case.
+technologies	PlayStation	PlayStation	agreed	Sony gaming platform; never translated.
+technologies	Postgres	Postgres	agreed	Common short name of PostgreSQL; unambiguous.
+technologies	PostgreSQL	PostgreSQL	agreed	Policy example; database name.
+technologies	PowerPoint	PowerPoint	agreed	Microsoft presentation app; always kept; curated term.
+technologies	PowerShell	PowerShell	agreed	Microsoft shell name written as one word; no ordinary meaning.
+technologies	pppd	pppd	judged	Linux PPP daemon tool name, never translated; model outputs Trình nền alone and hallucinates Walmart in a sentence.
+technologies	Prometheus	Prometheus	judged	Monitoring tool paired with Grafana, proper name kept as is; probe: alone 'Name', VI→EN sentence 'Toyota'.
+technologies	PyCharm	PyCharm	judged	JetBrains Python IDE name; no ordinary meaning, never translated.
+technologies	PySpark	PySpark	agreed	Spark Python API; in-sentence probe shows MT breaks it.
+technologies	PyTorch	PyTorch	agreed	Library name; never translated.
+technologies	Qi2	Qi2	agreed	Wireless-charging standard; never translated.
+technologies	RabbitMQ	RabbitMQ	agreed	Message broker name; always kept; curated term.
+technologies	Radeon	Radeon	agreed	AMD GPU brand/technology; no ordinary meaning.
+technologies	Raspberry Pi	Raspberry Pi	agreed	Single-board computer platform; unambiguous name, never translated.
+technologies	Reddit	Reddit	judged	Online platform name like Instagram; never translated; R08 can flag distortions like reference 'Radio'.
+technologies	Redis	Redis	agreed	In-memory database; never translated.
+technologies	RTX	RTX	judged	NVIDIA GPU product line; a brand rather than a generic acronym, like Radeon; never translated.
+technologies	Ryzen	Ryzen	judged	AMD processor family, a hardware technology like Radeon; no ordinary meaning, never translated.
+technologies	Scala	Scala	agreed	Language name; not an ordinary English or Vietnamese word.
+technologies	scikit-learn	scikit-learn	agreed	ML library; in-sentence probe shows MT breaks it EN→VI.
+technologies	Siri	Siri	judged	Apple voice-assistant software service; never translated (100% of references); no ordinary-word reading.
+technologies	sklearn	sklearn	agreed	scikit-learn import name; not an English word; model breaks it.
+technologies	Spotify	Spotify	judged	Streaming service name, never translated; the model garbles it alone (EN→VI 'Độ phân giải').
+technologies	Spring Boot	Spring Boot	agreed	Java framework; multi-word name allowed by design; lowercase phrase not ordinary.
+technologies	SQLite	SQLite	agreed	Database engine name; no ordinary meaning.
+technologies	Supabase	Supabase	agreed	Backend platform name; no ordinary meaning; model breaks it VI to EN.
+technologies	Symfony	Symfony	agreed	PHP framework name; distinct from 'symphony'.
+technologies	Tailwind CSS	Tailwind CSS	agreed	CSS framework name; always kept; curated term.
+technologies	TensorFlow	TensorFlow	agreed	ML framework name; unambiguous.
+technologies	Terraform	Terraform	agreed	Infrastructure-as-code tool; rare verb sense negligible; probe shows MT breaks lowercase.
+technologies	TikTok	TikTok	agreed	App/service name with no ordinary reading; never translated.
+technologies	tvOS	tvOS	agreed	Apple operating system name; unambiguous.
+technologies	TypeScript	TypeScript	agreed	Language listed in the policy; in-sentence probe shows MT breaks it.
+technologies	Ubuntu	Ubuntu	agreed	Linux distribution name; always kept; model breaks lowercase.
+technologies	Unix	Unix	judged	Operating-system family name, never translated; case-insensitive match also covers UNIX.
+technologies	Unreal Engine	Unreal Engine	judged	Game engine name; probe EN→VI gave 'Động cơ không thực'.
+technologies	Vercel	Vercel	agreed	Hosting platform name; no ordinary meaning.
+technologies	visionOS	VisionOS	agreed	Apple operating system; official spelling 'visionOS'.
+technologies	Visual Studio	Visual Studio	agreed	Microsoft IDE name; never translated; lowercase phrase is not an ordinary expression.
+technologies	Visual Studio Code	Visual Studio Code	agreed	Code editor name; never translated.
+technologies	Vite	Vite	agreed	Frontend build tool; lowercase 'vite' is not an English or Vietnamese word.
+technologies	VS Code	VS Code	agreed	Editor name (Visual Studio Code); never translated.
+technologies	Vue.js	Vue.js	agreed	JavaScript framework name; always kept; curated term.
+technologies	watchOS	watchOS	agreed	Apple operating system; always kept (97.7% of references).
+technologies	Web3	Web3	agreed	Always kept as Web3 in Vietnamese; not an ordinary word.
+technologies	WebAssembly	WebAssembly	judged	Web runtime standard; probe gave 'Name' (EN→VI) and 'WebMembly' (VI→EN).
+technologies	webpack	Webpack	judged	JavaScript bundler; official spelling is lowercase webpack; q4r mangles it alone (Gói Mạng, Gói web).
+technologies	WebSocket	WebSocket	agreed	Protocol name; no ordinary meaning.
+technologies	WebSockets	WebSockets	agreed	Protocol name; unambiguous.
+technologies	WhatsApp	WhatsApp	judged	Messaging platform/service name, like Gmail or Instagram; never translated, no ordinary-word reading.
+technologies	Wi-Fi	Wi-Fi	agreed	Wireless networking standard name; always kept.
+technologies	WiFi	WiFi	agreed	Spelling variant of Wi-Fi; Vietnamese keeps 'wifi' unchanged; no ordinary meaning.
+technologies	WordPress	WordPress	judged	Widely used CMS name; kept in 100% of references; never translated.
+technologies	x86	x86	agreed	CPU architecture name; never translated.
+technologies	Xamarin	Xamarin	agreed	Mobile framework name; no ordinary meaning.
+technologies	Xcode	Xcode	agreed	IDE name; never translated.
+technologies	YouTube	YouTube	agreed	Video platform/service name; no ordinary meaning, never translated.
+technologies_case_sensitive	Android	Android	judged	Mobile OS; lowercase android is an ordinary word (humanoid robot, người máy), so match the capitalized form.
+technologies_case_sensitive	Angular	Angular	agreed	Framework; lowercase 'angular' (góc cạnh) is an ordinary adjective.
+technologies_case_sensitive	App Store	App Store	agreed	Apple's store; lowercase 'app store' is the generic 'cửa hàng ứng dụng'.
+technologies_case_sensitive	Azure	Azure	agreed	Microsoft cloud; lowercase 'azure' is the colour word (xanh da trời).
+technologies_case_sensitive	Bash	Bash	agreed	Unix shell; lowercase 'bash' is an ordinary verb/noun.
+technologies_case_sensitive	Bootstrap	Bootstrap	agreed	CSS framework; lowercase 'bootstrap' is an ordinary verb/noun; model breaks it.
+technologies_case_sensitive	Chrome	Chrome	agreed	Browser name; lowercase 'chrome' is an ordinary word (mạ crôm).
+technologies_case_sensitive	Confluence	Confluence	agreed	Atlassian wiki; lowercase 'confluence' (hợp lưu) is ordinary; MT kept it 0/6 EN→VI.
+technologies_case_sensitive	Copilot	Copilot	judged	AI assistant product name never translated; lowercase 'copilot' is ordinary (MT 'Tiện ích'), so exact capitalization only.
+technologies_case_sensitive	Dart	Dart	agreed	Language name; lowercase 'dart' means 'phi tiêu'.
+technologies_case_sensitive	Excel	Excel	agreed	Spreadsheet app; lowercase 'excel' is an ordinary verb (vượt trội).
+technologies_case_sensitive	Flask	Flask	agreed	Web framework; lowercase 'flask' is ordinary (bình thí nghiệm).
+technologies_case_sensitive	Flutter	Flutter	agreed	UI framework; lowercase 'flutter' is ordinary (rung rinh).
+technologies_case_sensitive	GNOME	GNOME	agreed	Desktop environment; 'gnome'/'Gnome' is ordinary (thần lùn), so match only GNOME.
+technologies_case_sensitive	Google	Google	judged	Search platform name never translated; lowercase 'google' is an ordinary verb, so match the capitalized form only.
+technologies_case_sensitive	Lua	Lua	agreed	Programming language; lowercase 'lua' is unaccented Vietnamese (lúa, lửa, lừa).
+technologies_case_sensitive	Mac	Mac	agreed	Apple computer line; lowercase 'mac' is ordinary (raincoat), so match only 'Mac'.
+technologies_case_sensitive	Markdown	Markdown	agreed	Markup language; lowercase 'markdown' is ordinary 'giảm giá' and the model translates it.
+technologies_case_sensitive	Maven	Maven	agreed	Build tool; lowercase 'maven' is an ordinary word (expert).
+technologies_case_sensitive	Postman	Postman	agreed	API client tool; lowercase 'postman' means 'người đưa thư'.
+technologies_case_sensitive	Python	Python	agreed	Language name; lowercase 'python' means 'con trăn'.
+technologies_case_sensitive	React	React	agreed	Policy technology; lowercase 'react' means 'phản ứng'.
+technologies_case_sensitive	React Native	React Native	agreed	Framework; shares React's exact-case group to out-match 'React'; MT kept it 0/6 in probes.
+technologies_case_sensitive	Redux	Redux	agreed	JS library; lowercase 'redux' means 'revisited' (seen in a Train headline).
+technologies_case_sensitive	RESTful	RESTful	agreed	API style; lowercase 'restful' is an ordinary adjective (thư thái).
+technologies_case_sensitive	Ruby	Ruby	agreed	Language; lowercase 'ruby' (hồng ngọc) is an ordinary word.
+technologies_case_sensitive	Ruby on Rails	Ruby on Rails	agreed	Framework; exact-case entry so it out-matches case-sensitive 'Ruby'; MT kept it at most 1/6 in probes.
+technologies_case_sensitive	Rust	Rust	agreed	Language; lowercase 'rust' is ordinary (gỉ sét) in Train.
+technologies_case_sensitive	Safari	Safari	agreed	Apple browser; lowercase 'safari' is an ordinary word.
+technologies_case_sensitive	Snapdragon	Snapdragon	agreed	Qualcomm chip platform; lowercase 'snapdragon' is a flower, so match capitalized only.
+technologies_case_sensitive	Solidity	Solidity	agreed	Smart-contract language; lowercase 'solidity' is ordinary (sự vững chắc).
+technologies_case_sensitive	SQL Server	SQL Server	judged	Microsoft database product (MT gives 'Máy phục vụ SQL'); generic lowercase 'SQL server' may be translated, so exact case.
+technologies_case_sensitive	Svelte	Svelte	agreed	Framework; lowercase 'svelte' (thon thả) is an ordinary adjective.
+technologies_case_sensitive	Swift	Swift	agreed	Language; lowercase 'swift' (nhanh) is an ordinary word.
+technologies_case_sensitive	Thunderbolt	Thunderbolt	agreed	Interface standard; lowercase 'thunderbolt' means 'tiếng sét'.
+technologies_case_sensitive	Tomcat	Tomcat	agreed	Apache Tomcat; lowercase 'tomcat' is ordinary 'mèo đực'.
+technologies_case_sensitive	Twitter	Twitter	judged	Service/platform name never translated (99% kept in Train); lowercase twitter is an ordinary word (chirp).
+technologies_case_sensitive	Windows	Windows	agreed	OS name; lowercase 'windows' means 'cửa sổ', so match only the capitalized form.
+technologies_case_sensitive	Yarn	Yarn	agreed	JS package manager; lowercase 'yarn' is ordinary ('sợi len'), so match 'Yarn' only.
+keep_with_context_warning	backend	backend	agreed	Vietnamese IT says 'backend'; lone MT unstable in Train (hậu phương, phần phụ trợ).
+keep_with_context_warning	benchmark	benchmark	agreed	Tech jargon kept ('chạy benchmark'); meaning varies by context (điểm chuẩn, chuẩn đối sánh).
+keep_with_context_warning	beta	beta	agreed	Release-stage jargon VN devs keep ('bản beta'); also Greek letter/finance beta, so keep and warn.
+keep_with_context_warning	branch	branch	agreed	Policy list; git branch vs 'chi nhánh', 'cành'.
+keep_with_context_warning	build	build	judged	Context-dependent: xây dựng vs software build (bản build); VN devs keep build; model gives Xây dựng alone.
+keep_with_context_warning	cache	cache	agreed	Policy example; context-dependent jargon kept in English.
+keep_with_context_warning	cache hit	cache hit	agreed	Caching jargon usually kept in English ('trúng cache').
+keep_with_context_warning	cache miss	cache misses	judged	Caching jargon like 'cache hit'; MT gives literal 'bỏ lỡ bộ nhớ tạm'; singular listed (no plural matching).
+keep_with_context_warning	checkout	checkout	judged	Git checkout vs thanh toán vs trả phòng; model gives wrong Kiểm tra alone; VN devs keep checkout.
+keep_with_context_warning	cherry-pick	cherry-pick	agreed	Git command vs idiom 'chọn lọc có lợi'; VN devs keep it.
+keep_with_context_warning	circuit breaker	circuit breaker	agreed	Software pattern (kept) vs electrical breaker (cầu dao); context-dependent.
+keep_with_context_warning	client	client	judged	Ambiguous: khách hàng vs client software; developers keep it; probe VI→EN gave 'clitent'.
+keep_with_context_warning	code	code	agreed	Jargon Vietnamese IT keep ('viết code'); alone may mean mã, mã nguồn, bộ luật, quy tắc.
+keep_with_context_warning	code review	code review	agreed	Dev-process jargon VN devs keep in English; keep and warn.
+keep_with_context_warning	comment	comment	judged	Code comment (chú thích) vs bình luận/nhận xét; devs keep 'comment'; alone the model picks bình luận.
+keep_with_context_warning	commit	commit	agreed	Policy list; 'cam kết' vs git commit, context-dependent.
+keep_with_context_warning	console	Console	agreed	Dev/terminal console (kept) vs game console vs 'bảng điều khiển', 'an ủi'; context-dependent.
+keep_with_context_warning	constant memory	constant memory	judged	CUDA memory space vs ordinary phrase; probe alone: 'bộ nhớ thường xuyên', 'memory content', both wrong.
+keep_with_context_warning	container	container	agreed	Docker container vs thùng chứa; Vietnamese IT keeps 'container' (83% kept).
+keep_with_context_warning	cookie	cookie	agreed	HTTP cookie versus bánh quy; Vietnamese keeps 'cookie' (90% bare in Train).
+keep_with_context_warning	crash	crash	judged	App crash vs tai nạn/sụp đổ; devs say 'bị crash'; alone VI→EN the model outputs 'cresh'.
+keep_with_context_warning	database	database	agreed	Policy-listed keep_with_context_warning term (§7).
+keep_with_context_warning	database connection pool	database connection pool	agreed	Policy R04 and section 8 test example.
+keep_with_context_warning	deadlock	deadlock	judged	Concurrency jargon often kept in English (tình trạng deadlock); probe EN→VI gave wrong 'kết thúc'.
+keep_with_context_warning	dependency	dependency	agreed	Package dependency vs sự phụ thuộc/lãnh thổ phụ thuộc; VN devs keep it.
+keep_with_context_warning	dependency injection	dependency injection	agreed	Jargon phrase kept in English by Vietnamese devs (100% of references); literal translation misleading.
+keep_with_context_warning	deploy	deploy	judged	Verb form of policy K term deployment; VN devs keep deploy, as in the policy's example sentences.
+keep_with_context_warning	deployment	deployment	agreed	Policy R04 example; context-dependent jargon.
+keep_with_context_warning	driver	driver	agreed	Device driver kept ('cài driver') versus tài xế; context-dependent.
+keep_with_context_warning	endpoint	endpoint	agreed	API endpoint kept by developers; otherwise điểm cuối or thiết bị đầu cuối by context.
+keep_with_context_warning	feature	feature	agreed	Tính năng vs ML đặc trưng vs news feature; VN devs keep 'feature'.
+keep_with_context_warning	feature engineering	feature engineering	agreed	ML jargon VN keep; literal 'feature' to 'tính năng' gives the wrong sense.
+keep_with_context_warning	feature store	feature store	judged	MLOps jargon mostly kept in English in Vietnamese data; MT gives literal 'Cửa hàng tính năng'.
+keep_with_context_warning	foreign key constraint	foreign key constraint	agreed	Policy R04 example; database jargon whose literal MT is unreliable.
+keep_with_context_warning	fork	fork	judged	Ambiguous: cái nĩa vs git/process fork; probe EN→VI gave garbage 'ba- baName'.
+keep_with_context_warning	framework	framework	judged	Software framework vs khuôn khổ; devs keep it (61% in Train); model gives 'Khung', VI→EN 'Edit'.
+keep_with_context_warning	frontend	frontend	agreed	Developer jargon kept (44% bare in Train); otherwise loosely 'giao diện người dùng'.
+keep_with_context_warning	gradient	gradient	agreed	ML/CSS/math jargon kept in English; senses vary ('độ dốc', 'dải màu').
+keep_with_context_warning	hash	hash	agreed	Jargon ('hàm băm', '#', hash map) kept in English; senses vary.
+keep_with_context_warning	hash map	hash map	judged	Data-structure jargon devs keep (82% in Train); alone the model outputs 'bản đồ'; like 'database connection pool'.
+keep_with_context_warning	host	host	agreed	Jargon often kept; alone may mean máy chủ, chủ nhà, người dẫn chương trình, đăng cai.
+keep_with_context_warning	hotfix	hotfix	agreed	Release jargon kept in English (90% of references); 'nhánh hotfix' vs 'bản vá nóng'.
+keep_with_context_warning	index	index	agreed	Jargon often kept ('đánh index'); alone may mean chỉ mục, chỉ số, mục lục.
+keep_with_context_warning	injection	injection	agreed	Security/DI jargon kept ('tấn công injection', 67% bare); otherwise tiêm or bơm vốn.
+keep_with_context_warning	kernel	kernel	agreed	OS/GPU/ML jargon kept in English; senses vary ('nhân', 'hạt nhân', 'hạt').
+keep_with_context_warning	log	log	agreed	Developers keep 'log'; otherwise nhật ký, logarit or khúc gỗ by context.
+keep_with_context_warning	memory coalescing	memory coalescing	judged	CUDA jargon kept in English in VN texts; probe alone: 'Bộ trộn bộ nhớ', 'memory collatescing'.
+keep_with_context_warning	merge	merge	agreed	Policy list; 'hợp nhất' vs git merge, context-dependent.
+keep_with_context_warning	merge conflict	merge conflict	agreed	Git jargon VN devs keep in English; keep and warn.
+keep_with_context_warning	microservice	microservice	agreed	Architecture jargon kept in English (100% of references); isolated translation risky.
+keep_with_context_warning	migration	migration	agreed	Policy R04 example (di cư vs database migration).
+keep_with_context_warning	null	null	agreed	Programming null kept ('bị null'); math or legal senses translate differently.
+keep_with_context_warning	overfitting	overfitting	judged	Common ML jargon often kept in English in Vietnamese data; MT gives wrong 'Quá tải' and 'overfitive'.
+keep_with_context_warning	persistent volume	persistent volume	agreed	Kubernetes jargon kept verbatim in all Train rows; 'volume' (âm lượng) makes lone MT risky.
+keep_with_context_warning	pipeline	pipeline	agreed	CI/CD or data pipeline vs oil pipeline (đường ống); IT rows keep 'pipeline' 81%.
+keep_with_context_warning	plugin	plug-in	judged	Rows are plug-in hybrid cars; list IT spelling plugin, kept by VN devs, garbled alone (pluginin, Bổ sung).
+keep_with_context_warning	pod	pod	agreed	Kubernetes pod vs seed/coffee pod (vỏ); IT rows keep 'pod', other senses translated.
+keep_with_context_warning	pool	pool	agreed	Policy term; connection/thread pool versus bể bơi.
+keep_with_context_warning	production	production	agreed	Policy example: 'sản xuất' versus production environment.
+keep_with_context_warning	proxy	proxy	judged	Ambiguous: người được ủy quyền vs proxy server; kept in English; probe VI→EN gave 'Twidy'.
+keep_with_context_warning	pull request	pull request	agreed	Git jargon VN devs keep; literal 'yêu cầu kéo' is risky; keep and warn.
+keep_with_context_warning	push	push	agreed	Git jargon kept ('push code'); alone may mean đẩy, thúc ép, thông báo đẩy.
+keep_with_context_warning	query	query	judged	Ambiguous: thắc mắc vs truy vấn; developers say 'query'; probe VI→EN gave 'Sticky'.
+keep_with_context_warning	race condition	race condition	judged	Concurrency jargon VN devs keep; model garbles it alone in both directions (Điều kiện đua xe, render convalidation).
+keep_with_context_warning	rebase	rebase	agreed	Git jargon like merge/commit; Vietnamese developers keep it in English.
+keep_with_context_warning	registry	registry	agreed	Docker/Windows registry kept in Vietnamese IT; otherwise sổ đăng ký.
+keep_with_context_warning	release	release	judged	Software release vs giải phóng/thả; dev-workflow jargon like merge and commit that devs keep.
+keep_with_context_warning	render	render	agreed	Kept in Vietnamese IT ('render video'); meaning varies (kết xuất, hiển thị, làm cho).
+keep_with_context_warning	request	request	agreed	Policy example; 'yêu cầu' versus HTTP request; IT people keep it in English.
+keep_with_context_warning	response	response	agreed	Policy-listed keep_with_context_warning term (§7).
+keep_with_context_warning	revert	revert	agreed	Git revert (kept) vs 'quay lại', Indian-English 'reply'; context-dependent.
+keep_with_context_warning	rollback	rollback	agreed	DevOps/DB jargon usually kept; meaning varies (transaction, deployment, price, policy).
+keep_with_context_warning	schema	schema	agreed	DB/JSON schema kept by developers; lược đồ, giản đồ, sơ đồ vary.
+keep_with_context_warning	script	script	agreed	Code script vs film script (kịch bản) vs writing system; Vietnamese devs keep 'script'.
+keep_with_context_warning	serverless	serverless	agreed	Cloud jargon kept in English; literal 'không máy chủ' misleading without context.
+keep_with_context_warning	shader	shader	judged	Graphics jargon VN devs keep; model garbles it alone (Bóng râm, Lighter) and in sentences (Bộ bóng).
+keep_with_context_warning	socket	socket	agreed	Network/CPU socket (kept) vs 'ổ cắm' or wrench socket; context-dependent.
+keep_with_context_warning	sprint	sprint	agreed	Scrum sprint vs chạy nước rút; VN devs keep 'sprint'.
+keep_with_context_warning	staging	staging	agreed	Policy list; staging environment vs 'dàn dựng', context-dependent.
+keep_with_context_warning	stash	stash	agreed	Git stash kept by developers (94% bare); otherwise cất giấu.
+keep_with_context_warning	test	test	agreed	Kiểm thử/bài thi/xét nghiệm by context; VN devs keep 'test'.
+keep_with_context_warning	thread	thread	judged	CPU thread (luồng) vs forum thread (chủ đề) vs sợi chỉ; devs often keep 'thread'.
+keep_with_context_warning	timeout	timeout	agreed	Policy R04 example; 'hết thời gian chờ' depends on context.
+keep_with_context_warning	token	token	agreed	Policy R04 example; meaning depends on context.
+keep_with_context_warning	unit test	unit test	agreed	Developer jargon usually kept in English ('viết unit test').
+keep_with_context_warning	web	web	judged	Kept in English by VN IT (ứng dụng web); ambiguous alone; probe renders lone web as 'Mạng'.
+keep_with_context_warning	widget	widget	agreed	Dev widget kept in English vs 'tiện ích'/'phụ tùng'; rendering depends on context.
+keep_with_context_warning	zero-day	zero-day	agreed	Security jargon kept (65% bare); otherwise Train renders nonsense ('không ngày', '0 ngày').
+short_dialogue_en_to_vi	alright	alright	agreed	Conversational word with clear common meaning 'được rồi/ổn'.
+short_dialogue_en_to_vi	bye	bye	agreed	Everyday farewell with clear meaning 'tạm biệt'.
+short_dialogue_en_to_vi	congratulations	congratulations	agreed	Clear everyday meaning (chúc mừng).
+short_dialogue_en_to_vi	excuse me	excuse me	agreed	Everyday polite phrase with clear meaning ('xin lỗi', 'cho hỏi').
+short_dialogue_en_to_vi	good afternoon	good afternoon	agreed	Everyday greeting with clear meaning 'chào buổi chiều'.
+short_dialogue_en_to_vi	good evening	good evening	agreed	Everyday greeting with clear meaning 'chào buổi tối'.
+short_dialogue_en_to_vi	good morning	good morning	agreed	Greeting with clear meaning (chào buổi sáng).
+short_dialogue_en_to_vi	good night	good night	agreed	Clear everyday phrase 'chúc ngủ ngon'.
+short_dialogue_en_to_vi	goodbye	goodbye	agreed	Everyday farewell with clear meaning 'tạm biệt'.
+short_dialogue_en_to_vi	hello	hello	agreed	Policy R05 example; clear greeting 'xin chào'.
+short_dialogue_en_to_vi	hey	hey	agreed	Everyday greeting/attention word with clear meaning 'này/chào'.
+short_dialogue_en_to_vi	hi	hi	agreed	Everyday greeting with clear meaning 'xin chào/chào'.
+short_dialogue_en_to_vi	how are you	how are you	agreed	Common greeting with clear meaning (bạn khỏe không).
+short_dialogue_en_to_vi	never mind	never mind	agreed	Clear everyday phrase 'không sao đâu/bỏ qua đi'.
+short_dialogue_en_to_vi	nice to meet you	nice to meet you	agreed	Everyday greeting phrase; clear meaning (rất vui được gặp bạn).
+short_dialogue_en_to_vi	no	no	agreed	Policy R05 example; clear everyday reply 'không'.
+short_dialogue_en_to_vi	no problem	no problem	agreed	Clear everyday phrase 'không sao/không có gì'.
+short_dialogue_en_to_vi	nope	nope	agreed	Informal 'no' with clear meaning (không).
+short_dialogue_en_to_vi	of course	of course	agreed	Common conversational phrase with clear meaning (tất nhiên).
+short_dialogue_en_to_vi	ok	ok	agreed	Everyday acknowledgement with clear meaning 'được/ok'.
+short_dialogue_en_to_vi	okay	okay	agreed	Everyday acknowledgement with clear meaning (được, ổn).
+short_dialogue_en_to_vi	please	please	agreed	Policy dialogue word with clear meaning (làm ơn, vui lòng).
+short_dialogue_en_to_vi	see you	see you	agreed	Everyday farewell with clear meaning (hẹn gặp lại).
+short_dialogue_en_to_vi	see you later	see you later	agreed	Everyday farewell with clear meaning 'hẹn gặp lại sau'.
+short_dialogue_en_to_vi	sorry	sorry	agreed	Policy dialogue word with clear meaning (xin lỗi).
+short_dialogue_en_to_vi	sure	sure	agreed	Everyday reply with clear meaning ('chắc chắn rồi', 'được'); model still translates it.
+short_dialogue_en_to_vi	thank you	thank you	agreed	Everyday thanks with clear meaning 'cảm ơn'.
+short_dialogue_en_to_vi	thank you very much	thank you very much	agreed	Polite thanks with clear meaning 'cảm ơn rất nhiều'.
+short_dialogue_en_to_vi	thanks	thanks	agreed	Everyday thanks with clear meaning 'cảm ơn'; already in policy list.
+short_dialogue_en_to_vi	thanks a lot	thanks a lot	agreed	Everyday thanks with clear meaning 'cảm ơn nhiều'.
+short_dialogue_en_to_vi	welcome	welcome	agreed	Everyday greeting with a clear common meaning (chào mừng).
+short_dialogue_en_to_vi	yeah	yeah	agreed	Casual 'yes' with clear meaning ('ừ', 'vâng').
+short_dialogue_en_to_vi	yes	yes	agreed	Policy R05 example; clear reply 'có/vâng'.
+short_dialogue_en_to_vi	you're welcome	you're welcome	agreed	Clear reply 'không có gì'; also match the curly apostrophe form (you’re).
+short_dialogue_vi_to_en	bạn khỏe không	bạn khỏe không	agreed	Clear everyday question 'how are you?'.
+short_dialogue_vi_to_en	chào	chào	agreed	Policy R05 example; clear greeting 'hello'.
+short_dialogue_vi_to_en	chào buổi sáng	chào buổi sáng	agreed	Standard greeting; clear meaning 'good morning'.
+short_dialogue_vi_to_en	chào bạn	chào bạn	agreed	Common greeting meaning 'hello'.
+short_dialogue_vi_to_en	chúc mừng	chúc mừng	agreed	Clear everyday phrase meaning 'congratulations'.
+short_dialogue_vi_to_en	chúc ngủ ngon	chúc ngủ ngon	agreed	Everyday phrase with clear meaning 'good night'.
+short_dialogue_vi_to_en	chắc chắn rồi	chắc chắn rồi	agreed	Everyday reply with clear meaning 'sure / of course'.
+short_dialogue_vi_to_en	cám ơn	cám ơn	agreed	Common spelling variant of 'cảm ơn'; clear meaning 'thank you'.
+short_dialogue_vi_to_en	có	có	agreed	Standalone 'Có' is the everyday 'yes' reply; counterpart of policy-listed 'không'.
+short_dialogue_vi_to_en	cảm ơn	cảm ơn	agreed	Everyday thanks 'thank you'; already in policy list.
+short_dialogue_vi_to_en	cảm ơn bạn	cảm ơn bạn	agreed	Common phrase meaning 'thank you'.
+short_dialogue_vi_to_en	cảm ơn nhiều	cảm ơn nhiều	agreed	Everyday thanks; clear meaning 'thank you very much'.
+short_dialogue_vi_to_en	dạ	dạ	agreed	Polite Vietnamese 'yes'; clear conversational meaning when typed alone.
+short_dialogue_vi_to_en	dạ vâng	dạ vâng	agreed	Polite 'yes' with clear meaning.
+short_dialogue_vi_to_en	hẹn gặp lại	hẹn gặp lại	agreed	Common farewell 'see you again'; clear meaning.
+short_dialogue_vi_to_en	không	không	agreed	Policy dialogue word; typed alone it means 'no'.
+short_dialogue_vi_to_en	không có gì	không có gì	agreed	Stock reply meaning 'you're welcome' / 'it's nothing'; clear conversational meaning.
+short_dialogue_vi_to_en	không sao	không sao	agreed	Common reply 'it's okay / no problem'; clear conversational meaning.
+short_dialogue_vi_to_en	làm ơn	làm ơn	agreed	Common politeness word meaning 'please'.
+short_dialogue_vi_to_en	ok	ok	author	Vietnamese users type 'ok' too; without it R06 would ask to switch to English.
+short_dialogue_vi_to_en	okay	okay	author	Vietnamese users type 'ok' too; without it R06 would ask to switch to English.
+short_dialogue_vi_to_en	rất vui được gặp bạn	rất vui được gặp bạn	agreed	Standard greeting meaning 'nice to meet you'.
+short_dialogue_vi_to_en	tuyệt vời	tuyệt vời	agreed	Common exclamation with clear meaning 'great/wonderful'.
+short_dialogue_vi_to_en	tạm biệt	tạm biệt	agreed	Everyday farewell with clear meaning 'goodbye'.
+short_dialogue_vi_to_en	tất nhiên	tất nhiên	agreed	Common reply meaning 'of course'.
+short_dialogue_vi_to_en	vui lòng	vui lòng	agreed	Everyday polite request word; clear meaning 'please'.
+short_dialogue_vi_to_en	vâng	vâng	agreed	Policy-listed VI→EN dialogue word (yes).
+short_dialogue_vi_to_en	xin chào	xin chào	agreed	Standard greeting; clear meaning 'hello'.
+short_dialogue_vi_to_en	xin lỗi	xin lỗi	agreed	Everyday apology 'sorry'; already in policy list.
+short_dialogue_vi_to_en	đúng	đúng	agreed	Common Vietnamese reply meaning 'right/correct'; clear without context.
+short_dialogue_vi_to_en	đúng rồi	đúng rồi	agreed	Common confirmation with clear meaning 'that's right'.
+short_dialogue_vi_to_en	được rồi	được rồi	agreed	Clear everyday reply 'okay/alright'.
+short_dialogue_vi_to_en	ổn	ổn	agreed	Everyday reply meaning 'fine/okay'; clear common meaning typed alone.
+short_dialogue_vi_to_en	ừ	ừ	agreed	Policy R05 example; clear 'yeah/yes'.
+exclude	2K	2K	agreed	Ambiguous: resolution, 2,000 (2 nghìn), 2K Games; may need translation.
+exclude	3D	3D	agreed	General abbreviation often rendered 'ba chiều/3 chiều'; not an IT acronym; may need translation.
+exclude	4K	4K	judged	Resolution label, not an IT acronym; also shorthand for 4,000; q4r already keeps it alone and in sentences.
+exclude	8K	8K	judged	Resolution label, not an IT acronym; also means 8,000 ($8K), so it can need translation.
+exclude	A/B	A/B	agreed	Fragment of 'A/B testing'; ambiguous alone.
+exclude	a16z	a16z	agreed	Venture capital firm nickname; company, not technology.
+exclude	Ace	Ace	agreed	Ordinary word (át chủ bài) and OnePlus model fragment.
+exclude	Acer	Acer	agreed	Company/OEM brand name, not a technology.
+exclude	Activision	Activision	agreed	Game publisher company name.
+exclude	Adobe	Adobe	agreed	Company name; 'adobe' is an ordinary word.
+exclude	AIO	AIO	judged	Form-factor label (all-in-one PC or cooler), not an IT technology acronym; q4r keeps it anyway.
+exclude	Air	Air	agreed	Ordinary word 'không khí'; MacBook/iPad Air fragment.
+exclude	AirPods	AirPods	judged	Consumer earbuds product, not an IT technology; q4r keeps it alone and in sentences.
+exclude	AirPods Pro	AirPods Pro	judged	Consumer earbuds model, not a technology; the model keeps the name in both directions.
+exclude	AirTag	AirTag	agreed	Consumer tracker accessory from news; not an IT term; when in doubt exclude.
+exclude	album	album	agreed	Ordinary loanword.
+exclude	Alibaba	Alibaba	agreed	Company name, not a technology.
+exclude	Ally	Ally	agreed	Ordinary word (đồng minh); ROG Ally fragment.
+exclude	Altman	Altman	agreed	Person surname, not a technology.
+exclude	Amazon	Amazon	agreed	Company name; also the Amazon river/rainforest; not a technology.
+exclude	AMD	AMD	agreed	Chip company name, not an IT concept acronym; company names are out of scope.
+exclude	ANC	ANC	agreed	Consumer-audio feature acronym (also African National Congress); not IT.
+exclude	anime	anime	agreed	General loanword, not IT.
+exclude	Anker	Anker	agreed	Accessory brand (company), not a technology.
+exclude	AOC	AOC	agreed	Monitor brand/company name.
+exclude	App	App	agreed	Ordinary word (ứng dụng); policy names 'App' as noise.
+exclude	Apple	Apple	agreed	Company name; capitalized alone may be the fruit (quả táo), so may need translation.
+exclude	Apple TV+	Apple TV+	agreed	Video streaming subscription; consumer media service outside IT technology scope.
+exclude	Apple Vision Pro	Apple Vision Pro	judged	Consumer headset device model, not an IT technology name; the model already keeps it unchanged.
+exclude	Apple Watch Series	Apple Watch Series	judged	Consumer device fragment needing a model number, like excluded Galaxy Watch; MT gives acceptable 'Dòng Apple Watch'.
+exclude	Apple Watch Ultra	Apple Watch Ultra	agreed	Wearable model variant from news; not an IT term; when in doubt exclude.
+exclude	aptitude	aptitude	agreed	Ordinary English word (năng khiếu); the Debian tool name is niche.
+exclude	Arc	Arc	agreed	Ordinary word (cung); Intel Arc / Arc browser ambiguous.
+exclude	ASML	ASML	agreed	Company name, not a technology.
+exclude	ASUS	ASUS	agreed	Hardware company/brand name, not a technology itself.
+exclude	ASUS ROG	ASUS ROG	agreed	Hardware brand sub-line (company marketing name), not an IT technology.
+exclude	AT&T	AT&T	agreed	Telecom company name, not an IT acronym.
+exclude	atomic	atomic	agreed	General word 'nguyên tử'; translates fine alone.
+exclude	atomic operations	atomic operations	judged	Vietnamese text always translates it (thao tác nguyên tử); MT renders it acceptably; fixed meaning, not context-dependent.
+exclude	Auto	Auto	agreed	Ordinary word/prefix (tự động, ô tô).
+exclude	AYANEO	AYANEO	agreed	Device maker/company name, not an IT acronym.
+exclude	Baidu	Baidu	agreed	Chinese company name, mostly company news; when in doubt, exclude.
+exclude	Bard	Bard	agreed	Ordinary word (bard, 'the Bard'); retired product name.
+exclude	battle royale	battle royale	agreed	Gaming genre phrase, not IT terminology.
+exclude	Beats	Beats	agreed	Audio brand; 'beats' is an ordinary word ('nhịp').
+exclude	Beeper	Beeper	agreed	Ordinary word 'beeper' (máy nhắn tin); app name ambiguous.
+exclude	Best	Best	agreed	Ordinary word.
+exclude	Biden	Biden	agreed	Person name, not a technology.
+exclude	Big	Big	agreed	Ordinary word.
+exclude	binary search	binary search	agreed	Standard Vietnamese 'tìm kiếm nhị phân'; translates fine, never kept bare in Train.
+exclude	BIS	BIS	agreed	Bureau of Indian Standards; not IT.
+exclude	Black	Black	agreed	Ordinary word ('đen').
+exclude	Blizzard	Blizzard	agreed	Company name; ordinary 'blizzard' (bão tuyết).
+exclude	block	block	agreed	General word (khối/chặn) that translates fine alone.
+exclude	blockchain	blockchain	agreed	Common noun with one fixed meaning; not a proper name or context-dependent jargon.
+exclude	BMW	BMW	agreed	Car company name, not IT.
+exclude	Book	Book	agreed	Ordinary word (sách, đặt chỗ).
+exclude	Bose	Bose	agreed	Audio company/brand name.
+exclude	branch divergence	branch divergence	judged	Niche CUDA term with fixed meaning; probe renders it correctly alone (Phân kỳ nhánh), no bypass needed.
+exclude	bubble sort	bubble sort	agreed	Algorithm with standard Vietnamese translation ('sắp xếp nổi bọt'); translates fine.
+exclude	Buds	Buds	agreed	Ordinary word (nụ); earbud product fragment.
+exclude	bug	bug	judged	q4r gives the IT sense alone (lỗi / Bug); Train translates it 94%; R04 adds nothing.
+exclude	burn-in	burn-in	agreed	Display-hardware jargon outside core IT; rarely typed alone.
+exclude	bus	bus	agreed	General word 'xe buýt' dominates alone; translates fine.
+exclude	button	button	agreed	General UI word translating fine (nút).
+exclude	Buy	Buy	agreed	Ordinary word; fragment of Best Buy.
+exclude	BYD	BYD	agreed	Automaker company name, not IT.
+exclude	ByteDance	ByteDance	agreed	Company name, not a technology.
+exclude	California	California	agreed	Place name, not a technology.
+exclude	Call	Call	agreed	Ordinary word (gọi); Call of Duty fragment.
+exclude	camera	camera	agreed	Ordinary loanword that translates fine alone (camera/máy ảnh); no IT-specific ambiguity.
+exclude	Canada	Canada	agreed	Country name.
+exclude	Car	Car	agreed	Ordinary word.
+exclude	carbon	carbon	agreed	Ordinary/chemistry word (cacbon); not IT.
+exclude	carbon dioxide	carbon dioxide	agreed	Chemistry term, not IT.
+exclude	card	card	agreed	General word (thẻ/thiệp/lá bài) that translates fine alone; IT sense needs a compound or sentence.
+exclude	CATL	CATL	agreed	Battery company name, not an IT acronym.
+exclude	CE	CE	agreed	Ambiguous: CE marking, Common Era, model suffix; not an IT acronym.
+exclude	CEO	CEO	agreed	Business title, not IT; translatable ('giám đốc điều hành').
+exclude	CES	CES	agreed	Trade-show name, not an IT acronym or technology.
+exclude	charts	charts	agreed	Ordinary word ('biểu đồ', 'bảng xếp hạng'); IT sense needs 'Helm charts'.
+exclude	chatbot	chatbot	agreed	Common noun with one fixed meaning; not a proper name or context-dependent jargon; MT handles it.
+exclude	CHIPS	CHIPS	agreed	US CHIPS Act / ordinary word in capitals; not an IT acronym.
+exclude	chipset	chipset	agreed	Fixed-meaning hardware noun, mostly kept by MT already; no context ambiguity to warn about.
+exclude	Cisco	Cisco	agreed	Networking company name; company names are out of scope.
+exclude	clip	clip	agreed	Ordinary word (video clip, kẹp); not IT jargon.
+exclude	clock speed	clock speed	agreed	Standard translation 'tốc độ xung nhịp' (95%); fixed meaning.
+exclude	Cloud	Cloud	agreed	Ordinary word (đám mây) even capitalized.
+exclude	CMF	CMF	agreed	Brand name (CMF by Nothing); ambiguous acronym.
+exclude	CNET	CNET	agreed	Tech-news media brand, not an IT acronym or technology; company names are out of scope.
+exclude	co-op	co-op	agreed	Gaming/cooperative word, not IT.
+exclude	coalescing	coalescing	agreed	Niche gerund (memory/null coalescing); translates as gộp/hợp nhất; rarely typed alone.
+exclude	compute capability	compute capability	agreed	Niche CUDA term; generic 'khả năng tính toán' translates fine; rarely typed alone.
+exclude	conf	conf	agreed	Abbreviation noise from file names (smb.conf); covered by file patterns.
+exclude	Cook	Cook	agreed	Person name / ordinary word.
+exclude	Core	Core	agreed	Ordinary word 'lõi/cốt lõi'; Intel Core fragment.
+exclude	Core Ultra	Core Ultra	judged	Fragment of Intel Core Ultra built from ordinary words; consumer CPU marketing name; model already keeps it.
+exclude	Corsair	Corsair	agreed	Hardware company; also ordinary 'cướp biển'.
+exclude	COVID	COVID	agreed	Disease name, not an IT acronym.
+exclude	crossover	crossover	agreed	General word (car type, 'giao thoa').
+exclude	Cruise	Cruise	agreed	Ordinary word (du thuyền); robotaxi company.
+exclude	CUPS	CUPS	judged	Niche Linux print system; in capitals also the ordinary word cups; the model already keeps CUPS.
+exclude	Cybertruck	Cybertruck	agreed	Tesla car model, not an IT technology.
+exclude	Daily	Daily	agreed	Ordinary word ('hằng ngày').
+exclude	data	data	agreed	General word translating fine to 'dữ liệu' (kept only 2% in Train).
+exclude	data drift	data drift	judged	Fixed-meaning ML term with established 'trôi dữ liệu'; q4r translates it acceptably alone.
+exclude	Day	Day	agreed	Ordinary word; fragment of Prime Day.
+exclude	debug	debug	judged	Stable meaning, standard rendering gỡ lỗi, which the model produces alone; no real ambiguity.
+exclude	Deck	Deck	agreed	Ordinary word (boong, bộ bài, slide deck); Steam Deck fragment.
+exclude	deep learning	deep learning	agreed	Fixed meaning with standard translation 'học sâu'.
+exclude	deepfake	deepfake	agreed	Fixed-meaning loanword; nothing context-dependent to warn about; Train keeps it.
+exclude	Dell	Dell	agreed	Computer manufacturer/company name.
+exclude	demo	demo	agreed	General loanword, not IT jargon; translates fine alone ('bản demo', 'bản trình diễn').
+exclude	deploy	deploy	judged	q4r gives the IT sense alone (Triển khai / deploy); Train always renders it triển khai; R04 adds nothing.
+exclude	dig	dig	agreed	Ordinary verb ('đào'); command usage is covered by code/command patterns.
+exclude	Disney	Disney	agreed	Entertainment company.
+exclude	Disney+	Disney+	agreed	Entertainment streaming brand; outside IT scope.
+exclude	Disrupt	Disrupt	agreed	Ordinary verb; TechCrunch event name.
+exclude	DJI	DJI	agreed	Drone company name, not an IT acronym.
+exclude	DLC	DLC	agreed	Gaming content term, not an IT acronym.
+exclude	DNA	DNA	agreed	Biology, not IT; Vietnamese often writes ADN.
+exclude	DOJ	DOJ	agreed	Government agency.
+exclude	Dragon	Dragon	agreed	Ordinary word (rồng); title fragment.
+exclude	drift	drift	agreed	Ordinary word ('trôi', 'lệch'); IT sense needs a phrase like data drift.
+exclude	Drive	Drive	agreed	Ordinary word (lái xe/ổ đĩa); Google/Proton Drive fragment.
+exclude	drone	drone	agreed	General word.
+exclude	Duty	Duty	agreed	Ordinary word ('nghĩa vụ'); fragment of Call of Duty.
+exclude	dynamic programming	dynamic programming	agreed	Established Vietnamese term 'quy hoạch động'; translates fine alone.
+exclude	EA	EA	agreed	Company abbreviation (Electronic Arts); ambiguous.
+exclude	Echo	Echo	agreed	Ordinary word ('tiếng vang'); also Amazon device and shell command.
+exclude	Edge	Edge	agreed	Capitalized 'Edge' still ordinary (Edge deployment → triển khai biên); design exclusion.
+exclude	Edition	Edition	agreed	Ordinary word 'phiên bản/ấn bản'.
+exclude	eero	eero	agreed	Niche router brand/company; low relevance; when in doubt, exclude.
+exclude	Elite	Elite	agreed	Ordinary/marketing word ('ưu tú'); fragment of Snapdragon X Elite.
+exclude	Elon	Elon	agreed	Person's first name, not a technology.
+exclude	Elon Musk	Elon Musk	agreed	Person name, not a technology.
+exclude	email	email	agreed	General word with one meaning; translates fine (email, thư điện tử); not context-dependent.
+exclude	emoji	emoji	agreed	Fixed-meaning general loanword, not IT jargon; nothing to warn about.
+exclude	emulator	emulator	judged	General tech word that MT translates correctly ('Trình giả lập'); no ambiguity; design excludes words translating fine alone.
+exclude	engineering	engineering	agreed	General word 'kỹ thuật' that translates fine alone.
+exclude	Epic	Epic	agreed	Ordinary word (sử thi/hoành tráng); Epic Games company; Agile epic.
+exclude	ESA	ESA	agreed	European Space Agency, usually 'Cơ quan Vũ trụ châu Âu'; not IT.
+exclude	EU	EU	agreed	European Union, not an IT acronym; Vietnamese may translate it (Liên minh châu Âu).
+exclude	EV	EV	agreed	Automotive acronym, usually translated 'xe điện' in Train; not an IT acronym.
+exclude	example	example	agreed	General word 'ví dụ'; config-comment noise.
+exclude	exec	exec	agreed	Command name or 'executive' in news; ambiguous; commands belong to R03 patterns.
+exclude	F1	F1	agreed	Formula 1 racing in data; not a technology name.
+exclude	Fallout	Fallout	agreed	Ordinary word (bụi phóng xạ, hậu quả); game title.
+exclude	FCC	FCC	agreed	US government agency, not an IT acronym.
+exclude	FDA	FDA	agreed	Government agency.
+exclude	FE	FE	agreed	Ambiguous: Fan Edition, front-end, iron (Fe); not an established IT acronym.
+exclude	fediverse	fediverse	agreed	Niche network concept, not a well-known technology name; not sure enough.
+exclude	Final	Final	agreed	Ordinary word; fragment of Final Cut Pro.
+exclude	Find	Find	agreed	Ordinary verb; Oppo Find fragment.
+exclude	fintech	fintech	agreed	Single-meaning business buzzword, not ambiguous IT jargon; 'công nghệ tài chính' works.
+exclude	Fire	Fire	agreed	Ordinary word; fragment of Fire TV.
+exclude	firmware	firmware	judged	Single fixed meaning, not context-dependent; the model already returns 'firmware' alone in both directions.
+exclude	Fisker	Fisker	agreed	Car company name.
+exclude	Fitbit	Fitbit	agreed	Fitness-tracker brand/company; consumer product, not an IT technology.
+exclude	flash	flash	judged	General word (chớp, đèn flash, flash sale); the model already returns 'flash' alone, so R04 adds nothing.
+exclude	Flip	Flip	agreed	Ordinary word 'lật'; Galaxy Z Flip fragment.
+exclude	Fold	Fold	agreed	Ordinary verb 'fold' (gấp) and Galaxy Z Fold fragment.
+exclude	Ford	Ford	agreed	Automaker; 'ford' is also an ordinary word.
+exclude	Fortnite	Fortnite	agreed	Video game title, not a technology.
+exclude	FTC	FTC	agreed	Government agency, not IT.
+exclude	FTX	FTX	agreed	Crypto exchange company.
+exclude	Galaxy	Galaxy	agreed	Capitalized form still ordinary 'thiên hà'; only a Samsung product-line fragment.
+exclude	Galaxy S23	Galaxy S23	agreed	Consumer phone model name, not an IT technology term; open-ended model class.
+exclude	Galaxy S24	Galaxy S24	agreed	Generation-specific phone model from news headlines; not an IT term; model already keeps it.
+exclude	Galaxy S24 Ultra	Galaxy S24 Ultra	agreed	Generation-specific phone model from news; not an IT term.
+exclude	Galaxy Watch	Galaxy Watch	agreed	Consumer device product line, not an IT technology term.
+exclude	Galaxy Z	Galaxy Z	agreed	Fragment of Galaxy Z Fold/Flip model names; n-gram noise.
+exclude	Galaxy Z Fold	Galaxy Z Fold	judged	Consumer phone model name, not an IT technology; q4r keeps it alone and in sentences.
+exclude	Game	Game	agreed	Ordinary word ('trò chơi'); needs translation.
+exclude	Game Pass	Game Pass	agreed	Xbox subscription marketing name built from ordinary words; gaming, not IT.
+exclude	Games	Games	agreed	Ordinary word (trò chơi).
+exclude	Gaming	Gaming	agreed	Ordinary word.
+exclude	Garmin	Garmin	agreed	Device company name.
+exclude	gas	gas	agreed	Ordinary word (xăng, khí); not IT jargon.
+exclude	Gate	Gate	agreed	Ordinary word 'cổng'; game-title fragment.
+exclude	GB	GB	judged	Unit symbol (also Great Britain); R08 boundary check would flag '16GB' variants of '16 GB'; q4r keeps GB alone.
+exclude	Gemini	Gemini	agreed	Capitalized form is also the zodiac sign (Song Tử); Train even renders it that way.
+exclude	Gen	Gen	agreed	Ambiguous: generation, Gen Z, chip 'Gen 3', and Vietnamese 'gen' (gene).
+exclude	global memory	global memory	agreed	CUDA term with a standard translation 'bộ nhớ toàn cục' (84% translated).
+exclude	GM	GM	agreed	General Motors, general manager or good morning; ambiguous and not IT.
+exclude	Go	Go	agreed	Ordinary verb 'go' (đi) even capitalized; design excludes it.
+exclude	Google Pixel	Google Pixel	judged	Consumer phone product line, not an IT technology name (policy R03/§7); lone-input MT error goes to evidence.
+exclude	GPT-4	GPT-4	agreed	Versioned model name; base acronym GPT is separate; MT keeps such alphanumerics.
+exclude	Grand	Grand	agreed	Ordinary word.
+exclude	grid	grid	agreed	General word 'lưới' that translates fine alone.
+exclude	Group	Group	agreed	Ordinary word (nhóm).
+exclude	GT	GT	agreed	Ambiguous product suffix (Gran Turismo, Watch GT); not an IT acronym.
+exclude	GTA	GTA	agreed	Video game title, not an IT acronym.
+exclude	hack	hack	judged	General slang (xâm nhập, mẹo) more than dev jargon; model keeps hack alone and translates it in sentences.
+exclude	hatchback	hatchback	agreed	Car body type, not IT.
+exclude	HD	HD	judged	Resolution label like excluded 8K; Vietnamese shorthand 'HD' = hướng dẫn would trigger false term checks.
+exclude	HMD	HMD	agreed	Phone brand (HMD Global) or head-mounted display; ambiguous, not core IT.
+exclude	Home	Home	agreed	Ordinary word.
+exclude	HomePod	HomePod	judged	Consumer smart-speaker device, not a technology; the model keeps the name in both directions.
+exclude	Honda	Honda	agreed	Automaker.
+exclude	Honor	Honor	agreed	Ordinary word ('danh dự') and phone brand; needs translation by context.
+exclude	Horizon	Horizon	agreed	Ordinary word (chân trời).
+exclude	HP	HP	agreed	Company name; also hit points/horsepower; ambiguous all-caps token.
+exclude	Huawei	Huawei	agreed	Company/brand name, not a technology.
+exclude	Hub	Hub	agreed	Ordinary word; product fragment.
+exclude	Hulu	Hulu	agreed	Video streaming entertainment brand; outside IT scope.
+exclude	hybrid	hybrid	agreed	General word ('lai', 'kết hợp'); not a technology name.
+exclude	hyperparameter tuning	hyperparameter tuning	agreed	Has standard Vietnamese 'tinh chỉnh siêu tham số'; never kept bare in Train.
+exclude	Hyundai	Hyundai	agreed	Car company, not a technology.
+exclude	Hz	Hz	agreed	Unit symbol, not a technology name.
+exclude	i5	i5	agreed	Bare model designation (Intel Core i5, BMW i5); not a standalone term.
+exclude	i7	i7	agreed	Model-tier fragment (Core i7, BMW i7); not a standalone technology name.
+exclude	i9	i9	agreed	CPU tier fragment of 'Core i9'; little value alone.
+exclude	IBM	IBM	agreed	Company name, not a technology.
+exclude	II	II	agreed	Roman numeral fragment (Titan Quest II), not an acronym.
+exclude	III	III	agreed	Roman numeral fragment, not an acronym.
+exclude	iMac	iMac	judged	Apple desktop computer product line (consumer device), outside technology-name scope; model already keeps it.
+exclude	image	image	agreed	General word usually translated 'ảnh'; Docker-image sense is niche; when in doubt, exclude.
+exclude	IMDA	IMDA	agreed	Singapore regulator, not an IT acronym.
+exclude	inch	inch	agreed	Unit word, not IT.
+exclude	indie	indie	agreed	Games/music genre adjective, not IT.
+exclude	inference latency	inference latency	agreed	Standard translation 'độ trễ suy luận' (75%); fixed meaning.
+exclude	Infinix	Infinix	agreed	Phone manufacturer name.
+exclude	Intel	Intel	judged	Company name, like excluded Qualcomm and MediaTek; model keeps 'Intel'; lowercase 'intel' is an ordinary word.
+exclude	Internet	Internet	agreed	General noun; may be rendered 'mạng' in sentences, so R08 would false-flag.
+exclude	IPO	IPO	agreed	Finance acronym, not IT.
+exclude	iQOO	iQOO	agreed	Phone sub-brand of Vivo; consumer brand, not an IT technology.
+exclude	IT	IT	agreed	References render it 'CNTT' (79%); caps pronoun 'IT' too; needs translation by context.
+exclude	JBL	JBL	agreed	Audio brand (company), not a technology.
+exclude	JD	JD	agreed	Company (JD.com); also 'job description' in Vietnamese recruiting; ambiguous.
+exclude	job	job	agreed	General word translating fine (công việc); doubtful, so excluded.
+exclude	K70	K70	agreed	Model-number fragment (Redmi K70, Corsair K70).
+exclude	kfmclient	kfmclient	judged	Obscure legacy KDE command from localization strings; not well-known; MT already keeps it.
+exclude	kfmclient exec	kfmclient exec	agreed	KDE command fragment (noise); full command lines are R03 literals.
+exclude	kfmclient exec file	kfmclient exec file	agreed	KDE command fragment; command lines are handled by the R03 command pattern.
+exclude	Kia	Kia	agreed	Car company; also Vietnamese 'kia' (that/over there).
+exclude	kppp	kppp	agreed	Obscure legacy KDE dial-up tool from localization strings; noise.
+exclude	Kuo	Kuo	agreed	Person (analyst) name.
+exclude	Lake	Lake	agreed	Ordinary word ('hồ'); Intel codename fragment.
+exclude	Laptop	Laptop	agreed	Ordinary word (máy tính xách tay); translates fine.
+exclude	laser	laser	agreed	General physics noun with one meaning; not IT jargon, nothing to warn about.
+exclude	latency	latency	agreed	Fixed meaning 'độ trễ'; translates fine alone.
+exclude	League	League	agreed	Ordinary word.
+exclude	learning	learning	agreed	General word, translated (học) in Train.
+exclude	Legion	Legion	agreed	Ordinary word (quân đoàn); Lenovo sub-brand.
+exclude	Lenovo	Lenovo	agreed	Company name, not a technology.
+exclude	LG	LG	agreed	Company name, not an IT acronym.
+exclude	Li	Li	agreed	Surname or chemical symbol; Vietnamese 'li' (ly); ambiguous.
+exclude	lidar	lidar	agreed	Generic sensor noun with one meaning; translates fine alone.
+exclude	Lightning	Lightning	agreed	Ordinary word (tia chớp); connector name ambiguous.
+exclude	Lite	Lite	agreed	Marketing word.
+exclude	lithium	lithium	agreed	Chemistry word; not IT.
+exclude	live-action	live-action	agreed	Film term, not IT.
+exclude	local	local	judged	General adjective; q4r gives the IT sense alone (cục bộ / local), so R04 adds nothing.
+exclude	logic	logic	agreed	General word, Vietnamese also says 'logic'; translates fine alone.
+exclude	Logitech	Logitech	agreed	Peripheral company name, not a technology.
+exclude	logo	logo	agreed	General loanword with one fixed meaning; translates fine.
+exclude	lossless	lossless	agreed	Single-meaning audio term; translates fine ('không mất dữ liệu').
+exclude	ls	ls	agreed	Shell command, not a technology name; 'LS' also Vietnamese 'luật sư'; R03 command patterns.
+exclude	lt	lt	agreed	HTML entity noise (&lt;).
+exclude	lumens	lumens	agreed	Unit word, not IT.
+exclude	M1	M1	agreed	Bare model code (Apple chip, money supply M1, motorway); better as an alphanumeric-code pattern.
+exclude	M2	M2	agreed	Ambiguous: Apple chip, M.2 slot, or m2 (mét vuông).
+exclude	M3	M3	agreed	Ambiguous model code (Apple M3, BMW M3, screw size); not a standalone technology name.
+exclude	M4	M4	agreed	Bare model code (Apple chip, BMW M4, rifle); better covered by an alphanumeric-code pattern.
+exclude	MacBook	MacBook	judged	Consumer laptop product line, not an IT technology; q4r keeps it alone and in sentences.
+exclude	MacBook Pro	MacBook Pro	judged	Consumer laptop model line, excluded like other device models (Galaxy S23); model keeps it anyway.
+exclude	MAG	MAG	agreed	MSI product-line label; 'mag' is ordinary.
+exclude	Magic	Magic	agreed	Ordinary word ('phép thuật'); product-name fragment (Honor Magic).
+exclude	Maps	Maps	agreed	Ordinary word 'bản đồ'; product fragment.
+exclude	Mario	Mario	agreed	Character or person name.
+exclude	Marvel	Marvel	agreed	Entertainment brand; ordinary 'marvel' (kỳ quan).
+exclude	Mate	Mate	agreed	Ordinary word (bạn); Huawei Mate fragment.
+exclude	Max	Max	agreed	Ordinary word/abbreviation, product suffix and personal name; ambiguous.
+exclude	MediaTek	MediaTek	agreed	Chip company name; its platform is Dimensity.
+exclude	Meizu	Meizu	agreed	Phone manufacturer name.
+exclude	meme	meme	agreed	General internet word.
+exclude	memory	memory	agreed	General word (bộ nhớ, ký ức); Vietnamese IT translates it, rarely keeps English (2% in Train).
+exclude	menu	menu	judged	Everyday/UI word that translates fine alone (probe: trình đơn, Menu); no reason to block MT.
+exclude	Messages	Messages	agreed	Ordinary word (tin nhắn); app name ambiguous.
+exclude	Meta	Meta	agreed	Company name; 'meta' is an ordinary word (siêu dữ liệu, meta game).
+exclude	metaverse	metaverse	agreed	Buzzword with translation 'vũ trụ ảo'; not context-dependent IT jargon.
+exclude	microservices	microservices	judged	Fixed-meaning architecture term; model renders it acceptably alone (dịch vụ vi mô) and keeps it in sentences.
+exclude	Microsoft	Microsoft	agreed	Company name; its technologies carry their own names (Windows, Azure, VS Code).
+exclude	Mijia	Mijia	agreed	Xiaomi appliance sub-brand, not a technology.
+exclude	Mini	Mini	agreed	Ordinary word/marketing suffix (nhỏ); also a car brand.
+exclude	Mix	Mix	agreed	Ordinary word 'trộn/pha'; Xiaomi Mix fragment.
+exclude	mm	mm	agreed	Unit/interjection noise.
+exclude	mod	mod	judged	Gaming/forum slang, not core IT; probe shows model already keeps mod alone in both directions.
+exclude	Model	Model	agreed	Ordinary word (mô hình, mẫu).
+exclude	model drift	model drift	agreed	Usually translated 'trôi mô hình' in Train; niche ML term.
+exclude	model registry	model registry	agreed	Niche MLOps term; Train mostly translates it (kho lưu trữ mô hình).
+exclude	modem	modem	agreed	General hardware noun with one meaning; translates fine alone.
+exclude	module	module	agreed	Translates fine alone (mô-đun); general word.
+exclude	Morning	Morning	agreed	Ordinary word 'buổi sáng'.
+exclude	Moto	Moto	agreed	Motorola line; Vietnamese 'moto/mô tô' means motorbike.
+exclude	Motorola	Motorola	agreed	Company/brand name, not a technology.
+exclude	MSI	MSI	agreed	Mostly the hardware brand (company) in data; company names are out of scope.
+exclude	Music	Music	agreed	Ordinary word (âm nhạc); Apple/YouTube Music fragment.
+exclude	Musk	Musk	agreed	Person name; 'musk' is also an ordinary word (xạ hương).
+exclude	MWC	MWC	agreed	Trade-show name (Mobile World Congress), not an IT acronym.
+exclude	N3	N3	agreed	Model code fragment (Find N3).
+exclude	nano-texture	nano-texture	agreed	Apple display marketing term, not IT.
+exclude	NASA	NASA	agreed	Space agency name, not an IT acronym or technology.
+exclude	NBTC	NBTC	agreed	Thai telecom regulator acronym, not IT.
+exclude	Neo	Neo	agreed	Ordinary prefix/name fragment (iQOO Neo).
+exclude	Nest	Nest	agreed	Ordinary word 'tổ'; brand reading context-dependent.
+exclude	New	New	agreed	Ordinary word.
+exclude	NFL	NFL	agreed	Sports league acronym, not IT.
+exclude	NHTSA	NHTSA	agreed	US government agency, not IT.
+exclude	Nintendo	Nintendo	agreed	Company name, not a technology.
+exclude	Nio	Nio	agreed	EV company name, not IT.
+exclude	Nissan	Nissan	agreed	Car company name, not IT.
+exclude	nits	nits	agreed	Brightness unit / ordinary word; not IT jargon.
+exclude	Nokia	Nokia	agreed	Company name.
+exclude	Nord	Nord	agreed	OnePlus sub-brand; also 'north' in French/German; ambiguous.
+exclude	Note	Note	agreed	Ordinary word (ghi chú); product fragment.
+exclude	Nothing	Nothing	agreed	Ordinary word; company name.
+exclude	Nothing Phone	Nothing Phone	agreed	Consumer phone product; brand word 'Nothing' is ordinary; outside IT technology scope.
+exclude	Nova	Nova	agreed	Ordinary word (nova); Huawei line fragment.
+exclude	Nubia	Nubia	agreed	Phone brand (also a region), not a technology.
+exclude	Nvidia	Nvidia	agreed	Company name; its technologies are GeForce, RTX, CUDA; company names are excluded.
+exclude	off-road	off-road	agreed	Automotive word, not IT.
+exclude	Office	Office	agreed	Capitalized form still ordinary 'văn phòng'; design excludes Office.
+exclude	One	One	agreed	Ordinary word (một); product fragment (One UI).
+exclude	One UI	One UI	judged	Samsung skin, but capitalized 'One UI' also starts ordinary phrases (one UI bug); can need translation.
+exclude	OnePlus	OnePlus	agreed	Phone brand/company name, not a technology term.
+exclude	Open	Open	agreed	Ordinary word 'mở'; OnePlus Open fragment.
+exclude	operations	operations	agreed	Ordinary word (hoạt động, thao tác); translates fine.
+exclude	Oppo	Oppo	agreed	Phone manufacturer/company name, not a technology name.
+exclude	Oppo Find	Oppo Find	agreed	Fragment of a phone model name; 'Find' is an ordinary word.
+exclude	Pad	Pad	agreed	Ordinary word; Redmi/Xiaomi Pad fragment.
+exclude	Palworld	Palworld	agreed	Video game title, not a technology.
+exclude	Pandas	Pandas	judged	Capitalized alone also means the animals (gấu trúc); official library name is lowercase pandas; R08 would misflag.
+exclude	Pass	Pass	agreed	Ordinary word; fragment of Game Pass.
+exclude	Pay	Pay	agreed	Ordinary word (trả tiền); Apple Pay fragment.
+exclude	Pencil	Pencil	agreed	Ordinary word 'bút chì'; Apple Pencil fragment.
+exclude	Philips	Philips	agreed	Electronics company name.
+exclude	Phone	Phone	agreed	Ordinary word (điện thoại).
+exclude	Photos	Photos	agreed	Ordinary word; fragment of Google Photos.
+exclude	Pi	Pi	agreed	Math constant 'pi'; fragment of Raspberry Pi, not a standalone technology.
+exclude	pinned memory	pinned memory	agreed	Translates fine alone ('bộ nhớ được ghim'); niche CUDA term.
+exclude	pipeline stalls	pipeline stalls	agreed	Niche plural; also reads as the clause 'the pipeline stalls'; rarely typed alone.
+exclude	Pixel	Pixel	agreed	Capitalized alone can be ordinary 'pixel' ('điểm ảnh'); phone-brand reading is context-dependent.
+exclude	Pixel Watch	Pixel Watch	judged	Consumer smartwatch product, not an IT technology; q4r renders it acceptably alone (Đồng hồ Pixel).
+exclude	pizza	pizza	agreed	General word, not IT.
+exclude	Play	Play	agreed	Ordinary word; fragment of Google Play.
+exclude	plug-in hybrid	plug-in hybrid	agreed	Automotive term; translates normally; not IT.
+exclude	Plus	Plus	agreed	Ordinary word and product suffix.
+exclude	Poco	Poco	agreed	Xiaomi sub-brand, also musical 'poco'; not a technology.
+exclude	Podcast	Podcast	agreed	General noun, not a technology name.
+exclude	Polestar	Polestar	agreed	Car brand; ordinary 'pole star'.
+exclude	Porsche	Porsche	agreed	Car company, not a technology.
+exclude	poster	poster	agreed	Ordinary word.
+exclude	Power	Power	agreed	Ordinary word.
+exclude	Premium	Premium	agreed	Marketing word 'cao cấp' that needs translation.
+exclude	Prime	Prime	agreed	Ordinary word (prime, chính) and Amazon Prime fragment.
+exclude	Prime Day	Prime Day	agreed	Amazon shopping event; marketing name, not a technology.
+exclude	Pro	Pro	agreed	Ordinary/marketing word ('chuyên nghiệp', 'ủng hộ'); product suffix needing context.
+exclude	Pro Max	Pro Max	agreed	Marketing model suffix (iPhone Pro Max); incomplete and ambiguous alone.
+exclude	Pro+	Pro+	agreed	Model suffix fragment (Note 40 Pro+).
+exclude	protein	protein	agreed	Biology word.
+exclude	PS5	PS5	agreed	Game-console model abbreviation, not an IT acronym; MT keeps such alphanumerics.
+exclude	PSA	PSA	agreed	Public service announcement; needs translation, not IT.
+exclude	pull	pull	judged	Everyday verb; q4r handles it alone (kéo / pull), matching Train's kéo for git pull.
+exclude	Qualcomm	Qualcomm	agreed	Chip company name; its platform is Snapdragon.
+exclude	Quest	Quest	agreed	Ordinary word (nhiệm vụ); Meta Quest fragment.
+exclude	radar	radar	agreed	Ordinary word (ra-đa); translates fine.
+exclude	radio	radio	agreed	Ordinary word.
+exclude	ransomware	ransomware	agreed	Fixed-meaning common noun that MT already keeps (98%); no ambiguity needing R04.
+exclude	Raspberry	Raspberry	agreed	Ordinary word ('quả mâm xôi'); fragment of Raspberry Pi.
+exclude	ray tracing	ray tracing	agreed	Standard translation 'dò tia' (60%); fixed meaning, MT handles it.
+exclude	Razer	Razer	agreed	Gaming hardware company name.
+exclude	Razr	Razr	agreed	Motorola phone model line; consumer product, not a technology.
+exclude	RC	RC	agreed	Ambiguous: release candidate, remote control, RC circuit; version tags covered by patterns.
+exclude	Realme	Realme	agreed	Phone brand/company name, not a technology.
+exclude	Red	Red	agreed	Ordinary color word; brand fragment.
+exclude	Redmi	Redmi	agreed	Xiaomi phone sub-brand; consumer brand, not a technology.
+exclude	Redmi Note	Redmi Note	agreed	Consumer phone series (Xiaomi sub-brand) from news, not IT terminology.
+exclude	refactor	refactor	judged	Fixed meaning with established 'tái cấu trúc' (77% of references); not context-dependent.
+exclude	REI	REI	agreed	Retailer name, not IT.
+exclude	remaster	remaster	agreed	Media/gaming word (bản làm lại); not IT.
+exclude	Reno	Reno	agreed	Phone-line fragment and city name.
+exclude	Ring	Ring	agreed	Ordinary word 'nhẫn/vòng'; brand/game-title fragment.
+exclude	Rivian	Rivian	agreed	Car company name.
+exclude	robot	robot	agreed	Ordinary loanword with one meaning (robot, người máy); not context-dependent IT jargon.
+exclude	robotaxi	robotaxi	agreed	General compound noun (taxi tự lái); not IT jargon.
+exclude	robotaxis	robotaxis	agreed	General compound noun, plural; not IT jargon.
+exclude	robovac	robovac	agreed	Consumer-appliance slang (robot hút bụi), not IT.
+exclude	ROG	ROG	agreed	Asus gaming brand line, not an established IT acronym.
+exclude	Roku	Roku	agreed	Company/consumer streaming brand, not an IT technology.
+exclude	router	router	judged	Translates fine alone ('bộ định tuyến'; 82% of references translate it; q4r correct); like modem.
+exclude	Rs	Rs	agreed	Rupee currency abbreviation, not a technology.
+exclude	RSR	RSR	agreed	Product model suffix with unclear meaning; not an IT acronym.
+exclude	RX	RX	agreed	Ambiguous: Radeon RX prefix, Rx prescription, RX receive; not a standalone term.
+exclude	S23	S23	agreed	Phone model fragment (Galaxy S23); not a standalone technology name.
+exclude	S24	S24	agreed	Bare model number; ambiguous alone; not an IT term.
+exclude	S24 Ultra	S24 Ultra	agreed	Specific phone model, fragment of Galaxy S24 Ultra; model codes are endless.
+exclude	S9	S9	agreed	Model-number fragment.
+exclude	Sam	Sam	agreed	Person name (Sam Altman); 'sam' is also a Vietnamese word.
+exclude	Samsung	Samsung	agreed	Company/brand name, not a technology; the design lists Samsung as out of scope.
+exclude	Samsung Galaxy	Samsung Galaxy	judged	Consumer phone product line, not a technology; the model already keeps it alone and in sentences.
+exclude	Samsung Galaxy S24	Samsung Galaxy S24	agreed	Specific consumer phone model from news; perishable, not IT terminology; scope doubtful.
+exclude	Samsung Galaxy Z	Samsung Galaxy Z	agreed	Mined fragment of 'Samsung Galaxy Z Fold/Flip' with a company prefix; product lines cover it.
+exclude	SE	SE	agreed	Ambiguous (Special Edition, software engineer, Sweden); not an established IT acronym.
+exclude	Search	Search	agreed	Ordinary word.
+exclude	SEC	SEC	agreed	Government agency; 'sec' also abbreviates second.
+exclude	security audit	security audit	agreed	General phrase; translates fine ('kiểm toán bảo mật').
+exclude	sedan	sedan	agreed	Ordinary car-body word, not IT.
+exclude	Seeds	Seeds	agreed	Ordinary word 'hạt giống'.
+exclude	selfie	selfie	agreed	General word.
+exclude	Sequoia	Sequoia	agreed	Ordinary tree name; macOS Sequoia fragment; Sequoia Capital.
+exclude	Series	Series	agreed	Ordinary word (loạt/dòng/chuỗi); product-name fragment.
+exclude	share	share	agreed	Ordinary word (chia sẻ); Train hits are KDE paths.
+exclude	shared	shared	agreed	Ordinary adjective 'dùng chung'.
+exclude	shared memory	shared memory	judged	Fixed-meaning term with standard Vietnamese bộ nhớ chia sẻ/dùng chung; model translates it correctly alone.
+exclude	Show	Show	agreed	Ordinary word ('chương trình', 'hiển thị').
+exclude	SIG	SIG	agreed	Generic 'special interest group' fragment (PCI-SIG); ambiguous.
+exclude	Silicon	Silicon	agreed	Ordinary word 'silic'; 'Silicon Valley' is translated 'Thung lũng Silicon'.
+exclude	SK	SK	agreed	Ambiguous abbreviation (SK Group, etc.); not an IT acronym.
+exclude	Slim	Slim	agreed	Ordinary/marketing word.
+exclude	SM	SM	agreed	Ambiguous abbreviation.
+exclude	Smart	Smart	agreed	Ordinary word (thông minh).
+exclude	smartphone	smartphone	agreed	General word; translates fine ('điện thoại thông minh').
+exclude	Sonoma	Sonoma	agreed	Place name; a technology only as 'macOS Sonoma'; ambiguous alone.
+exclude	Sonos	Sonos	agreed	Speaker brand (company), not a technology.
+exclude	Sony	Sony	agreed	Company/brand name, not a technology.
+exclude	SOS	SOS	agreed	Distress signal, not an IT acronym.
+exclude	soundbars	soundbars	agreed	Consumer audio product noun; translatable.
+exclude	Space	Space	agreed	Ordinary word ('không gian', Space key).
+exclude	SpaceX	SpaceX	agreed	Aerospace company name, not an IT technology.
+exclude	spam	spam	agreed	Translates fine alone (thư rác).
+exclude	Star	Star	agreed	Ordinary word.
+exclude	Starfield	Starfield	agreed	Video game title, not a technology.
+exclude	Startup	Startup	agreed	Ordinary word (khởi nghiệp, khởi động) translated by context.
+exclude	Steam	Steam	agreed	Capitalized alone is often the ordinary word 'steam' (hơi nước).
+exclude	Steam Deck	Steam Deck	judged	Handheld gaming device model, not a technology; the model keeps the name alone and in sentences.
+exclude	Stick	Stick	agreed	Ordinary word ('que', 'thanh'); Fire TV Stick fragment.
+exclude	Store	Store	agreed	Ordinary word; fragment of App Store/Play Store.
+exclude	streaming	streaming	agreed	Translates fine alone (phát trực tuyến, 93% translated in Train).
+exclude	Studio	Studio	agreed	Ordinary word; fragment of Android Studio/Visual Studio.
+exclude	SU7	SU7	agreed	Xiaomi car model number; not IT.
+exclude	Super	Super	agreed	Marketing/ordinary word.
+exclude	Surface	Surface	agreed	Capitalized alone is often the ordinary word 'surface' (bề mặt).
+exclude	SUV	SUV	agreed	Automotive acronym, not IT.
+exclude	Switch	Switch	agreed	Ordinary word (công tắc/chuyển đổi/switch mạng); Nintendo Switch fragment.
+exclude	T-Mobile	T-Mobile	agreed	Mobile carrier company name.
+exclude	Tab	Tab	agreed	Ordinary/UI word (thẻ, phím Tab); Galaxy Tab fragment.
+exclude	taxi	taxi	agreed	General word, not IT.
+exclude	TCL	TCL	agreed	Electronics brand in Phase 1 (TCL TVs); company name.
+exclude	TDRA	TDRA	agreed	UAE regulator (organization), not an IT acronym.
+exclude	teaser	teaser	agreed	Marketing word, translatable ('đoạn giới thiệu').
+exclude	TechCrunch	TechCrunch	agreed	Media outlet name, not a technology.
+exclude	Tecno	Tecno	agreed	Phone manufacturer name.
+exclude	telephoto	telephoto	agreed	Camera term, not IT.
+exclude	Tencent	Tencent	agreed	Company name, not a technology.
+exclude	Tensor	Tensor	agreed	Ambiguous: Google chip versus math/ML 'tensor' (tenxơ).
+exclude	Tesla	Tesla	agreed	Car company; also physics unit 'tesla' and a person's name; not a technology.
+exclude	Texas	Texas	agreed	Place name, not a technology.
+exclude	texture	texture	agreed	Translates fine alone (họa tiết/kết cấu).
+exclude	thermal throttling	thermal throttling	judged	Vietnamese text always translates it (giảm hiệu năng do nhiệt); niche hardware term; MT error is Student v2 evidence.
+exclude	Threads	Threads	agreed	Ordinary word (sợi chỉ, luồng, chủ đề); Meta app name ambiguous.
+exclude	Ti	Ti	agreed	GPU suffix; ambiguous (also unaccented Vietnamese 'tí').
+exclude	Tim	Tim	agreed	Person name; Vietnamese 'tim' means heart.
+exclude	TNW	TNW	agreed	Media outlet (The Next Web), not a technology.
+exclude	Top	Top	agreed	Ordinary word.
+exclude	Toyota	Toyota	agreed	Automaker.
+exclude	trailer	trailer	agreed	Ordinary word (đoạn giới thiệu phim, rơ-moóc); not IT jargon.
+exclude	transfer learning	transfer learning	judged	Fixed-meaning ML term; references use 'học chuyển giao', never bare; single-input garble is Student v2 evidence.
+exclude	Trump	Trump	agreed	Person name; 'trump' is also an ordinary word.
+exclude	TSMC	TSMC	agreed	Semiconductor company name, not a technology.
+exclude	TUF	TUF	agreed	ASUS gaming brand line (marketing name), not an IT acronym.
+exclude	Turbo	Turbo	agreed	Ordinary/marketing word; product suffix.
+exclude	TV	TV	agreed	General consumer abbreviation, not IT; in Vietnamese also 'thành viên' or 'Tiếng Việt'.
+exclude	TV+	TV+	agreed	Fragment of 'Apple TV+'; incomplete and ambiguous alone.
+exclude	tweet	tweet	agreed	Social-media common noun, not IT jargon; MT keeps it anyway.
+exclude	Twitch	Twitch	agreed	Capitalized alone can be ordinary 'twitch' ('co giật'), like Slack/Zoom; entertainment, not core IT.
+exclude	TWS	TWS	agreed	Consumer audio acronym, often translated; not IT.
+exclude	UAW	UAW	agreed	US labor union acronym, not IT.
+exclude	Uber	Uber	agreed	Ride-hailing company; 'uber' is also slang.
+exclude	Ultra	Ultra	agreed	Marketing model suffix and ordinary word; not a technology name.
+exclude	unit	unit	agreed	General word 'đơn vị' that translates fine alone.
+exclude	US	US	agreed	Country 'Mỹ/Hoa Kỳ' or shouted pronoun; must be translated.
+exclude	V2	V2	agreed	Version-like tag handled by version patterns, not a technology name.
+exclude	VC	VC	agreed	Venture capital and other meanings; not IT.
+exclude	vector	vector	agreed	Translates fine alone (véc-tơ).
+exclude	Ventures	Ventures	agreed	Ordinary word; company-name fragment (Salesforce Ventures).
+exclude	Verizon	Verizon	agreed	Telecom company, not a technology.
+exclude	VI	VI	agreed	Roman numeral or language code, not an IT acronym.
+exclude	video	video	agreed	Ordinary word, same in Vietnamese; translates fine alone, not context-dependent jargon.
+exclude	virus	virus	agreed	General word ('virus', 'vi-rút') for both senses; translates fine.
+exclude	Vision	Vision	agreed	Ordinary word; only a fragment of Apple Vision Pro.
+exclude	Vision Pro	Vision Pro	agreed	Consumer device product name, not an IT technology term; open-ended product class.
+exclude	Vivo	Vivo	agreed	Phone company; also a Spanish/Portuguese word; not a technology.
+exclude	Volkswagen	Volkswagen	agreed	Automaker.
+exclude	VW	VW	agreed	Car brand abbreviation, not IT.
+exclude	Wallet	Wallet	agreed	Ordinary word 'ví'.
+exclude	Walmart	Walmart	agreed	Retailer name, not a technology.
+exclude	warp	warp	agreed	Niche CUDA term; otherwise an ordinary verb (cong vênh, làm oằn) needing translation.
+exclude	Wars	Wars	agreed	Ordinary word 'chiến tranh'; Star Wars fragment.
+exclude	Watch	Watch	agreed	Ordinary word (xem, đồng hồ) even capitalized; fragment of Apple/Galaxy Watch.
+exclude	Watch Ultra	Watch Ultra	agreed	Fragment of Apple/Galaxy Watch Ultra product names, not a standalone technology.
+exclude	watt	watt	agreed	Unit word, not IT.
+exclude	Wear	Wear	agreed	Ordinary word (mặc); Wear OS fragment.
+exclude	webcam	webcam	agreed	Loanword with one meaning, kept or rendered fine by MT; not context-dependent.
+exclude	Work	Work	agreed	Ordinary word.
+exclude	World	World	agreed	Ordinary word.
+exclude	WWDC	WWDC	agreed	Apple event name, not a technology or IT acronym.
+exclude	X	X	agreed	Single letter; ambiguous (letter, multiplication sign, Twitter's new name).
+exclude	X100	X100	agreed	Bare model number (Vivo/Fujifilm X100); ambiguous fragment.
+exclude	X7	X7	agreed	Model-number fragment.
+exclude	Xbox	Xbox	judged	Gaming console and entertainment brand, outside IT technology scope; the model already keeps it unchanged.
+exclude	Xbox Series	Xbox Series	agreed	Fragment of Xbox Series X/S; incomplete product name.
+exclude	Xiaomi	Xiaomi	agreed	Company/brand name, not a technology; out of lexicon scope.
+exclude	XPS	XPS	agreed	Dell laptop line or niche document format; not an established IT acronym.
+exclude	XT	XT	agreed	Product-suffix fragment.
+exclude	yep	yep	judged	Probe: EN→VI 'yep' gives 'Name'; R05 would show it without warning, so keep the short-input warning.
+exclude	York	York	agreed	Place-name fragment (New York).
+exclude	Yuan	Yuan	agreed	Currency (nhân dân tệ); needs translation.
+exclude	Z Flip	Z Flip	judged	Fragment of consumer phone name Galaxy Z Flip; not an IT technology.
+exclude	Zen	Zen	agreed	Ordinary/religious 'Thiền'; AMD Zen fragment.
+exclude	Zero	Zero	agreed	Ordinary word.
+exclude	Zoom	Zoom	agreed	Ordinary word 'zoom' (phóng to); design excludes it.
+exclude	được	được	agreed	Polysemous function word (can/get/passive/OK); alone it needs context, so keep the short-input warning.
+exclude	ờ	ờ	judged	Ambiguous interjection (yeah, oh, uh); q4r renders it 'Uh-oh.', so keep the short-input warning.
+exclude	ừm	ừm	judged	Ambiguous filler (um vs mm-hmm); q4r outputs 'Uh-'; keep the short-input warning instead of R05.

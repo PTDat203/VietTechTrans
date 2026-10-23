@@ -6,6 +6,7 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import vn.viettechtrans.app.mt.Lang
+import vn.viettechtrans.app.mt.rules.RuleNote
 import vn.viettechtrans.app.turn.ConvEffect.AddMessage
 import vn.viettechtrans.app.turn.ConvEffect.MarkInterrupted
 import vn.viettechtrans.app.turn.ConvEffect.Notice
@@ -121,8 +122,52 @@ class ConversationReducerTest {
     fun typingWhileSomeoneTalksIsTranslatedButNotSpoken() {
         val (s, fx) = run(ConvEvent.Tap(Party.A), ConvEvent.Typed(Party.B, "Hello"), ConvEvent.Translated(2, MtOutcome.Ok("Xin chào", 3)))
         assertEquals(ConvPhase.Listening(Party.A, 1), s.phase)
-        assertTrue(fx.contains(SetTranslation(2, "Xin chào", MessageStatus.NOT_PLAYED, 3)))
+        // Keyboard text is never spoken by itself (R13), so it is not "chưa phát" either.
+        assertTrue(fx.contains(SetTranslation(2, "Xin chào", MessageStatus.OK, 3)))
         assertFalse(fx.any { it is Speak })
+    }
+
+    /** Policy R13: typed text is translated and shown; it is read only when the user taps the speaker. */
+    @Test
+    fun typedSentenceIsTranslatedButNeverSpokenByItself() {
+        val notes = listOf(RuleNote.NO_DIACRITICS)
+        val (s, fx) = run(
+            ConvEvent.Typed(Party.A, "toi can kiem tra loi API", notes = notes),
+            ConvEvent.Translated(1, MtOutcome.Ok("I need to check the API", 5, listOf(RuleNote.CHECK_TERMS), listOf("API"))),
+        )
+        assertEquals(
+            listOf(
+                AddMessage(1, Party.A, "toi can kiem tra loi API", typed = true, notes = notes),
+                Translate(1, Party.A, "toi can kiem tra loi API"),
+                SetTranslation(1, "I need to check the API", MessageStatus.OK, 5, listOf(RuleNote.CHECK_TERMS), listOf("API")),
+            ),
+            fx,
+        )
+        assertEquals(ConvPhase.Idle, s.phase)
+        assertTrue(s.textTurns.isEmpty())
+    }
+
+    /** R03/R04: the text itself is the result; no model, no speech, and nothing else is disturbed. */
+    @Test
+    fun keptLiteralIsShownWithoutTheModel() {
+        val (s0, _) = run(ConvEvent.Tap(Party.A))
+        val (s, fx) = run(ConvEvent.Typed(Party.B, "JavaScript", keep = true, notes = listOf(RuleNote.KEPT_LITERAL)), start = s0)
+        assertEquals(
+            listOf(
+                AddMessage(2, Party.B, "JavaScript", typed = true, notes = listOf(RuleNote.KEPT_LITERAL)),
+                SetTranslation(2, "JavaScript", MessageStatus.OK),
+            ),
+            fx,
+        )
+        assertEquals(ConvPhase.Listening(Party.A, 1), s.phase)
+    }
+
+    /** R12: an invalid output is not shown as a translation; the source stays for "Sửa". */
+    @Test
+    fun invalidOutputIsRejected() {
+        val (s, fx) = run(ConvEvent.Typed(Party.A, "Xem https://example.com"), ConvEvent.Translated(1, MtOutcome.Invalid("bad", 4)))
+        assertEquals(listOf(SetTranslation(1, null, MessageStatus.INVALID, 4), Notice("bad")), fx.drop(2))
+        assertEquals(ConvPhase.Idle, s.phase)
     }
 
     @Test
@@ -135,7 +180,7 @@ class ConversationReducerTest {
     }
 
     @Test
-    fun editedSentenceIsTranslatedAndSpokenAgain() {
+    fun editedSentenceIsTranslatedAgainButNotSpoken() {
         val (s0, _) = run(*spokenTurnOfA)
         val (s, fx) = run(
             ConvEvent.Edited(1, Party.A, " Xin chào bạn "),
@@ -144,21 +189,28 @@ class ConversationReducerTest {
         )
         assertEquals(
             listOf(
-                ReplaceSource(1, "Xin chào bạn"),
+                ReplaceSource(1, "Xin chào bạn", Party.A),
                 Translate(1, Party.A, "Xin chào bạn"),
                 SetTranslation(1, "Hello friend", MessageStatus.OK, 7),
-                Speak(2, 1, Lang.EN, "Hello friend"),
             ),
             fx,
         )
-        assertEquals(ConvPhase.Speaking(Party.A, 1, 2), s.phase)
+        assertEquals(ConvPhase.Idle, s.phase)
+    }
+
+    /** R06 "Đổi sang English" on a correction: the message becomes the English speaker's. */
+    @Test
+    fun correctionCanChangeTheSpeaker() {
+        val (s0, _) = run(*spokenTurnOfA)
+        val (_, fx) = run(ConvEvent.Edited(1, Party.B, "Hello"), start = s0)
+        assertEquals(listOf(ReplaceSource(1, "Hello", Party.B), Translate(1, Party.B, "Hello")), fx)
     }
 
     @Test
     fun editingWhileSpeakingStopsSpeechButDoesNotMarkTheEditedTurn() {
         val (s0, _) = run(ConvEvent.Tap(Party.A), ConvEvent.ListenEnded(1, Heard.Text("A")), ConvEvent.Translated(1, MtOutcome.Ok("A-en", 1)))
         val (_, fx) = run(ConvEvent.Edited(1, Party.A, "B"), start = s0)
-        assertEquals(listOf(StopSpeak, ReplaceSource(1, "B"), Translate(1, Party.A, "B")), fx)
+        assertEquals(listOf(StopSpeak, ReplaceSource(1, "B", Party.A), Translate(1, Party.A, "B")), fx)
     }
 
     @Test
@@ -198,6 +250,7 @@ class ConversationReducerTest {
             var speaking = false
             val spokenTurns = mutableSetOf<Int>()
             val cutTurns = mutableSetOf<Int>()
+            val keyboardTurns = mutableSetOf<Int>()
             repeat(40) {
                 val turnGuess = rnd.nextInt(1, s.nextTurn + 1)
                 val e = when (rnd.nextInt(10)) {
@@ -210,11 +263,18 @@ class ConversationReducerTest {
                             else -> Heard.Failed("err")
                         },
                     )
-                    3 -> ConvEvent.Translated(turnGuess, if (rnd.nextInt(4) == 0) MtOutcome.Failed("x") else MtOutcome.Ok("tr$turnGuess", 1))
+                    3 -> ConvEvent.Translated(
+                        turnGuess,
+                        when (rnd.nextInt(6)) {
+                            0 -> MtOutcome.Failed("x")
+                            1 -> MtOutcome.Invalid("bad", 1)
+                            else -> MtOutcome.Ok("tr$turnGuess", 1)
+                        },
+                    )
                     4 -> ConvEvent.SpeakDone(rnd.nextInt(1, s.nextSpeak + 1))
                     5 -> ConvEvent.StopSpeaking
-                    6 -> ConvEvent.Typed(if (rnd.nextBoolean()) Party.A else Party.B, "typed")
-                    7 -> ConvEvent.Edited(turnGuess, if (rnd.nextBoolean()) Party.A else Party.B, "edited")
+                    6 -> ConvEvent.Typed(if (rnd.nextBoolean()) Party.A else Party.B, "typed", keep = rnd.nextInt(4) == 0)
+                    7 -> ConvEvent.Edited(turnGuess, if (rnd.nextBoolean()) Party.A else Party.B, "edited", keep = rnd.nextInt(4) == 0)
                     8 -> if (rnd.nextInt(5) == 0) ConvEvent.Reset(rnd.nextInt(1, 50)) else ConvEvent.Replay("r", Lang.VI)
                     else -> ConvEvent.Replay("r", Lang.VI)
                 }
@@ -226,15 +286,18 @@ class ConversationReducerTest {
                         StopSpeak -> speaking = false
                         is StartListen -> assertFalse("run $run: mic opened while speaking", speaking)
                         is ReplaceSource -> {
-                            // A corrected sentence is a new utterance: it may be spoken once more.
+                            // A corrected sentence is keyboard text: it is never spoken automatically (R13).
                             spokenTurns -= f.turn
                             cutTurns -= f.turn
+                            keyboardTurns += f.turn
                         }
+                        is AddMessage -> if (f.typed) keyboardTurns += f.turn
                         is Speak -> {
                             assertTrue("run $run: speak while mic open", n.phase !is ConvPhase.Listening)
                             f.turn?.let { t ->
                                 assertFalse("run $run: turn $t spoken twice", t in spokenTurns)
                                 assertFalse("run $run: cut turn $t spoken", t in cutTurns)
+                                assertFalse("run $run: keyboard turn $t spoken by itself", t in keyboardTurns)
                                 spokenTurns += t
                             }
                             speaking = true

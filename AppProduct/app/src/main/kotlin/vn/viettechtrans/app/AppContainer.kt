@@ -9,6 +9,9 @@ import vn.viettechtrans.app.history.ConversationStore
 import vn.viettechtrans.app.mt.CoreMt
 import vn.viettechtrans.app.mt.CoreMtProvider
 import vn.viettechtrans.app.mt.TranslatorRegistry
+import vn.viettechtrans.app.mt.rules.RuleLexicon
+import vn.viettechtrans.app.mt.rules.RuleLog
+import vn.viettechtrans.app.mt.rules.TextRules
 import vn.viettechtrans.app.speech.Listener
 import vn.viettechtrans.app.speech.Speaker
 import vn.viettechtrans.app.speech.SpeechEngines
@@ -41,8 +44,16 @@ class AppContainer(context: Context) {
 
     /** Looks for the MT package in assets (off the main thread). */
     suspend fun coreMt(): CoreMt = coreMtCache ?: withContext(Dispatchers.IO) {
-        CoreMtProvider.open(appContext).also { coreMtCache = it }
+        CoreMtProvider.open(appContext) { text -> textRules.literals.spans(text).map { it.start until it.end } }.also { coreMtCache = it }
     }
+
+    /** Text-input rules of docs/contracts/mt_app_rule_policy_v1.md with the reviewed lexicon (assets/text). */
+    val textRules: TextRules by lazy {
+        TextRules(RuleLexicon.parse(appContext.assets.open(RuleLexicon.ASSET).use { it.readBytes().decodeToString() }))
+    }
+
+    /** Run-time evidence of R06 overrides, R08 lost terms and R12 rejected outputs. */
+    val ruleLog = RuleLog(File(appContext.filesDir, "mt_rules"))
 
     val speechEngines = SpeechEngines(appContext)
     val mic = MicRecorder(appContext)

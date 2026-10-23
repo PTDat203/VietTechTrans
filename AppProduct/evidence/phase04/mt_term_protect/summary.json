@@ -1,0 +1,67 @@
+{
+  "policy": "app decoding policy + collapse_repeats; selective protection from tools/mt/term_protect.py (placeholders for terms flagged by term_risk.py, canonical spelling only for spellings it flags, URLs / paths / ALL CAPS untouched), assets/text/it_terms.tsv",
+  "results": {
+    "en_to_vi/selection_validation": {
+      "rows": 15252,
+      "rows_with_terms": 9,
+      "terms": 9,
+      "fallback_rows": 0,
+      "term_kept": {
+        "without": 0.2222222222222222,
+        "with": 1.0
+      },
+      "rows_with_terms_chrF++": {
+        "without": 64.81568755876042,
+        "with": 73.92462714394793
+      },
+      "rows_with_terms_sacreBLEU": {
+        "without": 50.67937058334196,
+        "with": 60.14623619062842
+      },
+      "all_rows_chrF++": {
+        "without": 66.42378968191272,
+        "with": 66.42815898872551
+      },
+      "all_rows_sacreBLEU": {
+        "without": 51.03479745895964,
+        "with": 51.03887960521451
+      }
+    },
+    "en_to_vi/general_validation": {
+      "rows": 997,
+      "rows_with_terms": 0,
+      "note": "no source changed"
+    },
+    "vi_to_en/selection_validation": {
+      "rows": 15252,
+      "rows_with_terms": 9,
+      "terms": 11,
+      "fallback_rows": 1,
+      "term_kept": {
+        "without": 0.45454545454545453,
+        "with": 0.9090909090909091
+      },
+      "rows_with_terms_chrF++": {
+        "without": 67.04872557654792,
+        "with": 67.3192108383564
+      },
+      "rows_with_terms_sacreBLEU": {
+        "without": 44.85101337097,
+        "with": 43.656528463993915
+      },
+      "all_rows_chrF++": {
+        "without": 61.3254708411763,
+        "with": 61.325597388778306
+      },
+      "all_rows_sacreBLEU": {
+        "without": 36.311537015041246,
+        "with": 36.310121457562566
+      }
+    },
+    "vi_to_en/general_validation": {
+      "rows": 997,
+      "rows_with_terms": 0,
+      "note": "no source changed"
+    }
+  }
+}

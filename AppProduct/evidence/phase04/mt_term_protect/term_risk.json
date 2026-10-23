@@ -1,0 +1,1635 @@
+{
+ "templates": {
+  "vi_to_en": [
+   "Tôi đang học {}",
+   "Dự án này dùng {} cho phần backend",
+   "Bạn đã cài {} chưa?",
+   "Lỗi xảy ra khi chạy {} trên máy chủ",
+   "Nhóm mình chuyển sang {} từ tháng trước",
+   "Hướng dẫn sử dụng {} cho người mới"
+  ],
+  "en_to_vi": [
+   "I am learning {}",
+   "This project uses {} for the backend",
+   "Have you installed {} yet?",
+   "The error happens when running {} on the server",
+   "Our team switched to {} last month",
+   "A beginner's guide to {}"
+  ]
+ },
+ "max_kept_to_protect": 4,
+ "kept_of_6": {
+  "JavaScript": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 0,
+    "cap": 0
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 2,
+    "cap": 6
+   }
+  },
+  "JS": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 5,
+    "cap": 6
+   }
+  },
+  "TypeScript": {
+   "vi_to_en": {
+    "canonical": 0,
+    "lower": 6,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 0,
+    "lower": 0,
+    "cap": 4
+   }
+  },
+  "Python": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6
+   }
+  },
+  "Java": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 0
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 3
+   }
+  },
+  "Kotlin": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6
+   }
+  },
+  "Swift": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 0
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0
+   }
+  },
+  "Golang": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 5
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6
+   }
+  },
+  "Rust": {
+   "vi_to_en": {
+    "canonical": 3,
+    "lower": 3
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0
+   }
+  },
+  "PHP": {
+   "vi_to_en": {
+    "canonical": 4,
+    "lower": 0,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 5,
+    "lower": 6,
+    "cap": 5
+   }
+  },
+  "C++": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6
+   }
+  },
+  "C#": {
+   "vi_to_en": {
+    "canonical": 4,
+    "lower": 1
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6
+   }
+  },
+  "Ruby": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 1
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0
+   }
+  },
+  "Scala": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6
+   }
+  },
+  "Dart": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 0
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0
+   }
+  },
+  "Lua": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 4
+   }
+  },
+  "MATLAB": {
+   "vi_to_en": {
+    "canonical": 0,
+    "lower": 5,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 2,
+    "cap": 6
+   }
+  },
+  "PowerShell": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 0,
+    "cap": 0
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0,
+    "cap": 5
+   }
+  },
+  "Bash": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 2
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0
+   }
+  },
+  "SQL": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0,
+    "cap": 6
+   }
+  },
+  "NoSQL": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   }
+  },
+  "HTML": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 1,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   }
+  },
+  "HTML5": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 1,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   }
+  },
+  "CSS": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 0,
+    "lower": 4,
+    "cap": 3
+   }
+  },
+  "CSS3": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 3
+   },
+   "en_to_vi": {
+    "canonical": 0,
+    "lower": 2,
+    "cap": 4
+   }
+  },
+  "JSON": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   }
+  },
+  "XML": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 0,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0,
+    "cap": 6
+   }
+  },
+  "YAML": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0,
+    "cap": 0
+   }
+  },
+  "Markdown": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 5,
+    "lower": 0
+   }
+  },
+  "Solidity": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 0
+   },
+   "en_to_vi": {
+    "canonical": 0,
+    "lower": 0
+   }
+  },
+  "React": {
+   "vi_to_en": {
+    "canonical": 1,
+    "lower": 3
+   },
+   "en_to_vi": {
+    "canonical": 0,
+    "lower": 0
+   }
+  },
+  "React Native": {
+   "vi_to_en": {
+    "canonical": 0,
+    "lower": 0,
+    "cap": 0
+   },
+   "en_to_vi": {
+    "canonical": 0,
+    "lower": 0,
+    "cap": 0
+   }
+  },
+  "Angular": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 0,
+    "lower": 0
+   }
+  },
+  "AngularJS": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 0,
+    "lower": 0,
+    "cap": 0
+   }
+  },
+  "Vue.js": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 0
+   },
+   "en_to_vi": {
+    "canonical": 3,
+    "lower": 4
+   }
+  },
+  "Svelte": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 3
+   }
+  },
+  "Next.js": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0
+   }
+  },
+  "Nuxt.js": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 4,
+    "lower": 4
+   }
+  },
+  "Node.js": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 5,
+    "lower": 0
+   }
+  },
+  "Express.js": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 1
+   }
+  },
+  "NestJS": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0,
+    "cap": 6
+   }
+  },
+  "Django": {
+   "vi_to_en": {
+    "canonical": 0,
+    "lower": 2
+   },
+   "en_to_vi": {
+    "canonical": 3,
+    "lower": 6
+   }
+  },
+  "Flask": {
+   "vi_to_en": {
+    "canonical": 4,
+    "lower": 0
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0
+   }
+  },
+  "FastAPI": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 0,
+    "lower": 0,
+    "cap": 2
+   }
+  },
+  "Spring Boot": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 0,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 4,
+    "lower": 0,
+    "cap": 0
+   }
+  },
+  "Laravel": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 0
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 5
+   }
+  },
+  "Symfony": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 4
+   },
+   "en_to_vi": {
+    "canonical": 0,
+    "lower": 0
+   }
+  },
+  "Ruby on Rails": {
+   "vi_to_en": {
+    "canonical": 1,
+    "lower": 0,
+    "cap": 0
+   },
+   "en_to_vi": {
+    "canonical": 0,
+    "lower": 0,
+    "cap": 0
+   }
+  },
+  ".NET": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6
+   }
+  },
+  "ASP.NET": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 0,
+    "lower": 6,
+    "cap": 6
+   }
+  },
+  "Flutter": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0
+   }
+  },
+  "Xamarin": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 1
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 3
+   }
+  },
+  "jQuery": {
+   "vi_to_en": {
+    "canonical": 0,
+    "lower": 0,
+    "cap": 0
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 5,
+    "cap": 6
+   }
+  },
+  "Bootstrap": {
+   "vi_to_en": {
+    "canonical": 0,
+    "lower": 0
+   },
+   "en_to_vi": {
+    "canonical": 0,
+    "lower": 0
+   }
+  },
+  "Tailwind CSS": {
+   "vi_to_en": {
+    "canonical": 3,
+    "lower": 4,
+    "cap": 3
+   },
+   "en_to_vi": {
+    "canonical": 0,
+    "lower": 0,
+    "cap": 0
+   }
+  },
+  "Redux": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6
+   }
+  },
+  "GraphQL": {
+   "vi_to_en": {
+    "canonical": 0,
+    "lower": 6,
+    "cap": 1
+   },
+   "en_to_vi": {
+    "canonical": 0,
+    "lower": 0,
+    "cap": 0
+   }
+  },
+  "REST": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 1,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 1,
+    "lower": 0,
+    "cap": 0
+   }
+  },
+  "RESTful": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 0,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 0,
+    "lower": 0,
+    "cap": 0
+   }
+  },
+  "gRPC": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   }
+  },
+  "WebSocket": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 2,
+    "cap": 4
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 2,
+    "cap": 2
+   }
+  },
+  "WebSockets": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 2,
+    "cap": 4
+   },
+   "en_to_vi": {
+    "canonical": 4,
+    "lower": 0,
+    "cap": 2
+   }
+  },
+  "OAuth": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 0,
+    "cap": 3
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   }
+  },
+  "OAuth2": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 0,
+    "cap": 3
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   }
+  },
+  "JWT": {
+   "vi_to_en": {
+    "canonical": 2,
+    "lower": 6,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0,
+    "cap": 6
+   }
+  },
+  "TensorFlow": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 1,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0,
+    "cap": 6
+   }
+  },
+  "PyTorch": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   }
+  },
+  "Keras": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 1
+   }
+  },
+  "scikit-learn": {
+   "vi_to_en": {
+    "canonical": 4,
+    "cap": 4
+   },
+   "en_to_vi": {
+    "canonical": 0,
+    "cap": 1
+   }
+  },
+  "sklearn": {
+   "vi_to_en": {
+    "canonical": 0,
+    "cap": 0
+   },
+   "en_to_vi": {
+    "canonical": 2,
+    "cap": 0
+   }
+  },
+  "Pandas": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0
+   }
+  },
+  "NumPy": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 5
+   }
+  },
+  "OpenCV": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   }
+  },
+  "Hugging Face": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 5,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0,
+    "cap": 0
+   }
+  },
+  "LangChain": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 0,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   }
+  },
+  "Apache Spark": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0,
+    "cap": 0
+   }
+  },
+  "PySpark": {
+   "vi_to_en": {
+    "canonical": 0,
+    "lower": 0,
+    "cap": 4
+   },
+   "en_to_vi": {
+    "canonical": 0,
+    "lower": 0,
+    "cap": 0
+   }
+  },
+  "Hadoop": {
+   "vi_to_en": {
+    "canonical": 0,
+    "lower": 1
+   },
+   "en_to_vi": {
+    "canonical": 5,
+    "lower": 0
+   }
+  },
+  "Kafka": {
+   "vi_to_en": {
+    "canonical": 0,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 0,
+    "lower": 6
+   }
+  },
+  "RabbitMQ": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 0,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0,
+    "cap": 6
+   }
+  },
+  "Elasticsearch": {
+   "vi_to_en": {
+    "canonical": 3,
+    "lower": 0
+   },
+   "en_to_vi": {
+    "canonical": 0,
+    "lower": 0
+   }
+  },
+  "Kibana": {
+   "vi_to_en": {
+    "canonical": 0,
+    "lower": 5
+   },
+   "en_to_vi": {
+    "canonical": 4,
+    "lower": 6
+   }
+  },
+  "Grafana": {
+   "vi_to_en": {
+    "canonical": 3,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6
+   }
+  },
+  "Nginx": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 0
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6
+   }
+  },
+  "Tomcat": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6
+   }
+  },
+  "Docker": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 0
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6
+   }
+  },
+  "Kubernetes": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 1
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 1
+   }
+  },
+  "K8s": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6
+   }
+  },
+  "Git": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 5
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6
+   }
+  },
+  "GitHub": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 2,
+    "cap": 5
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0,
+    "cap": 0
+   }
+  },
+  "GitLab": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   }
+  },
+  "Bitbucket": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 0,
+    "lower": 0
+   }
+  },
+  "Jenkins": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 5
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6
+   }
+  },
+  "Terraform": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 3
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0
+   }
+  },
+  "Ansible": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 0,
+    "lower": 0
+   }
+  },
+  "Postman": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 1
+   }
+  },
+  "Jira": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6
+   }
+  },
+  "Confluence": {
+   "vi_to_en": {
+    "canonical": 5,
+    "lower": 0
+   },
+   "en_to_vi": {
+    "canonical": 0,
+    "lower": 0
+   }
+  },
+  "Figma": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 0
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0
+   }
+  },
+  "VS Code": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 2,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 0,
+    "lower": 0,
+    "cap": 0
+   }
+  },
+  "Visual Studio Code": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 0,
+    "cap": 4
+   },
+   "en_to_vi": {
+    "canonical": 4,
+    "lower": 0,
+    "cap": 0
+   }
+  },
+  "Visual Studio": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 0,
+    "cap": 5
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0,
+    "cap": 0
+   }
+  },
+  "IntelliJ IDEA": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 0,
+    "lower": 0,
+    "cap": 0
+   }
+  },
+  "Android Studio": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0,
+    "cap": 0
+   }
+  },
+  "Xcode": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6
+   }
+  },
+  "npm": {
+   "vi_to_en": {
+    "canonical": 6,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "cap": 6
+   }
+  },
+  "Yarn": {
+   "vi_to_en": {
+    "canonical": 0,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 3,
+    "lower": 0
+   }
+  },
+  "Maven": {
+   "vi_to_en": {
+    "canonical": 1,
+    "lower": 3
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6
+   }
+  },
+  "Gradle": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 0,
+    "lower": 0
+   }
+  },
+  "Webpack": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 4,
+    "lower": 2
+   }
+  },
+  "Vite": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 5,
+    "lower": 0
+   }
+  },
+  "MySQL": {
+   "vi_to_en": {
+    "canonical": 2,
+    "lower": 6,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   }
+  },
+  "PostgreSQL": {
+   "vi_to_en": {
+    "canonical": 4,
+    "lower": 6,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 5,
+    "cap": 6
+   }
+  },
+  "Postgres": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0
+   }
+  },
+  "MongoDB": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 0,
+    "cap": 0
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   }
+  },
+  "Mongo": {
+   "vi_to_en": {
+    "canonical": 5,
+    "lower": 0
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6
+   }
+  },
+  "Redis": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0
+   }
+  },
+  "SQLite": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 0
+   },
+   "en_to_vi": {
+    "canonical": 1,
+    "lower": 0,
+    "cap": 6
+   }
+  },
+  "SQL Server": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 5,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 0,
+    "lower": 0,
+    "cap": 1
+   }
+  },
+  "MariaDB": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 5,
+    "cap": 4
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   }
+  },
+  "DynamoDB": {
+   "vi_to_en": {
+    "canonical": 1,
+    "lower": 3,
+    "cap": 3
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 4,
+    "cap": 6
+   }
+  },
+  "Firebase": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 5
+   }
+  },
+  "Firestore": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 5
+   }
+  },
+  "Supabase": {
+   "vi_to_en": {
+    "canonical": 0,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0
+   }
+  },
+  "AWS": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0,
+    "cap": 6
+   }
+  },
+  "Azure": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6
+   }
+  },
+  "Google Cloud": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 0,
+    "cap": 0
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 2,
+    "cap": 5
+   }
+  },
+  "GCP": {
+   "vi_to_en": {
+    "canonical": 0,
+    "lower": 6,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   }
+  },
+  "Heroku": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 0,
+    "lower": 0
+   }
+  },
+  "Vercel": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 0
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6
+   }
+  },
+  "Netlify": {
+   "vi_to_en": {
+    "canonical": 0,
+    "lower": 0
+   },
+   "en_to_vi": {
+    "canonical": 0,
+    "lower": 0
+   }
+  },
+  "Cloudflare": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 0
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 1
+   }
+  },
+  "Linux": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 0
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0
+   }
+  },
+  "Ubuntu": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 0
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0
+   }
+  },
+  "Debian": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 5
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 5
+   }
+  },
+  "CentOS": {
+   "vi_to_en": {
+    "canonical": 4,
+    "lower": 6,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 1,
+    "cap": 2
+   }
+  },
+  "Windows": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0
+   }
+  },
+  "macOS": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 5,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 2
+   }
+  },
+  "iOS": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 2,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   }
+  },
+  "Android": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6
+   }
+  },
+  "Chrome": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6
+   }
+  },
+  "Firefox": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 1
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6
+   }
+  },
+  "Excel": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0
+   }
+  },
+  "PowerPoint": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 5,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0,
+    "cap": 6
+   }
+  },
+  "Bluetooth": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 0
+   }
+  },
+  "Wi-Fi": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   }
+  },
+  "ChatGPT": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 0,
+    "cap": 1
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 5,
+    "cap": 1
+   }
+  },
+  "OpenAI": {
+   "vi_to_en": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   },
+   "en_to_vi": {
+    "canonical": 6,
+    "lower": 6,
+    "cap": 6
+   }
+  }
+ }
+}

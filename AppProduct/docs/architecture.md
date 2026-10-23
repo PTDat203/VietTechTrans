@@ -141,7 +141,7 @@ Bảng đầy đủ (20 trường hợp, kèm việc người dùng cần làm):
 | Không nghe thấy giọng | 6 s không có giọng thì báo "Không nghe thấy giọng nói" |
 | Chỉ có từ đệm | Bỏ, không tạo câu |
 | Nhận sai | Bấm ✎ trên câu, sửa, "Dịch lại"; câu được thay (nhãn "đã sửa") |
-| Quá dài | Lượt tối đa 60 s thì tự kết thúc; ô gõ tối đa 1000 ký tự; câu > 512 token tách theo câu |
+| Quá dài | Lượt tối đa 60 s thì tự kết thúc; chữ gõ tối đa 500 ký tự hiển thị (khoá gửi, không cắt chữ, R02); câu > 500 `source_ids` tách theo câu rồi dấu cách, không tách trong URL/code (R09) |
 | MT chậm | Sau 10 s báo "Mô hình dịch chưa phản hồi…" |
 | MT lỗi | Câu có nhãn "dịch lỗi", sửa và dịch lại được |
 | Chưa có quyền mic | "Cần quyền micro để nói. Bạn vẫn gõ được." |
@@ -162,7 +162,8 @@ Bảng đầy đủ (20 trường hợp, kèm việc người dùng cần làm):
 | B chạm khi A đang nói | Lượt A chạy nền (vẫn STT → MT → lưu, nhưng không phát, nhãn "chưa phát"). Mic chuyển sang B ngay |
 | Ai đó chạm khi TTS đang đọc | Dừng đọc (nhãn "bị ngắt"), mở mic cho người chạm |
 | TTS đọc xong | Về Idle |
-| Sửa câu (✎) khi Idle hoặc đang đọc | Dừng đọc nếu có, thay câu gốc, dịch lại rồi đọc |
+| Sửa câu (✎) khi Idle hoặc đang đọc | Dừng đọc nếu có, thay câu gốc (qua rule R01–R07 như chữ gõ), dịch lại; không tự đọc, bấm 🔊 để nghe (R13) |
+| Gõ câu (⌨) | Qua rule R01–R07 (giữ nguyên R03/R04, hỏi R06 khi có vẻ là ngôn ngữ kia), dịch, kiểm tra R08/R12; không tự đọc, dòng thời gian chỉ "MT … ms" (R13) |
 | Sửa câu khi đang nghe hoặc đang dịch | Báo "Đợi lượt đang nói hoặc đang dịch xong rồi sửa" |
 | Chuyển cuộc trò chuyện (＋, mở cuộc khác) | Dừng mic và đọc, về Idle; kết quả muộn của cuộc cũ bị bỏ |
 

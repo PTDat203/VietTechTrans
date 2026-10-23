@@ -35,7 +35,18 @@ data class StoredMessage(
     val sttMs: Long? = null,
     val mtMs: Long? = null,
     val ttsFirstAudioMs: Long? = null,
-)
+    /** [INPUT_TEXT] (typed or corrected) or [INPUT_VOICE]; null in files written before 2026-10-23 (then: voice when [sttMs] is set). */
+    val input: String? = null,
+    /** RuleNote names of the text-rule policy that fired (shown on the bubble). */
+    val notes: List<String> = emptyList(),
+    /** R08: lexicon terms the translation lost. */
+    val checkTerms: List<String> = emptyList(),
+) {
+    companion object {
+        const val INPUT_TEXT = "text"
+        const val INPUT_VOICE = "voice"
+    }
+}
 
 @Serializable
 data class StoredConversation(

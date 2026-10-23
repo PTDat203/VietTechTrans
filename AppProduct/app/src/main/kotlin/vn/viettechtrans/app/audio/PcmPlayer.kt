@@ -11,6 +11,7 @@ import kotlin.math.max
  * from any thread and makes pending writes return.
  */
 class PcmPlayer {
+    @Volatile
     private var track: AudioTrack? = null
     private var framesWritten = 0L
 
@@ -49,7 +50,12 @@ class PcmPlayer {
         if (stopped) return false
         var offset = 0
         while (offset < samples.size && !stopped) {
-            val n = t.write(samples, offset, samples.size - offset, AudioTrack.WRITE_BLOCKING)
+            // A track released meanwhile throws instead of returning an error code.
+            val n = try {
+                t.write(samples, offset, samples.size - offset, AudioTrack.WRITE_BLOCKING)
+            } catch (_: IllegalStateException) {
+                return false
+            }
             if (n <= 0) return false
             offset += n
         }

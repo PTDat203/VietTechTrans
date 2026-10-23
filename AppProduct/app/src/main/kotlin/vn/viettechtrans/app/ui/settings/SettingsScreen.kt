@@ -32,16 +32,19 @@ import java.util.Locale
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.json.Json
 import vn.viettechtrans.app.AppContainer
 import vn.viettechtrans.app.Diagnostics
 import vn.viettechtrans.app.R
 import vn.viettechtrans.app.diagnostics.DeviceCheck
+import vn.viettechtrans.app.diagnostics.RuleCaseRunner
 import vn.viettechtrans.app.mt.CoreMt
+import vn.viettechtrans.app.mt.rules.RuleCases
 import vn.viettechtrans.app.ui.common.GradientButton
 import vn.viettechtrans.app.ui.common.ScreenScaffold
 import vn.viettechtrans.app.ui.common.VttCard
 
-/** Device check, history storage, diagnostics and build facts. */
+/** Device check, the rule case set and log of the text-rule policy, history storage, diagnostics and build facts. */
 @Composable
 fun SettingsScreen(container: AppContainer, onBack: () -> Unit, onHelp: () -> Unit) {
     val info = container.buildInfo
@@ -62,6 +65,13 @@ fun SettingsScreen(container: AppContainer, onBack: () -> Unit, onHelp: () -> Un
     var lastExit by remember { mutableStateOf<Diagnostics.LastExit?>(null) }
     var lastCrash by remember { mutableStateOf<String?>(null) }
     var historyBytes by remember { mutableLongStateOf(0L) }
+    var ruleLogCount by remember { mutableIntStateOf(0) }
+    var caseCount by remember { mutableIntStateOf(0) }
+    LaunchedEffect(Unit) {
+        caseCount = withContext(Dispatchers.IO) {
+            runCatching { RuleCases.parse(Json.parseToJsonElement(context.assets.open(RuleCases.ASSET).use { it.readBytes().decodeToString() })).size }.getOrDefault(0)
+        }
+    }
     val history by container.conversations.summaries.collectAsStateWithLifecycle()
     LaunchedEffect(refresh, history.size) {
         withContext(Dispatchers.IO) {
@@ -71,11 +81,17 @@ fun SettingsScreen(container: AppContainer, onBack: () -> Unit, onHelp: () -> Un
         }
         container.conversations.refresh()
         historyBytes = container.conversations.sizeBytes()
+        ruleLogCount = container.ruleLog.count()
     }
 
     var checking by remember { mutableStateOf(false) }
     var checkText by rememberSaveable { mutableStateOf<String?>(null) }
+    var casesRunning by remember { mutableStateOf(false) }
+    var casesText by rememberSaveable { mutableStateOf<String?>(null) }
     var confirmDeleteAll by remember { mutableStateOf(false) }
+    fun copy(text: String) {
+        context.getSystemService(ClipboardManager::class.java)?.setPrimaryClip(ClipData.newPlainText("VietTechTrans", text))
+    }
 
     ScreenScaffold(title = stringResource(R.string.nav_settings), onHelp = onHelp, onBack = onBack) {
         VttCard(modifier = Modifier.fillMaxWidth(), title = stringResource(R.string.check_title), icon = R.drawable.ic_graphic_eq) {
@@ -83,7 +99,7 @@ fun SettingsScreen(container: AppContainer, onBack: () -> Unit, onHelp: () -> Un
                 Text(stringResource(R.string.check_text), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 GradientButton(
                     text = stringResource(if (checking) R.string.check_running else R.string.check_start),
-                    enabled = !checking,
+                    enabled = !checking && !casesRunning,
                     onClick = {
                         checking = true
                         checkText = ""
@@ -101,10 +117,52 @@ fun SettingsScreen(container: AppContainer, onBack: () -> Unit, onHelp: () -> Un
                 checkText?.takeIf { it.isNotBlank() }?.let { text ->
                     SelectionContainer { Text(text, style = MaterialTheme.typography.bodySmall) }
                     if (!checking) {
-                        TextButton(onClick = {
-                            context.getSystemService(ClipboardManager::class.java)
-                                ?.setPrimaryClip(ClipData.newPlainText("VietTechTrans", text))
-                        }) { Text(stringResource(R.string.check_copy)) }
+                        TextButton(onClick = { copy(text) }) { Text(stringResource(R.string.check_copy)) }
+                    }
+                }
+            }
+        }
+        VttCard(modifier = Modifier.fillMaxWidth(), title = stringResource(R.string.rules_cases_title), icon = R.drawable.ic_translate) {
+            Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                Text(stringResource(R.string.rules_cases_text, caseCount), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                GradientButton(
+                    text = stringResource(if (casesRunning) R.string.rules_cases_running else R.string.rules_cases_start),
+                    enabled = !casesRunning && !checking,
+                    onClick = {
+                        casesRunning = true
+                        casesText = ""
+                        scope.launch {
+                            try {
+                                RuleCaseRunner(container, context).run { progress -> casesText = progress }
+                            } catch (e: Exception) {
+                                casesText = (casesText ?: "") + "\nLỗi: ${e.message ?: e.javaClass.simpleName}"
+                            } finally {
+                                casesRunning = false
+                            }
+                        }
+                    },
+                )
+                casesText?.takeIf { it.isNotBlank() }?.let { text ->
+                    SelectionContainer { Text(text, style = MaterialTheme.typography.bodySmall) }
+                    if (!casesRunning) TextButton(onClick = { copy(text) }) { Text(stringResource(R.string.rules_cases_copy)) }
+                }
+            }
+        }
+        VttCard(modifier = Modifier.fillMaxWidth(), title = stringResource(R.string.rules_log_title), icon = R.drawable.ic_info) {
+            Column {
+                Text(stringResource(R.string.rules_log_text, ruleLogCount), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Row {
+                    // The clipboard goes through Binder (about 1 MB per transaction): copy the newest entries that fit.
+                    TextButton(onClick = {
+                        scope.launch {
+                            val log = container.ruleLog.text()
+                            copy(if (log.length <= MAX_COPY_CHARS) log else log.takeLast(MAX_COPY_CHARS).substringAfter('\n'))
+                        }
+                    }, enabled = ruleLogCount > 0) {
+                        Text(stringResource(R.string.rules_log_copy))
+                    }
+                    TextButton(onClick = { scope.launch { container.ruleLog.clear(); refresh++ } }, enabled = ruleLogCount > 0) {
+                        Text(stringResource(R.string.rules_log_clear), color = MaterialTheme.colorScheme.error)
                     }
                 }
             }
@@ -155,7 +213,8 @@ fun SettingsScreen(container: AppContainer, onBack: () -> Unit, onHelp: () -> Un
             confirmButton = {
                 TextButton(onClick = {
                     confirmDeleteAll = false
-                    scope.launch { container.conversations.deleteAll(); refresh++ }
+                    // The rule log holds typed sentences too.
+                    scope.launch { container.conversations.deleteAll(); container.ruleLog.clear(); refresh++ }
                 }) { Text(stringResource(R.string.history_delete), color = MaterialTheme.colorScheme.error) }
             },
             dismissButton = { TextButton(onClick = { confirmDeleteAll = false }) { Text(stringResource(R.string.action_cancel)) } },
@@ -175,3 +234,6 @@ private fun InfoRow(label: String, value: String) {
         Text(value, style = MaterialTheme.typography.bodyMedium)
     }
 }
+
+/** Text copied from the rule log at most (UTF-16 chars; Binder limits a transaction to about 1 MB). */
+private const val MAX_COPY_CHARS = 200_000

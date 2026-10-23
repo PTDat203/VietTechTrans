@@ -23,4 +23,10 @@ data class TurnTimings(
     fun format(): String = listOf(
         "STT" to sttMs, "MT" to mtMs, "TTS" to ttsFirstAudioMs, "tổng" to totalMs,
     ).joinToString(" · ") { (name, ms) -> "$name ${ms?.let { "$it ms" } ?: "–"}" }
+
+    /**
+     * Keyboard text (policy R13): only "MT <n> ms", never "STT –", "TTS" or a total with STT/TTS. Null when the model
+     * was not called (R03/R04 kept the text).
+     */
+    fun formatTextOnly(): String? = mtMs?.let { "MT $it ms" }
 }

@@ -129,7 +129,7 @@ ONNX 19,4 s). Vậy app áp dụng đúng; hai hiện tượng đến từ model
 | `max_length` = min(512, 2 × id nguồn + 20) | `GenerationParams.maxLengthFor`, `marian_ref.app_max_length` | Chặn tìm kiếm vô ích; trên Validation chỉ 7/32 498 đầu ra dài hơn, đều là lặp |
 | Tới ngưỡng: trả giả thuyết hoàn chỉnh tốt nhất nếu có, chưa có mới ép EOS | `BeamSearch(preferFinished = true)`, `beam_search(prefer_finished=True)` | Ép EOS kiểu HF ở ngưỡng làm 4 câu bình thường tệ đi (vd. "…Written by Jamie Zawinski; 1999." → "…http: //en. wikipedia…") vì beam lặp dài thắng nhờ điểm trung bình. Quy tắc này giữ nguyên mọi đầu ra ngắn hơn ngưỡng |
 | Gộp cụm 1–3 từ lặp ≥ 4 lần liên tiếp | `OutputCleanup.collapseRepeats`, `marian_ref.collapse_repeats` | "Please, please, …" → "Please"; câu tham chiếu chỉ 2/32 498 có lặp thật |
-| Cảnh báo khi gõ tiếng Việt không dấu (vẫn dịch) | `text/VietnameseDiacritics` | Không thể sửa trong app nếu không thêm model khôi phục dấu |
+| Cảnh báo khi gõ tiếng Việt không dấu (vẫn dịch) | `text/VietnameseDiacritics`; từ 2026-10-23 là R07 trong `mt/rules/LanguageGuesser` (§16) | Không thể sửa trong app nếu không thêm model khôi phục dấu |
 
 **Kết quả trên 4 tập Validation** (`evidence/phase04/mt_length_cap/run.json`, cùng graph q8, so với
 `mt_export_q8` không giới hạn):
@@ -266,3 +266,365 @@ có thể cho bảng tra embedding chỉ dùng Q1 (bớt bảng phụ) hoặc qu
 **Kiểm chứng:** `marian_ref.py eval --length-cap` + `record_eval.py --policy app` → `APP_MT_EXPORT_QUALITY=RECORDED`;
 `package_mt.py --variant q4r --quality evidence/phase04/mt_export_q4r` → `APP_MT_PACKAGE=PASS`; `gradlew :app:testDebugUnitTest`
 67/67 (Kotlin = Python từng token, gồm hai `MatMulNBits` của lớp đầu ra); AVD: "Kiểm tra máy này" 20/20 câu mỗi chiều khớp PC.
+
+## 15. Bổ sung 2026-10-22: giữ thuật ngữ IT khi dịch (`TermProtector`)
+
+> **Đã thay bằng §16 (2026-10-23).** Chính sách rule dịch text v1 của nhóm cấm đổi chữ hoa/thường hay thay thuật ngữ
+> trước khi dịch (R01) và cấm dùng từ điển để vá bản dịch (R08, §9). Vì vậy `TermProtector` (placeholder `TERM1…` và
+> đưa cách viết về chuẩn) đã được gỡ khỏi app. Các công cụ (`tools/mt/term_protect.py`, `term_risk.py`,
+> `eval_term_protect.py`, `probe_term_protect.py`, danh sách `tools/mt/it_terms.tsv`) và số đo dưới đây được giữ
+> làm evidence về lỗi vốn có của Student v1.
+
+**Hiện tượng (người dùng báo):** gõ tiếng Việt có "Javascript" thì bản dịch ra một từ khác hẳn. Thử lại trên gói q4r với
+chính sách giải mã của app:
+
+| Chiều | Câu nguồn | Bản dịch |
+|---|---|---|
+| VI→EN | Tôi đang học Javascript | I'm learning **Vocabulary** |
+| VI→EN | Công ty mình đang tuyển lập trình viên Javascript | The company we're hiring **Trump** programmers |
+| VI→EN | Công ty mình đang tuyển lập trình viên Django và MySQL | The company we're hiring **Toyota** and **Mystique** programmers |
+| EN→VI | Our company is hiring React developers | Công ty của chúng tôi đang tuyển dụng các nhà phát triển **phản ứng** |
+| EN→VI | Our company is hiring Django developers | … các nhà phát triển **can đảm** |
+
+**App áp dụng sai hay model sai?** App ra đúng từng token như checkpoint PyTorch và `marian_ref.py` (`MarianGoldenTest`),
+nên lỗi nằm ở model:
+
+- **Token hiếm.** SentencePiece phía tiếng Việt giữ nguyên "Javascript", "Django", "MySQL" thành **một token** mỗi từ.
+  Các token này gần như không có trong dữ liệu train, nên Student không học được cách chép chúng sang câu đích và đoán
+  ra một tên khác. Viết đúng "JavaScript" thì model chép được ("I'm learning JavaScript").
+- **Tên trùng từ tiếng Anh thường** (EN→VI): React, Spring Boot, Django bị dịch nghĩa ("phản ứng", "can đảm").
+- **Đo trên 148 thuật ngữ × 6 câu mẫu mỗi chiều** (`tools/mt/term_risk.py`; "giữ" nghĩa là thuật ngữ có trong bản
+  dịch, không phân biệt hoa thường):
+
+| Cách viết | VI→EN giữ | EN→VI giữ |
+|---|---|---|
+| Đúng chuẩn (JavaScript) | 738/888 (83 %) | 674/888 (76 %) |
+| Toàn chữ thường (javascript) | 534/870 (61 %) | 381/870 (44 %) |
+| Chỉ hoa chữ đầu (Javascript) | 321/414 (78 %) | 254/414 (61 %) |
+
+**Ứng viên** (đo trên toàn bộ IT Validation, 15 252 câu mỗi chiều; chrF++ "câu có thuật ngữ" chỉ tính các câu mà cách đó
+làm đổi câu nguồn):
+
+| Cách | Câu đổi | Giữ thuật ngữ | chrF++ câu đổi | chrF++ cả tập |
+|---|---|---|---|---|
+| A. Thay **mọi** thuật ngữ trong danh sách bằng `TERM1`, `TERM2`… rồi trả lại | EN→VI 1 141 / VI→EN 1 153 | 97,5 → 100 % / 98,1 → 99,8 % | 69,89 → 69,47 / 65,89 → 65,51 | 66,424 → 66,384 / 61,325 → 61,290 |
+| B. Placeholder chỉ cho thuật ngữ model làm hỏng; mọi cách viết khác đưa về chuẩn | 40 / 40 | 54 → 98 % / 56 → 96 % | 65,25 → 64,50 / 65,34 → 62,57 | 66,424 → 66,421 / 61,325 → 61,314 |
+| **C. Chỉ đổi đúng chỗ model làm hỏng (đã đo)** | **9 / 9** | **22 → 100 % / 45 → 91 %** | **64,82 → 73,92 / 67,05 → 67,32** | **66,424 → 66,428 / 61,3255 → 61,3256** |
+| D. Train lại Student với dữ liệu thuật ngữ | — | — | — | Việc của Core, ngoài phạm vi app |
+| E. Ràng buộc beam search phải sinh thuật ngữ | — | — | — | Phải sửa `BeamSearch` và parity Python, chậm hơn mỗi bước; chưa làm |
+
+- **A làm giảm chất lượng.** Model vốn giữ được 97–98 % thuật ngữ trong Validation. Thay hết bằng placeholder thì câu mất
+  ngữ cảnh: 1 111 câu EN→VI mà model đã giữ đủ thuật ngữ giảm 70,08 → 69,56. Ngoài ra 12 và 38 câu mất placeholder,
+  phải dịch lại.
+- **B vẫn giảm.** Nó đổi cả những chỗ không cần đổi: tên file và URL (`index. html`, `php. net` trong dữ liệu), chữ HOA,
+  và các cách viết model vẫn hiểu.
+- **C chỉ đổi những gì đã đo là hỏng.** Cả tập không giảm (EN→VI tăng 0,004; VI→EN tăng 0,0001); 2 tập General không câu
+  nào đổi.
+- **Chọn placeholder** (10 câu thử mỗi chiều): `TERM1` được giữ nguyên 10/10 ở cả hai chiều; số trần (`1`) mất ở
+  VI→EN; `[1]` mất ở EN→VI.
+
+**Thiết kế (C):**
+
+- `assets/text/it_terms.tsv`: 148 thuật ngữ (168 cách viết, gồm alias như NodeJS → Node.js), 20 thuật ngữ đánh dấu
+  `en_common`. Cột 4 và 5 do `term_risk.py --write` ghi, ngưỡng "hỏng" là giữ ≤ 4/6 câu:
+  - **cột 4, chiều dùng placeholder:** model làm hỏng cả cách viết chuẩn. VI→EN có 32 thuật ngữ (TypeScript, React,
+    Django, MySQL, Kafka…), EN→VI có 41 (React, CSS, REST, GraphQL, Spring Boot…);
+  - **cột 5, cách viết đưa về chuẩn:** chữ thường hoặc chỉ hoa chữ đầu mà model làm hỏng, trong khi cách viết chuẩn giữ
+    được. VI→EN có 58 cách viết (gồm "Javascript", "javascript" → "JavaScript"), EN→VI có 63.
+- **Quy tắc** (`TermProtector.kt`, bản tham chiếu `tools/mt/term_protect.py`):
+  - So khớp không phân biệt hoa thường, theo ranh giới từ, ưu tiên cụm dài nhất.
+  - Placeholder được trả lại **đúng như người dùng gõ**.
+  - Không động vào chữ HOA toàn bộ, thuật ngữ nằm trong URL, tên miền, đường dẫn, tên file, hoặc câu đã có sẵn chữ
+    `TERM1`.
+  - Thuật ngữ `en_common` trong câu tiếng Anh chỉ được xử lý khi viết đúng như danh sách và không đứng đầu câu. Ví dụ
+    "they react fast" giữ nguyên.
+- **Luồng:** `MarianTranslator.translate` gọi `TermProtector.translate` theo thứ tự protect → engine → restore. Nếu model làm
+  mất hoặc lặp placeholder, app dịch lại một lần, lần này chỉ sửa cách viết. Trên Validation điều này xảy ra 0/9 câu
+  EN→VI và 1/9 câu VI→EN. Câu không có thuật ngữ không bị đổi và không tốn thêm lần dịch nào.
+
+**Kiểm tra trên câu mới** (`tools/mt/probe_term_protect.py`, `evidence/phase04/mt_term_protect/heldout_probe.json`):
+54 thuật ngữ IT phổ biến, mỗi thuật ngữ viết đúng chuẩn, toàn chữ thường và chỉ hoa chữ đầu, trong 2 câu mẫu mới mỗi
+chiều, không trùng với câu của `term_risk.py`:
+
+| Chiều | Cách viết | Không bảo vệ | Có `TermProtector` |
+|---|---|---|---|
+| VI→EN | đúng chuẩn | 95/108 (88 %) | 108/108 (100 %) |
+| VI→EN | cách viết khác | 106/154 (69 %) | 152/154 (99 %) |
+| EN→VI | đúng chuẩn | 91/108 (84 %) | 106/108 (98 %) |
+| EN→VI | cách viết khác | 91/154 (59 %) | 123/154 (80 %) |
+
+Các ví dụ sau khi bảo vệ: "Tôi đang học Javascript" → "I'm learning JavaScript"; "…tuyển lập trình viên Django và MySQL" →
+"My company is hiring Django and MySQL programmers"; "Our company is hiring React developers" → "…nhà phát triển React".
+
+**Giới hạn:**
+
+- **Tiếng Việt không dấu vẫn sai** (§12): "Minh dang hoc Javascript va Django" → "Form", có hay không bảo vệ.
+- **EN→VI vẫn sót 33/262 câu.** Trong đó:
+  - 25 câu là từ `en_common` viết thường ("react", "rust"), được cố ý để nguyên vì không phân biệt được với động từ hay
+    danh từ thường;
+  - 8 câu là chỗ hỏng mà 6 câu mẫu của `term_risk.py` không bắt được: "Node.js" → "Node.j", "Next.js" → "tiếp theo.js",
+    "laravel", "docker", "firebase", "chatgpt" viết thường.
+
+  Không chỉnh danh sách theo các câu này, để bộ kiểm tra này vẫn là câu mới. Muốn bắt thêm thì thêm câu mẫu vào
+  `term_risk.py` rồi đo lại Validation.
+- **Thuật ngữ ngoài danh sách không được bảo vệ.** Muốn thêm thì sửa TSV, chạy `term_risk.py --write`, rồi chạy
+  `term_protect.py --fixture`.
+
+**Kiểm chứng:**
+
+- `term_risk.py --write` → `APP_MT_TERM_RISK=WRITTEN`.
+- `eval_term_protect.py translate` (theo shard) + `summarize` → `APP_MT_TERMS=RECORDED`
+  (`evidence/phase04/mt_term_protect/summary.json`, `*.rows.jsonl`).
+- `probe_term_protect.py` → `APP_MT_TERM_PROBE=WRITTEN`.
+- `gradlew :app:testDebugUnitTest` 74/74:
+  - `TermProtectorTest`, 6 test: Kotlin khớp Python trên 1 276 ca do `term_protect.py --fixture` sinh, kèm kiểm SHA-256
+    của TSV đang đóng gói.
+  - `MarianGoldenTest.itTermsSurviveTermProtection` trên graph thật: ra đúng các câu không bảo vệ và có bảo vệ ở trên.
+- AVD (release x86_64): "Our company is hiring React developers." → "Công ty của chúng tôi đang tuyển dụng các nhà phát
+  triển React.", MT 801 ms.
+
+## 16. Bổ sung 2026-10-23: chính sách rule dịch text v1
+
+**Bối cảnh.** Nhóm ban hành chính sách rule dịch text v1 (`Documents/mt_app_rule_policy_v1.md`; bản sao nguyên văn để
+repo theo dõi: `docs/contracts/mt_app_rule_policy_v1.md`). Người dùng yêu cầu sửa phần dịch sai theo chính sách này.
+Chính sách cấm đúng cách làm của §15:
+
+- R01: không đổi chữ hoa/thường của code, không thay thuật ngữ trước khi dịch;
+- R08: không dùng từ điển để thay output; thuật ngữ bị biến dạng thì hiện output thật, gắn "Cần kiểm tra thuật ngữ";
+- §9: không dùng dictionary để âm thầm thay output model trong câu.
+
+Vì vậy `TermProtector` được gỡ khỏi luồng dịch. Model nhận đúng chữ người dùng gõ, chỉ qua R01. Kết quả:
+
+- gõ riêng "Javascript" thì app giữ nguyên, không gọi model (R03);
+- "Tôi đang học Javascript" lại ra "I'm learning Vocabulary" như model, nhưng câu được gắn "Cần kiểm tra thuật ngữ:
+  JavaScript" và ghi vào nhật ký (R08), để làm evidence cho Student v2.
+
+**Ánh xạ rule → code → kiểm chứng**
+
+| Rule | Code | Kiểm chứng |
+|---|---|---|
+| R01 | `MtInputNormalizer` (đã có, parity với Core) | `MtInputNormalizerParityTest` |
+| R02 | `TextRules.displayLength` (cụm grapheme sau R01), `InputCounter`, nút gửi khoá khi quá 500 | `TextRulesTest.r02…`, `AppSmokeTest.inputLimitAndEmptyInput` |
+| R03 | `TechLiterals.whole` + lexicon `preserve_exact` | `TextRulesTest.r03…`, `AppSmokeTest.typedTermIsKept…` |
+| R04, R05 | `RuleLexicon.isContextTerm`, `isDialogueWord` | `TextRulesTest.r04…`, `r05…` |
+| R06 | `LanguageGuesser.guess`, `MismatchDialog`, `answerMismatch` | `TextRulesTest.r06…`, `AppSmokeTest.wrongLanguageAsksBeforeSending` |
+| R07 | `LanguageGuesser.unaccentedVietnamese` | `TextRulesTest.r07…` |
+| R08, R12 | `TextRules.checkOutput` trong `TurnRunner.translate`, `RuleLog` | `TextRulesTest.r08…`, `r12…`, `MarianGoldenTest.policyCasesOnTheRealGraph` |
+| R09 | `MarianEngine.segment` (500 id, không cắt trong literal, cuối cùng mới cắt theo ký tự) | `MarianGoldenTest.overlongInputIsSplitWithoutLoss` |
+| R10, R11 | `GenerationParams.maxLengthFor`, `BeamSearch(preferFinished)`, `OutputCleanup` + cờ `repeatCleanupApplied` | `BeamSearchTest`, `OutputCleanupTest` |
+| R13 | `ConversationReducer` (`textTurns`: câu gõ/sửa không tự đọc), `TurnTimings.formatTextOnly`, `RuleNotes` | `ConversationReducerTest` (fuzz thêm bất biến "câu gõ không tự đọc"), `AppSmokeTest` |
+| §8 | `mt_rule_cases_v1.json`, `RuleCaseRunner` (APK), `tools/mt/run_rule_tiers.py` | ba tầng bên dưới |
+
+**Chỗ chính sách để ngỏ và cách app chọn**
+
+- **Lexicon.** Giữ ba nhóm của §7, thêm `technologies_case_sensitive` cho tên mà dạng chữ thường là từ thường
+  (React/react, Rust/rust, Windows/windows, Python/python). Acronym khớp đúng chữ hoa (vì "AI" khác "ai"), cho phép thêm
+  "s" số nhiều. Tên công nghệ khác khớp mọi kiểu hoa thường.
+- **R02.** Đếm cụm grapheme (`BreakIterator`) của chữ sau R01: emoji, "ế" hay cờ 🇻🇳 đều là 1 ký tự. Ô nhập không cắt
+  chữ: quá 500 thì khoá gửi và hiện thông báo của chính sách.
+- **R03.** Các loại literal: URL, email, đường dẫn, tên file, phiên bản, số, mã HTTP (có cả cụm "404 Not Found"), code
+  (backtick, lời gọi hàm, toán tử, gán, thẻ HTML, cờ `--x`), lệnh, identifier, acronym và tên trong lexicon, và chuỗi chỉ
+  gồm các token đó ("Python 3.12", "HTTP 404"). Câu có từ văn xuôi không bao giờ bị giữ nguyên.
+  - **Lệnh:** chương trình gõ chữ thường đứng đầu ("SFTP Login" là nhãn giao diện, không phải lệnh).
+  - Tên trùng từ thường hoặc tên ngôn ngữ (`go`, `make`, `python`, `brew`, `cargo`, `bun`, `su`, `kind`) chỉ là lệnh khi
+    có cờ, đường dẫn, file, dấu "." hay chuỗi trong ngoặc kép đi kèm.
+  - Với công cụ có lệnh con (`brew`, `cargo`, `yarn`, `ng`, `go`, `make`…), một lệnh con như install, build, run, serve
+    cũng đủ: "brew install node", "cargo build", "ng serve" được giữ. "brew coffee", "cargo ship", "bun cha",
+    "su dung mat khau", "python version", "make new friends" vẫn được dịch.
+  - Biểu tượng cảm xúc ("=))", ":D", "^^") không phải code.
+- **R05.** "Một từ" là một token không có dấu cách. Cụm giao tiếp nhiều tiếng (cảm ơn, xin lỗi) nằm trong danh sách.
+- **R06.** Bộ đoán dựa trên bằng chứng từng từ, sau khi bỏ các span literal:
+  - từ có dấu chỉ tiếng Việt có (ă â đ ê ô ơ ư, dấu hỏi, dấu nặng…);
+  - từ tiếng Việt không dấu thường gặp và một số cụm hai từ ("cam on", "co the");
+  - hình dạng âm tiết tiếng Việt;
+  - từ tiếng Anh thường gặp;
+  - từ ngoại khác.
+
+  Tên riêng viết hoa giữa câu và từ viết hoa toàn bộ không tính. Dấu á é í ó ú chỉ tính là tiếng Việt khi từ đó là âm
+  tiết tiếng Việt, nên "Pokémon", "José" không bị coi là tiếng Việt. Một từ giao tiếp của chiều kia ("thanks" khi chọn
+  tiếng Việt) cũng là bằng chứng.
+
+  Câu có từ có dấu thường là tiếng Việt, kể cả khi có nhiều từ chuyên ngành tiếng Anh ("Tôi cần fix bug trong production
+  server"). Ngoại lệ là câu tiếng Anh nhắc một từ tiếng Việt: câu có từ chức năng tiếng Anh, và số từ còn lại ít nhất gấp
+  đôi số từ tiếng Việt ("I love phở", "Do you like bánh mì?"). Câu đó là "mixed" và không hỏi.
+
+  Kết quả "uncertain" chỉ hiện cảnh báo nhẹ khi câu có dấu hiệu của ngôn ngữ kia. Không hiện cho "JPEG Images" gõ ở
+  chiều Anh.
+
+  Với câu sửa (✎), "Đổi sang …" chuyển câu sang người nói ngôn ngữ kia: đây là trường hợp bấm nhầm nút micro (E-19).
+- **R07.** Chỉ cảnh báo khi câu không có dấu tiếng Việt và:
+  - có ít nhất hai từ tiếng Việt không dấu thường gặp, hoặc một từ như vậy kèm một âm tiết tiếng Việt;
+  - số từ tiếng Việt không ít hơn số từ chức năng tiếng Anh. Từ chuyên ngành tiếng Anh không tính, nên
+    "deploy len production bi loi timeout" vẫn được cảnh báo.
+- **R08.** Xét hai nhóm thuật ngữ:
+  - **`preserve_exact`, cả hai chiều.** Thuật ngữ được coi là còn nếu bản dịch có nó (không phân biệt hoa thường),
+    cho phép thêm/bớt dấu cách hoặc gạch nối ("WiFi" = "Wi-Fi", "CI/CD" = "CI / CD") và đuôi số nhiều/động từ. Tên phân
+    biệt hoa thường đứng đầu câu tiếng Anh cũng xét: "React is a JavaScript library" → "Phản ứng là…" bị gắn cờ React.
+  - **`keep_with_context_warning`, chỉ chiều VI→EN.** Đây là từ tiếng Anh nằm trong câu tiếng Việt, nên bình thường
+    phải còn trong bản tiếng Anh. Ví dụ chính sách nêu: "Tôi cần deploy API lên production." → "…to the framework." bị
+    gắn cờ production. Chấp nhận dạng biến đổi (commit → committed, merge → merging, log → logs, web → website). Từ khác
+    thì không tính: "log" không còn khi bản dịch chỉ có "login". Ở chiều EN→VI, từ ngữ cảnh được phép dịch
+    ("production" → "môi trường sản xuất"), nên không xét.
+- **R09.** Giới hạn 500 id là của app (`TextRules.MAX_SOURCE_IDS`), thấp hơn 512 trong manifest. Thứ tự tách:
+  1. tách theo câu;
+  2. tách theo dấu cách, không tách bên trong các span literal;
+  3. cuối cùng mới cắt theo ký tự, cho chuỗi không có chỗ tách: "a." × 250 là 500 ký tự nhưng 501 id.
+- **R11.** Cờ `repeat_cleanup_applied` được ghi vào evidence. Bong bóng hiện thêm "Đã gộp cụm từ lặp trong bản dịch"
+  để không âm thầm sửa output.
+- **R12.** Literal bất biến gồm URL, email, code, mã HTTP và đường dẫn tuyệt đối. Cách so:
+  - URL và email: đúng chuỗi, không phân biệt hoa thường ("Google.com" → "google.com" vẫn đúng); thêm một dấu cách
+    là hỏng;
+  - code: bỏ qua dấu cách ("getData()" → "getData ()" vẫn đúng), nhưng tên sai ("get Date ()") là hỏng;
+  - mã HTTP: đúng số;
+  - đường dẫn: đúng chuỗi.
+
+  Đường dẫn tương đối nhiều dấu "/" không tính, vì thường là danh sách ("download/install/remove",
+  "4080/4070Ti/4070"). Ngày "25/8/2023" và phiên bản 4 phần "14.0.0.304" cũng không tính là đường dẫn hay IP.
+- **Regex trên Android.** `\w` của Android (ICU) khớp cả chữ có dấu, còn của JVM desktop chỉ khớp ASCII. `TechLiterals`
+  dùng lớp ký tự ASCII viết rõ (`[A-Za-z0-9_]`), để test JVM và APK cho cùng kết quả.
+- **Áp dụng cho giọng nói.** Phạm vi của chính sách là chữ gõ. R08, R11, R12 là kiểm tra trên output nên app áp cho mọi
+  bản dịch. R02–R07 chỉ áp cho chữ gõ và chữ sửa. Câu nói vẫn được đọc ngay như trước.
+- **R13 cho câu sửa.** Câu sửa là chữ gõ, nên cũng không tự đọc: bấm 🔊 để nghe. Trước đây "Dịch lại" đọc luôn.
+
+**Lexicon v1** (`assets/text/mt_rule_lexicon_v1.json`, bảng rà soát `docs/data/mt_rule_lexicon_v1_review.tsv`)
+
+- **Ứng viên.** Lấy theo đúng quy trình của §7, chỉ từ IT Train Phase 1 (121 547 dòng, SHA-256 `d6dbad4f…`). Ứng viên là
+  token ASCII của câu tiếng Việt cũng có trong câu tiếng Anh cùng dòng, đếm theo tag. Thêm các danh sách mẫu của §7 và
+  `tools/mt/it_terms.tsv`. Tổng cộng 941 ứng viên.
+- **Rà soát.** Mỗi ứng viên được hai người rà độc lập: một dịch giả và một kỹ sư IT. Khi hai người không đồng ý, một
+  người phân xử quyết định.
+- **Kết quả:**
+
+  | Nhóm | Số mục |
+  |---|---|
+  | acronyms | 105 |
+  | technologies | 166 |
+  | technologies_case_sensitive | 39 |
+  | keep_with_context_warning | 88 |
+  | short_dialogue_words | 34 (EN→VI) + 34 (VI→EN) |
+  | Bị loại (tên hãng, từ marketing, từ thường…) | 526 |
+
+- **Sửa sau rà soát:** NVMe chỉ để ở acronyms; thêm "ok", "okay" vào chiều VI→EN.
+- **Trạng thái:** **chờ nhóm duyệt thủ công**, như §7 yêu cầu ("được review thủ công").
+
+**Hiệu chỉnh trên Validation** (`TextRulesCalibrationTest`, nguồn và output q4r ở `evidence/phase04/mt_export_q4r`;
+`evidence/phase04/mt_rules_v1/calibration.json`, các ca ở `calibration_cases.jsonl`)
+
+| Tập (câu) | R03 giữ nguyên | R04 | R06 hỏi khi chọn đúng chiều | R06 bắt câu chọn sai chiều | R07 trên câu bỏ hết dấu | R12 từ chối | R08 gắn cờ |
+|---|---|---|---|---|---|---|---|
+| EN→VI IT (15 252) | 153 | 4 | 1 | 11 725 (76,9 %) | – | 56 (0,37 %) | 120 (0,79 %) |
+| EN→VI General (997) | 0 | 0 | 0 | 995 (99,8 %) | – | 0 | 0 |
+| VI→EN IT (15 252) | 137 | 25 | 45 | 14 344 (94,0 %) | 13 480 / 14 447 (93,3 %) | 86 (0,56 %) | 149 (0,98 %) |
+| VI→EN General (997) | 0 | 0 | 0 | 997 (100 %) | 997 / 997 | 1 | 3 |
+
+Số đo lại sau đợt rà soát đối kháng (mục dưới). Để tách cờ đúng khỏi cờ thừa, mỗi dòng bị R12/R08 được so thêm với bản
+dịch tham chiếu của người: nếu tham chiếu vẫn giữ literal hay thuật ngữ đó thì lỗi chắc chắn do model.
+
+- **Câu văn tự nhiên** (General) không bao giờ bị R03/R04 giữ nguyên, không bị hỏi R06. Lần đầu đo, R03 giữ nguyên các
+  tiêu đề có tên kiểu camelCase ("vCard Import Failed", "Verizon myPlan adds…"). Đã sửa: code phải có cú pháp thật, và
+  câu có từ viết hoa chữ đầu thì không phải code.
+- **R03 trên tập IT.** Các dòng bị giữ là chuỗi giao diện KDE: tên lớp và màu (PaleVioletRed1, ScreenSaver), số, phiên
+  bản. Với identifier, chính sách cho giữ nguyên.
+- **R06 hỏi trong khi đã chọn đúng chiều.**
+  - EN→VI: 1 dòng, nhưng đó thật ra là câu tiếng Việt nằm trong cột tiếng Anh, nên hỏi là đúng.
+  - VI→EN: 45 dòng, đều là tiếng Anh hoặc chuỗi KDE nằm trong cột tiếng Việt.
+  - Báo thừa thật, do tên riêng có dấu (Pokémon, José, Bartolomé), đã được sửa.
+  - Bỏ hết dấu khỏi 14 447 câu tiếng Việt: chỉ 18 câu (0,12 %) bị hỏi "Đổi sang English". Phần lớn là chuỗi KDE vốn
+    có tiếng Anh ("Hom quaconcatenation of dates and time"), hoặc câu mà từ không dấu trùng từ tiếng Anh ("Be rong
+    but:"). 11 câu khác bị R03 giữ nguyên, đều là chuỗi KDE dính "Name"/"Stencils" ("VietName", "Name=MeEthu muc").
+- **R06 bắt câu chọn sai chiều** ở EN→VI IT chỉ đạt 77 %: tiêu đề tin công nghệ viết hoa từng từ có ít từ chức năng
+  tiếng Anh, nên bộ đoán trả "uncertain" và không hỏi.
+- **R12.**
+  - Dòng mà bản tham chiếu cũng không có literal đó: 65/86 ở VI→EN và 20/56 ở EN→VI. Phần lớn là rác của dữ liệu
+    (chuỗi KDE dính "…Name/…Comment", URL bị tách dấu cách).
+  - Còn lại 21 dòng (VI→EN) và 36 dòng (EN→VI) là model làm hỏng literal thật: "UNSUPPORTED_PROCESSOR" →
+    "UNSUPAD_PROCESSOR" / "UNUMPED_PROCOR", "gWaei" → "gWreai", "South_Georgia" → "Nam_ Georgeragia", "--install" bị
+    mất, "Better.com" → "Builder.com".
+  - Câu General duy nhất bị từ chối có thẻ `<sup>`, model đưa ra "km họp>2".
+- **R08.**
+  - Cờ có bản tham chiếu vẫn giữ thuật ngữ, tức model làm mất thật: 77/120 (EN→VI) và 90/149 (VI→EN). Ví dụ: "TLS" →
+    "TSS", "CarPlay" → "Car-genatorPlay", "MagSafe" → "không cần thiết", "plugin" → "plugs", "OLED" → "120LED".
+  - Số còn lại có bản tham chiếu cũng dịch hoặc bỏ thuật ngữ. Đó là acronym được dịch đúng nghĩa ("OS" → "hệ điều
+    hành", "UI" → "giao diện người dùng") hoặc dòng rác.
+  - 3 cờ trên General VI→EN: "wifi hoặc PC" bị model bỏ (đúng), hai lần "trang web" → "sites" (thừa).
+  - Cờ chỉ là "Cần kiểm tra", bản dịch không bị đổi.
+
+**Bộ case cố định và ba tầng (§8)** (`app/src/main/assets/text/mt_rule_cases_v1.json`, 41 case, sinh bởi
+`tools/mt/build_rule_cases.py`; evidence trong `evidence/phase04/mt_rules_v1/`)
+
+| Tầng | File | Kết quả |
+|---|---|---|
+| 1. Student v1 trước nén (PyTorch, `generation_config` của checkpoint) | `tier1_student.jsonl` | 40 case có chữ (case còn lại là ô trống). Trọng số kiểm khớp oid Git LFS của Core |
+| 2. Graph q4r, cùng cách tìm kiếm như tầng 1 | `tier2_q4r_pure.jsonl` | Trùng tầng 1 ở 31/40 case (9 khác do lượng tử hoá) |
+| 2'. Graph q4r với R10/R11 của engine | `tier2_q4r_app.jsonl` | Khác bản pure ở 2 case: `r11-repeat` (R11 gộp lặp) và `r05-khong` (R10 dừng "No, no, no, …" sớm, ra "none") |
+| 3. APK Android sau toàn bộ rule (AVD x86_64, release, 2026-10-23) | `tier3_apk_emulator.jsonl` | 41/41 case đúng quyết định của chính sách: 16 giữ nguyên (R03/R04), 20 dịch, 3 hỏi R06, 1 quá dài, 1 ô trống. Output trùng tầng 2' ở 19/20 câu dịch thẳng; câu còn lại là `r09-ids`, APK tách 2 đoạn theo R09. Tổng thời gian dịch 16,4 s cho 23 lượt gọi model |
+
+Ba case R06 cho thấy giá trị của câu hỏi "Đổi sang …". Tầng 2 dịch đúng chiều đã chọn, còn APK dịch theo câu trả lời:
+
+| Case | Tầng 2 (chiều đã chọn) | APK |
+|---|---|---|
+| "Xin chào, bạn khỏe không?" gõ ở EN→VI | "Xen chào, bạn k ...kông?" | "Đổi sang tiếng Việt" → "Hello, how are you?" |
+| "thank you" gõ ở VI→EN | "thanks" | "Đổi sang English" → "Cảm ơn" |
+| "Hello, how are you?" gõ ở VI→EN | "Hello, how are you?" | "Vẫn dịch" → cùng bản dịch, gắn cờ `language_mismatch_overridden` |
+
+Tầng 1 cho thấy vì sao cần R03/R04: chính checkpoint làm hỏng literal và từ kỹ thuật đứng một mình.
+
+| Input gõ riêng | Bản dịch của checkpoint |
+|---|---|
+| `https://example.com/docs?page=2` | Telecom.com/docs?page=2 |
+| `dev@example.com` | dev@ example.com |
+| `await fetch('/api/users')` | await fed ('/api/users') |
+| `NullPointerException` | NullPoiterExcetion |
+| `git commit -m "fix login"` | git cam kết -m "fix đăng nhập" |
+| `production` (EN→VI) | Sản xuất |
+| `database connection pool` (VI→EN) | database concept pool |
+| `không` (VI→EN) | No, no, no, … (lặp tới hết 512 token) |
+
+Trong câu, R12 từ chối "Xem tài liệu tại https://example.com/docs nhé" vì graph q4r đưa ra "Watch the document at the
+iTunes.com/docs" (checkpoint: "…at iTunes Premium.com/docs"). "không" → "none" (sau R10) và "Javascript" →
+"Vocabulary" vẫn là lỗi của model; các lỗi này được ghi làm evidence, không vá.
+
+**Rà soát đối kháng.** Sau khi code xong, một workflow 55 agent rà toàn bộ phần rule theo từng rule và từng luồng
+(Hội thoại, Dịch nhanh, nhật ký). Mỗi phát hiện được một agent khác kiểm lại độc lập. Có 39 phát hiện được xác nhận và
+đã sửa hết. Các nhóm chính:
+
+- Literal nhận nhầm. "haha =))" bị coi là code. Ngược lại, "brew install node", "cargo build" không được nhận là lệnh.
+- Đoán ngôn ngữ. "I love phở" gõ ở chiều Anh bị hỏi nhầm R06. Câu không dấu "to di day", "on roi" bị coi là tiếng Anh.
+  "deploy len production bi loi" không được cảnh báo R07 vì có nhiều từ tiếng Anh.
+- R08/R12:
+  - báo thừa: "Google.com" → "google.com", "getData()" → "getData ()";
+  - bỏ sót: "log" bị coi là còn khi bản dịch chỉ có "login", và "React" đứng đầu câu tiếng Anh không được xét.
+- Luồng giao diện:
+  - câu trả lời "Đổi sang …" phải áp cho đúng câu đã hỏi, kể cả khi ô nhập đã đổi;
+  - bấm hai lần vào câu trả lời không được dịch hai lần;
+  - micro đang mở thì tắt trước khi dịch chữ gõ;
+  - "Xoá toàn bộ lịch sử" xoá cả nhật ký rule, vì nhật ký có câu người dùng gõ.
+- Android khác JVM: `\w` (mục R12 ở trên).
+
+**Giới hạn còn lại**
+
+- Lexicon đã được rà soát nhưng chưa được nhóm duyệt. R08 còn báo thừa khi acronym được dịch đúng nghĩa, hoặc "trang
+  web" được dịch là "sites".
+- Bộ đoán R06/R07 là heuristic:
+  - tiêu đề viết hoa từng từ thường ra "uncertain";
+  - câu tiếng Việt không dấu có tên riêng tiếng Anh hoặc từ trùng tiếng Anh ("be", "but") đôi khi bị coi là tiếng Anh
+    (0,12 % câu bỏ dấu ở trên).
+- R12 vẫn từ chối URL bị thêm dấu cách. Đây là chủ ý: một URL có dấu cách không còn dùng được.
+- R11 làm đúng chính sách: cụm lặp từ bốn lần thì giữ một lần. Vì vậy "đáp ứng ứng ứng ứng dụng" thành "đáp ứng dụng",
+  trong khi câu đúng là "đáp ứng ứng dụng". Bong bóng có dòng "Đã gộp cụm từ lặp trong bản dịch" để người dùng biết.
+- Tầng 3 chạy trên emulator x86_64. Trên điện thoại ARM, kernel int8 có thể làm vài câu khác đi; chạy lại "Bộ case rule
+  dịch (v1)" trên máy thật để kiểm.
+
+**Kiểm chứng**
+
+- `gradlew :app:testDebugUnitTest`: 90/90 test qua.
+  - Mới: `TextRulesTest` (bảng bắt buộc của §8, bộ case cố định, các ca của đợt rà soát), `TextRulesCalibrationTest`,
+    `MarianGoldenTest.policyCasesOnTheRealGraph`, `overlongInputIsSplitWithoutLoss`, `TurnTimingsTest`, bốn test giao
+    diện mới trong `AppSmokeTest`, và các test reducer mới.
+  - Đã bỏ: `TermProtectorTest`, `VietnameseDiacriticsTest`.
+- `gradlew :app:testDebugUnitTest --tests "*TextRulesCalibrationTest" -Pvtt.rulesEvidence=../evidence/phase04/mt_rules_v1`
+  ghi `calibration.json` và `calibration_cases.jsonl`.
+- `python -I tools/mt/run_rule_tiers.py --ckpt-root <checkpoint thật>` → `APP_MT_RULE_TIERS=RECORDED`.
+- AVD `Pixel_10a`, bản release x86_64 build ngày 2026-10-23:
+  - Cài đặt → Bộ case rule dịch (v1): 41/41 case đúng quyết định.
+  - `adb pull` file evidence về `tier3_apk_emulator.jsonl`.

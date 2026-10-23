@@ -18,16 +18,20 @@ import vn.viettechtrans.app.mt.Translator
 import vn.viettechtrans.app.mt.TranslatorInfo
 import vn.viettechtrans.app.mt.TranslatorKind
 import vn.viettechtrans.app.mt.TranslatorStatus
+import vn.viettechtrans.app.mt.rules.TextRules
 
 /**
  * The Main-Core MT (Phase 03 Student, MarianMT) from `assets/mt/` (docs/contracts/mt_package_v2.md).
  * One [MarianEngine] per direction, loaded on demand and freed by [release] (RAM policy).
  * All engine work runs on one "mt" thread, so loading, translating and releasing never overlap.
+ * The text the model receives is the user's text after R01 only: no rule rewrites it (policy v1, R01/R08).
  */
 class MarianTranslator(
     private val assets: AssetManager,
     private val manifest: MtPackageManifest,
     private val threads: Int = 2,
+    /** Literal ranges that R09 never splits (TextRules.literals); none by default. */
+    private val protectedRanges: (String) -> List<IntRange> = { emptyList() },
 ) : Translator {
     override val info = TranslatorInfo(
         id = "core-mt:${manifest.packageId}",
@@ -75,6 +79,9 @@ class MarianTranslator(
                     "encoder_ms" to r.encoderMs, "decoder_ms" to r.decoderMs, "decode_steps" to r.decodeSteps.toLong(),
                     "input_tokens" to r.inputTokens.toLong(), "output_tokens" to r.outputTokens.toLong(), "segments" to r.segments.toLong(),
                 ),
+                rawText = r.rawText,
+                repeatCleanupApplied = r.repeatCleanupApplied,
+                sourceIds = r.sourceIds,
             )
         }
     }
@@ -107,8 +114,10 @@ class MarianTranslator(
             read(spec.model),
             tokenizer,
             GenerationParams(g.numBeams, g.maxLength, g.lengthPenalty, g.decoderStartTokenId, g.eosTokenId),
-            spec.inputLengthPolicy.maxInputTokens,
+            // R09: at most 500 source ids per call (the model has 512 positions).
+            minOf(spec.inputLengthPolicy.maxInputTokens, TextRules.MAX_SOURCE_IDS),
             threads,
+            protectedRanges,
         )
     }
 

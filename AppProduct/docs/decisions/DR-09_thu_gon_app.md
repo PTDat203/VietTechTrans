@@ -26,7 +26,8 @@ Ràng buộc: app nhẹ, dễ dùng cho hai người; không sửa Core.
 - **Cắt:** người kia chạm nút của họ khi lượt hiện tại chưa xong thì lượt hiện tại
   vẫn được nhận dạng, dịch và lưu nhưng không đọc (nhãn "chưa phát"); micro chuyển
   sang người vừa chạm.
-- **Sửa câu:** thay câu gốc của một câu đã gửi, dịch lại và đọc lại bản dịch mới.
+- **Sửa câu:** thay câu gốc của một câu đã gửi và dịch lại. Từ 2026-10-23 (chính sách rule dịch text v1, R13, DR-07 §16)
+  câu sửa là chữ gõ nên không tự đọc lại; bấm 🔊 để nghe.
 
 ## 3. Quy trình hoạt động
 

@@ -30,6 +30,12 @@ sealed interface TranslatorStatus {
 data class TranslationResult(
     val text: String,
     val details: Map<String, Long> = emptyMap(),
+    /** The decoded output before the app's repeat cleanup (policy R11); null when the engine does not report it. */
+    val rawText: String? = null,
+    /** R11 changed the output (policy flag repeat_cleanup_applied). */
+    val repeatCleanupApplied: Boolean = false,
+    /** Token ids of every source segment (policy §8 evidence: source_ids). */
+    val sourceIds: List<IntArray> = emptyList(),
 )
 
 sealed class MtException(message: String, cause: Throwable? = null) : Exception(message, cause) {

@@ -19,11 +19,13 @@ import vn.viettechtrans.app.history.StoredConversation
 import vn.viettechtrans.app.history.StoredMessage
 import vn.viettechtrans.app.mt.Direction
 import vn.viettechtrans.app.mt.Lang
+import vn.viettechtrans.app.mt.rules.InputDecision
+import vn.viettechtrans.app.mt.rules.LangGuess
+import vn.viettechtrans.app.mt.rules.RuleNote
 import vn.viettechtrans.app.speech.EngineRole
 import vn.viettechtrans.app.speech.ListenConfig
 import vn.viettechtrans.app.speech.ListenOutcome
 import vn.viettechtrans.app.speech.Listener
-import vn.viettechtrans.app.text.VietnameseDiacritics
 import vn.viettechtrans.app.turn.ConvEffect
 import vn.viettechtrans.app.turn.ConvEvent
 import vn.viettechtrans.app.turn.ConvPhase
@@ -44,7 +46,16 @@ data class ChatMessage(
     val edited: Boolean = false,
     val createdAtMs: Long = System.currentTimeMillis(),
     val timings: TurnTimings = TurnTimings(),
+    /** From the keyboard (typed, or corrected with ✎): R13 shows only "MT … ms" and never speaks it by itself. */
+    val typed: Boolean = false,
+    /** Rules of docs/contracts/mt_app_rule_policy_v1.md that fired on this message, shown on its bubble. */
+    val notes: List<RuleNote> = emptyList(),
+    /** R08: lexicon terms of the source that the translation lost. */
+    val checkTerms: List<String> = emptyList(),
 )
+
+/** R06: typed text that looks like the other language, waiting for "Đổi sang …" or "Vẫn dịch". */
+data class PendingMismatch(val party: Party, val text: String, val guess: LangGuess, val editTurn: Int? = null)
 
 data class ConversationUi(
     /** null until the first message of a new conversation is added. */
@@ -58,6 +69,7 @@ data class ConversationUi(
     val notice: String? = null,
     val hasTranslator: Boolean? = null,
     val loading: Set<EngineRole> = emptySet(),
+    val mismatch: PendingMismatch? = null,
 ) {
     val listening: Party? get() = (engine.phase as? ConvPhase.Listening)?.party
     val speaking: Boolean get() = engine.phase is ConvPhase.Speaking
@@ -76,6 +88,7 @@ data class ConversationUi(
  * a chat-app style history: every conversation is saved (text only) and can be reopened,
  * renamed or deleted; "＋" starts a new one. The pure [ConversationReducer] decides; this class
  * runs its effects (listen, translate, speak) through [vn.viettechtrans.app.turn.TurnRunner].
+ * Typed and corrected text goes through the text-input rules first ([AppContainer.textRules]).
  * Events are applied on the main thread only.
  */
 class ConversationViewModel(private val c: AppContainer) : ViewModel() {
@@ -135,23 +148,45 @@ class ConversationViewModel(private val c: AppContainer) : ViewModel() {
         dispatch(ConvEvent.Tap(party))
     }
 
+    /** "Gửi tiếng Việt" / "Send English": the text-input rules decide (R01–R07), then the reducer. */
     fun type(party: Party, text: String) {
         if (_ui.value.full) return showNotice(FULL_NOTICE)
-        warnIfNoDiacritics(party, text)
-        dispatch(ConvEvent.Typed(party, text.take(MAX_TYPED_CHARS)))
+        send(party, c.textRules.decide(text, party.direction), editTurn = null)
     }
 
-    /** "Sửa" on a sent message (like editing a prompt in a chat app): translate and speak it again. */
+    /** "Sửa" on a sent message (like editing a prompt in a chat app): the same rules, then translate it again. */
     fun edit(message: ChatMessage, text: String) {
-        val t = text.trim().take(MAX_TYPED_CHARS)
-        if (t.isEmpty() || t == message.source && message.status == MessageStatus.OK) return
-        warnIfNoDiacritics(message.party, t)
-        dispatch(ConvEvent.Edited(message.turn, message.party, t))
+        val d = c.textRules.decide(text, message.party.direction)
+        if (d.text == message.source && message.status == MessageStatus.OK) return
+        send(message.party, d, editTurn = message.turn)
     }
 
-    /** Set before dispatching, so a notice of the reducer (busy, ...) still wins. */
-    private fun warnIfNoDiacritics(party: Party, text: String) {
-        if (party.lang == Lang.VI && VietnameseDiacritics.missing(text)) showNotice(VietnameseDiacritics.NOTICE)
+    /** R06 answer: "Đổi sang …" ([switchLanguage]) sends it as the other person's language, "Vẫn dịch" as chosen. */
+    fun answerMismatch(switchLanguage: Boolean) {
+        val m = _ui.value.mismatch ?: return
+        _ui.update { it.copy(mismatch = null) }
+        val party = if (switchLanguage) m.party.other else m.party
+        if (!switchLanguage) launchSafe { runner.logOverride(m.text, m.party.direction, m.guess.id) }
+        send(party, c.textRules.decide(m.text, party.direction, override = !switchLanguage, skipMismatch = switchLanguage), m.editTurn)
+    }
+
+    /** The R06 question was dismissed: nothing is sent; the screen gives the text back to the box. */
+    fun dismissMismatch(): PendingMismatch? = _ui.value.mismatch.also { _ui.update { it.copy(mismatch = null) } }
+
+    private fun send(party: Party, d: InputDecision, editTurn: Int?) {
+        when (d) {
+            is InputDecision.Empty -> showNotice(EMPTY_NOTICE)
+            is InputDecision.TooLong -> showNotice(TOO_LONG_NOTICE)
+            is InputDecision.Mismatch -> _ui.update { it.copy(mismatch = PendingMismatch(party, d.text, d.guess, editTurn)) }
+            is InputDecision.Keep -> sendText(party, d.text, keep = true, notes = listOf(d.note), editTurn = editTurn)
+            is InputDecision.Translate -> sendText(party, d.text, keep = false, notes = d.notes, editTurn = editTurn)
+        }
+    }
+
+    private fun sendText(party: Party, text: String, keep: Boolean, notes: List<RuleNote>, editTurn: Int?) {
+        // R13: a microphone notice ("Không nghe thấy giọng nói") belongs to the voice action that failed, not to this text.
+        dismissNotice()
+        dispatch(if (editTurn == null) ConvEvent.Typed(party, text, keep, notes) else ConvEvent.Edited(editTurn, party, text, keep, notes))
     }
 
     fun stopSpeaking() = dispatch(ConvEvent.StopSpeaking)
@@ -200,7 +235,7 @@ class ConversationViewModel(private val c: AppContainer) : ViewModel() {
         _ui.update {
             it.copy(
                 conversationId = conv?.id, title = conv?.title, createdAtMs = conv?.createdAtMs ?: 0L,
-                messages = messages, partial = "", level = 0f, notice = null,
+                messages = messages, partial = "", level = 0f, notice = null, mismatch = null,
             )
         }
     }
@@ -230,13 +265,19 @@ class ConversationViewModel(private val c: AppContainer) : ViewModel() {
                     it.copy(
                         conversationId = id,
                         createdAtMs = if (it.conversationId == null) now else it.createdAtMs,
-                        messages = it.messages + ChatMessage(effect.turn, effect.party, effect.text, createdAtMs = now, timings = TurnTimings(sttMs = turnStt[effect.turn])),
+                        messages = it.messages + ChatMessage(
+                            effect.turn, effect.party, effect.text, createdAtMs = now,
+                            timings = TurnTimings(sttMs = turnStt[effect.turn]), typed = effect.typed, notes = effect.notes,
+                        ),
                     )
                 }
                 scheduleSave()
             }
             is ConvEffect.ReplaceSource -> updateMessage(effect.turn) {
-                it.copy(source = effect.text, translation = null, status = MessageStatus.TRANSLATING, interrupted = false, edited = true, timings = TurnTimings())
+                it.copy(
+                    party = effect.party, source = effect.text, translation = null, status = MessageStatus.TRANSLATING,
+                    interrupted = false, edited = true, timings = TurnTimings(), typed = true, notes = effect.notes, checkTerms = emptyList(),
+                )
             }
             is ConvEffect.Translate -> launchSafe {
                 val result = runner.translate(effect.text, effect.party.direction) {
@@ -245,7 +286,10 @@ class ConversationViewModel(private val c: AppContainer) : ViewModel() {
                 post(ConvEvent.Translated(effect.turn, result), at)
             }
             is ConvEffect.SetTranslation -> updateMessage(effect.turn) {
-                it.copy(translation = effect.text, status = effect.status, timings = it.timings.copy(mtMs = effect.mtMs))
+                it.copy(
+                    translation = effect.text, status = effect.status, timings = it.timings.copy(mtMs = effect.mtMs),
+                    notes = (it.notes + effect.notes).distinct(), checkTerms = effect.checkTerms,
+                )
             }
             is ConvEffect.Speak -> launchSafe {
                 try {
@@ -341,9 +385,12 @@ class ConversationViewModel(private val c: AppContainer) : ViewModel() {
     }
 
     companion object {
-        const val MAX_TYPED_CHARS = 1000
         private const val SAVE_DELAY_MS = 400L
         private const val FULL_NOTICE = "Cuộc trò chuyện đã đủ 500 câu. Bấm ＋ để tạo cuộc trò chuyện mới."
+
+        /** Policy R02 messages. */
+        const val EMPTY_NOTICE = "Hãy nhập nội dung cần dịch."
+        const val TOO_LONG_NOTICE = "Nội dung tối đa 500 ký tự."
     }
 }
 
@@ -359,6 +406,9 @@ private fun ChatMessage.toStored() = StoredMessage(
     sttMs = timings.sttMs,
     mtMs = timings.mtMs,
     ttsFirstAudioMs = timings.ttsFirstAudioMs,
+    input = if (typed) StoredMessage.INPUT_TEXT else StoredMessage.INPUT_VOICE,
+    notes = notes.map { it.name },
+    checkTerms = checkTerms,
 )
 
 /** A message saved while it was still translating (app closed) is shown as failed: "Sửa" translates it again. */
@@ -373,4 +423,8 @@ private fun StoredMessage.toChat() = ChatMessage(
     edited = edited,
     createdAtMs = createdAtMs,
     timings = TurnTimings(sttMs = sttMs, mtMs = mtMs, ttsFirstAudioMs = ttsFirstAudioMs),
+    // Files written before 2026-10-23 have no input field: a spoken turn always has an STT time, a typed one never.
+    typed = input == StoredMessage.INPUT_TEXT || input == null && sttMs == null,
+    notes = RuleNote.parse(notes),
+    checkTerms = checkTerms,
 )

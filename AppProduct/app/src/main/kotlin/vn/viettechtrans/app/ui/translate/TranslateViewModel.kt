@@ -15,12 +15,14 @@ import kotlinx.coroutines.launch
 import vn.viettechtrans.app.AppContainer
 import vn.viettechtrans.app.mt.Direction
 import vn.viettechtrans.app.mt.Lang
+import vn.viettechtrans.app.mt.rules.InputDecision
+import vn.viettechtrans.app.mt.rules.LangGuess
+import vn.viettechtrans.app.mt.rules.RuleNote
 import vn.viettechtrans.app.speech.EngineRole
 import vn.viettechtrans.app.speech.ListenConfig
 import vn.viettechtrans.app.speech.ListenOutcome
 import vn.viettechtrans.app.speech.Listener
 import vn.viettechtrans.app.text.SttPostProcessor
-import vn.viettechtrans.app.text.VietnameseDiacritics
 import vn.viettechtrans.app.turn.MtOutcome
 import vn.viettechtrans.app.turn.TurnTimings
 
@@ -38,6 +40,17 @@ data class TranslateUiState(
     /** Source text that produced [translation] (or the last transcript when there is no translator). */
     val lastSource: String? = null,
     val timings: TurnTimings? = null,
+    /** The result came from the keyboard (R13: "MT … ms" only, read aloud only on request). */
+    val typedResult: Boolean = false,
+    /** Rules of the text policy that fired on the result (shown on the result card). */
+    val notes: List<RuleNote> = emptyList(),
+    val checkTerms: List<String> = emptyList(),
+    /** R02: "Dịch" was tapped with nothing to translate. */
+    val emptyTried: Boolean = false,
+    /** R06: the text looks like the other language; waiting for "Đổi sang …" or "Vẫn dịch". */
+    val mismatch: LangGuess? = null,
+    /** The text the R06 question is about (the answer applies to it, even if the box changed meanwhile). */
+    val mismatchText: String = "",
     val notice: String? = null,
     /** null while checking. */
     val hasTranslator: Boolean? = null,
@@ -50,8 +63,6 @@ data class TranslateUiState(
 /** Dịch screen: one person, voice or typing, CUT semantics (a new tap interrupts speech). */
 class TranslateViewModel(private val c: AppContainer) : ViewModel() {
     companion object {
-        const val MAX_TYPED_CHARS = 1000
-
         /** Let the first frames render before parsing tens of MB of models. */
         const val PRELOAD_DELAY_MS = 1_500L
     }
@@ -83,7 +94,7 @@ class TranslateViewModel(private val c: AppContainer) : ViewModel() {
     /** Screen became visible (also when coming back from Hội thoại): keep only this direction's models. */
     fun onShown() = preload(delayMs = PRELOAD_DELAY_MS)
 
-    /** "⇄": reverse the direction; the last translation becomes the new input (like Google Translate). */
+    /** "⇄": reverse the direction; the last translation becomes the new input (like Google Translate, never cut: R02). */
     fun swap() {
         val s = _state.value
         if (s.busy || s.phase == Phase.LISTENING || s.phase == Phase.LOADING) return
@@ -91,10 +102,13 @@ class TranslateViewModel(private val c: AppContainer) : ViewModel() {
         _state.update {
             it.copy(
                 direction = it.direction.reverse,
-                input = it.translation?.take(MAX_TYPED_CHARS) ?: it.input,
+                input = it.translation ?: it.input,
                 translation = null,
                 lastSource = null,
                 timings = null,
+                notes = emptyList(),
+                checkTerms = emptyList(),
+                mismatch = null,
                 notice = null,
             )
         }
@@ -121,13 +135,12 @@ class TranslateViewModel(private val c: AppContainer) : ViewModel() {
         val s = _state.value
         if (s.busy || s.phase == Phase.LISTENING || s.phase == Phase.LOADING || direction == s.direction) return
         c.speaker.stop()
-        _state.update { it.copy(direction = direction, translation = null, lastSource = null, timings = null, notice = null) }
+        _state.update { it.copy(direction = direction, translation = null, lastSource = null, timings = null, notes = emptyList(), notice = null) }
         preload(delayMs = 0)
     }
 
-    fun onInput(text: String) {
-        if (text.length <= MAX_TYPED_CHARS) _state.update { it.copy(input = text) }
-    }
+    /** R02: the text is kept whatever its length; the counter and the "Dịch" button follow the policy count. */
+    fun onInput(text: String) = _state.update { it.copy(input = text, emptyTried = false) }
 
     fun showNotice(text: String) = _state.update { it.copy(notice = text) }
     fun dismissNotice() = _state.update { it.copy(notice = null) }
@@ -146,7 +159,7 @@ class TranslateViewModel(private val c: AppContainer) : ViewModel() {
         val handle = Listener.StopHandle()
         stopHandle = handle
         val direction = _state.value.direction
-        _state.update { it.copy(phase = Phase.LOADING, partial = "", level = 0f, notice = null) }
+        _state.update { it.copy(phase = Phase.LOADING, partial = "", level = 0f, notice = null, mismatch = null) }
         job = launchSafe {
             val outcome = c.listener.listen(
                 lang = direction.source,
@@ -166,39 +179,97 @@ class TranslateViewModel(private val c: AppContainer) : ViewModel() {
                     if (!r.meaningful) {
                         _state.update { it.copy(phase = Phase.IDLE, partial = "", notice = "Không nhận ra nội dung") }
                     } else {
-                        _state.update { it.copy(input = r.text.take(MAX_TYPED_CHARS), partial = "") }
-                        runTranslation(r.text, direction, TurnTimings(sttMs = outcome.sttMs))
+                        _state.update { it.copy(input = r.text, partial = "") }
+                        runTranslation(r.text, direction, TurnTimings(sttMs = outcome.sttMs), typed = false, inputNotes = emptyList())
                     }
                 }
             }
         }
     }
 
-    /** "Dịch" button: translate the (typed or edited) text in the box. */
-    fun translateInput() {
-        val text = _state.value.input
-        if (text.isBlank() || _state.value.busy) return
-        c.speaker.stop()
-        job?.cancel()
-        val direction = _state.value.direction
-        job = launchSafe { runTranslation(text, direction, TurnTimings()) }
+    /** "Dịch" button: the typed (or edited) text in the box, through the text-input rules (R01–R07). */
+    fun translateInput(override: Boolean = false, direction: Direction = _state.value.direction, skipMismatch: Boolean = false) {
+        if (_state.value.mismatch == null && (override || skipMismatch)) return // the question was answered or dismissed
+        val s = _state.value
+        if (s.busy) return
+        // Typing wins over an open mic: a late transcript must not replace the text being decided on.
+        if (s.phase == Phase.LISTENING || s.phase == Phase.LOADING) {
+            stopHandle?.stop()
+            job?.cancel()
+            _state.update { it.copy(phase = Phase.IDLE, partial = "") }
+        }
+        // R13: a notice of a voice attempt ("Không nghe thấy giọng nói") does not belong to this text.
+        _state.update { it.copy(notice = null, mismatch = null) }
+        when (val d = c.textRules.decide(s.input, direction, override = override, skipMismatch = skipMismatch)) {
+            is InputDecision.Empty -> _state.update { it.copy(emptyTried = true) }
+            is InputDecision.TooLong -> Unit // the button is disabled and the counter shows the policy message
+            is InputDecision.Mismatch -> _state.update { it.copy(mismatch = d.guess, mismatchText = s.input) }
+            is InputDecision.Keep -> {
+                c.speaker.stop()
+                job?.cancel()
+                _state.update {
+                    it.copy(
+                        phase = Phase.IDLE, translation = d.text, lastSource = d.text, timings = TurnTimings(),
+                        typedResult = true, notes = listOf(d.note), checkTerms = emptyList(),
+                    )
+                }
+            }
+            is InputDecision.Translate -> {
+                c.speaker.stop()
+                job?.cancel()
+                job = launchSafe { runTranslation(d.text, direction, TurnTimings(), typed = true, inputNotes = d.notes) }
+            }
+        }
     }
 
-    private suspend fun runTranslation(text: String, direction: Direction, timings: TurnTimings) {
+    /** R06 answer: "Đổi sang …" switches the direction and translates; "Vẫn dịch" translates as chosen (logged). */
+    fun answerMismatch(switchLanguage: Boolean) {
+        val s = _state.value
+        val guess = s.mismatch ?: return
+        // Answer about the text that was asked about.
+        _state.update { it.copy(input = s.mismatchText) }
+        if (switchLanguage) {
+            // The direction must really change, also if the mic was opened meanwhile: stop it first.
+            stopHandle?.stop()
+            job?.cancel()
+            c.speaker.stop()
+            val reversed = s.direction.reverse
+            _state.update {
+                it.copy(direction = reversed, phase = Phase.IDLE, partial = "", translation = null, lastSource = null, timings = null, notes = emptyList())
+            }
+            preload(delayMs = 0)
+            translateInput(direction = reversed, skipMismatch = true)
+        } else {
+            launchSafe { c.turns.logOverride(s.mismatchText, s.direction, guess.id) }
+            translateInput(override = true)
+        }
+    }
+
+    fun dismissMismatch() = _state.update { it.copy(mismatch = null) }
+
+    private suspend fun runTranslation(text: String, direction: Direction, timings: TurnTimings, typed: Boolean, inputNotes: List<RuleNote>) {
         _state.update { it.copy(phase = Phase.TRANSLATING, notice = null) }
         val result = c.turns.translate(text, direction) {
             _state.update { it.copy(notice = "Mô hình dịch chưa phản hồi… Có thể bấm Huỷ.") }
         }
         when (result) {
             MtOutcome.NoTranslator ->
-                _state.update { it.copy(phase = Phase.IDLE, translation = null, lastSource = text, timings = timings) }
+                _state.update { it.copy(phase = Phase.IDLE, translation = null, lastSource = text, timings = timings, typedResult = typed, notes = inputNotes) }
             is MtOutcome.Failed ->
-                _state.update { it.copy(phase = Phase.IDLE, notice = result.message, lastSource = text) }
+                _state.update { it.copy(phase = Phase.IDLE, translation = null, notice = result.message, lastSource = text, timings = null, typedResult = typed, notes = inputNotes) }
+            // R12: no translation is shown; the source stays in the box to be corrected.
+            is MtOutcome.Invalid ->
+                _state.update { it.copy(phase = Phase.IDLE, translation = null, notice = result.message, lastSource = text, timings = null, typedResult = typed, notes = inputNotes) }
             is MtOutcome.Ok -> {
                 val withMt = timings.copy(mtMs = result.mtMs)
-                val notice = VietnameseDiacritics.NOTICE.takeIf { direction.source == Lang.VI && VietnameseDiacritics.missing(text) }
-                _state.update { it.copy(translation = result.text, lastSource = text, timings = withMt, notice = notice) }
-                speak(result.text, direction.target) { first -> _state.update { it.copy(timings = withMt.copy(ttsFirstAudioMs = first)) } }
+                _state.update {
+                    it.copy(
+                        phase = Phase.IDLE, translation = result.text, lastSource = text, timings = withMt, typedResult = typed,
+                        notes = (inputNotes + result.notes).distinct(), checkTerms = result.checkTerms,
+                    )
+                }
+                // R13: typed text is read only when the user taps the speaker; a spoken turn is read back at once.
+                if (!typed) speak(result.text, direction.target) { first -> _state.update { it.copy(timings = withMt.copy(ttsFirstAudioMs = first)) } }
             }
         }
     }

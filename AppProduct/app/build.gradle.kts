@@ -81,6 +81,10 @@ android {
     testOptions {
         // Robolectric UI smoke tests on the JVM need merged resources.
         unitTests.isIncludeAndroidResources = true
+        // -Pvtt.rulesEvidence=<dir>: TextRulesCalibrationTest also writes its Validation rates there (DR-07 §16).
+        unitTests.all { test ->
+            (project.findProperty("vtt.rulesEvidence") as String?)?.let { test.systemProperty("vtt.rulesEvidence", file(it).absolutePath) }
+        }
     }
 }
 

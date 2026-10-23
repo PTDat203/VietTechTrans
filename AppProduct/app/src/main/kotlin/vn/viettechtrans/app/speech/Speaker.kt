@@ -64,9 +64,13 @@ class Speaker(private val engines: SpeechEngines, private val normalizer: TtsTex
         player.open(engine.sampleRate)
         val writer = Thread({
             Process.setThreadPriority(Process.THREAD_PRIORITY_URGENT_AUDIO)
-            while (true) {
-                val pcm = queue.take()
-                if (pcm === end || !player.write(pcm)) break
+            // An exception escaping this plain thread would close the whole app: end playback instead.
+            try {
+                while (true) {
+                    val pcm = queue.take()
+                    if (pcm === end || !player.write(pcm)) break
+                }
+            } catch (_: Exception) {
             }
         }, "audio-out").apply { start() }
 
@@ -102,7 +106,15 @@ class Speaker(private val engines: SpeechEngines, private val normalizer: TtsTex
             }
         }
         val synthMs = nowMs() - t0
-        writer.join(5_000)
+        // Synthesis is ~10x faster than playback, so a long translation still has tens of seconds of
+        // queued audio here. Wait for all of it (bounded by its length): closing the track after a fixed
+        // 5 s made the writer call write() on a released AudioTrack, which closed the app.
+        val deadline = nowMs() + samples * 1000 / engine.sampleRate + 3_000
+        while (writer.isAlive && !stopRequested && nowMs() < deadline) writer.join(50)
+        if (writer.isAlive) {
+            player.stopNow()
+            writer.join(1_000)
+        }
         if (!stopRequested) player.drain(engine.sampleRate)
         player.close()
         return Result(first, synthMs, samples * 1000 / engine.sampleRate, !stopRequested, engine.voiceId)

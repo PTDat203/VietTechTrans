@@ -1,0 +1,4288 @@
+{
+ "terms": [
+  "JavaScript",
+  "TypeScript",
+  "Python",
+  "Java",
+  "Kotlin",
+  "Swift",
+  "Golang",
+  "Rust",
+  "PHP",
+  "C++",
+  "C#",
+  "React",
+  "Angular",
+  "Vue.js",
+  "Node.js",
+  "Next.js",
+  "Spring Boot",
+  "Django",
+  "Flask",
+  "Laravel",
+  "Flutter",
+  "Docker",
+  "Kubernetes",
+  "Git",
+  "GitHub",
+  "GitLab",
+  "Jenkins",
+  "Linux",
+  "Ubuntu",
+  "Windows",
+  "Android",
+  "iOS",
+  "MySQL",
+  "PostgreSQL",
+  "MongoDB",
+  "Redis",
+  "SQL",
+  "NoSQL",
+  "API",
+  "REST",
+  "GraphQL",
+  "JSON",
+  "HTML",
+  "CSS",
+  "AWS",
+  "Azure",
+  "Firebase",
+  "TensorFlow",
+  "PyTorch",
+  "Excel",
+  "Bluetooth",
+  "Wi-Fi",
+  "Chrome",
+  "ChatGPT"
+ ],
+ "templates": {
+  "vi_to_en": [
+   "Công ty mình đang tuyển lập trình viên {}",
+   "Mình gặp lỗi khi cập nhật {} hôm qua"
+  ],
+  "en_to_vi": [
+   "Our company is hiring {} developers",
+   "I got an error after updating {} yesterday"
+  ]
+ },
+ "results": {
+  "vi_to_en": {
+   "canonical": {
+    "n": 108,
+    "kept_without": 95,
+    "kept_with": 108
+   },
+   "other_spellings": {
+    "n": 154,
+    "kept_without": 106,
+    "kept_with": 152
+   }
+  },
+  "en_to_vi": {
+   "canonical": {
+    "n": 108,
+    "kept_without": 91,
+    "kept_with": 106
+   },
+   "other_spellings": {
+    "n": 154,
+    "kept_without": 91,
+    "kept_with": 123
+   }
+  }
+ },
+ "rows": [
+  {
+   "direction": "vi_to_en",
+   "term": "JavaScript",
+   "source": "Công ty mình đang tuyển lập trình viên JavaScript",
+   "protected": "Công ty mình đang tuyển lập trình viên JavaScript",
+   "without": "The company we're hiring JavaScript programmers",
+   "with": "The company we're hiring JavaScript programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "JavaScript",
+   "source": "Mình gặp lỗi khi cập nhật JavaScript hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật JavaScript hôm qua",
+   "without": "I failed to update JavaScript yesterday",
+   "with": "I failed to update JavaScript yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "JavaScript",
+   "source": "Công ty mình đang tuyển lập trình viên javascript",
+   "protected": "Công ty mình đang tuyển lập trình viên JavaScript",
+   "without": "The company we're hiring the Pocketscript programmer",
+   "with": "The company we're hiring JavaScript programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "JavaScript",
+   "source": "Mình gặp lỗi khi cập nhật javascript hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật JavaScript hôm qua",
+   "without": "I had an error updateing Swiftscript yesterday",
+   "with": "I failed to update JavaScript yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "JavaScript",
+   "source": "Công ty mình đang tuyển lập trình viên Javascript",
+   "protected": "Công ty mình đang tuyển lập trình viên JavaScript",
+   "without": "The company we're hiring Trump programmers",
+   "with": "The company we're hiring JavaScript programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "JavaScript",
+   "source": "Mình gặp lỗi khi cập nhật Javascript hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật JavaScript hôm qua",
+   "without": "I had an error updating iTunes yesterday",
+   "with": "I failed to update JavaScript yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "TypeScript",
+   "source": "Công ty mình đang tuyển lập trình viên TypeScript",
+   "protected": "Công ty mình đang tuyển lập trình viên TERM1",
+   "without": "The company we're hiring TypeStation programmers",
+   "with": "The company we're hiring TypeScript programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "TypeScript",
+   "source": "Mình gặp lỗi khi cập nhật TypeScript hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật TERM1 hôm qua",
+   "without": "I had an error updating TypeSISO yesterday",
+   "with": "I had an error updating TypeScript yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "TypeScript",
+   "source": "Công ty mình đang tuyển lập trình viên typescript",
+   "protected": "Công ty mình đang tuyển lập trình viên TERM1",
+   "without": "The company we're hiring a typescript programmer",
+   "with": "The company we're hiring typescript programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "TypeScript",
+   "source": "Mình gặp lỗi khi cập nhật typescript hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật TERM1 hôm qua",
+   "without": "I failed to update typescript yesterday",
+   "with": "I had an error updating typescript yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "TypeScript",
+   "source": "Công ty mình đang tuyển lập trình viên Typescript",
+   "protected": "Công ty mình đang tuyển lập trình viên TERM1",
+   "without": "The company we're hiring Typescript programmers",
+   "with": "The company we're hiring Typescript programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "TypeScript",
+   "source": "Mình gặp lỗi khi cập nhật Typescript hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật TERM1 hôm qua",
+   "without": "I failed to update Typescript yesterday",
+   "with": "I had an error updating Typescript yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Python",
+   "source": "Công ty mình đang tuyển lập trình viên Python",
+   "protected": "Công ty mình đang tuyển lập trình viên Python",
+   "without": "The company we're hiring Python programmers",
+   "with": "The company we're hiring Python programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Python",
+   "source": "Mình gặp lỗi khi cập nhật Python hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Python hôm qua",
+   "without": "I had an error updating Python yesterday",
+   "with": "I had an error updating Python yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Python",
+   "source": "Công ty mình đang tuyển lập trình viên python",
+   "protected": "Công ty mình đang tuyển lập trình viên python",
+   "without": "My company is hiring Phython programmers",
+   "with": "My company is hiring Phython programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Python",
+   "source": "Mình gặp lỗi khi cập nhật python hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật python hôm qua",
+   "without": "I had an error updating python yesterday",
+   "with": "I had an error updating python yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Java",
+   "source": "Công ty mình đang tuyển lập trình viên Java",
+   "protected": "Công ty mình đang tuyển lập trình viên Java",
+   "without": "The company we're hiring Java programmers",
+   "with": "The company we're hiring Java programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Java",
+   "source": "Mình gặp lỗi khi cập nhật Java hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Java hôm qua",
+   "without": "I had an error updating Java yesterday",
+   "with": "I had an error updating Java yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Java",
+   "source": "Công ty mình đang tuyển lập trình viên java",
+   "protected": "Công ty mình đang tuyển lập trình viên Java",
+   "without": "The company we're hiring căntile programmers",
+   "with": "The company we're hiring Java programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Java",
+   "source": "Mình gặp lỗi khi cập nhật java hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Java hôm qua",
+   "without": "I had an error updateing groundhog yesterday",
+   "with": "I had an error updating Java yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Kotlin",
+   "source": "Công ty mình đang tuyển lập trình viên Kotlin",
+   "protected": "Công ty mình đang tuyển lập trình viên Kotlin",
+   "without": "The company we're hiring Kotlin programmers",
+   "with": "The company we're hiring Kotlin programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Kotlin",
+   "source": "Mình gặp lỗi khi cập nhật Kotlin hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Kotlin hôm qua",
+   "without": "I had an error updating Kotlin yesterday",
+   "with": "I had an error updating Kotlin yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Kotlin",
+   "source": "Công ty mình đang tuyển lập trình viên kotlin",
+   "protected": "Công ty mình đang tuyển lập trình viên kotlin",
+   "without": "The company we're hiring is a kotlin programmer",
+   "with": "The company we're hiring is a kotlin programmer"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Kotlin",
+   "source": "Mình gặp lỗi khi cập nhật kotlin hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật kotlin hôm qua",
+   "without": "I had an error updating the kotlin yesterday",
+   "with": "I had an error updating the kotlin yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Swift",
+   "source": "Công ty mình đang tuyển lập trình viên Swift",
+   "protected": "Công ty mình đang tuyển lập trình viên Swift",
+   "without": "The company we're hiring Swift programmers",
+   "with": "The company we're hiring Swift programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Swift",
+   "source": "Mình gặp lỗi khi cập nhật Swift hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Swift hôm qua",
+   "without": "I had an error updating Swift yesterday",
+   "with": "I had an error updating Swift yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Swift",
+   "source": "Công ty mình đang tuyển lập trình viên swift",
+   "protected": "Công ty mình đang tuyển lập trình viên Swift",
+   "without": "The company we're hiring is a switt programmer",
+   "with": "The company we're hiring Swift programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Swift",
+   "source": "Mình gặp lỗi khi cập nhật swift hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Swift hôm qua",
+   "without": "I had an error updating the switt yesterday",
+   "with": "I had an error updating Swift yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Golang",
+   "source": "Công ty mình đang tuyển lập trình viên Golang",
+   "protected": "Công ty mình đang tuyển lập trình viên Golang",
+   "without": "The company we're hiring Golang programmers",
+   "with": "The company we're hiring Golang programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Golang",
+   "source": "Mình gặp lỗi khi cập nhật Golang hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Golang hôm qua",
+   "without": "I had an error with Golang update yesterday",
+   "with": "I had an error with Golang update yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Golang",
+   "source": "Công ty mình đang tuyển lập trình viên golang",
+   "protected": "Công ty mình đang tuyển lập trình viên golang",
+   "without": "The company we're hiring golang programmers",
+   "with": "The company we're hiring golang programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Golang",
+   "source": "Mình gặp lỗi khi cập nhật golang hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật golang hôm qua",
+   "without": "I had an error updateing Golang yesterday",
+   "with": "I had an error updateing Golang yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Rust",
+   "source": "Công ty mình đang tuyển lập trình viên Rust",
+   "protected": "Công ty mình đang tuyển lập trình viên TERM1",
+   "without": "The company we're hiring qualmsurvel programmers",
+   "with": "The company we're hiring Rust programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Rust",
+   "source": "Mình gặp lỗi khi cập nhật Rust hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật TERM1 hôm qua",
+   "without": "I had an error updateing quasi yesterday",
+   "with": "I had an error updating Rust yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Rust",
+   "source": "Công ty mình đang tuyển lập trình viên rust",
+   "protected": "Công ty mình đang tuyển lập trình viên TERM1",
+   "without": "The company we're hiring hasht programmers",
+   "with": "The company we're hiring rust programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Rust",
+   "source": "Mình gặp lỗi khi cập nhật rust hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật TERM1 hôm qua",
+   "without": "I had an error updating the prost yesterday",
+   "with": "I had an error updating rust yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "PHP",
+   "source": "Công ty mình đang tuyển lập trình viên PHP",
+   "protected": "Công ty mình đang tuyển lập trình viên TERM1",
+   "without": "The company we're hiring PHP programmers",
+   "with": "The company we're hiring PHP programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "PHP",
+   "source": "Mình gặp lỗi khi cập nhật PHP hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật TERM1 hôm qua",
+   "without": "I had an error updating PHP yesterday",
+   "with": "I had an error updating PHP yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "PHP",
+   "source": "Công ty mình đang tuyển lập trình viên php",
+   "protected": "Công ty mình đang tuyển lập trình viên TERM1",
+   "without": "The company we're hiring is a programmer",
+   "with": "The company we're hiring php programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "PHP",
+   "source": "Mình gặp lỗi khi cập nhật php hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật TERM1 hôm qua",
+   "without": "I had an error updating yesterday",
+   "with": "I had an error updating php yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "PHP",
+   "source": "Công ty mình đang tuyển lập trình viên Php",
+   "protected": "Công ty mình đang tuyển lập trình viên TERM1",
+   "without": "The company we're hiring Php programmers",
+   "with": "The company we're hiring Php programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "PHP",
+   "source": "Mình gặp lỗi khi cập nhật Php hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật TERM1 hôm qua",
+   "without": "I had an error updating Php yesterday",
+   "with": "I had an error updating Php yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "C++",
+   "source": "Công ty mình đang tuyển lập trình viên C++",
+   "protected": "Công ty mình đang tuyển lập trình viên C++",
+   "without": "The company we're hiring C++ programmers",
+   "with": "The company we're hiring C++ programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "C++",
+   "source": "Mình gặp lỗi khi cập nhật C++ hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật C++ hôm qua",
+   "without": "I had an error updateing C++ yesterday",
+   "with": "I had an error updateing C++ yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "C++",
+   "source": "Công ty mình đang tuyển lập trình viên c++",
+   "protected": "Công ty mình đang tuyển lập trình viên c++",
+   "without": "The company we're hiring a c++ programmer",
+   "with": "The company we're hiring a c++ programmer"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "C++",
+   "source": "Mình gặp lỗi khi cập nhật c++ hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật c++ hôm qua",
+   "without": "I had an error updateing c++ yesterday",
+   "with": "I had an error updateing c++ yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "C#",
+   "source": "Công ty mình đang tuyển lập trình viên C#",
+   "protected": "Công ty mình đang tuyển lập trình viên TERM1",
+   "without": "The company we're hiring C programmers’",
+   "with": "The company we're hiring C# programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "C#",
+   "source": "Mình gặp lỗi khi cập nhật C# hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật TERM1 hôm qua",
+   "without": "I had an error updating C’ yesterday",
+   "with": "I had an error updating C# yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "C#",
+   "source": "Công ty mình đang tuyển lập trình viên c#",
+   "protected": "Công ty mình đang tuyển lập trình viên TERM1",
+   "without": "The company we're hiring programmers c’",
+   "with": "The company we're hiring c# programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "C#",
+   "source": "Mình gặp lỗi khi cập nhật c# hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật TERM1 hôm qua",
+   "without": "I had an error updateing c’ yesterday",
+   "with": "I had an error updating c# yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "React",
+   "source": "Công ty mình đang tuyển lập trình viên React",
+   "protected": "Công ty mình đang tuyển lập trình viên TERM1",
+   "without": "My company is hiring Rectors",
+   "with": "The company we're hiring React programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "React",
+   "source": "Mình gặp lỗi khi cập nhật React hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật TERM1 hôm qua",
+   "without": "I had an error update yesterday",
+   "with": "I had an error updating React yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "React",
+   "source": "Công ty mình đang tuyển lập trình viên react",
+   "protected": "Công ty mình đang tuyển lập trình viên TERM1",
+   "without": "The company we're hiring is a react programmer",
+   "with": "The company we're hiring react programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "React",
+   "source": "Mình gặp lỗi khi cập nhật react hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật TERM1 hôm qua",
+   "without": "I had an error updating the request yesterday",
+   "with": "I had an error updating react yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Angular",
+   "source": "Công ty mình đang tuyển lập trình viên Angular",
+   "protected": "Công ty mình đang tuyển lập trình viên Angular",
+   "without": "The company we're hiring Angular programmers",
+   "with": "The company we're hiring Angular programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Angular",
+   "source": "Mình gặp lỗi khi cập nhật Angular hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Angular hôm qua",
+   "without": "I had an error updating Angular yesterday",
+   "with": "I had an error updating Angular yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Angular",
+   "source": "Công ty mình đang tuyển lập trình viên angular",
+   "protected": "Công ty mình đang tuyển lập trình viên angular",
+   "without": "My company is hiring angular programmers",
+   "with": "My company is hiring angular programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Angular",
+   "source": "Mình gặp lỗi khi cập nhật angular hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật angular hôm qua",
+   "without": "I had an error with angular update yesterday",
+   "with": "I had an error with angular update yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Vue.js",
+   "source": "Công ty mình đang tuyển lập trình viên Vue.js",
+   "protected": "Công ty mình đang tuyển lập trình viên Vue.js",
+   "without": "The company we're hiring Vue.js programmers",
+   "with": "The company we're hiring Vue.js programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Vue.js",
+   "source": "Mình gặp lỗi khi cập nhật Vue.js hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Vue.js hôm qua",
+   "without": "I had an error updating Vue.js yesterday",
+   "with": "I had an error updating Vue.js yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Vue.js",
+   "source": "Công ty mình đang tuyển lập trình viên vue.js",
+   "protected": "Công ty mình đang tuyển lập trình viên Vue.js",
+   "without": "The company we're hiring a pseudo.js programmer",
+   "with": "The company we're hiring Vue.js programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Vue.js",
+   "source": "Mình gặp lỗi khi cập nhật vue.js hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Vue.js hôm qua",
+   "without": "I had an error updating the tele.js yesterday",
+   "with": "I had an error updating Vue.js yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Node.js",
+   "source": "Công ty mình đang tuyển lập trình viên Node.js",
+   "protected": "Công ty mình đang tuyển lập trình viên Node.js",
+   "without": "My company is hiring Node.js programmers",
+   "with": "My company is hiring Node.js programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Node.js",
+   "source": "Mình gặp lỗi khi cập nhật Node.js hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Node.js hôm qua",
+   "without": "I had an error updating Node.js yesterday",
+   "with": "I had an error updating Node.js yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Node.js",
+   "source": "Công ty mình đang tuyển lập trình viên node.js",
+   "protected": "Công ty mình đang tuyển lập trình viên node.js",
+   "without": "The company we're hiring node.js programmers",
+   "with": "The company we're hiring node.js programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Node.js",
+   "source": "Mình gặp lỗi khi cập nhật node.js hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật node.js hôm qua",
+   "without": "I had an error updating node.js yesterday",
+   "with": "I had an error updating node.js yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Next.js",
+   "source": "Công ty mình đang tuyển lập trình viên Next.js",
+   "protected": "Công ty mình đang tuyển lập trình viên Next.js",
+   "without": "The company we're hiring Next.js programmers",
+   "with": "The company we're hiring Next.js programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Next.js",
+   "source": "Mình gặp lỗi khi cập nhật Next.js hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Next.js hôm qua",
+   "without": "I had an error updating Next.js yesterday",
+   "with": "I had an error updating Next.js yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Next.js",
+   "source": "Công ty mình đang tuyển lập trình viên next.js",
+   "protected": "Công ty mình đang tuyển lập trình viên next.js",
+   "without": "The company we're hiring next.js programmers",
+   "with": "The company we're hiring next.js programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Next.js",
+   "source": "Mình gặp lỗi khi cập nhật next.js hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật next.js hôm qua",
+   "without": "I had an error updating next.js yesterday",
+   "with": "I had an error updating next.js yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Spring Boot",
+   "source": "Công ty mình đang tuyển lập trình viên Spring Boot",
+   "protected": "Công ty mình đang tuyển lập trình viên Spring Boot",
+   "without": "The company we're hiring Spring Boot programmers",
+   "with": "The company we're hiring Spring Boot programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Spring Boot",
+   "source": "Mình gặp lỗi khi cập nhật Spring Boot hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Spring Boot hôm qua",
+   "without": "I had an error updating Spring Boot yesterday",
+   "with": "I had an error updating Spring Boot yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Spring Boot",
+   "source": "Công ty mình đang tuyển lập trình viên spring boot",
+   "protected": "Công ty mình đang tuyển lập trình viên Spring Boot",
+   "without": "The company we're hiring a Thinkread boot programmer",
+   "with": "The company we're hiring Spring Boot programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Spring Boot",
+   "source": "Mình gặp lỗi khi cập nhật spring boot hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Spring Boot hôm qua",
+   "without": "I had an error updating theTE boot yesterday",
+   "with": "I had an error updating Spring Boot yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Spring Boot",
+   "source": "Công ty mình đang tuyển lập trình viên Spring boot",
+   "protected": "Công ty mình đang tuyển lập trình viên Spring boot",
+   "without": "The company we're hiring Spring boot programmers",
+   "with": "The company we're hiring Spring boot programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Spring Boot",
+   "source": "Mình gặp lỗi khi cập nhật Spring boot hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Spring boot hôm qua",
+   "without": "I had an error updating Spring boot yesterday",
+   "with": "I had an error updating Spring boot yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Django",
+   "source": "Công ty mình đang tuyển lập trình viên Django",
+   "protected": "Công ty mình đang tuyển lập trình viên TERM1",
+   "without": "The company we're hiring Toyota programmers",
+   "with": "The company we're hiring Django programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Django",
+   "source": "Mình gặp lỗi khi cập nhật Django hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật TERM1 hôm qua",
+   "without": "I had an error with Toyota update yesterday",
+   "with": "I had an error updating Django yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Django",
+   "source": "Công ty mình đang tuyển lập trình viên django",
+   "protected": "Công ty mình đang tuyển lập trình viên TERM1",
+   "without": "The company we're hiring djago programmers",
+   "with": "The company we're hiring django programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Django",
+   "source": "Mình gặp lỗi khi cập nhật django hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật TERM1 hôm qua",
+   "without": "I had an error updating django yesterday",
+   "with": "I had an error updating django yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Flask",
+   "source": "Công ty mình đang tuyển lập trình viên Flask",
+   "protected": "Công ty mình đang tuyển lập trình viên TERM1",
+   "without": "The company we're hiring Flask programmers",
+   "with": "The company we're hiring Flask programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Flask",
+   "source": "Mình gặp lỗi khi cập nhật Flask hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật TERM1 hôm qua",
+   "without": "I had an error updating Flask yesterday",
+   "with": "I had an error updating Flask yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Flask",
+   "source": "Công ty mình đang tuyển lập trình viên flask",
+   "protected": "Công ty mình đang tuyển lập trình viên TERM1",
+   "without": "The company we're hiring flagsk programmers",
+   "with": "The company we're hiring flask programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Flask",
+   "source": "Mình gặp lỗi khi cập nhật flask hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật TERM1 hôm qua",
+   "without": "I failed to update flagsk yesterday",
+   "with": "I had an error updating flask yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Laravel",
+   "source": "Công ty mình đang tuyển lập trình viên Laravel",
+   "protected": "Công ty mình đang tuyển lập trình viên Laravel",
+   "without": "The company we're hiring Laravel programmers",
+   "with": "The company we're hiring Laravel programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Laravel",
+   "source": "Mình gặp lỗi khi cập nhật Laravel hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Laravel hôm qua",
+   "without": "I had an error updateing Laravel yesterday",
+   "with": "I had an error updateing Laravel yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Laravel",
+   "source": "Công ty mình đang tuyển lập trình viên laravel",
+   "protected": "Công ty mình đang tuyển lập trình viên Laravel",
+   "without": "The company we're hiring is a laravel programmer",
+   "with": "The company we're hiring Laravel programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Laravel",
+   "source": "Mình gặp lỗi khi cập nhật laravel hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Laravel hôm qua",
+   "without": "I had an error updating laravel yesterday",
+   "with": "I had an error updateing Laravel yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Flutter",
+   "source": "Công ty mình đang tuyển lập trình viên Flutter",
+   "protected": "Công ty mình đang tuyển lập trình viên Flutter",
+   "without": "The company we're hiring Flutter programmers",
+   "with": "The company we're hiring Flutter programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Flutter",
+   "source": "Mình gặp lỗi khi cập nhật Flutter hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Flutter hôm qua",
+   "without": "I had an error updating Flutter yesterday",
+   "with": "I had an error updating Flutter yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Flutter",
+   "source": "Công ty mình đang tuyển lập trình viên flutter",
+   "protected": "Công ty mình đang tuyển lập trình viên flutter",
+   "without": "The company we're hiring Flutter programmers",
+   "with": "The company we're hiring Flutter programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Flutter",
+   "source": "Mình gặp lỗi khi cập nhật flutter hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật flutter hôm qua",
+   "without": "I had an error updating the flutter yesterday",
+   "with": "I had an error updating the flutter yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Docker",
+   "source": "Công ty mình đang tuyển lập trình viên Docker",
+   "protected": "Công ty mình đang tuyển lập trình viên Docker",
+   "without": "The company we're hiring Docker programmers",
+   "with": "The company we're hiring Docker programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Docker",
+   "source": "Mình gặp lỗi khi cập nhật Docker hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Docker hôm qua",
+   "without": "I failed to update Docker yesterday",
+   "with": "I failed to update Docker yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Docker",
+   "source": "Công ty mình đang tuyển lập trình viên docker",
+   "protected": "Công ty mình đang tuyển lập trình viên Docker",
+   "without": "The company we're hiring acker-based programmer",
+   "with": "The company we're hiring Docker programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Docker",
+   "source": "Mình gặp lỗi khi cập nhật docker hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Docker hôm qua",
+   "without": "I failed to update due to thecker yesterday",
+   "with": "I failed to update Docker yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Kubernetes",
+   "source": "Công ty mình đang tuyển lập trình viên Kubernetes",
+   "protected": "Công ty mình đang tuyển lập trình viên Kubernetes",
+   "without": "The company we're hiring Kubernetes programmers",
+   "with": "The company we're hiring Kubernetes programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Kubernetes",
+   "source": "Mình gặp lỗi khi cập nhật Kubernetes hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Kubernetes hôm qua",
+   "without": "I had an error updating Kubernetes yesterday",
+   "with": "I had an error updating Kubernetes yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Kubernetes",
+   "source": "Công ty mình đang tuyển lập trình viên kubernetes",
+   "protected": "Công ty mình đang tuyển lập trình viên Kubernetes",
+   "without": "My company is hiring kubernetes programmers",
+   "with": "The company we're hiring Kubernetes programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Kubernetes",
+   "source": "Mình gặp lỗi khi cập nhật kubernetes hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Kubernetes hôm qua",
+   "without": "I had an error updating kubbernetes yesterday",
+   "with": "I had an error updating Kubernetes yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Git",
+   "source": "Công ty mình đang tuyển lập trình viên Git",
+   "protected": "Công ty mình đang tuyển lập trình viên Git",
+   "without": "The company we're hiring Git programmers",
+   "with": "The company we're hiring Git programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Git",
+   "source": "Mình gặp lỗi khi cập nhật Git hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Git hôm qua",
+   "without": "I had an error updating Git yesterday",
+   "with": "I had an error updating Git yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Git",
+   "source": "Công ty mình đang tuyển lập trình viên git",
+   "protected": "Công ty mình đang tuyển lập trình viên git",
+   "without": "The company we're hiring is a git programmer",
+   "with": "The company we're hiring is a git programmer"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Git",
+   "source": "Mình gặp lỗi khi cập nhật git hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật git hôm qua",
+   "without": "I had an error updating last night’s git",
+   "with": "I had an error updating last night’s git"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "GitHub",
+   "source": "Công ty mình đang tuyển lập trình viên GitHub",
+   "protected": "Công ty mình đang tuyển lập trình viên GitHub",
+   "without": "The company we're hiring GitHub programmers",
+   "with": "The company we're hiring GitHub programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "GitHub",
+   "source": "Mình gặp lỗi khi cập nhật GitHub hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật GitHub hôm qua",
+   "without": "I had an error updating GitHub yesterday",
+   "with": "I had an error updating GitHub yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "GitHub",
+   "source": "Công ty mình đang tuyển lập trình viên github",
+   "protected": "Công ty mình đang tuyển lập trình viên GitHub",
+   "without": "The company we're hiring Gitub programmers",
+   "with": "The company we're hiring GitHub programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "GitHub",
+   "source": "Mình gặp lỗi khi cập nhật github hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật GitHub hôm qua",
+   "without": "I had an error updating gitub yesterday",
+   "with": "I had an error updating GitHub yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "GitHub",
+   "source": "Công ty mình đang tuyển lập trình viên Github",
+   "protected": "Công ty mình đang tuyển lập trình viên Github",
+   "without": "The company we're hiring Github programmers",
+   "with": "The company we're hiring Github programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "GitHub",
+   "source": "Mình gặp lỗi khi cập nhật Github hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Github hôm qua",
+   "without": "I had an error updating Github yesterday",
+   "with": "I had an error updating Github yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "GitLab",
+   "source": "Công ty mình đang tuyển lập trình viên GitLab",
+   "protected": "Công ty mình đang tuyển lập trình viên GitLab",
+   "without": "The company we're hiring GitLab programmers",
+   "with": "The company we're hiring GitLab programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "GitLab",
+   "source": "Mình gặp lỗi khi cập nhật GitLab hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật GitLab hôm qua",
+   "without": "I had an error updating GitLab yesterday",
+   "with": "I had an error updating GitLab yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "GitLab",
+   "source": "Công ty mình đang tuyển lập trình viên gitlab",
+   "protected": "Công ty mình đang tuyển lập trình viên gitlab",
+   "without": "The company we're hiring is a gitlab programmer",
+   "with": "The company we're hiring is a gitlab programmer"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "GitLab",
+   "source": "Mình gặp lỗi khi cập nhật gitlab hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật gitlab hôm qua",
+   "without": "I had an error updating gitlab yesterday",
+   "with": "I had an error updating gitlab yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "GitLab",
+   "source": "Công ty mình đang tuyển lập trình viên Gitlab",
+   "protected": "Công ty mình đang tuyển lập trình viên Gitlab",
+   "without": "The company we're hiring Gitlab programmers",
+   "with": "The company we're hiring Gitlab programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "GitLab",
+   "source": "Mình gặp lỗi khi cập nhật Gitlab hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Gitlab hôm qua",
+   "without": "I had an error updating Gitlab yesterday",
+   "with": "I had an error updating Gitlab yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Jenkins",
+   "source": "Công ty mình đang tuyển lập trình viên Jenkins",
+   "protected": "Công ty mình đang tuyển lập trình viên Jenkins",
+   "without": "The company we're hiring Jenkins programmers",
+   "with": "The company we're hiring Jenkins programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Jenkins",
+   "source": "Mình gặp lỗi khi cập nhật Jenkins hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Jenkins hôm qua",
+   "without": "I had an error updating Jenkins yesterday",
+   "with": "I had an error updating Jenkins yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Jenkins",
+   "source": "Công ty mình đang tuyển lập trình viên jenkins",
+   "protected": "Công ty mình đang tuyển lập trình viên jenkins",
+   "without": "The company we're hiring Jenkins programmers",
+   "with": "The company we're hiring Jenkins programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Jenkins",
+   "source": "Mình gặp lỗi khi cập nhật jenkins hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật jenkins hôm qua",
+   "without": "I had an error with Hangnkins update yesterday",
+   "with": "I had an error with Hangnkins update yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Linux",
+   "source": "Công ty mình đang tuyển lập trình viên Linux",
+   "protected": "Công ty mình đang tuyển lập trình viên Linux",
+   "without": "The company we're hiring Linux programmers",
+   "with": "The company we're hiring Linux programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Linux",
+   "source": "Mình gặp lỗi khi cập nhật Linux hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Linux hôm qua",
+   "without": "I had an error updating Linux yesterday",
+   "with": "I had an error updating Linux yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Linux",
+   "source": "Công ty mình đang tuyển lập trình viên linux",
+   "protected": "Công ty mình đang tuyển lập trình viên Linux",
+   "without": "The company we're hiring Adobe programmers",
+   "with": "The company we're hiring Linux programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Linux",
+   "source": "Mình gặp lỗi khi cập nhật linux hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Linux hôm qua",
+   "without": "I had an error updateing Deluxe yesterday",
+   "with": "I had an error updating Linux yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Ubuntu",
+   "source": "Công ty mình đang tuyển lập trình viên Ubuntu",
+   "protected": "Công ty mình đang tuyển lập trình viên Ubuntu",
+   "without": "The company we're hiring Ubuntu programmers",
+   "with": "The company we're hiring Ubuntu programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Ubuntu",
+   "source": "Mình gặp lỗi khi cập nhật Ubuntu hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Ubuntu hôm qua",
+   "without": "I had an error updating Ubuntu yesterday",
+   "with": "I had an error updating Ubuntu yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Ubuntu",
+   "source": "Công ty mình đang tuyển lập trình viên ubuntu",
+   "protected": "Công ty mình đang tuyển lập trình viên Ubuntu",
+   "without": "The company we're hiring Trump programmers",
+   "with": "The company we're hiring Ubuntu programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Ubuntu",
+   "source": "Mình gặp lỗi khi cập nhật ubuntu hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Ubuntu hôm qua",
+   "without": "I had an error updating iTunes yesterday",
+   "with": "I had an error updating Ubuntu yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Windows",
+   "source": "Công ty mình đang tuyển lập trình viên Windows",
+   "protected": "Công ty mình đang tuyển lập trình viên Windows",
+   "without": "The company we're hiring Windows programmers",
+   "with": "The company we're hiring Windows programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Windows",
+   "source": "Mình gặp lỗi khi cập nhật Windows hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Windows hôm qua",
+   "without": "I had an error updating Windows yesterday",
+   "with": "I had an error updating Windows yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Windows",
+   "source": "Công ty mình đang tuyển lập trình viên windows",
+   "protected": "Công ty mình đang tuyển lập trình viên windows",
+   "without": "The company we're hiring windows programmers",
+   "with": "The company we're hiring windows programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Windows",
+   "source": "Mình gặp lỗi khi cập nhật windows hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật windows hôm qua",
+   "without": "I had an error updating the windows yesterday",
+   "with": "I had an error updating the windows yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Android",
+   "source": "Công ty mình đang tuyển lập trình viên Android",
+   "protected": "Công ty mình đang tuyển lập trình viên Android",
+   "without": "The company we're hiring Android programmers",
+   "with": "The company we're hiring Android programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Android",
+   "source": "Mình gặp lỗi khi cập nhật Android hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Android hôm qua",
+   "without": "I had an error updating Android yesterday",
+   "with": "I had an error updating Android yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Android",
+   "source": "Công ty mình đang tuyển lập trình viên android",
+   "protected": "Công ty mình đang tuyển lập trình viên android",
+   "without": "The company we're hiring Android programmers",
+   "with": "The company we're hiring Android programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Android",
+   "source": "Mình gặp lỗi khi cập nhật android hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật android hôm qua",
+   "without": "I had an error updating the Android yesterday",
+   "with": "I had an error updating the Android yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "iOS",
+   "source": "Công ty mình đang tuyển lập trình viên iOS",
+   "protected": "Công ty mình đang tuyển lập trình viên iOS",
+   "without": "The company we're hiring iOS programmers",
+   "with": "The company we're hiring iOS programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "iOS",
+   "source": "Mình gặp lỗi khi cập nhật iOS hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật iOS hôm qua",
+   "without": "I had an error updating iOS yesterday",
+   "with": "I had an error updating iOS yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "iOS",
+   "source": "Công ty mình đang tuyển lập trình viên ios",
+   "protected": "Công ty mình đang tuyển lập trình viên iOS",
+   "without": "The company we're hiring is an automated programmer",
+   "with": "The company we're hiring iOS programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "iOS",
+   "source": "Mình gặp lỗi khi cập nhật ios hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật iOS hôm qua",
+   "without": "I had an error updateing ios yesterday",
+   "with": "I had an error updating iOS yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "iOS",
+   "source": "Công ty mình đang tuyển lập trình viên Ios",
+   "protected": "Công ty mình đang tuyển lập trình viên Ios",
+   "without": "The company we're hiring Ios programmers",
+   "with": "The company we're hiring Ios programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "iOS",
+   "source": "Mình gặp lỗi khi cập nhật Ios hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Ios hôm qua",
+   "without": "I had an error updating Ios yesterday",
+   "with": "I had an error updating Ios yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "MySQL",
+   "source": "Công ty mình đang tuyển lập trình viên MySQL",
+   "protected": "Công ty mình đang tuyển lập trình viên TERM1",
+   "without": "The company we're hiring Adobe programmers",
+   "with": "The company we're hiring MySQL programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "MySQL",
+   "source": "Mình gặp lỗi khi cập nhật MySQL hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật TERM1 hôm qua",
+   "without": "I had an error updating MySQL yesterday",
+   "with": "I had an error updating MySQL yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "MySQL",
+   "source": "Công ty mình đang tuyển lập trình viên mysql",
+   "protected": "Công ty mình đang tuyển lập trình viên TERM1",
+   "without": "The company we're hiring mysql programmers",
+   "with": "The company we're hiring mysql programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "MySQL",
+   "source": "Mình gặp lỗi khi cập nhật mysql hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật TERM1 hôm qua",
+   "without": "I had an error updating mysql yesterday",
+   "with": "I had an error updating mysql yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "MySQL",
+   "source": "Công ty mình đang tuyển lập trình viên Mysql",
+   "protected": "Công ty mình đang tuyển lập trình viên TERM1",
+   "without": "The company we're hiring Mysql programmers",
+   "with": "The company we're hiring Mysql programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "MySQL",
+   "source": "Mình gặp lỗi khi cập nhật Mysql hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật TERM1 hôm qua",
+   "without": "I had an error updating Mysql yesterday",
+   "with": "I had an error updating Mysql yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "PostgreSQL",
+   "source": "Công ty mình đang tuyển lập trình viên PostgreSQL",
+   "protected": "Công ty mình đang tuyển lập trình viên TERM1",
+   "without": "My company is hiring PostgreSQL programmers",
+   "with": "The company we're hiring PostgreSQL programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "PostgreSQL",
+   "source": "Mình gặp lỗi khi cập nhật PostgreSQL hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật TERM1 hôm qua",
+   "without": "I had an error updating PostgreSQL yesterday",
+   "with": "I had an error updating PostgreSQL yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "PostgreSQL",
+   "source": "Công ty mình đang tuyển lập trình viên postgresql",
+   "protected": "Công ty mình đang tuyển lập trình viên TERM1",
+   "without": "My company is hiring postgresql programmers",
+   "with": "The company we're hiring postgresql programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "PostgreSQL",
+   "source": "Mình gặp lỗi khi cập nhật postgresql hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật TERM1 hôm qua",
+   "without": "I had an error updating the postgresql yesterday",
+   "with": "I had an error updating postgresql yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "PostgreSQL",
+   "source": "Công ty mình đang tuyển lập trình viên Postgresql",
+   "protected": "Công ty mình đang tuyển lập trình viên TERM1",
+   "without": "The company we're hiring Postgresql programmers",
+   "with": "The company we're hiring Postgresql programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "PostgreSQL",
+   "source": "Mình gặp lỗi khi cập nhật Postgresql hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật TERM1 hôm qua",
+   "without": "I had an error updating Postgresql yesterday",
+   "with": "I had an error updating Postgresql yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "MongoDB",
+   "source": "Công ty mình đang tuyển lập trình viên MongoDB",
+   "protected": "Công ty mình đang tuyển lập trình viên MongoDB",
+   "without": "The company we're hiring is a MongoDB programmer",
+   "with": "The company we're hiring is a MongoDB programmer"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "MongoDB",
+   "source": "Mình gặp lỗi khi cập nhật MongoDB hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật MongoDB hôm qua",
+   "without": "I had an error updating MongoDB yesterday",
+   "with": "I had an error updating MongoDB yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "MongoDB",
+   "source": "Công ty mình đang tuyển lập trình viên mongodb",
+   "protected": "Công ty mình đang tuyển lập trình viên MongoDB",
+   "without": "The company we're hiring the developer wantsodb",
+   "with": "The company we're hiring is a MongoDB programmer"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "MongoDB",
+   "source": "Mình gặp lỗi khi cập nhật mongodb hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật MongoDB hôm qua",
+   "without": "I had an error updating my wishob yesterday",
+   "with": "I had an error updating MongoDB yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "MongoDB",
+   "source": "Công ty mình đang tuyển lập trình viên Mongodb",
+   "protected": "Công ty mình đang tuyển lập trình viên MongoDB",
+   "without": "The company we're hiring is a Monodb programmer",
+   "with": "The company we're hiring is a MongoDB programmer"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "MongoDB",
+   "source": "Mình gặp lỗi khi cập nhật Mongodb hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật MongoDB hôm qua",
+   "without": "I had an error updateing Hydrob yesterday",
+   "with": "I had an error updating MongoDB yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Redis",
+   "source": "Công ty mình đang tuyển lập trình viên Redis",
+   "protected": "Công ty mình đang tuyển lập trình viên Redis",
+   "without": "My company is hiring Redis programmers",
+   "with": "My company is hiring Redis programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Redis",
+   "source": "Mình gặp lỗi khi cập nhật Redis hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Redis hôm qua",
+   "without": "I had an error updating Redis yesterday",
+   "with": "I had an error updating Redis yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Redis",
+   "source": "Công ty mình đang tuyển lập trình viên redis",
+   "protected": "Công ty mình đang tuyển lập trình viên redis",
+   "without": "Our company is hiring redis programmers",
+   "with": "Our company is hiring redis programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Redis",
+   "source": "Mình gặp lỗi khi cập nhật redis hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật redis hôm qua",
+   "without": "I had an error updating the redis yesterday",
+   "with": "I had an error updating the redis yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "SQL",
+   "source": "Công ty mình đang tuyển lập trình viên SQL",
+   "protected": "Công ty mình đang tuyển lập trình viên SQL",
+   "without": "The company we're hiring SQL programmers",
+   "with": "The company we're hiring SQL programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "SQL",
+   "source": "Mình gặp lỗi khi cập nhật SQL hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật SQL hôm qua",
+   "without": "I had an error updating SQL yesterday",
+   "with": "I had an error updating SQL yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "SQL",
+   "source": "Công ty mình đang tuyển lập trình viên sql",
+   "protected": "Công ty mình đang tuyển lập trình viên sql",
+   "without": "My company is hiring a sql programmer",
+   "with": "My company is hiring a sql programmer"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "SQL",
+   "source": "Mình gặp lỗi khi cập nhật sql hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật sql hôm qua",
+   "without": "I had an error updating the sql yesterday",
+   "with": "I had an error updating the sql yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "SQL",
+   "source": "Công ty mình đang tuyển lập trình viên Sql",
+   "protected": "Công ty mình đang tuyển lập trình viên Sql",
+   "without": "The company we're hiring Sql programmers",
+   "with": "The company we're hiring Sql programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "SQL",
+   "source": "Mình gặp lỗi khi cập nhật Sql hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Sql hôm qua",
+   "without": "I had an error updating Sql yesterday",
+   "with": "I had an error updating Sql yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "NoSQL",
+   "source": "Công ty mình đang tuyển lập trình viên NoSQL",
+   "protected": "Công ty mình đang tuyển lập trình viên NoSQL",
+   "without": "My company is hiring NoSQL programmers",
+   "with": "My company is hiring NoSQL programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "NoSQL",
+   "source": "Mình gặp lỗi khi cập nhật NoSQL hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật NoSQL hôm qua",
+   "without": "I had an error updating NoSQL yesterday",
+   "with": "I had an error updating NoSQL yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "NoSQL",
+   "source": "Công ty mình đang tuyển lập trình viên nosql",
+   "protected": "Công ty mình đang tuyển lập trình viên nosql",
+   "without": "My company is hiring nosql programmers",
+   "with": "My company is hiring nosql programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "NoSQL",
+   "source": "Mình gặp lỗi khi cập nhật nosql hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật nosql hôm qua",
+   "without": "I had an error updating nosql yesterday",
+   "with": "I had an error updating nosql yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "NoSQL",
+   "source": "Công ty mình đang tuyển lập trình viên Nosql",
+   "protected": "Công ty mình đang tuyển lập trình viên Nosql",
+   "without": "My company is hiring Nosql programmers",
+   "with": "My company is hiring Nosql programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "NoSQL",
+   "source": "Mình gặp lỗi khi cập nhật Nosql hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Nosql hôm qua",
+   "without": "I had an error updating Nosql yesterday",
+   "with": "I had an error updating Nosql yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "API",
+   "source": "Công ty mình đang tuyển lập trình viên API",
+   "protected": "Công ty mình đang tuyển lập trình viên API",
+   "without": "My company is hiring API programmers",
+   "with": "My company is hiring API programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "API",
+   "source": "Mình gặp lỗi khi cập nhật API hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật API hôm qua",
+   "without": "I had an error updating the API yesterday",
+   "with": "I had an error updating the API yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "API",
+   "source": "Công ty mình đang tuyển lập trình viên api",
+   "protected": "Công ty mình đang tuyển lập trình viên api",
+   "without": "The company we're hiring api programmers",
+   "with": "The company we're hiring api programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "API",
+   "source": "Mình gặp lỗi khi cập nhật api hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật api hôm qua",
+   "without": "I had an error updating api yesterday",
+   "with": "I had an error updating api yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "API",
+   "source": "Công ty mình đang tuyển lập trình viên Api",
+   "protected": "Công ty mình đang tuyển lập trình viên Api",
+   "without": "The company we're hiring Api programmers",
+   "with": "The company we're hiring Api programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "API",
+   "source": "Mình gặp lỗi khi cập nhật Api hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Api hôm qua",
+   "without": "I had an error updating Api yesterday",
+   "with": "I had an error updating Api yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "REST",
+   "source": "Công ty mình đang tuyển lập trình viên REST",
+   "protected": "Công ty mình đang tuyển lập trình viên REST",
+   "without": "The company we're hiring REST programmers",
+   "with": "The company we're hiring REST programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "REST",
+   "source": "Mình gặp lỗi khi cập nhật REST hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật REST hôm qua",
+   "without": "I failed to update REST yesterday",
+   "with": "I failed to update REST yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "REST",
+   "source": "Công ty mình đang tuyển lập trình viên rest",
+   "protected": "Công ty mình đang tuyển lập trình viên REST",
+   "without": "The company we're hiring is a programmer",
+   "with": "The company we're hiring REST programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "REST",
+   "source": "Mình gặp lỗi khi cập nhật rest hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật REST hôm qua",
+   "without": "I had an error updating the Krest yesterday",
+   "with": "I failed to update REST yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "REST",
+   "source": "Công ty mình đang tuyển lập trình viên Rest",
+   "protected": "Công ty mình đang tuyển lập trình viên Rest",
+   "without": "The company we're hiring Rest programmers",
+   "with": "The company we're hiring Rest programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "REST",
+   "source": "Mình gặp lỗi khi cập nhật Rest hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Rest hôm qua",
+   "without": "I had an error updating Rest yesterday",
+   "with": "I had an error updating Rest yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "GraphQL",
+   "source": "Công ty mình đang tuyển lập trình viên GraphQL",
+   "protected": "Công ty mình đang tuyển lập trình viên TERM1",
+   "without": "My company is hiring a GMQL programmer",
+   "with": "The company we're hiring GraphQL programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "GraphQL",
+   "source": "Mình gặp lỗi khi cập nhật GraphQL hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật TERM1 hôm qua",
+   "without": "I had an error updating the GGMQL yesterday",
+   "with": "I had an error updating GraphQL yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "GraphQL",
+   "source": "Công ty mình đang tuyển lập trình viên graphql",
+   "protected": "Công ty mình đang tuyển lập trình viên TERM1",
+   "without": "The company we're hiring is a graphql programmer",
+   "with": "The company we're hiring graphql programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "GraphQL",
+   "source": "Mình gặp lỗi khi cập nhật graphql hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật TERM1 hôm qua",
+   "without": "I had an error updating thegraphql yesterday",
+   "with": "I had an error updating graphql yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "GraphQL",
+   "source": "Công ty mình đang tuyển lập trình viên Graphql",
+   "protected": "Công ty mình đang tuyển lập trình viên TERM1",
+   "without": "The company we're hiring GMGql programmers",
+   "with": "The company we're hiring Graphql programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "GraphQL",
+   "source": "Mình gặp lỗi khi cập nhật Graphql hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật TERM1 hôm qua",
+   "without": "I had an error updating the GGMql yesterday",
+   "with": "I had an error updating Graphql yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "JSON",
+   "source": "Công ty mình đang tuyển lập trình viên JSON",
+   "protected": "Công ty mình đang tuyển lập trình viên JSON",
+   "without": "The company we're hiring JSON programmers",
+   "with": "The company we're hiring JSON programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "JSON",
+   "source": "Mình gặp lỗi khi cập nhật JSON hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật JSON hôm qua",
+   "without": "I had an error updating JSON yesterday",
+   "with": "I had an error updating JSON yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "JSON",
+   "source": "Công ty mình đang tuyển lập trình viên json",
+   "protected": "Công ty mình đang tuyển lập trình viên json",
+   "without": "The company we're hiring json programmers",
+   "with": "The company we're hiring json programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "JSON",
+   "source": "Mình gặp lỗi khi cập nhật json hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật json hôm qua",
+   "without": "I failed to update json yesterday",
+   "with": "I failed to update json yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "JSON",
+   "source": "Công ty mình đang tuyển lập trình viên Json",
+   "protected": "Công ty mình đang tuyển lập trình viên Json",
+   "without": "The company we're hiring Json programmers",
+   "with": "The company we're hiring Json programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "JSON",
+   "source": "Mình gặp lỗi khi cập nhật Json hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Json hôm qua",
+   "without": "I failed to update Json yesterday",
+   "with": "I failed to update Json yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "HTML",
+   "source": "Công ty mình đang tuyển lập trình viên HTML",
+   "protected": "Công ty mình đang tuyển lập trình viên HTML",
+   "without": "The company we're hiring HTML programmers",
+   "with": "The company we're hiring HTML programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "HTML",
+   "source": "Mình gặp lỗi khi cập nhật HTML hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật HTML hôm qua",
+   "without": "I failed to update HTML yesterday",
+   "with": "I failed to update HTML yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "HTML",
+   "source": "Công ty mình đang tuyển lập trình viên html",
+   "protected": "Công ty mình đang tuyển lập trình viên HTML",
+   "without": "The company we're hiring Cruise programmers",
+   "with": "The company we're hiring HTML programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "HTML",
+   "source": "Mình gặp lỗi khi cập nhật html hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật HTML hôm qua",
+   "without": "I had an error updating Cruise yesterday",
+   "with": "I failed to update HTML yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "HTML",
+   "source": "Công ty mình đang tuyển lập trình viên Html",
+   "protected": "Công ty mình đang tuyển lập trình viên Html",
+   "without": "The company we're hiring Html programmers",
+   "with": "The company we're hiring Html programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "HTML",
+   "source": "Mình gặp lỗi khi cập nhật Html hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Html hôm qua",
+   "without": "I had an error updating Html yesterday",
+   "with": "I had an error updating Html yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "CSS",
+   "source": "Công ty mình đang tuyển lập trình viên CSS",
+   "protected": "Công ty mình đang tuyển lập trình viên CSS",
+   "without": "The company we're hiring CSS programmers",
+   "with": "The company we're hiring CSS programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "CSS",
+   "source": "Mình gặp lỗi khi cập nhật CSS hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật CSS hôm qua",
+   "without": "I had an error updating CSS yesterday",
+   "with": "I had an error updating CSS yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "CSS",
+   "source": "Công ty mình đang tuyển lập trình viên css",
+   "protected": "Công ty mình đang tuyển lập trình viên css",
+   "without": "The company we're hiring a css programmer",
+   "with": "The company we're hiring a css programmer"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "CSS",
+   "source": "Mình gặp lỗi khi cập nhật css hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật css hôm qua",
+   "without": "I had an error updating the css yesterday",
+   "with": "I had an error updating the css yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "CSS",
+   "source": "Công ty mình đang tuyển lập trình viên Css",
+   "protected": "Công ty mình đang tuyển lập trình viên Css",
+   "without": "The company we're hiring Css programmers",
+   "with": "The company we're hiring Css programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "CSS",
+   "source": "Mình gặp lỗi khi cập nhật Css hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Css hôm qua",
+   "without": "I had an error updating Css yesterday",
+   "with": "I had an error updating Css yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "AWS",
+   "source": "Công ty mình đang tuyển lập trình viên AWS",
+   "protected": "Công ty mình đang tuyển lập trình viên AWS",
+   "without": "The company we're hiring AWS programmers",
+   "with": "The company we're hiring AWS programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "AWS",
+   "source": "Mình gặp lỗi khi cập nhật AWS hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật AWS hôm qua",
+   "without": "I failed to update AWS yesterday",
+   "with": "I failed to update AWS yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "AWS",
+   "source": "Công ty mình đang tuyển lập trình viên aws",
+   "protected": "Công ty mình đang tuyển lập trình viên aws",
+   "without": "The company we're hiring aws programmers",
+   "with": "The company we're hiring aws programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "AWS",
+   "source": "Mình gặp lỗi khi cập nhật aws hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật aws hôm qua",
+   "without": "I had an error updating the aws yesterday",
+   "with": "I had an error updating the aws yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "AWS",
+   "source": "Công ty mình đang tuyển lập trình viên Aws",
+   "protected": "Công ty mình đang tuyển lập trình viên Aws",
+   "without": "The company we're hiring Aws programmers",
+   "with": "The company we're hiring Aws programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "AWS",
+   "source": "Mình gặp lỗi khi cập nhật Aws hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Aws hôm qua",
+   "without": "I had an error updateing Aws yesterday",
+   "with": "I had an error updateing Aws yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Azure",
+   "source": "Công ty mình đang tuyển lập trình viên Azure",
+   "protected": "Công ty mình đang tuyển lập trình viên Azure",
+   "without": "The company we're hiring Azure programmers",
+   "with": "The company we're hiring Azure programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Azure",
+   "source": "Mình gặp lỗi khi cập nhật Azure hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Azure hôm qua",
+   "without": "I had an error updating Azure yesterday",
+   "with": "I had an error updating Azure yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Azure",
+   "source": "Công ty mình đang tuyển lập trình viên azure",
+   "protected": "Công ty mình đang tuyển lập trình viên azure",
+   "without": "The company we're hiring azure programmers",
+   "with": "The company we're hiring azure programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Azure",
+   "source": "Mình gặp lỗi khi cập nhật azure hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật azure hôm qua",
+   "without": "I had an error updating azure yesterday",
+   "with": "I had an error updating azure yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Firebase",
+   "source": "Công ty mình đang tuyển lập trình viên Firebase",
+   "protected": "Công ty mình đang tuyển lập trình viên Firebase",
+   "without": "The company we're hiring Firebase programmers",
+   "with": "The company we're hiring Firebase programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Firebase",
+   "source": "Mình gặp lỗi khi cập nhật Firebase hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Firebase hôm qua",
+   "without": "I had an error updating Firebase yesterday",
+   "with": "I had an error updating Firebase yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Firebase",
+   "source": "Công ty mình đang tuyển lập trình viên firebase",
+   "protected": "Công ty mình đang tuyển lập trình viên firebase",
+   "without": "My company is hiring firebase programmers",
+   "with": "My company is hiring firebase programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Firebase",
+   "source": "Mình gặp lỗi khi cập nhật firebase hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật firebase hôm qua",
+   "without": "I had an error updating the firebase yesterday",
+   "with": "I had an error updating the firebase yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "TensorFlow",
+   "source": "Công ty mình đang tuyển lập trình viên TensorFlow",
+   "protected": "Công ty mình đang tuyển lập trình viên TensorFlow",
+   "without": "My company is hiring TensorFlow programmers",
+   "with": "My company is hiring TensorFlow programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "TensorFlow",
+   "source": "Mình gặp lỗi khi cập nhật TensorFlow hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật TensorFlow hôm qua",
+   "without": "I failed to update TensorFlow yesterday",
+   "with": "I failed to update TensorFlow yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "TensorFlow",
+   "source": "Công ty mình đang tuyển lập trình viên tensorflow",
+   "protected": "Công ty mình đang tuyển lập trình viên TensorFlow",
+   "without": "The company we're hiring tv programmers",
+   "with": "My company is hiring TensorFlow programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "TensorFlow",
+   "source": "Mình gặp lỗi khi cập nhật tensorflow hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật TensorFlow hôm qua",
+   "without": "I had an error updating the tvflow yesterday",
+   "with": "I failed to update TensorFlow yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "TensorFlow",
+   "source": "Công ty mình đang tuyển lập trình viên Tensorflow",
+   "protected": "Công ty mình đang tuyển lập trình viên Tensorflow",
+   "without": "My company is hiring Tensorflow programmers",
+   "with": "My company is hiring Tensorflow programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "TensorFlow",
+   "source": "Mình gặp lỗi khi cập nhật Tensorflow hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Tensorflow hôm qua",
+   "without": "I had an error updating Tensorflow yesterday",
+   "with": "I had an error updating Tensorflow yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "PyTorch",
+   "source": "Công ty mình đang tuyển lập trình viên PyTorch",
+   "protected": "Công ty mình đang tuyển lập trình viên PyTorch",
+   "without": "The company we're hiring PyTorch programmers",
+   "with": "The company we're hiring PyTorch programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "PyTorch",
+   "source": "Mình gặp lỗi khi cập nhật PyTorch hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật PyTorch hôm qua",
+   "without": "I failed to update PyTorch yesterday",
+   "with": "I failed to update PyTorch yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "PyTorch",
+   "source": "Công ty mình đang tuyển lập trình viên pytorch",
+   "protected": "Công ty mình đang tuyển lập trình viên pytorch",
+   "without": "The company we're hiring is a pytorch programmer",
+   "with": "The company we're hiring is a pytorch programmer"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "PyTorch",
+   "source": "Mình gặp lỗi khi cập nhật pytorch hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật pytorch hôm qua",
+   "without": "I had an error updating the pytorch yesterday",
+   "with": "I had an error updating the pytorch yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "PyTorch",
+   "source": "Công ty mình đang tuyển lập trình viên Pytorch",
+   "protected": "Công ty mình đang tuyển lập trình viên Pytorch",
+   "without": "The company we're hiring Pytorch programmers",
+   "with": "The company we're hiring Pytorch programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "PyTorch",
+   "source": "Mình gặp lỗi khi cập nhật Pytorch hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Pytorch hôm qua",
+   "without": "I failed to update Pytorch yesterday",
+   "with": "I failed to update Pytorch yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Excel",
+   "source": "Công ty mình đang tuyển lập trình viên Excel",
+   "protected": "Công ty mình đang tuyển lập trình viên Excel",
+   "without": "The company we're hiring Excel programmers",
+   "with": "The company we're hiring Excel programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Excel",
+   "source": "Mình gặp lỗi khi cập nhật Excel hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Excel hôm qua",
+   "without": "I had an error updating Excel yesterday",
+   "with": "I had an error updating Excel yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Excel",
+   "source": "Công ty mình đang tuyển lập trình viên excel",
+   "protected": "Công ty mình đang tuyển lập trình viên excel",
+   "without": "The company we're hiring excel programmers",
+   "with": "The company we're hiring excel programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Excel",
+   "source": "Mình gặp lỗi khi cập nhật excel hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật excel hôm qua",
+   "without": "I had an error updating the excel yesterday",
+   "with": "I had an error updating the excel yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Bluetooth",
+   "source": "Công ty mình đang tuyển lập trình viên Bluetooth",
+   "protected": "Công ty mình đang tuyển lập trình viên Bluetooth",
+   "without": "The company we're hiring Bluetooth programmers",
+   "with": "The company we're hiring Bluetooth programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Bluetooth",
+   "source": "Mình gặp lỗi khi cập nhật Bluetooth hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Bluetooth hôm qua",
+   "without": "I had an error updating Bluetooth yesterday",
+   "with": "I had an error updating Bluetooth yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Bluetooth",
+   "source": "Công ty mình đang tuyển lập trình viên bluetooth",
+   "protected": "Công ty mình đang tuyển lập trình viên bluetooth",
+   "without": "The company we're hiring Bluetooth programmers",
+   "with": "The company we're hiring Bluetooth programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Bluetooth",
+   "source": "Mình gặp lỗi khi cập nhật bluetooth hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật bluetooth hôm qua",
+   "without": "I had an error updating Bluetooth yesterday",
+   "with": "I had an error updating Bluetooth yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Wi-Fi",
+   "source": "Công ty mình đang tuyển lập trình viên Wi-Fi",
+   "protected": "Công ty mình đang tuyển lập trình viên Wi-Fi",
+   "without": "The company we're hiring Wi-Fi programmers",
+   "with": "The company we're hiring Wi-Fi programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Wi-Fi",
+   "source": "Mình gặp lỗi khi cập nhật Wi-Fi hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Wi-Fi hôm qua",
+   "without": "I failed to update Wi-Fi yesterday",
+   "with": "I failed to update Wi-Fi yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Wi-Fi",
+   "source": "Công ty mình đang tuyển lập trình viên wi-fi",
+   "protected": "Công ty mình đang tuyển lập trình viên wi-fi",
+   "without": "The company we're hiring Wi-Fi programmers",
+   "with": "The company we're hiring Wi-Fi programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Wi-Fi",
+   "source": "Mình gặp lỗi khi cập nhật wi-fi hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật wi-fi hôm qua",
+   "without": "I had an error updating Wi-Fi yesterday",
+   "with": "I had an error updating Wi-Fi yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Wi-Fi",
+   "source": "Công ty mình đang tuyển lập trình viên Wi-fi",
+   "protected": "Công ty mình đang tuyển lập trình viên Wi-fi",
+   "without": "The company we're hiring Wi-Fi programmers",
+   "with": "The company we're hiring Wi-Fi programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Wi-Fi",
+   "source": "Mình gặp lỗi khi cập nhật Wi-fi hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Wi-fi hôm qua",
+   "without": "I had an error updating Wi-Fi yesterday",
+   "with": "I had an error updating Wi-Fi yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Chrome",
+   "source": "Công ty mình đang tuyển lập trình viên Chrome",
+   "protected": "Công ty mình đang tuyển lập trình viên Chrome",
+   "without": "The company we're hiring Chrome programmers",
+   "with": "The company we're hiring Chrome programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Chrome",
+   "source": "Mình gặp lỗi khi cập nhật Chrome hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật Chrome hôm qua",
+   "without": "I had an error updating Chrome yesterday",
+   "with": "I had an error updating Chrome yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Chrome",
+   "source": "Công ty mình đang tuyển lập trình viên chrome",
+   "protected": "Công ty mình đang tuyển lập trình viên chrome",
+   "without": "The company we're hiring chrome programmers",
+   "with": "The company we're hiring chrome programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "Chrome",
+   "source": "Mình gặp lỗi khi cập nhật chrome hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật chrome hôm qua",
+   "without": "I had an error updating Chrome yesterday",
+   "with": "I had an error updating Chrome yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "ChatGPT",
+   "source": "Công ty mình đang tuyển lập trình viên ChatGPT",
+   "protected": "Công ty mình đang tuyển lập trình viên ChatGPT",
+   "without": "The company we're hiring ChatGPT programmers",
+   "with": "The company we're hiring ChatGPT programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "ChatGPT",
+   "source": "Mình gặp lỗi khi cập nhật ChatGPT hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật ChatGPT hôm qua",
+   "without": "I had an error updating ChatGPT yesterday",
+   "with": "I had an error updating ChatGPT yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "ChatGPT",
+   "source": "Công ty mình đang tuyển lập trình viên chatgpt",
+   "protected": "Công ty mình đang tuyển lập trình viên ChatGPT",
+   "without": "The company we're hiring chatpt programmers",
+   "with": "The company we're hiring ChatGPT programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "ChatGPT",
+   "source": "Mình gặp lỗi khi cập nhật chatgpt hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật ChatGPT hôm qua",
+   "without": "I failed to update chatpt yesterday",
+   "with": "I had an error updating ChatGPT yesterday"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "ChatGPT",
+   "source": "Công ty mình đang tuyển lập trình viên Chatgpt",
+   "protected": "Công ty mình đang tuyển lập trình viên ChatGPT",
+   "without": "The company we're hiring Chatpt programmers",
+   "with": "The company we're hiring ChatGPT programmers"
+  },
+  {
+   "direction": "vi_to_en",
+   "term": "ChatGPT",
+   "source": "Mình gặp lỗi khi cập nhật Chatgpt hôm qua",
+   "protected": "Mình gặp lỗi khi cập nhật ChatGPT hôm qua",
+   "without": "I had an error updating Chatgpt yesterday",
+   "with": "I had an error updating ChatGPT yesterday"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "JavaScript",
+   "source": "Our company is hiring JavaScript developers",
+   "protected": "Our company is hiring JavaScript developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển JavaScript",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển JavaScript"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "JavaScript",
+   "source": "I got an error after updating JavaScript yesterday",
+   "protected": "I got an error after updating JavaScript yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật JavaScript hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật JavaScript hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "JavaScript",
+   "source": "Our company is hiring javascript developers",
+   "protected": "Our company is hiring JavaScript developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Toyotascript",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển JavaScript"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "JavaScript",
+   "source": "I got an error after updating javascript yesterday",
+   "protected": "I got an error after updating JavaScript yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật quitscript hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật JavaScript hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "JavaScript",
+   "source": "Our company is hiring Javascript developers",
+   "protected": "Our company is hiring Javascript developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Javascript",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Javascript"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "JavaScript",
+   "source": "I got an error after updating Javascript yesterday",
+   "protected": "I got an error after updating Javascript yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Javascript hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Javascript hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "TypeScript",
+   "source": "Our company is hiring TypeScript developers",
+   "protected": "Our company is hiring TERM1 developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển TypeSUS",
+   "with": "Công ty của chúng tôi đang tuyển dụng nhà phát triển TypeScript"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "TypeScript",
+   "source": "I got an error after updating TypeScript yesterday",
+   "protected": "I got an error after updating TERM1 yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật TypeSUSS hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật TypeScript hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "TypeScript",
+   "source": "Our company is hiring typescript developers",
+   "protected": "Our company is hiring TERM1 developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển gõ",
+   "with": "Công ty của chúng tôi đang tuyển dụng nhà phát triển typescript"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "TypeScript",
+   "source": "I got an error after updating typescript yesterday",
+   "protected": "I got an error after updating TERM1 yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật văn bản kiểu dáng hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật typescript hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "TypeScript",
+   "source": "Our company is hiring Typescript developers",
+   "protected": "Our company is hiring TERM1 developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Typescript",
+   "with": "Công ty của chúng tôi đang tuyển dụng nhà phát triển Typescript"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "TypeScript",
+   "source": "I got an error after updating Typescript yesterday",
+   "protected": "I got an error after updating TERM1 yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Typescript hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Typescript hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Python",
+   "source": "Our company is hiring Python developers",
+   "protected": "Our company is hiring Python developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Python",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Python"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Python",
+   "source": "I got an error after updating Python yesterday",
+   "protected": "I got an error after updating Python yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Python hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Python hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Python",
+   "source": "Our company is hiring python developers",
+   "protected": "Our company is hiring python developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển python",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển python"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Python",
+   "source": "I got an error after updating python yesterday",
+   "protected": "I got an error after updating python yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật python hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật python hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Java",
+   "source": "Our company is hiring Java developers",
+   "protected": "Our company is hiring Java developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Java",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Java"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Java",
+   "source": "I got an error after updating Java yesterday",
+   "protected": "I got an error after updating Java yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Java hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Java hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Java",
+   "source": "Our company is hiring java developers",
+   "protected": "Our company is hiring java developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Walmart",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Walmart"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Java",
+   "source": "I got an error after updating java yesterday",
+   "protected": "I got an error after updating java yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Java hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Java hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Kotlin",
+   "source": "Our company is hiring Kotlin developers",
+   "protected": "Our company is hiring Kotlin developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Kotlin",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Kotlin"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Kotlin",
+   "source": "I got an error after updating Kotlin yesterday",
+   "protected": "I got an error after updating Kotlin yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Kotlin hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Kotlin hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Kotlin",
+   "source": "Our company is hiring kotlin developers",
+   "protected": "Our company is hiring kotlin developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển kotlin",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển kotlin"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Kotlin",
+   "source": "I got an error after updating kotlin yesterday",
+   "protected": "I got an error after updating kotlin yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật kotlin hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật kotlin hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Swift",
+   "source": "Our company is hiring Swift developers",
+   "protected": "Our company is hiring Swift developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Swift",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Swift"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Swift",
+   "source": "I got an error after updating Swift yesterday",
+   "protected": "I got an error after updating Swift yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Swift hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Swift hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Swift",
+   "source": "Our company is hiring swift developers",
+   "protected": "Our company is hiring swift developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển nhanh chóng",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển nhanh chóng"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Swift",
+   "source": "I got an error after updating swift yesterday",
+   "protected": "I got an error after updating swift yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật nhanh hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật nhanh hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Golang",
+   "source": "Our company is hiring Golang developers",
+   "protected": "Our company is hiring Golang developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Golang",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Golang"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Golang",
+   "source": "I got an error after updating Golang yesterday",
+   "protected": "I got an error after updating Golang yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Golang hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Golang hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Golang",
+   "source": "Our company is hiring golang developers",
+   "protected": "Our company is hiring golang developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển golang",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển golang"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Golang",
+   "source": "I got an error after updating golang yesterday",
+   "protected": "I got an error after updating golang yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật golang hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật golang hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Rust",
+   "source": "Our company is hiring Rust developers",
+   "protected": "Our company is hiring Rust developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng nhà phát triển Rust",
+   "with": "Công ty của chúng tôi đang tuyển dụng nhà phát triển Rust"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Rust",
+   "source": "I got an error after updating Rust yesterday",
+   "protected": "I got an error after updating Rust yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Rust hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Rust hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Rust",
+   "source": "Our company is hiring rust developers",
+   "protected": "Our company is hiring rust developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển gỉ sét",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển gỉ sét"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Rust",
+   "source": "I got an error after updating rust yesterday",
+   "protected": "I got an error after updating rust yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật gỉ sét hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật gỉ sét hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "PHP",
+   "source": "Our company is hiring PHP developers",
+   "protected": "Our company is hiring PHP developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển PHP",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển PHP"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "PHP",
+   "source": "I got an error after updating PHP yesterday",
+   "protected": "I got an error after updating PHP yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật PHP hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật PHP hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "PHP",
+   "source": "Our company is hiring php developers",
+   "protected": "Our company is hiring php developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng nhà phát triển php",
+   "with": "Công ty của chúng tôi đang tuyển dụng nhà phát triển php"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "PHP",
+   "source": "I got an error after updating php yesterday",
+   "protected": "I got an error after updating php yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật php hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật php hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "PHP",
+   "source": "Our company is hiring Php developers",
+   "protected": "Our company is hiring Php developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Php",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Php"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "PHP",
+   "source": "I got an error after updating Php yesterday",
+   "protected": "I got an error after updating Php yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Php hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Php hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "C++",
+   "source": "Our company is hiring C++ developers",
+   "protected": "Our company is hiring C++ developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng nhà phát triển C++",
+   "with": "Công ty của chúng tôi đang tuyển dụng nhà phát triển C++"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "C++",
+   "source": "I got an error after updating C++ yesterday",
+   "protected": "I got an error after updating C++ yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật C++ hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật C++ hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "C++",
+   "source": "Our company is hiring c++ developers",
+   "protected": "Our company is hiring c++ developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng nhà phát triển C++",
+   "with": "Công ty của chúng tôi đang tuyển dụng nhà phát triển C++"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "C++",
+   "source": "I got an error after updating c++ yesterday",
+   "protected": "I got an error after updating c++ yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật c++ hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật c++ hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "C#",
+   "source": "Our company is hiring C# developers",
+   "protected": "Our company is hiring C# developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng nhà phát triển C#",
+   "with": "Công ty của chúng tôi đang tuyển dụng nhà phát triển C#"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "C#",
+   "source": "I got an error after updating C# yesterday",
+   "protected": "I got an error after updating C# yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật C# hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật C# hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "C#",
+   "source": "Our company is hiring c# developers",
+   "protected": "Our company is hiring c# developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng c# nhà phát triển",
+   "with": "Công ty của chúng tôi đang tuyển dụng c# nhà phát triển"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "C#",
+   "source": "I got an error after updating c# yesterday",
+   "protected": "I got an error after updating c# yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật c# hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật c# hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "React",
+   "source": "Our company is hiring React developers",
+   "protected": "Our company is hiring TERM1 developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển phản ứng",
+   "with": "Công ty của chúng tôi đang tuyển dụng nhà phát triển React"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "React",
+   "source": "I got an error after updating React yesterday",
+   "protected": "I got an error after updating TERM1 yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật phản ứng hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật React hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "React",
+   "source": "Our company is hiring react developers",
+   "protected": "Our company is hiring react developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển phản ứng",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển phản ứng"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "React",
+   "source": "I got an error after updating react yesterday",
+   "protected": "I got an error after updating react yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật phản ứng hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật phản ứng hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Angular",
+   "source": "Our company is hiring Angular developers",
+   "protected": "Our company is hiring TERM1 developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển hình chữ nhật",
+   "with": "Công ty của chúng tôi đang tuyển dụng nhà phát triển Angular"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Angular",
+   "source": "I got an error after updating Angular yesterday",
+   "protected": "I got an error after updating TERM1 yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật hình chữ nhật hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Angular hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Angular",
+   "source": "Our company is hiring angular developers",
+   "protected": "Our company is hiring angular developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển hình chữ nhật",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển hình chữ nhật"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Angular",
+   "source": "I got an error after updating angular yesterday",
+   "protected": "I got an error after updating angular yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật hình chữ nhật hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật hình chữ nhật hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Vue.js",
+   "source": "Our company is hiring Vue.js developers",
+   "protected": "Our company is hiring TERM1 developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng nhà phát triển Vue.js",
+   "with": "Công ty của chúng tôi đang tuyển dụng nhà phát triển Vue.js"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Vue.js",
+   "source": "I got an error after updating Vue.js yesterday",
+   "protected": "I got an error after updating TERM1 yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Vue.j hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Vue.js hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Vue.js",
+   "source": "Our company is hiring vue.js developers",
+   "protected": "Our company is hiring TERM1 developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển vue.js",
+   "with": "Công ty của chúng tôi đang tuyển dụng nhà phát triển vue.js"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Vue.js",
+   "source": "I got an error after updating vue.js yesterday",
+   "protected": "I got an error after updating TERM1 yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật vue.j hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật vue.js hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Node.js",
+   "source": "Our company is hiring Node.js developers",
+   "protected": "Our company is hiring Node.js developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Node.js",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Node.js"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Node.js",
+   "source": "I got an error after updating Node.js yesterday",
+   "protected": "I got an error after updating Node.js yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Node.j hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Node.j hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Node.js",
+   "source": "Our company is hiring node.js developers",
+   "protected": "Our company is hiring Node.js developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển nút.js",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Node.js"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Node.js",
+   "source": "I got an error after updating node.js yesterday",
+   "protected": "I got an error after updating Node.js yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật nút.j hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Node.j hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Next.js",
+   "source": "Our company is hiring Next.js developers",
+   "protected": "Our company is hiring Next.js developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển tiếp theo.js",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển tiếp theo.js"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Next.js",
+   "source": "I got an error after updating Next.js yesterday",
+   "protected": "I got an error after updating Next.js yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Next.js hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Next.js hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Next.js",
+   "source": "Our company is hiring next.js developers",
+   "protected": "Our company is hiring Next.js developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển tiếp theo.js",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển tiếp theo.js"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Next.js",
+   "source": "I got an error after updating next.js yesterday",
+   "protected": "I got an error after updating Next.js yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật tiếp theo.js hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Next.js hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Spring Boot",
+   "source": "Our company is hiring Spring Boot developers",
+   "protected": "Our company is hiring TERM1 developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Spring Boot",
+   "with": "Công ty của chúng tôi đang tuyển dụng nhà phát triển Spring Boot"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Spring Boot",
+   "source": "I got an error after updating Spring Boot yesterday",
+   "protected": "I got an error after updating TERM1 yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Boot mùa xuân hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Spring Boot hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Spring Boot",
+   "source": "Our company is hiring spring boot developers",
+   "protected": "Our company is hiring spring boot developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển khởi động mùa xuân",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển khởi động mùa xuân"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Spring Boot",
+   "source": "I got an error after updating spring boot yesterday",
+   "protected": "I got an error after updating spring boot yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật khởi động mùa xuân hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật khởi động mùa xuân hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Spring Boot",
+   "source": "Our company is hiring Spring boot developers",
+   "protected": "Our company is hiring Spring boot developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển khởi động mùa xuân",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển khởi động mùa xuân"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Spring Boot",
+   "source": "I got an error after updating Spring boot yesterday",
+   "protected": "I got an error after updating Spring boot yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật khởi động mùa xuân hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật khởi động mùa xuân hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Django",
+   "source": "Our company is hiring Django developers",
+   "protected": "Our company is hiring TERM1 developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển can đảm",
+   "with": "Công ty của chúng tôi đang tuyển dụng nhà phát triển Django"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Django",
+   "source": "I got an error after updating Django yesterday",
+   "protected": "I got an error after updating TERM1 yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Django hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Django hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Django",
+   "source": "Our company is hiring django developers",
+   "protected": "Our company is hiring TERM1 developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển django",
+   "with": "Công ty của chúng tôi đang tuyển dụng nhà phát triển django"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Django",
+   "source": "I got an error after updating django yesterday",
+   "protected": "I got an error after updating TERM1 yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Django hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật django hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Flask",
+   "source": "Our company is hiring Flask developers",
+   "protected": "Our company is hiring Flask developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Flask",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Flask"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Flask",
+   "source": "I got an error after updating Flask yesterday",
+   "protected": "I got an error after updating Flask yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Flask hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Flask hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Flask",
+   "source": "Our company is hiring flask developers",
+   "protected": "Our company is hiring flask developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển chai rượu",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển chai rượu"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Flask",
+   "source": "I got an error after updating flask yesterday",
+   "protected": "I got an error after updating flask yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật bình chứa hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật bình chứa hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Laravel",
+   "source": "Our company is hiring Laravel developers",
+   "protected": "Our company is hiring Laravel developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Laravel",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Laravel"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Laravel",
+   "source": "I got an error after updating Laravel yesterday",
+   "protected": "I got an error after updating Laravel yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Laravel hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Laravel hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Laravel",
+   "source": "Our company is hiring laravel developers",
+   "protected": "Our company is hiring laravel developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển laravel",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển laravel"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Laravel",
+   "source": "I got an error after updating laravel yesterday",
+   "protected": "I got an error after updating laravel yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật thương mại hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật thương mại hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Flutter",
+   "source": "Our company is hiring Flutter developers",
+   "protected": "Our company is hiring Flutter developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Flutter",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Flutter"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Flutter",
+   "source": "I got an error after updating Flutter yesterday",
+   "protected": "I got an error after updating Flutter yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Flutter hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Flutter hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Flutter",
+   "source": "Our company is hiring flutter developers",
+   "protected": "Our company is hiring flutter developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển kích thước",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển kích thước"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Flutter",
+   "source": "I got an error after updating flutter yesterday",
+   "protected": "I got an error after updating flutter yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật rung hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật rung hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Docker",
+   "source": "Our company is hiring Docker developers",
+   "protected": "Our company is hiring Docker developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng nhà phát triển Docker",
+   "with": "Công ty của chúng tôi đang tuyển dụng nhà phát triển Docker"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Docker",
+   "source": "I got an error after updating Docker yesterday",
+   "protected": "I got an error after updating Docker yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Docker hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Docker hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Docker",
+   "source": "Our company is hiring docker developers",
+   "protected": "Our company is hiring docker developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triểncker",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triểncker"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Docker",
+   "source": "I got an error after updating docker yesterday",
+   "protected": "I got an error after updating docker yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Docker hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Docker hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Kubernetes",
+   "source": "Our company is hiring Kubernetes developers",
+   "protected": "Our company is hiring Kubernetes developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Kubernetes",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Kubernetes"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Kubernetes",
+   "source": "I got an error after updating Kubernetes yesterday",
+   "protected": "I got an error after updating Kubernetes yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Kubernetes hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Kubernetes hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Kubernetes",
+   "source": "Our company is hiring kubernetes developers",
+   "protected": "Our company is hiring Kubernetes developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển kabernetes",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Kubernetes"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Kubernetes",
+   "source": "I got an error after updating kubernetes yesterday",
+   "protected": "I got an error after updating Kubernetes yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật kernetes hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Kubernetes hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Git",
+   "source": "Our company is hiring Git developers",
+   "protected": "Our company is hiring Git developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Git",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Git"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Git",
+   "source": "I got an error after updating Git yesterday",
+   "protected": "I got an error after updating Git yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Git hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Git hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Git",
+   "source": "Our company is hiring git developers",
+   "protected": "Our company is hiring git developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển git",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển git"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Git",
+   "source": "I got an error after updating git yesterday",
+   "protected": "I got an error after updating git yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật git hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật git hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "GitHub",
+   "source": "Our company is hiring GitHub developers",
+   "protected": "Our company is hiring GitHub developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển GitHub",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển GitHub"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "GitHub",
+   "source": "I got an error after updating GitHub yesterday",
+   "protected": "I got an error after updating GitHub yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật GitHub hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật GitHub hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "GitHub",
+   "source": "Our company is hiring github developers",
+   "protected": "Our company is hiring GitHub developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển githib",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển GitHub"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "GitHub",
+   "source": "I got an error after updating github yesterday",
+   "protected": "I got an error after updating GitHub yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật githib hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật GitHub hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "GitHub",
+   "source": "Our company is hiring Github developers",
+   "protected": "Our company is hiring GitHub developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Gitub",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển GitHub"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "GitHub",
+   "source": "I got an error after updating Github yesterday",
+   "protected": "I got an error after updating GitHub yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Gitub hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật GitHub hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "GitLab",
+   "source": "Our company is hiring GitLab developers",
+   "protected": "Our company is hiring GitLab developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển GitLab",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển GitLab"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "GitLab",
+   "source": "I got an error after updating GitLab yesterday",
+   "protected": "I got an error after updating GitLab yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật GitLab hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật GitLab hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "GitLab",
+   "source": "Our company is hiring gitlab developers",
+   "protected": "Our company is hiring gitlab developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển gitlab",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển gitlab"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "GitLab",
+   "source": "I got an error after updating gitlab yesterday",
+   "protected": "I got an error after updating gitlab yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật gitlab hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật gitlab hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "GitLab",
+   "source": "Our company is hiring Gitlab developers",
+   "protected": "Our company is hiring Gitlab developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Gitlab",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Gitlab"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "GitLab",
+   "source": "I got an error after updating Gitlab yesterday",
+   "protected": "I got an error after updating Gitlab yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Gitlab hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Gitlab hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Jenkins",
+   "source": "Our company is hiring Jenkins developers",
+   "protected": "Our company is hiring Jenkins developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng nhà phát triển Jenkins",
+   "with": "Công ty của chúng tôi đang tuyển dụng nhà phát triển Jenkins"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Jenkins",
+   "source": "I got an error after updating Jenkins yesterday",
+   "protected": "I got an error after updating Jenkins yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Jenkins hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Jenkins hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Jenkins",
+   "source": "Our company is hiring jenkins developers",
+   "protected": "Our company is hiring jenkins developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng nhà phát triển Jenkins",
+   "with": "Công ty của chúng tôi đang tuyển dụng nhà phát triển Jenkins"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Jenkins",
+   "source": "I got an error after updating jenkins yesterday",
+   "protected": "I got an error after updating jenkins yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Jenkins hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Jenkins hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Linux",
+   "source": "Our company is hiring Linux developers",
+   "protected": "Our company is hiring Linux developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Linux",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Linux"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Linux",
+   "source": "I got an error after updating Linux yesterday",
+   "protected": "I got an error after updating Linux yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Linux hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Linux hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Linux",
+   "source": "Our company is hiring linux developers",
+   "protected": "Our company is hiring Linux developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển lix",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Linux"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Linux",
+   "source": "I got an error after updating linux yesterday",
+   "protected": "I got an error after updating Linux yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật lix hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Linux hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Ubuntu",
+   "source": "Our company is hiring Ubuntu developers",
+   "protected": "Our company is hiring Ubuntu developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Ubuntu",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Ubuntu"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Ubuntu",
+   "source": "I got an error after updating Ubuntu yesterday",
+   "protected": "I got an error after updating Ubuntu yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Ubuntu hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Ubuntu hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Ubuntu",
+   "source": "Our company is hiring ubuntu developers",
+   "protected": "Our company is hiring Ubuntu developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển inuntu",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Ubuntu"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Ubuntu",
+   "source": "I got an error after updating ubuntu yesterday",
+   "protected": "I got an error after updating Ubuntu yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật nó vào hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Ubuntu hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Windows",
+   "source": "Our company is hiring Windows developers",
+   "protected": "Our company is hiring Windows developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Windows",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Windows"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Windows",
+   "source": "I got an error after updating Windows yesterday",
+   "protected": "I got an error after updating Windows yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Windows hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Windows hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Windows",
+   "source": "Our company is hiring windows developers",
+   "protected": "Our company is hiring windows developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng nhà phát triển cửa sổ",
+   "with": "Công ty của chúng tôi đang tuyển dụng nhà phát triển cửa sổ"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Windows",
+   "source": "I got an error after updating windows yesterday",
+   "protected": "I got an error after updating windows yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật cửa sổ hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật cửa sổ hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Android",
+   "source": "Our company is hiring Android developers",
+   "protected": "Our company is hiring Android developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Android",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Android"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Android",
+   "source": "I got an error after updating Android yesterday",
+   "protected": "I got an error after updating Android yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Android hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Android hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Android",
+   "source": "Our company is hiring android developers",
+   "protected": "Our company is hiring android developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Android",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Android"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Android",
+   "source": "I got an error after updating android yesterday",
+   "protected": "I got an error after updating android yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Android hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Android hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "iOS",
+   "source": "Our company is hiring iOS developers",
+   "protected": "Our company is hiring iOS developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển iOS",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển iOS"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "iOS",
+   "source": "I got an error after updating iOS yesterday",
+   "protected": "I got an error after updating iOS yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật iOS hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật iOS hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "iOS",
+   "source": "Our company is hiring ios developers",
+   "protected": "Our company is hiring ios developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển ios",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển ios"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "iOS",
+   "source": "I got an error after updating ios yesterday",
+   "protected": "I got an error after updating ios yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật ios hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật ios hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "iOS",
+   "source": "Our company is hiring Ios developers",
+   "protected": "Our company is hiring Ios developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Ios",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Ios"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "iOS",
+   "source": "I got an error after updating Ios yesterday",
+   "protected": "I got an error after updating Ios yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Ios hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Ios hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "MySQL",
+   "source": "Our company is hiring MySQL developers",
+   "protected": "Our company is hiring MySQL developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển MySQL",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển MySQL"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "MySQL",
+   "source": "I got an error after updating MySQL yesterday",
+   "protected": "I got an error after updating MySQL yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật MySQL hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật MySQL hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "MySQL",
+   "source": "Our company is hiring mysql developers",
+   "protected": "Our company is hiring mysql developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển mysql",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển mysql"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "MySQL",
+   "source": "I got an error after updating mysql yesterday",
+   "protected": "I got an error after updating mysql yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật mysql hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật mysql hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "MySQL",
+   "source": "Our company is hiring Mysql developers",
+   "protected": "Our company is hiring Mysql developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Mysql",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Mysql"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "MySQL",
+   "source": "I got an error after updating Mysql yesterday",
+   "protected": "I got an error after updating Mysql yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Mysql hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Mysql hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "PostgreSQL",
+   "source": "Our company is hiring PostgreSQL developers",
+   "protected": "Our company is hiring PostgreSQL developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển PostgreSQL",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển PostgreSQL"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "PostgreSQL",
+   "source": "I got an error after updating PostgreSQL yesterday",
+   "protected": "I got an error after updating PostgreSQL yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật PostgreSQL hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật PostgreSQL hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "PostgreSQL",
+   "source": "Our company is hiring postgresql developers",
+   "protected": "Our company is hiring postgresql developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Postgresql",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Postgresql"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "PostgreSQL",
+   "source": "I got an error after updating postgresql yesterday",
+   "protected": "I got an error after updating postgresql yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Postgresql hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Postgresql hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "PostgreSQL",
+   "source": "Our company is hiring Postgresql developers",
+   "protected": "Our company is hiring Postgresql developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Postgresql",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Postgresql"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "PostgreSQL",
+   "source": "I got an error after updating Postgresql yesterday",
+   "protected": "I got an error after updating Postgresql yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Postgresql hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Postgresql hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "MongoDB",
+   "source": "Our company is hiring MongoDB developers",
+   "protected": "Our company is hiring MongoDB developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển MongoDB",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển MongoDB"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "MongoDB",
+   "source": "I got an error after updating MongoDB yesterday",
+   "protected": "I got an error after updating MongoDB yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật MongoDB hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật MongoDB hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "MongoDB",
+   "source": "Our company is hiring mongodb developers",
+   "protected": "Our company is hiring mongodb developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng nhà phát triển mongodb",
+   "with": "Công ty của chúng tôi đang tuyển dụng nhà phát triển mongodb"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "MongoDB",
+   "source": "I got an error after updating mongodb yesterday",
+   "protected": "I got an error after updating mongodb yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật mongodb hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật mongodb hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "MongoDB",
+   "source": "Our company is hiring Mongodb developers",
+   "protected": "Our company is hiring Mongodb developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Mongodb",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Mongodb"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "MongoDB",
+   "source": "I got an error after updating Mongodb yesterday",
+   "protected": "I got an error after updating Mongodb yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Mongodb hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Mongodb hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Redis",
+   "source": "Our company is hiring Redis developers",
+   "protected": "Our company is hiring Redis developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Redis",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Redis"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Redis",
+   "source": "I got an error after updating Redis yesterday",
+   "protected": "I got an error after updating Redis yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Redis hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Redis hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Redis",
+   "source": "Our company is hiring redis developers",
+   "protected": "Our company is hiring Redis developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Redis",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Redis"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Redis",
+   "source": "I got an error after updating redis yesterday",
+   "protected": "I got an error after updating Redis yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật lại vào hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Redis hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "SQL",
+   "source": "Our company is hiring SQL developers",
+   "protected": "Our company is hiring SQL developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triểnSQL",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triểnSQL"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "SQL",
+   "source": "I got an error after updating SQL yesterday",
+   "protected": "I got an error after updating SQL yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhậtSQL hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhậtSQL hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "SQL",
+   "source": "Our company is hiring sql developers",
+   "protected": "Our company is hiring SQL developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển hình vuông",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triểnSQL"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "SQL",
+   "source": "I got an error after updating sql yesterday",
+   "protected": "I got an error after updating SQL yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật smalt hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhậtSQL hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "SQL",
+   "source": "Our company is hiring Sql developers",
+   "protected": "Our company is hiring Sql developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Sql",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Sql"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "SQL",
+   "source": "I got an error after updating Sql yesterday",
+   "protected": "I got an error after updating Sql yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Sql hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Sql hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "NoSQL",
+   "source": "Our company is hiring NoSQL developers",
+   "protected": "Our company is hiring NoSQL developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển NoSQL",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển NoSQL"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "NoSQL",
+   "source": "I got an error after updating NoSQL yesterday",
+   "protected": "I got an error after updating NoSQL yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật NoSQL hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật NoSQL hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "NoSQL",
+   "source": "Our company is hiring nosql developers",
+   "protected": "Our company is hiring nosql developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển nosql",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển nosql"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "NoSQL",
+   "source": "I got an error after updating nosql yesterday",
+   "protected": "I got an error after updating nosql yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật nosql hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật nosql hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "NoSQL",
+   "source": "Our company is hiring Nosql developers",
+   "protected": "Our company is hiring Nosql developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Nosql",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Nosql"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "NoSQL",
+   "source": "I got an error after updating Nosql yesterday",
+   "protected": "I got an error after updating Nosql yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Nosql hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Nosql hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "API",
+   "source": "Our company is hiring API developers",
+   "protected": "Our company is hiring API developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển API",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển API"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "API",
+   "source": "I got an error after updating API yesterday",
+   "protected": "I got an error after updating API yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật API hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật API hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "API",
+   "source": "Our company is hiring api developers",
+   "protected": "Our company is hiring api developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển api",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển api"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "API",
+   "source": "I got an error after updating api yesterday",
+   "protected": "I got an error after updating api yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật api hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật api hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "API",
+   "source": "Our company is hiring Api developers",
+   "protected": "Our company is hiring Api developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Api",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Api"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "API",
+   "source": "I got an error after updating Api yesterday",
+   "protected": "I got an error after updating Api yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Api hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Api hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "REST",
+   "source": "Our company is hiring REST developers",
+   "protected": "Our company is hiring TERM1 developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển RST",
+   "with": "Công ty của chúng tôi đang tuyển dụng nhà phát triển REST"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "REST",
+   "source": "I got an error after updating REST yesterday",
+   "protected": "I got an error after updating TERM1 yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật RST hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật REST hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "REST",
+   "source": "Our company is hiring rest developers",
+   "protected": "Our company is hiring rest developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển nghỉ ngơi",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển nghỉ ngơi"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "REST",
+   "source": "I got an error after updating rest yesterday",
+   "protected": "I got an error after updating rest yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật phần còn lại hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật phần còn lại hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "REST",
+   "source": "Our company is hiring Rest developers",
+   "protected": "Our company is hiring Rest developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển phần còn lại",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển phần còn lại"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "REST",
+   "source": "I got an error after updating Rest yesterday",
+   "protected": "I got an error after updating Rest yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật nghỉ ngơi hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật nghỉ ngơi hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "GraphQL",
+   "source": "Our company is hiring GraphQL developers",
+   "protected": "Our company is hiring TERM1 developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển VPNQL",
+   "with": "Công ty của chúng tôi đang tuyển dụng nhà phát triển GraphQL"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "GraphQL",
+   "source": "I got an error after updating GraphQL yesterday",
+   "protected": "I got an error after updating TERM1 yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật VPNQL hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật GraphQL hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "GraphQL",
+   "source": "Our company is hiring graphql developers",
+   "protected": "Our company is hiring TERM1 developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển đồ thịql",
+   "with": "Công ty của chúng tôi đang tuyển dụng nhà phát triển graphql"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "GraphQL",
+   "source": "I got an error after updating graphql yesterday",
+   "protected": "I got an error after updating TERM1 yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật đồ thịql hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật graphql hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "GraphQL",
+   "source": "Our company is hiring Graphql developers",
+   "protected": "Our company is hiring TERM1 developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển đồ họa",
+   "with": "Công ty của chúng tôi đang tuyển dụng nhà phát triển Graphql"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "GraphQL",
+   "source": "I got an error after updating Graphql yesterday",
+   "protected": "I got an error after updating TERM1 yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Colorql hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Graphql hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "JSON",
+   "source": "Our company is hiring JSON developers",
+   "protected": "Our company is hiring JSON developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng nhà phát triển JSON",
+   "with": "Công ty của chúng tôi đang tuyển dụng nhà phát triển JSON"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "JSON",
+   "source": "I got an error after updating JSON yesterday",
+   "protected": "I got an error after updating JSON yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật JSON hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật JSON hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "JSON",
+   "source": "Our company is hiring json developers",
+   "protected": "Our company is hiring json developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển json",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển json"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "JSON",
+   "source": "I got an error after updating json yesterday",
+   "protected": "I got an error after updating json yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật json hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật json hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "JSON",
+   "source": "Our company is hiring Json developers",
+   "protected": "Our company is hiring Json developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Json",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Json"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "JSON",
+   "source": "I got an error after updating Json yesterday",
+   "protected": "I got an error after updating Json yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Json hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Json hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "HTML",
+   "source": "Our company is hiring HTML developers",
+   "protected": "Our company is hiring HTML developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển HTML",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển HTML"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "HTML",
+   "source": "I got an error after updating HTML yesterday",
+   "protected": "I got an error after updating HTML yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật HTML hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật HTML hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "HTML",
+   "source": "Our company is hiring html developers",
+   "protected": "Our company is hiring html developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển html",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển html"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "HTML",
+   "source": "I got an error after updating html yesterday",
+   "protected": "I got an error after updating html yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật html hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật html hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "HTML",
+   "source": "Our company is hiring Html developers",
+   "protected": "Our company is hiring Html developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Html",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Html"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "HTML",
+   "source": "I got an error after updating Html yesterday",
+   "protected": "I got an error after updating Html yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Html hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Html hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "CSS",
+   "source": "Our company is hiring CSS developers",
+   "protected": "Our company is hiring TERM1 developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển CI",
+   "with": "Công ty của chúng tôi đang tuyển dụng nhà phát triển CSS"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "CSS",
+   "source": "I got an error after updating CSS yesterday",
+   "protected": "I got an error after updating TERM1 yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật CI ngày hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật CSS hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "CSS",
+   "source": "Our company is hiring css developers",
+   "protected": "Our company is hiring TERM1 developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển",
+   "with": "Công ty của chúng tôi đang tuyển dụng nhà phát triển css"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "CSS",
+   "source": "I got an error after updating css yesterday",
+   "protected": "I got an error after updating TERM1 yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật css hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật css hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "CSS",
+   "source": "Our company is hiring Css developers",
+   "protected": "Our company is hiring TERM1 developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng nhà phát triển Css",
+   "with": "Công ty của chúng tôi đang tuyển dụng nhà phát triển Css"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "CSS",
+   "source": "I got an error after updating Css yesterday",
+   "protected": "I got an error after updating TERM1 yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Cs hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Css hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "AWS",
+   "source": "Our company is hiring AWS developers",
+   "protected": "Our company is hiring AWS developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển AWS",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển AWS"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "AWS",
+   "source": "I got an error after updating AWS yesterday",
+   "protected": "I got an error after updating AWS yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật AWS hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật AWS hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "AWS",
+   "source": "Our company is hiring aws developers",
+   "protected": "Our company is hiring AWS developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển AWS"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "AWS",
+   "source": "I got an error after updating aws yesterday",
+   "protected": "I got an error after updating AWS yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật tai nghe hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật AWS hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "AWS",
+   "source": "Our company is hiring Aws developers",
+   "protected": "Our company is hiring Aws developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Aws",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Aws"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "AWS",
+   "source": "I got an error after updating Aws yesterday",
+   "protected": "I got an error after updating Aws yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Aws hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Aws hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Azure",
+   "source": "Our company is hiring Azure developers",
+   "protected": "Our company is hiring Azure developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Azure",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Azure"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Azure",
+   "source": "I got an error after updating Azure yesterday",
+   "protected": "I got an error after updating Azure yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Azure hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Azure hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Azure",
+   "source": "Our company is hiring azure developers",
+   "protected": "Our company is hiring azure developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển azure",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển azure"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Azure",
+   "source": "I got an error after updating azure yesterday",
+   "protected": "I got an error after updating azure yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật azure hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật azure hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Firebase",
+   "source": "Our company is hiring Firebase developers",
+   "protected": "Our company is hiring Firebase developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Firebase",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Firebase"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Firebase",
+   "source": "I got an error after updating Firebase yesterday",
+   "protected": "I got an error after updating Firebase yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Firebase hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Firebase hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Firebase",
+   "source": "Our company is hiring firebase developers",
+   "protected": "Our company is hiring firebase developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển cứu hỏa",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển cứu hỏa"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Firebase",
+   "source": "I got an error after updating firebase yesterday",
+   "protected": "I got an error after updating firebase yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Firebase hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Firebase hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "TensorFlow",
+   "source": "Our company is hiring TensorFlow developers",
+   "protected": "Our company is hiring TensorFlow developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển TensorFlow",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển TensorFlow"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "TensorFlow",
+   "source": "I got an error after updating TensorFlow yesterday",
+   "protected": "I got an error after updating TensorFlow yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật TensorFlow hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật TensorFlow hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "TensorFlow",
+   "source": "Our company is hiring tensorflow developers",
+   "protected": "Our company is hiring TensorFlow developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển căng thẳng",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển TensorFlow"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "TensorFlow",
+   "source": "I got an error after updating tensorflow yesterday",
+   "protected": "I got an error after updating TensorFlow yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật quy trình căng thẳng hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật TensorFlow hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "TensorFlow",
+   "source": "Our company is hiring Tensorflow developers",
+   "protected": "Our company is hiring Tensorflow developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Tensorflow",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Tensorflow"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "TensorFlow",
+   "source": "I got an error after updating Tensorflow yesterday",
+   "protected": "I got an error after updating Tensorflow yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Tensorflow hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Tensorflow hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "PyTorch",
+   "source": "Our company is hiring PyTorch developers",
+   "protected": "Our company is hiring PyTorch developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển PyTorch",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển PyTorch"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "PyTorch",
+   "source": "I got an error after updating PyTorch yesterday",
+   "protected": "I got an error after updating PyTorch yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật PyTorch hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật PyTorch hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "PyTorch",
+   "source": "Our company is hiring pytorch developers",
+   "protected": "Our company is hiring pytorch developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển pytorch",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển pytorch"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "PyTorch",
+   "source": "I got an error after updating pytorch yesterday",
+   "protected": "I got an error after updating pytorch yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật pytorch hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật pytorch hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "PyTorch",
+   "source": "Our company is hiring Pytorch developers",
+   "protected": "Our company is hiring Pytorch developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Pytorch",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Pytorch"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "PyTorch",
+   "source": "I got an error after updating Pytorch yesterday",
+   "protected": "I got an error after updating Pytorch yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Pytorch hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Pytorch hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Excel",
+   "source": "Our company is hiring Excel developers",
+   "protected": "Our company is hiring Excel developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Excel",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Excel"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Excel",
+   "source": "I got an error after updating Excel yesterday",
+   "protected": "I got an error after updating Excel yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Excel hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Excel hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Excel",
+   "source": "Our company is hiring excel developers",
+   "protected": "Our company is hiring excel developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển xuất sắc",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển xuất sắc"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Excel",
+   "source": "I got an error after updating excel yesterday",
+   "protected": "I got an error after updating excel yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật vượt trội hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật vượt trội hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Bluetooth",
+   "source": "Our company is hiring Bluetooth developers",
+   "protected": "Our company is hiring Bluetooth developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Bluetooth",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Bluetooth"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Bluetooth",
+   "source": "I got an error after updating Bluetooth yesterday",
+   "protected": "I got an error after updating Bluetooth yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Bluetooth hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Bluetooth hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Bluetooth",
+   "source": "Our company is hiring bluetooth developers",
+   "protected": "Our company is hiring Bluetooth developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển màu xanh",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Bluetooth"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Bluetooth",
+   "source": "I got an error after updating bluetooth yesterday",
+   "protected": "I got an error after updating Bluetooth yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật màu xanh da trời hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Bluetooth hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Wi-Fi",
+   "source": "Our company is hiring Wi-Fi developers",
+   "protected": "Our company is hiring Wi-Fi developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Wi-Fi",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Wi-Fi"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Wi-Fi",
+   "source": "I got an error after updating Wi-Fi yesterday",
+   "protected": "I got an error after updating Wi-Fi yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Wi-Fi hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Wi-Fi hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Wi-Fi",
+   "source": "Our company is hiring wi-fi developers",
+   "protected": "Our company is hiring wi-fi developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển wi-fi",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển wi-fi"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Wi-Fi",
+   "source": "I got an error after updating wi-fi yesterday",
+   "protected": "I got an error after updating wi-fi yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật wi-fi hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật wi-fi hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Wi-Fi",
+   "source": "Our company is hiring Wi-fi developers",
+   "protected": "Our company is hiring Wi-fi developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Wi-fi",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Wi-fi"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Wi-Fi",
+   "source": "I got an error after updating Wi-fi yesterday",
+   "protected": "I got an error after updating Wi-fi yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Wi-fi hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Wi-fi hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Chrome",
+   "source": "Our company is hiring Chrome developers",
+   "protected": "Our company is hiring Chrome developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Chrome",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Chrome"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Chrome",
+   "source": "I got an error after updating Chrome yesterday",
+   "protected": "I got an error after updating Chrome yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Chrome hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật Chrome hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Chrome",
+   "source": "Our company is hiring chrome developers",
+   "protected": "Our company is hiring chrome developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển chrome",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển chrome"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "Chrome",
+   "source": "I got an error after updating chrome yesterday",
+   "protected": "I got an error after updating chrome yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật chrome hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật chrome hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "ChatGPT",
+   "source": "Our company is hiring ChatGPT developers",
+   "protected": "Our company is hiring ChatGPT developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển ChatGPT",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển ChatGPT"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "ChatGPT",
+   "source": "I got an error after updating ChatGPT yesterday",
+   "protected": "I got an error after updating ChatGPT yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật ChatGPT hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật ChatGPT hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "ChatGPT",
+   "source": "Our company is hiring chatgpt developers",
+   "protected": "Our company is hiring chatgpt developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển trò chuyện",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển trò chuyện"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "ChatGPT",
+   "source": "I got an error after updating chatgpt yesterday",
+   "protected": "I got an error after updating chatgpt yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật chatgpt hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật chatgpt hôm qua"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "ChatGPT",
+   "source": "Our company is hiring Chatgpt developers",
+   "protected": "Our company is hiring ChatGPT developers",
+   "without": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển Chatgpt",
+   "with": "Công ty của chúng tôi đang tuyển dụng các nhà phát triển ChatGPT"
+  },
+  {
+   "direction": "en_to_vi",
+   "term": "ChatGPT",
+   "source": "I got an error after updating Chatgpt yesterday",
+   "protected": "I got an error after updating ChatGPT yesterday",
+   "without": "Tôi gặp lỗi sau khi cập nhật Chatgpt hôm qua",
+   "with": "Tôi gặp lỗi sau khi cập nhật ChatGPT hôm qua"
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+{
+ "case_set": "mt_rule_cases_v1",
+ "cases_with_text": 40,
+ "tier2_pure_equals_tier1": 31,
+ "tier2_app_equals_tier2_pure": 38,
+ "repeat_cleanup_applied": [
+  "r11-repeat"
+ ],
+ "differences_tier1_vs_tier2_pure": {
+  "r03-path": {
+   "tier1": "/api/users",
+   "tier2_pure": "/api/ users"
+  },
+  "r05-hello": {
+   "tier1": "Xin chào",
+   "tier2_pure": "xin chào"
+  },
+  "r09-ids": {
+   "tier1": "a.a.a.a.a.a.a.a.a.a.a.a.a",
+   "tier2_pure": "a.a.a.a.a.a.a.a.a.a.a.a.a.a"
+  },
+  "r03-url": {
+   "tier1": "Telecom.com/docs?page=2",
+   "tier2_pure": "Telecom.com/docs? Page=2"
+  },
+  "r05-khong": {
+   "tier1": "No, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no.",
+   "tier2_pure": "No, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no,"
+  },
+  "r07-no-diacritics": {
+   "tier1": "I can't help you check the API",
+   "tier2_pure": "I need to check the API"
+  },
+  "r12-url": {
+   "tier1": "Watch the document at iTunes Premium.com/docs",
+   "tier2_pure": "Watch the document at the iTunes.com/docs"
+  },
+  "r02-500": {
+   "tier1": "The application checks the length limit of the type sentence. The application checks the length limit of the type sentence. The application checks the length limit of the type sentence. The application checks the length limit of the type sentence. The application checks the length limit of the text. The application checks the length limit of the text. The application checks the limit limit of the type. The application checks the length limit of the sentence. The application checks the length limit of the typing sentence. The application checks the length limit of the text. The application checks the limit limit of the sentence. The application checks the limit limit of the limit of the limit of the limit of the limit of the limit of the sentence. The limit of the sentence. The application checks the limit of the limit of the limit of the sentence the sentence. The application checks the limit of the sentence.",
+   "tier2_pure": "The application checks the length limit of the type sentence. The application checks the length limit of the type text. The application checks the length limit of the type. The application checks the length limit of the type sentence. The application checks the length limit of the text. The application checks the length limit of the text. The application checks the limit of the type. The application checks the limit of the sentence. The application checks the long limit of the typing sentence. The application checks the length limit of the sentence. The application checks the string limit of the text. The application checks the limit of the limit. the limit of the limit of the limit of the string."
+  },
+  "r02-501": {
+   "tier1": "The application checks the length limit of the type sentence. The application checks the length limit of the type sentence. The application checks the length limit of the type sentence. The application checks the length limit of the type sentence. The application checks the length limit of the text. The application checks the length limit of the text. The application checks the length limit of the type. The application checks the length limit of the sentence. The application checks the length limit of the typing sentence. The application checks the length limit of the text. The application checks the limit limit of the sentence.",
+   "tier2_pure": "The application checks the length limit of the type sentence. The application checks the length limit of the type text. The application checks the length limit of the type. The application checks the length limit of the type sentence. The application checks the length limit of the text. The application checks the length limit of the text. The application checks the limit of the type. The application checks the limit of the length of the type. The test app checks the limit of the sentence to the length of the typing sentence. The application checks the limit of the text. The application checks the limit of the sentence."
+  }
+ },
+ "note": "No UI rule applied (R03-R08, R12). Tier 3 (APK) is a separate file pulled from the device."
+}

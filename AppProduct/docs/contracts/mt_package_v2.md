@@ -125,13 +125,27 @@ giải nén cả ma trận trọng số mỗi bước (15–30 s/câu trên máy
     ngưỡng, và giả thuyết tốt nhất đã nằm trong tập hoàn chỉnh).
   - Gộp lặp sau khi giải mã: cụm 1–3 từ lặp ≥ 4 lần liên tiếp giữ 1 lần (`OutputCleanup.collapseRepeats`,
     `marian_ref.collapse_repeats`, parity bằng `mt_collapse_repeats.json`).
+  - Chính sách rule dịch text v1 (thêm 2026-10-23, `docs/contracts/mt_app_rule_policy_v1.md`, DR-07 §16), nằm ngoài
+    gói nên manifest không đổi:
+    - Model chỉ nhận chữ sau R01 (`phase01_nfc_whitespace_v1`); không rule nào đổi chữ hoa/thường, thay thuật ngữ hay
+      sửa bản dịch. Thử nghiệm placeholder `TermProtector` (DR-07 §15) đã gỡ khỏi app vì trái R01/R08/§9.
+    - Trước model (`mt/rules/TextRules`): R02 tối đa 500 ký tự hiển thị; R03 literal kỹ thuật và R04 từ kỹ thuật nhiều
+      nghĩa đứng một mình thì không gọi model; R05–R07 chỉ cảnh báo; R06 hỏi trước khi gửi.
+    - Trong engine: R09 tối đa 500 `source_ids` mỗi lần gọi (`TextRules.MAX_SOURCE_IDS`, thấp hơn 512 của manifest),
+      không tách trong URL/email/code; R10 như trên; R11 gộp lặp và báo cờ `repeat_cleanup_applied`
+      (`TranslationResult.repeatCleanupApplied`, kèm `rawText` và `sourceIds` cho evidence).
+    - Sau model: R12 từ chối output rỗng hoặc làm mất URL/email/code/mã HTTP/đường dẫn tuyệt đối; R08 gắn "Cần kiểm tra
+      thuật ngữ" khi mất thuật ngữ của lexicon (`assets/text/mt_rule_lexicon_v1.json`). Đổi gói MT thì chạy lại
+      `TextRulesCalibrationTest` và bộ case `mt_rule_cases_v1` (ba tầng, §8 của policy).
   - Kết quả đo: `evidence/phase04/mt_length_cap/`.
 
-## 8. Câu dài hơn 512 token
+## 8. Câu dài hơn 500 `source_ids` (R09)
 
-Không cắt câu. Nếu cả đoạn vượt 512 token: tách theo câu (sau `. ! ? … ; :` hoặc xuống dòng), gom
-nhiều câu vào một đoạn khi còn vừa; một câu vẫn quá dài thì tách theo từ. Dịch từng đoạn rồi nối bằng
-dấu cách (`MarianEngine.segment`).
+Không cắt câu. Manifest khai báo 512 vị trí; app chỉ đưa tối đa 500 `source_ids` mỗi lần gọi (chính sách rule dịch
+text v1, R09; `TextRules.MAX_SOURCE_IDS`). Nếu cả đoạn vượt mức đó: tách theo câu (sau `. ! ? … ; :` hoặc xuống
+dòng), gom nhiều câu vào một đoạn khi còn vừa; một câu vẫn quá dài thì tách theo dấu cách; không tách bên trong
+URL, email, code hay literal kỹ thuật; một chuỗi không có chỗ tách mà vẫn quá dài thì cắt theo ký tự (chỉ là phương
+án cuối). Dịch từng đoạn rồi nối bằng một dấu cách, ghi `segment_count` (`MarianEngine.segment`).
 
 ## 9. Kiểm chứng
 

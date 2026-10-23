@@ -27,7 +27,7 @@ của anh); báo anh chi tiết. Em cần anh xem mục 6 (hợp đồng Phase 0
 1. Chọn chiều bằng hai nút "Việt → Anh" / "Anh → Việt" (lưu lại; không tự nhận
    diện ngôn ngữ).
 2. Nói (chạm để bắt đầu, chạm lại để dừng; tự dừng khi im lặng 1.5 s hoặc đủ
-   60 s) hoặc gõ (tối đa 1000 ký tự).
+   60 s) hoặc gõ (tối đa 500 ký tự, chính sách rule dịch text v1).
 3. VAD cắt đoạn có giọng, STT theo ngôn ngữ nguồn; chữ tạm thời (partial) hiện
    trong lúc nói.
 4. Làm sạch từ đệm và từ lặp, rồi lọc kết quả vô nghĩa (không lưu).
@@ -101,7 +101,7 @@ Ngày 2026-10-01 (người dùng yêu cầu app nhẹ hơn): đổi STT VI sang 
 | numThreads VAD / STT / TTS | 1 / 2 / 2 |
 | TTS chunk | ≤ 25 từ |
 | Watchdog MT | 10 s |
-| Không nghe thấy giọng / lượt tối đa / text gõ tối đa | 6 s / 60 s / 1000 ký tự |
+| Không nghe thấy giọng / lượt tối đa / text gõ tối đa | 6 s / 60 s / 500 ký tự (R02) |
 | Giải phóng model ngoài bộ của màn | sau 30 s |
 
 ### 3.4 Chỉ số ghi cho mỗi lượt
@@ -159,7 +159,8 @@ việc convert, lượng tử hoá, đo cho phía app.
 - Đầu vào giữ đúng Phase 03: chuẩn hoá `phase01_nfc_whitespace_v1`, `>>vie<<` + câu cho EN→VI,
   tokenizer Marian (port Kotlin, khớp HF 4 873 câu/chiều). Giải mã đúng `generation_config` của
   checkpoint: beam 4 (EN→VI), beam 6 (VI→EN), `max_length` 512.
-- Câu dài hơn 512 token (Phase 03 để Phase 04 tự định): tách theo câu, không cắt.
+- Câu dài hơn 500 `source_ids` (Phase 03 để Phase 04 tự định; giới hạn 500 theo chính sách rule dịch text v1, R09):
+  tách theo câu rồi theo dấu cách, không tách trong URL/email/code, không cắt chữ.
 
 ## 7. Phát hiện trong Core
 
@@ -242,12 +243,33 @@ việc convert, lượng tử hoá, đo cho phía app.
      train Student; cân nhắc ghi `max_new_tokens` theo độ dài nguồn (hoặc `early_stopping=true`) vào
      `generation_config`; thêm vài câu ngắn kiểu "chào bạn", "vâng", "không" vào bộ đánh giá.
 
+10. **Student Phase 03 làm hỏng tên công nghệ IT** (người dùng báo 2026-10-22; app cho đúng từng token như
+    PyTorch):
+    - VI→EN, token hiếm: "Tôi đang học Javascript" → "I'm learning Vocabulary"; "Django" → "Toyota", "MySQL" →
+      "Mystique".
+    - EN→VI, tên trùng từ tiếng Anh thường: "React developers" → "nhà phát triển phản ứng".
+    - Đo trên 148 thuật ngữ × 6 câu mẫu, tỉ lệ thuật ngữ còn trong bản dịch khi viết đúng chuẩn là 83 % (VI→EN) và
+      76 % (EN→VI); khi viết toàn chữ thường là 61 % và 44 %.
+    - Lớp bảo vệ placeholder thử ngày 2026-10-22 (DR-07 §15) đã **gỡ khỏi app** ngày 2026-10-23 theo chính sách rule
+      dịch text v1 của nhóm (`docs/contracts/mt_app_rule_policy_v1.md`): app không được âm thầm vá bản dịch (R08, §9)
+      hay đổi chữ hoa/thường của thuật ngữ (R01). Nay một thuật ngữ gõ riêng được giữ nguyên, không gọi model (R03);
+      trong câu thì hiện đúng bản dịch của model và gắn "Cần kiểm tra thuật ngữ" (R08). Số đo của §15 giữ làm evidence.
+    - Bằng chứng thêm cho Student v2, từ bộ case cố định chạy trên checkpoint trước nén (DR-07 §16, tầng 1): một
+      mình "production" (VI→EN) → "Performion", "database connection pool" → "database concept pool",
+      "https://example.com/docs?page=2" → "Telecom.com/docs?page=2", "NullPointerException" → "NullPoiterExcetion",
+      "git commit -m …" → "git cam kết -m …". "không" (VI→EN) cho "No, no, no, …" lặp tới hết 512 token; app chỉ ra
+      "none" nhờ giới hạn độ dài R10 và gộp lặp R11.
+    - Đề xuất cho Core: khi train Student, thêm câu có tên công nghệ ở nhiều cách viết (chữ thường, chỉ hoa chữ
+      đầu), thêm literal kỹ thuật (URL, email, code, lệnh) cần chép nguyên, thêm từ giao tiếp ngắn, và thêm chỉ số
+      "giữ thuật ngữ / giữ literal" vào bộ đánh giá. Danh sách thuật ngữ và câu mẫu có trong
+      `AppProduct/tools/mt/term_risk.py` và `app/src/main/assets/text/mt_rule_cases_v1.json`.
+
 ## 8. Câu hỏi cho anh
 
 1. ~~Gói MT dùng model nào?~~ Đã trả lời bằng Phase 03: Student MarianMT (2 × 91 MB sau
    lượng tử hoá; RAM đo trên AVD 657 MB PSS khi đủ 4 model giọng nói + 2 model dịch).
 2. ~~Student có giữ tiền tố `en:` / `vi:`?~~ Không: `>>vie<<` cho EN→VI, tokenizer Marian.
-3. ~~`max_input_tokens`?~~ 512 (vị trí của Marian); app tách theo câu khi dài hơn.
+3. ~~`max_input_tokens`?~~ 512 (vị trí của Marian); app tách đoạn khi dài hơn 500 `source_ids` (R09).
 4. Golden file lấy từ IT Validation: anh đồng ý không? Bao nhiêu dòng, ai sinh?
 5. MT có chịu được text kiểu STT (không dấu câu, chữ thường trừ chữ đầu, số đọc
    thành chữ) không? Phase 03 có tăng cường dữ liệu kiểu này không?

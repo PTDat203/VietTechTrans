@@ -1,6 +1,8 @@
 # Kiểm thử
 
 Lệnh chạy trong `AppProduct/` (PowerShell, đặt `JAVA_HOME` và `ANDROID_HOME` như README).
+`JAVA_HOME` phải là Temurin 21 như README. JBR 25 của Android Studio làm tiến trình test văng
+(`EXCEPTION_ACCESS_VIOLATION` trong `msvcp140.dll` khi ONNX Runtime khởi tạo, ghi lại 2026-10-22).
 Từ 2026-10-07 chỉ còn một bản build (DR-09), không còn task theo flavor.
 
 ## 1. Test JVM (không cần emulator)
@@ -9,17 +11,20 @@ Từ 2026-10-07 chỉ còn một bản build (DR-09), không còn task theo flav
 gradlew.bat :app:testDebugUnitTest
 ```
 
-Kết quả ngày 2026-10-07: 67/67 test qua.
+Kết quả ngày 2026-10-07: 67/67 test qua. Ngày 2026-10-22: 74/74 (thêm `TermProtectorTest`, DR-07 §15). Ngày 2026-10-23:
+85/85 sau chính sách rule dịch text v1 (DR-07 §16): thêm `mt/rules/` và các test policy, bỏ `TermProtectorTest` và
+`VietnameseDiacriticsTest` vì đã gỡ code tương ứng. Sau đợt rà soát đối kháng: 90/90.
 
 | Package | Nội dung | Mốc |
 |---|---|---|
 | `mt/` | `DirectionTest`; parity `MtInputNormalizer` với `core_norm_parity.json`; `MtPackageManifest` v2 và validator | M1 |
-| `mt/marian/` | `MarianTokenizerParityTest` (id khớp Hugging Face, 4 873 câu/chiều), `MarianGoldenTest` (Kotlin + ONNX Runtime desktop ra đúng từng token như `tools/mt/marian_ref.py`; tách câu dài), `BeamSearchTest` (gồm `preferFinished`), `OutputCleanupTest` (gộp lặp, parity với `marian_ref.collapse_repeats` qua `mt_collapse_repeats.json`); `MarianGoldenTest` có thêm câu ngắn "chào bạn", "vâng", "không", "xin chao" với giới hạn độ dài (DR-07 mục 12). Hai test đầu cần `package_mt.py` đã chạy, không có thì bỏ qua ([mt_package_v2.md](contracts/mt_package_v2.md) mục 9) | Phase 04 |
-| `text/` | `TextProcessingTest`: `SttPostProcessor` (làm sạch, lọc vô nghĩa), `TtsTextNormalizer` (lexicon, tách đoạn), `VietnameseDiacritics` (phát hiện gõ không dấu) | M3–M4 |
+| `mt/rules/` | `TextRulesTest` (11 test): bảng "Bộ test bắt buộc" của chính sách rule dịch text v1 (R02–R08, R12), cả 41 case của `assets/text/mt_rule_cases_v1.json`, và các ca tìm thấy khi rà soát (biểu tượng cảm xúc, lệnh trùng từ thường như "brew install node" / "brew coffee", "I love phở" gõ ở chiều Anh). `TextRulesCalibrationTest`: số lần mỗi rule kích hoạt trên 4 tập Validation (nguồn và output q4r), có ngân sách báo thừa; ghi `app/build/mt_rules_calibration.json`, thêm `-Pvtt.rulesEvidence=../evidence/phase04/mt_rules_v1` để ghi vào evidence | 2026-10-23 (DR-07 §16) |
+| `mt/marian/` | `MarianTokenizerParityTest` (id khớp Hugging Face, 4 873 câu/chiều), `MarianGoldenTest` (Kotlin + ONNX Runtime desktop ra đúng từng token như `tools/mt/marian_ref.py`; tách câu dài), `BeamSearchTest` (gồm `preferFinished`), `OutputCleanupTest` (gộp lặp, parity với `marian_ref.collapse_repeats` qua `mt_collapse_repeats.json`); `MarianGoldenTest` có thêm câu ngắn "chào bạn", "vâng", "không", "xin chao" với giới hạn độ dài (DR-07 mục 12), `policyCasesOnTheRealGraph` (R05 và R08 trên graph thật: "không" → "none", "Tôi đang học Javascript" → "I'm learning Vocabulary" và bị gắn cờ JavaScript; giống `marian_ref.py`), `overlongInputIsSplitWithoutLoss` (R09: "a." × 250 = 501 id được tách, không mất chữ, URL không bị cắt) (DR-07 mục 16). Hai test đầu cần `package_mt.py` đã chạy, không có thì bỏ qua ([mt_package_v2.md](contracts/mt_package_v2.md) mục 9) | Phase 04 |
+| `text/` | `TextProcessingTest`: `SttPostProcessor` (làm sạch, lọc vô nghĩa), `TtsTextNormalizer` (lexicon, tách đoạn). Phát hiện gõ không dấu nay là R07 trong `mt/rules/` | M3–M4 |
 | `speech/` | `ListenSessionTest`: hết lượt khi im 1,5 s, 6 s không có giọng, 60 s | M4 |
-| `turn/` | `ConversationReducerTest` (15 test): Cắt, ngắt khi đang đọc, sửa câu, chuyển cuộc, lượt nền; fuzz 10 000 chuỗi với 4 bất biến | M6, 2026-10-07 |
+| `turn/` | `ConversationReducerTest` (19 test): Cắt, ngắt khi đang đọc, sửa câu, chuyển cuộc, lượt nền; câu gõ và câu sửa được dịch nhưng không tự đọc (R13), literal giữ nguyên không gọi model (R03), bản dịch bị R12 từ chối; fuzz 10 000 chuỗi với các bất biến cũ, thêm "câu gõ không bao giờ tự đọc". `TurnTimingsTest` (2 test): câu gõ chỉ hiện "MT n ms", câu nói hiện đủ STT · MT · TTS | M6, 2026-10-07; 2026-10-23 |
 | `history/` | `ConversationStoreTest` (4 test): lưu/đọc, mới nhất trước, đổi tên, xoá không hồi sinh, file hỏng, xoá tất cả, quy tắc id và tiêu đề | 2026-10-07 |
-| `ui/` | `AppSmokeTest` (Robolectric): mở app ở Hội thoại; ☰ mở Dịch nhanh, Cài đặt, Hướng dẫn; gõ câu thì câu hiện và được lưu vào ☰ | 2026-10-07 |
+| `ui/` | `AppSmokeTest` (Robolectric): mở app ở Hội thoại; ☰ mở Dịch nhanh, Cài đặt, Hướng dẫn; gõ câu thì câu hiện và được lưu vào ☰; R03 + R13 (gõ "JavaScript": giữ nguyên, có nhãn, không có STT/TTS hay thông báo micro); R06 ("Hello, how are you?" gửi tiếng Việt thì hỏi, "Đổi sang English" gửi bằng tiếng Anh); R02 (ô trống báo "Hãy nhập nội dung cần dịch.", 501 ký tự khoá nút gửi); Dịch nhanh theo cùng rule (ô trống báo lỗi, gõ "CI/CD" thì giữ nguyên, có nhãn, không có STT/TTS) | 2026-10-07; 2026-10-23 |
 
 ## 2. Test instrumentation trên AVD
 

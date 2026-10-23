@@ -2,6 +2,7 @@ package vn.viettechtrans.app.turn
 
 import vn.viettechtrans.app.mt.Direction
 import vn.viettechtrans.app.mt.Lang
+import vn.viettechtrans.app.mt.rules.RuleNote
 
 /** A = Vietnamese speaker, B = English speaker (no language auto-detection: each button is tied to one language). */
 enum class Party(val lang: Lang) {
@@ -29,6 +30,8 @@ data class ConversationState(
     val phase: ConvPhase = ConvPhase.Idle,
     /** Turns cut off by another speaker: still recognized/translated/saved, never spoken. */
     val background: Map<Int, Party> = emptyMap(),
+    /** Turns from the keyboard (typed or corrected) being translated: never spoken automatically (policy R13). */
+    val textTurns: Set<Int> = emptySet(),
     val nextTurn: Int = 1,
     val nextSpeak: Int = 1,
 )
@@ -42,31 +45,57 @@ sealed interface Heard {
 
 sealed interface ConvEvent {
     data class Tap(val party: Party) : ConvEvent
-    data class Typed(val party: Party, val text: String) : ConvEvent
+
+    /**
+     * Typed text after the input rules (docs/contracts/mt_app_rule_policy_v1.md R01-R07). [keep]: R03/R04 decided not to
+     * call the model, the text itself is the result. [notes]: the input rules that fired.
+     */
+    data class Typed(val party: Party, val text: String, val keep: Boolean = false, val notes: List<RuleNote> = emptyList()) : ConvEvent
     data class ListenEnded(val turn: Int, val result: Heard) : ConvEvent
     data class Translated(val turn: Int, val result: MtOutcome) : ConvEvent
     data class SpeakDone(val speakId: Int) : ConvEvent
     data object StopSpeaking : ConvEvent
     data class Replay(val text: String, val lang: Lang) : ConvEvent
 
-    /** The source of an earlier message was corrected (STT misheard, typo): translate and speak it again. */
-    data class Edited(val turn: Int, val party: Party, val text: String) : ConvEvent
+    /**
+     * The source of an earlier message was corrected (STT misheard, typo): translate it again, the input rules already
+     * applied as for [Typed]. [party] may differ from the message's (R06 "Đổi sang …" after pressing the wrong language).
+     * Not spoken automatically: it is keyboard text (R13).
+     */
+    data class Edited(
+        val turn: Int,
+        val party: Party,
+        val text: String,
+        val keep: Boolean = false,
+        val notes: List<RuleNote> = emptyList(),
+    ) : ConvEvent
 
     /** Another conversation is shown: stop everything; new turns start at [minNextTurn] or later. */
     data class Reset(val minNextTurn: Int) : ConvEvent
 }
 
-enum class MessageStatus { TRANSLATING, OK, NOT_PLAYED, NO_TRANSLATOR, FAILED }
+/** INVALID: the model answered but R12 rejected the output (no translation is shown). */
+enum class MessageStatus { TRANSLATING, OK, NOT_PLAYED, NO_TRANSLATOR, FAILED, INVALID }
 
 sealed interface ConvEffect {
     data class StartListen(val party: Party, val turn: Int) : ConvEffect
     data class StopListen(val turn: Int) : ConvEffect
-    data class AddMessage(val turn: Int, val party: Party, val text: String) : ConvEffect
+    /** [typed]: from the keyboard (R13: timing "MT … ms" only, no automatic speech); [notes]: input rules that fired. */
+    data class AddMessage(val turn: Int, val party: Party, val text: String, val typed: Boolean = false, val notes: List<RuleNote> = emptyList()) : ConvEffect
 
-    /** Replace the source of message [turn] by [text] and clear its old translation. */
-    data class ReplaceSource(val turn: Int, val text: String) : ConvEffect
+    /** Replace the source of message [turn] by [text] (said by [party]) and clear its old translation. */
+    data class ReplaceSource(val turn: Int, val text: String, val party: Party, val notes: List<RuleNote> = emptyList()) : ConvEffect
     data class Translate(val turn: Int, val party: Party, val text: String) : ConvEffect
-    data class SetTranslation(val turn: Int, val text: String?, val status: MessageStatus, val mtMs: Long? = null) : ConvEffect
+
+    /** [notes]/[checkTerms]: output rules that fired (R08 lost terms, R11 repeats collapsed). */
+    data class SetTranslation(
+        val turn: Int,
+        val text: String?,
+        val status: MessageStatus,
+        val mtMs: Long? = null,
+        val notes: List<RuleNote> = emptyList(),
+        val checkTerms: List<String> = emptyList(),
+    ) : ConvEffect
     data class Speak(val speakId: Int, val turn: Int?, val lang: Lang, val text: String) : ConvEffect
     data object StopSpeak : ConvEffect
 
@@ -122,12 +151,15 @@ object ConversationReducer {
         val text = e.text.trim()
         if (text.isEmpty()) return s to emptyList()
         val turn = s.nextTurn
-        val next = s.copy(nextTurn = turn + 1)
-        val fx = listOf(ConvEffect.AddMessage(turn, e.party, text), ConvEffect.Translate(turn, e.party, text))
+        val add = ConvEffect.AddMessage(turn, e.party, text, typed = true, notes = e.notes)
+        // R03/R04: the text is the result; nothing to translate or speak, whatever else is going on.
+        if (e.keep) return s.copy(nextTurn = turn + 1) to listOf(add, ConvEffect.SetTranslation(turn, text, MessageStatus.OK))
+        val next = s.copy(nextTurn = turn + 1, textTurns = s.textTurns + turn)
+        val fx = listOf(add, ConvEffect.Translate(turn, e.party, text))
         return when (val p = next.phase) {
             ConvPhase.Idle -> next.copy(phase = ConvPhase.Processing(e.party, turn)) to fx
             is ConvPhase.Speaking -> next.copy(phase = ConvPhase.Processing(e.party, turn)) to (stopSpeech(p) + fx)
-            // Someone is talking or a turn is processing: show and translate it, but do not speak it.
+            // Someone is talking or a turn is processing: show and translate it in the background.
             else -> next.copy(background = next.background + (turn to e.party)) to fx
         }
     }
@@ -136,10 +168,20 @@ object ConversationReducer {
         val text = e.text.trim()
         if (text.isEmpty() || e.turn >= s.nextTurn) return s to emptyList()
         if (e.turn in s.background) return s to listOf(ConvEffect.Notice(BUSY_NOTICE))
-        val fx = listOf(ConvEffect.ReplaceSource(e.turn, text), ConvEffect.Translate(e.turn, e.party, text))
+        val replace = ConvEffect.ReplaceSource(e.turn, text, e.party, e.notes)
+        if (e.keep) {
+            val kept = listOf(replace, ConvEffect.SetTranslation(e.turn, text, MessageStatus.OK))
+            return when (val p = s.phase) {
+                ConvPhase.Idle -> s to kept
+                is ConvPhase.Speaking -> s.copy(phase = ConvPhase.Idle) to (stopSpeech(p, keepTurn = e.turn) + kept)
+                else -> s to listOf(ConvEffect.Notice(BUSY_NOTICE))
+            }
+        }
+        val fx = listOf(replace, ConvEffect.Translate(e.turn, e.party, text))
+        val next = s.copy(textTurns = s.textTurns + e.turn)
         return when (val p = s.phase) {
-            ConvPhase.Idle -> s.copy(phase = ConvPhase.Processing(e.party, e.turn)) to fx
-            is ConvPhase.Speaking -> s.copy(phase = ConvPhase.Processing(e.party, e.turn)) to (stopSpeech(p, keepTurn = e.turn) + fx)
+            ConvPhase.Idle -> next.copy(phase = ConvPhase.Processing(e.party, e.turn)) to fx
+            is ConvPhase.Speaking -> next.copy(phase = ConvPhase.Processing(e.party, e.turn)) to (stopSpeech(p, keepTurn = e.turn) + fx)
             // Mic open or a translation running: the user edits again when it is over.
             else -> s to listOf(ConvEffect.Notice(BUSY_NOTICE))
         }
@@ -169,28 +211,35 @@ object ConversationReducer {
 
     private fun onTranslated(s: ConversationState, e: ConvEvent.Translated): Pair<ConversationState, List<ConvEffect>> {
         val r = e.result
+        val keyboard = e.turn in s.textTurns
+        fun result(status: MessageStatus): ConvEffect.SetTranslation = when (r) {
+            is MtOutcome.Ok -> ConvEffect.SetTranslation(e.turn, r.text, status, r.mtMs, r.notes, r.checkTerms)
+            MtOutcome.NoTranslator -> ConvEffect.SetTranslation(e.turn, null, MessageStatus.NO_TRANSLATOR)
+            is MtOutcome.Failed -> ConvEffect.SetTranslation(e.turn, null, MessageStatus.FAILED)
+            is MtOutcome.Invalid -> ConvEffect.SetTranslation(e.turn, null, MessageStatus.INVALID, r.mtMs)
+        }
+        val notice = when (r) {
+            is MtOutcome.Failed -> ConvEffect.Notice(r.message)
+            is MtOutcome.Invalid -> ConvEffect.Notice(r.message)
+            else -> null
+        }
         if (e.turn in s.background) {
-            val (text, status, ms) = when (r) {
-                is MtOutcome.Ok -> Triple(r.text, MessageStatus.NOT_PLAYED, r.mtMs)
-                MtOutcome.NoTranslator -> Triple(null, MessageStatus.NO_TRANSLATOR, null)
-                is MtOutcome.Failed -> Triple(null, MessageStatus.FAILED, null)
-            }
-            return s.copy(background = s.background - e.turn) to listOf(ConvEffect.SetTranslation(e.turn, text, status, ms))
+            // Keyboard text is never spoken automatically, so it is not "chưa phát" either.
+            val bg = s.copy(background = s.background - e.turn, textTurns = s.textTurns - e.turn)
+            return bg to listOfNotNull(result(if (keyboard) MessageStatus.OK else MessageStatus.NOT_PLAYED), notice.takeIf { r is MtOutcome.Invalid })
         }
         val p = s.phase as? ConvPhase.Processing
         if (p == null || p.turn != e.turn) return s to emptyList() // stale
-        val idle = s.copy(phase = ConvPhase.Idle)
-        return when (r) {
-            is MtOutcome.Ok -> {
-                val id = s.nextSpeak
-                s.copy(phase = ConvPhase.Speaking(p.party, p.turn, id), nextSpeak = id + 1) to listOf(
-                    ConvEffect.SetTranslation(e.turn, r.text, MessageStatus.OK, r.mtMs),
-                    ConvEffect.Speak(id, e.turn, p.party.other.lang, r.text),
-                )
-            }
-            MtOutcome.NoTranslator -> idle to listOf(ConvEffect.SetTranslation(e.turn, null, MessageStatus.NO_TRANSLATOR))
-            is MtOutcome.Failed -> idle to listOf(ConvEffect.SetTranslation(e.turn, null, MessageStatus.FAILED), ConvEffect.Notice(r.message))
+        val idle = s.copy(phase = ConvPhase.Idle, textTurns = s.textTurns - e.turn)
+        // R13: keyboard text is translated, and spoken only when the user taps the speaker.
+        if (r is MtOutcome.Ok && !keyboard) {
+            val id = s.nextSpeak
+            return s.copy(phase = ConvPhase.Speaking(p.party, p.turn, id), nextSpeak = id + 1) to listOf(
+                result(MessageStatus.OK),
+                ConvEffect.Speak(id, e.turn, p.party.other.lang, r.text),
+            )
         }
+        return idle to listOfNotNull(result(MessageStatus.OK), notice)
     }
 
     private fun onSpeakDone(s: ConversationState, e: ConvEvent.SpeakDone): Pair<ConversationState, List<ConvEffect>> {

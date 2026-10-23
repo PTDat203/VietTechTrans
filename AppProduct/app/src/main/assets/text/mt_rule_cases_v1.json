@@ -1,0 +1,328 @@
+{
+ "schema_version": "1.0",
+ "case_set": "mt_rule_cases_v1",
+ "policy": "docs/contracts/mt_app_rule_policy_v1.md (section 8, Bộ test bắt buộc)",
+ "generator": "python -I tools/mt/build_rule_cases.py",
+ "cases": [
+  {
+   "id": "r03-javascript",
+   "rule": "R03",
+   "direction": "vi_to_en",
+   "input": "JavaScript",
+   "expect": "keep"
+  },
+  {
+   "id": "r03-javascript-lower-s",
+   "rule": "R03",
+   "direction": "en_to_vi",
+   "input": "Javascript",
+   "expect": "keep",
+   "why": "the spelling of the user report, typed alone"
+  },
+  {
+   "id": "r03-api",
+   "rule": "R03",
+   "direction": "vi_to_en",
+   "input": "API",
+   "expect": "keep"
+  },
+  {
+   "id": "r03-404",
+   "rule": "R03",
+   "direction": "en_to_vi",
+   "input": "404",
+   "expect": "keep"
+  },
+  {
+   "id": "r03-url",
+   "rule": "R03",
+   "direction": "vi_to_en",
+   "input": "https://example.com/docs?page=2",
+   "expect": "keep"
+  },
+  {
+   "id": "r03-email",
+   "rule": "R03",
+   "direction": "en_to_vi",
+   "input": "dev@example.com",
+   "expect": "keep"
+  },
+  {
+   "id": "r03-code",
+   "rule": "R03",
+   "direction": "vi_to_en",
+   "input": "await fetch('/api/users')",
+   "expect": "keep"
+  },
+  {
+   "id": "r03-path",
+   "rule": "R03",
+   "direction": "en_to_vi",
+   "input": "/api/users",
+   "expect": "keep"
+  },
+  {
+   "id": "r03-exception",
+   "rule": "R03",
+   "direction": "vi_to_en",
+   "input": "NullPointerException",
+   "expect": "keep"
+  },
+  {
+   "id": "r03-cicd",
+   "rule": "R03",
+   "direction": "en_to_vi",
+   "input": "CI/CD",
+   "expect": "keep"
+  },
+  {
+   "id": "r03-docker",
+   "rule": "R03",
+   "direction": "vi_to_en",
+   "input": "Docker",
+   "expect": "keep"
+  },
+  {
+   "id": "r03-command",
+   "rule": "R03",
+   "direction": "en_to_vi",
+   "input": "git commit -m \"fix login\"",
+   "expect": "keep"
+  },
+  {
+   "id": "r04-timeout",
+   "rule": "R04",
+   "direction": "vi_to_en",
+   "input": "timeout",
+   "expect": "keep"
+  },
+  {
+   "id": "r04-production",
+   "rule": "R04",
+   "direction": "en_to_vi",
+   "input": "production",
+   "expect": "keep"
+  },
+  {
+   "id": "r04-pool",
+   "rule": "R04",
+   "direction": "vi_to_en",
+   "input": "database connection pool",
+   "expect": "keep"
+  },
+  {
+   "id": "r04-production-vi",
+   "rule": "R04",
+   "direction": "vi_to_en",
+   "input": "production",
+   "expect": "keep",
+   "why": "alone, the model writes Performion"
+  },
+  {
+   "id": "r05-yes",
+   "rule": "R05",
+   "direction": "en_to_vi",
+   "input": "yes",
+   "expect": "translate"
+  },
+  {
+   "id": "r05-no",
+   "rule": "R05",
+   "direction": "en_to_vi",
+   "input": "no",
+   "expect": "translate"
+  },
+  {
+   "id": "r05-hello",
+   "rule": "R05",
+   "direction": "en_to_vi",
+   "input": "hello",
+   "expect": "translate"
+  },
+  {
+   "id": "r05-u",
+   "rule": "R05",
+   "direction": "vi_to_en",
+   "input": "ừ",
+   "expect": "translate"
+  },
+  {
+   "id": "r05-cam-on",
+   "rule": "R05",
+   "direction": "vi_to_en",
+   "input": "cảm ơn",
+   "expect": "translate"
+  },
+  {
+   "id": "r05-khong",
+   "rule": "R05",
+   "direction": "vi_to_en",
+   "input": "không",
+   "expect": "translate",
+   "why": "translated as the policy says; the model answers none"
+  },
+  {
+   "id": "r05-short",
+   "rule": "R05",
+   "direction": "en_to_vi",
+   "input": "laptop",
+   "expect": "translate",
+   "notes": [
+    "SHORT_INPUT"
+   ]
+  },
+  {
+   "id": "r06-english-as-vi",
+   "rule": "R06",
+   "direction": "vi_to_en",
+   "input": "Hello, how are you?",
+   "expect": "mismatch",
+   "answer": "force"
+  },
+  {
+   "id": "r06-vietnamese-as-en",
+   "rule": "R06",
+   "direction": "en_to_vi",
+   "input": "Xin chào, bạn khỏe không?",
+   "expect": "mismatch",
+   "answer": "switch"
+  },
+  {
+   "id": "r06-dialogue-word",
+   "rule": "R06",
+   "direction": "vi_to_en",
+   "input": "thanks",
+   "expect": "mismatch",
+   "answer": "switch"
+  },
+  {
+   "id": "r06-mixed-ok",
+   "rule": "R06",
+   "direction": "vi_to_en",
+   "input": "Tôi cần deploy API lên production.",
+   "expect": "translate",
+   "no_notes": [
+    "LANGUAGE_OVERRIDDEN",
+    "LANGUAGE_UNCERTAIN"
+   ],
+   "check": "R08"
+  },
+  {
+   "id": "r07-no-diacritics",
+   "rule": "R07",
+   "direction": "vi_to_en",
+   "input": "toi can kiem tra loi API",
+   "expect": "translate",
+   "notes": [
+    "NO_DIACRITICS"
+   ]
+  },
+  {
+   "id": "r07-not-for-jargon",
+   "rule": "R07",
+   "direction": "vi_to_en",
+   "input": "API timeout 504",
+   "expect": "translate",
+   "no_notes": [
+    "NO_DIACRITICS"
+   ]
+  },
+  {
+   "id": "r08-sentence",
+   "rule": "R08",
+   "direction": "vi_to_en",
+   "input": "Deploy CI/CD lên staging trước khi merge vào main.",
+   "expect": "translate",
+   "check": "R08"
+  },
+  {
+   "id": "r08-user-report",
+   "rule": "R08",
+   "direction": "vi_to_en",
+   "input": "Tôi đang học Javascript",
+   "expect": "translate",
+   "check": "R08",
+   "why": "the user report: the model says Vocabulary; the app shows it and flags JavaScript"
+  },
+  {
+   "id": "r08-react",
+   "rule": "R08",
+   "direction": "en_to_vi",
+   "input": "Our company is hiring React developers",
+   "expect": "translate",
+   "check": "R08"
+  },
+  {
+   "id": "r12-url",
+   "rule": "R12",
+   "direction": "vi_to_en",
+   "input": "Xem tài liệu tại https://example.com/docs nhé",
+   "expect": "translate",
+   "check": "R12"
+  },
+  {
+   "id": "r12-status-path",
+   "rule": "R12",
+   "direction": "vi_to_en",
+   "input": "API trả về lỗi 504 khi gọi /api/users",
+   "expect": "translate",
+   "check": "R12"
+  },
+  {
+   "id": "r12-code",
+   "rule": "R12",
+   "direction": "en_to_vi",
+   "input": "Run `npm install` before starting the server",
+   "expect": "translate",
+   "check": "R12"
+  },
+  {
+   "id": "r02-500",
+   "rule": "R02",
+   "direction": "vi_to_en",
+   "input": "Ứng dụng kiểm tra giới hạn độ dài của câu gõ. Ứng dụng kiểm tra giới hạn độ dài của câu gõ. Ứng dụng kiểm tra giới hạn độ dài của câu gõ. Ứng dụng kiểm tra giới hạn độ dài của câu gõ. Ứng dụng kiểm tra giới hạn độ dài của câu gõ. Ứng dụng kiểm tra giới hạn độ dài của câu gõ. Ứng dụng kiểm tra giới hạn độ dài của câu gõ. Ứng dụng kiểm tra giới hạn độ dài của câu gõ. Ứng dụng kiểm tra giới hạn độ dài của câu gõ. Ứng dụng kiểm tra giới hạn độ dài của câu gõ. Ứng dụng kiểm tra giới hạn độ dài của câ",
+   "expect": "translate"
+  },
+  {
+   "id": "r02-501",
+   "rule": "R02",
+   "direction": "vi_to_en",
+   "input": "Ứng dụng kiểm tra giới hạn độ dài của câu gõ. Ứng dụng kiểm tra giới hạn độ dài của câu gõ. Ứng dụng kiểm tra giới hạn độ dài của câu gõ. Ứng dụng kiểm tra giới hạn độ dài của câu gõ. Ứng dụng kiểm tra giới hạn độ dài của câu gõ. Ứng dụng kiểm tra giới hạn độ dài của câu gõ. Ứng dụng kiểm tra giới hạn độ dài của câu gõ. Ứng dụng kiểm tra giới hạn độ dài của câu gõ. Ứng dụng kiểm tra giới hạn độ dài của câu gõ. Ứng dụng kiểm tra giới hạn độ dài của câu gõ. Ứng dụng kiểm tra giới hạn độ dài của câu",
+   "expect": "too_long"
+  },
+  {
+   "id": "r02-empty",
+   "rule": "R02",
+   "direction": "en_to_vi",
+   "input": "   ",
+   "expect": "empty"
+  },
+  {
+   "id": "r09-ids",
+   "rule": "R09",
+   "direction": "en_to_vi",
+   "input": "a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.",
+   "expect": "translate",
+   "no_notes": [
+    "SHORT_INPUT"
+   ],
+   "check": "R09"
+  },
+  {
+   "id": "r11-repeat",
+   "rule": "R11",
+   "direction": "en_to_vi",
+   "input": "Optimizing database queries is essential for application responsiveness.",
+   "expect": "translate",
+   "check": "R11"
+  },
+  {
+   "id": "r11-repeat-vi",
+   "rule": "R11",
+   "direction": "vi_to_en",
+   "input": "Báo cáo hàng ngày: Nhìn thấy carbon dioxide tan băng trên Sao Hỏa",
+   "expect": "translate",
+   "check": "R11"
+  }
+ ]
+}

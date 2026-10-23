@@ -1,0 +1,161 @@
+# IT terms of the TermProtector experiment (DR-07 §15). One term per line, tab separated:
+# canonical<TAB>aliases (comma separated)<TAB>flag<TAB>directions to protect<TAB>spellings to normalize
+# Matching is case-insensitive on word boundaries. Aliases are other spellings of the same name (NodeJS -> Node.js);
+# different names (HTML5, K8s) are their own lines. Columns 4 and 5 are written by tools/mt/term_risk.py --write:
+# - directions to protect: the model breaks the term even when spelled canonically, so it is replaced by a
+#   placeholder (TERM1...) for that direction and put back exactly as typed afterwards;
+# - spellings to normalize ("lower@vi_to_en", "cap@en_to_vi"): the model breaks that all-lowercase or Capitalized
+#   spelling but keeps the canonical one, so it is rewritten canonically (Javascript -> JavaScript);
+# - anything else stays as typed, as do ALL CAPS words and terms inside URLs, domains, paths and file names.
+# - flag "en_common": also an ordinary English word (react, rust, windows...): in an English source it is only
+#   handled when written exactly as listed and not as the first word.
+# After editing: python -I tools/mt/term_risk.py --write. Experiment of DR-07 §15 only: the app does not use this
+# list since policy v1 (its runtime lexicon is app/src/main/assets/text/mt_rule_lexicon_v1.json, DR-07 §16).
+JavaScript	Java Script			lower@vi_to_en,cap@vi_to_en,lower@en_to_vi
+JS
+TypeScript	Type Script		vi_to_en,en_to_vi
+Python
+Java		en_common		lower@vi_to_en,lower@en_to_vi
+Kotlin
+Swift		en_common		lower@vi_to_en,lower@en_to_vi
+Golang
+Rust		en_common	vi_to_en	lower@en_to_vi
+PHP			vi_to_en
+C++
+C#	C sharp		vi_to_en
+Ruby		en_common		lower@vi_to_en,lower@en_to_vi
+Scala
+Dart		en_common		lower@vi_to_en,lower@en_to_vi
+Lua				lower@en_to_vi
+MATLAB			vi_to_en	lower@en_to_vi
+PowerShell				lower@vi_to_en,cap@vi_to_en,lower@en_to_vi
+Bash		en_common		lower@vi_to_en,lower@en_to_vi
+SQL				lower@en_to_vi
+NoSQL
+HTML				lower@vi_to_en
+HTML5				lower@vi_to_en
+CSS			en_to_vi
+CSS3			en_to_vi	cap@vi_to_en
+JSON
+XML				lower@vi_to_en,lower@en_to_vi
+YAML				lower@en_to_vi,cap@en_to_vi
+Markdown		en_common		lower@en_to_vi
+Solidity			en_to_vi	lower@vi_to_en
+React		en_common	vi_to_en,en_to_vi
+React Native			vi_to_en,en_to_vi
+Angular		en_common	en_to_vi
+AngularJS			en_to_vi
+Vue.js	Vue,VueJS		en_to_vi	lower@vi_to_en
+Svelte				lower@en_to_vi
+Next.js	NextJS,Next js			lower@en_to_vi
+Nuxt.js	NuxtJS,Nuxt		en_to_vi
+Node.js	NodeJS,Node js			lower@en_to_vi
+Express.js	ExpressJS			lower@en_to_vi
+NestJS	Nest.js			lower@en_to_vi
+Django			vi_to_en,en_to_vi
+Flask		en_common	vi_to_en	lower@en_to_vi
+FastAPI			en_to_vi
+Spring Boot		en_common	en_to_vi	lower@vi_to_en
+Laravel				lower@vi_to_en
+Symfony			en_to_vi	lower@vi_to_en
+Ruby on Rails			vi_to_en,en_to_vi
+.NET	dotnet
+ASP.NET			en_to_vi
+Flutter		en_common		lower@en_to_vi
+Xamarin				lower@vi_to_en,lower@en_to_vi
+jQuery			vi_to_en
+Bootstrap		en_common	vi_to_en,en_to_vi
+Tailwind CSS	Tailwind,TailwindCSS		vi_to_en,en_to_vi
+Redux
+GraphQL			vi_to_en,en_to_vi
+REST		en_common	en_to_vi	lower@vi_to_en
+RESTful		en_common	en_to_vi	lower@vi_to_en
+gRPC
+WebSocket				lower@vi_to_en,cap@vi_to_en,lower@en_to_vi,cap@en_to_vi
+WebSockets			en_to_vi	lower@vi_to_en,cap@vi_to_en
+OAuth				lower@vi_to_en,cap@vi_to_en
+OAuth2				lower@vi_to_en,cap@vi_to_en
+JWT			vi_to_en	lower@en_to_vi
+TensorFlow				lower@vi_to_en,lower@en_to_vi
+PyTorch
+Keras				lower@en_to_vi
+scikit-learn			vi_to_en,en_to_vi
+sklearn			vi_to_en,en_to_vi
+Pandas		en_common		lower@en_to_vi
+NumPy
+OpenCV
+Hugging Face	HuggingFace			lower@en_to_vi,cap@en_to_vi
+LangChain				lower@vi_to_en
+Apache Spark				lower@en_to_vi,cap@en_to_vi
+PySpark			vi_to_en,en_to_vi
+Hadoop			vi_to_en	lower@en_to_vi
+Kafka			vi_to_en,en_to_vi
+RabbitMQ				lower@vi_to_en,lower@en_to_vi
+Elasticsearch			vi_to_en,en_to_vi
+Kibana			vi_to_en,en_to_vi
+Grafana			vi_to_en
+Nginx				lower@vi_to_en
+Tomcat
+Docker				lower@vi_to_en
+Kubernetes				lower@vi_to_en,lower@en_to_vi
+K8s
+Git
+GitHub				lower@vi_to_en,lower@en_to_vi,cap@en_to_vi
+GitLab
+Bitbucket			en_to_vi
+Jenkins
+Terraform				lower@vi_to_en,lower@en_to_vi
+Ansible			en_to_vi
+Postman				lower@en_to_vi
+Jira
+Confluence			en_to_vi	lower@vi_to_en
+Figma				lower@vi_to_en,lower@en_to_vi
+VS Code	VSCode		en_to_vi	lower@vi_to_en
+Visual Studio Code			en_to_vi	lower@vi_to_en,cap@vi_to_en
+Visual Studio				lower@vi_to_en,lower@en_to_vi,cap@en_to_vi
+IntelliJ IDEA	IntelliJ		en_to_vi
+Android Studio				lower@en_to_vi,cap@en_to_vi
+Xcode
+npm
+Yarn		en_common	vi_to_en,en_to_vi
+Maven			vi_to_en
+Gradle			en_to_vi
+Webpack			en_to_vi
+Vite				lower@en_to_vi
+MySQL			vi_to_en
+PostgreSQL			vi_to_en
+Postgres				lower@en_to_vi
+MongoDB				lower@vi_to_en,cap@vi_to_en
+Mongo				lower@vi_to_en
+Redis				lower@en_to_vi
+SQLite			en_to_vi	cap@vi_to_en
+SQL Server			en_to_vi
+MariaDB				cap@vi_to_en
+DynamoDB			vi_to_en	lower@en_to_vi
+Firebase
+Firestore
+Supabase			vi_to_en	lower@en_to_vi
+AWS				lower@en_to_vi
+Azure
+Google Cloud				lower@vi_to_en,cap@vi_to_en,lower@en_to_vi
+GCP			vi_to_en
+Heroku			en_to_vi
+Vercel				lower@vi_to_en
+Netlify			vi_to_en,en_to_vi
+Cloudflare				lower@vi_to_en,lower@en_to_vi
+Linux				lower@vi_to_en,lower@en_to_vi
+Ubuntu				lower@vi_to_en,lower@en_to_vi
+Debian
+CentOS			vi_to_en	lower@en_to_vi,cap@en_to_vi
+Windows		en_common		lower@en_to_vi
+macOS				cap@en_to_vi
+iOS				lower@vi_to_en
+Android
+Chrome		en_common
+Firefox				lower@vi_to_en
+Excel		en_common		lower@en_to_vi
+PowerPoint				lower@en_to_vi
+Bluetooth				lower@en_to_vi
+Wi-Fi	WiFi
+ChatGPT				lower@vi_to_en,cap@vi_to_en,cap@en_to_vi
+OpenAI

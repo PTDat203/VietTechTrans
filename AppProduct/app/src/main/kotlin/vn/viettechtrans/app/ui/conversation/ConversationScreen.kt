@@ -47,8 +47,11 @@ import vn.viettechtrans.app.R
 import vn.viettechtrans.app.history.ConversationStore
 import vn.viettechtrans.app.history.ConversationSummary
 import vn.viettechtrans.app.turn.Party
+import vn.viettechtrans.app.mt.rules.TextRules
 import vn.viettechtrans.app.ui.common.GradientButton
 import vn.viettechtrans.app.ui.common.HeaderAction
+import vn.viettechtrans.app.ui.common.InputCounter
+import vn.viettechtrans.app.ui.common.MismatchDialog
 import vn.viettechtrans.app.ui.common.NoticeCard
 import vn.viettechtrans.app.ui.common.VttHeader
 import vn.viettechtrans.app.ui.common.cardColor
@@ -99,7 +102,10 @@ fun ConversationScreen(
     }
 
     var typing by rememberSaveable { mutableStateOf(false) }
+    // Text given back when the R06 question is dismissed: nothing was sent, the sheet opens again with it.
+    var typingDraft by rememberSaveable { mutableStateOf("") }
     var editing by remember { mutableStateOf<ChatMessage?>(null) }
+    var editDraft by remember { mutableStateOf<String?>(null) }
     var renaming by remember { mutableStateOf<ConversationSummary?>(null) }
     var deleting by remember { mutableStateOf<ConversationSummary?>(null) }
     fun closeDrawerThen(action: () -> Unit) {
@@ -137,7 +143,7 @@ fun ConversationScreen(
             ChatLayout(
                 ui = ui,
                 onTap = onTap,
-                onKeyboard = { typing = true },
+                onKeyboard = { typingDraft = ""; typing = true },
                 onReplay = vm::replay,
                 onEdit = { editing = it },
                 header = { Notices(ui, vm::dismissNotice) },
@@ -149,7 +155,7 @@ fun ConversationScreen(
     if (typing) {
         TextSheet(
             title = stringResource(R.string.conv_type),
-            initial = "",
+            initial = typingDraft,
             actions = listOf(
                 SheetAction(stringResource(R.string.conv_send_vi), partyBrush(Party.A)) { vm.type(Party.A, it) },
                 SheetAction(stringResource(R.string.conv_send_en), partyBrush(Party.B)) { vm.type(Party.B, it) },
@@ -160,10 +166,27 @@ fun ConversationScreen(
     editing?.let { m ->
         TextSheet(
             title = stringResource(if (m.party == Party.A) R.string.conv_edit_title_vi else R.string.conv_edit_title_en),
-            initial = m.source,
+            initial = editDraft ?: m.source,
             hint = stringResource(R.string.conv_edit_hint),
             actions = listOf(SheetAction(stringResource(R.string.conv_edit_send), partyBrush(m.party)) { vm.edit(m, it) }),
-            onDismiss = { editing = null },
+            onDismiss = { editing = null; editDraft = null },
+        )
+    }
+    ui.mismatch?.let { m ->
+        MismatchDialog(
+            chosen = m.party.lang,
+            onSwitch = { vm.answerMismatch(switchLanguage = true) },
+            onForce = { vm.answerMismatch(switchLanguage = false) },
+            onDismiss = {
+                val back = vm.dismissMismatch() ?: return@MismatchDialog
+                val turn = back.editTurn
+                if (turn == null) {
+                    typingDraft = back.text
+                    typing = true
+                } else {
+                    ui.messages.firstOrNull { it.turn == turn }?.let { msg -> editDraft = back.text; editing = msg }
+                }
+            },
         )
     }
     renaming?.let { c ->
@@ -211,19 +234,26 @@ class SheetAction(val label: String, val brush: Brush, val onClick: (String) -> 
 
 /**
  * Bottom sheet with a text field and one button per action: typing a sentence
- * ("người câm – mồm đểu thì gõ") or correcting a sent one. At most 1000 characters.
+ * ("người câm – mồm đểu thì gõ") or correcting a sent one. Policy R02: at most 500 displayed characters after R01;
+ * a longer text is kept (never cut) but cannot be sent, and sending nothing shows "Hãy nhập nội dung cần dịch.".
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun TextSheet(title: String, initial: String, actions: List<SheetAction>, onDismiss: () -> Unit, hint: String? = null) {
     var text by rememberSaveable { mutableStateOf(initial) }
+    var emptyTried by remember { mutableStateOf(false) }
+    val tooLong = TextRules.typedLength(text) > TextRules.MAX_CHARS
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
     val scope = rememberCoroutineScope()
     // Material 3 guidance: animate the sheet out before removing it from composition, so its
     // dialog window is never left behind (an invisible window would swallow every touch).
     var sending by remember { mutableStateOf(false) }
     fun send(action: SheetAction) {
-        if (sending) return // a second tap during the hide animation must not send twice
+        if (sending || tooLong) return // a second tap during the hide animation must not send twice
+        if (TextRules.typedLength(text) == 0) {
+            emptyTried = true
+            return
+        }
         sending = true
         val typed = text
         scope.launch { sheetState.hide() }.invokeOnCompletion {
@@ -244,10 +274,14 @@ private fun TextSheet(title: String, initial: String, actions: List<SheetAction>
             hint?.let { Text(it, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant) }
             TextField(
                 value = text,
-                onValueChange = { if (it.length <= ConversationViewModel.MAX_TYPED_CHARS) text = it },
+                onValueChange = {
+                    text = it
+                    emptyTried = false
+                },
                 modifier = Modifier.fillMaxWidth(),
                 placeholder = { Text(stringResource(R.string.conv_type_hint)) },
-                supportingText = { Text("${text.length}/${ConversationViewModel.MAX_TYPED_CHARS}") },
+                supportingText = { InputCounter(text, emptyTried) },
+                isError = tooLong,
                 minLines = 3,
                 shape = MaterialTheme.shapes.medium,
                 colors = TextFieldDefaults.colors(
@@ -262,7 +296,7 @@ private fun TextSheet(title: String, initial: String, actions: List<SheetAction>
                     GradientButton(
                         text = a.label,
                         onClick = { send(a) },
-                        enabled = text.isNotBlank(),
+                        enabled = !tooLong,
                         icon = R.drawable.ic_send,
                         brush = a.brush,
                         modifier = Modifier.weight(1f),

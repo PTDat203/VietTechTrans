@@ -167,7 +167,7 @@ cùng APK chỉ khoảng 140 ms.
   CPU có lệnh **dotprod** hoặc **i8mm** (ARMv8.2+: Cortex-A55/A75/A76…). 8-bit không có kernel `CompFp32`.
 - Thiếu kernel thì `MatMulNBits` chạy `ComputeBUnpacked`: cấp phát và **giải nén cả ma trận trọng số sang
   float ở mỗi lần gọi**, rồi SGEMM. Mỗi bước giải mã gọi decoder (25,2 triệu tham số) và lớp đầu ra
-  (53 684 × 512 = 27,5 triệu, riêng nó 110 MB float) → mỗi bước ghi hơn 200 MB.
+  (53 685 × 512 ở Anh→Việt, 53 739 × 512 ở Việt→Anh: khoảng 27,5 triệu số, riêng nó 110 MB float) → mỗi bước ghi hơn 200 MB.
 - Trọng số **4-bit** có kernel `CompFp32` cho **mọi** CPU ARM64 (NEON) và `CompInt8` khi có dotprod.
 - Đo trên PC (2 luồng, 6 beam; `accuracy_level 0` buộc đường không dùng kernel int8, tức như máy không có
   dotprod):
@@ -234,7 +234,7 @@ Thử để tìm phần gây mất (chrF++ theo chính sách của app; General 
 | **Linear 4-bit, đầu ra 4+4 bit (`q4r`)** | **82,5** | 52,38 | 66,66 | 46,10 | 61,01 | **−0,16** | **có** |
 
 - GPTQ không giúp: dữ liệu hiệu chỉnh chỉ có miền IT (Core không có dữ liệu train miền chung), VI→EN General giảm.
-- Phần mất nằm ở **lớp đầu ra** (ma trận dùng chung 53 684 × 512): đưa nó lên 8-bit thì ngang 8-bit (`q4e8`), còn
+- Phần mất nằm ở **lớp đầu ra** (ma trận dùng chung 53 685 × 512 ở Anh→Việt, 53 739 × 512 ở Việt→Anh): đưa nó lên 8-bit thì ngang 8-bit (`q4e8`), còn
   bảng tra embedding 8-bit hầu như không đổi gì (`q4g8`). Nhưng đầu ra 8-bit lại chạy đường chậm trên ARM không có dotprod.
 - **Giải pháp `q4r`:** lưu lớp đầu ra thành hai tensor 4-bit, tầng 2 lượng tử hoá phần dư của tầng 1 (W ≈ Q1 + Q2), tính bằng
   hai `MatMulNBits` 4-bit rồi cộng. Độ chính xác gần 8-bit (tỉ lệ câu giống hệt 8-bit: 41/74/30/73 % như `q4e8`), chỉ cần kernel
@@ -491,8 +491,9 @@ Vì vậy `TermProtector` được gỡ khỏi luồng dịch. Model nhận đú
 - **Ứng viên.** Lấy theo đúng quy trình của §7, chỉ từ IT Train Phase 1 (121 547 dòng, SHA-256 `d6dbad4f…`). Ứng viên là
   token ASCII của câu tiếng Việt cũng có trong câu tiếng Anh cùng dòng, đếm theo tag. Thêm các danh sách mẫu của §7 và
   `tools/mt/it_terms.tsv`. Tổng cộng 941 ứng viên.
-- **Rà soát.** Mỗi ứng viên được hai người rà độc lập: một dịch giả và một kỹ sư IT. Khi hai người không đồng ý, một
-  người phân xử quyết định.
+- **Rà soát sơ bộ bằng AI.** Mỗi ứng viên được hai agent AI (Claude) rà độc lập: một agent đóng vai dịch giả, một agent
+  đóng vai kỹ sư IT. Khi hai agent không đồng ý, agent thứ ba phân xử. Bước này chỉ để lọc; chưa có người nào trong nhóm
+  duyệt danh sách.
 - **Kết quả:**
 
   | Nhóm | Số mục |
@@ -564,7 +565,7 @@ Ba case R06 cho thấy giá trị của câu hỏi "Đổi sang …". Tầng 2 d
 | Case | Tầng 2 (chiều đã chọn) | APK |
 |---|---|---|
 | "Xin chào, bạn khỏe không?" gõ ở EN→VI | "Xen chào, bạn k ...kông?" | "Đổi sang tiếng Việt" → "Hello, how are you?" |
-| "thank you" gõ ở VI→EN | "thanks" | "Đổi sang English" → "Cảm ơn" |
+| "thanks" gõ ở VI→EN | "thanks" | "Đổi sang English" → "Cảm ơn" |
 | "Hello, how are you?" gõ ở VI→EN | "Hello, how are you?" | "Vẫn dịch" → cùng bản dịch, gắn cờ `language_mismatch_overridden` |
 
 Tầng 1 cho thấy vì sao cần R03/R04: chính checkpoint làm hỏng literal và từ kỹ thuật đứng một mình.
@@ -626,5 +627,10 @@ iTunes.com/docs" (checkpoint: "…at iTunes Premium.com/docs"). "không" → "no
   ghi `calibration.json` và `calibration_cases.jsonl`.
 - `python -I tools/mt/run_rule_tiers.py --ckpt-root <checkpoint thật>` → `APP_MT_RULE_TIERS=RECORDED`.
 - AVD `Pixel_10a`, bản release x86_64 build ngày 2026-10-23:
-  - Cài đặt → Bộ case rule dịch (v1): 41/41 case đúng quyết định.
+  - Cài đặt → Bộ case rule dịch (v1): 41/41 case đúng quyết định. Bộ chạy chỉ chấm quyết định phía đầu vào (R02–R07);
+    R08, R09, R11, R12 được in ra để xem, không tính vào 41/41.
   - `adb pull` file evidence về `tier3_apk_emulator.jsonl`.
+  - APK này build từ cây làm việc chưa commit: `git_sha` trong evidence là `c1efeac` (commit cha), còn mã rule được commit
+    sau đó ở `1f1d55f`. Evidence chưa ghi cờ "có thay đổi chưa commit"; nên chạy lại bộ case trên một bản build đã commit.
+  - Mốc `run` 20261022T163440Z lấy theo đồng hồ của máy ảo, chậm khoảng 13 giờ so với PC. Lần chạy thật diễn ra khoảng
+    12:45 ngày 23/10 (giờ Việt Nam), ngay sau khi cài APK build lúc 12:36.

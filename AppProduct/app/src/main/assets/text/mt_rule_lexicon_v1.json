@@ -3,7 +3,7 @@
  "lexicon_version": "1.0.0",
  "policy": "mt_app_rule_policy_v1",
  "review": {
-  "status": "reviewed by two independent reviewers (translator, IT practitioner) and a judge for disagreements; waiting for the team's manual sign-off (policy section 7)",
+  "status": "pre-screened by two independent AI agents (Claude, playing a translator and an IT practitioner) and a third AI agent as judge for disagreements; not yet reviewed by a person; waiting for the team's manual sign-off (policy section 7)",
   "date": "2026-10-23",
   "candidates": "Phase 1 IT Train only (sha256 d6dbad4f61a57289935465a05194dd1d88003c2d63c55b90698dd19f10f1b98e): ASCII tokens of vi_clean that also occur in en_clean, counted per technical tag; plus the policy section 7 lists and tools/mt/it_terms.tsv",
   "table": "docs/data/mt_rule_lexicon_v1_review.tsv (every candidate, its group and the reason, excluded ones too)",

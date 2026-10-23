@@ -1,5 +1,6 @@
 # Review table of app/src/main/assets/text/mt_rule_lexicon_v1.json (policy mt_app_rule_policy_v1 section 7).
 # group: acronyms | technologies | technologies_case_sensitive | keep_with_context_warning | short_dialogue_* | exclude.
+# Reviewers are AI agents (Claude, playing a translator and an IT practitioner; a third agent judges); no person has signed off yet.
 # how: agreed = both reviewers chose the same group and spelling; judged = a judge decided a disagreement or an addition;
 # author = changed by the implementer after the review (see review.author_fixes in the JSON).
 group	canonical	candidate_forms	how	reason

@@ -1,0 +1,13 @@
+{
+  "comparison_id": "phase03_student_v1_baseline_comparison_v1",
+  "status": "pass",
+  "validated_rows_per_direction": 15252,
+  "checks": [
+    "approved protocol snapshot",
+    "data and cohort identity",
+    "historical Phase 02 baseline identity",
+    "baseline metrics reproduce",
+    "Student v1 reference hashes and metrics reproduce",
+    "Main-Core decision hash unchanged"
+  ]
+}

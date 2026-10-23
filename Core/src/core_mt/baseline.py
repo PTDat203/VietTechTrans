@@ -43,6 +43,11 @@ class CandidateSpec:
     runtime_settings_reason: str | None = None
 
 
+# ## Đọc cấu hình một Teacher candidate
+# Hàm: load_candidate_spec()
+# Được gọi từ: các runner đánh giá Phase 2.
+# Input: file candidate, mã model và chiều dịch.
+# Kết quả: CandidateSpec làm đầu vào thống nhất cho adapter.
 def load_candidate_spec(config_path: Path, model_key: str, direction: Direction) -> CandidateSpec:
     raw = json.loads(config_path.read_text(encoding="utf-8"))
     try:
@@ -358,8 +363,12 @@ def _run_evaluation(
     }
 
 
+# ## Đánh giá candidate hoặc checkpoint thích nghi trên validation
+# Hàm: run_pretrained_evaluation()
+# Được gọi từ: runner baseline và runner adapted evaluation của Phase 2.
+# Kết quả: từng prediction cùng metric chrF++ và BLEU của validation.
 def run_pretrained_evaluation(adapter: PretrainedAdapter, dataset: Phase02Dataset, *, batch_size: int = 8) -> tuple[list[dict[str, object]], dict[str, object]]:
-    """Evaluate one validation set during screening or adapted-checkpoint evaluation."""
+    """Đánh giá tập validation khi sàng lọc hoặc kiểm tra checkpoint thích nghi."""
     return _run_evaluation(
         adapter,
         dataset,
@@ -368,8 +377,12 @@ def run_pretrained_evaluation(adapter: PretrainedAdapter, dataset: Phase02Datase
     )
 
 
+# ## Đánh giá Teacher đã chốt trên test cuối
+# Hàm: run_final_evaluation()
+# Được gọi từ: run_phase02_final_evaluation.py.
+# Kết quả: prediction và metric của IT Test hoặc General Test.
 def run_final_evaluation(adapter: PretrainedAdapter, dataset: Phase02Dataset, *, batch_size: int = 1) -> tuple[list[dict[str, object]], dict[str, object]]:
-    """Evaluate one final test set after the Core-MT decision has been frozen."""
+    """Đánh giá test cuối sau khi quyết định Core MT đã được chốt."""
     return _run_evaluation(
         adapter,
         dataset,

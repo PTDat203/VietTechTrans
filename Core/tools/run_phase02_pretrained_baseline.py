@@ -39,6 +39,11 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
+# ## Đánh giá Teacher candidate gốc
+# Hàm: main()
+# Bắt đầu từ: lệnh chạy file này với ``--model`` và ``--direction``.
+# Dùng: checkpoint pretrained và dữ liệu đánh giá đã khóa.
+# Kết quả: prediction và metric để so sánh ba candidate Teacher.
 def main() -> int:
     parser = argparse.ArgumentParser(description="Evaluate one official pretrained Phase 2 candidate.")
     parser.add_argument("--model", choices=("opus_mt", "envit5", "nllb200_distilled_600m"), required=True)

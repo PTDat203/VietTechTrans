@@ -1,0 +1,14 @@
+{
+  "comparison_id": "phase03_student_v1_baseline_comparison_v1",
+  "allowed_dataset_role": "selection_validation",
+  "prohibited_datasets": [
+    "data/processed/it_en_vi/it_test.jsonl",
+    "data/processed/general_test_flores200_devtest/general_test.jsonl"
+  ],
+  "main_core_decision": {
+    "main_core_decision": "evidence/phase03/main_core_decision.json",
+    "main_core_decision_sha256": "43b272e9fd4ab7de6a8decf189a01a9ebac3e5b9c84b47e1a6afc194d33585c1",
+    "rule": "The comparison may report Student v1 minus Student baseline only. It must not replace, re-rank, or amend the frozen Phase 03 Main-Core decision."
+  },
+  "baseline_method": "reuse_frozen_phase02_predictions_then_filter_to_student_cohort"
+}

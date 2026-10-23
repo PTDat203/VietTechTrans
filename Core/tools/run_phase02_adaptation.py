@@ -51,6 +51,11 @@ def positive_float(value: str) -> float:
     return parsed
 
 
+# ## Fine-tune EnViT5 bằng LoRA
+# Hàm: main()
+# Bắt đầu từ: lệnh chạy file này với cấu hình adaptation.
+# Dùng: chỉ IT Train đã khóa của Phase 1.
+# Kết quả: checkpoint thích nghi và hồ sơ lần chạy.
 def main() -> int:
     parser = argparse.ArgumentParser(description="Adapt EnViT5 using the sealed IT Train split only.")
     parser.add_argument("--model", choices=("envit5",), required=True)

@@ -96,7 +96,7 @@ kiểm tra trên GPU hiện có.
 
 Kết quả sau khi Core được khóa: [báo cáo cuối](final_report.md).
 
-## Bàn giao EN→VI sang Phase 03
+## Bàn giao Core MT sang Phase 03
 
 Core EN→VI đã khóa là EnViT5 LoRA tại
 `models/phase02/envit5-en-to-vi-lora-v1/final-epoch-1`. Phase 03 chỉ được dùng

@@ -14,6 +14,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
+# ## Tạo mẫu review thủ công cho Phase 2
+# Hàm: main()
+# Bắt đầu từ: lệnh chạy file này với model và chiều dịch.
+# Dùng: prediction đã được sinh ở bước đánh giá.
+# Kết quả: CSV review để người thực hiện ghi nhận lỗi dịch.
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", required=True)

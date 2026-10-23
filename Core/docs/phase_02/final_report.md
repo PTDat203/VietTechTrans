@@ -41,6 +41,23 @@ EnViT5 dùng prefix ngôn ngữ đầu vào `en:` hoặc `vi:` theo chiều dị
 `run.json` không ghi thiết bị inference. Vì vậy báo cáo này không khẳng định
 final inference đã chạy trên GPU, dù môi trường PyTorch có CUDA.
 
+## LoRA cải thiện bao nhiêu so với EnViT5 gốc?
+
+So sánh dưới đây dùng cùng EnViT5 đã được chọn ở pretrained screening với
+checkpoint EnViT5 + LoRA sau adaptation. Đây là chênh lệch `sau LoRA - trước
+LoRA` trên validation; không dùng kết quả final test để khẳng định LoRA tốt hơn.
+
+| Chiều / tập validation | chrF++ trước → sau | Chênh lệch | SacreBLEU trước → sau | Chênh lệch |
+|---|---:|---:|---:|---:|
+| EN→VI IT Validation | 64,981633 → 71,174877 | +6,193244 | 48,974620 → 57,762843 | +8,788223 |
+| EN→VI General Validation | 59,822968 → 60,364459 | +0,541491 | 38,398872 → 39,238366 | +0,839494 |
+| VI→EN IT Validation | 60,431968 → 65,383472 | +4,951504 | 31,983891 → 41,319147 | +9,335256 |
+| VI→EN General Validation | 60,143713 → 58,449516 | -1,694197 | 32,063374 → 29,842579 | -2,220795 |
+
+LoRA cải thiện rõ trên IT Validation ở hai chiều. Ở VI→EN General Validation,
+cả hai metric giảm; giới hạn này đã được ghi trong Core decision trước final
+evaluation và không bị che bằng kết quả IT.
+
 ## Kết quả final
 
 | Chiều | Tập đánh giá | Số câu | chrF++ | SacreBLEU |

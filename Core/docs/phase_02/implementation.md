@@ -46,15 +46,19 @@ validation, review, provenance + người thực hiện
 
 ## Script và lý do có mặt
 
-| Điểm bắt đầu | Script | Việc script làm | Lý do |
-|---|---|---|---|
-| Protocol và validation | `validate_phase02_setup.py` | Kiểm tra Phase 01 gate, input và mẫu review | Chặn việc chạy khi input chưa khóa hoặc mở final test sớm |
-| Model config + một validation set | `run_phase02_pretrained_baseline.py` | Chạy một candidate, ghi prediction, metric, runtime | So sánh candidate trong cùng data boundary |
-| Selection record đã viết trước | `run_phase02_adaptation.py` | Chỉ đọc IT Train, lưu một checkpoint và training record | Không dùng validation để train hoặc chọn checkpoint |
-| Checkpoint đã ghi provenance | `run_phase02_adapted_evaluation.py` | Kiểm tra hash checkpoint, chạy trên hai validation set | Liên kết cùng checkpoint với evidence trong miền và ngoài miền |
-| Mẫu 50 dòng đã khóa | `prepare_phase02_review_sheet.py` | Ghép prediction vào CSV review, không ghi đè file đã có | Tránh chọn mẫu sau khi xem output |
-| Core decision do người thực hiện freeze | `validate_phase02_final_reporting.py` | Kiểm tra đúng hai chiều, model, checkpoint và lý do | Chỉ mở final reporting sau quyết định |
-| Final gate PASS | `run_phase02_final_evaluation.py` | Đọc model/checkpoint từ decision, chạy đúng một lần mỗi final set | Final result không thể quay lại đổi Core |
+| Việc cần giải thích | Script | Hàm để mở đầu | Hàm/lớp hỗ trợ cần xem | Output và lý do |
+|---|---|---|---|---|
+| Kiểm tra input trước Phase 02 | `validate_phase02_setup.py` | `main()` | `load_phase02_protocol()` | PASS/FAIL; chặn input chưa khóa hoặc mở final test sớm |
+| Chạy 3 candidate gốc | `run_phase02_pretrained_baseline.py` | `main()` | `load_candidate_spec()` → `PretrainedAdapter.load()` → `run_pretrained_evaluation()` → `score_predictions()` | Prediction, metric và runtime để so sánh cùng data boundary |
+| Adapt EnViT5 bằng LoRA | `run_phase02_adaptation.py` | `main()` | `ensure_completed_experiment_record()` → `attach_envit5_lora()` → `Envit5AdaptationDataset` | Checkpoint và training record; chỉ dùng IT Train |
+| Đánh giá checkpoint adapted | `run_phase02_adapted_evaluation.py` | `main()` | `sha256_tree()` → `PretrainedAdapter.load()` → `run_pretrained_evaluation()` | Evidence IT Validation và General Validation cùng checkpoint |
+| Chuẩn bị review 50 câu | `prepare_phase02_review_sheet.py` | `main()` | `select_review_rows()` → `write_review_template()` | CSV review cố định, không chọn mẫu sau prediction |
+| Kiểm tra điều kiện mở final reporting | `validate_phase02_final_reporting.py` | `main()` | Đọc `core_mt_decision.json` | PASS/FAIL trước khi mở final test |
+| Chạy final evaluation | `run_phase02_final_evaluation.py` | `main()` | `frozen_selection()` → `run_final_evaluation()` → `score_predictions()` | Bốn final evidence; không quay lại đổi Core |
+
+Khi được hỏi “phần này code ở đâu?”, mở script trong bảng, tìm `main()` rồi
+theo chuỗi hàm/lớp ở cột kế bên. Tên function giữ tiếng Anh để khớp code và
+thư viện, còn vai trò của nó được mô tả bằng tiếng Việt.
 
 `configs/phase02_protocol.json` là điểm bắt đầu của ràng buộc: candidate,
 vai trò dữ liệu, thứ tự gate, metric và các việc bị cấm.

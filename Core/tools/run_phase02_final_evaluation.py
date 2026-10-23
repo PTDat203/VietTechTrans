@@ -36,8 +36,13 @@ def write_jsonl(path: Path, rows: list[dict[str, object]]) -> None:
             handle.write(json.dumps(row, ensure_ascii=False) + "\n")
 
 
+# ## Lấy Teacher đã được chốt
+# Hàm: frozen_selection()
+# Được gọi từ: main().
+# Dùng: core_mt_decision.json.
+# Kết quả: chỉ trả về model và checkpoint đã được quyết định cho chiều dịch.
 def frozen_selection(direction: Direction) -> tuple[str, Path, str, str, dict[str, object]]:
-    """Return only the model and checkpoint fixed in the human Core decision."""
+    """Chỉ lấy model và checkpoint đã được chốt trong quyết định Core MT."""
     decision_path = ROOT / "evidence" / "phase02" / "core_mt_decision.json"
     if not decision_path.is_file():
         raise FileNotFoundError("Final evaluation requires a frozen Core-MT decision.")
@@ -67,6 +72,11 @@ def frozen_selection(direction: Direction) -> tuple[str, Path, str, str, dict[st
     return model, checkpoint_path, experiment_id, checkpoint_id, decision
 
 
+# ## Đánh giá cuối Teacher đã chốt
+# Hàm: main()
+# Bắt đầu từ: lệnh chạy file này với chiều dịch và tập test.
+# Gọi: frozen_selection() để không thể chọn nhầm candidate khác.
+# Kết quả: metric cuối dùng để bàn giao sang Phase 3.
 def main() -> int:
     parser = argparse.ArgumentParser(description="Run one final Phase 2 evaluation of the frozen Core MT.")
     parser.add_argument("--direction", choices=tuple(item.value for item in Direction), required=True)

@@ -1,0 +1,10 @@
+{
+  "comparison_id": "phase03_student_v1_baseline_comparison_v1",
+  "status": "accepted_as_phase03_supplementary_evidence",
+  "scope": "Student v1 minus its exact pretrained OPUS-MT baseline on the approved 15,252-row IT validation cohort.",
+  "does_not_change": [
+    "Phase 03 Main-Core checkpoints",
+    "main_core_decision.json",
+    "Phase 04 handoff"
+  ]
+}

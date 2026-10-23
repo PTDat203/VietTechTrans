@@ -1,0 +1,31 @@
+{
+  "comparison_id": "phase03_student_v1_baseline_comparison_v1",
+  "dataset_path": "data/processed/it_en_vi/validation.jsonl",
+  "dataset_sha256": "022eb09d7a4a8853902b943f22959b0fb69bf92356575bfd87ab7913aa02a8ad",
+  "source_rows": 15253,
+  "eligible_rows": 15252,
+  "excluded_rows": [
+    {
+      "dataset_row_id": "948273d4ab1d4f0978ca1ad3b664b36ecc0e78b704514d7598e4deafd606e5ad",
+      "reason": "exceeds_fixed_student_input_capacity",
+      "student_input_tokens": {
+        "en_to_vi": 686,
+        "vi_to_en": 935
+      }
+    }
+  ],
+  "cohorts": {
+    "en_to_vi": {
+      "direction": "en_to_vi",
+      "rows": 15252,
+      "row_ids_sha256": "147e2d1809e18007fee4a191cf5fea52f32155d37960eb54ede3405d02ac1ef7",
+      "parallel_pairs_sha256": "b848b849cb1679b8143cfdf968645f26da4a11766e8314245308e0c3bdaf46a2"
+    },
+    "vi_to_en": {
+      "direction": "vi_to_en",
+      "rows": 15252,
+      "row_ids_sha256": "147e2d1809e18007fee4a191cf5fea52f32155d37960eb54ede3405d02ac1ef7",
+      "parallel_pairs_sha256": "426a92b92c34d97075f25343ac095a300b525687cd71633f0774e80e3401c0c6"
+    }
+  }
+}

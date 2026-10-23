@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0",
+  "phase": "phase_03_supplementary_evaluation",
+  "status": "approved_before_execution",
+  "comparison_id": "phase03_student_v1_baseline_comparison_v1",
+  "purpose": "Measure the effect of sequence-level knowledge distillation on Student v1 against its exact pretrained OPUS-MT initialization. This supplementary evaluation does not replace either frozen Main-Core checkpoint or modify the Phase 03 decision.",
+  "dataset": {
+    "role": "selection_validation",
+    "path": "data/processed/it_en_vi/validation.jsonl",
+    "sha256": "022eb09d7a4a8853902b943f22959b0fb69bf92356575bfd87ab7913aa02a8ad",
+    "source_rows": 15253,
+    "eligible_rows": 15252,
+    "excluded_rows": [
+      {
+        "dataset_row_id": "948273d4ab1d4f0978ca1ad3b664b36ecc0e78b704514d7598e4deafd606e5ad",
+        "reason": "exceeds_fixed_student_input_capacity",
+        "student_input_tokens": {
+          "en_to_vi": 686,
+          "vi_to_en": 935
+        }
+      }
+    ]
+  },
+  "prohibited_datasets": [
+    "data/processed/it_en_vi/it_test.jsonl",
+    "data/processed/general_test_flores200_devtest/general_test.jsonl"
+  ],
+  "metrics": {
+    "chrF++": {"beta": 2, "word_order": 2},
+    "sacreBLEU": {"tokenize": "none", "lowercase": false, "use_effective_order": false}
+  },
+  "directions": {
+    "en_to_vi": {
+      "baseline": {
+        "model_id": "Helsinki-NLP/opus-mt-en-vi",
+        "revision": "989c9fb9ec63987901022baf0182dcec3e149be6",
+        "input_prefix": ">>vie<<",
+        "generation_policy": "checkpoint_default",
+        "num_beams": 4,
+        "historical_prediction_source": {
+          "path": "evidence/phase02/opus_mt/en_to_vi/pretrained/selection_validation/predictions.jsonl",
+          "sha256": "10000f88e2a1a059790acbde8f4f4fade8baf319eddbf4290ba90a860360ad50",
+          "run_path": "evidence/phase02/opus_mt/en_to_vi/pretrained/selection_validation/run.json",
+          "run_sha256": "530e2ec2b65de134545e03cea6b6f81a56af42543b54ed31238cb39eae912633"
+        }
+      },
+      "student_reference": {
+        "run_id": "phase03-seqkd-en-to-vi-v2",
+        "checkpoint": "models/phase03/phase03-seqkd-en-to-vi-v2/final-epoch-1",
+        "metrics_path": "evidence/phase03/phase03-seqkd-en-to-vi-v2.running/evaluation/en_to_vi/selection_validation/student_metrics.json",
+        "metrics_sha256": "dcda36a743bb581a57d6796cf4df5960c4e5a8655584336a10fe61707d03ef24",
+        "predictions_path": "evidence/phase03/phase03-seqkd-en-to-vi-v2.running/evaluation/en_to_vi/selection_validation/student_predictions.jsonl",
+        "predictions_sha256": "0e62d14b734d06c591c67f744c4295450fb448f32433d68049280e6f094238e2"
+      }
+    },
+    "vi_to_en": {
+      "baseline": {
+        "model_id": "Helsinki-NLP/opus-mt-vi-en",
+        "revision": "c8d2853e77f5fae31124d993e0b35176b1c8914e",
+        "input_prefix": "",
+        "generation_policy": "checkpoint_default",
+        "num_beams": 6,
+        "historical_prediction_source": {
+          "path": "evidence/phase02/opus_mt/vi_to_en/pretrained/selection_validation/predictions.jsonl",
+          "sha256": "4dcd8aa737effa4086ed1cccee1303d2e1942ecb4a4df4e6b0ca0407f1177010",
+          "run_path": "evidence/phase02/opus_mt/vi_to_en/pretrained/selection_validation/run.json",
+          "run_sha256": "fcc509cae5f00ba8477567d10861f22667e8560d6dacb400008bedc8ea54298f"
+        }
+      },
+      "student_reference": {
+        "run_id": "phase03-seqkd-vi-to-en-v3",
+        "checkpoint": "models/phase03/phase03-seqkd-vi-to-en-v3/final-epoch-1",
+        "metrics_path": "evidence/phase03/phase03-seqkd-vi-to-en-v3.running/evaluation/vi_to_en/selection_validation/student_metrics.json",
+        "metrics_sha256": "9a6effd48214a13a40eb109c389199858dd1b48cbc2c98e2822efc8295598bfa",
+        "predictions_path": "evidence/phase03/phase03-seqkd-vi-to-en-v3.running/evaluation/vi_to_en/selection_validation/student_predictions.jsonl",
+        "predictions_sha256": "6c7b7884e9e7857368bdd44514a9c607c65d28247497707f3605bf26053831d0"
+      }
+    }
+  },
+  "finalization": {
+    "main_core_decision": "evidence/phase03/main_core_decision.json",
+    "main_core_decision_sha256": "43b272e9fd4ab7de6a8decf189a01a9ebac3e5b9c84b47e1a6afc194d33585c1",
+    "rule": "The comparison may report Student v1 minus Student baseline only. It must not replace, re-rank, or amend the frozen Phase 03 Main-Core decision."
+  }
+}

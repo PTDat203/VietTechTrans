@@ -31,6 +31,32 @@ Các câu hỏi phụ và cách trả lời:
 
 Không giả định trước distillation sẽ tốt hơn, Student là nhỏ nhất, hoặc Student chạy được Android. Phase 3 không trả lời latency, RAM, quantization hay Android.
 
+## Student v1 giữ được bao nhiêu chất lượng so với Teacher?
+
+Trong bảng này, “giữ được chất lượng” chỉ là chênh lệch metric giữa Student v1
+và Teacher trên cùng cohort, không phải phần trăm hay lượng “kiến thức” đo trực
+tiếp. Giá trị là `Student v1 - Teacher`; số âm nghĩa là Student thấp hơn Teacher.
+
+| Chiều / cohort | Teacher chrF++ / BLEU | Student v1 chrF++ / BLEU | Chênh lệch chrF++ / BLEU |
+|---|---:|---:|---:|
+| EN→VI IT Validation, 15.252 câu | 71,18 / 57,76 | 66,55 / 51,21 | -4,63 / -6,55 |
+| EN→VI General Validation, 997 câu | 60,36 / 39,24 | 52,44 / 30,43 | -7,92 / -8,81 |
+| VI→EN IT Validation, 15.252 câu | 65,34 / 41,23 | 61,30 / 36,30 | -4,04 / -4,93 |
+| VI→EN General Validation, 997 câu | 58,45 / 29,84 | 46,20 / 17,52 | -12,25 / -12,33 |
+
+IT Validation ở mỗi chiều loại cùng một source vượt fixed input capacity của
+Student; Teacher được tính lại trên đúng 15.252 câu. Các giá trị đầy đủ, hash
+và scope nằm trong `evidence/phase03/main_core_decision.json`.
+
+## Student v1 so với baseline khởi tạo
+
+So sánh bổ sung này dùng đúng IT Validation 15.252 câu đã dùng cho Student v1.
+Baseline là checkpoint OPUS-MT gốc trước KD; Student v1 là checkpoint sau KD.
+Kết quả: EN→VI tăng 15,70 chrF++ và 19,22 BLEU; VI→EN tăng 11,79 chrF++ và
+14,97 BLEU. Evidence, phạm vi và cách kiểm tra được ghi tại
+[student_v1_baseline_comparison.md](student_v1_baseline_comparison.md). Nó không
+thay thế Main-Core, `main_core_decision.json` hoặc handoff Phase 4.
+
 ## Đã khảo sát gì và vì sao thiết kế như vậy?
 
 | Dữ kiện đã có | Hệ quả thiết kế |

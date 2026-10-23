@@ -15,6 +15,11 @@ sys.path.insert(0, str(ROOT / "src"))
 from core_mt.protocol import load_phase02_protocol
 
 
+# ## Kiểm tra báo cáo cuối của Phase 2
+# Hàm: main()
+# Bắt đầu từ: lệnh chạy file này.
+# Dùng: quyết định Core MT và protocol đã lưu.
+# Kết quả: PASS hoặc lỗi nếu số liệu, review hay đường dẫn không khớp.
 def main() -> None:
     protocol = load_phase02_protocol(ROOT / "configs" / "phase02_protocol.json")
     path = ROOT / "evidence" / "phase02" / "core_mt_decision.json"

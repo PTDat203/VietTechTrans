@@ -1,15 +1,21 @@
 # Logic code Phase 01
 
-## Thành phần
+## Bản đồ việc nghiệp vụ sang code
 
-| File | Trách nhiệm |
-|---|---|
-| `configs/data/phase01_it_en_vi.json` | Khai báo nguồn, cột EN/VI, split seed, group và tag hợp lệ |
-| `tools/build_phase01.py` | Tạo IT release, báo cáo và manifest |
-| `tools/build_general_validation.py` | Tạo General Validation từ FLORES dev |
-| `tools/build_general_test.py` | Tạo General Test từ FLORES devtest và chặn overlap với IT release |
-| `tools/validate_phase01_gate.py` | Kiểm tra artifact Phase 01 đã khóa |
-| `tools/build_phase02_input_bundle.py` | Đóng gói input được phép chuyển sang Phase 02 |
+| Việc cần giải thích | File | Hàm để mở đầu | Hàm hỗ trợ cần xem | Output |
+|---|---|---|---|---|
+| Làm sạch, gắn tag và phân loại nhóm IT | `tools/build_phase01.py` | `build()` | `source_frame()` → `tags_for()` → `classify()` | Cặp câu sạch, `technical_tags`, `primary_group`, `group_method` |
+| Audit dữ liệu thô | `tools/build_phase01.py` | `build()` | `source_frame()` → `audit_raw()` | Báo cáo tín hiệu RAW theo nguồn |
+| Chia Train/Validation/IT Test và chặn leakage | `tools/build_phase01.py` | `build()` | `split()` → `stable()` | Ba split không chồng lấp theo rule đã khóa |
+| Ghi release và manifest | `tools/build_phase01.py` | `save()` | `sha()`, `counts()` | JSONL, Parquet, report và checksum |
+| Tạo General Validation | `tools/build_general_validation.py` | `main()` | `read_lines()`, `released_pairs()` | General Validation ngoài miền |
+| Tạo General Test | `tools/build_general_test.py` | `main()` | `locked_split()`, `lines()` | General Test và leakage report |
+| Kiểm tra gate Phase 01 | `tools/validate_phase01_gate.py` | `main()` | `manifest_errors()`, `grouping_errors()` | `PHASE_01_GATE=PASS` hoặc `FAIL` |
+| Đóng gói input sang Phase 02 | `tools/build_phase02_input_bundle.py` | `main()` | `validate_phase01_gate.main()` | Bundle không có final test |
+
+Khi được hỏi “phần này code ở đâu?”, mở đúng file trong bảng, tìm `main()` hoặc
+hàm ở cột “Hàm để mở đầu”, rồi theo mũi tên các hàm hỗ trợ. Ví dụ phần phân
+loại nằm ở `build()` → `source_frame()` → `tags_for()` → `classify()`.
 
 ## Điểm bắt đầu và đường đi của dữ liệu
 

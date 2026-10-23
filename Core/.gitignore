@@ -20,6 +20,11 @@ mlruns/
 # Large generated screening artifacts; retain small JSON evidence deliberately.
 evidence/**/predictions.jsonl
 
+# Official, approved Phase 03 supplementary comparison evidence. These two
+# compact prediction files are tracked so the published Student-baseline delta
+# can be audited without relying on a local-only artifact.
+!evidence/phase03/supplementary/phase03_student_v1_baseline_comparison_v1/baseline/**/predictions.jsonl
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -1,0 +1,24 @@
+{
+  "run_id": "phase03-seqkd-vi-to-en-v3",
+  "checkpoint": "models/phase03/phase03-seqkd-vi-to-en-v3/final-epoch-1",
+  "metrics_path": "evidence/phase03/phase03-seqkd-vi-to-en-v3.running/evaluation/vi_to_en/selection_validation/student_metrics.json",
+  "metrics_sha256": "9a6effd48214a13a40eb109c389199858dd1b48cbc2c98e2822efc8295598bfa",
+  "predictions_path": "evidence/phase03/phase03-seqkd-vi-to-en-v3.running/evaluation/vi_to_en/selection_validation/student_predictions.jsonl",
+  "predictions_sha256": "6c7b7884e9e7857368bdd44514a9c607c65d28247497707f3605bf26053831d0",
+  "metrics": {
+    "rows": 15252,
+    "chrF++": 61.30055256774961,
+    "sacreBLEU": 36.29519808936608,
+    "metric_config": {
+      "chrF++": {
+        "beta": 2,
+        "word_order": 2
+      },
+      "sacreBLEU": {
+        "tokenize": "none",
+        "lowercase": false,
+        "use_effective_order": false
+      }
+    }
+  }
+}

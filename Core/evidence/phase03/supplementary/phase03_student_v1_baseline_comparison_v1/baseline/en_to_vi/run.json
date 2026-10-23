@@ -1,0 +1,27 @@
+{
+  "stage": "phase03_supplementary_baseline_reuse",
+  "direction": "en_to_vi",
+  "mode": "historical_prediction_reuse",
+  "reason": "Reuse frozen Phase 02 baseline output and filter only the row excluded by Student v1 input capacity.",
+  "protocol_sha256": "7f7f07fd13980ce211018e3cba0f92c7755434417fc4f4b4e033a9d2b637ebd2",
+  "runner_sha256": "0489a6e453c6f49652d440347df30a69765c550a24497407353f4246c78a5f4e",
+  "historical_prediction_source": {
+    "path": "evidence/phase02/opus_mt/en_to_vi/pretrained/selection_validation/predictions.jsonl",
+    "sha256": "10000f88e2a1a059790acbde8f4f4fade8baf319eddbf4290ba90a860360ad50",
+    "run_path": "evidence/phase02/opus_mt/en_to_vi/pretrained/selection_validation/run.json",
+    "run_sha256": "530e2ec2b65de134545e03cea6b6f81a56af42543b54ed31238cb39eae912633"
+  },
+  "baseline": {
+    "model_id": "Helsinki-NLP/opus-mt-en-vi",
+    "revision": "989c9fb9ec63987901022baf0182dcec3e149be6",
+    "input_prefix": ">>vie<<",
+    "generation_policy": "checkpoint_default",
+    "num_beams": 4
+  },
+  "cohort": {
+    "direction": "en_to_vi",
+    "rows": 15252,
+    "row_ids_sha256": "147e2d1809e18007fee4a191cf5fea52f32155d37960eb54ede3405d02ac1ef7",
+    "parallel_pairs_sha256": "b848b849cb1679b8143cfdf968645f26da4a11766e8314245308e0c3bdaf46a2"
+  }
+}

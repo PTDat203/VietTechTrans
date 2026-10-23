@@ -15,6 +15,11 @@ from core_mt.data import load_general_validation, load_it_role
 from core_mt.protocol import load_phase02_protocol
 
 
+# ## Kiểm tra đầu vào trước khi chạy Phase 2
+# Hàm: main()
+# Bắt đầu từ: lệnh chạy file này.
+# Gọi: cổng kiểm tra Phase 1 rồi đọc protocol của Phase 2.
+# Kết quả: dừng ngay nếu dữ liệu bàn giao hoặc protocol không hợp lệ.
 def main() -> None:
     from validate_phase01_gate import main as phase01_gate
     phase01_gate()

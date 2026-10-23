@@ -1,0 +1,18 @@
+{
+  "dataset_role": "selection_validation",
+  "rows": 15252,
+  "chrF++": 50.848964827942176,
+  "sacreBLEU": 31.990693739827165,
+  "sacrebleu_version": "2.6.0",
+  "metric_config": {
+    "chrF++": {
+      "beta": 2,
+      "word_order": 2
+    },
+    "sacreBLEU": {
+      "tokenize": "none",
+      "lowercase": false,
+      "use_effective_order": false
+    }
+  }
+}

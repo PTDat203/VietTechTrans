@@ -1,0 +1,16 @@
+{
+  "rows": 15252,
+  "predictions_sha256": "983d48cf69be72799db7031be3866fa3ed6cba7c883268776b29791dbee107ce",
+  "cohort": {
+    "direction": "vi_to_en",
+    "rows": 15252,
+    "row_ids_sha256": "147e2d1809e18007fee4a191cf5fea52f32155d37960eb54ede3405d02ac1ef7",
+    "parallel_pairs_sha256": "426a92b92c34d97075f25343ac095a300b525687cd71633f0774e80e3401c0c6"
+  },
+  "historical_prediction_source": {
+    "path": "evidence/phase02/opus_mt/vi_to_en/pretrained/selection_validation/predictions.jsonl",
+    "sha256": "4dcd8aa737effa4086ed1cccee1303d2e1942ecb4a4df4e6b0ca0407f1177010",
+    "run_path": "evidence/phase02/opus_mt/vi_to_en/pretrained/selection_validation/run.json",
+    "run_sha256": "fcc509cae5f00ba8477567d10861f22667e8560d6dacb400008bedc8ea54298f"
+  }
+}

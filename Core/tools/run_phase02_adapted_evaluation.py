@@ -36,6 +36,11 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
+# ## Đánh giá Teacher sau fine-tune
+# Hàm: main()
+# Bắt đầu từ: lệnh chạy file này với checkpoint adaptation đã chỉ định.
+# Dùng: dữ liệu validation đã khóa.
+# Kết quả: prediction và metric để đối chiếu với Teacher gốc.
 def main() -> int:
     parser = argparse.ArgumentParser(description="Evaluate one adapted EnViT5 checkpoint on sealed validation data.")
     parser.add_argument("--model", choices=("envit5",), required=True)

@@ -55,17 +55,21 @@ def pair_hash(en: str, vi: str) -> str:
     return hashlib.sha256(json.dumps([en, vi], ensure_ascii=False, separators=(",", ":")).encode()).hexdigest()
 
 
+# ## Gắn nhãn kỹ thuật
+# Hàm: tags_for()
+# Được gọi từ: source_frame() → build().
+# Input: một cặp câu EN–VI đã làm sạch.
+# Output: technical tags dùng để mô tả nội dung, không dùng để loại cặp câu.
 def tags_for(en: str, vi: str) -> list[str]:
     text = f"{en}\n{vi}"
     return [name for name, pattern in PATTERNS.items() if pattern.search(text)]
 
 
 def classify(en: str, vi: str, tags: list[str]) -> tuple[str, str]:
-    """Return one primary group and how the code selected it.
+    """Gán một nhóm chính và ghi cách rule đã chọn nhóm đó.
 
-    The default group is used when no rule matches; it is never called a manual
-    semantic label. Technical tags can support group assignment, but
-    never decide whether a pair is kept or rejected.
+    Được gọi từ ``source_frame()``. Nhóm mặc định không phải nhãn ngữ nghĩa
+    thủ công; technical tags chỉ hỗ trợ phân nhóm, không quyết định loại cặp.
     """
     text = f"{en} {vi}"
     if "has_command" in tags:
@@ -84,7 +88,10 @@ def classify(en: str, vi: str, tags: list[str]) -> tuple[str, str]:
 
 
 def audit_raw(frame: pd.DataFrame) -> dict[str, int]:
-    """Count risks in RAW. Audit records signals; it does not alter RAW."""
+    """Đếm tín hiệu rủi ro trong RAW; chỉ báo cáo, không sửa RAW.
+
+    Được gọi từ ``source_frame()`` trước khi áp dụng rule làm sạch.
+    """
     en, vi = frame["en_raw"], frame["vi_raw"]
     en_text, vi_text = en.map(lambda value: isinstance(value, str)), vi.map(lambda value: isinstance(value, str))
     text_pair = en_text & vi_text
@@ -107,6 +114,10 @@ def audit_raw(frame: pd.DataFrame) -> dict[str, int]:
 
 
 def source_frame(source: str, spec: dict) -> tuple[pd.DataFrame, dict]:
+    """Đọc một nguồn, làm sạch, gắn tag/nhóm và trả về data cùng metadata.
+
+    Được gọi theo từng nguồn từ ``build()``.
+    """
     folder = ROOT / "data/raw" / source
     path = folder / f"{source}_raw.parquet"
     raw = pd.read_parquet(path)
@@ -136,6 +147,10 @@ def stable(value: str) -> int:
 
 
 def split(frame: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Loại duplicate toàn cục và chia train/validation/IT Test theo seed cố định.
+
+    Được gọi từ ``build()`` sau khi đã gộp các nguồn đã làm sạch.
+    """
     x = frame.copy()
     x["en_match_key"], x["vi_match_key"] = x.en_clean.map(match_key), x.vi_clean.map(match_key)
     x["global_pair_key"] = x.en_match_key + "\u241f" + x.vi_match_key
@@ -159,6 +174,11 @@ def counts(frame: pd.DataFrame, fields: list[str]) -> list[dict]:
 
 
 def build(release_name: str) -> dict:
+    """Tạo nội dung release trong bộ nhớ trước khi ghi file.
+
+    Điểm bắt đầu nghiệp vụ từ ``__main__``; lần lượt gọi ``source_frame()`` và
+    ``split()`` rồi kiểm tra leakage giữa các split.
+    """
     frames, source_meta = [], []
     for source, spec in CONFIG["sources"].items():
         frame, meta = source_frame(source, spec); frames.append(frame); source_meta.append(meta)
@@ -175,6 +195,10 @@ def build(release_name: str) -> dict:
 
 
 def save(result: dict, release_name: str) -> None:
+    """Ghi release, report và manifest ở tên mới; không ghi đè release cũ.
+
+    Được gọi sau ``build()`` từ luồng ``__main__``.
+    """
     out = ROOT / "data/processed" / release_name
     report_dir = ROOT / "data/final_report" / release_name
     if out.exists() or report_dir.exists():

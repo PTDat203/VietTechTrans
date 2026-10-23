@@ -20,7 +20,7 @@ Không sửa `Core/`. Đề xuất cho Core ghi trong [docs/design_check.md](doc
 | M-pre | `artifacts.lock.json`, `fetch_artifacts.py`, fixture parity từ Core, khung tài liệu | xong (2026-09-30) |
 | M0 | Cài công cụ, khung Gradle + Compose, manifest offline | xong (2026-10-01) |
 | M1 | Interface dịch (`mt/`) và test parity | xong (2026-10-01): 19 test, 544 ca parity với Core |
-| M2 | Nối runtime sherpa-onnx, `check_apk.py` | runtime xong (2026-10-01); còn `check_apk.py` |
+| M2 | Nối runtime sherpa-onnx, `check_apk.py` | xong: runtime 2026-10-01; `check_apk.py` 2026-10-23 (kiểm chính APK đã build: gói MT q4r trùng evidence, model, ABI, quyền; `APP_APK_CHECK=PASS` trên APK arm64-v8a và x86_64; bỏ model khử nhiễu GTCRN không dùng, DR-07 §17) |
 | M3 | TTS và đường ống evidence | TTS xong (int8, phát song song); còn bộ đo evidence |
 | M4 | STT trên file WAV | STT mic xong (VAD, chữ tạm thời); còn bộ đo WAV/loopback |
 | M5 | Mic thật, màn Dịch, bộ dịch | xong (2026-10-02): màn Dịch có nút ⇄ |
@@ -84,6 +84,15 @@ gói dịch được dựng vào `app/src/main/assets/mt/` bằng `tools/mt/pack
    `-Pvtt.abis` phải đặt trong dấu nháy khi dùng PowerShell. APK ra ở
    `app/build/outputs/apk/release/app-<abi>-release.apk` (arm64-v8a cho điện thoại,
    khoảng 300 MB; x86_64 cho máy ảo). Bản release ký bằng khoá debug để cài tay.
+   Kiểm chính APK vừa build (chỉ đọc; `assets/mt` và `assets/models` không có trong git
+   nên mỗi máy có thể đóng gói model khác nhau):
+
+   ```bat
+   ..\.venv\Scripts\python.exe tools\check_apk.py
+   ```
+
+   Kết quả đúng: `APP_APK_CHECK=PASS`. Mặc định kiểm `app-arm64-v8a-release.apk`; truyền
+   đường dẫn để kiểm APK khác.
 4. Cài lên điện thoại: chép APK sang máy rồi mở để cài (cho phép "Cài ứng dụng
    không rõ nguồn gốc"), hoặc `adb install -r <file.apk>` khi đã bật Gỡ lỗi USB.
 

@@ -37,6 +37,14 @@ object SpeechParams {
     const val VAD_MAX_SPEECH_S = 20f // Kotlin default 5 s splits sentences
     const val STT_THREADS = 2
 
+    /**
+     * Moonshine tiny (sherpa-onnx 1.13.8) returns an empty text for 9.3 s of audio or more (ONNX Runtime broadcast
+     * error in its decoder, measured 2026-10-23), so a long turn ended as "Không nghe thấy giọng nói". Longer audio
+     * is decoded in pieces of at most this length; zipformer-vi decodes 60 s in one piece.
+     */
+    const val MOONSHINE_MAX_AUDIO_S = 8f
+    const val STT_CUT_SEARCH_S = 2f
+
     /** TTS speed decides whether speech plays smoothly: use up to 4 cores (half of them). */
     val TTS_THREADS: Int = (Runtime.getRuntime().availableProcessors() / 2).coerceIn(2, 4)
 }
@@ -101,24 +109,39 @@ class SttEngine internal constructor(
     private val recognizer: OfflineRecognizer,
     private val dispatcher: CoroutineDispatcher,
     val loadMs: Long,
+    /** Longest audio the model decodes in one call; null = no limit. */
+    private val maxAudioS: Float? = null,
 ) {
     val lease = NativeLease { recognizer.release() }
 
+    /** Audio longer than [maxAudioS] is cut at quiet points ([splitForDecode]) and the pieces' texts joined. */
     suspend fun decode(samples: FloatArray, sampleRate: Int = SpeechParams.SAMPLE_RATE): String {
         if (!lease.acquire()) throw EngineClosedException()
         try {
             return withContext(dispatcher) {
-                val stream = recognizer.createStream()
-                try {
-                    stream.acceptWaveform(samples, sampleRate)
-                    recognizer.decode(stream)
-                    recognizer.getResult(stream).text.trim()
-                } finally {
-                    stream.release()
+                val max = maxAudioS?.let { (it * sampleRate).toInt() } ?: samples.size
+                val pieces = splitForDecode(samples, max, (SpeechParams.STT_CUT_SEARCH_S * sampleRate).toInt())
+                if (pieces.size == 1) {
+                    decodeOnce(samples, sampleRate)
+                } else {
+                    pieces.map { decodeOnce(samples.copyOfRange(it.first, it.last + 1), sampleRate) }
+                        .filter { it.isNotEmpty() }
+                        .joinToString(" ")
                 }
             }
         } finally {
             lease.releaseUse()
+        }
+    }
+
+    private fun decodeOnce(samples: FloatArray, sampleRate: Int): String {
+        val stream = recognizer.createStream()
+        try {
+            stream.acceptWaveform(samples, sampleRate)
+            recognizer.decode(stream)
+            return recognizer.getResult(stream).text.trim()
+        } finally {
+            stream.release()
         }
     }
 }
@@ -299,6 +322,7 @@ class SpeechEngines(private val context: Context) {
             recognizer = recognizer,
             dispatcher = sttThreads.getValue(lang),
             loadMs = SystemClock.elapsedRealtime() - started,
+            maxAudioS = SpeechParams.MOONSHINE_MAX_AUDIO_S.takeIf { role.text("kind") == "offline_moonshine_v2" },
         )
     }
 

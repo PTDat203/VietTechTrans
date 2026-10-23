@@ -276,33 +276,6 @@
           }
         ]
       }
-    },
-    {
-      "id": "gtcrn_simple",
-      "role": "denoiser",
-      "license": "MIT (Xiaobin-Rong/gtcrn). Bản gtcrn_simple do k2-fsa xuất sang ONNX, 16 kHz. Chỉ dùng cho thực nghiệm TN-02.",
-      "source": "https://github.com/Xiaobin-Rong/gtcrn",
-      "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/speech-enhancement-models/gtcrn_simple.onnx",
-      "sherpa": {
-        "kind": "offline_denoiser_gtcrn"
-      },
-      "archive": {
-        "bytes": 535638,
-        "sha256": "e77603ac0c23dac3227dd2d7135b3a585cbee2679048aecfa886657d3ae1b534"
-      },
-      "install": {
-        "kind": "copy",
-        "dest": "app/src/main/assets/models/denoiser",
-        "files": [
-          {
-            "from": "gtcrn_simple.onnx",
-            "to": "gtcrn_simple.onnx",
-            "key": "model",
-            "bytes": 535638,
-            "sha256": "e77603ac0c23dac3227dd2d7135b3a585cbee2679048aecfa886657d3ae1b534"
-          }
-        ]
-      }
     }
   ]
 }

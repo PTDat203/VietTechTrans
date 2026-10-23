@@ -46,11 +46,26 @@ gradlew.bat :app:connectedDebugAndroidTest
 ..\.venv\Scripts\python.exe -m unittest discover -s tools\tests -v
 ```
 
+Kết quả ngày 2026-10-23: 42 test qua, 1 bỏ qua (file IT Train cũ không có trên máy này). Trong đó
+`test_check_apk.py` có 19 test: mỗi lỗi `check_apk.py` phải bắt (quyền INTERNET, file MT bị đổi hay thiếu,
+gói q8 cũ, graph không trùng evidence q4r, decision Core đã đổi, model giọng nói từ lock khác, role thừa,
+file model lạc chỗ, ABI 32-bit, ELF sai máy hoặc căn 4 KB, debuggable) được dựng thành một APK giả nhỏ.
+Một trong 19 test đọc `AndroidManifest.xml` của APK release thật (bỏ qua khi chưa build).
+
+Sau khi build, kiểm chính APK (chỉ đọc, không sửa APK):
+
+```bat
+..\.venv\Scripts\python.exe tools\check_apk.py
+..\.venv\Scripts\python.exe tools\check_apk.py app\build\outputs\apk\release\app-x86_64-release.apk
+```
+
+Kết quả đúng: `APP_APK_CHECK=PASS`. Thêm `--record` để ghi `evidence/builds/<tên APK>_<sha12>.json`.
+
 | Tool | Marker | Mốc |
 |---|---|---|
 | `fetch_artifacts.py` | `APP_ARTIFACTS` | M-pre |
 | `build_text_fixtures.py` | `APP_TEXT_FIXTURES` | M-pre |
-| `check_apk.py` | `APP_OFFLINE_APK` | M2 |
+| `check_apk.py` | `APP_APK_CHECK` | M2, viết 2026-10-23 (DR-07 §17) |
 | `validate_app_evidence.py` | `APP_EVIDENCE`, `APP_OFFLINE_E2E` | M3 |
 | `mix_noise.py` | | M8 |
 
@@ -60,9 +75,10 @@ gradlew.bat :app:connectedDebugAndroidTest
   `build_text_fixtures.py` ra `APP_TEXT_FIXTURES=PASS` (fixture parity sinh từ Core).
 - [x] **M0:** build được và cài lên AVD (từ 2026-10-07: `assembleRelease`, một bản).
 - [ ] **M1:** test parity pass toàn bộ ca.
-- [ ] **M2:** bản release nạp đủ 5 engine trên AVD, không lỗi JNI hay R8;
-  `check_apk.py` ra `APP_OFFLINE_APK=PASS`. Hiện kiểm quyền bằng
-  `aapt2 dump permissions`: chỉ `RECORD_AUDIO`.
+- [x] **M2:** bản release nạp đủ 5 engine trên AVD, không lỗi JNI hay R8;
+  `check_apk.py` ra `APP_APK_CHECK=PASS` trên cả APK arm64-v8a và x86_64 (2026-10-23).
+  Quyền hệ thống duy nhất là `RECORD_AUDIO`, cộng quyền nội bộ
+  `DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION` của AndroidX (khớp `aapt2 dump permissions`).
 - [ ] **M3:** giọng VI và EN đọc được, dừng đọc tức thì; run kéo về ra
   `APP_EVIDENCE=PASS`.
 - [ ] **M4:** loopback cả hai ngôn ngữ ra text và có CER/WER; `test_wavs` decode

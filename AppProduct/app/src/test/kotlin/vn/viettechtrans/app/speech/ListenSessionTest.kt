@@ -112,6 +112,28 @@ class ListenSessionTest {
     }
 
     @Test
+    fun longAudioIsCutAtQuietPointsWithinTheLimit() {
+        val sr = 16_000
+        // 20 s of "speech" with short gaps at 7.0 s and 14.5 s.
+        val audio = FloatArray(20 * sr) { 0.3f }
+        for (gap in listOf(7.0, 14.5)) for (i in (gap * sr).toInt() until ((gap + 0.1) * sr).toInt()) audio[i] = 0f
+        val pieces = splitForDecode(audio, maxSamples = 8 * sr, searchSamples = 2 * sr)
+        assertEquals(3, pieces.size)
+        assertEquals(0, pieces.first().first)
+        assertEquals(audio.size - 1, pieces.last().last)
+        pieces.zipWithNext { a, b -> assertEquals(a.last + 1, b.first) }
+        assertTrue(pieces.all { it.count() <= 8 * sr })
+        assertEquals(7.05, pieces[0].last / sr.toDouble(), 0.05)
+        assertEquals(14.55, pieces[1].last / sr.toDouble(), 0.05)
+    }
+
+    @Test
+    fun shortAudioIsOnePiece() {
+        val audio = FloatArray(5 * 16_000)
+        assertEquals(listOf(audio.indices), splitForDecode(audio, maxSamples = 8 * 16_000, searchSamples = 2 * 16_000))
+    }
+
+    @Test
     fun finishFlushesOngoingSpeech() {
         val speech = (frames(0.5) until frames(10.0)).toSet()
         val s = ListenSession(ScriptedVad(speech), ListenConfig())

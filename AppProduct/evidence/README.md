@@ -7,7 +7,9 @@
 
 ```text
 evidence/
-  builds/<tên APK>.json     do tools/check_apk.py ghi: kích thước, SHA-256, kết quả kiểm APK
+  builds/<tên APK>_<12 ký tự đầu SHA-256>.json
+                            do tools/check_apk.py --record ghi khi APP_APK_CHECK=PASS: kích thước,
+                            SHA-256, gói MT, model giọng nói, quyền, ABI
   runs/<run-id>/
     run.json                app ghi trên máy
     items.jsonl             app ghi trên máy

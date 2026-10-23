@@ -125,6 +125,35 @@ class ListenSession(private val vad: VoiceDetector, private val cfg: ListenConfi
     }
 }
 
+/**
+ * Pieces of at most [maxSamples] covering [audio] in order, for a recognizer with a length limit
+ * ([SpeechParams.MOONSHINE_MAX_AUDIO_S]). Each cut is in the middle of the quietest [frame] among the last
+ * [searchSamples] of the piece, so it falls between words where the speaker left a gap.
+ */
+fun splitForDecode(audio: FloatArray, maxSamples: Int, searchSamples: Int, frame: Int = 512): List<IntRange> {
+    val pieces = mutableListOf<IntRange>()
+    var start = 0
+    while (audio.size - start > maxSamples) {
+        val end = start + maxSamples
+        var cut = end
+        var quietest = Double.MAX_VALUE
+        var f = max(start + 1, end - searchSamples)
+        while (f + frame <= end) {
+            var energy = 0.0
+            for (i in f until f + frame) energy += audio[i] * audio[i]
+            if (energy < quietest) {
+                quietest = energy
+                cut = f + frame / 2
+            }
+            f += frame / 2
+        }
+        pieces += start until cut
+        start = cut
+    }
+    pieces += start until audio.size
+    return pieces
+}
+
 /** Silero VAD of sherpa-onnx behind [VoiceDetector]. */
 class SileroVoiceDetector(private val vad: com.k2fsa.sherpa.onnx.Vad) : VoiceDetector {
     override fun accept(frame: FloatArray) = vad.acceptWaveform(frame)

@@ -25,7 +25,6 @@ giọng khác (cũng cần kiểm license).
 | `sherpa-onnx-moonshine-tiny-en-quantized-2026-02-27` | STT tiếng Anh | MIT | Giữ thông báo bản quyền |
 | `vits-piper-vi_VN-vais1000-medium` (fp32 của k2-fsa, trọng số nén int8 bằng `tools/tts/piper_weight_only.py`, DR-04) | TTS tiếng Việt | Trọng số: MIT (repo piper-voices). Dữ liệu VAIS-1000: CC BY 4.0. Fine-tune từ giọng lessac, dữ liệu Blizzard 2013 chỉ cho nghiên cứu, cấm dùng thương mại | Ghi công VAIS-1000; chỉ dùng phi thương mại (đồ án) |
 | `vits-piper-en_US-ljspeech-medium` (fp32 của k2-fsa, trọng số nén int8 bằng `tools/tts/piper_weight_only.py`, DR-04) | TTS tiếng Anh | Trọng số: MIT (repo piper-voices). Dữ liệu LJ Speech: public domain | Ghi nguồn |
-| GTCRN (`gtcrn_simple.onnx`) | Khử nhiễu cho TN-02; có trong assets (0,5 MB) nhưng app hiện không dùng | MIT | Giữ thông báo bản quyền |
 | ONNX Runtime Android 1.30.0 (`com.microsoft.onnxruntime:onnxruntime-android`) | Chạy gói MT | MIT | Giữ thông báo bản quyền |
 | Main-Core MT: Student MarianMT EN→VI, VI→EN (`assets/mt/`) | Dịch | Apache-2.0 (khởi tạo từ `Helsinki-NLP/opus-mt-en-vi`, `opus-mt-vi-en`) + giới hạn sử dụng OpenRAIL | Chưng cất từ đầu ra của `VietAI/envit5-translation` (OpenRAIL): OpenRAIL coi đây là "Derivative", nên giới hạn sử dụng đi kèm; ghi trong `assets/mt/LICENSE_NOTES.md` |
 | AndroidX, Jetpack Compose, Navigation | Toàn app | Apache-2.0 | Giữ file license |
@@ -35,6 +34,10 @@ giọng khác (cũng cần kiểm license).
 
 Chỉ dùng khi test trên PC, không có trong APK: JUnit 4 (EPL-1.0), Robolectric
 (MIT), AndroidX Test và Compose UI Test (Apache-2.0).
+
+GTCRN (`gtcrn_simple.onnx`, MIT, khử nhiễu cho TN-02) đã bỏ khỏi APK ngày 2026-10-23
+vì app không nạp (`tools/check_apk.py` báo là model thừa). Khi làm TN-02 thì thêm lại
+vào `artifacts.lock.json` (<https://github.com/Xiaobin-Rong/gtcrn>).
 
 ## Nguồn
 
@@ -46,7 +49,6 @@ Chỉ dùng khi test trên PC, không có trong APK: JUnit 4 (EPL-1.0), Robolect
 - Giọng vais1000: <https://huggingface.co/rhasspy/piper-voices/raw/main/vi/vi_VN/vais1000/medium/MODEL_CARD>
 - Dữ liệu lessac (Blizzard 2013): <https://www.cstr.ed.ac.uk/projects/blizzard/2013/lessac_blizzard2013/license.html>
 - Giọng ljspeech: <https://huggingface.co/rhasspy/piper-voices/raw/main/en/en_US/ljspeech/medium/MODEL_CARD>
-- GTCRN: <https://github.com/Xiaobin-Rong/gtcrn>
 - OPUS-MT: <https://huggingface.co/Helsinki-NLP/opus-mt-en-vi>, <https://huggingface.co/Helsinki-NLP/opus-mt-vi-en>
 - EnViT5: <https://huggingface.co/VietAI/envit5-translation>
 - ONNX Runtime: <https://github.com/microsoft/onnxruntime>

@@ -38,6 +38,7 @@ flowchart LR
 
 | Bước | Class | Việc |
 |---|---|---|
+| STT | `SttEngine.decode`, `splitForDecode` | Moonshine tiny (sherpa-onnx 1.13.8) trả chuỗi rỗng khi đoạn âm thanh ≥ 9,3 s (lỗi broadcast của ORT trong decoder, đo 2026-10-23), nên câu dài từng bị báo "Không nghe thấy giọng nói". Âm thanh dài hơn 8 s được cắt tại khung 32 ms yên nhất trong 2 s cuối mỗi đoạn rồi nhận dạng từng đoạn; zipformer-vi nhận dạng 60 s một lần, không cắt |
 | Sau STT | `SttPostProcessor` | NFC, gộp khoảng trắng; zipformer-vi xuất chữ HOA nên chuyển thường theo locale vi rồi viết hoa chữ đầu (Moonshine giữ nguyên); bỏ từ đệm, gộp từ lặp ≥ 3 lần (bật/tắt, TN-03); bỏ kết quả rỗng hoặc chỉ có từ đệm |
 | Trước MT | `MtInputNormalizer` (`phase01_nfc_whitespace_v1`) | Luôn chạy, không tắt được; parity với `norm()` của Core ([mt_package_v2.md](contracts/mt_package_v2.md)) |
 | MT | `MarianTokenizer` (SentencePiece unigram Kotlin), `MarianEngine`, `BeamSearch` | `>>vie<<` cho EN→VI; beam 4 (EN→VI) / 6 (VI→EN) như `generation_config`; câu > 512 token tách theo câu, không cắt |

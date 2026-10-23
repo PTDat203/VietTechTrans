@@ -84,7 +84,6 @@ UTF-8, LF, thụt lề 2 dấu cách, kết thúc bằng ký tự xuống dòng,
 | `auto_speak`, `partial_text` | (chốt ở M5) | |
 | `disfluency_cleanup` | (chốt ở M4) | TN-03 |
 | `tts_lexicon` | (chốt ở M3) | TN-07 |
-| `denoiser_gtcrn` | `false` | Chỉ bật cho TN-02 |
 
 ## 5. `items.jsonl`
 
@@ -165,7 +164,7 @@ Chạy từ màn Thực nghiệm hoặc bằng
 | Marker | Tool | Ý nghĩa |
 |---|---|---|
 | `APP_EVIDENCE=PASS` / `FAIL <lý do>` | `tools/validate_app_evidence.py` | Schema, UTC, LF đúng; `apk_sha256` khớp `evidence/builds/*.json`; bản offline không xin INTERNET. Run của bản `dev` không bao giờ là evidence |
-| `APP_OFFLINE_APK=PASS` / `FAIL <lý do>` | `tools/check_apk.py` | Không có INTERNET/ACCESS_NETWORK_STATE; không có class ML Kit; ABI ⊆ {arm64-v8a, x86_64}; căn trang 16 KB; hash asset khớp lock. Chạy trên APK dev phải ra FAIL |
+| `APP_APK_CHECK=PASS` / `FAIL <lý do>` | `tools/check_apk.py` | APK đã build mang đúng gói MT q4r: `package_id`, quantization, kích thước và SHA-256 từng file khớp `assets/mt/manifest.json`, hai `model.onnx` trùng graph trong `evidence/phase04/mt_export_q4r/run.json`, checkpoint khớp decision của Core; đủ tokenizer, vocab, golden, LICENSE_NOTES. Model giọng nói khớp `assets/models/manifest.json` sinh từ `artifacts.lock.json` của repo. Không có file model thừa hay gói MT cũ. Chỉ ABI 64-bit, có ABI cần dùng (`arm64-v8a` cho điện thoại), căn trang 16 KB. Chỉ xin `RECORD_AUDIO` (không INTERNET/ACCESS_NETWORK_STATE), không debuggable. `--record` ghi `evidence/builds/` khi PASS (DR-07 §17) |
 | `APP_OFFLINE_E2E=WAITING reason=no_core_mt,no_real_device` | `tools/validate_app_evidence.py` | Chỉ PASS khi có run của bản offline release + Core MT + Airplane mode + máy thật + cả hai chiều |
 
 Run có `is_emulator = true` chỉ kiểm tra chức năng: `summary.json` ghi rõ, và số

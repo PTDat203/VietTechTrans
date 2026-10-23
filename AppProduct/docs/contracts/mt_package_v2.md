@@ -158,6 +158,7 @@ URL, email, code hay literal kỹ thuật; một chuỗi không có chỗ tách 
 | Kotlin + ONNX Runtime desktop = golden từng token | `MarianGoldenTest` |
 | Logic beam search | `BeamSearchTest` |
 | Gói hợp lệ, decoder hỗ trợ đúng cấu hình | `MtPackageManifestTest`, `MtPackageValidator` lúc mở app |
+| APK đã build mang đúng gói: mọi file đúng kích thước và SHA-256, `model.onnx` trùng graph đã chấm, không có file thừa | `tools/check_apk.py` → `APP_APK_CHECK=PASS` (DR-07 §17) |
 
 ## 10. Dựng lại gói
 

@@ -634,3 +634,47 @@ iTunes.com/docs" (checkpoint: "…at iTunes Premium.com/docs"). "không" → "no
     sau đó ở `1f1d55f`. Evidence chưa ghi cờ "có thay đổi chưa commit"; nên chạy lại bộ case trên một bản build đã commit.
   - Mốc `run` 20261022T163440Z lấy theo đồng hồ của máy ảo, chậm khoảng 13 giờ so với PC. Lần chạy thật diễn ra khoảng
     12:45 ngày 23/10 (giờ Việt Nam), ngay sau khi cài APK build lúc 12:36.
+
+## 17. Bổ sung 2026-10-23: kiểm APK sau build (`tools/check_apk.py`)
+
+**Vì sao cần.** `package_mt.py` kiểm phần trước build: hash checkpoint → graph ONNX q4r → manifest → SHA-256 từng
+file. Nhưng `assets/mt/` và `assets/models/` không có trong git, nên mỗi máy đóng gói đúng những gì máy đó đang có.
+Code đúng và test JVM xanh chưa chắc APK cuối mang đúng model. APK thiếu `assets/mt/` vẫn build được; khi đó app chỉ
+hiện câu gốc. `check_apk.py` là bước nối evidence q4r trên PC với APK được cài lên điện thoại: mở chính APK đã build
+như một file ZIP, chỉ đọc, không sửa gì.
+
+| Câu hỏi | Cách kiểm |
+|---|---|
+| APK có đúng gói q4r không? | `assets/mt/manifest.json`: `package_id` = `vtt-main-core-phase03-q4r`, schema 2.x, `quantization` trùng `evidence/phase04/mt_export_q4r/run.json`, `runtime.abis` có ABI của APK |
+| `model.onnx` có đúng SHA-256 không? | Mọi file của `files[]` có trong APK, đúng kích thước và SHA-256 (giải nén từng file). SHA-256 hai `model.onnx` trùng graph đã chấm chrF++ trong evidence q4r; khối `quality` trỏ đúng các file summary của evidence đó; checkpoint và `core_refs` khớp `Core/evidence/phase03/main_core_decision.json` |
+| Đủ tokenizer, vocab, golden, LICENSE_NOTES không? | Mỗi chiều có `model.onnx`, `source.spm`, `vocab.txt` (số dòng = `vocab_size`), `golden.jsonl` (JSON hợp lệ); gói có `LICENSE_NOTES.md` |
+| Có ABI arm64-v8a không? | Có `lib/arm64-v8a/` với `libonnxruntime.so`, `libonnxruntime4j_jni.so`, `libsherpa-onnx-jni.so`; ELF 64-bit đúng máy AArch64, segment căn 16 KB, offset trong ZIP căn 16 KB; không có ABI 32-bit. ABI lấy từ tên file (`app-x86_64-release.apk` → x86_64) hoặc `--abi` |
+| Có vô tình có quyền INTERNET không? | Đọc `AndroidManifest.xml` dạng nhị phân (không cần SDK): chỉ `RECORD_AUDIO` và quyền nội bộ `DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION` của AndroidX; không `debuggable` |
+| Còn file model thừa hay gói MT cũ không? | Không có file nào trong `assets/mt/` hay `assets/models/` ngoài danh sách của manifest; mọi role của `models/manifest.json` đều được app nạp (`ModelManifest.kt`); không có file model (`.onnx`, `.ort`, `.spm`…) ở chỗ khác |
+| Model giọng nói có đúng không? | `assets/models/manifest.json` sinh từ đúng `artifacts.lock.json` của repo; file và `espeak-ng-data` (mã băm thư mục như `fetch_artifacts.py`) khớp |
+
+Kết quả in theo nhóm (`[mt]`, `[models]`, `[other models]`, `[native]`, `[manifest]`), mỗi lỗi một dòng, rồi
+`APP_APK_CHECK=PASS` hoặc `APP_APK_CHECK=FAIL <số lỗi> problem(s); first: <lỗi đầu>` (mã thoát 1). `--record` ghi
+`evidence/builds/<tên APK>_<12 ký tự SHA-256>.json` khi PASS.
+
+**Kết quả.**
+
+- Lần chạy đầu, trên APK build lúc 12:36, báo đúng một lỗi: role `denoiser` (`gtcrn_simple.onnx`, 0,54 MB) có trong
+  APK nhưng app không nạp. TN-02 cần model này, nhưng màn Thực nghiệm đã bỏ ở DR-09. Đã bỏ khỏi `artifacts.lock.json`
+  và `assets/models/`, rồi chạy lại `fetch_artifacts.py` (`APP_ARTIFACTS=PASS`, 260 file, 116,8 MB).
+- Build lại lúc 16:57: `APP_APK_CHECK=PASS` cho `app-arm64-v8a-release.apk` (295 432 225 byte) và
+  `app-x86_64-release.apk` (304 979 725 byte). Gói MT trong hai APK là `vtt-main-core-phase03-q4r` 1.0.0, 9 file,
+  167,7 MB, đúng graph của evidence q4r.
+- Bản build này từ cây làm việc chưa commit, nên chưa ghi `evidence/builds/`. Sau khi commit thì build lại và chạy
+  `check_apk.py --record`.
+- Test: `tools/tests/test_check_apk.py`, 19 test. Mỗi lỗi script phải bắt được dựng thành một APK giả nhỏ; một
+  test đọc `AndroidManifest.xml` của APK release thật (bỏ qua khi chưa build).
+
+**Không thay thế các kiểm tra khác.** Bốn kiểm tra bổ sung cho nhau:
+
+| Kiểm tra | Trả lời câu gì |
+|---|---|
+| `check_apk.py` | APK có đúng artifact không |
+| Test JVM | Code Kotlin và rule có đúng không |
+| DeviceCheck (Cài đặt → Kiểm tra máy này) | Điện thoại chạy thực tế ra sao |
+| Đánh giá trên cohort | q4r + rule chênh Student v1 bao nhiêu |

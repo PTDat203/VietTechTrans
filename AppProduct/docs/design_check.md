@@ -81,12 +81,12 @@ Hash chính xác của từng file: `artifacts.lock.json`.
 | TTS VI | `vits-piper-vi_VN-vais1000-medium-int8` | 17.7 MB | Dữ liệu CC BY 4.0; fine-tune từ giọng lessac (dữ liệu chỉ cho nghiên cứu) → chỉ dùng cho đồ án phi thương mại |
 | TTS EN | `vits-piper-en_US-ljspeech-medium-int8` | 18.5 MB | Dữ liệu public domain |
 | espeak-ng-data | chỉ giữ từ điển vi và en | 0.95 MB (bản đủ 18 MB) | GPL-3.0 |
-| Khử nhiễu (chỉ TN-02) | `gtcrn_simple.onnx` | 0.54 MB | MIT |
+| Khử nhiễu (chỉ TN-02) | `gtcrn_simple.onnx`: bỏ khỏi APK ngày 2026-10-23 vì app không nạp | 0.54 MB | MIT |
 | MT | Main-Core Phase 03 (Student MarianMT), `assets/mt/` theo `mt_package_v2` | 2 × 82,5 MB (4-bit, lớp đầu ra 4+4 bit; 8-bit 91 MB đến 2026-10-08) | Apache-2.0 (OPUS-MT) + giới hạn sử dụng OpenRAIL (chưng cất từ EnViT5) |
 
 Ngày 2026-10-01 (người dùng yêu cầu app nhẹ hơn): đổi STT VI sang bản 30M, TTS sang int8, bỏ `noCompress` → asset 118.2 MB, APK release arm64: offline 104.2 MB, dev 120.4 MB (trước: 272.9 / 290.4 MB bản debug). Đo ở M-pre: asset 250.2 MB (260 file); thư viện native trong AAR (chưa nén)
 24.2 MB cho arm64-v8a, 27.4 MB cho x86_64. Kích thước APK thật đo bằng
-`tools/check_apk.py` ở M2.
+`tools/check_apk.py` (2026-10-23, có gói MT q4r): arm64-v8a 295 432 225 byte, x86_64 304 979 725 byte.
 
 ### 3.3 Giá trị khởi điểm (ghi vào mọi evidence, tinh chỉnh bằng TN)
 

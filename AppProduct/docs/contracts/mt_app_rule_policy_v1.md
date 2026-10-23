@@ -1,6 +1,10 @@
 # Chính sách rule dịch text trên app v1
 
-**Trạng thái:** đề xuất triển khai, chưa phải bằng chứng chất lượng mới của model  
+**Trạng thái:** đã triển khai trong AppProduct (`mt/rules/`) và kiểm tra trên fixed cases: 41 case của
+`mt_rule_cases_v1.json` chạy ở ba tầng (checkpoint PyTorch, graph q4r trên PC, APK trên emulator) cùng
+test JVM; evidence ở `evidence/phase04/mt_rules_v1/`, ghi ở DR-07 §16  
+**Giới hạn:** chưa phải bằng chứng Student v1 tăng chất lượng dịch; chưa có đánh giá metric đầy đủ trên
+cohort sau toàn bộ rule  
 **Phạm vi:** AppProduct, luồng nhập bằng text EN↔VI, chạy offline với gói `vtt-main-core-phase03-q4r`  
 **Không thuộc phạm vi:** train, checkpoint, tokenizer, prefix, metric lịch sử của Student v1 Core
 
@@ -9,6 +13,12 @@
 Các rule này giảm hành vi gây hại trong ứng dụng: gửi input rỗng/quá dài, dịch nhầm chiều,
 để một thuật ngữ kỹ thuật đơn lẻ bị sinh thành từ vô nghĩa, tìm kiếm beam quá lâu, hoặc hiển thị
 trạng thái voice trong demo text. Rule không được dùng để tuyên bố Student v1 hiểu thêm ngữ nghĩa IT.
+
+Đã triển khai rule trong app ≠ đã cải thiện năng lực dịch của Student v1. Rule lo an toàn khi chạy,
+literal, input lỗi và UX; rule không biến lỗi ngữ nghĩa của Student thành đúng. Ví dụ case
+`r08-sentence` trên APK: `Deploy CI/CD lên staging trước khi merge vào main.` được dịch thành
+`Delloy CI/CD to staging ahead of merge in the main.` R08 chỉ gắn `Cần kiểm tra thuật ngữ` cho
+`deploy`, không sửa bản dịch. Làm vậy là đúng chính sách, và ca này vẫn là dữ kiện cho Student v2.
 
 Student v1 trong `Core/evidence/phase03/main_core_decision.json` là checkpoint đã freeze. Mọi rule
 trong tài liệu này được thực hiện ở AppProduct, trước hoặc sau khi gọi `MarianTranslator`; không sửa

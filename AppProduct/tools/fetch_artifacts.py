@@ -1,7 +1,7 @@
 """Fetch, verify and install the app artifacts pinned in ``artifacts.lock.json``.
 
-Artifacts: the sherpa-onnx AAR (into ``third_party/``) and the VAD, STT, TTS and
-denoiser models (into ``app/src/main/assets/models/``). Archives are cached in
+Artifacts: the sherpa-onnx AAR (into ``third_party/``) and the VAD, STT and TTS
+models (into ``app/src/main/assets/models/``). Archives are cached in
 ``.cache/downloads/``; only files listed in the lock are extracted, test WAVs go
 to ``.cache/test_wavs/<role>/``, and ``espeak-ng-data`` keeps only the listed
 ``*_dict`` files. The run ends by writing ``app/src/main/assets/models/manifest.json``,

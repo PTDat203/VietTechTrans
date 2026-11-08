@@ -678,3 +678,44 @@ Kết quả in theo nhóm (`[mt]`, `[models]`, `[other models]`, `[native]`, `[m
 | Test JVM | Code Kotlin và rule có đúng không |
 | DeviceCheck (Cài đặt → Kiểm tra máy này) | Điện thoại chạy thực tế ra sao |
 | Đánh giá trên cohort | q4r + rule chênh Student v1 bao nhiêu |
+
+## 18. Bổ sung 2026-10-24: so Student v1 với app trên toàn bộ Validation, tách theo rule
+
+**Bối cảnh:** §16 có ba tầng evidence nhưng không tầng nào trả lời "q4r sau toàn bộ rule chênh Student v1 bao nhiêu":
+`mt_export_q4r` chưa có R02–R07, R11, R12; tầng 1–2 chỉ 40 case; tầng 3 chỉ chấm quyết định 41 case. Không gộp được thành
+một metric vì R02/R03/R04 không gọi model, R06 chờ người dùng, R12 từ chối output, R09–R11 đổi output.
+
+**Cách làm:** `TextRulesCohortTest` chạy `TextRules` + `OutputCleanup` (code app) trên 32 498 câu của
+`mt_export_q4r` (output q4r có R10; Student v1 là `phase03_prediction` cùng dòng). `tools/mt/score_rule_cohort.py` chấm
+bằng `core_mt.metrics.score_predictions` trên cùng các câu cho cả hai bên và ghi
+`evidence/phase04/mt_rules_v1_cohort/run.json` + `cases.jsonl` (529 câu bị giữ, hỏi, khoá, từ chối hoặc gộp lặp).
+
+- Bảng A = mọi câu có quyết định `translate`. Câu R12 từ chối vẫn ở trong bảng (chấm output thật): R12 dựa trên output
+  app nên bỏ chúng là chọn mẫu có lợi cho app. Bỏ ra thì chênh chỉ khác ≤ 0,01.
+- Bảng B = R02/R03/R04/R06/R12: đếm và kiểm, không chấm BLEU. Bảng C = mọi câu theo nhánh.
+
+**Kết quả** (chrF++ Student v1 → app trên các câu app dịch):
+
+| Tập | Câu gọi model | Student v1 | App | Chênh | Câu giống hệt |
+|---|---|---|---|---|---|
+| EN→VI IT | 15 084 / 15 252 | 66,65 | 66,53 | −0,12 | 73,5 % |
+| EN→VI General | 997 / 997 | 52,44 | 52,38 | −0,07 | 41,1 % |
+| VI→EN IT | 15 035 / 15 252 | 61,43 | 61,46 | +0,03 | 73,1 % |
+| VI→EN General | 997 / 997 | 46,20 | 46,10 | −0,10 | 31,6 % |
+
+- R02 10 + 10, R03 153 + 137, R04 4 + 25, R06 1 + 45, R12 47 + 77 (IT, EN→VI + VI→EN); General: 0 trừ 1 câu R12 VI→EN.
+- R12: Student v1 cũng bị từ chối ở 44/47 và 75/77 câu; tham chiếu cũng thiếu literal ở 17/47 và 57/77 (dòng dữ liệu lỗi).
+- R06: 45/46 câu là dòng nằm nhầm ngôn ngữ hoặc chuỗi KDE trộn lẫn (45 câu VI→EN không có dấu tiếng Việt nào); 1 câu
+  hỏi nhầm: "Axit Formic athyl este" là tiếng Việt đúng chỗ nhưng không cần dấu.
+- R03: Student v1 giữ đúng literal (bỏ qua khoảng trắng) 73/153 và 79/137 câu ("5.650" → "5. 165"); so khớp nguyên
+  văn thì 38 và 38.
+- R04 EN→VI giữ "Feature", "Plugin", "Kernel", "Container:" mà Student dịch được: chi phí của R04. 25 câu VI→EN đều là
+  "Comment" nằm nhầm cột, Student sinh "KDE Multimedia Library".
+- R08 trên output app 117 / 122 câu; trên output Student v1 117 / 117.
+
+**Giới hạn:** chạy trên PC; Kotlin `BeamSearch` là bản port của `marian_ref.py` (20/20 golden trùng token) nhưng chưa chạy
+cả cohort trên APK/ARM.
+
+**Kiểm chứng:** `gradlew :app:testDebugUnitTest --tests "*TextRulesCohortTest"` → `app/build/mt_rules_cohort_rows.jsonl`;
+`python -I tools/mt/score_rule_cohort.py --rows app/build/mt_rules_cohort_rows.jsonl --out evidence/phase04/mt_rules_v1_cohort`
+→ `APP_RULES_COHORT=RECORDED`.

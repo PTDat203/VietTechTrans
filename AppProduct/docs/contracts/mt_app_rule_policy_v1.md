@@ -3,8 +3,9 @@
 **Trạng thái:** đã triển khai trong AppProduct (`mt/rules/`) và kiểm tra trên fixed cases: 41 case của
 `mt_rule_cases_v1.json` chạy ở ba tầng (checkpoint PyTorch, graph q4r trên PC, APK trên emulator) cùng
 test JVM; evidence ở `evidence/phase04/mt_rules_v1/`, ghi ở DR-07 §16  
-**Giới hạn:** chưa phải bằng chứng Student v1 tăng chất lượng dịch; chưa có đánh giá metric đầy đủ trên
-cohort sau toàn bộ rule  
+**Giới hạn:** chưa phải bằng chứng Student v1 tăng chất lượng dịch. So sánh trên toàn bộ cohort sau rule đã có
+(DR-07 §18, `evidence/phase04/mt_rules_v1_cohort/`) nhưng chạy trên PC (bộ giải mã Python + code rule Kotlin),
+chưa chạy trên điện thoại  
 **Phạm vi:** AppProduct, luồng nhập bằng text EN↔VI, chạy offline với gói `vtt-main-core-phase03-q4r`  
 **Không thuộc phạm vi:** train, checkpoint, tokenizer, prefix, metric lịch sử của Student v1 Core
 

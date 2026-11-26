@@ -15,6 +15,7 @@ Kết quả ngày 2026-10-07: 67/67 test qua. Ngày 2026-10-22: 74/74 (thêm `Te
 85/85 sau chính sách rule dịch text v1 (DR-07 §16): thêm `mt/rules/` và các test policy, bỏ `TermProtectorTest` và
 `VietnameseDiacriticsTest` vì đã gỡ code tương ứng. Sau đợt rà soát đối kháng: 90/90. Ngày 2026-11-26 (Dịch ảnh, lối vào
 từ app khác, hướng dẫn lượt nói): 108/108 (thêm `OcrTextTest`, `IncomingTest`, `TurnGuideTest`, `ConversationTranscriptTest`).
+Sau khi thêm dịch trên ảnh (DR-10 §12): 111/111.
 
 | Package | Nội dung | Mốc |
 |---|---|---|
@@ -24,7 +25,7 @@ từ app khác, hướng dẫn lượt nói): 108/108 (thêm `OcrTextTest`, `Inc
 | `text/` | `TextProcessingTest`: `SttPostProcessor` (làm sạch, lọc vô nghĩa), `TtsTextNormalizer` (lexicon, tách đoạn). Phát hiện gõ không dấu nay là R07 trong `mt/rules/` | M3–M4 |
 | `speech/` | `ListenSessionTest`: hết lượt khi im 1,5 s, 6 s không có giọng, 60 s | M4 |
 | `turn/` | `ConversationReducerTest` (19 test): Cắt, ngắt khi đang đọc, sửa câu, chuyển cuộc, lượt nền; câu gõ và câu sửa được dịch nhưng không tự đọc (R13), literal giữ nguyên không gọi model (R03), bản dịch bị R12 từ chối; fuzz 10 000 chuỗi với các bất biến cũ, thêm "câu gõ không bao giờ tự đọc". `TurnTimingsTest` (2 test): câu gõ chỉ hiện "MT n ms", câu nói hiện đủ STT · MT · TTS | M6, 2026-10-07; 2026-10-23 |
-| `ocr/` | `OcrTextTest` (7 test): dòng trong một khối thành một câu, khối thành dòng riêng, nối từ gạch nối cuối dòng (không nối "Wi-" + "Fi" hay "10 -" + "12"), bỏ khối toàn ký hiệu, chuẩn hoá R01 không đổi hoa thường, sửa "Häy" → "Hãy" chỉ trong khối tiếng Việt ("Zürich" giữ nguyên), ảnh không có chữ ra chuỗi rỗng | 2026-11-26 (DR-10) |
+| `ocr/` | `OcrTextTest` (10 test): khối giữ vị trí và cùng thứ tự với các dòng (`place`); dòng i của bản dịch thuộc khối i chỉ khi ô còn mỗi khối một dòng (`linesForBlocks`); màu nền và màu chữ để vẽ lên ảnh (`OverlayColors`: chữ tối trên nền trắng, chữ trắng trên nút xanh, khối mờ thì dùng đen); cùng 7 test cũ: dòng trong một khối thành một câu, khối thành dòng riêng, nối từ gạch nối cuối dòng (không nối "Wi-" + "Fi" hay "10 -" + "12"), bỏ khối toàn ký hiệu, chuẩn hoá R01 không đổi hoa thường, sửa "Häy" → "Hãy" chỉ trong khối tiếng Việt ("Zürich" giữ nguyên), ảnh không có chữ ra chuỗi rỗng | 2026-11-26 (DR-10) |
 | (gốc) | `IncomingTest` (4 test, Robolectric): chữ bôi đen (`PROCESS_TEXT`), chữ và ảnh chia sẻ (`SEND`), hai lối tắt, intent không dùng được thì bỏ qua | 2026-11-26 |
 | `ui/conversation/` | `TurnGuideTest` (3 test): bước và người được hướng dẫn theo từng trạng thái (bắt đầu, đang nghe, đang dịch, đang đọc, đọc lại, đến lượt người kia theo câu mới nhất) | 2026-11-26 |
 | `history/` | `ConversationTranscriptTest`: chữ chia sẻ của một cuộc (tiêu đề, giờ, câu gốc và bản dịch theo thứ tự lượt) | 2026-11-26 |

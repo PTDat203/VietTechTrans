@@ -109,7 +109,7 @@ Từ 2026-10-07 chỉ còn **một bản** (bỏ flavor `dev` dùng ML Kit,
 | `text/` | `SttPostProcessor` (làm sạch, lọc vô nghĩa), `TtsTextNormalizer` |
 | `turn/` | `ConversationReducer` (`reduce(state, event)` thuần, test trên JVM), `TurnRunner` (nghe → làm sạch → dịch → đọc), `TurnTimings` |
 | `history/` | `ConversationStore`: mỗi cuộc trò chuyện một file JSON; `ConversationTranscript`: cả cuộc dạng chữ để chia sẻ |
-| `ocr/` | `ImageTextReader` (ML Kit, ảnh xem trước, Uri ảnh chụp), `OcrText` (văn bản cho bộ dịch) |
+| `ocr/` | `ImageTextReader` (giải mã ảnh, ML Kit, ảnh xem trước, Uri ảnh chụp), `OcrText` (văn bản cho bộ dịch, khối và vị trí), `ImageOverlay` + `OverlayColors` (vẽ bản dịch lên ảnh) |
 | (gốc) | `Incoming` (chữ hay ảnh từ app khác, lối tắt), `AppPrefs` (tốc độ đọc) |
 | `diagnostics/` | `DeviceCheck` (Cài đặt → Kiểm tra máy này); `Diagnostics.kt` ghi lý do thoát và lỗi gần nhất |
 | `ui/` | Compose: Hội thoại (+ ngăn ☰ `HistoryDrawer`), Dịch nhanh, Cài đặt, Hướng dẫn |
@@ -125,7 +125,7 @@ DI thủ công (`AppContainer`); kotlinx.serialization; coroutines.
 | Phát âm | Ghi `AudioTrack` |
 | Engine giọng nói | Mỗi engine (VAD, STT, TTS) chạy trên dispatcher riêng; một luồng TTS cho cả hai giọng vì espeak-ng giữ trạng thái toàn cục |
 | Bộ dịch | ONNX Runtime 2 luồng mỗi chiều |
-| Đọc ảnh | ML Kit trên `Dispatchers.Default`; ảnh xem trước trên `Dispatchers.IO` |
+| Đọc ảnh | Giải mã và ML Kit trên `Dispatchers.Default`; ảnh xem trước trên `Dispatchers.IO`; vẽ ảnh dịch trên `Dispatchers.Default` |
 | ViewModel | Reducer chạy tuần tự trên main; effect chạy trong coroutine |
 | IO | Lưu lịch sử (`Dispatchers.IO` + `Mutex`), copy espeak-ng-data |
 
@@ -205,6 +205,8 @@ Ba yêu cầu của người dùng: dịch bằng hình ảnh; thêm chức năn
 **Dịch ảnh** ([DR-10](decisions/DR-10_dich_anh_ocr.md)). Màn Dịch có **Chụp ảnh** và **Chọn ảnh** hai bên nút micro.
 Chữ đọc được vào ô (cùng ảnh nhỏ, số dòng, thời gian đọc) rồi dịch như chữ gõ (R01–R07, không tự đọc theo R13).
 Đo trên 8 ảnh thử: CER tiếng Việt 0,7 %, tiếng Anh 0 % (`evidence/phase04/ocr_mlkit_v1`).
+Sau khi dịch, `ImageOverlay` vẽ bản dịch lên ảnh, đúng chỗ từng khối chữ (thẻ "Bản dịch trên ảnh", DR-10 §12). Dòng i
+của bản dịch ứng với khối i, vì ô nhập có mỗi khối một dòng và `TurnRunner` dịch từng dòng.
 
 **Lối vào từ app khác** (`Incoming`, `MainActivity` `singleTop` + `onNewIntent`, `AppNav` chuyển sang màn Dịch):
 

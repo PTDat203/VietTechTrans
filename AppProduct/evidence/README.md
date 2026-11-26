@@ -47,6 +47,7 @@ adb pull /sdcard/Android/data/vn.viettechtrans.app/files/evidence/<run-id> evide
 | `phase04/mt_export_q8`, `mt_export_q4b16c`, `mt_export_q4r`, `mt_length_cap` | Chất lượng gói MT sau khi chuyển ONNX (DR-07) |
 | `phase04/mt_term_protect`, `mt_rules_v1`, `mt_rules_v1_cohort` | Rule dịch text v1 (DR-07 §15–16) |
 | `phase04/ocr_mlkit_v1` | Dịch ảnh: 8 ảnh thử, CER/WER, log chứng minh dùng mô hình trong APK ([README](phase04/ocr_mlkit_v1/README.md), DR-10) |
+| `phase04/ocr_overlay_v1` | Dịch trên ảnh: ảnh gốc cạnh ảnh dịch của 8 ảnh thử ([README](phase04/ocr_overlay_v1/README.md), DR-10 §12) |
 
 ## Danh sách run
 

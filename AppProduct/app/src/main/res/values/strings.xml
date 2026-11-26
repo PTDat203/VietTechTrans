@@ -68,6 +68,13 @@
     <string name="image_read_info">Đọc được %1$d dòng chữ (%2$d ms)</string>
     <string name="image_check_text">So với ảnh, sửa chữ trong ô nếu sai rồi bấm Dịch.</string>
     <string name="image_remove">Bỏ ảnh</string>
+    <string name="image_overlay_title">Bản dịch trên ảnh</string>
+    <string name="image_overlay_translated">Ảnh dịch</string>
+    <string name="image_overlay_original">Ảnh gốc</string>
+    <string name="image_overlay_open">Xem ảnh dịch toàn màn hình</string>
+    <string name="image_overlay_share">Chia sẻ ảnh dịch</string>
+    <string name="image_overlay_zoom_hint">Chụm hai ngón để phóng to, chạm đúp để về cỡ cũ.</string>
+    <string name="image_overlay_unmatched">Ô chữ không còn mỗi khối chữ của ảnh một dòng nên bản dịch không vẽ lên ảnh được. Chỉ sửa chữ, giữ nguyên các dòng để xem bản dịch trên ảnh.</string>
     <string name="image_no_camera">Máy không có ứng dụng máy ảnh. Hãy dùng Chọn ảnh.</string>
 
     <!-- Entry points from other apps and the launcher -->

@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,6 +16,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import vn.viettechtrans.app.AppContainer
 import vn.viettechtrans.app.Incoming
 import vn.viettechtrans.app.mt.Direction
@@ -23,6 +25,9 @@ import vn.viettechtrans.app.mt.rules.InputDecision
 import vn.viettechtrans.app.mt.rules.LangGuess
 import vn.viettechtrans.app.mt.rules.RuleNote
 import vn.viettechtrans.app.mt.rules.TextRules
+import vn.viettechtrans.app.ocr.ImageOverlay
+import vn.viettechtrans.app.ocr.OcrText
+import vn.viettechtrans.app.ocr.PlacedBlock
 import vn.viettechtrans.app.speech.EngineRole
 import vn.viettechtrans.app.speech.ListenConfig
 import vn.viettechtrans.app.speech.ListenOutcome
@@ -66,11 +71,23 @@ data class TranslateUiState(
     /** Lines read from [image] and the time it took. */
     val imageLines: Int = 0,
     val imageMs: Long? = null,
+    /** Dịch trên ảnh: the picture (at most 2048 px) and the blocks whose text is in the box, one line each. */
+    val imagePage: Bitmap? = null,
+    val imageBlocks: List<PlacedBlock> = emptyList(),
+    /** [imagePage] with [translation] drawn over its blocks. */
+    val overlay: Bitmap? = null,
+    /** The box no longer has one line per block of the picture, so the translation cannot be drawn on it. */
+    val overlayUnmatched: Boolean = false,
     /** A launcher shortcut asked for the picture picker; the screen opens it once and calls [TranslateViewModel.pickImageHandled]. */
     val pickImageRequest: Boolean = false,
 ) {
     /** Recognizing, reading a picture or translating: the source text must not change. Loading/listening still allow typing. */
     val busy: Boolean get() = phase == Phase.RECOGNIZING || phase == Phase.READING_IMAGE || phase == Phase.TRANSLATING
+
+    /** The box no longer holds the text of a picture. */
+    fun withoutImage() = copy(
+        image = null, imageLines = 0, imageMs = null, imagePage = null, imageBlocks = emptyList(), overlay = null, overlayUnmatched = false,
+    )
 }
 
 /** Dịch screen: one person, voice or typing, CUT semantics (a new tap interrupts speech). */
@@ -121,7 +138,7 @@ class TranslateViewModel(private val c: AppContainer) : ViewModel() {
                 if (_state.value.busy) return
                 stopListeningAndSpeech()
                 clearResult()
-                _state.update { it.copy(input = item.text, image = null, emptyTried = false) }
+                _state.update { it.withoutImage().copy(input = item.text, emptyTried = false) }
                 translateInput()
             }
             is Incoming.Image -> onImage(item.uri)
@@ -141,7 +158,10 @@ class TranslateViewModel(private val c: AppContainer) : ViewModel() {
     }
 
     private fun clearResult() = _state.update {
-        it.copy(translation = null, lastSource = null, timings = null, notes = emptyList(), checkTerms = emptyList(), mismatch = null, notice = null)
+        it.copy(
+            translation = null, lastSource = null, timings = null, notes = emptyList(), checkTerms = emptyList(), mismatch = null, notice = null,
+            overlay = null, overlayUnmatched = false,
+        )
     }
 
     /**
@@ -152,7 +172,7 @@ class TranslateViewModel(private val c: AppContainer) : ViewModel() {
         if (_state.value.busy) return
         stopListeningAndSpeech()
         clearResult()
-        _state.update { it.copy(phase = Phase.READING_IMAGE, image = null, imageLines = 0, imageMs = null) }
+        _state.update { it.withoutImage().copy(phase = Phase.READING_IMAGE) }
         job = launchSafe {
             _state.update { it.copy(image = c.imageText.preview(uri)) }
             val r = try {
@@ -172,6 +192,7 @@ class TranslateViewModel(private val c: AppContainer) : ViewModel() {
             _state.update {
                 it.copy(
                     phase = Phase.IDLE, input = r.text, emptyTried = false, imageLines = r.lines, imageMs = r.ms,
+                    imagePage = r.page, imageBlocks = r.blocks,
                     notice = if (tooLong) "Ảnh có $length ký tự chữ, quá giới hạn ${TextRules.MAX_CHARS}. Xoá bớt phần không cần rồi bấm Dịch." else null,
                 )
             }
@@ -182,7 +203,7 @@ class TranslateViewModel(private val c: AppContainer) : ViewModel() {
     }
 
     /** "×" on the picture: the text read from it stays in the box. */
-    fun clearImage() = _state.update { it.copy(image = null, imageLines = 0, imageMs = null) }
+    fun clearImage() = _state.update { it.withoutImage() }
 
     /** Screen became visible (also when coming back from Hội thoại): keep only this direction's models. */
     fun onShown() = preload(delayMs = PRELOAD_DELAY_MS)
@@ -193,11 +214,10 @@ class TranslateViewModel(private val c: AppContainer) : ViewModel() {
         if (s.busy || s.phase == Phase.LISTENING || s.phase == Phase.LOADING) return
         c.speaker.stop()
         _state.update {
-            it.copy(
+            // The box now holds the translation, no longer the text of the picture.
+            (if (it.translation != null) it.withoutImage() else it.copy(overlay = null, overlayUnmatched = false)).copy(
                 direction = it.direction.reverse,
                 input = it.translation ?: it.input,
-                // The box now holds the translation, no longer the text of the picture.
-                image = if (it.translation != null) null else it.image,
                 translation = null,
                 lastSource = null,
                 timings = null,
@@ -230,7 +250,9 @@ class TranslateViewModel(private val c: AppContainer) : ViewModel() {
         val s = _state.value
         if (s.busy || s.phase == Phase.LISTENING || s.phase == Phase.LOADING || direction == s.direction) return
         c.speaker.stop()
-        _state.update { it.copy(direction = direction, translation = null, lastSource = null, timings = null, notes = emptyList(), notice = null) }
+        _state.update {
+            it.copy(direction = direction, translation = null, lastSource = null, timings = null, notes = emptyList(), notice = null, overlay = null, overlayUnmatched = false)
+        }
         preload(delayMs = 0)
     }
 
@@ -274,7 +296,7 @@ class TranslateViewModel(private val c: AppContainer) : ViewModel() {
                     if (!r.meaningful) {
                         _state.update { it.copy(phase = Phase.IDLE, partial = "", notice = "Không nhận ra nội dung") }
                     } else {
-                        _state.update { it.copy(input = r.text, partial = "", image = null) }
+                        _state.update { it.withoutImage().copy(input = r.text, partial = "") }
                         runTranslation(r.text, direction, TurnTimings(sttMs = outcome.sttMs), typed = false, inputNotes = emptyList())
                     }
                 }
@@ -305,7 +327,7 @@ class TranslateViewModel(private val c: AppContainer) : ViewModel() {
                 _state.update {
                     it.copy(
                         phase = Phase.IDLE, translation = d.text, lastSource = d.text, timings = TurnTimings(),
-                        typedResult = true, notes = listOf(d.note), checkTerms = emptyList(),
+                        typedResult = true, notes = listOf(d.note), checkTerms = emptyList(), overlay = null, overlayUnmatched = false,
                     )
                 }
             }
@@ -332,7 +354,10 @@ class TranslateViewModel(private val c: AppContainer) : ViewModel() {
             c.speaker.stop()
             val reversed = s.direction.reverse
             _state.update {
-                it.copy(direction = reversed, phase = Phase.IDLE, partial = "", translation = null, lastSource = null, timings = null, notes = emptyList())
+                it.copy(
+                    direction = reversed, phase = Phase.IDLE, partial = "", translation = null, lastSource = null, timings = null, notes = emptyList(),
+                    overlay = null, overlayUnmatched = false,
+                )
             }
             preload(delayMs = 0)
             translateInput(direction = reversed, skipMismatch = true)
@@ -345,7 +370,7 @@ class TranslateViewModel(private val c: AppContainer) : ViewModel() {
     fun dismissMismatch() = _state.update { it.copy(mismatch = null) }
 
     private suspend fun runTranslation(text: String, direction: Direction, timings: TurnTimings, typed: Boolean, inputNotes: List<RuleNote>) {
-        _state.update { it.copy(phase = Phase.TRANSLATING, notice = null) }
+        _state.update { it.copy(phase = Phase.TRANSLATING, notice = null, overlay = null, overlayUnmatched = false) }
         val result = c.turns.translate(text, direction) {
             _state.update { it.copy(notice = "Mô hình dịch chưa phản hồi… Có thể bấm Huỷ.") }
         }
@@ -365,9 +390,29 @@ class TranslateViewModel(private val c: AppContainer) : ViewModel() {
                         notes = (inputNotes + result.notes).distinct(), checkTerms = result.checkTerms,
                     )
                 }
+                drawOverlay(text, result.text)
                 // R13: typed text is read only when the user taps the speaker; a spoken turn is read back at once.
                 if (!typed) speak(result.text, direction.target) { first -> _state.update { it.copy(timings = withMt.copy(ttsFirstAudioMs = first)) } }
             }
+        }
+    }
+
+    /**
+     * Dịch trên ảnh: draws [translation] over the picture whose text was translated, one line per block
+     * ([OcrText.linesForBlocks]). Runs beside the result card; a newer result or another picture drops it.
+     */
+    private fun drawOverlay(source: String, translation: String) {
+        val s = _state.value
+        val page = s.imagePage ?: return
+        val blocks = s.imageBlocks
+        val texts = OcrText.linesForBlocks(source, translation, blocks.size)
+        if (texts == null) {
+            _state.update { it.copy(overlayUnmatched = true) }
+            return
+        }
+        launchSafe {
+            val drawn = withContext(Dispatchers.Default) { ImageOverlay.render(page, blocks, texts) }
+            _state.update { if (it.translation == translation && it.imagePage === page) it.copy(overlay = drawn) else it }
         }
     }
 

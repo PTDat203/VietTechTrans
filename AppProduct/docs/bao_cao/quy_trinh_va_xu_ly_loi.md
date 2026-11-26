@@ -30,6 +30,7 @@ nào); mục 2 là các trường hợp có thể lỗi, app xử lý ra sao và
 | UC-20 | Lưu hoặc gửi kết quả | Nút Sao chép / Chia sẻ dưới bản dịch; ☰ → ⋮ → **Chia sẻ** một cuộc | Chữ vào bộ nhớ tạm hoặc gửi sang app khác (Zalo, email…); cả cuộc gửi dạng chữ: từng câu gốc và bản dịch |
 | UC-21 | Biết lượt ai, đang ở bước nào | Nhìn thanh hướng dẫn trên hai nút micro; thẻ luật trong cuộc mới, nút ⓘ | Bước Nghe › Dịch › Đọc đang chạy được tô sáng; hai dòng tiếng Việt và tiếng Anh cho biết ai nói, ai chờ; nút người cần trả lời ghi "Đến lượt bạn / Your turn" |
 | UC-22 | Đổi tốc độ đọc | ☰ → Cài đặt → Giọng đọc → Chậm / Bình thường / Nhanh | Các lần đọc sau dùng tốc độ mới (0,8 / 1,0 / 1,2) |
+| UC-23 | Xem bản dịch trên ảnh | Sau UC-17, xem thẻ **Bản dịch trên ảnh**; chọn Ảnh gốc / Ảnh dịch, chạm để xem toàn màn hình, nút chia sẻ | Ảnh có bản dịch vẽ đúng chỗ chữ gốc (cùng màu, nghiêng theo ảnh); phóng to bằng hai ngón; gửi ảnh dịch sang app khác |
 
 ## 2. Trường hợp lỗi và cách xử lý
 

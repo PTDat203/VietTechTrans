@@ -2,6 +2,7 @@ package vn.viettechtrans.app.ui.translate
 
 import android.Manifest
 import android.content.ActivityNotFoundException
+import android.graphics.Bitmap
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
@@ -29,6 +30,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material3.FilledTonalIconButton
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
@@ -44,6 +46,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -69,6 +72,7 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import kotlinx.coroutines.launch
 import vn.viettechtrans.app.AppContainer
 import vn.viettechtrans.app.R
 import vn.viettechtrans.app.mt.Lang
@@ -76,10 +80,12 @@ import vn.viettechtrans.app.mt.rules.RuleNote
 import vn.viettechtrans.app.mt.rules.TextRules
 import vn.viettechtrans.app.speech.EngineRole
 import vn.viettechtrans.app.ui.common.GradientButton
+import vn.viettechtrans.app.ui.common.ImageActions
 import vn.viettechtrans.app.ui.common.InputCounter
 import vn.viettechtrans.app.ui.common.MismatchDialog
 import vn.viettechtrans.app.ui.common.NoticeCard
 import vn.viettechtrans.app.ui.common.ScreenScaffold
+import vn.viettechtrans.app.ui.common.ShowImageDialog
 import vn.viettechtrans.app.ui.common.ShowTextDialog
 import vn.viettechtrans.app.ui.common.TalkButton
 import vn.viettechtrans.app.ui.common.TextActions
@@ -141,6 +147,9 @@ fun TranslateScreen(container: AppContainer, onBack: () -> Unit, onHelp: () -> U
         }
     }
     var showing by rememberSaveable { mutableStateOf<String?>(null) }
+    var showingPicture by remember { mutableStateOf(false) }
+    val scope = rememberCoroutineScope()
+    val sharePicture = { s.overlay?.let { picture -> scope.launch { ImageActions.share(context, picture) } } }
 
     ScreenScaffold(
         title = stringResource(R.string.nav_translate),
@@ -218,6 +227,18 @@ fun TranslateScreen(container: AppContainer, onBack: () -> Unit, onHelp: () -> U
 
         if (s.hasTranslator == false) NoticeCard(stringResource(R.string.banner_no_mt), Modifier.fillMaxWidth())
 
+        // Dịch trên ảnh: the translation drawn over the picture, block by block.
+        s.overlay?.let { overlay ->
+            PictureResultCard(overlay, original = s.imagePage, onOpen = { showingPicture = true }, onShare = { sharePicture() })
+        }
+        if (s.overlayUnmatched && s.translation != null) {
+            Text(
+                stringResource(R.string.image_overlay_unmatched),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
+
         AnimatedVisibility(
             visible = s.translation != null,
             enter = fadeIn() + slideInVertically { it / 3 },
@@ -248,6 +269,10 @@ fun TranslateScreen(container: AppContainer, onBack: () -> Unit, onHelp: () -> U
         Spacer(Modifier.size(8.dp))
     }
     showing?.let { ShowTextDialog(it, onDismiss = { showing = null }) }
+    val overlay = s.overlay
+    if (showingPicture && overlay != null) {
+        ShowImageDialog(overlay, original = s.imagePage, onShare = { sharePicture() }, onDismiss = { showingPicture = false })
+    }
     if (s.mismatch != null) {
         MismatchDialog(
             chosen = s.direction.source,
@@ -255,6 +280,45 @@ fun TranslateScreen(container: AppContainer, onBack: () -> Unit, onHelp: () -> U
             onForce = { vm.answerMismatch(switchLanguage = false) },
             onDismiss = vm::dismissMismatch,
         )
+    }
+}
+
+/** Dịch trên ảnh: the translated picture, with the original one beside it (chips), full screen and share. */
+@Composable
+private fun PictureResultCard(overlay: Bitmap, original: Bitmap?, onOpen: () -> Unit, onShare: () -> Unit) {
+    var showOriginal by remember(overlay) { mutableStateOf(false) }
+    Surface(modifier = Modifier.fillMaxWidth(), shape = MaterialTheme.shapes.large, color = cardColor(), shadowElevation = 2.dp) {
+        Column(modifier = Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Text(
+                stringResource(R.string.image_overlay_title),
+                style = MaterialTheme.typography.labelLarge,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            val shown = if (showOriginal && original != null) original else overlay
+            Image(
+                bitmap = shown.asImageBitmap(),
+                contentDescription = stringResource(if (shown === overlay) R.string.image_overlay_title else R.string.image_preview),
+                contentScale = ContentScale.Fit,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .heightIn(max = 420.dp)
+                    .clip(MaterialTheme.shapes.medium)
+                    .clickable(onClick = onOpen),
+            )
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                if (original != null) {
+                    FilterChip(selected = !showOriginal, onClick = { showOriginal = false }, label = { Text(stringResource(R.string.image_overlay_translated)) })
+                    FilterChip(selected = showOriginal, onClick = { showOriginal = true }, label = { Text(stringResource(R.string.image_overlay_original)) })
+                }
+                Spacer(Modifier.weight(1f))
+                IconButton(onClick = onOpen) {
+                    Icon(painterResource(R.drawable.ic_open_in_full), contentDescription = stringResource(R.string.image_overlay_open))
+                }
+                IconButton(onClick = onShare) {
+                    Icon(painterResource(R.drawable.ic_share), contentDescription = stringResource(R.string.image_overlay_share))
+                }
+            }
+        }
     }
 }
 

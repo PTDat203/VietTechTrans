@@ -44,7 +44,8 @@ flowchart LR
 
 1. Người dùng chạm **Chụp ảnh** hoặc **Chọn ảnh** ở màn Dịch, hoặc chia sẻ một ảnh sang app, hoặc dùng lối tắt
    **Dịch ảnh** ở biểu tượng app.
-2. `ImageTextReader.read` tạo bộ đọc ML Kit, đọc ảnh (`InputImage.fromFilePath` xoay theo EXIF), rồi đóng bộ đọc.
+2. `ImageTextReader.read` giải mã ảnh (xoay theo EXIF, cạnh dài tối đa 3000 px), tạo bộ đọc ML Kit, đọc bitmap đó
+   (`InputImage.fromBitmap`, nên toạ độ các khối là toạ độ trên chính ảnh này, dùng cho §12), rồi đóng bộ đọc.
 3. `OcrText.join` biến các khối thành văn bản: các dòng của một khối nối bằng dấu cách (một câu bị xuống dòng trong ảnh
    là một câu); từ bị gạch nối ở cuối dòng được nối lại; mỗi khối một dòng; khối không có chữ hay số bị bỏ;
    trong khối tiếng Việt, chữ có hai chấm (ä, ö, ü…) đổi về chữ có dấu ngã.
@@ -146,3 +147,54 @@ Thiết kế tích hợp:
 3. PaddleOCR `latin_PP-OCRv5_mobile_rec`: <https://huggingface.co/PaddlePaddle/latin_PP-OCRv5_mobile_rec> (bộ ký tự trong `inference.yml`, kiểm ngày 2026-11-26)
 4. ML Kit Terms of Service: <https://developers.google.com/ml-kit/terms>
 5. Yêu cầu của người dùng, 2026-11-26.
+
+## 12. Bổ sung 2026-11-26: dịch trên ảnh
+
+Người dùng hỏi: "Sao OCR không dịch bên trên ảnh mà chỉ chuyển sang chữ xong dịch thế thôi à?" Quyết định ở mục 6 giữ
+nguyên. Phần này chỉ thêm cách hiện kết quả.
+
+**Hai cách làm đã xét:**
+
+| Cách | Làm được offline trên máy yếu? | Chọn |
+|---|---|---|
+| Dịch trực tiếp trên khung máy ảnh (AR, như Google Lens chế độ trực tiếp) | Không: mỗi khung hình cần đọc chữ (0,7–2,1 s trên emulator, bảng §10) cộng dịch từng khối (157–215 ms/câu trên emulator, điện thoại chậm hơn 2–5 lần); muốn mượt phải dưới khoảng 200 ms/khung | Không |
+| Vẽ bản dịch lên ảnh tĩnh vừa chụp hoặc chọn (như chế độ "Quét" / ảnh của các app dịch) | Có: chỉ thêm một lần vẽ ảnh sau khi dịch xong, không phải mỗi khung hình | **Có** |
+
+**Cách làm** (`ocr/ImageOverlay.kt`, `OcrText.place`, `OcrText.linesForBlocks`, `OverlayColors`):
+
+1. Khi đọc ảnh, app tự giải mã ảnh (xoay theo EXIF, cạnh dài tối đa 3000 px) rồi đưa bitmap đó cho ML Kit. Toạ độ 4 góc
+   của từng khối và chiều cao từng dòng vì thế là toạ độ trên chính ảnh này. App giữ một bản tối đa 2048 px.
+2. Ô nhập có mỗi khối một dòng, và `TurnRunner` dịch từng dòng. Vì vậy dòng i của bản dịch là bản dịch của khối i.
+   Người dùng sửa chữ trong một dòng vẫn ghép được; gộp hay tách dòng thì không ghép được nữa, khi đó app ghi chú dưới thẻ.
+3. Cách vẽ mỗi khối:
+   - **Màu:** màu nền là trung vị các điểm ảnh gần độ sáng trung vị của khung; màu chữ là trung bình 10 % điểm ảnh khác
+     nền nhất (đủ tương phản thì dùng, không thì dùng đen hoặc trắng).
+   - **Vùng phủ:** nới khung ra hai bên và lên xuống, chừng nào dải sát khung còn mực. Khung của ML Kit có thể cắt mép
+     chữ đầu hoặc bỏ sót dấu chấm cuối. Mép vùng phủ được làm mờ để không hiện thành hình chữ nhật trên ảnh chụp.
+   - **Cỡ chữ:** đo chính dòng chữ gốc bằng font vẽ ở 100 px, rồi quy theo chiều cao khung dòng ML Kit trả về (lấy trung
+     vị các dòng). Khung dòng chỉ cao bằng nét chữ, nên dòng không có chữ thò xuống (g, p, y) hay dấu có khung thấp hơn,
+     và cách đo này tính được cả trường hợp đó. Chữ xoay theo góc của khối.
+   - **Dòng:** bản dịch giữ số dòng như bản gốc, cách dòng như bản gốc, căn giữa theo khối. Bản dịch dài hơn thì được
+     tràn sang nền trống bên phải (tối đa thêm 60 %), sau đó mới thu nhỏ chữ (đến 55 %), cuối cùng mới cho khối dài xuống.
+4. Thẻ **Bản dịch trên ảnh** có các nút Ảnh dịch / Ảnh gốc, xem toàn màn hình (chụm ngón để phóng to) và chia sẻ ảnh
+   (JPEG lưu trong `cache/shared/` qua `FileProvider`).
+
+**Kiểm chứng** (`evidence/phase04/ocr_overlay_v1/`, AVD, Chế độ máy bay): 8/8 ảnh thử có ảnh dịch. Chữ trong ô giống
+hệt lần đo §10 (app nay tự giải mã ảnh rồi đưa bitmap cho ML Kit). Ảnh so sánh (ảnh gốc / ảnh dịch) cho thấy:
+- Bản dịch đặt đúng chỗ.
+- Ảnh chụp nghiêng 3,5° được vẽ nghiêng theo.
+- Chiều Anh→Việt hiện đủ dấu.
+
+Hai lần chỉnh sau khi xem ảnh:
+1. Bản đầu còn sót mép chữ gốc (vạch của chữ "V", dấu chấm cuối) và lộ viền mảng phủ trên ảnh chụp. Sửa bằng cách nới
+   vùng phủ theo mực, lấy màu nền bằng trung vị và làm mờ mép.
+2. Tiêu đề bị vẽ nhỏ hơn bản gốc, và câu "Không thể kết nối tới máy phục vụ." bị vẽ rất nhỏ (dòng gốc không có chữ
+   thò xuống). Sửa bằng cách tính cỡ chữ như trên, giữ số dòng, và cho chữ tràn sang nền trống.
+
+**Giới hạn:**
+- Chữ trên nền nhiều hoa văn hoặc ảnh phong cảnh được phủ bằng một màu phẳng.
+- Kiểu chữ luôn là font hệ thống (không đậm, nghiêng như bản gốc).
+- Khối có nhiều dòng được vẽ lại theo cách xuống dòng của bản dịch.
+- Bản dịch sai (ví dụ do đọc sai dấu thanh "kết nôi") cũng được vẽ lên ảnh: người dùng vẫn phải so chữ trong ô.
+
+Test JVM: `OcrTextTest` thêm 3 test (`place`, `linesForBlocks`, `OverlayColors`), toàn bộ 111/111.

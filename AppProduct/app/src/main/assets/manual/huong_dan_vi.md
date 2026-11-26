@@ -94,6 +94,9 @@ Dịch chữ trong ảnh chụp màn hình, ảnh chụp thông báo lỗi, bi�
 1. Ở màn **Dịch**, chạm **Chụp ảnh** (bên trái nút micro) để chụp bằng máy ảnh, hoặc **Chọn ảnh** (bên phải) để lấy ảnh có sẵn.
 2. App đọc chữ trong ảnh (thường dưới 2 giây), hiện ảnh nhỏ, số dòng đọc được và đưa chữ vào ô, rồi dịch luôn.
 3. So chữ trong ô với ảnh. Nếu app đọc sai một chữ (thường là dấu thanh: "nôi" thay vì "nối"), sửa trong ô rồi bấm **Dịch** lại. Bấm **×** trên ảnh để bỏ ảnh.
+4. Thẻ **Bản dịch trên ảnh** hiện ảnh đã thay chữ gốc bằng bản dịch, đúng chỗ, cùng màu chữ và nghiêng theo ảnh. Chọn **Ảnh gốc** / **Ảnh dịch** để so; chạm vào ảnh để xem toàn màn hình (chụm hai ngón để phóng to); nút chia sẻ gửi ảnh dịch sang app khác.
+
+Mỗi khối chữ trong ảnh (tiêu đề, đoạn văn, nút) là một dòng trong ô. Sửa chữ trong một dòng thì ảnh dịch vẫn vẽ lại được; nếu gộp hay tách dòng, app chỉ hiện bản dịch dạng chữ và ghi chú dưới thẻ.
 
 Để đọc đúng: chụp thẳng, đủ sáng, chữ rõ và chiếm phần lớn khung hình; chữ quá nhỏ (như chữ trên thanh trạng thái của ảnh chụp màn hình) dễ đọc sai. Chữ in đọc tốt hơn chữ viết tay. Ảnh chữ dịch như chữ gõ: không tự đọc thành tiếng, bấm 🔊 để nghe.
 

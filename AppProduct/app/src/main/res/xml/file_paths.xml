@@ -2,4 +2,6 @@
 <!-- Dịch ảnh: the camera app writes the photo here (ImageTextReader.newPhotoUri). -->
 <paths>
     <cache-path name="photos" path="photos/" />
+    <!-- Dịch trên ảnh: the translated picture being shared (ImageActions.share). -->
+    <cache-path name="shared" path="shared/" />
 </paths>

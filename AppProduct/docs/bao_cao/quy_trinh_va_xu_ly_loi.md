@@ -24,6 +24,12 @@ nào); mục 2 là các trường hợp có thể lỗi, app xử lý ra sao và
 | UC-13 | Kiểm tra máy | ☰ → Cài đặt → Kiểm tra máy này | Báo thông số máy, thời gian nạp và dịch, RAM, kết luận đạt/không đạt; sao chép được |
 | UC-14 | Xoá toàn bộ lịch sử | Cài đặt → Lịch sử trò chuyện → Xoá toàn bộ lịch sử → Xoá | Danh sách trống; cuộc đang mở được đóng |
 | UC-15 | Đọc hướng dẫn | ☰ → Hướng dẫn, hoặc nút ? trên Dịch nhanh / Cài đặt | Hướng dẫn mở (đúng mục của màn khi bấm ?), không cần mạng |
+| UC-17 | Dịch chữ trong ảnh | ☰ → Dịch nhanh → **Chụp ảnh** hoặc **Chọn ảnh** (hoặc nhấn giữ biểu tượng app → Dịch ảnh) | App đọc chữ trong ảnh (dưới 1 s với ảnh màn hình trên emulator), hiện ảnh nhỏ, số dòng và chữ trong ô để so; dịch như chữ gõ, mỗi dòng một câu; không tự đọc |
+| UC-18 | Dịch chữ từ app khác | Bôi đen chữ → **Dịch (VietTechTrans)**, hoặc Chia sẻ chữ/ảnh → **Dịch bằng VietTechTrans** | Màn Dịch mở với chữ đó (ảnh thì đọc chữ trước) và dịch; chữ có vẻ là ngôn ngữ kia thì hỏi như R06 |
+| UC-19 | Cho người đối diện xem bản dịch | Chạm vào bản dịch (Hội thoại) hoặc nút Phóng to (Dịch nhanh); **Xoay cho người đối diện** | Bản dịch hiện toàn màn hình, chữ lớn, xoay 180° được |
+| UC-20 | Lưu hoặc gửi kết quả | Nút Sao chép / Chia sẻ dưới bản dịch; ☰ → ⋮ → **Chia sẻ** một cuộc | Chữ vào bộ nhớ tạm hoặc gửi sang app khác (Zalo, email…); cả cuộc gửi dạng chữ: từng câu gốc và bản dịch |
+| UC-21 | Biết lượt ai, đang ở bước nào | Nhìn thanh hướng dẫn trên hai nút micro; thẻ luật trong cuộc mới, nút ⓘ | Bước Nghe › Dịch › Đọc đang chạy được tô sáng; hai dòng tiếng Việt và tiếng Anh cho biết ai nói, ai chờ; nút người cần trả lời ghi "Đến lượt bạn / Your turn" |
+| UC-22 | Đổi tốc độ đọc | ☰ → Cài đặt → Giọng đọc → Chậm / Bình thường / Nhanh | Các lần đọc sau dùng tốc độ mới (0,8 / 1,0 / 1,2) |
 
 ## 2. Trường hợp lỗi và cách xử lý
 
@@ -57,12 +63,18 @@ nào); mục 2 là các trường hợp có thể lỗi, app xử lý ra sao và
 | E-26 | Gõ nhầm ngôn ngữ (R06) | Bấm **Gửi tiếng Việt** với "Hello, how are you?" | Chưa gửi; hỏi **Đổi sang English** / **Vẫn dịch** (Dịch nhanh: đổi chiều hoặc vẫn dịch). Không tự đổi chiều. "Vẫn dịch" được ghi cờ language_mismatch_overridden vào Nhật ký rule dịch | Chọn đúng ngôn ngữ |
 | E-27 | Bản dịch không hợp lệ (R12) | Mô hình trả về rỗng, hoặc làm mất URL, email, code, mã HTTP, đường dẫn tuyệt đối có trong câu ("…https://example.com/docs…" → "…iTunes Premium.com/docs") | Không tạo bản dịch thành công; câu mang nhãn "không dịch được", báo "Không thể tạo bản dịch hợp lệ. Hãy thử lại hoặc nhập câu rõ hơn."; giữ câu gốc; ghi lỗi và thông tin gói vào Nhật ký rule dịch | Bấm ✎, viết rõ hơn (tách phần code/URL ra) rồi Dịch lại |
 
+| E-28 | Ảnh không có chữ đọc được | Ảnh mờ, tối, chụp xa hoặc nghiêng nhiều | Báo "Không tìm thấy chữ trong ảnh. Hãy chụp gần, đủ sáng và giữ máy thẳng."; không dịch | Chụp lại |
+| E-29 | Chữ trong ảnh bị đọc sai | Sai dấu thanh ở ảnh mờ hoặc chữ nhỏ ("kết nối" → "kết nôi", bản dịch thành "Could not close temporary folder: %s") | Chữ đọc được luôn hiện trong ô kèm dòng nhắc so với ảnh; không tự sửa (R01). Riêng dấu ngã đọc thành hai chấm ("Häy") được đổi lại trong khối tiếng Việt | Sửa chữ trong ô cho giống ảnh rồi bấm Dịch |
+| E-30 | Ảnh nhiều chữ | Chụp cả trang, hơn 500 ký tự | Chữ vào ô nhưng chưa dịch; báo "Ảnh có N ký tự chữ, quá giới hạn 500…" (R02) | Xoá bớt phần không cần, hoặc chụp gần một đoạn |
+| E-31 | Máy không có app máy ảnh | Máy ảo, máy bị tắt app máy ảnh | Báo "Máy không có ứng dụng máy ảnh. Hãy dùng Chọn ảnh." | Dùng Chọn ảnh |
+
 ## 3. Giới hạn đầu vào
 
 | Nội dung | Giới hạn | Khi vượt |
 |---|---|---|
 | Ngôn ngữ | Tiếng Việt ↔ tiếng Anh | Không dịch ngôn ngữ khác |
 | Chữ gõ mỗi câu (Hội thoại, Dịch nhanh, Sửa) | 500 ký tự hiển thị sau chuẩn hoá (tính cả dấu cách, emoji; R02) | Khoá nút gửi, giữ nguyên chữ |
+| Chữ đọc từ một ảnh | 500 ký tự (R02); chữ cái Latin: tiếng Việt, tiếng Anh | Chữ vào ô, chưa dịch |
 | Thời gian nói mỗi lượt | 60 giây | Tự dừng nghe |
 | Im lặng kết thúc lượt nói | 1,5 giây | Tự dừng nghe |
 | Chờ người bắt đầu nói | 6 giây | Dừng, báo không nghe thấy giọng |

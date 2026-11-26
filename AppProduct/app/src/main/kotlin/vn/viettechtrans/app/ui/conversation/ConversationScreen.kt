@@ -53,6 +53,8 @@ import vn.viettechtrans.app.ui.common.HeaderAction
 import vn.viettechtrans.app.ui.common.InputCounter
 import vn.viettechtrans.app.ui.common.MismatchDialog
 import vn.viettechtrans.app.ui.common.NoticeCard
+import vn.viettechtrans.app.ui.common.ShowTextDialog
+import vn.viettechtrans.app.ui.common.TextActions
 import vn.viettechtrans.app.ui.common.VttHeader
 import vn.viettechtrans.app.ui.common.cardColor
 import vn.viettechtrans.app.ui.translate.roleName
@@ -107,6 +109,9 @@ fun ConversationScreen(
     var editing by remember { mutableStateOf<ChatMessage?>(null) }
     var editDraft by remember { mutableStateOf<String?>(null) }
     var renaming by remember { mutableStateOf<ConversationSummary?>(null) }
+    var showRules by rememberSaveable { mutableStateOf(false) }
+    var showing by rememberSaveable { mutableStateOf<String?>(null) }
+    val context = androidx.compose.ui.platform.LocalContext.current
     var deleting by remember { mutableStateOf<ConversationSummary?>(null) }
     fun closeDrawerThen(action: () -> Unit) {
         scope.launch { drawer.close() }
@@ -123,6 +128,9 @@ fun ConversationScreen(
                 onOpen = { id -> closeDrawerThen { vm.open(id) } },
                 onRename = { renaming = it },
                 onDelete = { deleting = it },
+                onShare = { c ->
+                    scope.launch { vm.transcript(c.id)?.let { TextActions.share(context, it, c.title) } }
+                },
                 onTranslate = { closeDrawerThen(onOpenTranslate) },
                 onManual = { closeDrawerThen(onOpenManual) },
                 onSettings = { closeDrawerThen(onOpenSettings) },
@@ -138,6 +146,7 @@ fun ConversationScreen(
                 navIcon = R.drawable.ic_menu,
                 compact = true,
             ) {
+                HeaderAction(R.drawable.ic_info, stringResource(R.string.rules_title), { showRules = true })
                 HeaderAction(R.drawable.ic_add, stringResource(R.string.conv_new), vm::newConversation)
             }
             ChatLayout(
@@ -146,12 +155,15 @@ fun ConversationScreen(
                 onKeyboard = { typingDraft = ""; typing = true },
                 onReplay = vm::replay,
                 onEdit = { editing = it },
+                onShow = { m -> showing = m.translation ?: m.source },
                 header = { Notices(ui, vm::dismissNotice) },
                 modifier = Modifier.weight(1f),
             )
         }
     }
 
+    if (showRules) ConversationRulesDialog(onDismiss = { showRules = false })
+    showing?.let { ShowTextDialog(it, onDismiss = { showing = null }) }
     if (typing) {
         TextSheet(
             title = stringResource(R.string.conv_type),

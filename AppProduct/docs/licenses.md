@@ -31,6 +31,7 @@ giọng khác (cũng cần kiểm license).
 | Material Symbols (icon vector trong `res/drawable`) | Icon điều hướng, nút | Apache-2.0 | Giữ thông báo bản quyền |
 | Be Vietnam Pro (4 độ đậm, `res/font`, ~0.5 MB) | Font chữ toàn app (thiết kế cho dấu tiếng Việt) | SIL OFL 1.1 | Kèm file license `third_party/fonts/BeVietnamPro-OFL.txt`; không bán riêng font |
 | Kotlin stdlib, kotlinx.coroutines, kotlinx.serialization | Toàn app | Apache-2.0 | Giữ file license |
+| Google ML Kit Text Recognition v2, bộ đọc Latin, bản đóng gói (`com.google.mlkit:text-recognition:16.0.1`; kéo theo `play-services-basement/base/tasks`, `firebase-components`, `datatransport`; thư viện `libmlkit_google_ocr_pipeline.so` và `assets/mlkit-google-ocr-models/`) | Dịch ảnh (DR-10) | ML Kit Terms of Service (mã đóng, miễn phí; thư viện Play services và Firebase đi kèm theo Android SDK License / Apache-2.0) | Không phải mã nguồn mở: không sửa, không tách mô hình ra dùng riêng; ghi nguồn trong mục Giấy phép của app. Mô hình chạy trên máy; APK không có quyền Internet nên thư viện ghi số liệu `datatransport` không gửi được gì |
 
 Chỉ dùng khi test trên PC, không có trong APK: JUnit 4 (EPL-1.0), Robolectric
 (MIT), AndroidX Test và Compose UI Test (Apache-2.0).
@@ -52,4 +53,5 @@ vào `artifacts.lock.json` (<https://github.com/Xiaobin-Rong/gtcrn>).
 - OPUS-MT: <https://huggingface.co/Helsinki-NLP/opus-mt-en-vi>, <https://huggingface.co/Helsinki-NLP/opus-mt-vi-en>
 - EnViT5: <https://huggingface.co/VietAI/envit5-translation>
 - ONNX Runtime: <https://github.com/microsoft/onnxruntime>
+- ML Kit Text Recognition v2: <https://developers.google.com/ml-kit/vision/text-recognition/v2/android>; điều khoản: <https://developers.google.com/ml-kit/terms>
 - EnViT5: <https://huggingface.co/VietAI/envit5-translation>

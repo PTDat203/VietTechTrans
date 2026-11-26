@@ -3,8 +3,8 @@
 Ứng dụng Android dịch nói Anh ↔ Việt chạy offline của VietTechTrans:
 giọng nói → STT → MT → TTS → giọng nói.
 
-Giai đoạn hiện tại: hội thoại hai người, lịch sử kiểu ChatGPT (☰, ＋, sửa câu đã gửi),
-Dịch nhanh, và **dịch offline bằng Main-Core của Core** (Student MarianMT Phase 03,
+Giai đoạn hiện tại: hội thoại hai người (có hướng dẫn lượt nói), lịch sử kiểu ChatGPT (☰, ＋, sửa câu đã gửi,
+chia sẻ), Dịch nhanh, dịch chữ trong ảnh, dịch chữ bôi đen hoặc chia sẻ từ app khác, và **dịch offline bằng Main-Core của Core** (Student MarianMT Phase 03,
 chuyển sang ONNX 4-bit, chạy bằng ONNX Runtime trong app). Gói MT theo
 [docs/contracts/mt_package_v2.md](docs/contracts/mt_package_v2.md), dựng bằng
 `tools/mt/package_mt.py`. Chỉ có **một bản build, chạy offline hoàn toàn** (APK không có
@@ -27,6 +27,7 @@ Không sửa `Core/`. Đề xuất cho Core ghi trong [docs/design_check.md](doc
 | M6 | Hội thoại hai người | xong (2026-10-02); thu gọn 2026-10-07 (chỉ Cắt, chỉ khung chat, [DR-09](docs/decisions/DR-09_thu_gon_app.md)) |
 | Phase 04 (app) | Gắn Main-Core MT | xong (2026-10-07); 2026-10-08 chuyển 4-bit khối 16 + lớp đầu ra 4+4 bit, 82,5 MB/chiều: chạy nhanh cả trên máy không có dotprod (8-bit mất 15–30 s/câu), chrF++ chỉ thấp hơn 8-bit 0,04–0,14 (DR-07 §13–14). 2026-10-23: áp dụng chính sách rule dịch text v1 của nhóm (R01–R13, `docs/contracts/mt_app_rule_policy_v1.md`): thuật ngữ, URL, code gõ riêng được giữ nguyên; câu có thuật ngữ bị model làm hỏng được gắn "Cần kiểm tra thuật ngữ" thay vì bị vá; bản dịch làm mất URL/code bị từ chối; câu gõ không tự đọc; evidence ba tầng trong `evidence/phase04/mt_rules_v1` (DR-07 §16; lớp `TermProtector` của §15 đã gỡ). Bản 8-bit cũ: chrF++ lệch ≤ 0,04 so với Student Phase 03 ([evidence](evidence/phase04/mt_export_q8/run.json)); chạy offline trên AVD |
 | M7 | Lịch sử, chính sách RAM, cài đặt | xong (2026-10-07): lịch sử JSON ([DR-06](docs/decisions/DR-06_lich_su.md)), sửa câu, Kiểm tra máy trong Cài đặt |
+| Dịch ảnh, tiện ích (2026-11-26) | OCR offline, lối vào từ app khác, chia sẻ, phóng to, tốc độ đọc, hướng dẫn lượt nói | xong: ML Kit Text Recognition đóng gói trong APK ([DR-10](docs/decisions/DR-10_dich_anh_ocr.md)), CER tiếng Việt 0,7 % / tiếng Anh 0 % trên 8 ảnh thử ([evidence](evidence/phase04/ocr_mlkit_v1/README.md)); bôi đen chữ hoặc chia sẻ chữ/ảnh sang app, lối tắt Dịch ảnh / Dịch; sao chép, chia sẻ, phóng to bản dịch, chia sẻ cả cuộc; Cài đặt → Giọng đọc; thanh Nghe › Dịch › Đọc song ngữ, "Đến lượt bạn", 6 luật nói chuyện ([architecture.md](docs/architecture.md)) |
 | M8 | Hướng dẫn, báo cáo | Hướng dẫn trong app và bảng báo cáo xong (2026-10-07); màn Thực nghiệm đã bỏ (DR-09); chờ số đo trên điện thoại thật |
 
 Mỗi mốc xong khi: test JVM xanh, build release được, có DR tương ứng.
@@ -43,6 +44,7 @@ AppProduct/
   tools/                script Python (chỉ thư viện chuẩn) và tests/
   tools/mt/             dựng, kiểm và đóng gói Main-Core MT (cần torch, transformers, onnx, onnxruntime)
   tools/tts/            chuyển giọng Piper sang bản chỉ nén trọng số (fetch_artifacts gọi), so sánh các bản
+  tools/ocr/            sinh bộ ảnh thử Dịch ảnh và chấm CER/WER (cần Pillow)
   docs/                 tài liệu (bảng dưới)
   evidence/             build và run đã kéo về PC
   Documents/            sketch, ghi chú gốc (không commit)
@@ -83,7 +85,7 @@ gói dịch được dựng vào `app/src/main/assets/mt/` bằng `tools/mt/pack
 
    `-Pvtt.abis` phải đặt trong dấu nháy khi dùng PowerShell. APK ra ở
    `app/build/outputs/apk/release/app-<abi>-release.apk` (arm64-v8a cho điện thoại,
-   khoảng 300 MB; x86_64 cho máy ảo). Bản release ký bằng khoá debug để cài tay.
+   khoảng 309 MB; x86_64 cho máy ảo). Bản release ký bằng khoá debug để cài tay.
    Kiểm chính APK vừa build (chỉ đọc; `assets/mt` và `assets/models` không có trong git
    nên mỗi máy có thể đóng gói model khác nhau):
 
@@ -110,7 +112,7 @@ gói dịch được dựng vào `app/src/main/assets/mt/` bằng `tools/mt/pack
 | [docs/design_check.md](docs/design_check.md) | Kiểm tra thiết kế so với Core, gửi anh (bản nháp) |
 | [docs/contracts/mt_package_v2.md](docs/contracts/mt_package_v2.md) | Gói Main-Core MT: graph ONNX, tokenizer, beam search, lượng tử hoá, kiểm chứng |
 | [docs/contracts/evidence_app_v1.md](docs/contracts/evidence_app_v1.md) | Định dạng evidence của app (bản nháp) |
-| [docs/decisions/](docs/decisions/README.md) | Báo cáo quyết định DR-01…DR-09 |
+| [docs/decisions/](docs/decisions/README.md) | Báo cáo quyết định DR-01…DR-10 |
 | [docs/experiments/](docs/experiments/README.md) | Protocol thực nghiệm TN-01…TN-07 (làm ngoài app; màn Thực nghiệm đã bỏ) |
 | [docs/data/it_term_candidates.tsv](docs/data/it_term_candidates.tsv) | Ứng viên lexicon TTS, sinh bởi `tools/build_text_fixtures.py` |
 | [evidence/README.md](evidence/README.md) | Cách lưu và kiểm evidence |

@@ -1,0 +1,13 @@
+# adb logcat --pid of vn.viettechtrans.app (release, x86_64 emulator sdk_gphone16k_x86_64, airplane mode on: 1)
+# Dịch ảnh shortcut -> photo picker -> vi_photo.png, 2026-11-26. Google Play services on this image has its own OCR modules
+# (dl-MlkitOcrCommon, dl-VisionOcr); the log shows ML Kit chose the module bundled in the APK (remote version 0).
+11-26 10:17:35.017 17576 26345 D DecoupledTextDelegate: Start loading thick OCR module.
+11-26 10:17:35.017 17576 26345 I DynamiteModule: Considering local module com.google.mlkit.dynamite.text.latin:10000 and remote module com.google.mlkit.dynamite.text.latin:0
+11-26 10:17:35.018 17576 26345 I DynamiteModule: Selected local version of com.google.mlkit.dynamite.text.latin
+11-26 10:17:35.064 17576 26345 D nativeloader: Load /data/app/~~uYZwdI0qXcIpD6hlG0jx5w==/vn.viettechtrans.app-wC1kTRcFLFFHKI6RqwDikQ==/base.apk!/lib/x86_64/libmlkit_google_ocr_pipeline.so using class loader ns clns-9 (caller=/data/app/~~uYZwdI0qXcIpD6hlG0jx5w==/vn.viettechtrans.app-wC1kTRcFLFFHKI6RqwDikQ==/base.apk): ok
+11-26 10:17:35.127 17576 26357 I native  : I0000 00:00:1795663055.127537   26357 tflite_model_pooled_runner.cc:625] Loading mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Latn_ctc/optical/conv_model.fb
+11-26 10:17:35.139 17576 26348 I native  : I0000 00:00:1795663055.139459   26348 tflite_model_pooled_runner.cc:625] Loading mlkit-google-ocr-models/gocr/layout/line_splitting_custom_ops/model.tflite
+11-26 10:17:35.140 17576 26348 I native  : I0000 00:00:1795663055.140768   26348 tflite_model_pooled_runner.cc:625] Loading mlkit-google-ocr-models/gocr/layout/line_clustering_custom_ops/model.tflite
+11-26 10:17:35.148 17576 26345 D PipelineManager: Start process bitmap
+11-26 10:17:35.148 17576 26345 I native  : I0000 00:00:1795663055.148797   26345 scheduler.cc:693] ImageMetadata: 1280x570
+11-26 10:17:35.517 17576 26345 D PipelineManager: OCR process succeeded via visionkit pipeline.

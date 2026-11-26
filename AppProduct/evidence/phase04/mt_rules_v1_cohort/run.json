@@ -1,0 +1,478 @@
+{
+  "stage": "phase04_app_rules_cohort",
+  "question": "Student v1 (Core) vs app q4r + text rules, on the rows the app really translates (A), the rows it keeps, asks about, blocks or rejects (B), and all rows by group (C)",
+  "app_output": "q4r with R10 (mt_export_q4r prediction) then R11 collapse_repeats; R09 never splits a row of at most 500 characters; R01 is the Phase 01 norm() the cohorts already went through",
+  "metrics": "core_mt.metrics.score_predictions (chrF++ beta=2 word_order=2; sacreBLEU tokenize=none), both systems scored on the same rows",
+  "note": "A_shown_rows drops the rows R12 rejects; that choice depends on the app output, so it favours the app. A_translate_rows is the fair comparison.",
+  "inputs": {
+    "rows": {
+      "path": "mt_rules_cohort_rows.jsonl",
+      "sha256": "6447a19102fdaffef2933964cbc078875c38f1a6ccf4efd6891a250a94000794"
+    },
+    "en_to_vi/selection_validation": {
+      "path": "evidence/phase04/mt_export_q4r/en_to_vi_selection_validation.predictions.jsonl",
+      "sha256": "93c130039050951910495d9884fbb781b749ef4446e1a81a6b7d01c985172084"
+    },
+    "en_to_vi/general_validation": {
+      "path": "evidence/phase04/mt_export_q4r/en_to_vi_general_validation.predictions.jsonl",
+      "sha256": "1e0c552eb28a1d9df79973d37f903e62fbeb6252d9f8f01008021290f72dda78"
+    },
+    "vi_to_en/selection_validation": {
+      "path": "evidence/phase04/mt_export_q4r/vi_to_en_selection_validation.predictions.jsonl",
+      "sha256": "369d8cade76e66a315af01f645073b8614a7c7309d53854e371dd6e034b1ae27"
+    },
+    "vi_to_en/general_validation": {
+      "path": "evidence/phase04/mt_export_q4r/vi_to_en_general_validation.predictions.jsonl",
+      "sha256": "71a3b24f235caf95da7e7b513ae14f369eb0cd4c2f853cf4fd10c1aca67a5ee6"
+    }
+  },
+  "results": {
+    "en_to_vi/selection_validation": {
+      "A_translate_rows": {
+        "rows": 15084,
+        "chrF++": {
+          "student_v1": 66.65,
+          "app": 66.53,
+          "delta": -0.12
+        },
+        "sacreBLEU": {
+          "student_v1": 51.35,
+          "app": 51.17,
+          "delta": -0.18
+        },
+        "identical_outputs": 11083
+      },
+      "A_shown_rows": {
+        "rows": 15037,
+        "chrF++": {
+          "student_v1": 66.68,
+          "app": 66.56,
+          "delta": -0.12
+        },
+        "sacreBLEU": {
+          "student_v1": 51.41,
+          "app": 51.23,
+          "delta": -0.18
+        },
+        "identical_outputs": 11057
+      },
+      "A_rejected_rows": {
+        "rows": 47,
+        "chrF++": {
+          "student_v1": 58.48,
+          "app": 57.99,
+          "delta": -0.49
+        },
+        "sacreBLEU": {
+          "student_v1": 31.76,
+          "app": 31.0,
+          "delta": -0.76
+        },
+        "identical_outputs": 26
+      },
+      "all_rows_model_only": {
+        "rows": 15252,
+        "chrF++": {
+          "student_v1": 66.55,
+          "app": 66.42,
+          "delta": -0.12
+        },
+        "sacreBLEU": {
+          "student_v1": 51.21,
+          "app": 51.03,
+          "delta": -0.18
+        },
+        "identical_outputs": 11232
+      },
+      "B": {
+        "R02_too_long": 10,
+        "R02_empty": 0,
+        "R03_keep": {
+          "rows": 153,
+          "literal_kinds": {
+            "IDENTIFIER": 79,
+            "VERSION": 43,
+            "NUMBER": 13,
+            "CODE": 12,
+            "ACRONYM": 4,
+            "TECHNOLOGY": 2
+          },
+          "reference_identical": 33,
+          "reference_contains_source": 42,
+          "student_v1_identical": 38,
+          "student_v1_contains_source": 40
+        },
+        "R04_keep": {
+          "rows": 4,
+          "literal_kinds": {
+            "-": 4
+          },
+          "reference_identical": 0,
+          "reference_contains_source": 0,
+          "student_v1_identical": 0,
+          "student_v1_contains_source": 0
+        },
+        "R06_ask": {
+          "rows": 1,
+          "source_equals_reference": 0
+        },
+        "R12_reject": {
+          "rows": 47,
+          "reasons": {
+            "lost_literal": 47
+          },
+          "student_v1_also_rejected": 44,
+          "reference_also_fails_check": 17,
+          "student_v1_rejected_on_translate_rows": 46
+        },
+        "R08_flag": {
+          "app": 117,
+          "student_v1": 117
+        },
+        "R11_changed": 12,
+        "R01_changed": 0
+      },
+      "C": {
+        "rows": 15252,
+        "translate_shown": 15037,
+        "translate_rejected_R12": 47,
+        "keep_R03": 153,
+        "keep_R04": 4,
+        "ask_R06": 1,
+        "blocked_R02": 10,
+        "translate_notes": {
+          "SHORT_INPUT": 915,
+          "LANGUAGE_UNCERTAIN": 10
+        },
+        "translate_flag_R08": 117,
+        "translate_R11": 12
+      }
+    },
+    "en_to_vi/general_validation": {
+      "A_translate_rows": {
+        "rows": 997,
+        "chrF++": {
+          "student_v1": 52.44,
+          "app": 52.38,
+          "delta": -0.07
+        },
+        "sacreBLEU": {
+          "student_v1": 30.43,
+          "app": 30.45,
+          "delta": 0.03
+        },
+        "identical_outputs": 410
+      },
+      "A_shown_rows": {
+        "rows": 997,
+        "chrF++": {
+          "student_v1": 52.44,
+          "app": 52.38,
+          "delta": -0.07
+        },
+        "sacreBLEU": {
+          "student_v1": 30.43,
+          "app": 30.45,
+          "delta": 0.03
+        },
+        "identical_outputs": 410
+      },
+      "A_rejected_rows": {
+        "rows": 0
+      },
+      "all_rows_model_only": {
+        "rows": 997,
+        "chrF++": {
+          "student_v1": 52.44,
+          "app": 52.38,
+          "delta": -0.07
+        },
+        "sacreBLEU": {
+          "student_v1": 30.43,
+          "app": 30.46,
+          "delta": 0.03
+        },
+        "identical_outputs": 410
+      },
+      "B": {
+        "R02_too_long": 0,
+        "R02_empty": 0,
+        "R03_keep": {
+          "rows": 0,
+          "literal_kinds": {},
+          "reference_identical": 0,
+          "reference_contains_source": 0,
+          "student_v1_identical": 0,
+          "student_v1_contains_source": 0
+        },
+        "R04_keep": {
+          "rows": 0,
+          "literal_kinds": {},
+          "reference_identical": 0,
+          "reference_contains_source": 0,
+          "student_v1_identical": 0,
+          "student_v1_contains_source": 0
+        },
+        "R06_ask": {
+          "rows": 0,
+          "source_equals_reference": 0
+        },
+        "R12_reject": {
+          "rows": 0,
+          "reasons": {},
+          "student_v1_also_rejected": 0,
+          "reference_also_fails_check": 0,
+          "student_v1_rejected_on_translate_rows": 0
+        },
+        "R08_flag": {
+          "app": 0,
+          "student_v1": 0
+        },
+        "R11_changed": 1,
+        "R01_changed": 1
+      },
+      "C": {
+        "rows": 997,
+        "translate_shown": 997,
+        "translate_rejected_R12": 0,
+        "keep_R03": 0,
+        "keep_R04": 0,
+        "ask_R06": 0,
+        "blocked_R02": 0,
+        "translate_notes": {},
+        "translate_flag_R08": 0,
+        "translate_R11": 1
+      }
+    },
+    "vi_to_en/selection_validation": {
+      "A_translate_rows": {
+        "rows": 15035,
+        "chrF++": {
+          "student_v1": 61.43,
+          "app": 61.46,
+          "delta": 0.03
+        },
+        "sacreBLEU": {
+          "student_v1": 36.42,
+          "app": 36.42,
+          "delta": 0.0
+        },
+        "identical_outputs": 10993
+      },
+      "A_shown_rows": {
+        "rows": 14958,
+        "chrF++": {
+          "student_v1": 61.46,
+          "app": 61.49,
+          "delta": 0.03
+        },
+        "sacreBLEU": {
+          "student_v1": 36.45,
+          "app": 36.45,
+          "delta": 0.0
+        },
+        "identical_outputs": 10937
+      },
+      "A_rejected_rows": {
+        "rows": 77,
+        "chrF++": {
+          "student_v1": 50.78,
+          "app": 49.57,
+          "delta": -1.21
+        },
+        "sacreBLEU": {
+          "student_v1": 22.99,
+          "app": 22.2,
+          "delta": -0.79
+        },
+        "identical_outputs": 56
+      },
+      "all_rows_model_only": {
+        "rows": 15252,
+        "chrF++": {
+          "student_v1": 61.3,
+          "app": 61.31,
+          "delta": 0.01
+        },
+        "sacreBLEU": {
+          "student_v1": 36.3,
+          "app": 36.3,
+          "delta": 0.01
+        },
+        "identical_outputs": 11178
+      },
+      "B": {
+        "R02_too_long": 10,
+        "R02_empty": 0,
+        "R03_keep": {
+          "rows": 137,
+          "literal_kinds": {
+            "IDENTIFIER": 65,
+            "NUMBER": 60,
+            "CODE": 9,
+            "ACRONYM": 3
+          },
+          "reference_identical": 33,
+          "reference_contains_source": 35,
+          "student_v1_identical": 38,
+          "student_v1_contains_source": 38
+        },
+        "R04_keep": {
+          "rows": 25,
+          "literal_kinds": {
+            "-": 25
+          },
+          "reference_identical": 0,
+          "reference_contains_source": 0,
+          "student_v1_identical": 0,
+          "student_v1_contains_source": 0
+        },
+        "R06_ask": {
+          "rows": 45,
+          "source_equals_reference": 1
+        },
+        "R12_reject": {
+          "rows": 77,
+          "reasons": {
+            "lost_literal": 77
+          },
+          "student_v1_also_rejected": 75,
+          "reference_also_fails_check": 57,
+          "student_v1_rejected_on_translate_rows": 75
+        },
+        "R08_flag": {
+          "app": 122,
+          "student_v1": 117
+        },
+        "R11_changed": 6,
+        "R01_changed": 0
+      },
+      "C": {
+        "rows": 15252,
+        "translate_shown": 14958,
+        "translate_rejected_R12": 77,
+        "keep_R03": 137,
+        "keep_R04": 25,
+        "ask_R06": 45,
+        "blocked_R02": 10,
+        "translate_notes": {
+          "SHORT_INPUT": 510,
+          "LANGUAGE_UNCERTAIN": 21,
+          "NO_DIACRITICS": 15
+        },
+        "translate_flag_R08": 122,
+        "translate_R11": 6
+      }
+    },
+    "vi_to_en/general_validation": {
+      "A_translate_rows": {
+        "rows": 997,
+        "chrF++": {
+          "student_v1": 46.2,
+          "app": 46.1,
+          "delta": -0.1
+        },
+        "sacreBLEU": {
+          "student_v1": 17.52,
+          "app": 17.44,
+          "delta": -0.08
+        },
+        "identical_outputs": 315
+      },
+      "A_shown_rows": {
+        "rows": 996,
+        "chrF++": {
+          "student_v1": 46.22,
+          "app": 46.11,
+          "delta": -0.11
+        },
+        "sacreBLEU": {
+          "student_v1": 17.54,
+          "app": 17.46,
+          "delta": -0.08
+        },
+        "identical_outputs": 315
+      },
+      "A_rejected_rows": {
+        "rows": 1,
+        "chrF++": {
+          "student_v1": 36.08,
+          "app": 39.27,
+          "delta": 3.19
+        },
+        "sacreBLEU": {
+          "student_v1": 5.88,
+          "app": 6.26,
+          "delta": 0.38
+        },
+        "identical_outputs": 0
+      },
+      "all_rows_model_only": {
+        "rows": 997,
+        "chrF++": {
+          "student_v1": 46.2,
+          "app": 46.1,
+          "delta": -0.1
+        },
+        "sacreBLEU": {
+          "student_v1": 17.52,
+          "app": 17.44,
+          "delta": -0.08
+        },
+        "identical_outputs": 315
+      },
+      "B": {
+        "R02_too_long": 0,
+        "R02_empty": 0,
+        "R03_keep": {
+          "rows": 0,
+          "literal_kinds": {},
+          "reference_identical": 0,
+          "reference_contains_source": 0,
+          "student_v1_identical": 0,
+          "student_v1_contains_source": 0
+        },
+        "R04_keep": {
+          "rows": 0,
+          "literal_kinds": {},
+          "reference_identical": 0,
+          "reference_contains_source": 0,
+          "student_v1_identical": 0,
+          "student_v1_contains_source": 0
+        },
+        "R06_ask": {
+          "rows": 0,
+          "source_equals_reference": 0
+        },
+        "R12_reject": {
+          "rows": 1,
+          "reasons": {
+            "lost_literal": 1
+          },
+          "student_v1_also_rejected": 1,
+          "reference_also_fails_check": 1,
+          "student_v1_rejected_on_translate_rows": 1
+        },
+        "R08_flag": {
+          "app": 3,
+          "student_v1": 3
+        },
+        "R11_changed": 0,
+        "R01_changed": 1
+      },
+      "C": {
+        "rows": 997,
+        "translate_shown": 996,
+        "translate_rejected_R12": 1,
+        "keep_R03": 0,
+        "keep_R04": 0,
+        "ask_R06": 0,
+        "blocked_R02": 0,
+        "translate_notes": {},
+        "translate_flag_R08": 3,
+        "translate_R11": 0
+      }
+    }
+  },
+  "created_at_utc": "2026-10-23T16:59:16+00:00"
+}

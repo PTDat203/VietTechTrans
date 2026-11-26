@@ -15,6 +15,7 @@ import vn.viettechtrans.app.mt.Lang
 import vn.viettechtrans.app.mt.MtException
 import vn.viettechtrans.app.mt.MtInputNormalizer
 import vn.viettechtrans.app.mt.TranslationResult
+import vn.viettechtrans.app.mt.Translator
 import vn.viettechtrans.app.mt.rules.OutputCheck
 import vn.viettechtrans.app.mt.rules.RuleNote
 import vn.viettechtrans.app.speech.ListenConfig
@@ -72,6 +73,10 @@ class TurnRunner(private val c: AppContainer) {
      * Normalizes the input (R01), runs the active translator, then the output checks of the text-rule policy:
      * R12 rejects a structurally invalid output, R08 flags lost lexicon terms (the output itself is never changed).
      * Both are logged to [AppContainer.ruleLog]. Calls [onSlow] after 10 s.
+     *
+     * A text of several lines (Dịch ảnh gives one line per block of the picture: a heading, a button, a paragraph)
+     * is translated line by line and the translations keep the same lines, like the R09 segments: R01 would
+     * otherwise join a heading without a full stop to the next sentence ("Cập nhật phần mềm Phiên bản mới…").
      */
     suspend fun translate(text: String, direction: Direction, onSlow: () -> Unit = {}): MtOutcome = coroutineScope {
         val translator = c.translators.active() ?: return@coroutineScope MtOutcome.NoTranslator
@@ -80,10 +85,11 @@ class TurnRunner(private val c: AppContainer) {
             onSlow()
         }
         val t0 = nowMs()
-        val source = MtInputNormalizer.normalize(text)
+        val lines = text.split('\n').map(MtInputNormalizer::normalize).filter { it.isNotEmpty() }
+        val source = lines.joinToString("\n")
         try {
             translator.prepare(setOf(direction))
-            val r = translator.translate(direction, source)
+            val r = if (lines.size <= 1) translator.translate(direction, source) else translateLines(translator, direction, lines)
             val ms = nowMs() - t0
             when (val check = c.textRules.checkOutput(source, r.text, direction)) {
                 is OutputCheck.Invalid -> {
@@ -109,6 +115,18 @@ class TurnRunner(private val c: AppContainer) {
         } finally {
             watchdog.cancel()
         }
+    }
+
+    private suspend fun translateLines(translator: Translator, direction: Direction, lines: List<String>): TranslationResult {
+        val parts = lines.map { translator.translate(direction, it) }
+        val keys = parts.flatMap { it.details.keys }.toSet()
+        return TranslationResult(
+            parts.joinToString("\n") { it.text },
+            keys.associateWith { k -> parts.sumOf { it.details[k] ?: 0L } },
+            rawText = parts.joinToString("\n") { it.rawText ?: it.text },
+            repeatCleanupApplied = parts.any { it.repeatCleanupApplied },
+            sourceIds = parts.flatMap { it.sourceIds },
+        )
     }
 
     /** R06 "Vẫn dịch": the flag language_mismatch_overridden (policy: "ghi cờ … vào log test"). */

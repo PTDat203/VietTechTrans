@@ -1,5 +1,7 @@
 package vn.viettechtrans.app.ui.translate
 
+import android.graphics.Bitmap
+import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CancellationException
@@ -10,14 +12,17 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import vn.viettechtrans.app.AppContainer
+import vn.viettechtrans.app.Incoming
 import vn.viettechtrans.app.mt.Direction
 import vn.viettechtrans.app.mt.Lang
 import vn.viettechtrans.app.mt.rules.InputDecision
 import vn.viettechtrans.app.mt.rules.LangGuess
 import vn.viettechtrans.app.mt.rules.RuleNote
+import vn.viettechtrans.app.mt.rules.TextRules
 import vn.viettechtrans.app.speech.EngineRole
 import vn.viettechtrans.app.speech.ListenConfig
 import vn.viettechtrans.app.speech.ListenOutcome
@@ -26,7 +31,8 @@ import vn.viettechtrans.app.text.SttPostProcessor
 import vn.viettechtrans.app.turn.MtOutcome
 import vn.viettechtrans.app.turn.TurnTimings
 
-enum class Phase { IDLE, LOADING, LISTENING, RECOGNIZING, TRANSLATING, SPEAKING }
+/** READING_IMAGE: Dịch ảnh, the text of a picture is being read (DR-10). */
+enum class Phase { IDLE, LOADING, LISTENING, RECOGNIZING, READING_IMAGE, TRANSLATING, SPEAKING }
 
 data class TranslateUiState(
     val direction: Direction = Direction.VI_TO_EN,
@@ -55,9 +61,16 @@ data class TranslateUiState(
     /** null while checking. */
     val hasTranslator: Boolean? = null,
     val loading: Set<EngineRole> = emptySet(),
+    /** Dịch ảnh: a small copy of the picture whose text is in the box, until the user removes it. */
+    val image: Bitmap? = null,
+    /** Lines read from [image] and the time it took. */
+    val imageLines: Int = 0,
+    val imageMs: Long? = null,
+    /** A launcher shortcut asked for the picture picker; the screen opens it once and calls [TranslateViewModel.pickImageHandled]. */
+    val pickImageRequest: Boolean = false,
 ) {
-    /** Recognizing or translating: the source text must not change. Loading/listening still allow typing. */
-    val busy: Boolean get() = phase == Phase.RECOGNIZING || phase == Phase.TRANSLATING
+    /** Recognizing, reading a picture or translating: the source text must not change. Loading/listening still allow typing. */
+    val busy: Boolean get() = phase == Phase.RECOGNIZING || phase == Phase.READING_IMAGE || phase == Phase.TRANSLATING
 }
 
 /** Dịch screen: one person, voice or typing, CUT semantics (a new tap interrupts speech). */
@@ -65,6 +78,8 @@ class TranslateViewModel(private val c: AppContainer) : ViewModel() {
     companion object {
         /** Let the first frames render before parsing tens of MB of models. */
         const val PRELOAD_DELAY_MS = 1_500L
+
+        const val NO_TEXT_IN_IMAGE = "Không tìm thấy chữ trong ảnh. Hãy chụp gần, đủ sáng và giữ máy thẳng."
     }
 
     private val _state = MutableStateFlow(TranslateUiState())
@@ -91,6 +106,84 @@ class TranslateViewModel(private val c: AppContainer) : ViewModel() {
         launchSafe { c.speaker.speaking.collect { s -> if (!s) _state.update { if (it.phase == Phase.SPEAKING) it.copy(phase = Phase.IDLE) else it } } }
     }
 
+    /**
+     * Text selected or shared in another app, a shared picture, or a launcher shortcut ([Incoming]). The screen runs
+     * this only while it is resumed: a launcher shortcut clears the task, and the screen of the activity being
+     * replaced (already paused) must not take the item before the new activity shows it.
+     */
+    suspend fun receiveIncoming() {
+        c.incoming.pending.filterNotNull().collect { c.incoming.take()?.let(::handleIncoming) }
+    }
+
+    private fun handleIncoming(item: Incoming) {
+        when (item) {
+            is Incoming.Text -> {
+                if (_state.value.busy) return
+                stopListeningAndSpeech()
+                clearResult()
+                _state.update { it.copy(input = item.text, image = null, emptyTried = false) }
+                translateInput()
+            }
+            is Incoming.Image -> onImage(item.uri)
+            Incoming.PickImage -> _state.update { it.copy(pickImageRequest = true) }
+            Incoming.OpenTranslate -> Unit
+        }
+    }
+
+    fun pickImageHandled() = _state.update { it.copy(pickImageRequest = false) }
+
+    private fun stopListeningAndSpeech() {
+        stopHandle?.stop()
+        job?.cancel()
+        job = null
+        c.speaker.stop()
+        _state.update { if (it.phase == Phase.LISTENING || it.phase == Phase.LOADING || it.phase == Phase.SPEAKING) it.copy(phase = Phase.IDLE, partial = "") else it }
+    }
+
+    private fun clearResult() = _state.update {
+        it.copy(translation = null, lastSource = null, timings = null, notes = emptyList(), checkTerms = emptyList(), mismatch = null, notice = null)
+    }
+
+    /**
+     * Dịch ảnh (DR-10): reads the text of the picture into the box, then translates it like typed text
+     * (rules R01–R07, not read aloud by itself, R13). A text longer than the R02 limit stays in the box to be trimmed.
+     */
+    fun onImage(uri: Uri) {
+        if (_state.value.busy) return
+        stopListeningAndSpeech()
+        clearResult()
+        _state.update { it.copy(phase = Phase.READING_IMAGE, image = null, imageLines = 0, imageMs = null) }
+        job = launchSafe {
+            _state.update { it.copy(image = c.imageText.preview(uri)) }
+            val r = try {
+                c.imageText.read(uri)
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                _state.update { it.copy(phase = Phase.IDLE, notice = "Không đọc được ảnh: ${e.message ?: e.javaClass.simpleName}") }
+                return@launchSafe
+            }
+            if (r.text.isBlank()) {
+                _state.update { it.copy(phase = Phase.IDLE, imageMs = r.ms, notice = NO_TEXT_IN_IMAGE) }
+                return@launchSafe
+            }
+            val length = TextRules.typedLength(r.text)
+            val tooLong = length > TextRules.MAX_CHARS
+            _state.update {
+                it.copy(
+                    phase = Phase.IDLE, input = r.text, emptyTried = false, imageLines = r.lines, imageMs = r.ms,
+                    notice = if (tooLong) "Ảnh có $length ký tự chữ, quá giới hạn ${TextRules.MAX_CHARS}. Xoá bớt phần không cần rồi bấm Dịch." else null,
+                )
+            }
+            // This job is done: translateInput starts its own (and must not cancel this one mid-update).
+            job = null
+            if (!tooLong) translateInput()
+        }
+    }
+
+    /** "×" on the picture: the text read from it stays in the box. */
+    fun clearImage() = _state.update { it.copy(image = null, imageLines = 0, imageMs = null) }
+
     /** Screen became visible (also when coming back from Hội thoại): keep only this direction's models. */
     fun onShown() = preload(delayMs = PRELOAD_DELAY_MS)
 
@@ -103,6 +196,8 @@ class TranslateViewModel(private val c: AppContainer) : ViewModel() {
             it.copy(
                 direction = it.direction.reverse,
                 input = it.translation ?: it.input,
+                // The box now holds the translation, no longer the text of the picture.
+                image = if (it.translation != null) null else it.image,
                 translation = null,
                 lastSource = null,
                 timings = null,
@@ -148,7 +243,7 @@ class TranslateViewModel(private val c: AppContainer) : ViewModel() {
     fun micTapped() {
         when (_state.value.phase) {
             Phase.LISTENING, Phase.LOADING -> stopHandle?.stop()
-            Phase.RECOGNIZING, Phase.TRANSLATING -> Unit
+            Phase.RECOGNIZING, Phase.READING_IMAGE, Phase.TRANSLATING -> Unit
             Phase.IDLE, Phase.SPEAKING -> startListening()
         }
     }
@@ -179,7 +274,7 @@ class TranslateViewModel(private val c: AppContainer) : ViewModel() {
                     if (!r.meaningful) {
                         _state.update { it.copy(phase = Phase.IDLE, partial = "", notice = "Không nhận ra nội dung") }
                     } else {
-                        _state.update { it.copy(input = r.text, partial = "") }
+                        _state.update { it.copy(input = r.text, partial = "", image = null) }
                         runTranslation(r.text, direction, TurnTimings(sttMs = outcome.sttMs), typed = false, inputNotes = emptyList())
                     }
                 }
@@ -217,7 +312,9 @@ class TranslateViewModel(private val c: AppContainer) : ViewModel() {
             is InputDecision.Translate -> {
                 c.speaker.stop()
                 job?.cancel()
-                job = launchSafe { runTranslation(d.text, direction, TurnTimings(), typed = true, inputNotes = d.notes) }
+                // Lines (a picture's blocks, or lines typed by the user) are translated one by one (TurnRunner.translate).
+                val text = if (s.input.lines().count { it.isNotBlank() } > 1) s.input else d.text
+                job = launchSafe { runTranslation(text, direction, TurnTimings(), typed = true, inputNotes = d.notes) }
             }
         }
     }

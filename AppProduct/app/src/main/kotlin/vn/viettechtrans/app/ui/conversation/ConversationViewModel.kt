@@ -15,6 +15,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import vn.viettechtrans.app.AppContainer
 import vn.viettechtrans.app.history.ConversationStore
+import vn.viettechtrans.app.history.ConversationTranscript
 import vn.viettechtrans.app.history.StoredConversation
 import vn.viettechtrans.app.history.StoredMessage
 import vn.viettechtrans.app.mt.Direction
@@ -81,6 +82,9 @@ data class ConversationUi(
             m.turn !in engine.background
 
     val full: Boolean get() = messages.size >= ConversationStore.MAX_MESSAGES
+
+    /** Step of the current turn and who should act now, for the guide above the mic buttons. */
+    val guide: Guide get() = guideOf(engine.phase, messages)
 }
 
 /**
@@ -198,6 +202,9 @@ class ConversationViewModel(private val c: AppContainer) : ViewModel() {
     }
 
     fun showNotice(text: String) = _ui.update { it.copy(notice = text) }
+
+    /** "Chia sẻ" in the ☰ panel: the saved conversation as plain text (null if it cannot be read). */
+    suspend fun transcript(id: String): String? = store.load(id)?.let(ConversationTranscript::format)
     fun dismissNotice() = _ui.update { it.copy(notice = null) }
 
     // ---- conversations (history) ----

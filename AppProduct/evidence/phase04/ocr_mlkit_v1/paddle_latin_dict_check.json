@@ -1,0 +1,11 @@
+{
+ "model": "latin_PP-OCRv5_mobile_rec",
+ "source": "https://huggingface.co/PaddlePaddle/latin_PP-OCRv5_mobile_rec/raw/main/inference.yml",
+ "source_sha256": "0bbe984570f597af3638e50bdf2e8276f3ab26a61966096538b3b0d1849f5c84",
+ "checked": "2026-11-26",
+ "dict_entries": 772,
+ "vietnamese_letters": 178,
+ "missing": 90,
+ "missing_letters": "ẠạẢảẤấẦầẨẩẪẫẬậẮắẰằẲẳẴẵẶặẸẹẺẻẼẽẾếỀềỂểỄễỆệỈỉỊịỌọỎỏỐốỒồỔổỖỗỘộỚớỜờỞởỠỡỢợỤụỦủỨứỪừỬửỮữỰựỲỳỴỵỶỷỸỹ",
+ "note": "Every letter of Latin Extended Additional (U+1EA0-U+1EF9) is missing, so the model cannot output e.g. 'ạ', 'ế', 'ộ'."
+}

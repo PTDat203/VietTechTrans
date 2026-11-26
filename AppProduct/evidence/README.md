@@ -40,6 +40,14 @@ adb pull /sdcard/Android/data/vn.viettechtrans.app/files/evidence/<run-id> evide
 ..\.venv\Scripts\python.exe tools\validate_app_evidence.py evidence\runs\<run-id>
 ```
 
+## Evidence Phase 04 của app
+
+| Thư mục | Nội dung |
+|---|---|
+| `phase04/mt_export_q8`, `mt_export_q4b16c`, `mt_export_q4r`, `mt_length_cap` | Chất lượng gói MT sau khi chuyển ONNX (DR-07) |
+| `phase04/mt_term_protect`, `mt_rules_v1`, `mt_rules_v1_cohort` | Rule dịch text v1 (DR-07 §15–16) |
+| `phase04/ocr_mlkit_v1` | Dịch ảnh: 8 ảnh thử, CER/WER, log chứng minh dùng mô hình trong APK ([README](phase04/ocr_mlkit_v1/README.md), DR-10) |
+
 ## Danh sách run
 
 Chưa có run (cập nhật ở M8).

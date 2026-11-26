@@ -13,7 +13,8 @@ gradlew.bat :app:testDebugUnitTest
 
 Kết quả ngày 2026-10-07: 67/67 test qua. Ngày 2026-10-22: 74/74 (thêm `TermProtectorTest`, DR-07 §15). Ngày 2026-10-23:
 85/85 sau chính sách rule dịch text v1 (DR-07 §16): thêm `mt/rules/` và các test policy, bỏ `TermProtectorTest` và
-`VietnameseDiacriticsTest` vì đã gỡ code tương ứng. Sau đợt rà soát đối kháng: 90/90.
+`VietnameseDiacriticsTest` vì đã gỡ code tương ứng. Sau đợt rà soát đối kháng: 90/90. Ngày 2026-11-26 (Dịch ảnh, lối vào
+từ app khác, hướng dẫn lượt nói): 108/108 (thêm `OcrTextTest`, `IncomingTest`, `TurnGuideTest`, `ConversationTranscriptTest`).
 
 | Package | Nội dung | Mốc |
 |---|---|---|
@@ -23,6 +24,10 @@ Kết quả ngày 2026-10-07: 67/67 test qua. Ngày 2026-10-22: 74/74 (thêm `Te
 | `text/` | `TextProcessingTest`: `SttPostProcessor` (làm sạch, lọc vô nghĩa), `TtsTextNormalizer` (lexicon, tách đoạn). Phát hiện gõ không dấu nay là R07 trong `mt/rules/` | M3–M4 |
 | `speech/` | `ListenSessionTest`: hết lượt khi im 1,5 s, 6 s không có giọng, 60 s | M4 |
 | `turn/` | `ConversationReducerTest` (19 test): Cắt, ngắt khi đang đọc, sửa câu, chuyển cuộc, lượt nền; câu gõ và câu sửa được dịch nhưng không tự đọc (R13), literal giữ nguyên không gọi model (R03), bản dịch bị R12 từ chối; fuzz 10 000 chuỗi với các bất biến cũ, thêm "câu gõ không bao giờ tự đọc". `TurnTimingsTest` (2 test): câu gõ chỉ hiện "MT n ms", câu nói hiện đủ STT · MT · TTS | M6, 2026-10-07; 2026-10-23 |
+| `ocr/` | `OcrTextTest` (7 test): dòng trong một khối thành một câu, khối thành dòng riêng, nối từ gạch nối cuối dòng (không nối "Wi-" + "Fi" hay "10 -" + "12"), bỏ khối toàn ký hiệu, chuẩn hoá R01 không đổi hoa thường, sửa "Häy" → "Hãy" chỉ trong khối tiếng Việt ("Zürich" giữ nguyên), ảnh không có chữ ra chuỗi rỗng | 2026-11-26 (DR-10) |
+| (gốc) | `IncomingTest` (4 test, Robolectric): chữ bôi đen (`PROCESS_TEXT`), chữ và ảnh chia sẻ (`SEND`), hai lối tắt, intent không dùng được thì bỏ qua | 2026-11-26 |
+| `ui/conversation/` | `TurnGuideTest` (3 test): bước và người được hướng dẫn theo từng trạng thái (bắt đầu, đang nghe, đang dịch, đang đọc, đọc lại, đến lượt người kia theo câu mới nhất) | 2026-11-26 |
+| `history/` | `ConversationTranscriptTest`: chữ chia sẻ của một cuộc (tiêu đề, giờ, câu gốc và bản dịch theo thứ tự lượt) | 2026-11-26 |
 | `history/` | `ConversationStoreTest` (4 test): lưu/đọc, mới nhất trước, đổi tên, xoá không hồi sinh, file hỏng, xoá tất cả, quy tắc id và tiêu đề | 2026-10-07 |
 | `ui/` | `AppSmokeTest` (Robolectric): mở app ở Hội thoại; ☰ mở Dịch nhanh, Cài đặt, Hướng dẫn; gõ câu thì câu hiện và được lưu vào ☰; R03 + R13 (gõ "JavaScript": giữ nguyên, có nhãn, không có STT/TTS hay thông báo micro); R06 ("Hello, how are you?" gửi tiếng Việt thì hỏi, "Đổi sang English" gửi bằng tiếng Anh); R02 (ô trống báo "Hãy nhập nội dung cần dịch.", 501 ký tự khoá nút gửi); Dịch nhanh theo cùng rule (ô trống báo lỗi, gõ "CI/CD" thì giữ nguyên, có nhãn, không có STT/TTS) | 2026-10-07; 2026-10-23 |
 
@@ -46,8 +51,9 @@ gradlew.bat :app:connectedDebugAndroidTest
 ..\.venv\Scripts\python.exe -m unittest discover -s tools\tests -v
 ```
 
-Kết quả ngày 2026-10-23: 42 test qua, 1 bỏ qua (file IT Train cũ không có trên máy này). Trong đó
-`test_check_apk.py` có 19 test: mỗi lỗi `check_apk.py` phải bắt (quyền INTERNET, file MT bị đổi hay thiếu,
+Kết quả ngày 2026-10-23: 42 test qua, 1 bỏ qua (file IT Train cũ không có trên máy này). Ngày 2026-11-26: 43 test qua, 1 bỏ qua
+(thêm `test_ocr_models_are_required_and_not_leftovers`: APK thiếu thư viện hay mô hình Latin của ML Kit thì FAIL, file
+`.tflite` của ML Kit không bị báo là model lạc chỗ). Trong đó `test_check_apk.py` (2026-10-23) có 19 test: mỗi lỗi `check_apk.py` phải bắt (quyền INTERNET, file MT bị đổi hay thiếu,
 gói q8 cũ, graph không trùng evidence q4r, decision Core đã đổi, model giọng nói từ lock khác, role thừa,
 file model lạc chỗ, ABI 32-bit, ELF sai máy hoặc căn 4 KB, debuggable) được dựng thành một APK giả nhỏ.
 Một trong 19 test đọc `AndroidManifest.xml` của APK release thật (bỏ qua khi chưa build).
@@ -68,6 +74,24 @@ Kết quả đúng: `APP_APK_CHECK=PASS`. Thêm `--record` để ghi `evidence/b
 | `check_apk.py` | `APP_APK_CHECK` | M2, viết 2026-10-23 (DR-07 §17) |
 | `validate_app_evidence.py` | `APP_EVIDENCE`, `APP_OFFLINE_E2E` | M3 |
 | `mix_noise.py` | | M8 |
+| `ocr/make_test_images.py`, `ocr/score_ocr.py` | `OCR_TEST_IMAGES`, `OCR_SCORE` | 2026-11-26 (DR-10) |
+
+### Đo Dịch ảnh
+
+```bat
+..\.venv\Scripts\python.exe tools\ocr\make_test_images.py evidence\phase04\ocr_mlkit_v1
+```
+
+Chép các ảnh vào máy (`adb push … /sdcard/Pictures/` rồi `adb shell am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d file:///sdcard/Pictures/<tên>.png`),
+mở từng ảnh bằng lối tắt Dịch ảnh, ghi chữ trong ô và dòng "Đọc được N dòng chữ (X ms)" vào `app_results.jsonl`
+(mỗi dòng `{"id", "ocr", "lines", "ocr_ms", "translation"}`), rồi chấm:
+
+```bat
+..\.venv\Scripts\python.exe tools\ocr\score_ocr.py evidence\phase04\ocr_mlkit_v1
+```
+
+Kết quả 2026-11-26: `OCR_SCORE lang=vi … cer=0.7%`, `OCR_SCORE lang=en … cer=0.0%`
+([evidence](../evidence/phase04/ocr_mlkit_v1/README.md)).
 
 ## 4. Kiểm tra khi xong mốc
 
@@ -76,7 +100,7 @@ Kết quả đúng: `APP_APK_CHECK=PASS`. Thêm `--record` để ghi `evidence/b
 - [x] **M0:** build được và cài lên AVD (từ 2026-10-07: `assembleRelease`, một bản).
 - [ ] **M1:** test parity pass toàn bộ ca.
 - [x] **M2:** bản release nạp đủ 5 engine trên AVD, không lỗi JNI hay R8;
-  `check_apk.py` ra `APP_APK_CHECK=PASS` trên cả APK arm64-v8a và x86_64 (2026-10-23).
+  `check_apk.py` ra `APP_APK_CHECK=PASS` trên cả APK arm64-v8a và x86_64 (2026-10-23; lại PASS 2026-11-26 với mục `ocr`).
   Quyền hệ thống duy nhất là `RECORD_AUDIO`, cộng quyền nội bộ
   `DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION` của AndroidX (khớp `aapt2 dump permissions`).
 - [ ] **M3:** giọng VI và EN đọc được, dừng đọc tức thì; run kéo về ra
@@ -89,6 +113,10 @@ Kết quả đúng: `APP_APK_CHECK=PASS`. Thêm `--record` để ghi `evidence/b
   "Dừng đọc", gõ, sửa câu (✎).
 - [ ] **M7:** lịch sử: tạo cuộc, ＋, mở lại cuộc cũ sau khi tắt app, đổi tên, xoá,
   xoá tất cả; nghe lại được cả hai ngôn ngữ; RAM giảm khi app vào nền.
+- [x] **Dịch ảnh, lối vào từ app khác (2026-11-26, AVD, Chế độ máy bay):** lối tắt Dịch ảnh → bộ chọn ảnh → đọc → R06 →
+  dịch; ML Kit dùng mô hình trong APK (log); bôi đen chữ `PROCESS_TEXT` "The server is not responding." → "Máy phục vụ
+  không đáp ứng."; chia sẻ chữ "Tôi cần sao lưu dữ liệu." → "I need to back up the data."; ☰ → ⋮ → Chia sẻ; Cài đặt →
+  Giọng đọc; thẻ luật, thanh hướng dẫn, "Đến lượt bạn", chạm bản dịch để phóng to và xoay.
 - [ ] **Điện thoại thật:** cài `app-arm64-v8a-release.apk`, chạy Cài đặt → Kiểm tra
   máy này, chép kết quả vào [bao_cao/thong_so_may_toi_thieu.md](bao_cao/thong_so_may_toi_thieu.md)
   mục 4; thử các trường hợp ở [bao_cao/quy_trinh_va_xu_ly_loi.md](bao_cao/quy_trinh_va_xu_ly_loi.md).
@@ -124,5 +152,5 @@ chức năng.
 | Xoay ngang | Xoay emulator | Xoay lại |
 | TalkBack | Bật trong Settings → Accessibility | Tắt |
 
-Với mỗi cấu hình, xem lần lượt: Hội thoại (cả ngăn ☰), Dịch nhanh, Cài đặt,
-Hướng dẫn.
+Với mỗi cấu hình, xem lần lượt: Hội thoại (cả ngăn ☰, thẻ luật, thanh hướng dẫn), Dịch nhanh (có ảnh và bản dịch),
+màn phóng to, Cài đặt, Hướng dẫn.

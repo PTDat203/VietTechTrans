@@ -1,0 +1,98 @@
+{
+ "pictures": [
+  {
+   "id": "vi_dialog",
+   "lang": "vi",
+   "style": "screen",
+   "chars": 73,
+   "char_errors": 2,
+   "cer": 0.0274,
+   "wer": 0.1176,
+   "ocr_ms": 862
+  },
+  {
+   "id": "vi_settings",
+   "lang": "vi",
+   "style": "screen",
+   "chars": 83,
+   "char_errors": 0,
+   "cer": 0.0,
+   "wer": 0.0,
+   "ocr_ms": 796
+  },
+  {
+   "id": "vi_notice",
+   "lang": "vi",
+   "style": "screen",
+   "chars": 68,
+   "char_errors": 0,
+   "cer": 0.0,
+   "wer": 0.0,
+   "ocr_ms": 770
+  },
+  {
+   "id": "vi_photo",
+   "lang": "vi",
+   "style": "photo",
+   "chars": 66,
+   "char_errors": 0,
+   "cer": 0.0,
+   "wer": 0.0,
+   "ocr_ms": 2143
+  },
+  {
+   "id": "en_dialog",
+   "lang": "en",
+   "style": "screen",
+   "chars": 84,
+   "char_errors": 0,
+   "cer": 0.0,
+   "wer": 0.0,
+   "ocr_ms": 801
+  },
+  {
+   "id": "en_settings",
+   "lang": "en",
+   "style": "screen",
+   "chars": 80,
+   "char_errors": 0,
+   "cer": 0.0,
+   "wer": 0.0,
+   "ocr_ms": 693
+  },
+  {
+   "id": "en_notice",
+   "lang": "en",
+   "style": "screen",
+   "chars": 69,
+   "char_errors": 0,
+   "cer": 0.0,
+   "wer": 0.0,
+   "ocr_ms": 802
+  },
+  {
+   "id": "en_photo",
+   "lang": "en",
+   "style": "photo",
+   "chars": 87,
+   "char_errors": 0,
+   "cer": 0.0,
+   "wer": 0.0,
+   "ocr_ms": 1528
+  }
+ ],
+ "by_language": {
+  "vi": {
+   "pictures": 4,
+   "chars": 290,
+   "char_errors": 2,
+   "cer": 0.0069
+  },
+  "en": {
+   "pictures": 4,
+   "chars": 320,
+   "char_errors": 0,
+   "cer": 0.0
+  }
+ }
+}

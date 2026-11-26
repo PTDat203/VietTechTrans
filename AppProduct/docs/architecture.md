@@ -14,6 +14,9 @@ flowchart LR
   VAD -->|đoạn có giọng| STT["STT<br/>VI: Zipformer · EN: Moonshine"]
   STT -->|text thô| POST["Xử lý sau STT<br/>làm sạch · lọc vô nghĩa"]
   KB["Bàn phím"] -->|text gõ| NORM
+  IMG["Ảnh<br/>chụp · chọn · chia sẻ"] --> OCR["OCR<br/>ML Kit Latin (DR-10)"]
+  OCR -->|text đọc được, người dùng sửa| NORM
+  EXT["App khác<br/>bôi đen · chia sẻ chữ"] -->|text| NORM
   POST -->|văn bản nguồn| NORM["Chuẩn hoá đầu vào MT"]
   NORM --> MT["Translator<br/>Main-Core MarianMT (ONNX 4-bit)"]
   MT -->|văn bản đích| PRE["Xử lý trước TTS<br/>lexicon · tách đoạn"]
@@ -40,8 +43,9 @@ flowchart LR
 |---|---|---|
 | STT | `SttEngine.decode`, `splitForDecode` | Moonshine tiny (sherpa-onnx 1.13.8) trả chuỗi rỗng khi đoạn âm thanh ≥ 9,3 s (lỗi broadcast của ORT trong decoder, đo 2026-10-23), nên câu dài từng bị báo "Không nghe thấy giọng nói". Âm thanh dài hơn 8 s được cắt tại khung 32 ms yên nhất trong 2 s cuối mỗi đoạn rồi nhận dạng từng đoạn; zipformer-vi nhận dạng 60 s một lần, không cắt |
 | Sau STT | `SttPostProcessor` | NFC, gộp khoảng trắng; zipformer-vi xuất chữ HOA nên chuyển thường theo locale vi rồi viết hoa chữ đầu (Moonshine giữ nguyên); bỏ từ đệm, gộp từ lặp ≥ 3 lần (bật/tắt, TN-03); bỏ kết quả rỗng hoặc chỉ có từ đệm |
+| Đọc ảnh | `ImageTextReader`, `OcrText` | ML Kit trả khối và dòng; dòng trong khối nối bằng dấu cách, từ gạch nối cuối dòng được nối, mỗi khối một dòng, bỏ khối toàn ký hiệu; trong khối tiếng Việt đổi ä/ö/ü… về chữ có dấu ngã ([DR-10](decisions/DR-10_dich_anh_ocr.md)) |
 | Trước MT | `MtInputNormalizer` (`phase01_nfc_whitespace_v1`) | Luôn chạy, không tắt được; parity với `norm()` của Core ([mt_package_v2.md](contracts/mt_package_v2.md)) |
-| MT | `MarianTokenizer` (SentencePiece unigram Kotlin), `MarianEngine`, `BeamSearch` | `>>vie<<` cho EN→VI; beam 4 (EN→VI) / 6 (VI→EN) như `generation_config`; câu > 512 token tách theo câu, không cắt |
+| MT | `MarianTokenizer` (SentencePiece unigram Kotlin), `MarianEngine`, `BeamSearch`; `TurnRunner.translateLines` | Chữ nhiều dòng dịch từng dòng rồi ghép lại (tiêu đề không dính vào đoạn văn); `>>vie<<` cho EN→VI; beam 4 (EN→VI) / 6 (VI→EN) như `generation_config`; câu > 512 token tách theo câu, không cắt |
 | Trước TTS | `TtsTextNormalizer` (lexicon `assets/text/tts_lexicon_vi.tsv`, `chunks()`) | Lexicon IT cho giọng Việt (bật/tắt, TN-07); viết tắt HOA đọc theo tên chữ cái; `3.12` → "3 chấm 12" / "3 point 12"; tách camelCase, snake_case; tách câu tại dấu câu rồi ≤ 25 từ |
 
 ## 3. Lưu model và runtime offline
@@ -53,7 +57,9 @@ flowchart TB
     MODELS["assets/models/<br/>manifest.json, VAD, STT, TTS, espeak-ng-data"]
     MTPKG["assets/mt/<br/>manifest.json, 2 graph ONNX 4-bit, tokenizer, golden"]
     ORT["onnxruntime-android 1.30.0"]
+    OCRM["ML Kit Text Recognition 16.0.1<br/>libmlkit_google_ocr_pipeline.so<br/>assets/mlkit-google-ocr-models/"]
   end
+  OCRM --> OCRR["ImageTextReader<br/>tạo bộ đọc mỗi ảnh rồi đóng"]
   MODELS --> MM["SpeechEngines<br/>nạp theo màn, mỗi lần 1 model"]
   AAR --> ENG["Engine sherpa-onnx<br/>VAD · STT_VI · STT_EN · TTS_VI · TTS_EN"]
   MM --> ENG
@@ -88,7 +94,7 @@ Từ 2026-10-07 chỉ còn **một bản** (bỏ flavor `dev` dùng ML Kit,
 | | Giá trị |
 |---|---|
 | applicationId | `vn.viettechtrans.app` |
-| Quyền | Chỉ `RECORD_AUDIO`. INTERNET và ACCESS_NETWORK_STATE bị xoá bằng `tools:node="remove"` trong `src/main/AndroidManifest.xml` (kể cả khi thư viện kéo vào) |
+| Quyền | Chỉ `RECORD_AUDIO` (Dịch ảnh dùng Photo Picker và app máy ảnh qua `FileProvider`, không cần quyền ảnh hay CAMERA). INTERNET và ACCESS_NETWORK_STATE bị xoá bằng `tools:node="remove"` trong `src/main/AndroidManifest.xml` (kể cả khi thư viện kéo vào) |
 | Bộ dịch | Main-Core MT trong `assets/mt/`; thiếu gói thì không có bộ dịch (banner, chỉ hiện câu gốc) |
 | Lệnh | `:app:testDebugUnitTest`, `:app:assembleRelease "-Pvtt.abis=arm64-v8a,x86_64"` |
 
@@ -102,7 +108,9 @@ Từ 2026-10-07 chỉ còn **một bản** (bỏ flavor `dev` dùng ML Kit,
 | `audio/` | `MicRecorder`, `PcmPlayer` |
 | `text/` | `SttPostProcessor` (làm sạch, lọc vô nghĩa), `TtsTextNormalizer` |
 | `turn/` | `ConversationReducer` (`reduce(state, event)` thuần, test trên JVM), `TurnRunner` (nghe → làm sạch → dịch → đọc), `TurnTimings` |
-| `history/` | `ConversationStore`: mỗi cuộc trò chuyện một file JSON |
+| `history/` | `ConversationStore`: mỗi cuộc trò chuyện một file JSON; `ConversationTranscript`: cả cuộc dạng chữ để chia sẻ |
+| `ocr/` | `ImageTextReader` (ML Kit, ảnh xem trước, Uri ảnh chụp), `OcrText` (văn bản cho bộ dịch) |
+| (gốc) | `Incoming` (chữ hay ảnh từ app khác, lối tắt), `AppPrefs` (tốc độ đọc) |
 | `diagnostics/` | `DeviceCheck` (Cài đặt → Kiểm tra máy này); `Diagnostics.kt` ghi lý do thoát và lỗi gần nhất |
 | `ui/` | Compose: Hội thoại (+ ngăn ☰ `HistoryDrawer`), Dịch nhanh, Cài đặt, Hướng dẫn |
 
@@ -117,6 +125,7 @@ DI thủ công (`AppContainer`); kotlinx.serialization; coroutines.
 | Phát âm | Ghi `AudioTrack` |
 | Engine giọng nói | Mỗi engine (VAD, STT, TTS) chạy trên dispatcher riêng; một luồng TTS cho cả hai giọng vì espeak-ng giữ trạng thái toàn cục |
 | Bộ dịch | ONNX Runtime 2 luồng mỗi chiều |
+| Đọc ảnh | ML Kit trên `Dispatchers.Default`; ảnh xem trước trên `Dispatchers.IO` |
 | ViewModel | Reducer chạy tuần tự trên main; effect chạy trong coroutine |
 | IO | Lưu lịch sử (`Dispatchers.IO` + `Mutex`), copy espeak-ng-data |
 
@@ -134,7 +143,7 @@ DI thủ công (`AppContainer`); kotlinx.serialization; coroutines.
 
 ## 8. Xử lý lỗi
 
-Bảng đầy đủ (20 trường hợp, kèm việc người dùng cần làm):
+Bảng đầy đủ (E-01…E-31, kèm việc người dùng cần làm):
 [bao_cao/quy_trinh_va_xu_ly_loi.md](bao_cao/quy_trinh_va_xu_ly_loi.md). Tóm tắt:
 
 | Tình huống | App làm gì |
@@ -188,3 +197,44 @@ rõ trong Hướng dẫn.
 - Đã bỏ: thanh điều hướng dưới, màn Thực nghiệm, bố cục chia đôi, luân phiên tự động,
   quy tắc Chờ, bản `dev` ([DR-09](decisions/DR-09_thu_gon_app.md)). Bản 2026-10-02
   ở [DR-05](decisions/DR-05_hoi_thoai_chen_loi.md) giữ để tham khảo.
+
+## Cập nhật 2026-11-26: dịch ảnh, dùng từ app khác, hướng dẫn lượt nói
+
+Ba yêu cầu của người dùng: dịch bằng hình ảnh; thêm chức năng đơn giản mà đa dạng; làm rõ quy trình khi nói chuyện.
+
+**Dịch ảnh** ([DR-10](decisions/DR-10_dich_anh_ocr.md)). Màn Dịch có **Chụp ảnh** và **Chọn ảnh** hai bên nút micro.
+Chữ đọc được vào ô (cùng ảnh nhỏ, số dòng, thời gian đọc) rồi dịch như chữ gõ (R01–R07, không tự đọc theo R13).
+Đo trên 8 ảnh thử: CER tiếng Việt 0,7 %, tiếng Anh 0 % (`evidence/phase04/ocr_mlkit_v1`).
+
+**Lối vào từ app khác** (`Incoming`, `MainActivity` `singleTop` + `onNewIntent`, `AppNav` chuyển sang màn Dịch):
+
+| Lối vào | Intent | App làm gì |
+|---|---|---|
+| Bôi đen chữ → "Dịch (VietTechTrans)" | `ACTION_PROCESS_TEXT` | Mở màn Dịch với đoạn chữ và dịch |
+| Chia sẻ chữ → "Dịch bằng VietTechTrans" | `ACTION_SEND text/plain` | Như trên |
+| Chia sẻ ảnh | `ACTION_SEND image/*` | Đọc chữ trong ảnh rồi dịch |
+| Nhấn giữ biểu tượng app → Dịch ảnh / Dịch | lối tắt tĩnh `res/xml/shortcuts.xml` | Mở bộ chọn ảnh / mở màn Dịch |
+
+Chiều dịch không tự đổi: chữ có vẻ là ngôn ngữ kia thì hỏi như R06.
+Màn Dịch chỉ nhận yêu cầu khi đang ở trạng thái RESUMED (`repeatOnLifecycle`): lối tắt của launcher luôn xoá task cũ,
+và màn Dịch của activity sắp bị huỷ (đã tạm dừng) không được lấy mất yêu cầu trước activity mới (lỗi tìm thấy khi thử
+trên emulator 2026-11-26: mở lối tắt Dịch khi đang ở màn Dịch thì app về màn Hội thoại).
+
+**Dùng kết quả** (`ui/common/TextActions.kt`): dưới bản dịch có Sao chép, Chia sẻ, Phóng to (toàn màn hình, chữ lớn, nút
+xoay 180° cho người ngồi đối diện); trong Hội thoại chạm vào bản dịch để phóng to; ô nhập có nút dán; ☰ → ⋮ → Chia sẻ
+gửi cả cuộc trò chuyện dạng chữ (`ConversationTranscript`). Cài đặt → **Giọng đọc**: Chậm 0,8 / Bình thường 1,0 /
+Nhanh 1,2 (tham số `speed` của sherpa-onnx, lưu trong `SharedPreferences`).
+
+**Hướng dẫn lượt nói** (`ui/conversation/TurnGuide.kt`). `guideOf(phase, messages)` suy ra từ máy trạng thái lượt nói
+(mục 9) đang ở bước nào và ai nói tiếp:
+
+| Trạng thái | Bước sáng | Dòng cho người đang dùng | Dòng cho người kia |
+|---|---|---|---|
+| Chưa có câu nào | — | Người nói trước chạm nút ngôn ngữ của mình | (tiếng Anh, cùng nội dung) |
+| `Listening(p)` | Nghe | Mời nói; im 1,5 s hoặc chạm lại nút | Người kia đang nói, vui lòng chờ |
+| `Processing(p)` | Dịch | Đang nhận dạng và dịch câu của bạn | Đang dịch, vui lòng chờ |
+| `Speaking` | Đọc | App đang đọc cho người kia; chạm micro để ngắt | Nghe bản dịch rồi chạm nút của mình để trả lời |
+| `Idle` sau một câu | — | Đến lượt người kia trả lời | Đến lượt bạn: chạm nút để trả lời; nút micro của họ ghi "Đến lượt bạn / Your turn" |
+
+Cuộc trò chuyện trống hiện thẻ **Cách nói chuyện qua app** (6 luật, song ngữ); nút ⓘ ở thanh trên mở lại bất cứ lúc nào.
+Luật và hướng dẫn không chặn thao tác nào: máy trạng thái và quy tắc Cắt giữ nguyên.

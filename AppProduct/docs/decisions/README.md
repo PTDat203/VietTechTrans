@@ -15,6 +15,7 @@ Mỗi lựa chọn công nghệ đưa vào code có một báo cáo mini (sketch
 | DR-07 | Engine dịch & gói MT | Phase 04 | [đã chốt](DR-07_engine_dich_goi_mt.md) |
 | DR-08 | Đo đạc & evidence | M8 | chưa viết |
 | DR-09 | Thu gọn app (một bản offline, bỏ chức năng phụ) | 2026-10-07 | [đã chốt](DR-09_thu_gon_app.md) |
+| DR-10 | Dịch ảnh: ML Kit Text Recognition, mô hình đóng gói trong APK | 2026-11-26 | [đã chốt](DR-10_dich_anh_ocr.md) |
 
 Quy ước:
 

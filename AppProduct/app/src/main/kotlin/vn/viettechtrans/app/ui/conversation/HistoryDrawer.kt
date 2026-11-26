@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -22,6 +23,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -51,6 +53,7 @@ fun HistoryDrawer(
     onOpen: (String) -> Unit,
     onRename: (ConversationSummary) -> Unit,
     onDelete: (ConversationSummary) -> Unit,
+    onShare: (ConversationSummary) -> Unit,
     onTranslate: () -> Unit,
     onManual: () -> Unit,
     onSettings: () -> Unit,
@@ -69,7 +72,11 @@ fun HistoryDrawer(
                 modifier = Modifier.fillMaxWidth(),
             )
         }
-        LazyColumn(modifier = Modifier.weight(1f).padding(horizontal = 12.dp)) {
+        // The panel stays composed while closed, and a keyed list keeps its first visible item when rows are added
+        // above it: a conversation that just became the newest would sit above the view, under "Hôm nay".
+        val list = rememberLazyListState()
+        LaunchedEffect(history.firstOrNull()?.id) { list.scrollToItem(0) }
+        LazyColumn(state = list, modifier = Modifier.weight(1f).padding(horizontal = 12.dp)) {
             if (history.isEmpty()) {
                 item {
                     Text(
@@ -91,7 +98,10 @@ fun HistoryDrawer(
                     )
                 }
                 items(items, key = { it.id }) { c ->
-                    HistoryItem(c, selected = c.id == currentId, onOpen = { onOpen(c.id) }, onRename = { onRename(c) }, onDelete = { onDelete(c) })
+                    HistoryItem(
+                        c, selected = c.id == currentId, onOpen = { onOpen(c.id) }, onRename = { onRename(c) },
+                        onDelete = { onDelete(c) }, onShare = { onShare(c) },
+                    )
                 }
             }
         }
@@ -105,7 +115,14 @@ fun HistoryDrawer(
 }
 
 @Composable
-private fun HistoryItem(c: ConversationSummary, selected: Boolean, onOpen: () -> Unit, onRename: () -> Unit, onDelete: () -> Unit) {
+private fun HistoryItem(
+    c: ConversationSummary,
+    selected: Boolean,
+    onOpen: () -> Unit,
+    onRename: () -> Unit,
+    onDelete: () -> Unit,
+    onShare: () -> Unit,
+) {
     var menu by remember { mutableStateOf(false) }
     Row(
         modifier = Modifier
@@ -133,6 +150,11 @@ private fun HistoryItem(c: ConversationSummary, selected: Boolean, onOpen: () ->
                     text = { Text(stringResource(R.string.history_rename)) },
                     leadingIcon = { Icon(painterResource(R.drawable.ic_edit), contentDescription = null) },
                     onClick = { menu = false; onRename() },
+                )
+                DropdownMenuItem(
+                    text = { Text(stringResource(R.string.history_share)) },
+                    leadingIcon = { Icon(painterResource(R.drawable.ic_share), contentDescription = null) },
+                    onClick = { menu = false; onShare() },
                 )
                 DropdownMenuItem(
                     text = { Text(stringResource(R.string.history_delete), color = MaterialTheme.colorScheme.error) },

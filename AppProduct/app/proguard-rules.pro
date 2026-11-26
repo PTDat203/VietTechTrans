@@ -19,3 +19,8 @@
 -keepclasseswithmembers class vn.viettechtrans.app.** {
     kotlinx.serialization.KSerializer serializer(...);
 }
+
+# ML Kit text recognition (Dịch ảnh, DR-10) finds its component registrars by class name in manifest
+# meta-data and creates them by reflection. R8 removed their no-argument constructors
+# (NoSuchMethodException at the first picture, release builds only).
+-keep class com.google.mlkit.**.*Registrar { <init>(); }

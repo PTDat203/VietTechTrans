@@ -34,6 +34,8 @@
     <string name="phase_recognizing">Đang nhận dạng…</string>
     <string name="phase_translating">Đang dịch…</string>
     <string name="phase_speaking">Đang đọc…</string>
+    <string name="phase_idle_translate">Nói, gõ, hoặc chụp/chọn ảnh có chữ để dịch</string>
+    <string name="phase_reading_image">Đang đọc chữ trong ảnh…</string>
 
     <!-- Actions -->
     <string name="action_translate">Dịch</string>
@@ -43,21 +45,42 @@
     <string name="action_stop_speaking">Dừng đọc</string>
     <string name="action_play_source">Nghe câu gốc</string>
     <string name="action_play_translation">Nghe bản dịch</string>
+    <string name="action_copy">Sao chép</string>
+    <string name="action_copied">Đã sao chép</string>
+    <string name="action_paste">Dán chữ đã sao chép</string>
+    <string name="action_share">Chia sẻ</string>
+    <string name="action_show">Phóng to cho người đối diện đọc</string>
+    <string name="share_no_app">Không có ứng dụng nào để chia sẻ.</string>
+    <string name="show_rotate">Xoay cho người đối diện</string>
     <string name="mic_permission_needed">Cần quyền micro để nói. Bạn vẫn gõ được.</string>
 
     <!-- Translate screen -->
-    <string name="translate_input_label">Câu %1$s (gõ hoặc nói)</string>
+    <string name="translate_input_label">Câu %1$s (gõ, nói hoặc đọc từ ảnh)</string>
     <string name="translate_swap">Đảo chiều dịch</string>
     <string name="translate_speak">Nói</string>
     <string name="result_title">Bản dịch (%1$s)</string>
     <string name="translate_subtitle">Dịch một chiều, không lưu lịch sử</string>
 
+    <!-- Dịch ảnh (DR-10) -->
+    <string name="image_camera">Chụp ảnh</string>
+    <string name="image_gallery">Chọn ảnh</string>
+    <string name="image_preview">Ảnh có chữ cần dịch</string>
+    <string name="image_read_info">Đọc được %1$d dòng chữ (%2$d ms)</string>
+    <string name="image_check_text">So với ảnh, sửa chữ trong ô nếu sai rồi bấm Dịch.</string>
+    <string name="image_remove">Bỏ ảnh</string>
+    <string name="image_no_camera">Máy không có ứng dụng máy ảnh. Hãy dùng Chọn ảnh.</string>
+
+    <!-- Entry points from other apps and the launcher -->
+    <string name="process_text_label">Dịch (VietTechTrans)</string>
+    <string name="share_target_label">Dịch bằng VietTechTrans</string>
+    <string name="shortcut_image">Dịch ảnh</string>
+    <string name="shortcut_image_long">Dịch chữ trong ảnh</string>
+    <string name="shortcut_translate_long">Dịch nhanh một câu</string>
+
     <!-- Conversation screen -->
     <string name="conv_new">Cuộc trò chuyện mới</string>
     <string name="conv_new_title">Cuộc trò chuyện mới</string>
     <string name="conv_subtitle">Tiếng Việt ⇄ English</string>
-    <string name="conv_empty_title">Bắt đầu trò chuyện</string>
-    <string name="conv_empty">Mỗi người bấm nút ngôn ngữ của mình để nói; app dịch và đọc cho người kia nghe. Câu gõ bằng ⌨ chỉ được dịch, bấm 🔊 để nghe. Nếu app nghe nhầm, bấm ✎ trên câu để sửa rồi dịch lại.</string>
     <string name="conv_type">Gõ chữ</string>
     <string name="conv_type_hint">Nhập câu cần dịch</string>
     <string name="conv_send_vi">Gửi tiếng Việt</string>
@@ -97,6 +120,48 @@
     <string name="party_en_speak">Tap to speak English</string>
     <string name="party_en_listening">Listening…</string>
     <string name="party_en_processing">Translating…</string>
+    <string name="party_vi_your_turn">Đến lượt bạn</string>
+    <string name="party_en_your_turn">Your turn</string>
+
+    <!-- Conversation guide: first line for the person who acts now, second line for the other one -->
+    <string name="guide_step_listen">Nghe</string>
+    <string name="guide_step_translate">Dịch</string>
+    <string name="guide_step_speak">Đọc</string>
+    <string name="guide_start">Người nói trước chạm nút ngôn ngữ của mình rồi nói.</string>
+    <string name="guide_start_en">Whoever speaks first: tap your language button, then talk.</string>
+    <string name="guide_replay">Đang đọc lại…</string>
+    <string name="guide_replay_en">Replaying…</string>
+    <string name="guide_listening_vi">Mời nói. Nói xong im lặng 1,5 giây hoặc chạm lại nút Tiếng Việt.</string>
+    <string name="guide_wait_en">The Vietnamese speaker is talking. Please wait.</string>
+    <string name="guide_listening_en">Speak now. When done, pause 1.5 s or tap English again.</string>
+    <string name="guide_wait_vi">Người nói tiếng Anh đang nói, vui lòng chờ.</string>
+    <string name="guide_processing_vi">Đang nhận dạng và dịch câu của bạn…</string>
+    <string name="guide_processing_other_en">Translating, please wait…</string>
+    <string name="guide_processing_en">Recognizing and translating what you said…</string>
+    <string name="guide_processing_other_vi">Đang dịch, vui lòng chờ…</string>
+    <string name="guide_speaking_to_en">Listen to the translation, then tap English to reply.</string>
+    <string name="guide_speaking_vi">App đang đọc bản dịch cho người kia. Chạm nút micro để ngắt.</string>
+    <string name="guide_speaking_to_vi">Nghe bản dịch, rồi chạm Tiếng Việt để trả lời.</string>
+    <string name="guide_speaking_en">Reading the translation aloud. Tap your mic to interrupt.</string>
+    <string name="guide_next_vi">Đến lượt bạn: chạm Tiếng Việt để trả lời.</string>
+    <string name="guide_next_vi_other_en">Waiting for the Vietnamese speaker to reply.</string>
+    <string name="guide_next_en">Your turn: tap English to reply.</string>
+    <string name="guide_next_en_other_vi">Đến lượt người nói tiếng Anh trả lời.</string>
+
+    <!-- Conversation rules (empty chat and the ⓘ button) -->
+    <string name="rules_title">Cách nói chuyện qua app</string>
+    <string name="rule_1">Mỗi lần chỉ một người nói; người kia chờ app đọc bản dịch xong.</string>
+    <string name="rule_1_en">One person speaks at a time; the other waits until the translation is read.</string>
+    <string name="rule_2">Chạm đúng nút ngôn ngữ của mình: Tiếng Việt hoặc English.</string>
+    <string name="rule_2_en">Tap your own language: Tiếng Việt or English.</string>
+    <string name="rule_3">Nói câu ngắn, rõ, gần micro. Nói xong im lặng 1,5 giây hoặc chạm lại nút.</string>
+    <string name="rule_3_en">Speak short, clear sentences near the mic. When done, pause 1.5 s or tap again.</string>
+    <string name="rule_4">Xem câu app nghe được trong khung chat; nếu sai, bấm ✎ để sửa và dịch lại.</string>
+    <string name="rule_4_en">Check what the app heard in the chat; if it is wrong, tap ✎ to fix it.</string>
+    <string name="rule_5">App đọc bản dịch cho người kia. Muốn ngắt, chạm nút micro của mình.</string>
+    <string name="rule_5_en">The app reads the translation aloud. Tap your mic to interrupt.</string>
+    <string name="rule_6">Tên riêng, địa danh, thuật ngữ khó: gõ bằng ⌨ để chính xác hơn. Chạm vào bản dịch để phóng to cho người kia đọc.</string>
+    <string name="rule_6_en">For names, places or hard terms, type with ⌨. Tap a translation to show it large.</string>
 
     <!-- History panel -->
     <string name="history_empty">Chưa có cuộc trò chuyện nào. Nói hoặc gõ câu đầu tiên để bắt đầu.</string>
@@ -108,6 +173,7 @@
     <string name="history_item_meta">%1$d câu · %2$s</string>
     <string name="history_item_menu">Tuỳ chọn cho %1$s</string>
     <string name="history_rename">Đổi tên</string>
+    <string name="history_share">Chia sẻ</string>
     <string name="history_delete">Xoá</string>
     <string name="history_delete_title">Xoá cuộc trò chuyện?</string>
     <string name="history_delete_text">Xoá \"%1$s\" và mọi câu trong đó. Không khôi phục được.</string>
@@ -134,6 +200,11 @@
     <string name="settings_translator_invalid">Gói mô hình dịch lỗi: %1$s</string>
     <string name="settings_translator_ready">Sẵn sàng (%1$s)</string>
     <string name="build_offline">offline, không cần mạng</string>
+    <string name="settings_voice">Giọng đọc</string>
+    <string name="settings_voice_text">Tốc độ đọc bản dịch. Đọc chậm giúp người nghe theo kịp khi nói chuyện.</string>
+    <string name="speed_slow">Chậm</string>
+    <string name="speed_normal">Bình thường</string>
+    <string name="speed_fast">Nhanh</string>
 
     <!-- Diagnostics -->
     <string name="diag_title">Chẩn đoán</string>

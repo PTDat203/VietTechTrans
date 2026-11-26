@@ -1,7 +1,10 @@
 package vn.viettechtrans.app.ui.translate
 
 import android.Manifest
+import android.content.ActivityNotFoundException
+import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
@@ -12,6 +15,7 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -19,6 +23,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -37,7 +42,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -46,6 +53,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
@@ -54,7 +64,10 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import vn.viettechtrans.app.AppContainer
 import vn.viettechtrans.app.R
@@ -67,7 +80,9 @@ import vn.viettechtrans.app.ui.common.InputCounter
 import vn.viettechtrans.app.ui.common.MismatchDialog
 import vn.viettechtrans.app.ui.common.NoticeCard
 import vn.viettechtrans.app.ui.common.ScreenScaffold
+import vn.viettechtrans.app.ui.common.ShowTextDialog
 import vn.viettechtrans.app.ui.common.TalkButton
+import vn.viettechtrans.app.ui.common.TextActions
 import vn.viettechtrans.app.ui.common.cardColor
 import vn.viettechtrans.app.ui.theme.LocalGradients
 
@@ -96,6 +111,36 @@ fun TranslateScreen(container: AppContainer, onBack: () -> Unit, onHelp: () -> U
         if (container.mic.hasPermission()) vm.micTapped() else permission.launch(Manifest.permission.RECORD_AUDIO)
     }
     LaunchedEffect(Unit) { vm.onShown() }
+    val lifecycle = LocalLifecycleOwner.current.lifecycle
+    LaunchedEffect(vm, lifecycle) { lifecycle.repeatOnLifecycle(Lifecycle.State.RESUMED) { vm.receiveIncoming() } }
+
+    // Dịch ảnh (DR-10): a picture from the gallery (Android photo picker, no permission) or a new photo
+    // taken by the camera app into the app cache (FileProvider, no camera permission).
+    val context = LocalContext.current
+    val noCameraText = stringResource(R.string.image_no_camera)
+    val pickImage = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri -> uri?.let(vm::onImage) }
+    var photoUri by rememberSaveable { mutableStateOf<Uri?>(null) }
+    val takePhoto = rememberLauncherForActivityResult(ActivityResultContracts.TakePicture()) { saved ->
+        if (saved) photoUri?.let(vm::onImage)
+    }
+    val onGallery = { pickImage.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)) }
+    val onCamera = {
+        val uri = container.imageText.newPhotoUri()
+        photoUri = uri
+        try {
+            takePhoto.launch(uri)
+        } catch (e: ActivityNotFoundException) {
+            vm.showNotice(noCameraText)
+        }
+    }
+    // Launcher shortcut "Dịch ảnh".
+    LaunchedEffect(s.pickImageRequest) {
+        if (s.pickImageRequest) {
+            vm.pickImageHandled()
+            onGallery()
+        }
+    }
+    var showing by rememberSaveable { mutableStateOf<String?>(null) }
 
     ScreenScaffold(
         title = stringResource(R.string.nav_translate),
@@ -110,17 +155,29 @@ fun TranslateScreen(container: AppContainer, onBack: () -> Unit, onHelp: () -> U
             onSwap = vm::swap,
         )
 
-        InputCard(s, onInput = vm::onInput, onTranslate = { vm.translateInput() }, onPlaySource = vm::playSource)
+        InputCard(
+            s,
+            onInput = vm::onInput,
+            onTranslate = { vm.translateInput() },
+            onPlaySource = vm::playSource,
+            onPaste = { TextActions.paste(context)?.let(vm::onInput) },
+            onClearImage = vm::clearImage,
+        )
 
         Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-            TalkButton(
-                listening = s.phase == Phase.LISTENING || s.phase == Phase.LOADING,
-                enabled = s.phase != Phase.RECOGNIZING && s.phase != Phase.TRANSLATING,
-                level = s.level,
-                contentDescription = stringResource(R.string.translate_speak),
-                onClick = onMic,
-                size = 80.dp,
-            )
+            // Three ways to give the source: camera, voice (centre, the main one), picture from the gallery.
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(20.dp)) {
+                ImageSourceButton(R.drawable.ic_photo_camera, stringResource(R.string.image_camera), enabled = !s.busy, onClick = onCamera)
+                TalkButton(
+                    listening = s.phase == Phase.LISTENING || s.phase == Phase.LOADING,
+                    enabled = !s.busy,
+                    level = s.level,
+                    contentDescription = stringResource(R.string.translate_speak),
+                    onClick = onMic,
+                    size = 80.dp,
+                )
+                ImageSourceButton(R.drawable.ic_image, stringResource(R.string.image_gallery), enabled = !s.busy, onClick = onGallery)
+            }
             Text(
                 statusText(s),
                 style = MaterialTheme.typography.bodyMedium,
@@ -177,6 +234,9 @@ fun TranslateScreen(container: AppContainer, onBack: () -> Unit, onHelp: () -> U
                 enabled = !s.busy,
                 onPlay = vm::playTranslation,
                 onStop = vm::stopSpeaking,
+                onCopy = { TextActions.copy(context, s.translation.orEmpty()) },
+                onShare = { TextActions.share(context, s.translation.orEmpty()) },
+                onShow = { showing = s.translation },
             )
         }
         if (s.translation == null && s.phase == Phase.SPEAKING) {
@@ -187,6 +247,7 @@ fun TranslateScreen(container: AppContainer, onBack: () -> Unit, onHelp: () -> U
         }
         Spacer(Modifier.size(8.dp))
     }
+    showing?.let { ShowTextDialog(it, onDismiss = { showing = null }) }
     if (s.mismatch != null) {
         MismatchDialog(
             chosen = s.direction.source,
@@ -194,6 +255,25 @@ fun TranslateScreen(container: AppContainer, onBack: () -> Unit, onHelp: () -> U
             onForce = { vm.answerMismatch(switchLanguage = false) },
             onDismiss = vm::dismissMismatch,
         )
+    }
+}
+
+/** A round tonal button with its label under it (camera or gallery next to the mic). */
+@Composable
+private fun ImageSourceButton(icon: Int, label: String, enabled: Boolean, onClick: () -> Unit) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        FilledTonalIconButton(
+            onClick = onClick,
+            enabled = enabled,
+            modifier = Modifier.size(52.dp),
+            colors = IconButtonDefaults.filledTonalIconButtonColors(
+                containerColor = MaterialTheme.colorScheme.primaryContainer,
+                contentColor = MaterialTheme.colorScheme.primary,
+            ),
+        ) {
+            Icon(painterResource(icon), contentDescription = label)
+        }
+        Text(label, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
     }
 }
 
@@ -250,9 +330,52 @@ private fun LangLabel(lang: Lang, modifier: Modifier) {
 }
 
 @Composable
-private fun InputCard(s: TranslateUiState, onInput: (String) -> Unit, onTranslate: () -> Unit, onPlaySource: () -> Unit) {
+private fun InputCard(
+    s: TranslateUiState,
+    onInput: (String) -> Unit,
+    onTranslate: () -> Unit,
+    onPlaySource: () -> Unit,
+    onPaste: () -> Unit,
+    onClearImage: () -> Unit,
+) {
     Surface(modifier = Modifier.fillMaxWidth(), shape = MaterialTheme.shapes.large, color = cardColor(), shadowElevation = 2.dp) {
         Column(modifier = Modifier.padding(bottom = 12.dp)) {
+            s.image?.let { bitmap ->
+                // Dịch ảnh: the picture the text in the box was read from, to compare with it.
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(start = 16.dp, end = 4.dp, top = 12.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                ) {
+                    Image(
+                        bitmap = bitmap.asImageBitmap(),
+                        contentDescription = stringResource(R.string.image_preview),
+                        contentScale = ContentScale.Fit,
+                        modifier = Modifier.heightIn(max = 120.dp).weight(1f, fill = false).clip(MaterialTheme.shapes.medium),
+                    )
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(
+                            if (s.phase == Phase.READING_IMAGE) {
+                                stringResource(R.string.phase_reading_image)
+                            } else {
+                                stringResource(R.string.image_read_info, s.imageLines, s.imageMs ?: 0L)
+                            },
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                        if (s.phase != Phase.READING_IMAGE) {
+                            Text(
+                                stringResource(R.string.image_check_text),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+                        }
+                    }
+                    IconButton(onClick = onClearImage, enabled = !s.busy) {
+                        Icon(painterResource(R.drawable.ic_close), contentDescription = stringResource(R.string.image_remove))
+                    }
+                }
+            }
             TextField(
                 value = s.input,
                 onValueChange = onInput,
@@ -277,6 +400,9 @@ private fun InputCard(s: TranslateUiState, onInput: (String) -> Unit, onTranslat
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
             ) {
                 Box(modifier = Modifier.weight(1f)) { InputCounter(s.input, s.emptyTried) }
+                IconButton(onClick = onPaste, enabled = !s.busy) {
+                    Icon(painterResource(R.drawable.ic_content_paste), contentDescription = stringResource(R.string.action_paste))
+                }
                 FilledTonalIconButton(
                     onClick = onPlaySource,
                     enabled = !s.busy && s.input.isNotBlank(),
@@ -311,6 +437,9 @@ private fun ResultCard(
     enabled: Boolean,
     onPlay: () -> Unit,
     onStop: () -> Unit,
+    onCopy: () -> Unit,
+    onShare: () -> Unit,
+    onShow: () -> Unit,
 ) {
     Box(
         modifier = Modifier
@@ -350,6 +479,10 @@ private fun ResultCard(
                     TextButton(onClick = onStop) {
                         Text(stringResource(R.string.action_stop_speaking), color = Color.White)
                     }
+                } else {
+                    ResultAction(R.drawable.ic_copy, stringResource(R.string.action_copy), onCopy)
+                    ResultAction(R.drawable.ic_share, stringResource(R.string.action_share), onShare)
+                    ResultAction(R.drawable.ic_open_in_full, stringResource(R.string.action_show), onShow)
                 }
                 Spacer(Modifier.weight(1f))
                 timings?.let {
@@ -361,9 +494,16 @@ private fun ResultCard(
 }
 
 @Composable
+private fun ResultAction(icon: Int, label: String, onClick: () -> Unit) {
+    IconButton(onClick = onClick) {
+        Icon(painterResource(icon), contentDescription = label, tint = Color.White)
+    }
+}
+
+@Composable
 private fun statusText(s: TranslateUiState): String = when (s.phase) {
     Phase.IDLE -> if (s.loading.isEmpty()) {
-        stringResource(R.string.phase_idle)
+        stringResource(R.string.phase_idle_translate)
     } else {
         stringResource(R.string.phase_preparing, s.loading.map { roleName(it) }.joinToString(", "))
     }
@@ -374,6 +514,7 @@ private fun statusText(s: TranslateUiState): String = when (s.phase) {
     }
     Phase.LISTENING -> stringResource(R.string.phase_listening)
     Phase.RECOGNIZING -> stringResource(R.string.phase_recognizing)
+    Phase.READING_IMAGE -> stringResource(R.string.phase_reading_image)
     Phase.TRANSLATING -> stringResource(R.string.phase_translating)
     Phase.SPEAKING -> stringResource(R.string.phase_speaking)
 }

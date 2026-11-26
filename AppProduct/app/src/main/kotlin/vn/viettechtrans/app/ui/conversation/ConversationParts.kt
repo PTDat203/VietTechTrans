@@ -7,6 +7,7 @@ import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -52,18 +53,20 @@ import vn.viettechtrans.app.ui.common.onCardControlColor
 import vn.viettechtrans.app.ui.theme.LocalGradients
 
 /** UI strings of one person's controls, in that person's language (B sees English). */
-data class PartyStrings(val button: String, val speak: String, val listening: String, val processing: String)
+data class PartyStrings(val button: String, val speak: String, val listening: String, val processing: String, val yourTurn: String)
 
 @Composable
 fun partyStrings(party: Party): PartyStrings = if (party == Party.A) {
     PartyStrings(
         stringResource(R.string.party_vi_button), stringResource(R.string.party_vi_speak),
         stringResource(R.string.party_vi_listening), stringResource(R.string.party_vi_processing),
+        stringResource(R.string.party_vi_your_turn),
     )
 } else {
     PartyStrings(
         stringResource(R.string.party_en_button), stringResource(R.string.party_en_speak),
         stringResource(R.string.party_en_listening), stringResource(R.string.party_en_processing),
+        stringResource(R.string.party_en_your_turn),
     )
 }
 
@@ -93,6 +96,8 @@ private fun bubbleShape(party: Party) = if (party == Party.A) {
 fun PartyMicButton(party: Party, ui: ConversationUi, onTap: () -> Unit, modifier: Modifier = Modifier, size: Dp = 68.dp) {
     val s = partyStrings(party)
     val listening = ui.listening == party
+    // After the other person's sentence was translated, this person is expected to answer.
+    val yourTurn = ui.guide.kind == GuideKind.NEXT && ui.guide.party == party
     Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
         TalkButton(
             listening = listening,
@@ -107,6 +112,7 @@ fun PartyMicButton(party: Party, ui: ConversationUi, onTap: () -> Unit, modifier
         val status = when {
             listening -> s.listening
             ui.processing == party -> s.processing
+            yourTurn -> s.yourTurn
             else -> null
         }
         // Always reserve the line so the buttons do not jump when a status appears.
@@ -181,7 +187,7 @@ private fun StatusPill(text: String, color: Color) {
  * "Sửa" (correct the original when STT misheard or a typo slipped in, then translate again).
  */
 @Composable
-fun MessageBubble(m: ChatMessage, canEdit: Boolean, onReplay: () -> Unit, onEdit: () -> Unit, modifier: Modifier = Modifier) {
+fun MessageBubble(m: ChatMessage, canEdit: Boolean, onReplay: () -> Unit, onEdit: () -> Unit, onShow: () -> Unit, modifier: Modifier = Modifier) {
     val left = m.party == Party.A
     val on = onBubbleColor(m.party)
     Box(
@@ -211,11 +217,12 @@ fun MessageBubble(m: ChatMessage, canEdit: Boolean, onReplay: () -> Unit, onEdit
                     modifier = Modifier.padding(end = 8.dp),
                 )
                 m.translation?.let {
+                    // Tap the translation to show it in large letters to the person in front.
                     Text(
                         it,
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold,
-                        modifier = Modifier.padding(top = 4.dp, end = 8.dp),
+                        modifier = Modifier.padding(top = 4.dp, end = 8.dp).clickable(onClickLabel = stringResource(R.string.action_show), onClick = onShow),
                     )
                 }
                 if (m.status == MessageStatus.INVALID) {

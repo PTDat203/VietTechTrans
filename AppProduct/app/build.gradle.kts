@@ -94,6 +94,8 @@ dependencies {
     implementation(files("../third_party/sherpa-onnx/sherpa-onnx-static-link-onnxruntime-1.13.8.aar"))
     // Main-Core MT (Phase 03 Student, packaged by tools/mt/package_mt.py into assets/mt/).
     implementation(libs.onnxruntime.android)
+    // Dịch ảnh: ML Kit text recognition with the Latin model (incl. Vietnamese) bundled in the APK (DR-10).
+    implementation(libs.mlkit.text.recognition)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)

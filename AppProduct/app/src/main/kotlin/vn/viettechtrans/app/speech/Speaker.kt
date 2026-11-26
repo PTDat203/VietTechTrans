@@ -17,7 +17,12 @@ import vn.viettechtrans.app.text.TtsTextNormalizer
  * run in parallel through a queue, so the next sentence is synthesized while the
  * current one plays (no gaps). A new [speak] or [stop] interrupts immediately.
  */
-class Speaker(private val engines: SpeechEngines, private val normalizer: TtsTextNormalizer) {
+class Speaker(
+    private val engines: SpeechEngines,
+    private val normalizer: TtsTextNormalizer,
+    /** Voice speed chosen in Settings (1.0 = the voice as trained, 0.8 slower). */
+    private val speed: () -> Float = { 1.0f },
+) {
     data class Result(
         /** Start of synthesis -> first samples. */
         val firstAudioMs: Long?,
@@ -45,7 +50,8 @@ class Speaker(private val engines: SpeechEngines, private val normalizer: TtsTex
             _speaking.value = true
             try {
                 val chunks = normalizer.chunks(normalizer.normalize(text, lang, useLexicon))
-                withContext(engines.ttsDispatcher) { synthesizeAndPlay(engine, chunks) }
+                val factor = speed()
+                withContext(engines.ttsDispatcher) { synthesizeAndPlay(engine, chunks, factor) }
             } finally {
                 engine.lease.releaseUse()
                 _speaking.value = false
@@ -58,7 +64,7 @@ class Speaker(private val engines: SpeechEngines, private val normalizer: TtsTex
         player.stopNow()
     }
 
-    private fun synthesizeAndPlay(engine: TtsEngine, chunks: List<String>): Result {
+    private fun synthesizeAndPlay(engine: TtsEngine, chunks: List<String>, speed: Float): Result {
         val queue = ArrayBlockingQueue<FloatArray>(64)
         val end = FloatArray(0)
         player.open(engine.sampleRate)
@@ -97,7 +103,7 @@ class Speaker(private val engines: SpeechEngines, private val normalizer: TtsTex
         try {
             for (chunk in chunks) {
                 if (stopRequested || !writer.isAlive) break
-                engine.tts.generateWithCallback(chunk, 0, 1.0f, callback)
+                engine.tts.generateWithCallback(chunk, 0, speed, callback)
             }
         } finally {
             if (stopRequested) queue.clear()

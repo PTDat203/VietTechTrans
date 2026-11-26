@@ -1,0 +1,58 @@
+[
+ {
+  "id": "vi_dialog",
+  "lang": "vi",
+  "style": "screen",
+  "font": "segoe",
+  "text": "Không thể kết nối tới máy chủ.\nVui lòng kiểm tra kết nối mạng và thử lại."
+ },
+ {
+  "id": "vi_settings",
+  "lang": "vi",
+  "style": "screen",
+  "font": "arial",
+  "text": "Cập nhật phần mềm\nPhiên bản mới đã sẵn sàng. Hãy sao lưu dữ liệu trước khi cài đặt."
+ },
+ {
+  "id": "vi_notice",
+  "lang": "vi",
+  "style": "screen",
+  "font": "times",
+  "text": "Mật khẩu phải có ít nhất 8 ký tự, gồm chữ hoa, chữ thường và chữ số."
+ },
+ {
+  "id": "vi_photo",
+  "lang": "vi",
+  "style": "photo",
+  "font": "tahoma",
+  "text": "Ứng dụng bị lỗi khi mở tệp đính kèm.\nHãy khởi động lại điện thoại."
+ },
+ {
+  "id": "en_dialog",
+  "lang": "en",
+  "style": "screen",
+  "font": "segoe",
+  "text": "Unable to connect to the server.\nPlease check your network connection and try again."
+ },
+ {
+  "id": "en_settings",
+  "lang": "en",
+  "style": "screen",
+  "font": "arial",
+  "text": "Software update\nA new version is available. Back up your data before installing."
+ },
+ {
+  "id": "en_notice",
+  "lang": "en",
+  "style": "screen",
+  "font": "times",
+  "text": "Your password must contain at least 8 characters, including a number."
+ },
+ {
+  "id": "en_photo",
+  "lang": "en",
+  "style": "photo",
+  "font": "tahoma",
+  "text": "The application stopped while opening the attachment.\nRestart your phone and try again."
+ }
+]

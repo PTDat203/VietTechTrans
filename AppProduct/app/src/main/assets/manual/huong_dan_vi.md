@@ -1,6 +1,6 @@
 # Hướng dẫn sử dụng VietTechTrans
 
-VietTechTrans dịch nói giữa **tiếng Việt và tiếng Anh**, chạy hoàn toàn **trên điện thoại, không cần Internet**: nghe giọng nói → chuyển thành chữ → dịch → đọc bản dịch cho người kia nghe. App thiên về câu nói thường ngày và câu kỹ thuật (công nghệ thông tin).
+VietTechTrans dịch nói giữa **tiếng Việt và tiếng Anh**, chạy hoàn toàn **trên điện thoại, không cần Internet**: nghe giọng nói → chuyển thành chữ → dịch → đọc bản dịch cho người kia nghe. App còn dịch chữ gõ, chữ trong ảnh (chụp màn hình, ảnh chụp thông báo, tài liệu) và chữ gửi từ app khác. App thiên về câu nói thường ngày và câu kỹ thuật (công nghệ thông tin).
 
 ## Bắt đầu {#start}
 
@@ -16,12 +16,26 @@ VietTechTrans dịch nói giữa **tiếng Việt và tiếng Anh**, chạy hoà
 1. Chạm nút ngôn ngữ của mình rồi nói. Vòng sáng quanh nút cho biết app đang nghe.
 2. Nói xong, ngừng khoảng 1,5 giây: app tự dừng nghe. Muốn dừng ngay thì chạm lại nút của mình.
 3. App hiện câu vừa nghe (chữ nhỏ) và bản dịch (chữ đậm), rồi đọc bản dịch bằng giọng ngôn ngữ kia.
-4. Đến lượt người kia: chạm nút ngôn ngữ của họ.
+4. Đến lượt người kia: nút của họ hiện **Đến lượt bạn / Your turn**; họ chạm nút đó để trả lời.
+
+Mỗi lượt đi qua ba bước **Nghe › Dịch › Đọc**. Thanh hướng dẫn ngay trên hai nút micro tô sáng bước đang chạy và ghi bằng cả hai thứ tiếng ai đang nói, ai cần chờ và ai nói tiếp, ví dụ "Mời nói. Nói xong im lặng 1,5 giây hoặc chạm lại nút Tiếng Việt." cho người Việt và "The Vietnamese speaker is talking. Please wait." cho người kia.
+
+## Luật nói chuyện qua app {#turn-rules}
+
+Cuộc trò chuyện mới hiện sẵn các luật này (tiếng Việt và tiếng Anh) để hai người cùng đọc trước khi nói; xem lại bất cứ lúc nào bằng nút **ⓘ** ở góc trên.
+
+1. Mỗi lần chỉ một người nói; người kia chờ app đọc bản dịch xong.
+2. Chạm đúng nút ngôn ngữ của mình: Tiếng Việt hoặc English.
+3. Nói câu ngắn, rõ, gần micro. Nói xong im lặng 1,5 giây hoặc chạm lại nút.
+4. Xem câu app nghe được trong khung chat; nếu sai, bấm ✎ để sửa và dịch lại.
+5. App đọc bản dịch cho người kia. Muốn ngắt, chạm nút micro của mình.
+6. Tên riêng, địa danh, thuật ngữ khó: gõ bằng ⌨ để chính xác hơn. Chạm vào bản dịch để phóng to cho người kia đọc.
 
 Các nút khác:
 
 - **⌨ Gõ chữ**: gõ câu rồi chọn **Gửi tiếng Việt** hoặc **Send English**. Câu gõ chỉ được dịch, không tự đọc: bấm 🔊 trên câu để nghe. Dòng thời gian của câu gõ chỉ có "MT … ms" (không có bước nghe và đọc).
 - **🔊 Nghe lại** trên mỗi câu: đọc lại bản dịch.
+- **Chạm vào bản dịch**: phóng to toàn màn hình cho người đối diện đọc; **Xoay cho người đối diện** lật chữ 180° khi hai người ngồi đối diện.
 - **✎ Sửa** trên mỗi câu: sửa câu gốc rồi dịch lại (xem mục dưới).
 - Chạm nút micro khi app đang đọc: app ngừng đọc và nghe người vừa chạm. Chạm nút người kia khi người này đang nói: lượt đang nói được dịch nhưng không đọc (nhãn "chưa phát").
 
@@ -58,7 +72,7 @@ App lưu từng cuộc trò chuyện (chỉ lưu chữ, không lưu âm thanh) g
 
 - **＋** ở góc trên: bắt đầu cuộc trò chuyện mới. Cuộc cũ được giữ lại.
 - **☰** ở góc trên: mở danh sách cuộc trò chuyện, xếp theo Hôm nay, Hôm qua, 7 ngày qua, 30 ngày qua, Cũ hơn. Chạm một cuộc để mở và nói tiếp.
-- **⋮** cạnh mỗi cuộc: **Đổi tên** hoặc **Xoá**.
+- **⋮** cạnh mỗi cuộc: **Đổi tên**, **Chia sẻ** (gửi cả cuộc dạng chữ: từng câu gốc và bản dịch, qua Zalo, email, Ghi chú…) hoặc **Xoá**.
 - Tên cuộc trò chuyện tự lấy từ câu đầu tiên, có thể đổi tên.
 - Xoá toàn bộ lịch sử: **Cài đặt → Lịch sử trò chuyện → Xoá toàn bộ lịch sử**.
 
@@ -67,13 +81,33 @@ App lưu từng cuộc trò chuyện (chỉ lưu chữ, không lưu âm thanh) g
 Mở **☰ → Dịch** để dịch một chiều (ví dụ đọc biển báo, tài liệu ngắn):
 
 1. Chọn chiều bằng thanh **Tiếng Việt ⇄ Tiếng Anh**; nút ⇄ đảo chiều.
-2. Gõ vào ô, hoặc chạm nút micro và nói: chữ nghe được hiện trong ô để bạn sửa nếu nghe nhầm.
+2. Gõ vào ô, dán chữ đã sao chép (nút 📋 trong ô), chạm nút micro và nói, hoặc dịch chữ trong ảnh (mục "Dịch ảnh"). Chữ nghe hay đọc được hiện trong ô để bạn sửa nếu sai.
 3. Bấm **Dịch**. Bản dịch hiện trong thẻ màu; bấm 🔊 để nghe. Câu gõ đi qua các quy tắc ở mục "Chữ gõ: app xử lý thế nào"; câu nói thì app dịch rồi đọc luôn.
+4. Dưới bản dịch: **Sao chép**, **Chia sẻ** sang app khác, **Phóng to** cho người đối diện đọc.
 
-Các câu ở màn Dịch không lưu vào lịch sử.
+Chữ có nhiều dòng (tiêu đề và đoạn văn, danh sách) được dịch từng dòng và giữ nguyên các dòng. Các câu ở màn Dịch không lưu vào lịch sử.
+
+## Dịch ảnh {#image}
+
+Dịch chữ trong ảnh chụp màn hình, ảnh chụp thông báo lỗi, biển hướng dẫn, trang tài liệu. App đọc chữ ngay trên máy, không gửi ảnh đi đâu.
+
+1. Ở màn **Dịch**, chạm **Chụp ảnh** (bên trái nút micro) để chụp bằng máy ảnh, hoặc **Chọn ảnh** (bên phải) để lấy ảnh có sẵn.
+2. App đọc chữ trong ảnh (thường dưới 2 giây), hiện ảnh nhỏ, số dòng đọc được và đưa chữ vào ô, rồi dịch luôn.
+3. So chữ trong ô với ảnh. Nếu app đọc sai một chữ (thường là dấu thanh: "nôi" thay vì "nối"), sửa trong ô rồi bấm **Dịch** lại. Bấm **×** trên ảnh để bỏ ảnh.
+
+Để đọc đúng: chụp thẳng, đủ sáng, chữ rõ và chiếm phần lớn khung hình; chữ quá nhỏ (như chữ trên thanh trạng thái của ảnh chụp màn hình) dễ đọc sai. Chữ in đọc tốt hơn chữ viết tay. Ảnh chữ dịch như chữ gõ: không tự đọc thành tiếng, bấm 🔊 để nghe.
+
+## Dùng VietTechTrans từ app khác {#share}
+
+- **Bôi đen chữ** trong bất kỳ app nào (trình duyệt, Zalo, email, PDF) → chọn **Dịch (VietTechTrans)** trong menu chữ (có thể nằm trong ⋮): màn Dịch mở ra và dịch đoạn đó.
+- **Chia sẻ** một đoạn chữ hoặc một ảnh từ app khác → chọn **Dịch bằng VietTechTrans**: chữ được dịch, ảnh được đọc rồi dịch.
+- **Nhấn giữ biểu tượng app** ở màn hình chính: **Dịch ảnh** mở thẳng bộ chọn ảnh, **Dịch** mở màn Dịch nhanh. Có thể kéo hai lối tắt này ra màn hình chính.
+
+App dịch theo chiều đang chọn ở màn Dịch. Nếu chữ gửi sang (hoặc chữ trong ảnh) có vẻ là ngôn ngữ kia, app hỏi **Đổi sang …** hay **Vẫn dịch**, như với chữ gõ.
 
 ## Cài đặt và kiểm tra máy {#settings}
 
+- **Giọng đọc**: tốc độ đọc bản dịch **Chậm**, **Bình thường** hoặc **Nhanh**. Đọc chậm giúp người nghe theo kịp khi nói chuyện.
 - **Kiểm tra máy này**: đo máy của bạn (nạp mô hình, tốc độ dịch, đọc và nghe, RAM) và cho biết máy có đạt cấu hình tối thiểu không. Mất khoảng 1–2 phút. Bấm **Sao chép kết quả** để gửi cho nhóm phát triển.
 - **Bộ case rule dịch (v1)**: chạy các câu kiểm tra cố định của chính sách rule dịch qua đúng luồng của app và lưu kết quả để nhóm đối chiếu.
 - **Nhật ký rule dịch**: các câu cần kiểm tra thuật ngữ, bản dịch không hợp lệ và các lần chọn "Vẫn dịch"; sao chép hoặc xoá được.
@@ -87,6 +121,7 @@ Các câu ở màn Dịch không lưu vào lịch sử.
 |---|---|---|
 | Ngôn ngữ | Tiếng Việt ↔ tiếng Anh | Không dịch ngôn ngữ khác |
 | Chữ gõ mỗi câu (Hội thoại, Dịch, Sửa) | 500 ký tự (tính cả dấu cách, emoji) | Khoá nút gửi, giữ nguyên chữ để sửa |
+| Chữ đọc từ một ảnh | 500 ký tự, chữ cái Latin (tiếng Việt, tiếng Anh) | Chữ vẫn vào ô nhưng chưa dịch; xoá bớt phần không cần rồi bấm Dịch |
 | Thời gian nói mỗi lượt | 60 giây | App tự dừng nghe ở giây thứ 60 |
 | Im lặng để kết thúc lượt nói | 1,5 giây | App tự dừng nghe |
 | Chờ người bắt đầu nói | 6 giây | Dừng, báo "Không nghe thấy giọng nói" |
@@ -126,13 +161,18 @@ Các câu ở màn Dịch không lưu vào lịch sử.
 | App bị đóng khi đang dùng | Máy thiếu RAM | Đóng các app khác; xem Cài đặt → Chẩn đoán → Lần thoát trước |
 | "Cuộc trò chuyện đã đủ 500 câu" | Đạt giới hạn | Bấm ＋ tạo cuộc mới |
 | Banner "Chưa có mô hình dịch" | Bản cài thiếu gói dịch | Cài lại bản APK đầy đủ |
+| "Không tìm thấy chữ trong ảnh…" | Ảnh mờ, tối, chụp xa hoặc nghiêng, ảnh không có chữ | Chụp lại gần hơn, đủ sáng, giữ máy thẳng |
+| Chữ đọc từ ảnh sai dấu, bản dịch lạ | Ảnh mờ hoặc chữ nhỏ làm sai dấu thanh ("kết nôi") | Sửa chữ trong ô cho giống ảnh rồi bấm Dịch |
+| "Ảnh có … ký tự chữ, quá giới hạn 500…" | Ảnh có nhiều chữ (cả trang) | Xoá bớt phần không cần trong ô, hoặc chụp gần một đoạn |
+| Không thấy "Dịch (VietTechTrans)" khi bôi đen chữ | App kia dùng menu riêng | Sao chép chữ rồi dán vào màn Dịch (nút 📋) |
 
 ## Offline và quyền riêng tư {#offline}
 
 - App **không có quyền truy cập Internet**: giọng nói, chữ và bản dịch không rời khỏi điện thoại.
 - Âm thanh chỉ dùng để nhận dạng rồi bỏ đi, không lưu. Lịch sử chỉ lưu chữ, nằm trong bộ nhớ riêng của app; gỡ app là mất.
-- Quyền duy nhất app xin: **Micro**.
+- Ảnh để dịch được đọc ngay trên máy; ảnh chụp bằng **Chụp ảnh** chỉ để trong bộ nhớ tạm của app và bị xoá ở lần chụp sau.
+- Quyền duy nhất app xin: **Micro**. **Chụp ảnh** dùng app máy ảnh của điện thoại và **Chọn ảnh** dùng bộ chọn ảnh của Android, nên app không cần quyền Máy ảnh hay quyền đọc thư viện ảnh.
 
 ## Giấy phép {#licenses}
 
-Mô hình dịch: Student MarianMT của nhóm (khởi tạo từ Helsinki-NLP OPUS-MT, Apache-2.0; chưng cất từ VietAI EnViT5, giấy phép OpenRAIL). Nhận dạng giọng nói và đọc: sherpa-onnx (Apache-2.0), Zipformer tiếng Việt (CC BY-NC-ND 4.0), Moonshine (MIT), giọng Piper. App dùng cho mục đích học tập, phi thương mại.
+Mô hình dịch: Student MarianMT của nhóm (khởi tạo từ Helsinki-NLP OPUS-MT, Apache-2.0; chưng cất từ VietAI EnViT5, giấy phép OpenRAIL). Nhận dạng giọng nói và đọc: sherpa-onnx (Apache-2.0), Zipformer tiếng Việt (CC BY-NC-ND 4.0), Moonshine (MIT), giọng Piper. Đọc chữ trong ảnh: Google ML Kit Text Recognition (bản có sẵn mô hình trong app, theo Điều khoản ML Kit). App dùng cho mục đích học tập, phi thương mại.

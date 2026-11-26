@@ -53,6 +53,7 @@ fun HistoryDrawer(
     onOpen: (String) -> Unit,
     onRename: (ConversationSummary) -> Unit,
     onDelete: (ConversationSummary) -> Unit,
+    onShare: (ConversationSummary) -> Unit,
     onTranslate: () -> Unit,
     onManual: () -> Unit,
     onSettings: () -> Unit,
@@ -97,7 +98,10 @@ fun HistoryDrawer(
                     )
                 }
                 items(items, key = { it.id }) { c ->
-                    HistoryItem(c, selected = c.id == currentId, onOpen = { onOpen(c.id) }, onRename = { onRename(c) }, onDelete = { onDelete(c) })
+                    HistoryItem(
+                        c, selected = c.id == currentId, onOpen = { onOpen(c.id) }, onRename = { onRename(c) },
+                        onDelete = { onDelete(c) }, onShare = { onShare(c) },
+                    )
                 }
             }
         }
@@ -111,7 +115,14 @@ fun HistoryDrawer(
 }
 
 @Composable
-private fun HistoryItem(c: ConversationSummary, selected: Boolean, onOpen: () -> Unit, onRename: () -> Unit, onDelete: () -> Unit) {
+private fun HistoryItem(
+    c: ConversationSummary,
+    selected: Boolean,
+    onOpen: () -> Unit,
+    onRename: () -> Unit,
+    onDelete: () -> Unit,
+    onShare: () -> Unit,
+) {
     var menu by remember { mutableStateOf(false) }
     Row(
         modifier = Modifier
@@ -139,6 +150,11 @@ private fun HistoryItem(c: ConversationSummary, selected: Boolean, onOpen: () ->
                     text = { Text(stringResource(R.string.history_rename)) },
                     leadingIcon = { Icon(painterResource(R.drawable.ic_edit), contentDescription = null) },
                     onClick = { menu = false; onRename() },
+                )
+                DropdownMenuItem(
+                    text = { Text(stringResource(R.string.history_share)) },
+                    leadingIcon = { Icon(painterResource(R.drawable.ic_share), contentDescription = null) },
+                    onClick = { menu = false; onShare() },
                 )
                 DropdownMenuItem(
                     text = { Text(stringResource(R.string.history_delete), color = MaterialTheme.colorScheme.error) },

@@ -12,6 +12,7 @@ import vn.viettechtrans.app.mt.TranslatorRegistry
 import vn.viettechtrans.app.mt.rules.RuleLexicon
 import vn.viettechtrans.app.mt.rules.RuleLog
 import vn.viettechtrans.app.mt.rules.TextRules
+import vn.viettechtrans.app.ocr.ImageTextReader
 import vn.viettechtrans.app.speech.Listener
 import vn.viettechtrans.app.speech.Speaker
 import vn.viettechtrans.app.speech.SpeechEngines
@@ -63,7 +64,10 @@ class AppContainer(context: Context) {
         val tsv = appContext.assets.open(TtsTextNormalizer.LEXICON_ASSET).use { it.readBytes().decodeToString() }
         TtsTextNormalizer(TtsTextNormalizer.parseLexicon(tsv))
     }
-    val speaker: Speaker by lazy { Speaker(speechEngines, ttsNormalizer) }
+    /** Small user choices (speed of the voice). */
+    val prefs = AppPrefs(appContext)
+
+    val speaker: Speaker by lazy { Speaker(speechEngines, ttsNormalizer) { prefs.speechSpeed.value.factor } }
 
     val translators = TranslatorRegistry { coreMt() }
 
@@ -72,4 +76,10 @@ class AppContainer(context: Context) {
 
     /** Listen → clean → translate → speak, shared by the Dịch and Hội thoại screens. */
     val turns: TurnRunner by lazy { TurnRunner(this) }
+
+    /** Dịch ảnh: reads the text of a picture offline (DR-10). */
+    val imageText = ImageTextReader(appContext)
+
+    /** Text and pictures handed over by other apps and launcher shortcuts, for the Dịch nhanh screen. */
+    val incoming = IncomingContent()
 }

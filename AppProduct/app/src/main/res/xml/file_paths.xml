@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Dịch ảnh: the camera app writes the photo here (ImageTextReader.newPhotoUri). -->
+<paths>
+    <cache-path name="photos" path="photos/" />
+</paths>

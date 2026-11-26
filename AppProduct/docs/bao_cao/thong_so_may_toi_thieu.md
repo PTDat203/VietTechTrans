@@ -12,7 +12,7 @@ máy quyết định app có chạy được và nhanh hay chậm. Số đo ghi 
 | Kiến trúc CPU | ARM 64-bit (arm64-v8a) | ARMv8.2 trở lên (có lệnh dotprod: Cortex-A55/A75 trở lên) | APK chỉ có thư viện arm64-v8a (máy thật) và x86_64 (máy ảo); không hỗ trợ máy 32-bit. Không có dotprod (Cortex-A53/A73) vẫn chạy được nhờ mô hình dịch 4-bit, chỉ chậm hơn |
 | Số nhân CPU | 4 nhân | 8 nhân (có nhân hiệu năng cao) | Mô hình dịch 2 luồng, nhận dạng 2 luồng, giọng đọc 2–4 luồng (bằng nửa số nhân) |
 | RAM | 3 GB | 4 GB trở lên | App dùng khoảng 800 MB (PSS) khi nạp đủ 6 mô hình ở màn Hội thoại (đo trên máy ảo, mục 3); Android và các app khác cần phần còn lại |
-| Bộ nhớ trống khi cài | 500 MB | 1 GB | APK arm64 khoảng 282 MB (bảng mục 2) + mã biên dịch, dữ liệu espeak, lịch sử |
+| Bộ nhớ trống khi cài | 500 MB | 1 GB | APK arm64 khoảng 309 MB (2026-11-26, có Dịch ảnh; bảng mục 2) + mã biên dịch, dữ liệu espeak, lịch sử |
 | Bộ nhớ cho lịch sử | Không đáng kể | — | Chỉ lưu chữ, khoảng 1 KB mỗi câu; tối đa 500 câu mỗi cuộc trò chuyện (khoảng 0,5 MB) |
 | Micro | Có | Micro thường của điện thoại | Ghi 16 kHz, 1 kênh |
 | Loa hoặc tai nghe | Có | — | Đọc bản dịch |
@@ -34,6 +34,7 @@ Khi đó dùng màn **Dịch nhanh** (chỉ nạp 3 mô hình của một chiề
 | Giọng đọc tiếng Việt (Piper, trọng số int8) | 18 MB | Từ 2026-10-07 chỉ nén trọng số, nhanh hơn bản int8 cũ (DR-04) |
 | Giọng đọc tiếng Anh (Piper, trọng số int8) | 19 MB | |
 | ONNX Runtime + sherpa-onnx (thư viện native arm64) | khoảng 57 MB | ONNX Runtime 33 MB, sherpa-onnx 24 MB |
+| Đọc chữ trong ảnh (ML Kit Text Recognition, thư viện native arm64 + mô hình Latin) | 12,3 MB | Thư viện 11,1 MB, mô hình 1,5 MB (1,3 MB khi nén); chỉ nạp khi đọc ảnh và giải phóng ngay sau đó (DR-10) |
 | Phát hiện giọng nói, font, giao diện | vài MB | |
 
 Mô hình được nạp theo màn: Hội thoại nạp 6 mô hình (2 nhận dạng, 2 giọng đọc, 2 dịch); Dịch nhanh nạp 3.
@@ -56,6 +57,7 @@ RAM 4,1 GB, chạy trên laptop i5-12500H.
 | RAM app khi đủ 6 mô hình | 797 MB (PSS) với dịch 4-bit + đầu ra 4+4 bit; dịch 4-bit thường 666 MB; 8-bit 657–722 MB |
 | Mở app (`am start -W`, khởi động lạnh) | 0,6–2,1 s |
 | Kết luận của app | ĐẠT cấu hình khuyến nghị (từ 4 GB RAM) |
+| Đọc chữ trong ảnh (2026-11-26, 8 ảnh thử, `evidence/phase04/ocr_mlkit_v1`) | 0,7–0,9 s ảnh chụp màn hình, 1,5–2,1 s ảnh chụp kiểu điện thoại; CER tiếng Việt 0,7 %, tiếng Anh 0 % |
 
 Số khác (PC, ngoài app):
 

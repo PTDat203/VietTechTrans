@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -36,6 +37,7 @@ import kotlinx.serialization.json.Json
 import vn.viettechtrans.app.AppContainer
 import vn.viettechtrans.app.Diagnostics
 import vn.viettechtrans.app.R
+import vn.viettechtrans.app.SpeechSpeed
 import vn.viettechtrans.app.diagnostics.DeviceCheck
 import vn.viettechtrans.app.diagnostics.RuleCaseRunner
 import vn.viettechtrans.app.mt.CoreMt
@@ -93,7 +95,27 @@ fun SettingsScreen(container: AppContainer, onBack: () -> Unit, onHelp: () -> Un
         context.getSystemService(ClipboardManager::class.java)?.setPrimaryClip(ClipData.newPlainText("VietTechTrans", text))
     }
 
+    val speed by container.prefs.speechSpeed.collectAsStateWithLifecycle()
+
     ScreenScaffold(title = stringResource(R.string.nav_settings), onHelp = onHelp, onBack = onBack) {
+        VttCard(modifier = Modifier.fillMaxWidth(), title = stringResource(R.string.settings_voice), icon = R.drawable.ic_volume_up) {
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text(stringResource(R.string.settings_voice_text), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    for ((option, label) in listOf(
+                        SpeechSpeed.SLOW to R.string.speed_slow,
+                        SpeechSpeed.NORMAL to R.string.speed_normal,
+                        SpeechSpeed.FAST to R.string.speed_fast,
+                    )) {
+                        FilterChip(
+                            selected = speed == option,
+                            onClick = { container.prefs.setSpeechSpeed(option) },
+                            label = { Text(stringResource(label)) },
+                        )
+                    }
+                }
+            }
+        }
         VttCard(modifier = Modifier.fillMaxWidth(), title = stringResource(R.string.check_title), icon = R.drawable.ic_graphic_eq) {
             Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 Text(stringResource(R.string.check_text), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)

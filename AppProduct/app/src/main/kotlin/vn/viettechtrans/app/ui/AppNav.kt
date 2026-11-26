@@ -4,11 +4,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import kotlinx.coroutines.flow.filterNotNull
 import vn.viettechtrans.app.AppContainer
 import vn.viettechtrans.app.ui.conversation.ConversationScreen
 import vn.viettechtrans.app.ui.manual.ManualScreen
@@ -33,6 +35,14 @@ private fun NavHostController.openManual(section: String) = navigate("manual/$se
 fun VttApp(container: AppContainer) {
     val nav = rememberNavController()
     val back: () -> Unit = { nav.popBackStack() }
+    // Text or a picture from another app, or a launcher shortcut: the Dịch nhanh screen takes it.
+    LaunchedEffect(nav) {
+        container.incoming.pending.filterNotNull().collect {
+            if (nav.currentDestination?.route != Screen.TRANSLATE.route) {
+                nav.navigate(Screen.TRANSLATE.route) { launchSingleTop = true }
+            }
+        }
+    }
     // Surface root so text without an explicit color follows the theme (onBackground in dark mode).
     Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
         NavHost(navController = nav, startDestination = Screen.CONVERSATION.route) {

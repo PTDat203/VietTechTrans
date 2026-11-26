@@ -17,11 +17,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import vn.viettechtrans.app.R
 import vn.viettechtrans.app.turn.Party
-import vn.viettechtrans.app.ui.common.EmptyState
 import vn.viettechtrans.app.ui.common.cardColor
 
 /** Chat layout (Google Translate / Apple Translate style): phone between the two people. */
@@ -32,6 +29,7 @@ fun ChatLayout(
     onKeyboard: () -> Unit,
     onReplay: (ChatMessage) -> Unit,
     onEdit: (ChatMessage) -> Unit,
+    onShow: (ChatMessage) -> Unit,
     header: @Composable () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -50,21 +48,21 @@ fun ChatLayout(
             verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
             if (ui.messages.isEmpty() && ui.listening == null) {
-                item(key = "empty") {
-                    EmptyState(
-                        icon = R.drawable.ic_forum,
-                        title = stringResource(R.string.conv_empty_title),
-                        text = stringResource(R.string.conv_empty),
-                    )
-                }
+                // An empty conversation shows how to talk through the app.
+                item(key = "empty") { ConversationRulesCard() }
             }
             items(ui.messages, key = { it.turn }) { m ->
-                MessageBubble(m, canEdit = ui.canEdit(m), onReplay = { onReplay(m) }, onEdit = { onEdit(m) }, modifier = Modifier.animateItem())
+                MessageBubble(
+                    m, canEdit = ui.canEdit(m), onReplay = { onReplay(m) }, onEdit = { onEdit(m) }, onShow = { onShow(m) },
+                    modifier = Modifier.animateItem(),
+                )
             }
             ui.listening?.let { party ->
                 item(key = "partial") { ListeningBubble(party, ui.partial, Modifier.animateItem()) }
             }
         }
+        // What happens now and who acts next (Nghe › Dịch › Đọc).
+        TurnGuideBar(ui.guide, modifier = Modifier.padding(horizontal = 12.dp, vertical = 4.dp))
         // Floating control dock: one mic per language with the keyboard between them.
         Surface(
             modifier = Modifier.fillMaxWidth().navigationBarsPadding().padding(start = 12.dp, end = 12.dp, top = 4.dp, bottom = 10.dp),
